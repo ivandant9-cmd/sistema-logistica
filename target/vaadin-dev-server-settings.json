@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "C:/Projeto Logístico - G3/sistema-logistica/./frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "C:/Projeto Logístico - G3/sistema-logistica/./frontend/generated/jar-resources",
+  "staticOutput": "C:/Projeto Logístico - G3/sistema-logistica/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "C:\\Projeto Logístico - G3\\sistema-logistica\\target\\classes\\META-INF\\VAADIN\\config",
+  "frontendBundleOutput": "C:\\Projeto Logístico - G3\\sistema-logistica\\target\\classes\\META-INF\\VAADIN\\webapp",
+  "devBundleOutput": "C:/Projeto Logístico - G3/sistema-logistica/target/dev-bundle/webapp",
+  "devBundleStatsOutput": "C:/Projeto Logístico - G3/sistema-logistica/target/dev-bundle/config",
+  "jarResourcesFolder": "C:/Projeto Logístico - G3/sistema-logistica/./frontend/generated/jar-resources",
+  "themeName": "",
+  "clientServiceWorkerSource": "C:\\Projeto Logístico - G3\\sistema-logistica\\target\\sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}
