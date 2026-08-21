@@ -25,7 +25,7 @@ public class PdfService {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
         // Formatador seguro usando API moderna (Java 19+)
-        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.of("pt", "BR")));
+     DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale.Builder().setLanguage("pt").setRegion("BR").build()));
 
         try {
             PdfWriter.getInstance(document, out);
