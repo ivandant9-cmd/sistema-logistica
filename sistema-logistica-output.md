@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-21 21:39:37 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-21 21:49:30 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 245
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -311,7 +311,7 @@
 │   │               ├── 📄 createdFiles.lst (609 B)
 │   │               └── 📄 inputFiles.lst (1.32 KB)
 │   └── 📄 vaadin-dev-server-settings.json (1.07 KB)
-├── 📄 Dockerfile (452 B)
+├── 📄 Dockerfile (678 B)
 ├── 📄 package-lock.json (594.16 KB)
 ├── 📄 package.json (9.66 KB)
 ├── 📄 pom.xml (3.33 KB)

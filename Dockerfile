@@ -6,6 +6,12 @@ COPY . .
 # Executa o build do Vaadin compilando o frontend para produção
 RUN mvn clean package -Pproduction -DskipTests
 
+# Permite execução dos binários instalados pelo Node/Vaadin
+RUN chmod -R +x node_modules/.bin || true
+
+# Executa o build do Vaadin compilando o frontend para produção
+RUN mvn clean package -Pproduction -DskipTests
+
 # Estágio de Execução
 FROM eclipse-temurin:17-jre
 WORKDIR /app
