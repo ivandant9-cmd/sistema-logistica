@@ -5,8 +5,8 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-20 20:25:45 (America/Bahia / GMT-03:00)
-Total Files Processed: 242
+Generated On: 2026-08-21 20:33:14 (America/Bahia / GMT-03:00)
+Total Files Processed: 245
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
 
@@ -169,7 +169,8 @@ PROJECT STRUCTURE
 │   │   ├── 📄 vaadin.ts (140 B)
 │   │   └── 📄 vite-devmode.ts (922 B)
 │   ├── 📁 styles/
-│   │   └── 📄 dashboard-styles.css (1.51 KB)
+│   │   ├── 📄 dashboard-styles.css (1.51 KB)
+│   │   └── 📄 styles.css (667 B)
 │   └── 📄 index.html (497 B)
 ├── 📁 src/
 │   └── 📁 main/
@@ -182,7 +183,7 @@ PROJECT STRUCTURE
 │       │           └── 📁 ivanildo/
 │       │               └── 📁 tms/
 │       │                   ├── 📁 config/
-│       │                   │   └── 📄 SecurityConfig.java (1.65 KB)
+│       │                   │   └── 📄 SecurityConfig.java (2.16 KB)
 │       │                   ├── 📁 controller/
 │       │                   │   └── 📄 PdfController.java (2.68 KB)
 │       │                   ├── 📁 model/
@@ -193,10 +194,10 @@ PROJECT STRUCTURE
 │       │                   │   └── 📄 EntregaRepository.java (599 B)
 │       │                   ├── 📁 service/
 │       │                   │   ├── 📄 ExcelService.java (11.23 KB)
-│       │                   │   └── 📄 PdfService.java (3.97 KB)
+│       │                   │   └── 📄 PdfService.java (4.01 KB)
 │       │                   ├── 📁 views/
 │       │                   │   ├── 📄 EntregasView.java (18.25 KB)
-│       │                   │   ├── 📄 LoginView.java (4.66 KB)
+│       │                   │   ├── 📄 LoginView.java (3.32 KB)
 │       │                   │   └── 📄 MainView.java (16.46 KB)
 │       │                   ├── 📄 Application.java (414 B)
 │       │                   └── 📄 DataInitializer.java (942 B)
@@ -211,7 +212,7 @@ PROJECT STRUCTURE
 │   │   │       └── 📁 ivanildo/
 │   │   │           └── 📁 tms/
 │   │   │               ├── 📁 config/
-│   │   │               │   └── 📄 SecurityConfig.class (4.5 KB)
+│   │   │               │   └── 📄 SecurityConfig.class (4.82 KB)
 │   │   │               ├── 📁 controller/
 │   │   │               │   └── 📄 PdfController.class (4.68 KB)
 │   │   │               ├── 📁 model/
@@ -222,11 +223,11 @@ PROJECT STRUCTURE
 │   │   │               │   └── 📄 EntregaRepository.class (889 B)
 │   │   │               ├── 📁 service/
 │   │   │               │   ├── 📄 ExcelService.class (12.41 KB)
-│   │   │               │   └── 📄 PdfService.class (884 B)
+│   │   │               │   └── 📄 PdfService.class (6.1 KB)
 │   │   │               ├── 📁 views/
 │   │   │               │   ├── 📄 EntregasView.class (23.28 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
-│   │   │               │   ├── 📄 LoginView.class (6.45 KB)
+│   │   │               │   ├── 📄 LoginView.class (5.45 KB)
 │   │   │               │   └── 📄 MainView.class (27.5 KB)
 │   │   │               ├── 📄 Application.class (786 B)
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
@@ -312,9 +313,11 @@ PROJECT STRUCTURE
 │   │               ├── 📄 createdFiles.lst (609 B)
 │   │               └── 📄 inputFiles.lst (1.32 KB)
 │   └── 📄 vaadin-dev-server-settings.json (1.07 KB)
+├── 📄 Dockerfile (350 B)
 ├── 📄 package-lock.json (594.16 KB)
 ├── 📄 package.json (9.66 KB)
 ├── 📄 pom.xml (2.77 KB)
+├── 📄 system.properties (23 B)
 ├── 📄 tsconfig.json (1.22 KB)
 ├── 📄 types.d.ts (494 B)
 ├── 📄 vite.config.ts (275 B)
@@ -323,11 +326,11 @@ PROJECT STRUCTURE
 ================================================================================
 PROJECT STATISTICS
 ================================================================================
-Total Files: 242
+Total Files: 245
 Total Directories: 55
-Text Files: 223
-Binary Files: 19
-Total Size: 4.17 MB
+Text Files: 225
+Binary Files: 20
+Total Size: 4.18 MB
 
 FILE TYPES DISTRIBUTION:
 ------------------------------
@@ -337,13 +340,14 @@ FILE TYPES DISTRIBUTION:
 .java           : 13
 .json           : 6
 .html           : 4
+.properties     : 3
 .map            : 2
-.properties     : 2
+.css            : 2
 .lst            : 2
 .jsx            : 1
-.css            : 1
 .bundle         : 1
 .md             : 1
+no extension    : 1
 .xml            : 1
 
 ================================================================================
@@ -11504,6 +11508,53 @@ FILE CONTENT:
 
 
 ================================================================================
+FILE: frontend/styles/styles.css
+================================================================================
+
+FILE INFORMATION:
+----------------------------------------
+Size: 667 B
+Extension: .css
+Language: css
+Location: frontend/styles/styles.css
+Relative Path: frontend/styles
+Created: 2026-08-21 20:21:52 (America/Bahia / GMT-03:00)
+Modified: 2026-08-21 20:22:23 (America/Bahia / GMT-03:00)
+MD5: 3d91e76a27284ec8b96b406627e89a45
+SHA256: 0012792a8cc99be5cc92a9e73071097726f61be0b43bdfea8f878314ea0a3aeb
+Encoding: ASCII
+
+FILE CONTENT:
+----------------------------------------
+vaadin-login-form-wrapper { 
+    background-color: transparent !important; 
+    padding: 0 !important; 
+} 
+
+vaadin-login-form { 
+    background-color: transparent !important; 
+} 
+
+vaadin-text-field::part(input-field), vaadin-password-field::part(input-field) { 
+    background-color: #0f172a !important; 
+    border: 1px solid #334155 !important; 
+    border-radius: 8px !important; 
+} 
+
+vaadin-button[theme~="primary"] { 
+    background-color: #2563eb !important; 
+    border-radius: 8px !important; 
+    font-weight: 600 !important; 
+    margin-top: 16px !important; 
+} 
+
+vaadin-button[theme~="tertiary"] { 
+    color: #94a3b8 !important; 
+}
+================================================================================
+
+
+================================================================================
 FILE: frontend/index.html
 ================================================================================
 
@@ -11615,16 +11666,16 @@ FILE: src/main/java/br/com/ivanildo/tms/config/SecurityConfig.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 1.65 KB
+Size: 2.16 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/config/SecurityConfig.java
 Relative Path: src/main/java/br/com/ivanildo/tms/config
 Created: 2026-08-18 16:18:31 (America/Bahia / GMT-03:00)
-Modified: 2026-08-20 20:04:47 (America/Bahia / GMT-03:00)
-MD5: 2b2642992a7f49fd4bfc71b186303ce1
-SHA256: cbd1c447642b96fce1723d93d0a40b3efd593d235d9deb5e4b45fdc53e66b5f0
-Encoding: UTF-8
+Modified: 2026-08-21 20:33:09 (America/Bahia / GMT-03:00)
+MD5: b841de3c377309a3d1bf28644e13b19d
+SHA256: 29dcca3fe043e37cd8dbf4fd05cceee7490a7d090ec2ceaae681cece905bf32f
+Encoding: ASCII
 
 FILE CONTENT:
 ----------------------------------------
@@ -11641,6 +11692,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.filter.ForwardedHeaderFilter;
 
 @EnableWebSecurity
 @Configuration
@@ -11648,13 +11700,20 @@ public class SecurityConfig extends VaadinWebSecurity {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // Libera os recursos estáticos e o manipulador de recursos (stream) do Vaadin
+        // 1. Libera recursos estáticos e assets do Vaadin
         http.authorizeHttpRequests(auth -> 
-            auth.requestMatchers(new AntPathRequestMatcher("/VAADIN/**")).permitAll()
+            auth.requestMatchers(
+                new AntPathRequestMatcher("/images/**"),
+                new AntPathRequestMatcher("/icons/**"),
+                new AntPathRequestMatcher("/VAADIN/**"),
+                new AntPathRequestMatcher("/line-awesome/**")
+            ).permitAll()
         );
 
-        // Aplica as configurações padrão de segurança e login do Vaadin
+        // 2. Aplica as configurações padrão de rotas do Vaadin
         super.configure(http);
+
+        // 3. Define a View de Login (libera acesso público automaticamente a ela)
         setLoginView(http, LoginView.class);
     }
 
@@ -11667,6 +11726,12 @@ public class SecurityConfig extends VaadinWebSecurity {
                 .build();
 
         return new InMemoryUserDetailsManager(admin);
+    }
+
+    // Essencial para o Render reconhecer os cabeçalhos HTTPS/Proxy do SSL
+    @Bean
+    public ForwardedHeaderFilter forwardedHeaderFilter() {
+        return new ForwardedHeaderFilter();
     }
 }
 ================================================================================
@@ -12300,15 +12365,15 @@ FILE: src/main/java/br/com/ivanildo/tms/service/PdfService.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 3.97 KB
+Size: 4.01 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/service/PdfService.java
 Relative Path: src/main/java/br/com/ivanildo/tms/service
 Created: 2026-08-16 20:09:10 (America/Bahia / GMT-03:00)
-Modified: 2026-08-20 19:59:30 (America/Bahia / GMT-03:00)
-MD5: 15f517324b31e7bb2d8bb1470f0a9112
-SHA256: caa860de004051f0e7531868937d2cc8890026381fd7dac9fcccbe5ac6ee5fe8
+Modified: 2026-08-21 20:33:12 (America/Bahia / GMT-03:00)
+MD5: 1183c5e4f39fd96a71b090e4ac887aae
+SHA256: 35e8233b233c41fb3b9fd0d8f40d19ca668bd4518c8bdbc2749395864262d551
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12340,7 +12405,7 @@ public class PdfService {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
         // Formatador seguro usando API moderna (Java 19+)
-        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.of("pt", "BR")));
+     DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale.Builder().setLanguage("pt").setRegion("BR").build()));
 
         try {
             PdfWriter.getInstance(document, out);
@@ -12862,22 +12927,22 @@ FILE: src/main/java/br/com/ivanildo/tms/views/LoginView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 4.66 KB
+Size: 3.32 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/LoginView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-18 16:23:34 (America/Bahia / GMT-03:00)
-Modified: 2026-08-20 15:20:19 (America/Bahia / GMT-03:00)
-MD5: 2aa1af92955dd2e4560f6b95d4cf5815
-SHA256: 6168fba7b0f8882e07763216ffefea016cddf47f3a0104ff6c8071e911dab275
+Modified: 2026-08-21 20:32:35 (America/Bahia / GMT-03:00)
+MD5: 721b02dd583bcbb66259f432c5cf8edc
+SHA256: 7f042abc59a3b939930516a2415873e643a9d7fa11a3218f049f156f125a6903
 Encoding: UTF-8
 
 FILE CONTENT:
 ----------------------------------------
 package br.com.ivanildo.tms.views;
 
-import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.login.LoginForm;
@@ -12892,30 +12957,27 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @Route("login")
 @PageTitle("Login | TMS Logística")
 @AnonymousAllowed
+@CssImport("./styles.css")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
     private final LoginForm login = new LoginForm();
 
     public LoginView() {
-        // Layout Principal
         addClassName("login-view");
         setSizeFull();
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
 
-        // Fundo Gradiente da Tela
         getStyle()
             .set("background", "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)")
             .set("font-family", "system-ui, -apple-system, sans-serif");
 
-        // Card Container
         VerticalLayout card = new VerticalLayout();
         card.setWidth("420px");
         card.setPadding(true);
         card.setSpacing(true);
         card.setAlignItems(Alignment.CENTER);
 
-        // Estilo do Card
         card.getStyle()
             .set("background", "rgba(30, 41, 59, 0.85)")
             .set("backdrop-filter", "blur(12px)")
@@ -12923,7 +12985,6 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
             .set("border-radius", "16px")
             .set("box-shadow", "0 25px 50px -12px rgba(0, 0, 0, 0.5)");
 
-        // Cabeçalho
         Span icon = new Span("🚚");
         icon.getStyle().set("font-size", "42px");
 
@@ -12940,7 +13001,6 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
             .set("font-size", "13px")
             .set("margin-bottom", "8px");
 
-        // Tradução dos textos
         LoginI18n i18n = LoginI18n.createDefault();
         LoginI18n.Form i18nForm = i18n.getForm();
         i18nForm.setTitle(""); 
@@ -12957,32 +13017,8 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
         login.setI18n(i18n);
         login.setAction("login");
-
-        // 1. ATIVA O TEMA ESCURO NO COMPONENTE DE LOGIN
         login.getElement().setAttribute("theme", "dark");
         login.getStyle().set("width", "100%");
-
-        // 2. INJETA CSS PARA REMOVER O BANNER BRANCO INTERNO E AJUSTAR OS INPUTS
-        UI.getCurrent().getPage().executeJs(
-            "var style = document.createElement('style');" +
-            "style.innerHTML = '" +
-            "  vaadin-login-form-wrapper { background-color: transparent !important; padding: 0 !important; } " +
-            "  vaadin-login-form { background-color: transparent !important; } " +
-            "  vaadin-text-field::part(input-field), vaadin-password-field::part(input-field) { " +
-            "    background-color: #0f172a !important; " +
-            "    border: 1px solid #334155 !important; " +
-            "    border-radius: 8px !important; " +
-            "  } " +
-            "  vaadin-button[theme~=\"primary\"] { " +
-            "    background-color: #2563eb !important; " +
-            "    border-radius: 8px !important; " +
-            "    font-weight: 600 !important; " +
-            "    margin-top: 16px !important; " +
-            "  } " +
-            "  vaadin-button[theme~=\"tertiary\"] { color: #94a3b8 !important; } " +
-            "';" +
-            "document.head.appendChild(style);"
-        );
 
         card.add(icon, title, subtitle, login);
         add(card);
@@ -13765,7 +13801,7 @@ Extension: .html
 Language: html
 Location: target/classes/templates/entregas.html
 Relative Path: target/classes/templates
-Created: 2026-08-20 20:00:14 (America/Bahia / GMT-03:00)
+Created: 2026-08-21 12:08:56 (America/Bahia / GMT-03:00)
 Modified: 2026-08-19 15:06:12 (America/Bahia / GMT-03:00)
 MD5: 6665e1d9621fc3667a9be7f173454777
 SHA256: 77437b52d27dd1614bc900dd80be3294e1525376f270d0beb8a236f53cffc078
@@ -13953,8 +13989,8 @@ Extension: .properties
 Language: text
 Location: target/classes/application.properties
 Relative Path: target/classes
-Created: 2026-08-20 16:14:22 (America/Bahia / GMT-03:00)
-Modified: 2026-08-20 20:00:14 (America/Bahia / GMT-03:00)
+Created: 2026-08-20 20:36:31 (America/Bahia / GMT-03:00)
+Modified: 2026-08-21 20:32:36 (America/Bahia / GMT-03:00)
 MD5: 1a528f1289dfe9fdd71f029a1171b402
 SHA256: a89e5c94eb93cfbd399b35c9c9343646e9840185d3f1c0281a85c2e6b0c4f732
 Encoding: UTF-8
@@ -48652,6 +48688,29 @@ FILE CONTENT:
 
 
 ================================================================================
+FILE: system.properties
+================================================================================
+
+FILE INFORMATION:
+----------------------------------------
+Size: 23 B
+Extension: .properties
+Language: text
+Location: system.properties
+Relative Path: root
+Created: 2026-08-20 20:24:52 (America/Bahia / GMT-03:00)
+Modified: 2026-08-20 20:25:44 (America/Bahia / GMT-03:00)
+MD5: 6032ab472c0a18f3621266834637587a
+SHA256: e76621b506015e9990d4d9ab725325093fb3f285d7a36dd53b2197984af89339
+Encoding: ASCII
+
+FILE CONTENT:
+----------------------------------------
+java.runtime.version=17
+================================================================================
+
+
+================================================================================
 FILE: tsconfig.json
 ================================================================================
 
@@ -49646,3 +49705,9 @@ function getCvdlName(module: string): string {
 }
 
 ================================================================================
+
+
+================================================================================
+BINARY/EXCLUDED FILES (not included in text content)
+================================================================================
+- Dockerfile
