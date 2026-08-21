@@ -2,6 +2,8 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY . .
+
+# Executa o build do Vaadin compilando o frontend para produção
 RUN mvn clean package -Pproduction -DskipTests
 
 # Estágio de Execução
@@ -9,4 +11,5 @@ FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-Xmx384m", "-Dvaadin.productionMode=true", "-jar", "app.jar"]
+
+ENTRYPOINT ["java", "-Xmx384m", "-Dvaadin.productionMode=true", "-Dserver.port=${PORT:-8080}", "-jar", "app.jar"]

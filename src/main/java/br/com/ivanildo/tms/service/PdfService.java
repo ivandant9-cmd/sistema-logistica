@@ -2,10 +2,17 @@ package br.com.ivanildo.tms.service;
 
 import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.model.Entrega;
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.lowagie.text.Chunk;
+import com.lowagie.text.Document;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.FontFactory;
+import com.lowagie.text.PageSize;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
@@ -25,7 +32,7 @@ public class PdfService {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
         // Formatador seguro usando API moderna (Java 19+)
-     DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale.Builder().setLanguage("pt").setRegion("BR").build()));
+        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale.Builder().setLanguage("pt").setRegion("BR").build()));
 
         try {
             PdfWriter.getInstance(document, out);
@@ -81,7 +88,7 @@ public class PdfService {
             document.close();
 
         } catch (Exception e) {
-            System.err.println("❌ Falha na renderização interna do iText PDF:");
+            System.err.println("❌ Falha na renderização interna do OpenPDF:");
             e.printStackTrace();
             return new byte[0];
         }
