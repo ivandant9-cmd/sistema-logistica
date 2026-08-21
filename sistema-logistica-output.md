@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-21 20:33:14 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-21 20:58:27 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 245
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -202,7 +202,7 @@
 │       └── 📁 resources/
 │           ├── 📁 templates/
 │           │   └── 📄 entregas.html (7.96 KB)
-│           └── 📄 application.properties (644 B)
+│           └── 📄 application.properties (691 B)
 ├── 📁 target/
 │   ├── 📁 classes/
 │   │   ├── 📁 br/
@@ -231,7 +231,7 @@
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
 │   │   ├── 📁 templates/
 │   │   │   └── 📄 entregas.html (7.96 KB)
-│   │   └── 📄 application.properties (644 B)
+│   │   └── 📄 application.properties (691 B)
 │   ├── 📁 dev-bundle/
 │   │   ├── 📁 config/
 │   │   │   └── 📄 stats.json (11.6 KB)
@@ -13788,21 +13788,24 @@ public class DataInitializer implements CommandLineRunner {
 ### <a id="📄-src-main-resources-application-properties"></a>📄 `src/main/resources/application.properties`
 
 **File Info:**
-- **Size**: 644 B
+- **Size**: 691 B
 - **Extension**: `.properties`
 - **Language**: `text`
 - **Location**: `src/main/resources/application.properties`
 - **Relative Path**: `src/main/resources`
 - **Created**: 2026-08-16 19:20:26 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-18 17:07:59 (America/Bahia / GMT-03:00)
-- **MD5**: `1a528f1289dfe9fdd71f029a1171b402`
-- **SHA256**: `a89e5c94eb93cfbd399b35c9c9343646e9840185d3f1c0281a85c2e6b0c4f732`
+- **Modified**: 2026-08-21 20:58:26 (America/Bahia / GMT-03:00)
+- **MD5**: `91557877f1cf324071545fe0616703a5`
+- **SHA256**: `c72876bbd8b8412662c6d54598a72122fdc63acd8bbd341b458198df7c48bbf9`
 - **Encoding**: UTF-8
 
 **File code content:**
 
 ```text
 spring.application.name=tms-web
+
+# Permite que o Spring entenda o SSL e o proxy reverso do Render (Resolve o ERR_TOO_MANY_REDIRECTS)
+server.forward-headers-strategy=framework
 
 # Configuração do Banco H2 (Em Memória)
 spring.datasource.url=jdbc:h2:mem:tmsdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
@@ -13811,13 +13814,12 @@ spring.datasource.username=sa
 spring.datasource.password=
 spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 spring.jpa.hibernate.ddl-auto=update
-server.port=8082
-spring.security.user.name=admin
-spring.security.user.password=123
+
+# Limite para upload de arquivos
 spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=10MB
 
-# Ativa o Console H2 no navegador (localhost:8082/h2-console)
+# Console H2
 spring.h2.console.enabled=true
 ```
 
@@ -14062,21 +14064,24 @@ The following files were not included in the text content:
 ### <a id="📄-target-classes-application-properties"></a>📄 `target/classes/application.properties`
 
 **File Info:**
-- **Size**: 644 B
+- **Size**: 691 B
 - **Extension**: `.properties`
 - **Language**: `text`
 - **Location**: `target/classes/application.properties`
 - **Relative Path**: `target/classes`
 - **Created**: 2026-08-20 20:36:31 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-21 20:32:36 (America/Bahia / GMT-03:00)
-- **MD5**: `1a528f1289dfe9fdd71f029a1171b402`
-- **SHA256**: `a89e5c94eb93cfbd399b35c9c9343646e9840185d3f1c0281a85c2e6b0c4f732`
+- **Modified**: 2026-08-21 20:58:27 (America/Bahia / GMT-03:00)
+- **MD5**: `91557877f1cf324071545fe0616703a5`
+- **SHA256**: `c72876bbd8b8412662c6d54598a72122fdc63acd8bbd341b458198df7c48bbf9`
 - **Encoding**: UTF-8
 
 **File code content:**
 
 ```text
 spring.application.name=tms-web
+
+# Permite que o Spring entenda o SSL e o proxy reverso do Render (Resolve o ERR_TOO_MANY_REDIRECTS)
+server.forward-headers-strategy=framework
 
 # Configuração do Banco H2 (Em Memória)
 spring.datasource.url=jdbc:h2:mem:tmsdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
@@ -14085,13 +14090,12 @@ spring.datasource.username=sa
 spring.datasource.password=
 spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 spring.jpa.hibernate.ddl-auto=update
-server.port=8082
-spring.security.user.name=admin
-spring.security.user.password=123
+
+# Limite para upload de arquivos
 spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=10MB
 
-# Ativa o Console H2 no navegador (localhost:8082/h2-console)
+# Console H2
 spring.h2.console.enabled=true
 ```
 
