@@ -68,11 +68,19 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
             .set("color", "#f8fafc")
             .set("min-height", "100vh");
 
-   // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
+ // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
 UI.getCurrent().getPage().executeJs(
     "var style = document.createElement('style');" +
     "style.innerHTML = '" +
-    "  /* VARIÁVEIS DE TEMA DO VAADIN (DARK) */ " +
+    "  /* FORÇA VARIÁVEIS NATIVAS DE TEXTO DO VAADIN (DENTRO DO SHADOW DOM) */ " +
+    "  html, body, :root, vaadin-text-field, vaadin-date-picker, vaadin-select, vaadin-combo-box, vaadin-text-area { " +
+    "    --lumo-body-text-color: #ffffff !important; " +
+    "    --lumo-secondary-text-color: #64748b !important; " +
+    "    --lumo-contrast-90pct: #ffffff !important; " +
+    "    --vaadin-input-field-value-color: #ffffff !important; " +
+    "  } " +
+
+    "  /* VARIÁVEIS DE TEMA DO VAADIN (DARK GRID) */ " +
     "  vaadin-grid { " +
     "    width: 100% !important; " +
     "    background-color: #1e293b !important; " +
@@ -104,7 +112,7 @@ UI.getCurrent().getPage().executeJs(
     "  vaadin-select::part(input-field), " +
     "  vaadin-combo-box::part(input-field), " +
     "  vaadin-text-area::part(input-field) { " +
-    "    background-color: #1e293b !important; " + // Fundo escuro combinando com a interface
+    "    background-color: #1e293b !important; " +
     "    border: 1px solid #334155 !important; " +
     "    border-radius: 6px !important; " +
     "  } " +
@@ -113,7 +121,8 @@ UI.getCurrent().getPage().executeJs(
     "  vaadin-select input, " +
     "  vaadin-combo-box input, " +
     "  vaadin-text-area textarea { " +
-    "    color: #ffffff !important; " + // Texto digitado totalmente branco e legível
+    "    color: #ffffff !important; " +
+    "    -webkit-text-fill-color: #ffffff !important; " + // Força preenchimento no Chrome/Edge
     "    font-weight: 600 !important; " +
     "  } " +
     "  vaadin-text-field [part=\"label\"], " +
@@ -121,8 +130,8 @@ UI.getCurrent().getPage().executeJs(
     "  vaadin-select [part=\"label\"], " +
     "  vaadin-combo-box [part=\"label\"], " +
     "  vaadin-text-area [part=\"label\"] { " +
-    "    color: #94a3b8 !important; " + // Rótulo do campo em cinza claro
-    "    font-weight: 600 !important; " +
+    "    color: #1e293b !important; " + // Rótulo escuro para contrastar com o card branco externo
+    "    font-weight: 700 !important; " +
     "  } " +
 
     "  /* LINHAS DE SUBTOTAL */ " +

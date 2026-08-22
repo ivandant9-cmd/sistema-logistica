@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-22 18:40:02 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-22 18:51:33 (America/Bahia / GMT-03:00)
 Total Files Processed: 246
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -198,7 +198,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 ExcelService.java (13.33 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 views/
-│       │                   │   ├── 📄 EntregasView.java (18.94 KB)
+│       │                   │   ├── 📄 EntregasView.java (19.43 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
 │       │                   │   └── 📄 MainView.java (16.64 KB)
 │       │                   ├── 📄 Application.java (850 B)
@@ -227,7 +227,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 ExcelService.class (13.62 KB)
 │   │   │               │   └── 📄 PdfService.class (5.92 KB)
 │   │   │               ├── 📁 views/
-│   │   │               │   ├── 📄 EntregasView.class (23.92 KB)
+│   │   │               │   ├── 📄 EntregasView.class (24.37 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
 │   │   │               │   └── 📄 MainView.class (28.27 KB)
@@ -12566,15 +12566,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/EntregasView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 18.94 KB
+Size: 19.43 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/EntregasView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-19 13:39:55 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 18:40:01 (America/Bahia / GMT-03:00)
-MD5: 84276f829f384e0a694367a9e65a92ac
-SHA256: d4e65819101d9eef55299bf793455413b263c22d638ce2b1ec5e8d4aca4f146e
+Modified: 2026-08-22 18:51:32 (America/Bahia / GMT-03:00)
+MD5: e116422da8060b975216193c54ec0f48
+SHA256: 0135e9d159d9f49801d558f48b022bc1f6a62720293fc5bd155fc17da928c7b5
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12649,11 +12649,19 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
             .set("color", "#f8fafc")
             .set("min-height", "100vh");
 
-   // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
+ // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
 UI.getCurrent().getPage().executeJs(
     "var style = document.createElement('style');" +
     "style.innerHTML = '" +
-    "  /* VARIÁVEIS DE TEMA DO VAADIN (DARK) */ " +
+    "  /* FORÇA VARIÁVEIS NATIVAS DE TEXTO DO VAADIN (DENTRO DO SHADOW DOM) */ " +
+    "  html, body, :root, vaadin-text-field, vaadin-date-picker, vaadin-select, vaadin-combo-box, vaadin-text-area { " +
+    "    --lumo-body-text-color: #ffffff !important; " +
+    "    --lumo-secondary-text-color: #64748b !important; " +
+    "    --lumo-contrast-90pct: #ffffff !important; " +
+    "    --vaadin-input-field-value-color: #ffffff !important; " +
+    "  } " +
+
+    "  /* VARIÁVEIS DE TEMA DO VAADIN (DARK GRID) */ " +
     "  vaadin-grid { " +
     "    width: 100% !important; " +
     "    background-color: #1e293b !important; " +
@@ -12685,7 +12693,7 @@ UI.getCurrent().getPage().executeJs(
     "  vaadin-select::part(input-field), " +
     "  vaadin-combo-box::part(input-field), " +
     "  vaadin-text-area::part(input-field) { " +
-    "    background-color: #1e293b !important; " + // Fundo escuro combinando com a interface
+    "    background-color: #1e293b !important; " +
     "    border: 1px solid #334155 !important; " +
     "    border-radius: 6px !important; " +
     "  } " +
@@ -12694,7 +12702,8 @@ UI.getCurrent().getPage().executeJs(
     "  vaadin-select input, " +
     "  vaadin-combo-box input, " +
     "  vaadin-text-area textarea { " +
-    "    color: #ffffff !important; " + // Texto digitado totalmente branco e legível
+    "    color: #ffffff !important; " +
+    "    -webkit-text-fill-color: #ffffff !important; " + // Força preenchimento no Chrome/Edge
     "    font-weight: 600 !important; " +
     "  } " +
     "  vaadin-text-field [part=\"label\"], " +
@@ -12702,8 +12711,8 @@ UI.getCurrent().getPage().executeJs(
     "  vaadin-select [part=\"label\"], " +
     "  vaadin-combo-box [part=\"label\"], " +
     "  vaadin-text-area [part=\"label\"] { " +
-    "    color: #94a3b8 !important; " + // Rótulo do campo em cinza claro
-    "    font-weight: 600 !important; " +
+    "    color: #1e293b !important; " + // Rótulo escuro para contrastar com o card branco externo
+    "    font-weight: 700 !important; " +
     "  } " +
 
     "  /* LINHAS DE SUBTOTAL */ " +
