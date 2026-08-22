@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-22 13:55:42 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-22 14:50:39 (America/Bahia / GMT-03:00)
 Total Files Processed: 263
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -192,10 +192,10 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 Carregamento.java (2.53 KB)
 │       │                   │   └── 📄 Entrega.java (1.93 KB)
 │       │                   ├── 📁 repository/
-│       │                   │   ├── 📄 CarregamentoRepository.java (306 B)
+│       │                   │   ├── 📄 CarregamentoRepository.java (396 B)
 │       │                   │   └── 📄 EntregaRepository.java (599 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (11.23 KB)
+│       │                   │   ├── 📄 ExcelService.java (11.73 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 views/
 │       │                   │   ├── 📄 EntregasView.java (18.25 KB)
@@ -221,10 +221,10 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 Carregamento.class (3.51 KB)
 │   │   │               │   └── 📄 Entrega.class (2.71 KB)
 │   │   │               ├── 📁 repository/
-│   │   │               │   ├── 📄 CarregamentoRepository.class (457 B)
+│   │   │               │   ├── 📄 CarregamentoRepository.class (655 B)
 │   │   │               │   └── 📄 EntregaRepository.class (889 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (12.41 KB)
+│   │   │               │   ├── 📄 ExcelService.class (13.05 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 views/
 │   │   │               │   ├── 📄 EntregasView.class (23.28 KB)
@@ -339,7 +339,7 @@ PROJECT STRUCTURE
 │   ├── 📄 tms-web-1.0.0.jar (89.09 MB)
 │   ├── 📄 tms-web-1.0.0.jar.original (621.63 KB)
 │   └── 📄 vaadin-dev-server-settings.json (1.07 KB)
-├── 📄 Dockerfile (978 B)
+├── 📄 Dockerfile (861 B)
 ├── 📄 package-lock.json (594.16 KB)
 ├── 📄 package.json (9.66 KB)
 ├── 📄 pom.xml (3.33 KB)
@@ -12080,15 +12080,15 @@ FILE: src/main/java/br/com/ivanildo/tms/repository/CarregamentoRepository.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 306 B
+Size: 396 B
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/repository/CarregamentoRepository.java
 Relative Path: src/main/java/br/com/ivanildo/tms/repository
 Created: 2026-08-16 19:18:53 (America/Bahia / GMT-03:00)
-Modified: 2026-08-19 15:27:48 (America/Bahia / GMT-03:00)
-MD5: 3bfec0ea667ecd0ae2989c5614c9bb36
-SHA256: 1567c791bce4199814851a1d53c798bdc53337a575c2dfcc268f64dd72920d9c
+Modified: 2026-08-22 14:42:41 (America/Bahia / GMT-03:00)
+MD5: fea3c5fe679d4296e60336733dfb5a19
+SHA256: cdef78dacee35b733421219e92e207899ca61e4d35c1e6bb38160c5d8fdd9c25
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12099,9 +12099,12 @@ import br.com.ivanildo.tms.model.Carregamento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface CarregamentoRepository extends JpaRepository<Carregamento, Long> {
-}
+    Optional<Carregamento> findByViagem(String viagem);
+}   
 ================================================================================
 
 
@@ -12149,15 +12152,15 @@ FILE: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 11.23 KB
+Size: 11.73 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 Relative Path: src/main/java/br/com/ivanildo/tms/service
 Created: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-Modified: 2026-08-19 16:43:10 (America/Bahia / GMT-03:00)
-MD5: 26974fede0f50cd9238d1c4772023bce
-SHA256: bb1ef749fb66496e3f4a309723cdd54af5b60706c76f9b7b5daad30d86adfada
+Modified: 2026-08-22 14:50:38 (America/Bahia / GMT-03:00)
+MD5: b0a4ccfc8f2392f762cac2e470a65df5
+SHA256: 439b8c8c354f55b267a758b9c53238f08628356533fd7b556178a3a5190bcd5e
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12193,8 +12196,8 @@ public class ExcelService {
     @Transactional
     public void processarExcel(InputStream inputStream) {
         try (Workbook workbook = WorkbookFactory.create(inputStream)) {
-            FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
             DataFormatter formatter = new DataFormatter();
+            FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
 
             // ==========================================
             // 1. LEITURA DA PRIMEIRA ABA (CARREGAMENTOS)
@@ -12206,7 +12209,7 @@ public class ExcelService {
 
             for (int i = 0; i <= Math.min(15, sheetCarregamentos.getLastRowNum()); i++) {
                 Row row = sheetCarregamentos.getRow(i);
-                if (row != null && !isLinhaVazia(row, evaluator, formatter)) {
+                if (row != null && !isLinhaVazia(row, formatter, evaluator)) {
                     headerRow = row;
                     headerRowIndex = i;
                     break;
@@ -12217,38 +12220,41 @@ public class ExcelService {
                 throw new IllegalArgumentException("A planilha está vazia ou não contém dados válidos.");
             }
 
-            Map<String, Integer> colunasCarregamentos = mapearCabecalhos(headerRow, evaluator, formatter);
+            Map<String, Integer> colunasCarregamentos = mapearCabecalhos(headerRow, formatter, evaluator);
             Map<String, Carregamento> carregamentosPorViagem = new HashMap<>();
             List<Carregamento> novosCarregamentos = new ArrayList<>();
 
             for (int r = headerRowIndex + 1; r <= sheetCarregamentos.getLastRowNum(); r++) {
                 Row row = sheetCarregamentos.getRow(r);
-                if (row == null || isLinhaVazia(row, evaluator, formatter)) continue;
+                if (row == null || isLinhaVazia(row, formatter, evaluator)) continue;
 
                 Carregamento c = new Carregamento();
-                c.setDataProgramacao(getValorPorColuna(row, colunasCarregamentos, "DATAPROG", evaluator, formatter));
+                c.setDataProgramacao(getValorPorColuna(row, colunasCarregamentos, "DATAPROG", formatter, evaluator));
                 if (c.getDataProgramacao().isEmpty()) {
-                    c.setDataProgramacao(getValorPorColuna(row, colunasCarregamentos, "DATA", evaluator, formatter));
+                    c.setDataProgramacao(getValorPorColuna(row, colunasCarregamentos, "DATA", formatter, evaluator));
                 }
 
-                c.setTransportadora(getValorPorColuna(row, colunasCarregamentos, "TRANSPORTADORA", evaluator, formatter));
-                c.setPlaca(getValorPorColuna(row, colunasCarregamentos, "PLACA", evaluator, formatter));
-                c.setTipoVeiculo(getValorPorColuna(row, colunasCarregamentos, "TIPODEVEICULO", evaluator, formatter));
-                c.setViagem(getValorPorColuna(row, colunasCarregamentos, "VIAGEM", evaluator, formatter));
-                c.setOrdemCarga(getValorPorColuna(row, colunasCarregamentos, "ORDEMDECARGA", evaluator, formatter));
-                c.setPeso(getValorPorColuna(row, colunasCarregamentos, "PESO", evaluator, formatter));
-                c.setEncaixe(getValorPorColuna(row, colunasCarregamentos, "ENCAIXE", evaluator, formatter));
-                c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", evaluator, formatter));
-                c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", evaluator, formatter));
+                c.setTransportadora(getValorPorColuna(row, colunasCarregamentos, "TRANSPORTADORA", formatter, evaluator));
+                c.setPlaca(getValorPorColuna(row, colunasCarregamentos, "PLACA", formatter, evaluator));
+                c.setTipoVeiculo(getValorPorColuna(row, colunasCarregamentos, "TIPODEVEICULO", formatter, evaluator));
+                c.setViagem(getValorPorColuna(row, colunasCarregamentos, "VIAGEM", formatter, evaluator));
+                c.setOrdemCarga(getValorPorColuna(row, colunasCarregamentos, "ORDEMDECARGA", formatter, evaluator));
+                c.setPeso(getValorPorColuna(row, colunasCarregamentos, "PESO", formatter, evaluator));
+                c.setEncaixe(getValorPorColuna(row, colunasCarregamentos, "ENCAIXE", formatter, evaluator));
+                c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", formatter, evaluator));
+                c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter, evaluator));
 
-                novosCarregamentos.add(c);
+                // Validação de linha válida de carregamento
+                if (!c.getViagem().isEmpty() || !c.getPlaca().isEmpty() || !c.getTransportadora().isEmpty()) {
+                    novosCarregamentos.add(c);
+                }
             }
 
             if (!novosCarregamentos.isEmpty()) {
                 List<Carregamento> salvos = carregamentoRepository.saveAll(novosCarregamentos);
                 for (Carregamento c : salvos) {
                     if (c.getViagem() != null && !c.getViagem().trim().isEmpty()) {
-                        carregamentosPorViagem.put(c.getViagem().trim(), c);
+                        carregamentosPorViagem.put(c.getViagem().trim().toUpperCase(), c);
                     }
                 }
             }
@@ -12257,61 +12263,53 @@ public class ExcelService {
             // 2. LEITURA DA ABA "ENTREGAS"
             // ==========================================
             Sheet sheetEntregas = workbook.getSheet("ENTREGAS");
-            if (sheetEntregas == null) {
-                // Tenta achar a segunda aba se não houver o nome exato "ENTREGAS"
-                if (workbook.getNumberOfSheets() > 1) {
-                    sheetEntregas = workbook.getSheetAt(1);
-                }
+            if (sheetEntregas == null && workbook.getNumberOfSheets() > 1) {
+                sheetEntregas = workbook.getSheetAt(1);
             }
 
             if (sheetEntregas != null) {
                 List<Entrega> novasEntregas = new ArrayList<>();
 
-                // Localiza o cabeçalho da aba de entregas
                 Row headerEntregasRow = null;
                 int startRowEntregas = 1;
 
                 for (int i = 0; i <= Math.min(10, sheetEntregas.getLastRowNum()); i++) {
                     Row r = sheetEntregas.getRow(i);
-                    if (r != null && !isLinhaVazia(r, evaluator, formatter)) {
+                    if (r != null && !isLinhaVazia(r, formatter, evaluator)) {
                         headerEntregasRow = r;
                         startRowEntregas = i + 1;
                         break;
                     }
                 }
 
-                Map<String, Integer> colunasEntregas = headerEntregasRow != null ? mapearCabecalhos(headerEntregasRow, evaluator, formatter) : new HashMap<>();
+                Map<String, Integer> colunasEntregas = headerEntregasRow != null ? mapearCabecalhos(headerEntregasRow, formatter, evaluator) : new HashMap<>();
 
                 for (int i = startRowEntregas; i <= sheetEntregas.getLastRowNum(); i++) {
                     Row row = sheetEntregas.getRow(i);
-                    if (row == null || isLinhaVazia(row, evaluator, formatter)) continue;
+                    if (row == null || isLinhaVazia(row, formatter, evaluator)) continue;
 
-                    // Tenta por nome da coluna, senão usa o índice fixo como fallback (Tabela formatada)
-                    String viagemRef = getValorFlexivel(row, colunasEntregas, "VIAGEM", 1, evaluator, formatter);          // B
-                    String codigoCliente = getValorFlexivel(row, colunasEntregas, "CODIGOCLIENTE", 2, evaluator, formatter); // C
-                    if (codigoCliente.isEmpty()) codigoCliente = getValorFlexivel(row, colunasEntregas, "CODCLIENTE", 2, evaluator, formatter);
+                    String viagemRef = getValorFlexivel(row, colunasEntregas, "VIAGEM", 1, formatter, evaluator);
+                    String codigoCliente = getValorFlexivel(row, colunasEntregas, "CODIGOCLIENTE", 2, formatter, evaluator);
+                    if (codigoCliente.isEmpty()) codigoCliente = getValorFlexivel(row, colunasEntregas, "CODCLIENTE", 2, formatter, evaluator);
                     
-                    String delivery = getValorFlexivel(row, colunasEntregas, "DELIVERY", 5, evaluator, formatter);       // F
-                    String nf = getValorFlexivel(row, colunasEntregas, "NF", 6, evaluator, formatter);                   // G
-                    if (nf.isEmpty()) nf = getValorFlexivel(row, colunasEntregas, "NOTAFISCAL", 6, evaluator, formatter);
+                    String delivery = getValorFlexivel(row, colunasEntregas, "DELIVERY", 5, formatter, evaluator);
+                    String nf = getValorFlexivel(row, colunasEntregas, "NOTAFISCAL", 6, formatter, evaluator);
+                    if (nf.isEmpty()) nf = getValorFlexivel(row, colunasEntregas, "NF", 6, formatter, evaluator);
 
-                    String cliente = getValorFlexivel(row, colunasEntregas, "CLIENTE", 7, evaluator, formatter);        // H
-                    String bairro = getValorFlexivel(row, colunasEntregas, "BAIRRO", 9, evaluator, formatter);          // J
-                    String cidade = getValorFlexivel(row, colunasEntregas, "CIDADE", 10, evaluator, formatter);         // K
-                    String peso = getValorFlexivel(row, colunasEntregas, "PESO", 14, evaluator, formatter);             // O
+                    String cliente = getValorFlexivel(row, colunasEntregas, "CLIENTE", 7, formatter, evaluator);
+                    String bairro = getValorFlexivel(row, colunasEntregas, "BAIRRO", 9, formatter, evaluator);
+                    String cidade = getValorFlexivel(row, colunasEntregas, "CIDADE", 10, formatter, evaluator);
+                    String peso = getValorFlexivel(row, colunasEntregas, "PESO", 14, formatter, evaluator);
 
-                    // Se não tiver ao menos Delivery ou NF, descarta linha
                     if (delivery.isEmpty() && nf.isEmpty()) continue;
 
-                    Carregamento carregamentoCorrespondente = carregamentosPorViagem.get(viagemRef);
+                    Carregamento carregamentoCorrespondente = carregamentosPorViagem.get(viagemRef.toUpperCase());
 
-                    // Fallback: se o carregamento já existia no banco em importação anterior
                     if (carregamentoCorrespondente == null && !viagemRef.isEmpty()) {
-                        carregamentoCorrespondente = carregamentoRepository.findAll()
-                                .stream()
-                                .filter(c -> viagemRef.equalsIgnoreCase(c.getViagem()))
-                                .findFirst()
-                                .orElse(null);
+                        carregamentoCorrespondente = carregamentoRepository.findByViagem(viagemRef).orElse(null);
+                        if (carregamentoCorrespondente != null) {
+                            carregamentosPorViagem.put(viagemRef.toUpperCase(), carregamentoCorrespondente);
+                        }
                     }
 
                     if (carregamentoCorrespondente != null) {
@@ -12339,10 +12337,10 @@ public class ExcelService {
         }
     }
 
-    private Map<String, Integer> mapearCabecalhos(Row row, FormulaEvaluator evaluator, DataFormatter formatter) {
+    private Map<String, Integer> mapearCabecalhos(Row row, DataFormatter formatter, FormulaEvaluator evaluator) {
         Map<String, Integer> map = new HashMap<>();
         for (Cell cell : row) {
-            String val = normalizarTexto(formatter.formatCellValue(cell, evaluator));
+            String val = normalizarTexto(getValorCelula(cell, formatter, evaluator));
             if (!val.isEmpty()) {
                 map.put(val, cell.getColumnIndex());
             }
@@ -12350,24 +12348,43 @@ public class ExcelService {
         return map;
     }
 
-    private String getValorFlexivel(Row row, Map<String, Integer> colunas, String nomeColuna, int indiceFallback, FormulaEvaluator evaluator, DataFormatter formatter) {
+    private String getValorFlexivel(Row row, Map<String, Integer> colunas, String nomeColuna, int indiceFallback, DataFormatter formatter, FormulaEvaluator evaluator) {
         Integer idx = colunas.get(normalizarTexto(nomeColuna));
         if (idx != null) {
-            String valor = getValorCelula(row.getCell(idx), evaluator, formatter);
+            String valor = getValorCelula(row.getCell(idx), formatter, evaluator);
             if (!valor.isEmpty()) return valor;
         }
-        return getValorCelula(row.getCell(indiceFallback), evaluator, formatter);
+        return getValorCelula(row.getCell(indiceFallback), formatter, evaluator);
     }
 
-    private String getValorPorColuna(Row row, Map<String, Integer> colunas, String nomeColuna, FormulaEvaluator evaluator, DataFormatter formatter) {
+    private String getValorPorColuna(Row row, Map<String, Integer> colunas, String nomeColuna, DataFormatter formatter, FormulaEvaluator evaluator) {
         Integer index = colunas.get(normalizarTexto(nomeColuna));
         if (index == null) return "";
-        return getValorCelula(row.getCell(index), evaluator, formatter);
+        return getValorCelula(row.getCell(index), formatter, evaluator);
     }
 
-    private String getValorCelula(Cell cell, FormulaEvaluator evaluator, DataFormatter formatter) {
+    private String getValorCelula(Cell cell, DataFormatter formatter, FormulaEvaluator evaluator) {
         if (cell == null) return "";
-        return formatter.formatCellValue(cell, evaluator).trim();
+        try {
+            if (cell.getCellType() == CellType.FORMULA) {
+                CellValue cellValue = evaluator.evaluate(cell);
+                if (cellValue == null) return "";
+                switch (cellValue.getCellType()) {
+                    case STRING:
+                        return cellValue.getStringValue().trim();
+                    case NUMERIC:
+                        return formatter.formatCellValue(cell, evaluator).trim();
+                    case BOOLEAN:
+                        return String.valueOf(cellValue.getBooleanValue());
+                    default:
+                        return "";
+                }
+            }
+            return formatter.formatCellValue(cell).trim();
+        } catch (Exception e) {
+            // Se a avaliação da fórmula falhar, tenta pegar como valor formatado direto
+            return formatter.formatCellValue(cell).trim();
+        }
     }
 
     private String normalizarTexto(String texto) {
@@ -12377,11 +12394,11 @@ public class ExcelService {
         return semAcento.replaceAll("[^a-zA-Z0-9]", "").toUpperCase().trim();
     }
 
-    private boolean isLinhaVazia(Row row, FormulaEvaluator evaluator, DataFormatter formatter) {
+    private boolean isLinhaVazia(Row row, DataFormatter formatter, FormulaEvaluator evaluator) {
         if (row == null) return true;
         for (int c = row.getFirstCellNum(); c < row.getLastCellNum(); c++) {
             Cell cell = row.getCell(c);
-            if (cell != null && !getValorCelula(cell, evaluator, formatter).isEmpty()) {
+            if (cell != null && !getValorCelula(cell, formatter, evaluator).isEmpty()) {
                 return false;
             }
         }
@@ -12972,7 +12989,7 @@ Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/LoginView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-18 16:23:34 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:23:49 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 14:42:38 (America/Bahia / GMT-03:00)
 MD5: bd1f7a7a09347c4725bfe6c7c566ff95
 SHA256: d137f21ab41279b73bc4ddd95804f0ba1a14dd1810ab5f972711dda701e268dc
 Encoding: UTF-8
