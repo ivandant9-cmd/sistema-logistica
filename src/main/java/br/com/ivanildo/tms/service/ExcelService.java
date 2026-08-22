@@ -4,6 +4,7 @@ import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.model.Entrega;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.repository.EntregaRepository;
+import com.github.pjfanning.xlsx.StreamingReader;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -28,7 +29,12 @@ public class ExcelService {
     }
 
     public void processarExcel(InputStream inputStream) {
-        try (Workbook workbook = WorkbookFactory.create(inputStream)) {
+        // Configura o StreamingReader para usar buffer minimo e ler linha por linha sem carregar o DOM na RAM
+        try (Workbook workbook = StreamingReader.builder()
+                .rowCacheSize(100)
+                .bufferSize(4096)
+                .open(inputStream)) {
+
             DataFormatter formatter = new DataFormatter();
 
             // ==========================================
@@ -38,14 +44,16 @@ public class ExcelService {
 
             Row headerRow = null;
             int headerRowIndex = -1;
+            int countRow = 0;
 
-            for (int i = 0; i <= Math.min(15, sheetCarregamentos.getLastRowNum()); i++) {
-                Row row = sheetCarregamentos.getRow(i);
+            for (Row row : sheetCarregamentos) {
+                if (countRow > 15) break;
                 if (row != null && !isLinhaVazia(row, formatter)) {
                     headerRow = row;
-                    headerRowIndex = i;
+                    headerRowIndex = countRow;
                     break;
                 }
+                countRow++;
             }
 
             if (headerRow == null) {
@@ -56,8 +64,14 @@ public class ExcelService {
             Map<String, Carregamento> carregamentosPorViagem = new HashMap<>();
             List<Carregamento> novosCarregamentos = new ArrayList<>();
 
-            for (int r = headerRowIndex + 1; r <= sheetCarregamentos.getLastRowNum(); r++) {
-                Row row = sheetCarregamentos.getRow(r);
+            int currentRow = 0;
+            for (Row row : sheetCarregamentos) {
+                if (currentRow <= headerRowIndex) {
+                    currentRow++;
+                    continue;
+                }
+                currentRow++;
+
                 if (row == null || isLinhaVazia(row, formatter)) continue;
 
                 Carregamento c = new Carregamento();
@@ -103,21 +117,29 @@ public class ExcelService {
                 List<Entrega> novasEntregas = new ArrayList<>();
 
                 Row headerEntregasRow = null;
-                int startRowEntregas = 1;
+                int startRowEntregasIndex = -1;
+                int rowIdx = 0;
 
-                for (int i = 0; i <= Math.min(10, sheetEntregas.getLastRowNum()); i++) {
-                    Row r = sheetEntregas.getRow(i);
+                for (Row r : sheetEntregas) {
+                    if (rowIdx > 10) break;
                     if (r != null && !isLinhaVazia(r, formatter)) {
                         headerEntregasRow = r;
-                        startRowEntregas = i + 1;
+                        startRowEntregasIndex = rowIdx;
                         break;
                     }
+                    rowIdx++;
                 }
 
                 Map<String, Integer> colunasEntregas = headerEntregasRow != null ? mapearCabecalhos(headerEntregasRow, formatter) : new HashMap<>();
 
-                for (int i = startRowEntregas; i <= sheetEntregas.getLastRowNum(); i++) {
-                    Row row = sheetEntregas.getRow(i);
+                int indexEntrega = 0;
+                for (Row row : sheetEntregas) {
+                    if (indexEntrega <= startRowEntregasIndex) {
+                        indexEntrega++;
+                        continue;
+                    }
+                    indexEntrega++;
+
                     if (row == null || isLinhaVazia(row, formatter)) continue;
 
                     String viagemRef = getValorFlexivel(row, colunasEntregas, "VIAGEM", 1, formatter);
@@ -174,7 +196,7 @@ public class ExcelService {
             System.gc();
 
         } catch (Exception e) {
-            throw new RuntimeException("Erro ao processar planilha Excel: " + e.getMessage(), e);
+            throw new RuntimeException("Erro ao processar planilha Excel via streaming: " + e.getMessage(), e);
         }
     }
 
@@ -222,21 +244,9 @@ public class ExcelService {
     private String getValorCelula(Cell cell, DataFormatter formatter) {
         if (cell == null) return "";
         try {
-            if (cell.getCellType() == CellType.FORMULA) {
-                switch (cell.getCachedFormulaResultType()) {
-                    case STRING:
-                        return cell.getStringCellValue().trim();
-                    case NUMERIC:
-                        return formatter.formatCellValue(cell).trim();
-                    case BOOLEAN:
-                        return String.valueOf(cell.getBooleanCellValue());
-                    default:
-                        return cell.getCellFormula();
-                }
-            }
             return formatter.formatCellValue(cell).trim();
         } catch (Exception e) {
-            return formatter.formatCellValue(cell).trim();
+            return "";
         }
     }
 
@@ -249,8 +259,7 @@ public class ExcelService {
 
     private boolean isLinhaVazia(Row row, DataFormatter formatter) {
         if (row == null) return true;
-        for (int c = row.getFirstCellNum(); c < row.getLastCellNum(); c++) {
-            Cell cell = row.getCell(c);
+        for (Cell cell : row) {
             if (cell != null && !getValorCelula(cell, formatter).isEmpty()) {
                 return false;
             }

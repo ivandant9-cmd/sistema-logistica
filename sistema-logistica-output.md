@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-22 15:50:09 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-22 16:13:20 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 263
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -193,7 +193,7 @@
 │       │                   │   ├── 📄 CarregamentoRepository.java (396 B)
 │       │                   │   └── 📄 EntregaRepository.java (599 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (11.82 KB)
+│       │                   │   ├── 📄 ExcelService.java (11.71 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 views/
 │       │                   │   ├── 📄 EntregasView.java (18.25 KB)
@@ -222,7 +222,7 @@
 │   │   │               │   ├── 📄 CarregamentoRepository.class (655 B)
 │   │   │               │   └── 📄 EntregaRepository.class (889 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (12.79 KB)
+│   │   │               │   ├── 📄 ExcelService.class (12.51 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 views/
 │   │   │               │   ├── 📄 EntregasView.class (23.28 KB)
@@ -340,7 +340,7 @@
 ├── 📄 Dockerfile (861 B)
 ├── 📄 package-lock.json (594.16 KB)
 ├── 📄 package.json (9.66 KB)
-├── 📄 pom.xml (3.33 KB)
+├── 📄 pom.xml (4.02 KB)
 ├── 📄 system.properties (23 B)
 ├── 📄 tsconfig.json (1.22 KB)
 ├── 📄 types.d.ts (494 B)
@@ -603,7 +603,7 @@
 | Total Directories | 63 |
 | Text Files | 240 |
 | Binary Files | 23 |
-| Total Size | 94.48 MB |
+| Total Size | 94.49 MB |
 
 ### 📄 File Types Distribution
 
@@ -12255,15 +12255,15 @@ public interface EntregaRepository extends JpaRepository<Entrega, Long> {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-service-excelservice-java"></a>📄 `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 
 **File Info:**
-- **Size**: 11.82 KB
+- **Size**: 11.71 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/service`
 - **Created**: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-22 15:50:08 (America/Bahia / GMT-03:00)
-- **MD5**: `0e622937f27e8b28d503a4f35b04e656`
-- **SHA256**: `bd276673c24b848fbc586f2097b2f1148c07a795f148d19a6541d2b905b7ba95`
+- **Modified**: 2026-08-22 16:01:26 (America/Bahia / GMT-03:00)
+- **MD5**: `35721b1079b9039b5d021b79233e5e46`
+- **SHA256**: `29dc4899a65b6605a736d730abfc46a4f16985403064eb331e07d6920eb04df6`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -12275,6 +12275,7 @@ import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.model.Entrega;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.repository.EntregaRepository;
+import com.github.pjfanning.xlsx.StreamingReader;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -12299,7 +12300,12 @@ public class ExcelService {
     }
 
     public void processarExcel(InputStream inputStream) {
-        try (Workbook workbook = WorkbookFactory.create(inputStream)) {
+        // Configura o StreamingReader para usar buffer minimo e ler linha por linha sem carregar o DOM na RAM
+        try (Workbook workbook = StreamingReader.builder()
+                .rowCacheSize(100)
+                .bufferSize(4096)
+                .open(inputStream)) {
+
             DataFormatter formatter = new DataFormatter();
 
             // ==========================================
@@ -12309,14 +12315,16 @@ public class ExcelService {
 
             Row headerRow = null;
             int headerRowIndex = -1;
+            int countRow = 0;
 
-            for (int i = 0; i <= Math.min(15, sheetCarregamentos.getLastRowNum()); i++) {
-                Row row = sheetCarregamentos.getRow(i);
+            for (Row row : sheetCarregamentos) {
+                if (countRow > 15) break;
                 if (row != null && !isLinhaVazia(row, formatter)) {
                     headerRow = row;
-                    headerRowIndex = i;
+                    headerRowIndex = countRow;
                     break;
                 }
+                countRow++;
             }
 
             if (headerRow == null) {
@@ -12327,8 +12335,14 @@ public class ExcelService {
             Map<String, Carregamento> carregamentosPorViagem = new HashMap<>();
             List<Carregamento> novosCarregamentos = new ArrayList<>();
 
-            for (int r = headerRowIndex + 1; r <= sheetCarregamentos.getLastRowNum(); r++) {
-                Row row = sheetCarregamentos.getRow(r);
+            int currentRow = 0;
+            for (Row row : sheetCarregamentos) {
+                if (currentRow <= headerRowIndex) {
+                    currentRow++;
+                    continue;
+                }
+                currentRow++;
+
                 if (row == null || isLinhaVazia(row, formatter)) continue;
 
                 Carregamento c = new Carregamento();
@@ -12374,21 +12388,29 @@ public class ExcelService {
                 List<Entrega> novasEntregas = new ArrayList<>();
 
                 Row headerEntregasRow = null;
-                int startRowEntregas = 1;
+                int startRowEntregasIndex = -1;
+                int rowIdx = 0;
 
-                for (int i = 0; i <= Math.min(10, sheetEntregas.getLastRowNum()); i++) {
-                    Row r = sheetEntregas.getRow(i);
+                for (Row r : sheetEntregas) {
+                    if (rowIdx > 10) break;
                     if (r != null && !isLinhaVazia(r, formatter)) {
                         headerEntregasRow = r;
-                        startRowEntregas = i + 1;
+                        startRowEntregasIndex = rowIdx;
                         break;
                     }
+                    rowIdx++;
                 }
 
                 Map<String, Integer> colunasEntregas = headerEntregasRow != null ? mapearCabecalhos(headerEntregasRow, formatter) : new HashMap<>();
 
-                for (int i = startRowEntregas; i <= sheetEntregas.getLastRowNum(); i++) {
-                    Row row = sheetEntregas.getRow(i);
+                int indexEntrega = 0;
+                for (Row row : sheetEntregas) {
+                    if (indexEntrega <= startRowEntregasIndex) {
+                        indexEntrega++;
+                        continue;
+                    }
+                    indexEntrega++;
+
                     if (row == null || isLinhaVazia(row, formatter)) continue;
 
                     String viagemRef = getValorFlexivel(row, colunasEntregas, "VIAGEM", 1, formatter);
@@ -12445,7 +12467,7 @@ public class ExcelService {
             System.gc();
 
         } catch (Exception e) {
-            throw new RuntimeException("Erro ao processar planilha Excel: " + e.getMessage(), e);
+            throw new RuntimeException("Erro ao processar planilha Excel via streaming: " + e.getMessage(), e);
         }
     }
 
@@ -12493,21 +12515,9 @@ public class ExcelService {
     private String getValorCelula(Cell cell, DataFormatter formatter) {
         if (cell == null) return "";
         try {
-            if (cell.getCellType() == CellType.FORMULA) {
-                switch (cell.getCachedFormulaResultType()) {
-                    case STRING:
-                        return cell.getStringCellValue().trim();
-                    case NUMERIC:
-                        return formatter.formatCellValue(cell).trim();
-                    case BOOLEAN:
-                        return String.valueOf(cell.getBooleanCellValue());
-                    default:
-                        return cell.getCellFormula();
-                }
-            }
             return formatter.formatCellValue(cell).trim();
         } catch (Exception e) {
-            return formatter.formatCellValue(cell).trim();
+            return "";
         }
     }
 
@@ -12520,8 +12530,7 @@ public class ExcelService {
 
     private boolean isLinhaVazia(Row row, DataFormatter formatter) {
         if (row == null) return true;
-        for (int c = row.getFirstCellNum(); c < row.getLastCellNum(); c++) {
-            Cell cell = row.getCell(c);
+        for (Cell cell : row) {
             if (cell != null && !getValorCelula(cell, formatter).isEmpty()) {
                 return false;
             }
@@ -13989,7 +13998,7 @@ The following files were not included in the text content:
 - **Language**: `html`
 - **Location**: `target/classes/templates/entregas.html`
 - **Relative Path**: `target/classes/templates`
-- **Created**: 2026-08-22 12:26:45 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-22 16:00:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-19 15:06:12 (America/Bahia / GMT-03:00)
 - **MD5**: `6665e1d9621fc3667a9be7f173454777`
 - **SHA256**: `77437b52d27dd1614bc900dd80be3294e1525376f270d0beb8a236f53cffc078`
@@ -14177,7 +14186,7 @@ The following files were not included in the text content:
 - **Location**: `target/classes/application.properties`
 - **Relative Path**: `target/classes`
 - **Created**: 2026-08-22 11:43:10 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-22 13:50:06 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-22 16:00:54 (America/Bahia / GMT-03:00)
 - **MD5**: `c19d3fc859c8c9fa24587583ffbe178d`
 - **SHA256**: `32f1e1678af9f835dad810d3b7f614004f98f912b4b0bb2525139171f4c62369`
 - **Encoding**: UTF-8
@@ -50365,15 +50374,15 @@ The following files were not included in the text content:
 ### <a id="📄-pom-xml"></a>📄 `pom.xml`
 
 **File Info:**
-- **Size**: 3.33 KB
+- **Size**: 4.02 KB
 - **Extension**: `.xml`
 - **Language**: `xml`
 - **Location**: `pom.xml`
 - **Relative Path**: `root`
 - **Created**: 2026-08-16 18:53:38 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-21 21:14:21 (America/Bahia / GMT-03:00)
-- **MD5**: `a671e8d0a932b25d8839f2f6c258cd1e`
-- **SHA256**: `216983077c532638a87e3f60206199a24867134cb60213c3df37ecd1c4f08389`
+- **Modified**: 2026-08-22 16:13:18 (America/Bahia / GMT-03:00)
+- **MD5**: `5409550708af69c835cbfff9f1bf2175`
+- **SHA256**: `195f46bf7fedc1d24fb53ca3e0ce4d055b3164de5fc899effa781c8e1d428e03`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -50416,6 +50425,25 @@ The following files were not included in the text content:
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Commons IO atualizado para suprir a classe org.apache.commons.io.function.IOIterator -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.16.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.pjfanning</groupId>
+            <artifactId>excel-streaming-reader</artifactId>
+            <version>4.0.5</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
