@@ -68,7 +68,7 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
             .set("color", "#f8fafc")
             .set("min-height", "100vh");
 
-        // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
+   // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
 UI.getCurrent().getPage().executeJs(
     "var style = document.createElement('style');" +
     "style.innerHTML = '" +

@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-22 18:31:59 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-22 18:40:02 (America/Bahia / GMT-03:00)
 Total Files Processed: 246
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -12572,9 +12572,9 @@ Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/EntregasView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-19 13:39:55 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 18:31:58 (America/Bahia / GMT-03:00)
-MD5: 44813318483639039da1e29ae179195d
-SHA256: 3fda19e3df4b3158cccc22b09ad29c176134b31dffa17c17d2518363bb828264
+Modified: 2026-08-22 18:40:01 (America/Bahia / GMT-03:00)
+MD5: 84276f829f384e0a694367a9e65a92ac
+SHA256: d4e65819101d9eef55299bf793455413b263c22d638ce2b1ec5e8d4aca4f146e
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12649,7 +12649,7 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
             .set("color", "#f8fafc")
             .set("min-height", "100vh");
 
-        // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
+   // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
 UI.getCurrent().getPage().executeJs(
     "var style = document.createElement('style');" +
     "style.innerHTML = '" +
