@@ -3,7 +3,7 @@ package br.com.ivanildo.tms.views;
 import br.com.ivanildo.tms.model.Entrega;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.repository.EntregaRepository;
-import br.com.ivanildo.tms.service.PdfService; // 1. IMPORT ADICIONADO
+import br.com.ivanildo.tms.service.PdfService;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -18,7 +18,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.StreamResource; // IMPORT PARA O STREAM RESOURCE
+import com.vaadin.flow.server.StreamResource;
 import jakarta.annotation.security.PermitAll;
 
 import java.io.ByteArrayInputStream;
@@ -26,6 +26,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Route("entregas")
 @PermitAll
@@ -33,7 +34,7 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
 
     private final CarregamentoRepository carregamentoRepository;
     private final EntregaRepository entregaRepository;
-    private final PdfService pdfService; // 2. ATRIBUTO ADICIONADO
+    private final PdfService pdfService;
 
     private final H3 titulo = new H3("📦 Gestão de Entregas");
     private final Span txtMotorista = new Span("-");
@@ -48,8 +49,16 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
     private final Grid<ItemGridEntrega> grid = new Grid<>(ItemGridEntrega.class, false);
     private final HorizontalLayout containerBotoesAcao = new HorizontalLayout();
 
+    // Cache local de entregas para realizar as filtragens rapidamente em memória
+    private List<Entrega> todasEntregasDoCarregamento = new ArrayList<>();
+    private String filtroAtivo = "TODOS";
+
+    // Referências dos botões para aplicar o destaque visual do filtro selecionado
+    private Button btnFiltroTodos;
+    private Button btnFiltroColog;
+    private Button btnFiltroReentregas;
+
     @SuppressWarnings("null")
-    // 3. INJEÇÃO NO CONSTRUTOR
     public EntregasView(CarregamentoRepository carregamentoRepository, 
                         EntregaRepository entregaRepository, 
                         PdfService pdfService) {
@@ -62,118 +71,68 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
         setPadding(true);
         setSpacing(true);
 
-        // Fundo escuro da tela principal
         getStyle()
             .set("background-color", "#0f172a")
             .set("color", "#f8fafc")
             .set("min-height", "100vh");
 
- // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
-UI.getCurrent().getPage().executeJs(
-    "var style = document.createElement('style');" +
-    "style.innerHTML = '" +
-    "  /* FORÇA VARIÁVEIS NATIVAS DE TEXTO DO VAADIN (DENTRO DO SHADOW DOM) */ " +
-    "  html, body, :root, vaadin-text-field, vaadin-date-picker, vaadin-select, vaadin-combo-box, vaadin-text-area { " +
-    "    --lumo-body-text-color: #ffffff !important; " +
-    "    --lumo-secondary-text-color: #64748b !important; " +
-    "    --lumo-contrast-90pct: #ffffff !important; " +
-    "    --vaadin-input-field-value-color: #ffffff !important; " +
-    "  } " +
+        UI.getCurrent().getPage().executeJs(
+            "var style = document.createElement('style');" +
+            "style.innerHTML = '" +
+            "  :root, body, vaadin-dialog-overlay, vaadin-form-layout, vaadin-text-field, vaadin-date-picker, vaadin-select, vaadin-combo-box, vaadin-text-area { " +
+            "    --lumo-body-text-color: #ffffff !important; " +
+            "    --lumo-secondary-text-color: #94a3b8 !important; " +
+            "    --lumo-primary-text-color: #38bdf8 !important; " +
+            "    --vaadin-input-field-value-color: #ffffff !important; " +
+            "  } " +
+            "  vaadin-text-field::part(input-field), " +
+            "  vaadin-date-picker::part(input-field), " +
+            "  vaadin-select::part(input-field), " +
+            "  vaadin-combo-box::part(input-field), " +
+            "  vaadin-text-area::part(input-field), " +
+            "  vaadin-input-container { " +
+            "    background-color: #1e293b !important; " +
+            "    color: #ffffff !important; " +
+            "    border: 1px solid #334155 !important; " +
+            "    border-radius: 6px !important; " +
+            "  } " +
+            "  vaadin-text-field input, " +
+            "  vaadin-date-picker input, " +
+            "  vaadin-select input, " +
+            "  vaadin-combo-box input, " +
+            "  vaadin-text-area textarea, " +
+            "  [slot=\"input\"] { " +
+            "    color: #ffffff !important; " +
+            "    -webkit-text-fill-color: #ffffff !important; " +
+            "  } " +
+            "  label[slot=\"label\"], " +
+            "  vaadin-text-field::part(label) { " +
+            "    color: #0f172a !important; " +
+            "    font-weight: 700 !important; " +
+            "  } " +
+            "  vaadin-grid { width: 100% !important; background-color: #1e293b !important; border: 1px solid #334155 !important; border-radius: 8px !important; } " +
+            "  vaadin-grid::part(cell) { background-color: #1e293b !important; color: #f8fafc !important; border-bottom: 1px solid #334155 !important; } " +
+            "  vaadin-grid::part(header-cell) { background-color: #0f172a !important; color: #94a3b8 !important; font-weight: 700 !important; } " +
+            "  vaadin-grid-cell-content { color: #f8fafc !important; font-size: 12px !important; } " +
+            "  .subtotal-row::part(cell) { background-color: #334155 !important; } " +
+            "  .subtotal-row vaadin-grid-cell-content { color: #38bdf8 !important; font-weight: bold !important; } " +
+            "  @media print { " +
+            "    @page { size: landscape; margin: 5mm; } " +
+            "    .no-print { display: none !important; } " +
+            "    body { background-color: #ffffff !important; color: #000000 !important; } " +
+            "    vaadin-grid, vaadin-grid *, vaadin-grid::part(row), vaadin-grid::part(cell) { transform: none !important; position: static !important; background-color: #ffffff !important; color: #000000 !important; } " +
+            "    vaadin-grid-cell-content { padding: 3px 4px !important; font-size: 9px !important; color: #000000 !important; } " +
+            "    .subtotal-row::part(cell) { background-color: #e5e7eb !important; } " +
+            "    .subtotal-row vaadin-grid-cell-content { color: #000000 !important; font-weight: bold !important; } " +
+            "  } " +
+            "';" +
+            "document.head.appendChild(style);"
+        );
 
-    "  /* VARIÁVEIS DE TEMA DO VAADIN (DARK GRID) */ " +
-    "  vaadin-grid { " +
-    "    width: 100% !important; " +
-    "    background-color: #1e293b !important; " +
-    "    border: 1px solid #334155 !important; " +
-    "    border-radius: 8px !important; " +
-    "  } " +
-    "  vaadin-grid::part(cell) { " +
-    "    background-color: #1e293b !important; " +
-    "    color: #f8fafc !important; " +
-    "    border-bottom: 1px solid #334155 !important; " +
-    "  } " +
-    "  vaadin-grid::part(header-cell) { " +
-    "    background-color: #0f172a !important; " +
-    "    color: #94a3b8 !important; " +
-    "    font-weight: 700 !important; " +
-    "    border-bottom: 2px solid #334155 !important; " +
-    "  } " +
-    "  vaadin-grid-cell-content { " +
-    "    color: #f8fafc !important; " +
-    "    font-size: 12px !important; " +
-    "    white-space: nowrap !important; " +
-    "    text-overflow: ellipsis !important; " +
-    "    overflow: hidden !important; " +
-    "  } " +
-
-    "  /* CORREÇÃO DOS INPUTS E CAMPOS DO FORMULÁRIO DE EDIÇÃO */ " +
-    "  vaadin-text-field::part(input-field), " +
-    "  vaadin-date-picker::part(input-field), " +
-    "  vaadin-select::part(input-field), " +
-    "  vaadin-combo-box::part(input-field), " +
-    "  vaadin-text-area::part(input-field) { " +
-    "    background-color: #1e293b !important; " +
-    "    border: 1px solid #334155 !important; " +
-    "    border-radius: 6px !important; " +
-    "  } " +
-    "  vaadin-text-field input, " +
-    "  vaadin-date-picker input, " +
-    "  vaadin-select input, " +
-    "  vaadin-combo-box input, " +
-    "  vaadin-text-area textarea { " +
-    "    color: #ffffff !important; " +
-    "    -webkit-text-fill-color: #ffffff !important; " + // Força preenchimento no Chrome/Edge
-    "    font-weight: 600 !important; " +
-    "  } " +
-    "  vaadin-text-field [part=\"label\"], " +
-    "  vaadin-date-picker [part=\"label\"], " +
-    "  vaadin-select [part=\"label\"], " +
-    "  vaadin-combo-box [part=\"label\"], " +
-    "  vaadin-text-area [part=\"label\"] { " +
-    "    color: #1e293b !important; " + // Rótulo escuro para contrastar com o card branco externo
-    "    font-weight: 700 !important; " +
-    "  } " +
-
-    "  /* LINHAS DE SUBTOTAL */ " +
-    "  .subtotal-row::part(cell) { " +
-    "    background-color: #334155 !important; " +
-    "  } " +
-    "  .subtotal-row vaadin-grid-cell-content { " +
-    "    color: #38bdf8 !important; " +
-    "    font-weight: bold !important; " +
-    "  } " +
-
-    "  /* REGRAS DE IMPRESSÃO */ " +
-    "  @media print { " +
-    "    @page { size: landscape; margin: 5mm; } " +
-    "    .no-print { display: none !important; } " +
-    "    body { background-color: #ffffff !important; color: #000000 !important; } " +
-    "    vaadin-grid { width: 100% !important; height: auto !important; max-height: none !important; overflow: visible !important; border: none !important; } " +
-    "    vaadin-grid, vaadin-grid *, vaadin-grid::part(row), vaadin-grid::part(cell) { " +
-    "      transform: none !important; " +
-    "      position: static !important; " +
-    "      background-color: #ffffff !important; " +
-    "      color: #000000 !important; " +
-    "    } " +
-    "    vaadin-grid-cell-content { " +
-    "      padding: 3px 4px !important; " +
-    "      font-size: 9px !important; " +
-    "      color: #000000 !important; " +
-    "    } " +
-    "    .subtotal-row::part(cell) { " +
-    "      background-color: #e5e7eb !important; " +
-    "    } " +
-    "    .subtotal-row vaadin-grid-cell-content { color: #000000 !important; font-weight: bold !important; } " +
-    "  } " +
-    "';" +
-    "document.head.appendChild(style);"
-);
-        // Botão Voltar
         Button btnVoltar = new Button("← Voltar para Carregamentos", e -> UI.getCurrent().navigate(""));
         btnVoltar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         btnVoltar.addClassName("no-print");
 
-        // Botão Imprimir (Corrigido o contraste para não ficar ofuscado)
         Button btnImprimir = new Button("🖨️ Imprimir / Visualizar", e -> UI.getCurrent().getPage().executeJs("window.print();"));
         btnImprimir.getStyle()
                 .set("background-color", "#334155")
@@ -184,15 +143,17 @@ UI.getCurrent().getPage().executeJs(
         btnImprimir.addClassName("no-print");
 
         containerBotoesAcao.addClassName("no-print");
-
         titulo.getStyle().set("color", "#f8fafc").set("margin", "0");
 
-        HorizontalLayout topo = new HorizontalLayout(btnVoltar, titulo, containerBotoesAcao, btnImprimir);
+        // Criar a barra de cards de filtro
+        HorizontalLayout layoutFiltrosCards = criarLayoutFiltros();
+        layoutFiltrosCards.addClassName("no-print");
+
+        HorizontalLayout topo = new HorizontalLayout(btnVoltar, titulo, layoutFiltrosCards, containerBotoesAcao, btnImprimir);
         topo.setWidthFull();
         topo.setAlignItems(Alignment.CENTER);
         topo.setFlexGrow(1, titulo);
 
-        // Cards Superiores (Incluindo TOTAL NF's e ENTREGAS)
         HorizontalLayout cardsLayout = new HorizontalLayout(
                 criarCard("MOTORISTA", txtMotorista, "#06b6d4"),
                 criarCard("PLACA", txtPlaca, "#f59e0b"),
@@ -205,7 +166,6 @@ UI.getCurrent().getPage().executeJs(
         );
         cardsLayout.setWidthFull();
 
-        // Configuração das Colunas do Grid
         grid.addColumn(ItemGridEntrega::getDelivery)
             .setHeader("DELIVERY")
             .setWidth("130px")
@@ -238,11 +198,68 @@ UI.getCurrent().getPage().executeJs(
             .setFlexGrow(0);
 
         grid.setClassNameGenerator(item -> item.isSubtotal() ? "subtotal-row" : null);
-
         grid.setWidthFull();
         grid.setAllRowsVisible(true);
 
         add(topo, cardsLayout, grid);
+    }
+
+    private HorizontalLayout criarLayoutFiltros() {
+        HorizontalLayout layout = new HorizontalLayout();
+        layout.setSpacing(true);
+        layout.setAlignItems(Alignment.CENTER);
+
+        btnFiltroColog = criarBotaoFiltroCard("Colog / Nutrícia", "COLOG");
+        btnFiltroTodos = criarBotaoFiltroCard("Todos", "TODOS");
+        btnFiltroReentregas = criarBotaoFiltroCard("Reentregas", "REENTREGAS");
+
+        layout.add(btnFiltroColog, btnFiltroTodos, btnFiltroReentregas);
+        atualizarEstiloBotoesFiltro();
+        return layout;
+    }
+
+    private Button criarBotaoFiltroCard(String rotulo, String codigoFiltro) {
+        Button btn = new Button(rotulo);
+        btn.getStyle()
+                .set("font-weight", "bold")
+                .set("font-size", "0.95rem")
+                .set("padding", "8px 20px")
+                .set("border-radius", "8px")
+                .set("cursor", "pointer")
+                .set("transition", "all 0.2s ease-in-out");
+
+        btn.addClickListener(e -> {
+            this.filtroAtivo = codigoFiltro;
+            atualizarEstiloBotoesFiltro();
+            aplicarFiltroEAtualizarGrid();
+        });
+
+        return btn;
+    }
+
+    private void atualizarEstiloBotoesFiltro() {
+        aplicarEstiloIndividual(btnFiltroColog, "COLOG".equals(filtroAtivo), "#0ea5e9");
+        aplicarEstiloIndividual(btnFiltroTodos, "TODOS".equals(filtroAtivo), "#2563eb");
+        aplicarEstiloIndividual(btnFiltroReentregas, "REENTREGAS".equals(filtroAtivo), "#0d9488");
+    }
+
+    private void aplicarEstiloIndividual(Button btn, boolean ativo, String corPrincipal) {
+        if (btn == null) return;
+        if (ativo) {
+            btn.getStyle()
+                    .set("background-color", corPrincipal)
+                    .set("color", "#ffffff")
+                    .set("border", "2px solid #ffffff")
+                    .set("box-shadow", "0 0 10px " + corPrincipal)
+                    .set("transform", "scale(1.05)");
+        } else {
+            btn.getStyle()
+                    .set("background-color", "#1e293b")
+                    .set("color", "#94a3b8")
+                    .set("border", "1px solid #334155")
+                    .set("box-shadow", "none")
+                    .set("transform", "scale(1.0)");
+        }
     }
 
     @Override
@@ -260,39 +277,61 @@ UI.getCurrent().getPage().executeJs(
                 Button pdfButton = new Button("📄 Baixar PDF");
                 pdfButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
 
-                // Define o StreamResource diretamente no Vaadin
-StreamResource resource = new StreamResource("carregamento_" + carregamento.getId() + ".pdf", () -> {
-    try {
-        List<Entrega> entregas = entregaRepository.findByCarregamentoId(carregamento.getId());
-        byte[] pdfBytes = pdfService.gerarPdfCarregamento(carregamento, entregas);
+                StreamResource resource = new StreamResource("carregamento_" + carregamento.getId() + ".pdf", () -> {
+                    try {
+                        List<Entrega> entregas = entregaRepository.findByCarregamentoId(carregamento.getId());
+                        byte[] pdfBytes = pdfService.gerarPdfCarregamento(carregamento, entregas);
 
-        if (pdfBytes == null || pdfBytes.length == 0) {
-            System.err.println("⚠ PDF gerado com byte array vazio/nulo.");
-            return new ByteArrayInputStream(new byte[0]);
-        }
+                        if (pdfBytes == null || pdfBytes.length == 0) {
+                            return new ByteArrayInputStream(new byte[0]);
+                        }
 
-        return new ByteArrayInputStream(pdfBytes);
-    } catch (Exception e) {
-        System.err.println("❌ Erro durante a geração do PDF no StreamResource:");
-        e.printStackTrace();
-        return new ByteArrayInputStream(new byte[0]);
-    }
-});
+                        return new ByteArrayInputStream(pdfBytes);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return new ByteArrayInputStream(new byte[0]);
+                    }
+                });
 
-// Garanta a especificação do MIME Type de PDF
-resource.setContentType("application/pdf");
-resource.setCacheTime(0);
+                resource.setContentType("application/pdf");
+                resource.setCacheTime(0);
 
-Anchor btnPdf = new Anchor(resource, "");
-btnPdf.getElement().setAttribute("download", true);
-btnPdf.add(pdfButton);
+                Anchor btnPdf = new Anchor(resource, "");
+                btnPdf.getElement().setAttribute("download", true);
+                btnPdf.add(pdfButton);
+                containerBotoesAcao.add(btnPdf);
             });
 
-            List<Entrega> entregas = entregaRepository.findByCarregamentoId(carregamentoId);
-            List<ItemGridEntrega> itensExibicao = processarEntregasComSubtotais(entregas);
-
-            grid.setItems(itensExibicao);
+            todasEntregasDoCarregamento = entregaRepository.findByCarregamentoId(carregamentoId);
+            aplicarFiltroEAtualizarGrid();
         }
+    }
+
+    private void aplicarFiltroEAtualizarGrid() {
+        List<Entrega> entregasFiltradas;
+
+        switch (filtroAtivo) {
+            case "REENTREGAS":
+                entregasFiltradas = todasEntregasDoCarregamento.stream()
+                        .filter(e -> e.getOrigemSheet() != null && e.getOrigemSheet().toUpperCase().contains("REENTREGAS"))
+                        .collect(Collectors.toList());
+                break;
+
+            case "COLOG":
+                entregasFiltradas = todasEntregasDoCarregamento.stream()
+                        .filter(e -> e.getOrigemSheet() != null && 
+                                (e.getOrigemSheet().toUpperCase().contains("COLOG") || e.getOrigemSheet().toUpperCase().contains("NUTRICIA")))
+                        .collect(Collectors.toList());
+                break;
+
+            case "TODOS":
+            default:
+                entregasFiltradas = new ArrayList<>(todasEntregasDoCarregamento);
+                break;
+        }
+
+        List<ItemGridEntrega> itensExibicao = processarEntregasComSubtotais(entregasFiltradas);
+        grid.setItems(itensExibicao);
     }
 
     private List<ItemGridEntrega> processarEntregasComSubtotais(List<Entrega> entregas) {
@@ -321,10 +360,9 @@ btnPdf.add(pdfButton);
 
         DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
         
-        // Atualiza os contadores gerais dos cards
         txtPesoTotal.setText(df.format(pesoGeral) + " kg");
         txtTotalNfs.setText(String.valueOf(entregas.size()));
-        txtTotalEntregas.setText(String.valueOf(entregasPorGrupo.size())); // Cada grupo/cliente = 1 entrega
+        txtTotalEntregas.setText(String.valueOf(entregasPorGrupo.size()));
 
         for (Map.Entry<String, List<Entrega>> entry : entregasPorGrupo.entrySet()) {
             List<Entrega> listaDoGrupo = entry.getValue();
@@ -379,30 +417,26 @@ btnPdf.add(pdfButton);
     }
 
     private double converterPesoParaDouble(String pesoStr) {
-    if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
-    try {
-        // Mantém apenas dígitos, vírgula e ponto
-        String limpo = pesoStr.replaceAll("[^0-9,. ]", "").trim();
+        if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
+        try {
+            String limpo = pesoStr.replaceAll("[^0-9,. ]", "").trim();
 
-        // Se tem ponto e vírgula (ex: "2.577,68" ou "2,577.68")
-        if (limpo.contains(",") && limpo.contains(".")) {
-            if (limpo.lastIndexOf(",") > limpo.lastIndexOf(".")) {
-                limpo = limpo.replace(".", "").replace(",", ".");
-            } else {
-                limpo = limpo.replace(",", "");
+            if (limpo.contains(",") && limpo.contains(".")) {
+                if (limpo.lastIndexOf(",") > limpo.lastIndexOf(".")) {
+                    limpo = limpo.replace(".", "").replace(",", ".");
+                } else {
+                    limpo = limpo.replace(",", "");
+                }
+            } else if (limpo.contains(",")) {
+                limpo = limpo.replace(",", ".");
             }
-        } 
-        // Se tem apenas vírgula (ex: "2577,68")
-        else if (limpo.contains(",")) {
-            limpo = limpo.replace(",", ".");
-        } 
-        // Se tem apenas ponto (ex: "2577.679" do Excel) -> O ponto É O DECIMAL, não deve ser removido!
 
-        return Double.parseDouble(limpo);
-    } catch (Exception e) {
-        return 0.0;
+            return Double.parseDouble(limpo);
+        } catch (Exception e) {
+            return 0.0;
+        }
     }
-}
+
     private Div criarCard(String titulo, Span valor, String corBorda) {
         return criarCard(titulo, valor, corBorda, false);
     }

@@ -14,9 +14,12 @@ import java.io.InputStream;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
+import java.util.regex.Pattern;
 
 @Service
 public class ExcelService {
@@ -24,19 +27,20 @@ public class ExcelService {
     private final CarregamentoRepository carregamentoRepository;
     private final EntregaRepository entregaRepository;
 
+    // Padrão Regex para validar se a Nota Fiscal é estritamente numérica
+    private static final Pattern NOTA_FISCAL_NUMERICA = Pattern.compile("^\\d+$");
+
     public ExcelService(CarregamentoRepository carregamentoRepository, EntregaRepository entregaRepository) {
         this.carregamentoRepository = carregamentoRepository;
         this.entregaRepository = entregaRepository;
     }
 
     public void processarExcel(InputStream inputStream) {
-        // Configura o StreamingReader para usar buffer minimo e ler linha por linha sem carregar o DOM na RAM
         try (Workbook workbook = StreamingReader.builder()
                 .rowCacheSize(100)
                 .bufferSize(4096)
                 .open(inputStream)) {
 
-            // FORCEI O LOCALE pt_BR AQUI PARA GARANTIR COMPORTAMENTO IDENTICO NO RENDER E LOCALHOST
             DataFormatter formatter = new DataFormatter(new Locale.Builder().setLanguage("pt").setRegion("BR").build());
 
             // ==========================================
@@ -107,22 +111,32 @@ public class ExcelService {
                 novosCarregamentos.clear();
             }
 
-            // ==========================================
-            // 2. LEITURA DA ABA "ENTREGAS"
-            // ==========================================
-            Sheet sheetEntregas = workbook.getSheet("ENTREGAS");
-            if (sheetEntregas == null && workbook.getNumberOfSheets() > 1) {
-                sheetEntregas = workbook.getSheetAt(1);
-            }
+            // ============================================================
+            // 2. EXTRAÇÃO DE CONJUNTOS DE REENTREGAS E COLOG / NUTRÍCIA
+            // ============================================================
+            Set<String> reentregasDeliveries = extrairValoresColunaAba(workbook, "ENCAIXE REENTREGAS", 1, formatter); // Coluna B
+            Set<String> cologNutriciaNfs = extrairValoresColunaAba(workbook, "ENCAIXE NUTRICIA_COLOG", 0, formatter); // Coluna A
 
-            if (sheetEntregas != null) {
-                List<Entrega> novasEntregas = new ArrayList<>();
+            // ============================================================
+            // 3. LEITURA DE TODAS AS ABAS DE ENTREGAS
+            // ============================================================
+            int totalSheets = workbook.getNumberOfSheets();
+            List<Entrega> novasEntregas = new ArrayList<>();
+
+            for (int sheetIdx = 1; sheetIdx < totalSheets; sheetIdx++) {
+                Sheet sheetAtual = workbook.getSheetAt(sheetIdx);
+                String nomeAba = sheetAtual.getSheetName();
+
+                String nomeAbaNorm = normalizarTexto(nomeAba);
+                if (nomeAbaNorm.contains("ENCAIXEREENTREGAS") || nomeAbaNorm.contains("ENCAIXENUTRICIACOLOG")) {
+                    continue;
+                }
 
                 Row headerEntregasRow = null;
                 int startRowEntregasIndex = -1;
                 int rowIdx = 0;
 
-                for (Row r : sheetEntregas) {
+                for (Row r : sheetAtual) {
                     if (rowIdx > 10) break;
                     if (r != null && !isLinhaVazia(r, formatter)) {
                         headerEntregasRow = r;
@@ -135,7 +149,7 @@ public class ExcelService {
                 Map<String, Integer> colunasEntregas = headerEntregasRow != null ? mapearCabecalhos(headerEntregasRow, formatter) : new HashMap<>();
 
                 int indexEntrega = 0;
-                for (Row row : sheetEntregas) {
+                for (Row row : sheetAtual) {
                     if (indexEntrega <= startRowEntregasIndex) {
                         indexEntrega++;
                         continue;
@@ -144,20 +158,23 @@ public class ExcelService {
 
                     if (row == null || isLinhaVazia(row, formatter)) continue;
 
-                    String viagemRef = getValorFlexivel(row, colunasEntregas, "VIAGEM", 1, formatter);
-                    String codigoCliente = getValorFlexivel(row, colunasEntregas, "CODIGOCLIENTE", 2, formatter);
-                    if (codigoCliente.isEmpty()) codigoCliente = getValorFlexivel(row, colunasEntregas, "CODCLIENTE", 2, formatter);
+                    String viagemRef = getValorSeguro(row, colunasEntregas, "VIAGEM", formatter);
+                    String codigoCliente = getValorSeguro(row, colunasEntregas, "CODIGOCLIENTE", formatter);
+                    if (codigoCliente.isEmpty()) codigoCliente = getValorSeguro(row, colunasEntregas, "CODCLIENTE", formatter);
 
-                    String delivery = getValorFlexivel(row, colunasEntregas, "DELIVERY", 5, formatter);
-                    String nf = getValorFlexivel(row, colunasEntregas, "NOTAFISCAL", 6, formatter);
-                    if (nf.isEmpty()) nf = getValorFlexivel(row, colunasEntregas, "NF", 6, formatter);
+                    String delivery = getValorSeguro(row, colunasEntregas, "DELIVERY", formatter);
+                    String nf = getValorSeguro(row, colunasEntregas, "NOTAFISCAL", formatter);
+                    if (nf.isEmpty()) nf = getValorSeguro(row, colunasEntregas, "NF", formatter);
 
-                    String cliente = getValorFlexivel(row, colunasEntregas, "CLIENTE", 7, formatter);
-                    String bairro = getValorFlexivel(row, colunasEntregas, "BAIRRO", 9, formatter);
-                    String cidade = getValorFlexivel(row, colunasEntregas, "CIDADE", 10, formatter);
-                    String peso = tratarValorPesoFlexivel(row, colunasEntregas, "PESO", 14, formatter);
+                    String cliente = getValorSeguro(row, colunasEntregas, "CLIENTE", formatter);
+                    String bairro = getValorSeguro(row, colunasEntregas, "BAIRRO", formatter);
+                    String cidade = getValorSeguro(row, colunasEntregas, "CIDADE", formatter);
+                    String peso = normalizarFormatoPeso(getValorSeguro(row, colunasEntregas, "PESO", formatter));
 
-                    if (delivery.isEmpty() && nf.isEmpty()) continue;
+                    // --- RIGOROSA VALIDAÇÃO DE LINHA DE ENTREGA ---
+                    if (!isEntregaValida(delivery, nf, cliente)) {
+                        continue;
+                    }
 
                     Carregamento carregamentoCorrespondente = carregamentosPorViagem.get(viagemRef.toUpperCase());
 
@@ -177,8 +194,16 @@ public class ExcelService {
                         entrega.setBairro(bairro);
                         entrega.setCidade(cidade);
                         entrega.setPeso(peso);
-                        entrega.setCarregamento(carregamentoCorrespondente);
 
+                        if (!delivery.isEmpty() && reentregasDeliveries.contains(delivery.trim().toUpperCase())) {
+                            entrega.setOrigemSheet("REENTREGAS");
+                        } else if (!nf.isEmpty() && cologNutriciaNfs.contains(nf.trim().toUpperCase())) {
+                            entrega.setOrigemSheet("COLOG / NUTRÍCIA");
+                        } else {
+                            entrega.setOrigemSheet(nomeAba);
+                        }
+
+                        entrega.setCarregamento(carregamentoCorrespondente);
                         novasEntregas.add(entrega);
                     }
 
@@ -187,11 +212,11 @@ public class ExcelService {
                         novasEntregas.clear();
                     }
                 }
+            }
 
-                if (!novasEntregas.isEmpty()) {
-                    salvarEntregasLote(novasEntregas);
-                    novasEntregas.clear();
-                }
+            if (!novasEntregas.isEmpty()) {
+                salvarEntregasLote(novasEntregas);
+                novasEntregas.clear();
             }
 
             carregamentosPorViagem.clear();
@@ -200,6 +225,30 @@ public class ExcelService {
         } catch (Exception e) {
             throw new RuntimeException("Erro ao processar planilha Excel via streaming: " + e.getMessage(), e);
         }
+    }
+
+    private Set<String> extrairValoresColunaAba(Workbook workbook, String nomeAba, int indiceColuna, DataFormatter formatter) {
+        Set<String> valores = new HashSet<>();
+        Sheet sheet = workbook.getSheet(nomeAba);
+        if (sheet == null) {
+            for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
+                if (normalizarTexto(workbook.getSheetName(i)).equals(normalizarTexto(nomeAba))) {
+                    sheet = workbook.getSheetAt(i);
+                    break;
+                }
+            }
+        }
+        if (sheet != null) {
+            for (Row row : sheet) {
+                if (row == null) continue;
+                Cell cell = row.getCell(indiceColuna);
+                String val = getValorCelula(cell, formatter);
+                if (!val.isEmpty()) {
+                    valores.add(val.trim().toUpperCase());
+                }
+            }
+        }
+        return valores;
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -217,6 +266,39 @@ public class ExcelService {
         entregaRepository.saveAll(lista);
     }
 
+    private boolean isEntregaValida(String delivery, String nf, String cliente) {
+        if (delivery.isEmpty() && nf.isEmpty()) return false;
+
+        String nfTrim = nf.trim().toUpperCase();
+        String clienteTrim = cliente.trim().toUpperCase();
+
+        // 1. A Nota Fiscal precisa conter apenas dígitos numéricos (descarta placas como PJL9A52)
+        if (!nfTrim.isEmpty() && !NOTA_FISCAL_NUMERICA.matcher(nfTrim).matches()) {
+            return false;
+        }
+
+        // 2. Filtra linhas de Subtotal e Total
+        if (nfTrim.contains("SUBTOTAL") || nfTrim.contains("TOTAL")) return false;
+
+        // 3. Filtra veículos e descrições técnicas no campo cliente
+        if (clienteTrim.equals("HR") ||
+            clienteTrim.equals("TRUCK") ||
+            clienteTrim.equals("CARRETA") ||
+            clienteTrim.equals("TOCO") ||
+            clienteTrim.equals("3/4") ||
+            clienteTrim.equals("34") ||
+            clienteTrim.equals("VAN") ||
+            clienteTrim.equals("BONGO") ||
+            clienteTrim.equals("IVECO") ||
+            clienteTrim.equals("SPRINTER") ||
+            clienteTrim.equals("F4000") ||
+            clienteTrim.contains("CARREGAR NO")) {
+            return false;
+        }
+
+        return true;
+    }
+
     private Map<String, Integer> mapearCabecalhos(Row row, DataFormatter formatter) {
         Map<String, Integer> map = new HashMap<>();
         for (Cell cell : row) {
@@ -228,13 +310,11 @@ public class ExcelService {
         return map;
     }
 
-    private String getValorFlexivel(Row row, Map<String, Integer> colunas, String nomeColuna, int indiceFallback, DataFormatter formatter) {
-        Integer idx = colunas.get(normalizarTexto(nomeColuna));
-        if (idx != null) {
-            String valor = getValorCelula(row.getCell(idx), formatter);
-            if (!valor.isEmpty()) return valor;
-        }
-        return getValorCelula(row.getCell(indiceFallback), formatter);
+    // Leitura estrita baseada exclusivamente na chave do cabeçalho mapeado
+    private String getValorSeguro(Row row, Map<String, Integer> colunas, String nomeColuna, DataFormatter formatter) {
+        Integer index = colunas.get(normalizarTexto(nomeColuna));
+        if (index == null) return "";
+        return getValorCelula(row.getCell(index), formatter);
     }
 
     private String getValorPorColuna(Row row, Map<String, Integer> colunas, String nomeColuna, DataFormatter formatter) {
@@ -243,28 +323,17 @@ public class ExcelService {
         return getValorCelula(row.getCell(index), formatter);
     }
 
-    // =========================================================================
-    // TRATAMENTO ESPECÍFICO PARA PESO (EVITA DIVERGÊNCIA PONTO X VÍRGULA NO RENDER)
-    // =========================================================================
     private String tratarValorPeso(Row row, Map<String, Integer> colunas, String nomeColuna, DataFormatter formatter) {
         Integer index = colunas.get(normalizarTexto(nomeColuna));
         if (index == null) return "0";
         return normalizarFormatoPeso(getValorCelula(row.getCell(index), formatter));
     }
 
-    private String tratarValorPesoFlexivel(Row row, Map<String, Integer> colunas, String nomeColuna, int indiceFallback, DataFormatter formatter) {
-        String val = getValorFlexivel(row, colunas, nomeColuna, indiceFallback, formatter);
-        return normalizarFormatoPeso(val);
-    }
-
     private String normalizarFormatoPeso(String valorRaw) {
         if (valorRaw == null || valorRaw.trim().isEmpty()) return "0";
         String v = valorRaw.trim();
-        
-        // Se contiver vírgula usada como separador decimal (ex: "10,572" vindo de Locale pt_BR formatado)
-        // e for um número de milhar sem decimais adicionais, converte para padrão inteiro/ponto
+
         if (v.contains(",") && !v.contains(".")) {
-            // Se tiver no formato americano ou pt_BR alterado pelo StreamingReader
             v = v.replace(",", ".");
         }
         return v;

@@ -4,7 +4,7 @@ import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.service.ExcelService;
 import jakarta.annotation.security.PermitAll;
-
+import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -257,6 +257,12 @@ uploadExcel.addFailedListener(event -> {
         Dialog dialog = new Dialog();
         dialog.setHeaderTitle(carregamento.getId() == null ? "Novo Carregamento" : "Editar Carregamento #" + carregamento.getId());
 
+        // Define as cores base do Dialog para o tema dark
+        dialog.getElement().getStyle()
+            .set("--lumo-base-color", "#0f172a")
+            .set("--lumo-body-text-color", "#ffffff")
+            .set("--lumo-header-text-color", "#ffffff");
+
         FormLayout form = new FormLayout();
 
         TextField txtData = new TextField("Data Programação");
@@ -289,6 +295,18 @@ uploadExcel.addFailedListener(event -> {
 
         TextField txtObs = new TextField("Observação");
         txtObs.setValue(carregamento.getObservacao() != null ? carregamento.getObservacao() : "");
+
+        // Aplica o estilo escuro com texto claro em cada campo
+        estilizarCampoEscuro(txtData);
+        estilizarCampoEscuro(txtTransp);
+        estilizarCampoEscuro(txtPlaca);
+        estilizarCampoEscuro(txtTipoVeiculo);
+        estilizarCampoEscuro(txtViagem);
+        estilizarCampoEscuro(txtOrdemCarga);
+        estilizarCampoEscuro(txtPeso);
+        estilizarCampoEscuro(txtEncaixe);
+        estilizarCampoEscuro(cbStatus);
+        estilizarCampoEscuro(txtObs);
 
         form.add(txtData, txtTransp, txtPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbStatus, txtObs);
         dialog.add(form);
@@ -374,5 +392,15 @@ uploadExcel.addFailedListener(event -> {
             return 0.0;
         }
     }
-} // <- Esta é a ÚLTIMA CHAVE que fecha a classe MainView
+
+    private void estilizarCampoEscuro(HasElement campo) {
+    campo.getElement().getStyle()
+        .set("background-color", "#1e293b")
+        .set("--vaadin-input-field-value-color", "#ffffff")
+        .set("--lumo-body-text-color", "#ffffff")
+        .set("--lumo-secondary-text-color", "#94a3b8") // Define a cor das labels (rótulos) para azul claro/cinza visível
+        .set("--lumo-primary-text-color", "#ffffff")
+        .set("color", "#ffffff");
+}
+}
 

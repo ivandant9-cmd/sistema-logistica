@@ -18,6 +18,9 @@ public class Entrega {
     private String cidade;
     private String peso;
 
+    @Column(name = "origem_sheet")
+    private String origemSheet;
+
     @ManyToOne
     @JoinColumn(name = "carregamento_id")
     private Carregamento carregamento;
@@ -88,6 +91,14 @@ public class Entrega {
 
     public void setPeso(String peso) {
         this.peso = peso;
+    }
+
+    public String getOrigemSheet() {
+        return origemSheet;
+    }
+
+    public void setOrigemSheet(String origemSheet) {
+        this.origemSheet = origemSheet;
     }
 
     public Carregamento getCarregamento() {

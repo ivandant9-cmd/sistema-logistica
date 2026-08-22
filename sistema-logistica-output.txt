@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-22 18:51:33 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-22 21:42:39 (America/Bahia / GMT-03:00)
 Total Files Processed: 246
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -190,17 +190,17 @@ PROJECT STRUCTURE
 │       │                   │   └── 📄 PdfController.java (2.68 KB)
 │       │                   ├── 📁 model/
 │       │                   │   ├── 📄 Carregamento.java (2.53 KB)
-│       │                   │   └── 📄 Entrega.java (1.93 KB)
+│       │                   │   └── 📄 Entrega.java (2.18 KB)
 │       │                   ├── 📁 repository/
 │       │                   │   ├── 📄 CarregamentoRepository.java (396 B)
 │       │                   │   └── 📄 EntregaRepository.java (599 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (13.33 KB)
+│       │                   │   ├── 📄 ExcelService.java (15.97 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 views/
-│       │                   │   ├── 📄 EntregasView.java (19.43 KB)
+│       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   └── 📄 MainView.java (16.64 KB)
+│       │                   │   └── 📄 MainView.java (17.83 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (942 B)
 │       └── 📁 resources/
@@ -214,23 +214,23 @@ PROJECT STRUCTURE
 │   │   │       └── 📁 ivanildo/
 │   │   │           └── 📁 tms/
 │   │   │               ├── 📁 config/
-│   │   │               │   └── 📄 SecurityConfig.class (4.56 KB)
+│   │   │               │   └── 📄 SecurityConfig.class (4.82 KB)
 │   │   │               ├── 📁 controller/
-│   │   │               │   └── 📄 PdfController.class (4.59 KB)
+│   │   │               │   └── 📄 PdfController.class (4.68 KB)
 │   │   │               ├── 📁 model/
 │   │   │               │   ├── 📄 Carregamento.class (3.51 KB)
-│   │   │               │   └── 📄 Entrega.class (2.71 KB)
+│   │   │               │   └── 📄 Entrega.class (2.98 KB)
 │   │   │               ├── 📁 repository/
 │   │   │               │   ├── 📄 CarregamentoRepository.class (655 B)
 │   │   │               │   └── 📄 EntregaRepository.class (889 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (13.62 KB)
-│   │   │               │   └── 📄 PdfService.class (5.92 KB)
+│   │   │               │   ├── 📄 ExcelService.class (15.83 KB)
+│   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 views/
-│   │   │               │   ├── 📄 EntregasView.class (24.37 KB)
+│   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   └── 📄 MainView.class (28.27 KB)
+│   │   │               │   └── 📄 MainView.class (28.97 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
 │   │   ├── 📁 templates/
@@ -332,7 +332,7 @@ Total Files: 246
 Total Directories: 56
 Text Files: 225
 Binary Files: 21
-Total Size: 4.75 MB
+Total Size: 4.76 MB
 
 FILE TYPES DISTRIBUTION:
 ------------------------------
@@ -11932,15 +11932,15 @@ FILE: src/main/java/br/com/ivanildo/tms/model/Entrega.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 1.93 KB
+Size: 2.18 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/model/Entrega.java
 Relative Path: src/main/java/br/com/ivanildo/tms/model
 Created: 2026-08-16 19:15:30 (America/Bahia / GMT-03:00)
-Modified: 2026-08-19 16:31:26 (America/Bahia / GMT-03:00)
-MD5: 3af8e8ba182d3ff38505c66b45e968ca
-SHA256: 9b37288b62e4855faa818e61325a5905859d90f8766724e1128c2f7e0b1b3e21
+Modified: 2026-08-22 20:45:04 (America/Bahia / GMT-03:00)
+MD5: e53d30e97f539781465bd7f33bac58f2
+SHA256: 64308e40ed79afa485c214aea357fe2268393ab546a9b17c71e671ff71d28018
 Encoding: ASCII
 
 FILE CONTENT:
@@ -11964,6 +11964,9 @@ public class Entrega {
     private String bairro;
     private String cidade;
     private String peso;
+
+    @Column(name = "origem_sheet")
+    private String origemSheet;
 
     @ManyToOne
     @JoinColumn(name = "carregamento_id")
@@ -12035,6 +12038,14 @@ public class Entrega {
 
     public void setPeso(String peso) {
         this.peso = peso;
+    }
+
+    public String getOrigemSheet() {
+        return origemSheet;
+    }
+
+    public void setOrigemSheet(String origemSheet) {
+        this.origemSheet = origemSheet;
     }
 
     public Carregamento getCarregamento() {
@@ -12126,16 +12137,16 @@ FILE: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 13.33 KB
+Size: 15.97 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 Relative Path: src/main/java/br/com/ivanildo/tms/service
 Created: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 17:50:22 (America/Bahia / GMT-03:00)
-MD5: 9c9c52f2491cde1998ad1db4ad3be5f7
-SHA256: 787e495c1278a215c7da58e40225c46313dad326446541ff613642640861e504
-Encoding: ASCII
+Modified: 2026-08-22 21:42:38 (America/Bahia / GMT-03:00)
+MD5: 8fe27b5a6b21b22f3bd8aa4f48d93029
+SHA256: 5fafccbc6d8e654a36fe727c31cba1c04cd252410ffae1a5c01ef078f8b45651
+Encoding: UTF-8
 
 FILE CONTENT:
 ----------------------------------------
@@ -12155,9 +12166,12 @@ import java.io.InputStream;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
+import java.util.regex.Pattern;
 
 @Service
 public class ExcelService {
@@ -12165,19 +12179,20 @@ public class ExcelService {
     private final CarregamentoRepository carregamentoRepository;
     private final EntregaRepository entregaRepository;
 
+    // Padrão Regex para validar se a Nota Fiscal é estritamente numérica
+    private static final Pattern NOTA_FISCAL_NUMERICA = Pattern.compile("^\\d+$");
+
     public ExcelService(CarregamentoRepository carregamentoRepository, EntregaRepository entregaRepository) {
         this.carregamentoRepository = carregamentoRepository;
         this.entregaRepository = entregaRepository;
     }
 
     public void processarExcel(InputStream inputStream) {
-        // Configura o StreamingReader para usar buffer minimo e ler linha por linha sem carregar o DOM na RAM
         try (Workbook workbook = StreamingReader.builder()
                 .rowCacheSize(100)
                 .bufferSize(4096)
                 .open(inputStream)) {
 
-            // FORCEI O LOCALE pt_BR AQUI PARA GARANTIR COMPORTAMENTO IDENTICO NO RENDER E LOCALHOST
             DataFormatter formatter = new DataFormatter(new Locale.Builder().setLanguage("pt").setRegion("BR").build());
 
             // ==========================================
@@ -12248,22 +12263,32 @@ public class ExcelService {
                 novosCarregamentos.clear();
             }
 
-            // ==========================================
-            // 2. LEITURA DA ABA "ENTREGAS"
-            // ==========================================
-            Sheet sheetEntregas = workbook.getSheet("ENTREGAS");
-            if (sheetEntregas == null && workbook.getNumberOfSheets() > 1) {
-                sheetEntregas = workbook.getSheetAt(1);
-            }
+            // ============================================================
+            // 2. EXTRAÇÃO DE CONJUNTOS DE REENTREGAS E COLOG / NUTRÍCIA
+            // ============================================================
+            Set<String> reentregasDeliveries = extrairValoresColunaAba(workbook, "ENCAIXE REENTREGAS", 1, formatter); // Coluna B
+            Set<String> cologNutriciaNfs = extrairValoresColunaAba(workbook, "ENCAIXE NUTRICIA_COLOG", 0, formatter); // Coluna A
 
-            if (sheetEntregas != null) {
-                List<Entrega> novasEntregas = new ArrayList<>();
+            // ============================================================
+            // 3. LEITURA DE TODAS AS ABAS DE ENTREGAS
+            // ============================================================
+            int totalSheets = workbook.getNumberOfSheets();
+            List<Entrega> novasEntregas = new ArrayList<>();
+
+            for (int sheetIdx = 1; sheetIdx < totalSheets; sheetIdx++) {
+                Sheet sheetAtual = workbook.getSheetAt(sheetIdx);
+                String nomeAba = sheetAtual.getSheetName();
+
+                String nomeAbaNorm = normalizarTexto(nomeAba);
+                if (nomeAbaNorm.contains("ENCAIXEREENTREGAS") || nomeAbaNorm.contains("ENCAIXENUTRICIACOLOG")) {
+                    continue;
+                }
 
                 Row headerEntregasRow = null;
                 int startRowEntregasIndex = -1;
                 int rowIdx = 0;
 
-                for (Row r : sheetEntregas) {
+                for (Row r : sheetAtual) {
                     if (rowIdx > 10) break;
                     if (r != null && !isLinhaVazia(r, formatter)) {
                         headerEntregasRow = r;
@@ -12276,7 +12301,7 @@ public class ExcelService {
                 Map<String, Integer> colunasEntregas = headerEntregasRow != null ? mapearCabecalhos(headerEntregasRow, formatter) : new HashMap<>();
 
                 int indexEntrega = 0;
-                for (Row row : sheetEntregas) {
+                for (Row row : sheetAtual) {
                     if (indexEntrega <= startRowEntregasIndex) {
                         indexEntrega++;
                         continue;
@@ -12285,20 +12310,23 @@ public class ExcelService {
 
                     if (row == null || isLinhaVazia(row, formatter)) continue;
 
-                    String viagemRef = getValorFlexivel(row, colunasEntregas, "VIAGEM", 1, formatter);
-                    String codigoCliente = getValorFlexivel(row, colunasEntregas, "CODIGOCLIENTE", 2, formatter);
-                    if (codigoCliente.isEmpty()) codigoCliente = getValorFlexivel(row, colunasEntregas, "CODCLIENTE", 2, formatter);
+                    String viagemRef = getValorSeguro(row, colunasEntregas, "VIAGEM", formatter);
+                    String codigoCliente = getValorSeguro(row, colunasEntregas, "CODIGOCLIENTE", formatter);
+                    if (codigoCliente.isEmpty()) codigoCliente = getValorSeguro(row, colunasEntregas, "CODCLIENTE", formatter);
 
-                    String delivery = getValorFlexivel(row, colunasEntregas, "DELIVERY", 5, formatter);
-                    String nf = getValorFlexivel(row, colunasEntregas, "NOTAFISCAL", 6, formatter);
-                    if (nf.isEmpty()) nf = getValorFlexivel(row, colunasEntregas, "NF", 6, formatter);
+                    String delivery = getValorSeguro(row, colunasEntregas, "DELIVERY", formatter);
+                    String nf = getValorSeguro(row, colunasEntregas, "NOTAFISCAL", formatter);
+                    if (nf.isEmpty()) nf = getValorSeguro(row, colunasEntregas, "NF", formatter);
 
-                    String cliente = getValorFlexivel(row, colunasEntregas, "CLIENTE", 7, formatter);
-                    String bairro = getValorFlexivel(row, colunasEntregas, "BAIRRO", 9, formatter);
-                    String cidade = getValorFlexivel(row, colunasEntregas, "CIDADE", 10, formatter);
-                    String peso = tratarValorPesoFlexivel(row, colunasEntregas, "PESO", 14, formatter);
+                    String cliente = getValorSeguro(row, colunasEntregas, "CLIENTE", formatter);
+                    String bairro = getValorSeguro(row, colunasEntregas, "BAIRRO", formatter);
+                    String cidade = getValorSeguro(row, colunasEntregas, "CIDADE", formatter);
+                    String peso = normalizarFormatoPeso(getValorSeguro(row, colunasEntregas, "PESO", formatter));
 
-                    if (delivery.isEmpty() && nf.isEmpty()) continue;
+                    // --- RIGOROSA VALIDAÇÃO DE LINHA DE ENTREGA ---
+                    if (!isEntregaValida(delivery, nf, cliente)) {
+                        continue;
+                    }
 
                     Carregamento carregamentoCorrespondente = carregamentosPorViagem.get(viagemRef.toUpperCase());
 
@@ -12318,8 +12346,16 @@ public class ExcelService {
                         entrega.setBairro(bairro);
                         entrega.setCidade(cidade);
                         entrega.setPeso(peso);
-                        entrega.setCarregamento(carregamentoCorrespondente);
 
+                        if (!delivery.isEmpty() && reentregasDeliveries.contains(delivery.trim().toUpperCase())) {
+                            entrega.setOrigemSheet("REENTREGAS");
+                        } else if (!nf.isEmpty() && cologNutriciaNfs.contains(nf.trim().toUpperCase())) {
+                            entrega.setOrigemSheet("COLOG / NUTRÍCIA");
+                        } else {
+                            entrega.setOrigemSheet(nomeAba);
+                        }
+
+                        entrega.setCarregamento(carregamentoCorrespondente);
                         novasEntregas.add(entrega);
                     }
 
@@ -12328,11 +12364,11 @@ public class ExcelService {
                         novasEntregas.clear();
                     }
                 }
+            }
 
-                if (!novasEntregas.isEmpty()) {
-                    salvarEntregasLote(novasEntregas);
-                    novasEntregas.clear();
-                }
+            if (!novasEntregas.isEmpty()) {
+                salvarEntregasLote(novasEntregas);
+                novasEntregas.clear();
             }
 
             carregamentosPorViagem.clear();
@@ -12341,6 +12377,30 @@ public class ExcelService {
         } catch (Exception e) {
             throw new RuntimeException("Erro ao processar planilha Excel via streaming: " + e.getMessage(), e);
         }
+    }
+
+    private Set<String> extrairValoresColunaAba(Workbook workbook, String nomeAba, int indiceColuna, DataFormatter formatter) {
+        Set<String> valores = new HashSet<>();
+        Sheet sheet = workbook.getSheet(nomeAba);
+        if (sheet == null) {
+            for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
+                if (normalizarTexto(workbook.getSheetName(i)).equals(normalizarTexto(nomeAba))) {
+                    sheet = workbook.getSheetAt(i);
+                    break;
+                }
+            }
+        }
+        if (sheet != null) {
+            for (Row row : sheet) {
+                if (row == null) continue;
+                Cell cell = row.getCell(indiceColuna);
+                String val = getValorCelula(cell, formatter);
+                if (!val.isEmpty()) {
+                    valores.add(val.trim().toUpperCase());
+                }
+            }
+        }
+        return valores;
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -12358,6 +12418,39 @@ public class ExcelService {
         entregaRepository.saveAll(lista);
     }
 
+    private boolean isEntregaValida(String delivery, String nf, String cliente) {
+        if (delivery.isEmpty() && nf.isEmpty()) return false;
+
+        String nfTrim = nf.trim().toUpperCase();
+        String clienteTrim = cliente.trim().toUpperCase();
+
+        // 1. A Nota Fiscal precisa conter apenas dígitos numéricos (descarta placas como PJL9A52)
+        if (!nfTrim.isEmpty() && !NOTA_FISCAL_NUMERICA.matcher(nfTrim).matches()) {
+            return false;
+        }
+
+        // 2. Filtra linhas de Subtotal e Total
+        if (nfTrim.contains("SUBTOTAL") || nfTrim.contains("TOTAL")) return false;
+
+        // 3. Filtra veículos e descrições técnicas no campo cliente
+        if (clienteTrim.equals("HR") ||
+            clienteTrim.equals("TRUCK") ||
+            clienteTrim.equals("CARRETA") ||
+            clienteTrim.equals("TOCO") ||
+            clienteTrim.equals("3/4") ||
+            clienteTrim.equals("34") ||
+            clienteTrim.equals("VAN") ||
+            clienteTrim.equals("BONGO") ||
+            clienteTrim.equals("IVECO") ||
+            clienteTrim.equals("SPRINTER") ||
+            clienteTrim.equals("F4000") ||
+            clienteTrim.contains("CARREGAR NO")) {
+            return false;
+        }
+
+        return true;
+    }
+
     private Map<String, Integer> mapearCabecalhos(Row row, DataFormatter formatter) {
         Map<String, Integer> map = new HashMap<>();
         for (Cell cell : row) {
@@ -12369,13 +12462,11 @@ public class ExcelService {
         return map;
     }
 
-    private String getValorFlexivel(Row row, Map<String, Integer> colunas, String nomeColuna, int indiceFallback, DataFormatter formatter) {
-        Integer idx = colunas.get(normalizarTexto(nomeColuna));
-        if (idx != null) {
-            String valor = getValorCelula(row.getCell(idx), formatter);
-            if (!valor.isEmpty()) return valor;
-        }
-        return getValorCelula(row.getCell(indiceFallback), formatter);
+    // Leitura estrita baseada exclusivamente na chave do cabeçalho mapeado
+    private String getValorSeguro(Row row, Map<String, Integer> colunas, String nomeColuna, DataFormatter formatter) {
+        Integer index = colunas.get(normalizarTexto(nomeColuna));
+        if (index == null) return "";
+        return getValorCelula(row.getCell(index), formatter);
     }
 
     private String getValorPorColuna(Row row, Map<String, Integer> colunas, String nomeColuna, DataFormatter formatter) {
@@ -12384,28 +12475,17 @@ public class ExcelService {
         return getValorCelula(row.getCell(index), formatter);
     }
 
-    // =========================================================================
-    // TRATAMENTO ESPECÍFICO PARA PESO (EVITA DIVERGÊNCIA PONTO X VÍRGULA NO RENDER)
-    // =========================================================================
     private String tratarValorPeso(Row row, Map<String, Integer> colunas, String nomeColuna, DataFormatter formatter) {
         Integer index = colunas.get(normalizarTexto(nomeColuna));
         if (index == null) return "0";
         return normalizarFormatoPeso(getValorCelula(row.getCell(index), formatter));
     }
 
-    private String tratarValorPesoFlexivel(Row row, Map<String, Integer> colunas, String nomeColuna, int indiceFallback, DataFormatter formatter) {
-        String val = getValorFlexivel(row, colunas, nomeColuna, indiceFallback, formatter);
-        return normalizarFormatoPeso(val);
-    }
-
     private String normalizarFormatoPeso(String valorRaw) {
         if (valorRaw == null || valorRaw.trim().isEmpty()) return "0";
         String v = valorRaw.trim();
-        
-        // Se contiver vírgula usada como separador decimal (ex: "10,572" vindo de Locale pt_BR formatado)
-        // e for um número de milhar sem decimais adicionais, converte para padrão inteiro/ponto
+
         if (v.contains(",") && !v.contains(".")) {
-            // Se tiver no formato americano ou pt_BR alterado pelo StreamingReader
             v = v.replace(",", ".");
         }
         return v;
@@ -12566,15 +12646,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/EntregasView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 19.43 KB
+Size: 21.86 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/EntregasView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-19 13:39:55 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 18:51:32 (America/Bahia / GMT-03:00)
-MD5: e116422da8060b975216193c54ec0f48
-SHA256: 0135e9d159d9f49801d558f48b022bc1f6a62720293fc5bd155fc17da928c7b5
+Modified: 2026-08-22 20:38:04 (America/Bahia / GMT-03:00)
+MD5: 0dbfcb325d5c644c46eb701bd62292d0
+SHA256: 931c2417164862d0c8097e34654578833fdb7d2baa6fb78436e8f9f2f257c3df
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12584,7 +12664,7 @@ package br.com.ivanildo.tms.views;
 import br.com.ivanildo.tms.model.Entrega;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.repository.EntregaRepository;
-import br.com.ivanildo.tms.service.PdfService; // 1. IMPORT ADICIONADO
+import br.com.ivanildo.tms.service.PdfService;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -12599,7 +12679,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.StreamResource; // IMPORT PARA O STREAM RESOURCE
+import com.vaadin.flow.server.StreamResource;
 import jakarta.annotation.security.PermitAll;
 
 import java.io.ByteArrayInputStream;
@@ -12607,6 +12687,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Route("entregas")
 @PermitAll
@@ -12614,7 +12695,7 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
 
     private final CarregamentoRepository carregamentoRepository;
     private final EntregaRepository entregaRepository;
-    private final PdfService pdfService; // 2. ATRIBUTO ADICIONADO
+    private final PdfService pdfService;
 
     private final H3 titulo = new H3("📦 Gestão de Entregas");
     private final Span txtMotorista = new Span("-");
@@ -12629,8 +12710,16 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
     private final Grid<ItemGridEntrega> grid = new Grid<>(ItemGridEntrega.class, false);
     private final HorizontalLayout containerBotoesAcao = new HorizontalLayout();
 
+    // Cache local de entregas para realizar as filtragens rapidamente em memória
+    private List<Entrega> todasEntregasDoCarregamento = new ArrayList<>();
+    private String filtroAtivo = "TODOS";
+
+    // Referências dos botões para aplicar o destaque visual do filtro selecionado
+    private Button btnFiltroTodos;
+    private Button btnFiltroColog;
+    private Button btnFiltroReentregas;
+
     @SuppressWarnings("null")
-    // 3. INJEÇÃO NO CONSTRUTOR
     public EntregasView(CarregamentoRepository carregamentoRepository, 
                         EntregaRepository entregaRepository, 
                         PdfService pdfService) {
@@ -12643,118 +12732,68 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
         setPadding(true);
         setSpacing(true);
 
-        // Fundo escuro da tela principal
         getStyle()
             .set("background-color", "#0f172a")
             .set("color", "#f8fafc")
             .set("min-height", "100vh");
 
- // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
-UI.getCurrent().getPage().executeJs(
-    "var style = document.createElement('style');" +
-    "style.innerHTML = '" +
-    "  /* FORÇA VARIÁVEIS NATIVAS DE TEXTO DO VAADIN (DENTRO DO SHADOW DOM) */ " +
-    "  html, body, :root, vaadin-text-field, vaadin-date-picker, vaadin-select, vaadin-combo-box, vaadin-text-area { " +
-    "    --lumo-body-text-color: #ffffff !important; " +
-    "    --lumo-secondary-text-color: #64748b !important; " +
-    "    --lumo-contrast-90pct: #ffffff !important; " +
-    "    --vaadin-input-field-value-color: #ffffff !important; " +
-    "  } " +
+        UI.getCurrent().getPage().executeJs(
+            "var style = document.createElement('style');" +
+            "style.innerHTML = '" +
+            "  :root, body, vaadin-dialog-overlay, vaadin-form-layout, vaadin-text-field, vaadin-date-picker, vaadin-select, vaadin-combo-box, vaadin-text-area { " +
+            "    --lumo-body-text-color: #ffffff !important; " +
+            "    --lumo-secondary-text-color: #94a3b8 !important; " +
+            "    --lumo-primary-text-color: #38bdf8 !important; " +
+            "    --vaadin-input-field-value-color: #ffffff !important; " +
+            "  } " +
+            "  vaadin-text-field::part(input-field), " +
+            "  vaadin-date-picker::part(input-field), " +
+            "  vaadin-select::part(input-field), " +
+            "  vaadin-combo-box::part(input-field), " +
+            "  vaadin-text-area::part(input-field), " +
+            "  vaadin-input-container { " +
+            "    background-color: #1e293b !important; " +
+            "    color: #ffffff !important; " +
+            "    border: 1px solid #334155 !important; " +
+            "    border-radius: 6px !important; " +
+            "  } " +
+            "  vaadin-text-field input, " +
+            "  vaadin-date-picker input, " +
+            "  vaadin-select input, " +
+            "  vaadin-combo-box input, " +
+            "  vaadin-text-area textarea, " +
+            "  [slot=\"input\"] { " +
+            "    color: #ffffff !important; " +
+            "    -webkit-text-fill-color: #ffffff !important; " +
+            "  } " +
+            "  label[slot=\"label\"], " +
+            "  vaadin-text-field::part(label) { " +
+            "    color: #0f172a !important; " +
+            "    font-weight: 700 !important; " +
+            "  } " +
+            "  vaadin-grid { width: 100% !important; background-color: #1e293b !important; border: 1px solid #334155 !important; border-radius: 8px !important; } " +
+            "  vaadin-grid::part(cell) { background-color: #1e293b !important; color: #f8fafc !important; border-bottom: 1px solid #334155 !important; } " +
+            "  vaadin-grid::part(header-cell) { background-color: #0f172a !important; color: #94a3b8 !important; font-weight: 700 !important; } " +
+            "  vaadin-grid-cell-content { color: #f8fafc !important; font-size: 12px !important; } " +
+            "  .subtotal-row::part(cell) { background-color: #334155 !important; } " +
+            "  .subtotal-row vaadin-grid-cell-content { color: #38bdf8 !important; font-weight: bold !important; } " +
+            "  @media print { " +
+            "    @page { size: landscape; margin: 5mm; } " +
+            "    .no-print { display: none !important; } " +
+            "    body { background-color: #ffffff !important; color: #000000 !important; } " +
+            "    vaadin-grid, vaadin-grid *, vaadin-grid::part(row), vaadin-grid::part(cell) { transform: none !important; position: static !important; background-color: #ffffff !important; color: #000000 !important; } " +
+            "    vaadin-grid-cell-content { padding: 3px 4px !important; font-size: 9px !important; color: #000000 !important; } " +
+            "    .subtotal-row::part(cell) { background-color: #e5e7eb !important; } " +
+            "    .subtotal-row vaadin-grid-cell-content { color: #000000 !important; font-weight: bold !important; } " +
+            "  } " +
+            "';" +
+            "document.head.appendChild(style);"
+        );
 
-    "  /* VARIÁVEIS DE TEMA DO VAADIN (DARK GRID) */ " +
-    "  vaadin-grid { " +
-    "    width: 100% !important; " +
-    "    background-color: #1e293b !important; " +
-    "    border: 1px solid #334155 !important; " +
-    "    border-radius: 8px !important; " +
-    "  } " +
-    "  vaadin-grid::part(cell) { " +
-    "    background-color: #1e293b !important; " +
-    "    color: #f8fafc !important; " +
-    "    border-bottom: 1px solid #334155 !important; " +
-    "  } " +
-    "  vaadin-grid::part(header-cell) { " +
-    "    background-color: #0f172a !important; " +
-    "    color: #94a3b8 !important; " +
-    "    font-weight: 700 !important; " +
-    "    border-bottom: 2px solid #334155 !important; " +
-    "  } " +
-    "  vaadin-grid-cell-content { " +
-    "    color: #f8fafc !important; " +
-    "    font-size: 12px !important; " +
-    "    white-space: nowrap !important; " +
-    "    text-overflow: ellipsis !important; " +
-    "    overflow: hidden !important; " +
-    "  } " +
-
-    "  /* CORREÇÃO DOS INPUTS E CAMPOS DO FORMULÁRIO DE EDIÇÃO */ " +
-    "  vaadin-text-field::part(input-field), " +
-    "  vaadin-date-picker::part(input-field), " +
-    "  vaadin-select::part(input-field), " +
-    "  vaadin-combo-box::part(input-field), " +
-    "  vaadin-text-area::part(input-field) { " +
-    "    background-color: #1e293b !important; " +
-    "    border: 1px solid #334155 !important; " +
-    "    border-radius: 6px !important; " +
-    "  } " +
-    "  vaadin-text-field input, " +
-    "  vaadin-date-picker input, " +
-    "  vaadin-select input, " +
-    "  vaadin-combo-box input, " +
-    "  vaadin-text-area textarea { " +
-    "    color: #ffffff !important; " +
-    "    -webkit-text-fill-color: #ffffff !important; " + // Força preenchimento no Chrome/Edge
-    "    font-weight: 600 !important; " +
-    "  } " +
-    "  vaadin-text-field [part=\"label\"], " +
-    "  vaadin-date-picker [part=\"label\"], " +
-    "  vaadin-select [part=\"label\"], " +
-    "  vaadin-combo-box [part=\"label\"], " +
-    "  vaadin-text-area [part=\"label\"] { " +
-    "    color: #1e293b !important; " + // Rótulo escuro para contrastar com o card branco externo
-    "    font-weight: 700 !important; " +
-    "  } " +
-
-    "  /* LINHAS DE SUBTOTAL */ " +
-    "  .subtotal-row::part(cell) { " +
-    "    background-color: #334155 !important; " +
-    "  } " +
-    "  .subtotal-row vaadin-grid-cell-content { " +
-    "    color: #38bdf8 !important; " +
-    "    font-weight: bold !important; " +
-    "  } " +
-
-    "  /* REGRAS DE IMPRESSÃO */ " +
-    "  @media print { " +
-    "    @page { size: landscape; margin: 5mm; } " +
-    "    .no-print { display: none !important; } " +
-    "    body { background-color: #ffffff !important; color: #000000 !important; } " +
-    "    vaadin-grid { width: 100% !important; height: auto !important; max-height: none !important; overflow: visible !important; border: none !important; } " +
-    "    vaadin-grid, vaadin-grid *, vaadin-grid::part(row), vaadin-grid::part(cell) { " +
-    "      transform: none !important; " +
-    "      position: static !important; " +
-    "      background-color: #ffffff !important; " +
-    "      color: #000000 !important; " +
-    "    } " +
-    "    vaadin-grid-cell-content { " +
-    "      padding: 3px 4px !important; " +
-    "      font-size: 9px !important; " +
-    "      color: #000000 !important; " +
-    "    } " +
-    "    .subtotal-row::part(cell) { " +
-    "      background-color: #e5e7eb !important; " +
-    "    } " +
-    "    .subtotal-row vaadin-grid-cell-content { color: #000000 !important; font-weight: bold !important; } " +
-    "  } " +
-    "';" +
-    "document.head.appendChild(style);"
-);
-        // Botão Voltar
         Button btnVoltar = new Button("← Voltar para Carregamentos", e -> UI.getCurrent().navigate(""));
         btnVoltar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         btnVoltar.addClassName("no-print");
 
-        // Botão Imprimir (Corrigido o contraste para não ficar ofuscado)
         Button btnImprimir = new Button("🖨️ Imprimir / Visualizar", e -> UI.getCurrent().getPage().executeJs("window.print();"));
         btnImprimir.getStyle()
                 .set("background-color", "#334155")
@@ -12765,15 +12804,17 @@ UI.getCurrent().getPage().executeJs(
         btnImprimir.addClassName("no-print");
 
         containerBotoesAcao.addClassName("no-print");
-
         titulo.getStyle().set("color", "#f8fafc").set("margin", "0");
 
-        HorizontalLayout topo = new HorizontalLayout(btnVoltar, titulo, containerBotoesAcao, btnImprimir);
+        // Criar a barra de cards de filtro
+        HorizontalLayout layoutFiltrosCards = criarLayoutFiltros();
+        layoutFiltrosCards.addClassName("no-print");
+
+        HorizontalLayout topo = new HorizontalLayout(btnVoltar, titulo, layoutFiltrosCards, containerBotoesAcao, btnImprimir);
         topo.setWidthFull();
         topo.setAlignItems(Alignment.CENTER);
         topo.setFlexGrow(1, titulo);
 
-        // Cards Superiores (Incluindo TOTAL NF's e ENTREGAS)
         HorizontalLayout cardsLayout = new HorizontalLayout(
                 criarCard("MOTORISTA", txtMotorista, "#06b6d4"),
                 criarCard("PLACA", txtPlaca, "#f59e0b"),
@@ -12786,7 +12827,6 @@ UI.getCurrent().getPage().executeJs(
         );
         cardsLayout.setWidthFull();
 
-        // Configuração das Colunas do Grid
         grid.addColumn(ItemGridEntrega::getDelivery)
             .setHeader("DELIVERY")
             .setWidth("130px")
@@ -12819,11 +12859,68 @@ UI.getCurrent().getPage().executeJs(
             .setFlexGrow(0);
 
         grid.setClassNameGenerator(item -> item.isSubtotal() ? "subtotal-row" : null);
-
         grid.setWidthFull();
         grid.setAllRowsVisible(true);
 
         add(topo, cardsLayout, grid);
+    }
+
+    private HorizontalLayout criarLayoutFiltros() {
+        HorizontalLayout layout = new HorizontalLayout();
+        layout.setSpacing(true);
+        layout.setAlignItems(Alignment.CENTER);
+
+        btnFiltroColog = criarBotaoFiltroCard("Colog / Nutrícia", "COLOG");
+        btnFiltroTodos = criarBotaoFiltroCard("Todos", "TODOS");
+        btnFiltroReentregas = criarBotaoFiltroCard("Reentregas", "REENTREGAS");
+
+        layout.add(btnFiltroColog, btnFiltroTodos, btnFiltroReentregas);
+        atualizarEstiloBotoesFiltro();
+        return layout;
+    }
+
+    private Button criarBotaoFiltroCard(String rotulo, String codigoFiltro) {
+        Button btn = new Button(rotulo);
+        btn.getStyle()
+                .set("font-weight", "bold")
+                .set("font-size", "0.95rem")
+                .set("padding", "8px 20px")
+                .set("border-radius", "8px")
+                .set("cursor", "pointer")
+                .set("transition", "all 0.2s ease-in-out");
+
+        btn.addClickListener(e -> {
+            this.filtroAtivo = codigoFiltro;
+            atualizarEstiloBotoesFiltro();
+            aplicarFiltroEAtualizarGrid();
+        });
+
+        return btn;
+    }
+
+    private void atualizarEstiloBotoesFiltro() {
+        aplicarEstiloIndividual(btnFiltroColog, "COLOG".equals(filtroAtivo), "#0ea5e9");
+        aplicarEstiloIndividual(btnFiltroTodos, "TODOS".equals(filtroAtivo), "#2563eb");
+        aplicarEstiloIndividual(btnFiltroReentregas, "REENTREGAS".equals(filtroAtivo), "#0d9488");
+    }
+
+    private void aplicarEstiloIndividual(Button btn, boolean ativo, String corPrincipal) {
+        if (btn == null) return;
+        if (ativo) {
+            btn.getStyle()
+                    .set("background-color", corPrincipal)
+                    .set("color", "#ffffff")
+                    .set("border", "2px solid #ffffff")
+                    .set("box-shadow", "0 0 10px " + corPrincipal)
+                    .set("transform", "scale(1.05)");
+        } else {
+            btn.getStyle()
+                    .set("background-color", "#1e293b")
+                    .set("color", "#94a3b8")
+                    .set("border", "1px solid #334155")
+                    .set("box-shadow", "none")
+                    .set("transform", "scale(1.0)");
+        }
     }
 
     @Override
@@ -12841,39 +12938,61 @@ UI.getCurrent().getPage().executeJs(
                 Button pdfButton = new Button("📄 Baixar PDF");
                 pdfButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
 
-                // Define o StreamResource diretamente no Vaadin
-StreamResource resource = new StreamResource("carregamento_" + carregamento.getId() + ".pdf", () -> {
-    try {
-        List<Entrega> entregas = entregaRepository.findByCarregamentoId(carregamento.getId());
-        byte[] pdfBytes = pdfService.gerarPdfCarregamento(carregamento, entregas);
+                StreamResource resource = new StreamResource("carregamento_" + carregamento.getId() + ".pdf", () -> {
+                    try {
+                        List<Entrega> entregas = entregaRepository.findByCarregamentoId(carregamento.getId());
+                        byte[] pdfBytes = pdfService.gerarPdfCarregamento(carregamento, entregas);
 
-        if (pdfBytes == null || pdfBytes.length == 0) {
-            System.err.println("⚠ PDF gerado com byte array vazio/nulo.");
-            return new ByteArrayInputStream(new byte[0]);
-        }
+                        if (pdfBytes == null || pdfBytes.length == 0) {
+                            return new ByteArrayInputStream(new byte[0]);
+                        }
 
-        return new ByteArrayInputStream(pdfBytes);
-    } catch (Exception e) {
-        System.err.println("❌ Erro durante a geração do PDF no StreamResource:");
-        e.printStackTrace();
-        return new ByteArrayInputStream(new byte[0]);
-    }
-});
+                        return new ByteArrayInputStream(pdfBytes);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return new ByteArrayInputStream(new byte[0]);
+                    }
+                });
 
-// Garanta a especificação do MIME Type de PDF
-resource.setContentType("application/pdf");
-resource.setCacheTime(0);
+                resource.setContentType("application/pdf");
+                resource.setCacheTime(0);
 
-Anchor btnPdf = new Anchor(resource, "");
-btnPdf.getElement().setAttribute("download", true);
-btnPdf.add(pdfButton);
+                Anchor btnPdf = new Anchor(resource, "");
+                btnPdf.getElement().setAttribute("download", true);
+                btnPdf.add(pdfButton);
+                containerBotoesAcao.add(btnPdf);
             });
 
-            List<Entrega> entregas = entregaRepository.findByCarregamentoId(carregamentoId);
-            List<ItemGridEntrega> itensExibicao = processarEntregasComSubtotais(entregas);
-
-            grid.setItems(itensExibicao);
+            todasEntregasDoCarregamento = entregaRepository.findByCarregamentoId(carregamentoId);
+            aplicarFiltroEAtualizarGrid();
         }
+    }
+
+    private void aplicarFiltroEAtualizarGrid() {
+        List<Entrega> entregasFiltradas;
+
+        switch (filtroAtivo) {
+            case "REENTREGAS":
+                entregasFiltradas = todasEntregasDoCarregamento.stream()
+                        .filter(e -> e.getOrigemSheet() != null && e.getOrigemSheet().toUpperCase().contains("REENTREGAS"))
+                        .collect(Collectors.toList());
+                break;
+
+            case "COLOG":
+                entregasFiltradas = todasEntregasDoCarregamento.stream()
+                        .filter(e -> e.getOrigemSheet() != null && 
+                                (e.getOrigemSheet().toUpperCase().contains("COLOG") || e.getOrigemSheet().toUpperCase().contains("NUTRICIA")))
+                        .collect(Collectors.toList());
+                break;
+
+            case "TODOS":
+            default:
+                entregasFiltradas = new ArrayList<>(todasEntregasDoCarregamento);
+                break;
+        }
+
+        List<ItemGridEntrega> itensExibicao = processarEntregasComSubtotais(entregasFiltradas);
+        grid.setItems(itensExibicao);
     }
 
     private List<ItemGridEntrega> processarEntregasComSubtotais(List<Entrega> entregas) {
@@ -12902,10 +13021,9 @@ btnPdf.add(pdfButton);
 
         DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
         
-        // Atualiza os contadores gerais dos cards
         txtPesoTotal.setText(df.format(pesoGeral) + " kg");
         txtTotalNfs.setText(String.valueOf(entregas.size()));
-        txtTotalEntregas.setText(String.valueOf(entregasPorGrupo.size())); // Cada grupo/cliente = 1 entrega
+        txtTotalEntregas.setText(String.valueOf(entregasPorGrupo.size()));
 
         for (Map.Entry<String, List<Entrega>> entry : entregasPorGrupo.entrySet()) {
             List<Entrega> listaDoGrupo = entry.getValue();
@@ -12960,30 +13078,26 @@ btnPdf.add(pdfButton);
     }
 
     private double converterPesoParaDouble(String pesoStr) {
-    if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
-    try {
-        // Mantém apenas dígitos, vírgula e ponto
-        String limpo = pesoStr.replaceAll("[^0-9,. ]", "").trim();
+        if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
+        try {
+            String limpo = pesoStr.replaceAll("[^0-9,. ]", "").trim();
 
-        // Se tem ponto e vírgula (ex: "2.577,68" ou "2,577.68")
-        if (limpo.contains(",") && limpo.contains(".")) {
-            if (limpo.lastIndexOf(",") > limpo.lastIndexOf(".")) {
-                limpo = limpo.replace(".", "").replace(",", ".");
-            } else {
-                limpo = limpo.replace(",", "");
+            if (limpo.contains(",") && limpo.contains(".")) {
+                if (limpo.lastIndexOf(",") > limpo.lastIndexOf(".")) {
+                    limpo = limpo.replace(".", "").replace(",", ".");
+                } else {
+                    limpo = limpo.replace(",", "");
+                }
+            } else if (limpo.contains(",")) {
+                limpo = limpo.replace(",", ".");
             }
-        } 
-        // Se tem apenas vírgula (ex: "2577,68")
-        else if (limpo.contains(",")) {
-            limpo = limpo.replace(",", ".");
-        } 
-        // Se tem apenas ponto (ex: "2577.679" do Excel) -> O ponto É O DECIMAL, não deve ser removido!
 
-        return Double.parseDouble(limpo);
-    } catch (Exception e) {
-        return 0.0;
+            return Double.parseDouble(limpo);
+        } catch (Exception e) {
+            return 0.0;
+        }
     }
-}
+
     private Div criarCard(String titulo, Span valor, String corBorda) {
         return criarCard(titulo, valor, corBorda, false);
     }
@@ -13057,9 +13171,9 @@ Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/LoginView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-18 16:23:34 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 14:42:38 (America/Bahia / GMT-03:00)
-MD5: bd1f7a7a09347c4725bfe6c7c566ff95
-SHA256: d137f21ab41279b73bc4ddd95804f0ba1a14dd1810ab5f972711dda701e268dc
+Modified: 2026-08-22 19:35:27 (America/Bahia / GMT-03:00)
+MD5: d40849151a386929bba03193b781f7d4
+SHA256: 9b8aa46c5b3111c429f4b303e11b972a571368b3c9955e90ea1787fb47ff6930
 Encoding: UTF-8
 
 FILE CONTENT:
@@ -13067,7 +13181,7 @@ FILE CONTENT:
 package br.com.ivanildo.tms.views;
 
 import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.dependency.StyleSheet;
+//import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.login.LoginForm;
@@ -13168,15 +13282,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/MainView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 16.64 KB
+Size: 17.83 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/MainView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 13:55:41 (America/Bahia / GMT-03:00)
-MD5: 81dd1eb06bbc1c94cd6f0c2f068161c3
-SHA256: 62f9385300dc915ebf3b8e2473328f574dc3dd2a3f4e9050e7457f1b0d55d17e
+Modified: 2026-08-22 19:59:10 (America/Bahia / GMT-03:00)
+MD5: 8ec047728d0d0548ca25bde8b74e2d25
+SHA256: 09fa027a1d37b78316987610efdc4f90e9c15c83d2ff22fd523b61864ba1a0ee
 Encoding: ASCII
 
 FILE CONTENT:
@@ -13187,7 +13301,7 @@ import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.service.ExcelService;
 import jakarta.annotation.security.PermitAll;
-
+import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -13440,6 +13554,12 @@ uploadExcel.addFailedListener(event -> {
         Dialog dialog = new Dialog();
         dialog.setHeaderTitle(carregamento.getId() == null ? "Novo Carregamento" : "Editar Carregamento #" + carregamento.getId());
 
+        // Define as cores base do Dialog para o tema dark
+        dialog.getElement().getStyle()
+            .set("--lumo-base-color", "#0f172a")
+            .set("--lumo-body-text-color", "#ffffff")
+            .set("--lumo-header-text-color", "#ffffff");
+
         FormLayout form = new FormLayout();
 
         TextField txtData = new TextField("Data Programação");
@@ -13472,6 +13592,18 @@ uploadExcel.addFailedListener(event -> {
 
         TextField txtObs = new TextField("Observação");
         txtObs.setValue(carregamento.getObservacao() != null ? carregamento.getObservacao() : "");
+
+        // Aplica o estilo escuro com texto claro em cada campo
+        estilizarCampoEscuro(txtData);
+        estilizarCampoEscuro(txtTransp);
+        estilizarCampoEscuro(txtPlaca);
+        estilizarCampoEscuro(txtTipoVeiculo);
+        estilizarCampoEscuro(txtViagem);
+        estilizarCampoEscuro(txtOrdemCarga);
+        estilizarCampoEscuro(txtPeso);
+        estilizarCampoEscuro(txtEncaixe);
+        estilizarCampoEscuro(cbStatus);
+        estilizarCampoEscuro(txtObs);
 
         form.add(txtData, txtTransp, txtPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbStatus, txtObs);
         dialog.add(form);
@@ -13557,7 +13689,17 @@ uploadExcel.addFailedListener(event -> {
             return 0.0;
         }
     }
-} // <- Esta é a ÚLTIMA CHAVE que fecha a classe MainView
+
+    private void estilizarCampoEscuro(HasElement campo) {
+    campo.getElement().getStyle()
+        .set("background-color", "#1e293b")
+        .set("--vaadin-input-field-value-color", "#ffffff")
+        .set("--lumo-body-text-color", "#ffffff")
+        .set("--lumo-secondary-text-color", "#94a3b8") // Define a cor das labels (rótulos) para azul claro/cinza visível
+        .set("--lumo-primary-text-color", "#ffffff")
+        .set("color", "#ffffff");
+}
+}
 
 
 ================================================================================
@@ -13955,7 +14097,7 @@ Extension: .html
 Language: html
 Location: target/classes/templates/entregas.html
 Relative Path: target/classes/templates
-Created: 2026-08-22 16:14:00 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 19:50:41 (America/Bahia / GMT-03:00)
 Modified: 2026-08-19 15:06:12 (America/Bahia / GMT-03:00)
 MD5: 6665e1d9621fc3667a9be7f173454777
 SHA256: 77437b52d27dd1614bc900dd80be3294e1525376f270d0beb8a236f53cffc078
@@ -14144,7 +14286,7 @@ Language: text
 Location: target/classes/application.properties
 Relative Path: target/classes
 Created: 2026-08-22 16:14:00 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 16:14:00 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 19:50:41 (America/Bahia / GMT-03:00)
 MD5: c19d3fc859c8c9fa24587583ffbe178d
 SHA256: 32f1e1678af9f835dad810d3b7f614004f98f912b4b0bb2525139171f4c62369
 Encoding: UTF-8
