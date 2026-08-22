@@ -14,7 +14,7 @@ public class Application implements AppShellConfigurator {
     @PostConstruct
     public void init() {
         // Define o Locale padrão como Português (Brasil)
-        Locale.setDefault(Locale.of("pt", "BR"));
+        Locale.setDefault(new Locale.Builder().setLanguage("pt").setRegion("BR").build());
         // Define o Fuso Horário padrão (Brasília/Bahia)
         TimeZone.setDefault(TimeZone.getTimeZone("America/Bahia"));
     }

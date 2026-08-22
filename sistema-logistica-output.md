@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-22 17:40:13 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-22 17:50:23 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 246
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -193,13 +193,13 @@
 │       │                   │   ├── 📄 CarregamentoRepository.java (396 B)
 │       │                   │   └── 📄 EntregaRepository.java (599 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (13.29 KB)
+│       │                   │   ├── 📄 ExcelService.java (13.33 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 views/
 │       │                   │   ├── 📄 EntregasView.java (18.25 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
 │       │                   │   └── 📄 MainView.java (16.64 KB)
-│       │                   ├── 📄 Application.java (809 B)
+│       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (942 B)
 │       └── 📁 resources/
 │           ├── 📁 templates/
@@ -222,14 +222,14 @@
 │   │   │               │   ├── 📄 CarregamentoRepository.class (655 B)
 │   │   │               │   └── 📄 EntregaRepository.class (889 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (7.35 KB)
+│   │   │               │   ├── 📄 ExcelService.class (13.62 KB)
 │   │   │               │   └── 📄 PdfService.class (5.92 KB)
 │   │   │               ├── 📁 views/
 │   │   │               │   ├── 📄 EntregasView.class (23.12 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
 │   │   │               │   └── 📄 MainView.class (28.27 KB)
-│   │   │               ├── 📄 Application.class (1.04 KB)
+│   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
 │   │   ├── 📁 templates/
 │   │   │   └── 📄 entregas.html (7.96 KB)
@@ -12214,15 +12214,15 @@ public interface EntregaRepository extends JpaRepository<Entrega, Long> {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-service-excelservice-java"></a>📄 `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 
 **File Info:**
-- **Size**: 13.29 KB
+- **Size**: 13.33 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/service`
 - **Created**: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-22 17:39:34 (America/Bahia / GMT-03:00)
-- **MD5**: `b2e2d56e30db83554ab577dc262c4788`
-- **SHA256**: `c3211bc7f16221f8088c9d5c4bb87cfda6ab487c513d3df5b0a5d1d1e9b6521c`
+- **Modified**: 2026-08-22 17:50:22 (America/Bahia / GMT-03:00)
+- **MD5**: `9c9c52f2491cde1998ad1db4ad3be5f7`
+- **SHA256**: `787e495c1278a215c7da58e40225c46313dad326446541ff613642640861e504`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -12267,7 +12267,7 @@ public class ExcelService {
                 .open(inputStream)) {
 
             // FORCEI O LOCALE pt_BR AQUI PARA GARANTIR COMPORTAMENTO IDENTICO NO RENDER E LOCALHOST
-            DataFormatter formatter = new DataFormatter(Locale.of("pt", "BR"));
+            DataFormatter formatter = new DataFormatter(new Locale.Builder().setLanguage("pt").setRegion("BR").build());
 
             // ==========================================
             // 1. LEITURA DA PRIMEIRA ABA (CARREGAMENTOS)
@@ -13616,15 +13616,15 @@ uploadExcel.addFailedListener(event -> {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-application-java"></a>📄 `src/main/java/br/com/ivanildo/tms/Application.java`
 
 **File Info:**
-- **Size**: 809 B
+- **Size**: 850 B
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/Application.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms`
 - **Created**: 2026-08-16 19:03:58 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-22 17:40:12 (America/Bahia / GMT-03:00)
-- **MD5**: `0809ed6d2a7b28e258b4e283b056a110`
-- **SHA256**: `bd904044183c2eb46441ccdae1812712f8e4cbc9c7db5c66bf42491f4918d46c`
+- **Modified**: 2026-08-22 17:49:52 (America/Bahia / GMT-03:00)
+- **MD5**: `100ec77f7e761abd34347a9498c292f5`
+- **SHA256**: `eef4cfb6a9e9d3af24909e4608730f98bdde5cf9d58859d641a0f7580065784c`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -13646,7 +13646,7 @@ public class Application implements AppShellConfigurator {
     @PostConstruct
     public void init() {
         // Define o Locale padrão como Português (Brasil)
-        Locale.setDefault(Locale.of("pt", "BR"));
+        Locale.setDefault(new Locale.Builder().setLanguage("pt").setRegion("BR").build());
         // Define o Fuso Horário padrão (Brasília/Bahia)
         TimeZone.setDefault(TimeZone.getTimeZone("America/Bahia"));
     }

@@ -37,7 +37,7 @@ public class ExcelService {
                 .open(inputStream)) {
 
             // FORCEI O LOCALE pt_BR AQUI PARA GARANTIR COMPORTAMENTO IDENTICO NO RENDER E LOCALHOST
-            DataFormatter formatter = new DataFormatter(Locale.of("pt", "BR"));
+            DataFormatter formatter = new DataFormatter(new Locale.Builder().setLanguage("pt").setRegion("BR").build());
 
             // ==========================================
             // 1. LEITURA DA PRIMEIRA ABA (CARREGAMENTOS)
