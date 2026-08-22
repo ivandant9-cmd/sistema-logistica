@@ -15,6 +15,7 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 @Service
@@ -35,7 +36,8 @@ public class ExcelService {
                 .bufferSize(4096)
                 .open(inputStream)) {
 
-            DataFormatter formatter = new DataFormatter();
+            // FORCEI O LOCALE pt_BR AQUI PARA GARANTIR COMPORTAMENTO IDENTICO NO RENDER E LOCALHOST
+            DataFormatter formatter = new DataFormatter(Locale.of("pt", "BR"));
 
             // ==========================================
             // 1. LEITURA DA PRIMEIRA ABA (CARREGAMENTOS)
@@ -85,7 +87,7 @@ public class ExcelService {
                 c.setTipoVeiculo(getValorPorColuna(row, colunasCarregamentos, "TIPODEVEICULO", formatter));
                 c.setViagem(getValorPorColuna(row, colunasCarregamentos, "VIAGEM", formatter));
                 c.setOrdemCarga(getValorPorColuna(row, colunasCarregamentos, "ORDEMDECARGA", formatter));
-                c.setPeso(getValorPorColuna(row, colunasCarregamentos, "PESO", formatter));
+                c.setPeso(tratarValorPeso(row, colunasCarregamentos, "PESO", formatter));
                 c.setEncaixe(getValorPorColuna(row, colunasCarregamentos, "ENCAIXE", formatter));
                 c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", formatter));
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter));
@@ -153,7 +155,7 @@ public class ExcelService {
                     String cliente = getValorFlexivel(row, colunasEntregas, "CLIENTE", 7, formatter);
                     String bairro = getValorFlexivel(row, colunasEntregas, "BAIRRO", 9, formatter);
                     String cidade = getValorFlexivel(row, colunasEntregas, "CIDADE", 10, formatter);
-                    String peso = getValorFlexivel(row, colunasEntregas, "PESO", 14, formatter);
+                    String peso = tratarValorPesoFlexivel(row, colunasEntregas, "PESO", 14, formatter);
 
                     if (delivery.isEmpty() && nf.isEmpty()) continue;
 
@@ -239,6 +241,33 @@ public class ExcelService {
         Integer index = colunas.get(normalizarTexto(nomeColuna));
         if (index == null) return "";
         return getValorCelula(row.getCell(index), formatter);
+    }
+
+    // =========================================================================
+    // TRATAMENTO ESPECÍFICO PARA PESO (EVITA DIVERGÊNCIA PONTO X VÍRGULA NO RENDER)
+    // =========================================================================
+    private String tratarValorPeso(Row row, Map<String, Integer> colunas, String nomeColuna, DataFormatter formatter) {
+        Integer index = colunas.get(normalizarTexto(nomeColuna));
+        if (index == null) return "0";
+        return normalizarFormatoPeso(getValorCelula(row.getCell(index), formatter));
+    }
+
+    private String tratarValorPesoFlexivel(Row row, Map<String, Integer> colunas, String nomeColuna, int indiceFallback, DataFormatter formatter) {
+        String val = getValorFlexivel(row, colunas, nomeColuna, indiceFallback, formatter);
+        return normalizarFormatoPeso(val);
+    }
+
+    private String normalizarFormatoPeso(String valorRaw) {
+        if (valorRaw == null || valorRaw.trim().isEmpty()) return "0";
+        String v = valorRaw.trim();
+        
+        // Se contiver vírgula usada como separador decimal (ex: "10,572" vindo de Locale pt_BR formatado)
+        // e for um número de milhar sem decimais adicionais, converte para padrão inteiro/ponto
+        if (v.contains(",") && !v.contains(".")) {
+            // Se tiver no formato americano ou pt_BR alterado pelo StreamingReader
+            v = v.replace(",", ".");
+        }
+        return v;
     }
 
     private String getValorCelula(Cell cell, DataFormatter formatter) {

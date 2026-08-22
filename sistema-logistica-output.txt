@@ -5,8 +5,8 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-22 16:13:20 (America/Bahia / GMT-03:00)
-Total Files Processed: 263
+Generated On: 2026-08-22 17:40:13 (America/Bahia / GMT-03:00)
+Total Files Processed: 246
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
 
@@ -195,13 +195,13 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 CarregamentoRepository.java (396 B)
 │       │                   │   └── 📄 EntregaRepository.java (599 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (11.71 KB)
+│       │                   │   ├── 📄 ExcelService.java (13.29 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 views/
 │       │                   │   ├── 📄 EntregasView.java (18.25 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
 │       │                   │   └── 📄 MainView.java (16.64 KB)
-│       │                   ├── 📄 Application.java (414 B)
+│       │                   ├── 📄 Application.java (809 B)
 │       │                   └── 📄 DataInitializer.java (942 B)
 │       └── 📁 resources/
 │           ├── 📁 templates/
@@ -214,9 +214,9 @@ PROJECT STRUCTURE
 │   │   │       └── 📁 ivanildo/
 │   │   │           └── 📁 tms/
 │   │   │               ├── 📁 config/
-│   │   │               │   └── 📄 SecurityConfig.class (4.82 KB)
+│   │   │               │   └── 📄 SecurityConfig.class (4.56 KB)
 │   │   │               ├── 📁 controller/
-│   │   │               │   └── 📄 PdfController.class (4.68 KB)
+│   │   │               │   └── 📄 PdfController.class (4.59 KB)
 │   │   │               ├── 📁 model/
 │   │   │               │   ├── 📄 Carregamento.class (3.51 KB)
 │   │   │               │   └── 📄 Entrega.class (2.71 KB)
@@ -224,14 +224,14 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 CarregamentoRepository.class (655 B)
 │   │   │               │   └── 📄 EntregaRepository.class (889 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (12.51 KB)
-│   │   │               │   └── 📄 PdfService.class (6.04 KB)
+│   │   │               │   ├── 📄 ExcelService.class (7.35 KB)
+│   │   │               │   └── 📄 PdfService.class (5.92 KB)
 │   │   │               ├── 📁 views/
-│   │   │               │   ├── 📄 EntregasView.class (23.28 KB)
+│   │   │               │   ├── 📄 EntregasView.class (23.12 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
 │   │   │               │   └── 📄 MainView.class (28.27 KB)
-│   │   │               ├── 📄 Application.class (786 B)
+│   │   │               ├── 📄 Application.class (1.04 KB)
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
 │   │   ├── 📁 templates/
 │   │   │   └── 📄 entregas.html (7.96 KB)
@@ -308,36 +308,12 @@ PROJECT STRUCTURE
 │   │   └── 📄 package-lock.json (594.16 KB)
 │   ├── 📁 generated-sources/
 │   │   └── 📁 annotations/
-│   ├── 📁 maven-archiver/
-│   │   └── 📄 pom.properties (60 B)
 │   ├── 📁 maven-status/
 │   │   └── 📁 maven-compiler-plugin/
 │   │       └── 📁 compile/
 │   │           └── 📁 default-compile/
 │   │               ├── 📄 createdFiles.lst (660 B)
 │   │               └── 📄 inputFiles.lst (1.32 KB)
-│   ├── 📁 plugins/
-│   │   ├── 📁 application-theme-plugin/
-│   │   │   ├── 📄 application-theme-plugin.js (2.17 KB)
-│   │   │   ├── 📄 package.json (579 B)
-│   │   │   ├── 📄 theme-copy.js (7.19 KB)
-│   │   │   ├── 📄 theme-generator.js (10.78 KB)
-│   │   │   └── 📄 theme-handle.js (10.08 KB)
-│   │   ├── 📁 build-status-plugin/
-│   │   │   ├── 📄 build-status-plugin.js (1.72 KB)
-│   │   │   └── 📄 package.json (375 B)
-│   │   ├── 📁 rollup-plugin-postcss-lit-custom/
-│   │   │   ├── 📄 package.json (393 B)
-│   │   │   └── 📄 rollup-plugin-postcss-lit.js (3.38 KB)
-│   │   ├── 📁 theme-live-reload-plugin/
-│   │   │   ├── 📄 package.json (439 B)
-│   │   │   └── 📄 theme-live-reload-plugin.js (5.27 KB)
-│   │   └── 📁 theme-loader/
-│   │       ├── 📄 package.json (531 B)
-│   │       ├── 📄 theme-loader-utils.js (3.21 KB)
-│   │       └── 📄 theme-loader.js (1.34 KB)
-│   ├── 📄 tms-web-1.0.0.jar (89.09 MB)
-│   ├── 📄 tms-web-1.0.0.jar.original (621.63 KB)
 │   └── 📄 vaadin-dev-server-settings.json (1.07 KB)
 ├── 📄 Dockerfile (861 B)
 ├── 📄 package-lock.json (594.16 KB)
@@ -352,29 +328,27 @@ PROJECT STRUCTURE
 ================================================================================
 PROJECT STATISTICS
 ================================================================================
-Total Files: 263
-Total Directories: 63
-Text Files: 240
-Binary Files: 23
-Total Size: 94.49 MB
+Total Files: 246
+Total Directories: 56
+Text Files: 225
+Binary Files: 21
+Total Size: 4.74 MB
 
 FILE TYPES DISTRIBUTION:
 ------------------------------
-.js             : 153
+.js             : 144
 .ts             : 50
 .class          : 14
 .java           : 13
-.json           : 11
+.json           : 6
 .html           : 4
-.properties     : 4
+.properties     : 3
 .map            : 2
 .css            : 2
 .bundle         : 2
 .lst            : 2
 .jsx            : 1
 .md             : 1
-.jar            : 1
-.original       : 1
 no extension    : 1
 .xml            : 1
 
@@ -12152,15 +12126,15 @@ FILE: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 11.71 KB
+Size: 13.29 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 Relative Path: src/main/java/br/com/ivanildo/tms/service
 Created: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 16:01:26 (America/Bahia / GMT-03:00)
-MD5: 35721b1079b9039b5d021b79233e5e46
-SHA256: 29dc4899a65b6605a736d730abfc46a4f16985403064eb331e07d6920eb04df6
+Modified: 2026-08-22 17:39:34 (America/Bahia / GMT-03:00)
+MD5: b2e2d56e30db83554ab577dc262c4788
+SHA256: c3211bc7f16221f8088c9d5c4bb87cfda6ab487c513d3df5b0a5d1d1e9b6521c
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12182,6 +12156,7 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 @Service
@@ -12202,7 +12177,8 @@ public class ExcelService {
                 .bufferSize(4096)
                 .open(inputStream)) {
 
-            DataFormatter formatter = new DataFormatter();
+            // FORCEI O LOCALE pt_BR AQUI PARA GARANTIR COMPORTAMENTO IDENTICO NO RENDER E LOCALHOST
+            DataFormatter formatter = new DataFormatter(Locale.of("pt", "BR"));
 
             // ==========================================
             // 1. LEITURA DA PRIMEIRA ABA (CARREGAMENTOS)
@@ -12252,7 +12228,7 @@ public class ExcelService {
                 c.setTipoVeiculo(getValorPorColuna(row, colunasCarregamentos, "TIPODEVEICULO", formatter));
                 c.setViagem(getValorPorColuna(row, colunasCarregamentos, "VIAGEM", formatter));
                 c.setOrdemCarga(getValorPorColuna(row, colunasCarregamentos, "ORDEMDECARGA", formatter));
-                c.setPeso(getValorPorColuna(row, colunasCarregamentos, "PESO", formatter));
+                c.setPeso(tratarValorPeso(row, colunasCarregamentos, "PESO", formatter));
                 c.setEncaixe(getValorPorColuna(row, colunasCarregamentos, "ENCAIXE", formatter));
                 c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", formatter));
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter));
@@ -12320,7 +12296,7 @@ public class ExcelService {
                     String cliente = getValorFlexivel(row, colunasEntregas, "CLIENTE", 7, formatter);
                     String bairro = getValorFlexivel(row, colunasEntregas, "BAIRRO", 9, formatter);
                     String cidade = getValorFlexivel(row, colunasEntregas, "CIDADE", 10, formatter);
-                    String peso = getValorFlexivel(row, colunasEntregas, "PESO", 14, formatter);
+                    String peso = tratarValorPesoFlexivel(row, colunasEntregas, "PESO", 14, formatter);
 
                     if (delivery.isEmpty() && nf.isEmpty()) continue;
 
@@ -12406,6 +12382,33 @@ public class ExcelService {
         Integer index = colunas.get(normalizarTexto(nomeColuna));
         if (index == null) return "";
         return getValorCelula(row.getCell(index), formatter);
+    }
+
+    // =========================================================================
+    // TRATAMENTO ESPECÍFICO PARA PESO (EVITA DIVERGÊNCIA PONTO X VÍRGULA NO RENDER)
+    // =========================================================================
+    private String tratarValorPeso(Row row, Map<String, Integer> colunas, String nomeColuna, DataFormatter formatter) {
+        Integer index = colunas.get(normalizarTexto(nomeColuna));
+        if (index == null) return "0";
+        return normalizarFormatoPeso(getValorCelula(row.getCell(index), formatter));
+    }
+
+    private String tratarValorPesoFlexivel(Row row, Map<String, Integer> colunas, String nomeColuna, int indiceFallback, DataFormatter formatter) {
+        String val = getValorFlexivel(row, colunas, nomeColuna, indiceFallback, formatter);
+        return normalizarFormatoPeso(val);
+    }
+
+    private String normalizarFormatoPeso(String valorRaw) {
+        if (valorRaw == null || valorRaw.trim().isEmpty()) return "0";
+        String v = valorRaw.trim();
+        
+        // Se contiver vírgula usada como separador decimal (ex: "10,572" vindo de Locale pt_BR formatado)
+        // e for um número de milhar sem decimais adicionais, converte para padrão inteiro/ponto
+        if (v.contains(",") && !v.contains(".")) {
+            // Se tiver no formato americano ou pt_BR alterado pelo StreamingReader
+            v = v.replace(",", ".");
+        }
+        return v;
     }
 
     private String getValorCelula(Cell cell, DataFormatter formatter) {
@@ -13530,27 +13533,39 @@ FILE: src/main/java/br/com/ivanildo/tms/Application.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 414 B
+Size: 809 B
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/Application.java
 Relative Path: src/main/java/br/com/ivanildo/tms
 Created: 2026-08-16 19:03:58 (America/Bahia / GMT-03:00)
-Modified: 2026-08-17 21:41:00 (America/Bahia / GMT-03:00)
-MD5: db44bbda685c5c032a4f1f267723b4c9
-SHA256: 82fef15aa562dc9a34347f5e8037917ff4d245c4cf9ab05fa5a5a1345b044519
-Encoding: ASCII
+Modified: 2026-08-22 17:40:12 (America/Bahia / GMT-03:00)
+MD5: 0809ed6d2a7b28e258b4e283b056a110
+SHA256: bd904044183c2eb46441ccdae1812712f8e4cbc9c7db5c66bf42491f4918d46c
+Encoding: UTF-8
 
 FILE CONTENT:
 ----------------------------------------
 package br.com.ivanildo.tms;
 
 import com.vaadin.flow.component.page.AppShellConfigurator;
+import jakarta.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Locale;
+import java.util.TimeZone;
+
 @SpringBootApplication
 public class Application implements AppShellConfigurator {
+
+    @PostConstruct
+    public void init() {
+        // Define o Locale padrão como Português (Brasil)
+        Locale.setDefault(Locale.of("pt", "BR"));
+        // Define o Fuso Horário padrão (Brasília/Bahia)
+        TimeZone.setDefault(TimeZone.getTimeZone("America/Bahia"));
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -13904,7 +13919,7 @@ Extension: .html
 Language: html
 Location: target/classes/templates/entregas.html
 Relative Path: target/classes/templates
-Created: 2026-08-22 16:00:54 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:00 (America/Bahia / GMT-03:00)
 Modified: 2026-08-19 15:06:12 (America/Bahia / GMT-03:00)
 MD5: 6665e1d9621fc3667a9be7f173454777
 SHA256: 77437b52d27dd1614bc900dd80be3294e1525376f270d0beb8a236f53cffc078
@@ -14092,8 +14107,8 @@ Extension: .properties
 Language: text
 Location: target/classes/application.properties
 Relative Path: target/classes
-Created: 2026-08-22 11:43:10 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 16:00:54 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:00 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:00 (America/Bahia / GMT-03:00)
 MD5: c19d3fc859c8c9fa24587583ffbe178d
 SHA256: 32f1e1678af9f835dad810d3b7f614004f98f912b4b0bb2525139171f4c62369
 Encoding: UTF-8
@@ -14142,8 +14157,8 @@ Extension: .json
 Language: json
 Location: target/dev-bundle/config/stats.json
 Relative Path: target/dev-bundle/config
-Created: 2026-08-22 12:17:36 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 89f6f716f26fc12485bbd10747381367
 SHA256: 5e60ce7c8ca8044ab509605b276d74ef3d56e6fde9a4c4cf65ebb940061130b1
 Encoding: ASCII
@@ -14429,8 +14444,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/FlowBootstrap-CHUuW4WK.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 86c7b60228bd60b898bd22f12bb25dd6
 SHA256: 0ac22f6cb8eb2c1d41ed286f9eec90709698126fdb50db16582e64eafe9e063c
 Encoding: ASCII
@@ -14455,8 +14470,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/FlowClient-BZ2ixoyw.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 0edf40db2b012272c780faeab1a30432
 SHA256: fd1aeef752290c1dac7a285bc5c90c3534d0800c1a7f8f5cdbd197f498a67411
 Encoding: ASCII
@@ -14481,8 +14496,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/indexhtml-Du8jT2UJ.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 94607b356ceb7024eddfeb44c4a38765
 SHA256: 6f3d608a0cc2ca30e23e50cf2cc90af9b32590182c0be29a4b77c83e745c5f94
 Encoding: ASCII
@@ -16417,8 +16432,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-eed3b794-x4wEoWuw.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 4c7f1b33470813e29934eeb660049bb1
 SHA256: e1acc0b605fee12a2f9eabd1ce6dcf64ecf04cc5a761a91a491d2ba38cb6d741
 Encoding: ASCII
@@ -16441,8 +16456,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-heading-c0acdd6d-DjqfYOeg.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 2d3e588854e8977f1ae76bf297a2281e
 SHA256: d38d145714bfc9a439087613e934c62db8f0be985ea061855d0aa4178ac14c89
 Encoding: ASCII
@@ -16467,8 +16482,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-panel-616e55d6-CcXoReI0.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 38e9266f9ae0dc9b81fc24d031b4c6ee
 SHA256: 68b586741f94c4a55ebffcb31416053a7afdafa22b566d82e38e5ad8488659eb
 Encoding: ASCII
@@ -16493,8 +16508,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-app-layout-e56de2e9-v7qFiM9S.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 07d8b5f497c386a19054d6048c960dca
 SHA256: 743f9d3a672949152f72f661af821aae6d6bc198f422e22363735b83d0fd6dd2
 Encoding: ASCII
@@ -16517,8 +16532,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-avatar-7599297d-Dx8MH4_S.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 62aa60b042055fe9590c6651ebace309
 SHA256: ede3c2cae40a4d888a09dcc088f290789693db915883378af36af9f7aaa7c11c
 Encoding: ASCII
@@ -16541,8 +16556,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-big-decimal-field-e51def24-B0ISUm0a.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 8a751f1e811b8a3bd95246928b9faa52
 SHA256: 955fa00dc19911e879536f0b0a4872d17535171a1b6d086e160101779bbb36e6
 Encoding: ASCII
@@ -16565,8 +16580,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-board-828ebdea-D6A5W1Vf.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: b50544befd3e15321ac376177b7e2fa0
 SHA256: 2d5e47a52f0dfb7530b53e07875e1e3cf0aac4b6c9c3120a7d6083b33060fa7d
 Encoding: ASCII
@@ -16589,8 +16604,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-board-row-c70d0c55-CARv-Ytp.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: cadc5a136fae576afe2a5a274b852d83
 SHA256: 6688ff852de6366d82c3aff84fe9cc28670bca1e09eb3c86949e2aa8799606b3
 Encoding: ASCII
@@ -16615,8 +16630,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-button-2511ad84-DdNZWOiO.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: f64fa889e6364095f3a4d6a96848f994
 SHA256: c918370d7aec07bee7d2aa535d0ab63ce268d7efc95d8e47ade0dafa16a5d1dc
 Encoding: ASCII
@@ -16639,8 +16654,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-chart-5192dc15-BVhtw-o-.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: d570b819cde29cc3a8d9862414e23436
 SHA256: 84024123f9e92846946dfea92dbe6f880c230ddd79f3c6d40b5e8e79e207f5fe
 Encoding: ASCII
@@ -16663,8 +16678,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-4e68df64-DvclvLGE.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: baf5227b454848d78f40b0c3dfafe6e6
 SHA256: 052c2963f6ddec1535247a26defa08214a505701517c931463821711848eb4c8
 Encoding: ASCII
@@ -16687,8 +16702,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-group-a7c65bf2-CEFw_-kd.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 13efed50e9c014891e2ac865c4cd3807
 SHA256: d65789c247bc2b1c7eb85b21e9e6f2e922114fc26651192ec3d05c26a1c7d5fe
 Encoding: ASCII
@@ -16711,8 +16726,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-combo-box-96451ddd-1Bifuzxt.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 1be6ac7eacd5dd843993c4359a8aedcf
 SHA256: c087519fb3f466ac5c6955d1ec245ae9ec6595222da34b403601cdaa5c6627d4
 Encoding: ASCII
@@ -16735,8 +16750,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-confirm-dialog-4d718829-Ceqz0ChY.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 79bfd1de5149401748d0988f199fda99
 SHA256: c2578c85dbc691b9caebbc839023bf8e0d556940f9a624deba336c6d82b6a544
 Encoding: ASCII
@@ -16759,8 +16774,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-cookie-consent-46c09f8b-DUnWIILw.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 6d9193e2922a6411adbeb45e695f52e0
 SHA256: 3ad72e814bc3421b84612b444cbe9e57019cab724dd19dd4a5cc75fe21af2751
 Encoding: ASCII
@@ -16783,8 +16798,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-crud-8d161a22-DoBIr04W.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: bd9987f9a55faa9bda6904ed95dd5eec
 SHA256: 10123a265a54fbdd3dfbec5d3ded24872e68de27c0d83d610eaa4c5cd54c565d
 Encoding: ASCII
@@ -16807,8 +16822,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-custom-field-42c85b9e-D0S9B2ps.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 2c80cf7ef177f0200beb6153ae8681b0
 SHA256: 99804a8ae11350d61d6028e317afe02efd2144c1571251b31710718ead7fa56d
 Encoding: ASCII
@@ -16831,8 +16846,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-date-picker-f2001167-Bc9z4iwu.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: e214429884880fa8065bb195d8b14ae1
 SHA256: 0dac6eb3624f43c0266f266e7114352950a62381b3474b551c470413c6624f35
 Encoding: ASCII
@@ -16855,8 +16870,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-date-time-picker-c8c047a7-D_hLFyUB.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 12c6f0d4f088fca9fa5cb6cda3f375f3
 SHA256: 8fb5e35729ea9df538134040e0e3f99bfd5be5de071bb03e367f24b640f30ee8
 Encoding: ASCII
@@ -16879,8 +16894,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-details-bf336660-UFVRppTM.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 35e14c0bc59d9a87eec9cddedfd7cfc7
 SHA256: 7a68ca6cb55093fe0d89d4f020a4c2e3a16fbd354f798723197fc89469c698fe
 Encoding: ASCII
@@ -16903,8 +16918,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-details-summary-351a1448-B8DQ1POk.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: c79e8e1ed18c566f328c74794df39a38
 SHA256: e73d48ba9bd9c7cfb8a71e9920ba976d01f40720916d657496d4cca69273b50c
 Encoding: ASCII
@@ -16927,8 +16942,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-dialog-53253a08-DS-iH2E7.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: d810b552c826f7e35178814c6e3dde7a
 SHA256: 9136f83667a6a2c02fb0943b8c61db786a3805cfe128fb7af4fbd56bbfacef30
 Encoding: ASCII
@@ -16951,8 +16966,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-email-field-d7a35f04-CQWd7tb2.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 9f989527e17c47a6be25aca15994ce4f
 SHA256: 9bd60d1dc5a815a9a79d13dbd87d74024eb6bed5da1870a3b2a3401529a226ca
 Encoding: ASCII
@@ -16975,8 +16990,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-form-layout-47744b1d-Dyq_9Fnc.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 9ef25c54c9eaffce6a381ae67e3a5c8d
 SHA256: 808a48d292fe0ebe4736b10e9b97b67c21cc99bbcab91c806bf48f4eecb712ca
 Encoding: ASCII
@@ -16999,8 +17014,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-grid-0a4791c2-BwbJ_aMK.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: e43739dcca8f10c9517a3377a5ca2d18
 SHA256: e93b944e53f4ec08db08a38db4bf9a040b44c50c48be42e39b8ec7e476c39ea3
 Encoding: ASCII
@@ -17023,8 +17038,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-grid-pro-ff415555-ceQPkSkj.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 0e601379bcec78e0f11e7424721e2c1e
 SHA256: c3d390c64ec9c65a517f3463a9a683e0ae6cd70f931a24de3d3c7635d4137e51
 Encoding: ASCII
@@ -17047,8 +17062,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-horizontal-layout-3193943f-pB_HaYc9.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: b3dbd984ce2ef8cf38e730f8b3e0841a
 SHA256: 4a90bfea3dc36cce9657d02fe366e55f5816b3c2fc2aef9f00ae8098cde69819
 Encoding: ASCII
@@ -17071,8 +17086,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-icon-601f36ed-BfmIZ1YC.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: d15962f1aa6021f8c6c141fb23d24898
 SHA256: 6873755b38a0d3c464d2adb1e1fa24158be7c034ec85dffa6db45e2d01de963c
 Encoding: ASCII
@@ -17095,8 +17110,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-integer-field-85078932-BfMn5zlg.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: c8eba38e022b6a7fe58193de162a6ad1
 SHA256: 5a0934184bf13a92bd0aa2579a00a28a289c368ba5dc3ca5678b8d8b112296d1
 Encoding: ASCII
@@ -17119,8 +17134,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-list-box-d7a8433b-KnPNSS_9.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 95ce58366b67da7a259daf126bd0b346
 SHA256: ef4842b3c1111b11fb84e00e411225211019e4fb19e7a005a63bd0ed37dbfadf
 Encoding: ASCII
@@ -17143,8 +17158,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-login-form-638996c6-tNzWyckk.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: e97208cde5f9097498fdd4fbb069dfe9
 SHA256: 72cb4446808850b6883619472460228b2a1fb111bd0fcfbfdcc96e7dd69a697b
 Encoding: ASCII
@@ -17167,8 +17182,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-login-overlay-f8a5db8a-Cd-tLcjQ.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: d40db912dd1d170bb48c65fe923f815c
 SHA256: 9a23751e59a4248bf5c574486c21d01ea6065288d98038175264027538c0f47f
 Encoding: ASCII
@@ -17191,8 +17206,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-map-d40a0116-CivVMZiD.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 5d1b39f59734dbd83b19b70964f821fa
 SHA256: 9d3ca1333ef55ca4631a5e7bbc36232b7e78d7e8978567abb32d598d09e697fd
 Encoding: ASCII
@@ -17215,8 +17230,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-menu-bar-3f5ab096-CS27jroA.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: b081060002ac8672761403c02e81d40f
 SHA256: 5c8465e214d3eb3d5eb9965ab564434440db66d5265a4f4d44ded21f396e8aff
 Encoding: ASCII
@@ -17239,8 +17254,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-message-input-996ac37c-CLFg-ejF.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 82ea9aeadfdcfe423b83ebb4962b844a
 SHA256: 8f249c61d4e0eb2f049dfa40fabfa992a5d8a01415c109a709f3728b75b4c08e
 Encoding: ASCII
@@ -17263,8 +17278,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-message-list-70a435ba-BoZHQD4v.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 4dd11056d914b62e0cba23328691d3df
 SHA256: fc18aa88142a9eee5e45bcdc861919fa5eda42e808c4bdfe239825d445b3185b
 Encoding: ASCII
@@ -17287,8 +17302,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-multi-select-combo-box-a3373557-Dyi047tO.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: d907513905d0bb587d6212b4322788e6
 SHA256: 5fa188cb1d740ad19692dfb92a3c3b19e5bd2969d8b08210aee71cc9be58c13d
 Encoding: ASCII
@@ -17311,8 +17326,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-notification-bd6eb776-SR04L9mL.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 3abdae9636a437fcdc65c5b7b44197f5
 SHA256: 51ea72ea626334f38966cd83a599c081b2e15a6da961c92e8eb91aa2956a9a1b
 Encoding: ASCII
@@ -17335,8 +17350,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-number-field-cb3ee8b2-BS100eeT.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 28b4300f9ac613983b2dfc9b98852b07
 SHA256: 9ead3392b587c3500427a50ccc95e5b922d2ffc3820de4a876fc54c841ff57e5
 Encoding: ASCII
@@ -17359,8 +17374,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-password-field-d289cb18-bcBI9aQC.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: ec2cc181bd877539b92128c756354c6a
 SHA256: a9217ccc9b7bbc2c872833b0df356c8a9e703f836e4f22f3e373978dfde32b53
 Encoding: ASCII
@@ -17383,8 +17398,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-progress-bar-309ecf1f-ntGD33sQ.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 37a92c3dccd2fce2fee07dcffa967b96
 SHA256: f6eb57c284359e7025873293224cfe37d5765139cfc8ba5f7215805b68e47952
 Encoding: ASCII
@@ -17407,8 +17422,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-radio-group-88b5afd8-D8U8JoTN.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: d1a4791704da63e1a267dd550d1a5647
 SHA256: e5ce570a7a3b3e506e4c8e53225323ad7129166d94996c1f83d218f109bfbacd
 Encoding: ASCII
@@ -17431,8 +17446,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-rich-text-editor-8cd892f2-C6Sjt0Ez.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 951a8f5a3cca3a6812922863248cf5b3
 SHA256: 0cf3402466a93ef4cb9067ea6cd18fd542aef2c927b58d11d319774c94ff943d
 Encoding: ASCII
@@ -17455,8 +17470,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-scroller-35e68818-DGjNCzPf.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: e6027ea84c5c36f06a778f0ce30eeb14
 SHA256: bc09aff9d0c029e1769bc85f2748ed55455540998033d99312361cb1b8240d79
 Encoding: ASCII
@@ -17479,8 +17494,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-select-df6e9947-CixrsUZz.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: c51c2a21a3073bfaf206ec3695ce79bb
 SHA256: 6d6fce8916a3fcbff82422f7706f4e701020864b26c497900a4515515cea7ad8
 Encoding: ASCII
@@ -17503,8 +17518,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-ba80d91d-Di6gqDwo.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 4bfd1cac4d124ef2c051538b41a00d94
 SHA256: 0a98d120feb796291d3877f516a4b025d0b2c84beffa93725b46a720fe599c1b
 Encoding: ASCII
@@ -17527,8 +17542,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-item-34918f92-Dnn2-UV6.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 1302333549c3a3f86dc6cd45812bee21
 SHA256: df0d1510156e613ca212300d790378dfe2b2500f5366348d789df4616e85fbfb
 Encoding: ASCII
@@ -17553,8 +17568,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-split-layout-80c92131-CKADFF0Q.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 6eba7802359299af87d45260917e391c
 SHA256: d798a36014b08e67bd7ee3e3281eca4beb7ebf50f0116be2f7fd3a227600402c
 Encoding: ASCII
@@ -17577,8 +17592,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-spreadsheet-59d8c5ef-BDrhG0uv.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: e6468ba2d645ebd3c97247f4d3de30fb
 SHA256: 5071760c63acc945d55c7cd596d3723b7b62fb457bcb5dca75a152ae95fad6ac
 Encoding: ASCII
@@ -17601,8 +17616,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-tab-aaf32809-C93o1g92.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: e198b46678700b933cdc62a46fb908ce
 SHA256: 831761d78e849db20d81a37eac0070432f3dedffe1189b9f017a9a1ca856cbf0
 Encoding: ASCII
@@ -17626,8 +17641,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-tabs-d9a5e24e-Bu6p7Spj.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 910af44ea228ad21b56dbcf9cc36d882
 SHA256: cb57ab4a89ff93e7be15f101b44b723fcf689459b9001510a920611b519d4b39
 Encoding: ASCII
@@ -17650,8 +17665,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-tabsheet-dd99ed9a-CMPIGuNi.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: c0497143e2ed9260e0eba891ac8b4389
 SHA256: 374ae01016937ed8a2d1bfde15aec5854f96647e970428b9d512cefed9aaf051
 Encoding: ASCII
@@ -17674,8 +17689,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-text-area-83627ebc-BTXCnrxz.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: fa88e14bbebeaebc5acd5cd769a0ab2a
 SHA256: d12e7f097bc5bff4f4bec793472f3c254a16b471e95e6888b662c6bac004fdfd
 Encoding: ASCII
@@ -17698,8 +17713,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-text-field-0b3db014-1cUNSZgA.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 359d04b243417d2525a0eb63564594f6
 SHA256: c458d007afc76de2b8102678d0f10ef740e9232ed56ccd1d10c1662b6aaa85ea
 Encoding: ASCII
@@ -17722,8 +17737,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-time-picker-715ec415-DlHt8OBC.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 50606ea280f21ace6ef3e8955de3cd3f
 SHA256: 5e36bd1db1eda0f790ae115f55c648e34fb4b3a3000d195aec5fc1abd749e43b
 Encoding: ASCII
@@ -17746,8 +17761,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-upload-d3c162ed-C9QWwnSG.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 6790f4e92c2e67e2f42e801366d04d4a
 SHA256: d852ce0dffc667ef9e76bc76b5660f6f14f78608095b67b75165b93f87827ca4
 Encoding: ASCII
@@ -17770,8 +17785,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-vertical-layout-ad4174c4-DlrSPLkj.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 3df01faa15e6c0846cfa20d3bccee3e9
 SHA256: 01be7bcc081f1d61fa5e73e934e9235e9a5f7778e7b4a0cab975eb083bb14611
 Encoding: ASCII
@@ -17794,8 +17809,8 @@ Extension: .js
 Language: javascript
 Location: target/dev-bundle/webapp/VAADIN/build/vaadin-virtual-list-96896203-DUn60FYf.js
 Relative Path: target/dev-bundle/webapp/VAADIN/build
-Created: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: cdf22d275795a139be0468272d452d8e
 SHA256: 61afc23f4caf01122872621c6c8ddee3113e3d104bcbeace62a2340a5c199aae
 Encoding: ASCII
@@ -17824,8 +17839,8 @@ Extension: .html
 Language: html
 Location: target/dev-bundle/webapp/index.html
 Relative Path: target/dev-bundle/webapp
-Created: 2026-08-22 12:17:36 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:18:04 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: a2440fda4004d24ee2057a00ea41258c
 SHA256: 5d83fac1cd691339dafac029fe094a14dae40eea973249dcb2738bdf206023e7
 Encoding: ASCII
@@ -17871,8 +17886,8 @@ Extension: .json
 Language: json
 Location: target/dev-bundle/package-lock.json
 Relative Path: target/dev-bundle
-Created: 2026-08-17 21:26:12 (America/Bahia / GMT-03:00)
-Modified: 2026-08-17 21:28:01 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: f7c24379b089f137ed852cf77fd01fea
 SHA256: 15a3ebff8bdfbc8d7538576e2e925ab695884851dbb6ff7c00ac7cef886abc19
 Encoding: ASCII
@@ -33117,1669 +33132,10 @@ FILE CONTENT:
 
 
 ================================================================================
-FILE: target/maven-archiver/pom.properties
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 60 B
-Extension: .properties
-Language: text
-Location: target/maven-archiver/pom.properties
-Relative Path: target/maven-archiver
-Created: 2026-08-22 11:43:55 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:55 (America/Bahia / GMT-03:00)
-MD5: 22b8fbb74b3e3deb09ee7c995ba91125
-SHA256: d092e0c8ae651aec2b0523dc27295565c16ca4dd784755bb7cf6ca88d148281c
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-artifactId=tms-web
-groupId=br.com.ivanildo
-version=1.0.0
-
-================================================================================
-
-
-================================================================================
 BINARY/EXCLUDED FILES (not included in text content)
 ================================================================================
 - target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 - target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
-
-
-================================================================================
-FILE: target/plugins/application-theme-plugin/application-theme-plugin.js
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 2.17 KB
-Extension: .js
-Language: javascript
-Location: target/plugins/application-theme-plugin/application-theme-plugin.js
-Relative Path: target/plugins/application-theme-plugin
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: c456643409d1aba330ac9f8fe778469a
-SHA256: eb228afb306fa3768ae989ed5be4caa202231ac1f32879e366eedc12b5101ca9
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-/*
- * Copyright 2000-2023 Vaadin Ltd.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-import { processThemeResources, extractThemeName, findParentThemes } from './theme-handle.js';
-
-/**
- * The application theme plugin is for generating, collecting and copying of theme files for the application theme.
- *
- * The plugin should be supplied with the paths for
- *
- *  themeResourceFolder             - theme folder where flow copies local and jar resource frontend files
- *  themeProjectFolders             - array of possible locations for theme folders inside the project
- *  projectStaticAssetsOutputFolder - path to where static assets should be put
- *  frontendGeneratedFolder         - the path to where frontend auto-generated files are put
- *
- *  @throws Error in constructor if required option is not received
- */
-class ApplicationThemePlugin {
-  constructor(options) {
-    this.options = options;
-
-    if (!this.options.themeResourceFolder) {
-      throw new Error('Missing themeResourceFolder path');
-    }
-    if (!this.options.projectStaticAssetsOutputFolder) {
-      throw new Error('Missing projectStaticAssetsOutputFolder path');
-    }
-    if (!this.options.themeProjectFolders) {
-      throw new Error('Missing themeProjectFolders path array');
-    }
-    if (!this.options.frontendGeneratedFolder) {
-      throw new Error('Missing frontendGeneratedFolder path');
-    }
-  }
-
-  apply(compiler) {
-    const logger = compiler.getInfrastructureLogger('ApplicationThemePlugin');
-
-    compiler.hooks.afterEnvironment.tap('ApplicationThemePlugin', () => processThemeResources(this.options, logger));
-  }
-}
-
-export { ApplicationThemePlugin, processThemeResources, extractThemeName, findParentThemes };
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/application-theme-plugin/package.json
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 579 B
-Extension: .json
-Language: json
-Location: target/plugins/application-theme-plugin/package.json
-Relative Path: target/plugins/application-theme-plugin
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: b4b5233b94f7f59c73ca2cb6655a47bf
-SHA256: 69e098f8c5e2b13a7b9517aecea4e71f608db38919a6d072eec5b3a3c585acc8
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-{
-  "description": "application-theme-plugin",
-  "keywords": [
-    "plugin",
-    "application theme"
-  ],
-  "repository": "vaadin/flow",
-  "name": "@vaadin/application-theme-plugin",
-  "version": "0.4.2",
-  "main": "application-theme-plugin.js",
-  "author": "Vaadin Ltd",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/vaadin/flow/issues"
-  },
-  "type": "module",
-  "dependencies": {
-    "mkdirp": "0.5.6",
-    "glob": "10.3.3"
-  },
-  "files": [
-    "application-theme-plugin.js",
-    "theme-generator.js",
-    "theme-copy.js",
-    "theme-handle.js"
-  ]
-}
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/application-theme-plugin/theme-copy.js
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 7.19 KB
-Extension: .js
-Language: javascript
-Location: target/plugins/application-theme-plugin/theme-copy.js
-Relative Path: target/plugins/application-theme-plugin
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: c914506557638d1e4294fa6b6952b6f0
-SHA256: 514ac290092a0dbad6e4717ada44d75e3aba5804581dc8d41bd5381e53ba136b
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-/*
- * Copyright 2000-2023 Vaadin Ltd.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-/**
- * This contains functions and features used to copy theme files.
- */
-
-import { readdirSync, statSync, mkdirSync, existsSync, copyFileSync } from 'fs';
-import { resolve, basename, relative, extname } from 'path';
-import { globSync } from 'glob';
-
-const ignoredFileExtensions = ['.css', '.js', '.json'];
-
-/**
- * Copy theme static resources to static assets folder. All files in the theme
- * folder will be copied excluding css, js and json files that will be
- * handled by webpack and not be shared as static files.
- *
- * @param {string} themeFolder Folder with theme file
- * @param {string} projectStaticAssetsOutputFolder resources output folder
- * @param {object} logger plugin logger
- */
-function copyThemeResources(themeFolder, projectStaticAssetsOutputFolder, logger) {
-  const staticAssetsThemeFolder = resolve(projectStaticAssetsOutputFolder, 'themes', basename(themeFolder));
-  const collection = collectFolders(themeFolder, logger);
-
-  // Only create assets folder if there are files to copy.
-  if (collection.files.length > 0) {
-    mkdirSync(staticAssetsThemeFolder, { recursive: true });
-    // create folders with
-    collection.directories.forEach((directory) => {
-      const relativeDirectory = relative(themeFolder, directory);
-      const targetDirectory = resolve(staticAssetsThemeFolder, relativeDirectory);
-
-      mkdirSync(targetDirectory, { recursive: true });
-    });
-
-    collection.files.forEach((file) => {
-      const relativeFile = relative(themeFolder, file);
-      const targetFile = resolve(staticAssetsThemeFolder, relativeFile);
-      copyFileIfAbsentOrNewer(file, targetFile, logger);
-    });
-  }
-}
-
-/**
- * Collect all folders with copyable files and all files to be copied.
- * Foled will not be added if no files in folder or subfolders.
- *
- * Files will not contain files with ignored extensions and folders only containing ignored files will not be added.
- *
- * @param folderToCopy folder we will copy files from
- * @param logger plugin logger
- * @return {{directories: [], files: []}} object containing directories to create and files to copy
- */
-function collectFolders(folderToCopy, logger) {
-  const collection = { directories: [], files: [] };
-  logger.trace('files in directory', readdirSync(folderToCopy));
-  readdirSync(folderToCopy).forEach((file) => {
-    const fileToCopy = resolve(folderToCopy, file);
-    try {
-      if (statSync(fileToCopy).isDirectory()) {
-        logger.debug('Going through directory', fileToCopy);
-        const result = collectFolders(fileToCopy, logger);
-        if (result.files.length > 0) {
-          collection.directories.push(fileToCopy);
-          logger.debug('Adding directory', fileToCopy);
-          collection.directories.push.apply(collection.directories, result.directories);
-          collection.files.push.apply(collection.files, result.files);
-        }
-      } else if (!ignoredFileExtensions.includes(extname(fileToCopy))) {
-        logger.debug('Adding file', fileToCopy);
-        collection.files.push(fileToCopy);
-      }
-    } catch (error) {
-      handleNoSuchFileError(fileToCopy, error, logger);
-    }
-  });
-  return collection;
-}
-
-/**
- * Copy any static node_modules assets marked in theme.json to
- * project static assets folder.
- *
- * The theme.json content for assets is set up as:
- * {
- *   assets: {
- *     "node_module identifier": {
- *       "copy-rule": "target/folder",
- *     }
- *   }
- * }
- *
- * This would mean that an asset would be built as:
- * "@fortawesome/fontawesome-free": {
- *   "svgs/regular/**": "fortawesome/icons"
- * }
- * Where '@fortawesome/fontawesome-free' is the npm package, 'svgs/regular/**' is what should be copied
- * and 'fortawesome/icons' is the target directory under projectStaticAssetsOutputFolder where things
- * will get copied to.
- *
- * Note! there can be multiple copy-rules with target folders for one npm package asset.
- *
- * @param {string} themeName name of the theme we are copying assets for
- * @param {json} themeProperties theme properties json with data on assets
- * @param {string} projectStaticAssetsOutputFolder project output folder where we copy assets to under theme/[themeName]
- * @param {object} logger plugin logger
- */
-function copyStaticAssets(themeName, themeProperties, projectStaticAssetsOutputFolder, logger) {
-  const assets = themeProperties['assets'];
-  if (!assets) {
-    logger.debug('no assets to handle no static assets were copied');
-    return;
-  }
-
-  mkdirSync(projectStaticAssetsOutputFolder, {
-    recursive: true
-  });
-  const missingModules = checkModules(Object.keys(assets));
-  if (missingModules.length > 0) {
-    throw Error(
-      "Missing npm modules '" +
-        missingModules.join("', '") +
-        "' for assets marked in 'theme.json'.\n" +
-        "Install package(s) by adding a @NpmPackage annotation or install it using 'npm/pnpm/bun i'"
-    );
-  }
-  Object.keys(assets).forEach((module) => {
-    const copyRules = assets[module];
-    Object.keys(copyRules).forEach((copyRule) => {
-      const nodeSources = resolve('node_modules/', module, copyRule);
-      const files = globSync(nodeSources, { nodir: true });
-      const targetFolder = resolve(projectStaticAssetsOutputFolder, 'themes', themeName, copyRules[copyRule]);
-
-      mkdirSync(targetFolder, {
-        recursive: true
-      });
-      files.forEach((file) => {
-        const copyTarget = resolve(targetFolder, basename(file));
-        copyFileIfAbsentOrNewer(file, copyTarget, logger);
-      });
-    });
-  });
-}
-
-function checkModules(modules) {
-  const missing = [];
-
-  modules.forEach((module) => {
-    if (!existsSync(resolve('node_modules/', module))) {
-      missing.push(module);
-    }
-  });
-
-  return missing;
-}
-
-/**
- * Copies given file to a given target path, if target file doesn't exist or if
- * file to copy is newer.
- * @param {string} fileToCopy path of the file to copy
- * @param {string} copyTarget path of the target file
- * @param {object} logger plugin logger
- */
-function copyFileIfAbsentOrNewer(fileToCopy, copyTarget, logger) {
-  try {
-    if (!existsSync(copyTarget) || statSync(copyTarget).mtime < statSync(fileToCopy).mtime) {
-      logger.trace('Copying: ', fileToCopy, '=>', copyTarget);
-      copyFileSync(fileToCopy, copyTarget);
-    }
-  } catch (error) {
-    handleNoSuchFileError(fileToCopy, error, logger);
-  }
-}
-
-// Ignores errors due to file missing during theme processing
-// This may happen for example when an IDE creates a temporary file
-// and then immediately deletes it
-function handleNoSuchFileError(file, error, logger) {
-  if (error.code === 'ENOENT') {
-    logger.warn('Ignoring not existing file ' + file + '. File may have been deleted during theme processing.');
-  } else {
-    throw error;
-  }
-}
-
-export { checkModules, copyStaticAssets, copyThemeResources };
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/application-theme-plugin/theme-generator.js
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 10.78 KB
-Extension: .js
-Language: javascript
-Location: target/plugins/application-theme-plugin/theme-generator.js
-Relative Path: target/plugins/application-theme-plugin
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: 7c4fca8c5c578b0ac1e00f63c0522451
-SHA256: 7aa7dcf1571940797e6f9b7a38d0513ce17a5071591a6ffda2ead1ac4bbaaea3
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-/*
- * Copyright 2000-2023 Vaadin Ltd.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-/**
- * This file handles the generation of the '[theme-name].js' to
- * the themes/[theme-name] folder according to properties from 'theme.json'.
- */
-import { globSync } from 'glob';
-import { resolve, basename } from 'path';
-import { existsSync, readFileSync, writeFileSync } from 'fs';
-import { checkModules } from './theme-copy.js';
-
-// Special folder inside a theme for component themes that go inside the component shadow root
-const themeComponentsFolder = 'components';
-// The contents of a global CSS file with this name in a theme is always added to
-// the document. E.g. @font-face must be in this
-const documentCssFilename = 'document.css';
-// styles.css is the only entrypoint css file with document.css. Everything else should be imported using css @import
-const stylesCssFilename = 'styles.css';
-
-const CSSIMPORT_COMMENT = 'CSSImport end';
-const headerImport = `import 'construct-style-sheets-polyfill';
-`;
-
-/**
- * Generate the [themeName].js file for themeFolder which collects all required information from the folder.
- *
- * @param {string} themeFolder folder of the theme
- * @param {string} themeName name of the handled theme
- * @param {JSON} themeProperties content of theme.json
- * @param {Object} options build options (e.g. prod or dev mode)
- * @returns {string} theme file content
- */
-function writeThemeFiles(themeFolder, themeName, themeProperties, options) {
-  const productionMode = !options.devMode;
-  const useDevServerOrInProductionMode = !options.useDevBundle;
-  const outputFolder = options.frontendGeneratedFolder;
-  const styles = resolve(themeFolder, stylesCssFilename);
-  const documentCssFile = resolve(themeFolder, documentCssFilename);
-  const autoInjectComponents = themeProperties.autoInjectComponents ?? true;
-  const globalFilename = 'theme-' + themeName + '.global.generated.js';
-  const componentsFilename = 'theme-' + themeName + '.components.generated.js';
-  const themeFilename = 'theme-' + themeName + '.generated.js';
-
-  let themeFileContent = headerImport;
-  let globalImportContent = '// When this file is imported, global styles are automatically applied\n';
-  let componentsFileContent = '';
-  var componentsFiles;
-
-  if (autoInjectComponents) {
-    componentsFiles = globSync('*.css', {
-      cwd: resolve(themeFolder, themeComponentsFolder),
-      nodir: true
-    });
-
-    if (componentsFiles.length > 0) {
-      componentsFileContent +=
-        "import { unsafeCSS, registerStyles } from '@vaadin/vaadin-themable-mixin/register-styles';\n";
-    }
-  }
-
-  if (themeProperties.parent) {
-    themeFileContent += `import { applyTheme as applyBaseTheme } from './theme-${themeProperties.parent}.generated.js';\n`;
-  }
-
-  themeFileContent += `import { injectGlobalCss } from 'Frontend/generated/jar-resources/theme-util.js';\n`;
-  themeFileContent += `import './${componentsFilename}';\n`;
-
-  themeFileContent += `let needsReloadOnChanges = false;\n`;
-  const imports = [];
-  const componentCssImports = [];
-  const globalFileContent = [];
-  const globalCssCode = [];
-  const shadowOnlyCss = [];
-  const componentCssCode = [];
-  const parentTheme = themeProperties.parent ? 'applyBaseTheme(target);\n' : '';
-  const parentThemeGlobalImport = themeProperties.parent
-    ? `import './theme-${themeProperties.parent}.global.generated.js';\n`
-    : '';
-
-  const themeIdentifier = '_vaadintheme_' + themeName + '_';
-  const lumoCssFlag = '_vaadinthemelumoimports_';
-  const globalCssFlag = themeIdentifier + 'globalCss';
-  const componentCssFlag = themeIdentifier + 'componentCss';
-
-  if (!existsSync(styles)) {
-    if (productionMode) {
-      throw new Error(`styles.css file is missing and is needed for '${themeName}' in folder '${themeFolder}'`);
-    }
-    writeFileSync(
-      styles,
-      '/* Import your application global css files here or add the styles directly to this file */',
-      'utf8'
-    );
-  }
-
-  // styles.css will always be available as we write one if it doesn't exist.
-  let filename = basename(styles);
-  let variable = camelCase(filename);
-
-  /* LUMO */
-  const lumoImports = themeProperties.lumoImports || ['color', 'typography'];
-  if (lumoImports) {
-    lumoImports.forEach((lumoImport) => {
-      imports.push(`import { ${lumoImport} } from '@vaadin/vaadin-lumo-styles/${lumoImport}.js';\n`);
-      if (lumoImport === 'utility' || lumoImport === 'badge' || lumoImport === 'typography' || lumoImport === 'color') {
-        // Inject into main document the same way as other Lumo styles are injected
-        imports.push(`import '@vaadin/vaadin-lumo-styles/${lumoImport}-global.js';\n`);
-      }
-    });
-
-    lumoImports.forEach((lumoImport) => {
-      // Lumo is injected to the document by Lumo itself
-      shadowOnlyCss.push(`removers.push(injectGlobalCss(${lumoImport}.cssText, '', target, true));\n`);
-    });
-  }
-
-  /* Theme */
-  if (useDevServerOrInProductionMode) {
-    globalFileContent.push(parentThemeGlobalImport);
-    globalFileContent.push(`import 'themes/${themeName}/${filename}';\n`);
-
-    imports.push(`import ${variable} from 'themes/${themeName}/${filename}?inline';\n`);
-    shadowOnlyCss.push(`removers.push(injectGlobalCss(${variable}.toString(), '', target));\n    `);
-  }
-  if (existsSync(documentCssFile)) {
-    filename = basename(documentCssFile);
-    variable = camelCase(filename);
-
-    if (useDevServerOrInProductionMode) {
-      globalFileContent.push(`import 'themes/${themeName}/${filename}';\n`);
-
-      imports.push(`import ${variable} from 'themes/${themeName}/${filename}?inline';\n`);
-      shadowOnlyCss.push(`removers.push(injectGlobalCss(${variable}.toString(),'', document));\n    `);
-    }
-  }
-
-  let i = 0;
-  if (themeProperties.documentCss) {
-    const missingModules = checkModules(themeProperties.documentCss);
-    if (missingModules.length > 0) {
-      throw Error(
-        "Missing npm modules or files '" +
-          missingModules.join("', '") +
-          "' for documentCss marked in 'theme.json'.\n" +
-          "Install or update package(s) by adding a @NpmPackage annotation or install it using 'npm/pnpm/bun i'"
-      );
-    }
-    themeProperties.documentCss.forEach((cssImport) => {
-      const variable = 'module' + i++;
-      imports.push(`import ${variable} from '${cssImport}?inline';\n`);
-      // Due to chrome bug https://bugs.chromium.org/p/chromium/issues/detail?id=336876 font-face will not work
-      // inside shadowRoot so we need to inject it there also.
-      globalCssCode.push(`if(target !== document) {
-        removers.push(injectGlobalCss(${variable}.toString(), '', target));
-    }\n    `);
-      globalCssCode.push(
-        `removers.push(injectGlobalCss(${variable}.toString(), '${CSSIMPORT_COMMENT}', document));\n    `
-      );
-    });
-  }
-  if (themeProperties.importCss) {
-    const missingModules = checkModules(themeProperties.importCss);
-    if (missingModules.length > 0) {
-      throw Error(
-        "Missing npm modules or files '" +
-          missingModules.join("', '") +
-          "' for importCss marked in 'theme.json'.\n" +
-          "Install or update package(s) by adding a @NpmPackage annotation or install it using 'npm/pnpm/bun i'"
-      );
-    }
-    themeProperties.importCss.forEach((cssPath) => {
-      const variable = 'module' + i++;
-      globalFileContent.push(`import '${cssPath}';\n`);
-      imports.push(`import ${variable} from '${cssPath}?inline';\n`);
-      shadowOnlyCss.push(`removers.push(injectGlobalCss(${variable}.toString(), '${CSSIMPORT_COMMENT}', target));\n`);
-    });
-  }
-
-  if (autoInjectComponents) {
-    componentsFiles.forEach((componentCss) => {
-      const filename = basename(componentCss);
-      const tag = filename.replace('.css', '');
-      const variable = camelCase(filename);
-      componentCssImports.push(
-        `import ${variable} from 'themes/${themeName}/${themeComponentsFolder}/${filename}?inline';\n`
-      );
-      // Don't format as the generated file formatting will get wonky!
-      const componentString = `registerStyles(
-        '${tag}',
-        unsafeCSS(${variable}.toString())
-      );
-      `;
-      componentCssCode.push(componentString);
-    });
-  }
-
-  themeFileContent += imports.join('');
-
-  // Don't format as the generated file formatting will get wonky!
-  // If targets check that we only register the style parts once, checks exist for global css and component css
-  const themeFileApply = `
-  let themeRemovers = new WeakMap();
-  let targets = [];
-
-  export const applyTheme = (target) => {
-    const removers = [];
-    if (target !== document) {
-      ${shadowOnlyCss.join('')}
-    }
-    ${parentTheme}
-    ${globalCssCode.join('')}
-
-    if (import.meta.hot) {
-      targets.push(new WeakRef(target));
-      themeRemovers.set(target, removers);
-    }
-
-  }
-  
-`;
-  componentsFileContent += `
-${componentCssImports.join('')}
-
-if (!document['${componentCssFlag}']) {
-  ${componentCssCode.join('')}
-  document['${componentCssFlag}'] = true;
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept((module) => {
-    window.location.reload();
-  });
-}
-
-`;
-
-  themeFileContent += themeFileApply;
-  themeFileContent += `
-if (import.meta.hot) {
-  import.meta.hot.accept((module) => {
-
-    if (needsReloadOnChanges) {
-      window.location.reload();
-    } else {
-      targets.forEach(targetRef => {
-        const target = targetRef.deref();
-        if (target) {
-          themeRemovers.get(target).forEach(remover => remover())
-          module.applyTheme(target);
-        }
-      })
-    }
-  });
-
-  import.meta.hot.on('vite:afterUpdate', (update) => {
-    document.dispatchEvent(new CustomEvent('vaadin-theme-updated', { detail: update }));
-  });
-}
-
-`;
-
-  globalImportContent += `
-${globalFileContent.join('')}
-`;
-
-  writeIfChanged(resolve(outputFolder, globalFilename), globalImportContent);
-  writeIfChanged(resolve(outputFolder, themeFilename), themeFileContent);
-  writeIfChanged(resolve(outputFolder, componentsFilename), componentsFileContent);
-}
-
-function writeIfChanged(file, data) {
-  if (!existsSync(file) || readFileSync(file, { encoding: 'utf-8' }) !== data) {
-    writeFileSync(file, data);
-  }
-}
-
-/**
- * Make given string into camelCase.
- *
- * @param {string} str string to make into cameCase
- * @returns {string} camelCased version
- */
-function camelCase(str) {
-  return str
-    .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-      return index === 0 ? word.toLowerCase() : word.toUpperCase();
-    })
-    .replace(/\s+/g, '')
-    .replace(/\.|\-/g, '');
-}
-
-export { writeThemeFiles };
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/application-theme-plugin/theme-handle.js
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 10.08 KB
-Extension: .js
-Language: javascript
-Location: target/plugins/application-theme-plugin/theme-handle.js
-Relative Path: target/plugins/application-theme-plugin
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: e29ccc4c967c031dc28ec754d94cfbed
-SHA256: ebc4469f766a24bd512e9db8c68708ca1ca40fe4c5b7c3617e7cd26fd5525a7a
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-/*
- * Copyright 2000-2023 Vaadin Ltd.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-/**
- * This file contains functions for look up and handle the theme resources
- * for application theme plugin.
- */
-import { existsSync, readFileSync } from 'fs';
-import { resolve } from 'path';
-import { writeThemeFiles } from './theme-generator.js';
-import { copyStaticAssets, copyThemeResources } from './theme-copy.js';
-
-// matches theme name in './theme-my-theme.generated.js'
-const nameRegex = /theme-(.*)\.generated\.js/;
-
-let prevThemeName = undefined;
-let firstThemeName = undefined;
-
-/**
- * Looks up for a theme resources in a current project and in jar dependencies,
- * copies the found resources and generates/updates meta data for webpack
- * compilation.
- *
- * @param {object} options application theme plugin mandatory options,
- * @see {@link ApplicationThemePlugin}
- *
- * @param logger application theme plugin logger
- */
-function processThemeResources(options, logger) {
-  const themeName = extractThemeName(options.frontendGeneratedFolder);
-  if (themeName) {
-    if (!prevThemeName && !firstThemeName) {
-      firstThemeName = themeName;
-    } else if (
-      (prevThemeName && prevThemeName !== themeName && firstThemeName !== themeName) ||
-      (!prevThemeName && firstThemeName !== themeName)
-    ) {
-      // Warning message is shown to the developer when:
-      // 1. He is switching to any theme, which is differ from one being set up
-      // on application startup, by changing theme name in `@Theme()`
-      // 2. He removes or comments out `@Theme()` to see how the app
-      // looks like without theming, and then again brings `@Theme()` back
-      // with a themeName which is differ from one being set up on application
-      // startup.
-      const warning = `Attention: Active theme is switched to '${themeName}'.`;
-      const description = `
-      Note that adding new style sheet files to '/themes/${themeName}/components', 
-      may not be taken into effect until the next application restart.
-      Changes to already existing style sheet files are being reloaded as before.`;
-      logger.warn('*******************************************************************');
-      logger.warn(warning);
-      logger.warn(description);
-      logger.warn('*******************************************************************');
-    }
-    prevThemeName = themeName;
-
-    findThemeFolderAndHandleTheme(themeName, options, logger);
-  } else {
-    // This is needed in the situation that the user decides to comment or
-    // remove the @Theme(...) completely to see how the application looks
-    // without any theme. Then when the user brings back one of the themes,
-    // the previous theme should be undefined to enable us to detect the change.
-    prevThemeName = undefined;
-    logger.debug('Skipping Vaadin application theme handling.');
-    logger.trace('Most likely no @Theme annotation for application or only themeClass used.');
-  }
-}
-
-/**
- * Search for the given theme in the project and resource folders.
- *
- * @param {string} themeName name of theme to find
- * @param {object} options application theme plugin mandatory options,
- * @see {@link ApplicationThemePlugin}
- * @param logger application theme plugin logger
- * @return true or false for if theme was found
- */
-function findThemeFolderAndHandleTheme(themeName, options, logger) {
-  let themeFound = false;
-  for (let i = 0; i < options.themeProjectFolders.length; i++) {
-    const themeProjectFolder = options.themeProjectFolders[i];
-    if (existsSync(themeProjectFolder)) {
-      logger.debug("Searching themes folder '" + themeProjectFolder + "' for theme '" + themeName + "'");
-      const handled = handleThemes(themeName, themeProjectFolder, options, logger);
-      if (handled) {
-        if (themeFound) {
-          throw new Error(
-            "Found theme files in '" +
-              themeProjectFolder +
-              "' and '" +
-              themeFound +
-              "'. Theme should only be available in one folder"
-          );
-        }
-        logger.debug("Found theme files from '" + themeProjectFolder + "'");
-        themeFound = themeProjectFolder;
-      }
-    }
-  }
-
-  if (existsSync(options.themeResourceFolder)) {
-    if (themeFound && existsSync(resolve(options.themeResourceFolder, themeName))) {
-      throw new Error(
-        "Theme '" +
-          themeName +
-          "'should not exist inside a jar and in the project at the same time\n" +
-          'Extending another theme is possible by adding { "parent": "my-parent-theme" } entry to the theme.json file inside your theme folder.'
-      );
-    }
-    logger.debug(
-      "Searching theme jar resource folder '" + options.themeResourceFolder + "' for theme '" + themeName + "'"
-    );
-    handleThemes(themeName, options.themeResourceFolder, options, logger);
-    themeFound = true;
-  }
-  return themeFound;
-}
-
-/**
- * Copies static resources for theme and generates/writes the
- * [theme-name].generated.js for webpack to handle.
- *
- * Note! If a parent theme is defined it will also be handled here so that the parent theme generated file is
- * generated in advance of the theme generated file.
- *
- * @param {string} themeName name of theme to handle
- * @param {string} themesFolder folder containing application theme folders
- * @param {object} options application theme plugin mandatory options,
- * @see {@link ApplicationThemePlugin}
- * @param {object} logger plugin logger instance
- *
- * @throws Error if parent theme defined, but can't locate parent theme
- *
- * @returns true if theme was found else false.
- */
-function handleThemes(themeName, themesFolder, options, logger) {
-  const themeFolder = resolve(themesFolder, themeName);
-  if (existsSync(themeFolder)) {
-    logger.debug('Found theme ', themeName, ' in folder ', themeFolder);
-
-    const themeProperties = getThemeProperties(themeFolder);
-
-    // If theme has parent handle parent theme immediately.
-    if (themeProperties.parent) {
-      const found = findThemeFolderAndHandleTheme(themeProperties.parent, options, logger);
-      if (!found) {
-        throw new Error(
-          "Could not locate files for defined parent theme '" +
-            themeProperties.parent +
-            "'.\n" +
-            'Please verify that dependency is added or theme folder exists.'
-        );
-      }
-    }
-    copyStaticAssets(themeName, themeProperties, options.projectStaticAssetsOutputFolder, logger);
-    copyThemeResources(themeFolder, options.projectStaticAssetsOutputFolder, logger);
-
-    writeThemeFiles(themeFolder, themeName, themeProperties, options);
-    return true;
-  }
-  return false;
-}
-
-function getThemeProperties(themeFolder) {
-  const themePropertyFile = resolve(themeFolder, 'theme.json');
-  if (!existsSync(themePropertyFile)) {
-    return {};
-  }
-  const themePropertyFileAsString = readFileSync(themePropertyFile);
-  if (themePropertyFileAsString.length === 0) {
-    return {};
-  }
-  return JSON.parse(themePropertyFileAsString);
-}
-
-/**
- * Extracts current theme name from auto-generated 'theme.js' file located on a
- * given folder.
- * @param frontendGeneratedFolder folder in project containing 'theme.js' file
- * @returns {string} current theme name
- */
-function extractThemeName(frontendGeneratedFolder) {
-  if (!frontendGeneratedFolder) {
-    throw new Error(
-      "Couldn't extract theme name from 'theme.js'," +
-        ' because the path to folder containing this file is empty. Please set' +
-        ' the a correct folder path in ApplicationThemePlugin constructor' +
-        ' parameters.'
-    );
-  }
-  const generatedThemeFile = resolve(frontendGeneratedFolder, 'theme.js');
-  if (existsSync(generatedThemeFile)) {
-    // read theme name from the 'generated/theme.js' as there we always
-    // mark the used theme for webpack to handle.
-    const themeName = nameRegex.exec(readFileSync(generatedThemeFile, { encoding: 'utf8' }))[1];
-    if (!themeName) {
-      throw new Error("Couldn't parse theme name from '" + generatedThemeFile + "'.");
-    }
-    return themeName;
-  } else {
-    return '';
-  }
-}
-
-/**
- * Finds all the parent themes located in the project themes folders and in
- * the JAR dependencies with respect to the given custom theme with
- * {@code themeName}.
- * @param {string} themeName given custom theme name to look parents for
- * @param {object} options application theme plugin mandatory options,
- * @see {@link ApplicationThemePlugin}
- * @returns {string[]} array of paths to found parent themes with respect to the
- * given custom theme
- */
-function findParentThemes(themeName, options) {
-  const existingThemeFolders = [options.themeResourceFolder, ...options.themeProjectFolders].filter((folder) =>
-    existsSync(folder)
-  );
-  return collectParentThemes(themeName, existingThemeFolders, false);
-}
-
-function collectParentThemes(themeName, themeFolders, isParent) {
-  let foundParentThemes = [];
-  themeFolders.forEach((folder) => {
-    const themeFolder = resolve(folder, themeName);
-    if (existsSync(themeFolder)) {
-      const themeProperties = getThemeProperties(themeFolder);
-
-      if (themeProperties.parent) {
-        foundParentThemes.push(...collectParentThemes(themeProperties.parent, themeFolders, true));
-        if (!foundParentThemes.length) {
-          throw new Error(
-            "Could not locate files for defined parent theme '" +
-              themeProperties.parent +
-              "'.\n" +
-              'Please verify that dependency is added or theme folder exists.'
-          );
-        }
-      }
-      // Add a theme path to result collection only if a given themeName
-      // is supposed to be a parent theme
-      if (isParent) {
-        foundParentThemes.push(themeFolder);
-      }
-    }
-  });
-  return foundParentThemes;
-}
-
-export { processThemeResources, extractThemeName, findParentThemes };
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/build-status-plugin/build-status-plugin.js
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 1.72 KB
-Extension: .js
-Language: javascript
-Location: target/plugins/build-status-plugin/build-status-plugin.js
-Relative Path: target/plugins/build-status-plugin
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: b6b106cfb76b2e7374727de3cf614a71
-SHA256: fc8434ac94989f975590aef729be4022158a4e1813c786b499b2774ba2ad592e
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-/*
- * Copyright 2000-2023 Vaadin Ltd.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-/**
- * This plugin handles communicates to Java dev-mode handler status of compilation
- */
-class BuildStatusPlugin {
-  constructor(options = {}) {
-    this.options = options;
-  }
-
-  apply(compiler) {
-    const logger = compiler.getInfrastructureLogger('build-status');
-
-    compiler.hooks.done.tap('done', (stats) => {
-      // Defer notification and let the webpack-dev-server finish
-      setTimeout(() => {
-        const errors = stats.compilation.errors;
-        const warnings = stats.compilation.warnings;
-        if (errors.length > 0) {
-          logger.info(
-            `${humanReadable(errors.length, 'error')} and ${humanReadable(warnings.length, 'warning')} were reported.`
-          );
-          logger.info(': Failed to compile.');
-        } else {
-          if (warnings.length > 0) {
-            logger.info(`${humanReadable(warnings.length, 'warning')} were reported.`);
-          }
-          logger.info(': Compiled.');
-        }
-      }, 0);
-    });
-  }
-}
-
-function humanReadable(count, label) {
-  if (count % 10 == 1) {
-    return `${count} ${label}`;
-  } else {
-    return `${count} ${label}s`;
-  }
-}
-
-module.exports = BuildStatusPlugin;
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/build-status-plugin/package.json
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 375 B
-Extension: .json
-Language: json
-Location: target/plugins/build-status-plugin/package.json
-Relative Path: target/plugins/build-status-plugin
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: 2762e7c728779ae28b6d721a6bde9655
-SHA256: 6873e90fa89e95f4907b48e9666e0fbc593fcce0012c0a739bf633c941384836
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-{
-  "description": "build-status-plugin",
-  "keywords": [
-    "plugin"
-  ],
-  "repository": "vaadin/flow",
-  "name": "@vaadin/build-status-plugin",
-  "version": "1.0.0",
-  "main": "build-status-plugin.js",
-  "author": "Vaadin Ltd",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/vaadin/flow/issues"
-  },
-  "files": [
-    "build-status-plugin.js"
-  ]
-}
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/rollup-plugin-postcss-lit-custom/package.json
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 393 B
-Extension: .json
-Language: json
-Location: target/plugins/rollup-plugin-postcss-lit-custom/package.json
-Relative Path: target/plugins/rollup-plugin-postcss-lit-custom
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: 61658467719f9552457a8d07edf4f36d
-SHA256: 703ae3e3b444fb6d73674562f0643935d455f4addecc0cc36580a45181dc012e
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-{
-  "description": "rollup-plugin-postcss-lit-custom",
-  "keywords": [
-    "plugin"
-  ],
-  "repository": "vaadin/flow",
-  "name": "@vaadin/rollup-plugin-postcss-lit-custom",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "Vaadin Ltd",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/vaadin/flow/issues"
-  },
-  "files": [
-    "rollup-plugin-postcss-lit.js"
-  ]
-}
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/rollup-plugin-postcss-lit-custom/rollup-plugin-postcss-lit.js
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 3.38 KB
-Extension: .js
-Language: javascript
-Location: target/plugins/rollup-plugin-postcss-lit-custom/rollup-plugin-postcss-lit.js
-Relative Path: target/plugins/rollup-plugin-postcss-lit-custom
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: db0520349dec96aa29ff9e0578597943
-SHA256: 7e63af9b9b11cb1b0315ca2ce9eec54bfe7b473927e1b7fae0eeab78ab1f7b0e
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-/**
- * MIT License
-
-Copyright (c) 2019 Umberto Pepato
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
- */
-// This is https://github.com/umbopepato/rollup-plugin-postcss-lit 2.0.0 + https://github.com/umbopepato/rollup-plugin-postcss-lit/pull/54
-// to make it work with Vite 3
-// Once / if https://github.com/umbopepato/rollup-plugin-postcss-lit/pull/54 is merged this should be removed and rollup-plugin-postcss-lit should be used instead
-
-import { createFilter } from '@rollup/pluginutils';
-import transformAst from 'transform-ast';
-
-const assetUrlRE = /__VITE_ASSET__([\w$]+)__(?:\$_(.*?)__)?/g
-
-const escape = (str) =>
-  str
-    .replace(assetUrlRE, '${unsafeCSSTag("__VITE_ASSET__$1__$2")}')
-    .replace(/`/g, '\\`')
-    .replace(/\\(?!`)/g, '\\\\');
-
-export default function postcssLit(options = {}) {
-  const defaultOptions = {
-    include: '**/*.{css,sss,pcss,styl,stylus,sass,scss,less}',
-    exclude: null,
-    importPackage: 'lit'
-  };
-
-  const opts = { ...defaultOptions, ...options };
-  const filter = createFilter(opts.include, opts.exclude);
-
-  return {
-    name: 'postcss-lit',
-    enforce: 'post',
-    transform(code, id) {
-      if (!filter(id)) return;
-      const ast = this.parse(code, {});
-      // export default const css;
-      let defaultExportName;
-
-      // export default '...';
-      let isDeclarationLiteral = false;
-      const magicString = transformAst(code, { ast: ast }, (node) => {
-        if (node.type === 'ExportDefaultDeclaration') {
-          defaultExportName = node.declaration.name;
-
-          isDeclarationLiteral = node.declaration.type === 'Literal';
-        }
-      });
-
-      if (!defaultExportName && !isDeclarationLiteral) {
-        return;
-      }
-      magicString.walk((node) => {
-        if (defaultExportName && node.type === 'VariableDeclaration') {
-          const exportedVar = node.declarations.find((d) => d.id.name === defaultExportName);
-          if (exportedVar) {
-            exportedVar.init.edit.update(`cssTag\`${escape(exportedVar.init.value)}\``);
-          }
-        }
-
-        if (isDeclarationLiteral && node.type === 'ExportDefaultDeclaration') {
-          node.declaration.edit.update(`cssTag\`${escape(node.declaration.value)}\``);
-        }
-      });
-      magicString.prepend(`import {css as cssTag, unsafeCSS as unsafeCSSTag} from '${opts.importPackage}';\n`);
-      return {
-        code: magicString.toString(),
-        map: magicString.generateMap({
-          hires: true
-        })
-      };
-    }
-  };
-};
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/theme-live-reload-plugin/package.json
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 439 B
-Extension: .json
-Language: json
-Location: target/plugins/theme-live-reload-plugin/package.json
-Relative Path: target/plugins/theme-live-reload-plugin
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: f4777855795ea1d1c89c65664e581b7e
-SHA256: 0ea602ccbbcca39ea63f0630baafbf14cd862776542d659a1ada3bf01fa95a42
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-{
-  "description": "theme-live-reload-plugin",
-  "keywords": [
-    "plugin",
-    "application theme",
-    "live-reload"
-  ],
-  "repository": "vaadin/flow",
-  "name": "@vaadin/theme-live-reload-plugin",
-  "version": "2.0.0",
-  "main": "theme-live-reload-plugin.js",
-  "author": "Vaadin Ltd",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/vaadin/flow/issues"
-  },
-  "files": [
-    "theme-live-reload-plugin.js"
-  ]
-}
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/theme-live-reload-plugin/theme-live-reload-plugin.js
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 5.27 KB
-Extension: .js
-Language: javascript
-Location: target/plugins/theme-live-reload-plugin/theme-live-reload-plugin.js
-Relative Path: target/plugins/theme-live-reload-plugin
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: 4a9c23932bbd47272d83f117da63fa39
-SHA256: b681318d6bddb54ddd617c27e2d1aad7bb085b4f5a550dfe3ff8f03769e4891c
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-/*
- * Copyright 2000-2023 Vaadin Ltd.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-/**
- * This plugin handles adding/deleting theme resources events and triggers
- * theme meta data re-generation and application theme update on the fly.
- */
-class ThemeLiveReloadPlugin {
-  /**
-   * Create a new instance of ThemeLiveReloadPlugin
-   * @param processThemeResourcesCallback callback which is called on
-   * adding/deleting of theme resource files to re-generate theme meta
-   * data and apply theme changes to application.
-   */
-  constructor(processThemeResourcesCallback) {
-    if (!processThemeResourcesCallback || typeof processThemeResourcesCallback !== 'function') {
-      throw new Error(
-        "Couldn't instantiate a ThemeLiveReloadPlugin" +
-          ' instance, because theme resources process callback is not set' +
-          ' and, thus, no information provided what to do upon' +
-          ' adding/deleting theme resource files. Please provide this' +
-          ' callback as a ThemeLiveReloadPlugin constructor parameter.'
-      );
-    }
-    this.processThemeResourcesCallback = processThemeResourcesCallback;
-    // Component style sheet might be deleted from parent theme folder, so
-    // the regexp does not contain the exact theme name
-    this.componentStyleFileRegexp = /(\\|\/)themes\1([\s\S]*)\1components\1(.*)\.css$/;
-    // There might be several theme generated files in the generated
-    // folder, so the regexp does not contain the exact theme name
-    this.themeGeneratedFileRegexp = /theme-[\s\S]*?\.generated\.js$/;
-  }
-
-  apply(compiler) {
-    // Adds a hook for theme files change event
-    compiler.hooks.watchRun.tapAsync('ThemeLiveReloadPlugin', (compilation, callback) => {
-      const logger = compiler.getInfrastructureLogger('ThemeLiveReloadPlugin');
-      const changedFilesMap = compiler.watchFileSystem.watcher.mtimes;
-      if (changedFilesMap !== {}) {
-        let themeName = undefined;
-        let themeGeneratedFileChanged = false;
-        let themeGeneratedFileDeleted = false;
-        let deletedComponentStyleFile = undefined;
-        const changedFilesPaths = Object.keys(changedFilesMap);
-        logger.debug('Detected changes in the following files ' + changedFilesPaths);
-        changedFilesPaths.forEach((changedFilePath) => {
-          const file = `${changedFilePath}`;
-          const themeGeneratedFileChangedNow = file.match(this.themeGeneratedFileRegexp);
-          const timestamp = changedFilesMap[changedFilePath];
-          // null or negative timestamp means file delete
-          const fileRemoved = timestamp === null || timestamp < 0;
-
-          if (themeGeneratedFileChangedNow) {
-            themeGeneratedFileChanged = true;
-            if (fileRemoved) {
-              themeGeneratedFileDeleted = true;
-            }
-          } else if (fileRemoved) {
-            const matchResult = file.match(this.componentStyleFileRegexp);
-            if (matchResult) {
-              themeName = matchResult[2];
-              deletedComponentStyleFile = file;
-            }
-          }
-        });
-        // This is considered as a workaround for
-        // https://github.com/vaadin/flow/issues/9948: delete component
-        // styles and theme generated file in one run to not have webpack
-        // compile error
-        if (deletedComponentStyleFile && !themeGeneratedFileDeleted) {
-          logger.warn(
-            "Custom theme component style sheet '" +
-              deletedComponentStyleFile +
-              "' has been deleted.\n\n" +
-              "You should also delete './frontend/generated/theme-" +
-              themeName +
-              ".generated.js' (simultaneously) with the component stylesheet'.\n" +
-              "Otherwise it will cause a webpack compilation error 'no such file or directory', as component style sheets are referenced from " +
-              "'./frontend/generated/theme-" +
-              themeName +
-              ".generated.js'.\n\n" +
-              "If you encounter a 'no such file or directory' error in your application, just click on the overlay (or refresh the browser page), and it should disappear.\n\n" +
-              'It should then be possible to continue working on the application and theming.\n' +
-              "If it doesn't help, you need to restart the application."
-          );
-        }
-
-        // Webpack watches to the changes in theme-[my-theme].generated.js
-        // because it is referenced from theme.js. Changes in this file
-        // should not trigger the theme handling callback (which
-        // re-generates theme-[my-theme].generated.js),
-        // otherwise it will get into infinite re-compilation loop.
-        if (themeGeneratedFileDeleted || !themeGeneratedFileChanged) {
-          this.processThemeResourcesCallback(logger);
-        }
-      }
-      callback();
-    });
-  }
-}
-
-module.exports = ThemeLiveReloadPlugin;
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/theme-loader/package.json
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 531 B
-Extension: .json
-Language: json
-Location: target/plugins/theme-loader/package.json
-Relative Path: target/plugins/theme-loader
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: c35add2c2aa80cd89205b9cf8a386a75
-SHA256: 0759581df919ac20010a4b960868879e9da7234db00df6a8f8ede8ae32514c2c
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-{
-  "description": "theme-loader updates css urls targeting './' to instead be 'VAADIN/static/' as used by app theme",
-  "keywords": [
-    "plugin",
-    "application theme"
-  ],
-  "repository": "vaadin/flow",
-  "name": "@vaadin/theme-loader",
-  "version": "0.0.4",
-  "main": "theme-loader.js",
-  "author": "Vaadin Ltd",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/vaadin/flow/issues"
-  },
-  "files": [
-    "theme-loader.js",
-    "theme-loader-utils.js"
-  ],
-  "dependencies": {
-    "glob": "10.3.3"
-  }
-}
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/theme-loader/theme-loader-utils.js
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 3.21 KB
-Extension: .js
-Language: javascript
-Location: target/plugins/theme-loader/theme-loader-utils.js
-Relative Path: target/plugins/theme-loader
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: 84f65aa9d779b2696e91ba775a56d355
-SHA256: 3b1562fed33587464486c0931ecce5026a84ee094df553e75c6ff3494ff635ce
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-import { existsSync, readFileSync } from 'fs';
-import { resolve, basename } from 'path';
-import { globSync } from 'glob';
-
-// Collect groups [url(] ['|"]optional './|../', file part and end of url
-const urlMatcher = /(url\(\s*)(\'|\")?(\.\/|\.\.\/)(\S*)(\2\s*\))/g;
-
-function assetsContains(fileUrl, themeFolder, logger) {
-  const themeProperties = getThemeProperties(themeFolder);
-  if (!themeProperties) {
-    logger.debug('No theme properties found.');
-    return false;
-  }
-  const assets = themeProperties['assets'];
-  if (!assets) {
-    logger.debug('No defined assets in theme properties');
-    return false;
-  }
-  // Go through each asset module
-  for (let module of Object.keys(assets)) {
-    const copyRules = assets[module];
-    // Go through each copy rule
-    for (let copyRule of Object.keys(copyRules)) {
-      // if file starts with copyRule target check if file with path after copy target can be found
-      if (fileUrl.startsWith(copyRules[copyRule])) {
-        const targetFile = fileUrl.replace(copyRules[copyRule], '');
-        const files = globSync(resolve('node_modules/', module, copyRule), { nodir: true });
-
-        for (let file of files) {
-          if (file.endsWith(targetFile)) return true;
-        }
-      }
-    }
-  }
-  return false;
-}
-
-function getThemeProperties(themeFolder) {
-  const themePropertyFile = resolve(themeFolder, 'theme.json');
-  if (!existsSync(themePropertyFile)) {
-    return {};
-  }
-  const themePropertyFileAsString = readFileSync(themePropertyFile);
-  if (themePropertyFileAsString.length === 0) {
-    return {};
-  }
-  return JSON.parse(themePropertyFileAsString);
-}
-
-function rewriteCssUrls(source, handledResourceFolder, themeFolder, logger, options) {
-  source = source.replace(urlMatcher, function (match, url, quoteMark, replace, fileUrl, endString) {
-    let absolutePath = resolve(handledResourceFolder, replace, fileUrl);
-    const existingThemeResource = absolutePath.startsWith(themeFolder) && existsSync(absolutePath);
-    if (existingThemeResource || assetsContains(fileUrl, themeFolder, logger)) {
-      // Adding ./ will skip css-loader, which should be done for asset files
-      // In a production build, the css file is in VAADIN/build and static files are in VAADIN/static, so ../static needs to be added
-      const replacement = options.devMode ? './' : '../static/';
-
-      const skipLoader = existingThemeResource ? '' : replacement;
-      const frontendThemeFolder = skipLoader + 'themes/' + basename(themeFolder);
-      logger.debug(
-        'Updating url for file',
-        "'" + replace + fileUrl + "'",
-        'to use',
-        "'" + frontendThemeFolder + '/' + fileUrl + "'"
-      );
-      const pathResolved = absolutePath.substring(themeFolder.length).replace(/\\/g, '/');
-
-      // keep the url the same except replace the ./ or ../ to themes/[themeFolder]
-      return url + (quoteMark ?? '') + frontendThemeFolder + pathResolved + endString;
-    } else if (options.devMode) {
-      logger.log("No rewrite for '", match, "' as the file was not found.");
-    } else {
-      // In production, the css is in VAADIN/build but the theme files are in .
-      return url + (quoteMark ?? '') + '../../' + fileUrl + endString;
-    }
-    return match;
-  });
-  return source;
-}
-
-export { rewriteCssUrls };
-
-================================================================================
-
-
-================================================================================
-FILE: target/plugins/theme-loader/theme-loader.js
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 1.34 KB
-Extension: .js
-Language: javascript
-Location: target/plugins/theme-loader/theme-loader.js
-Relative Path: target/plugins/theme-loader
-Created: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 11:43:16 (America/Bahia / GMT-03:00)
-MD5: f87a05250ba1f609977a2a10db979644
-SHA256: 0152b7de3e04006073ee46b652a20625648ca7cb98fa45f0e9dcab5060cff621
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-import { getOptions } from 'loader-utils';
-import { dirname, basename, resolve } from 'path';
-import { rewriteCssUrls } from './theme-loader-utils';
-
-/**
- * This custom loader handles rewriting urls for the application theme css files.
- * URLs starting with ./ or ../ are checked against the filesystem and converted if a file exists.
- * URLs going outside of the application theme folder are not accepted and will not be rewritten.
- *
- * @param source file contents to handle
- * @param map source map for file
- */
-export default function (source, map) {
-  const options = getOptions(this);
-  const handledResourceFolder = dirname(this._module.resource);
-  const logger = this.getLogger('theme-loader');
-
-  let themeFolder = handledResourceFolder;
-  // Recurse up until we find the themes folder or don't have 'themes' on the path.
-  while (themeFolder.indexOf('themes') > 1 && basename(resolve(themeFolder, '..')) !== 'themes') {
-    themeFolder = resolve(themeFolder, '..');
-  }
-  // If we have found no themes folder return without doing anything.
-  if (basename(resolve(themeFolder, '..')) !== 'themes') {
-    this.callback(null, source, map);
-    return;
-  }
-
-  logger.log("Using '", themeFolder, "' for the application theme base folder.");
-
-  source = rewriteCssUrls(source, handledResourceFolder, themeFolder, logger, options);
-  this.callback(null, source, map);
-};
-
-================================================================================
 
 
 ================================================================================
@@ -34793,8 +33149,8 @@ Extension: .json
 Language: json
 Location: target/vaadin-dev-server-settings.json
 Relative Path: target
-Created: 2026-08-22 11:43:17 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 12:17:39 (America/Bahia / GMT-03:00)
+Created: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
 MD5: 96b1133dfa2fe78455fde4371492ee5f
 SHA256: 1cf36d5e702fa81d46ac9987503d7b913d513cc15122dd914965b2b00ac8654e
 Encoding: UTF-8
@@ -34819,13 +33175,6 @@ FILE CONTENT:
   "offlinePath": "'offline.html'"
 }
 ================================================================================
-
-
-================================================================================
-BINARY/EXCLUDED FILES (not included in text content)
-================================================================================
-- target/tms-web-1.0.0.jar
-- target/tms-web-1.0.0.jar.original
 
 
 ================================================================================
@@ -50370,7 +48719,7 @@ Language: xml
 Location: pom.xml
 Relative Path: root
 Created: 2026-08-16 18:53:38 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 16:13:18 (America/Bahia / GMT-03:00)
+Modified: 2026-08-22 17:07:59 (America/Bahia / GMT-03:00)
 MD5: 5409550708af69c835cbfff9f1bf2175
 SHA256: 195f46bf7fedc1d24fb53ca3e0ce4d055b3164de5fc899effa781c8e1d428e03
 Encoding: UTF-8
