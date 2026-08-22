@@ -15,7 +15,7 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @Route("login")
 @PageTitle("Login | TMS Logística")
 @AnonymousAllowed
-@CssImport("./styles.css")
+@CssImport("./styles/styles.css")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
     private final LoginForm login = new LoginForm();

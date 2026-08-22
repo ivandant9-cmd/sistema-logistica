@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-21 21:49:30 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-22 04:25:38 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 245
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -195,7 +195,7 @@
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 views/
 │       │                   │   ├── 📄 EntregasView.java (18.25 KB)
-│       │                   │   ├── 📄 LoginView.java (3.32 KB)
+│       │                   │   ├── 📄 LoginView.java (3.33 KB)
 │       │                   │   └── 📄 MainView.java (16.46 KB)
 │       │                   ├── 📄 Application.java (414 B)
 │       │                   └── 📄 DataInitializer.java (942 B)
@@ -225,7 +225,7 @@
 │   │   │               ├── 📁 views/
 │   │   │               │   ├── 📄 EntregasView.class (23.28 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
-│   │   │               │   ├── 📄 LoginView.class (5.45 KB)
+│   │   │               │   ├── 📄 LoginView.class (5.46 KB)
 │   │   │               │   └── 📄 MainView.class (27.5 KB)
 │   │   │               ├── 📄 Application.class (786 B)
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
@@ -13019,15 +13019,15 @@ btnPdf.add(pdfButton);
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-loginview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/LoginView.java`
 
 **File Info:**
-- **Size**: 3.32 KB
+- **Size**: 3.33 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/LoginView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-18 16:23:34 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-21 20:32:35 (America/Bahia / GMT-03:00)
-- **MD5**: `721b02dd583bcbb66259f432c5cf8edc`
-- **SHA256**: `7f042abc59a3b939930516a2415873e643a9d7fa11a3218f049f156f125a6903`
+- **Modified**: 2026-08-22 04:25:37 (America/Bahia / GMT-03:00)
+- **MD5**: `bfbe1e8eec8d385c02f72397d56c4073`
+- **SHA256**: `726cc8b1c1ee3a2d28b4ace84312d940ff52c213dda6a8675570af5d26e7d8da`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -13050,7 +13050,7 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @Route("login")
 @PageTitle("Login | TMS Logística")
 @AnonymousAllowed
-@CssImport("./styles.css")
+@CssImport("./styles/styles.css")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
     private final LoginForm login = new LoginForm();
