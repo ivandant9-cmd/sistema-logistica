@@ -2,33 +2,25 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# 1. Baixa dependências e insumos do Vaadin com cache de Maven
+# 1. Copia arquivos do Maven para baixar dependências com cache
 COPY pom.xml .
 RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
 
-COPY pom.xml .
-RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
-
+# 2. Copia o código-fonte e arquivos do Vaadin
 COPY src ./src
 COPY frontend ./frontend
 
-RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
-
-# 2. Copia o código-fonte
-COPY src ./src
-
-# 3. Compila a aplicação e o frontend do Vaadin (apenas uma execução)
+# 3. Compila a aplicação e empacota para produção
 RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
 
 # Estágio de Execução
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-# Copia apenas o JAR final gerado
+# Copia apenas o JAR final gerado do estágio de build
 COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8082
 
-COPY src ./src
-COPY frontend ./frontend
-
-ENTRYPOINT ["java", "-Xmx384m", "-Dvaadin.productionMode=true", "-Dserver.port=${PORT:-8082}", "-jar", "app.jar"]
+# Define limites de memória para a JVM não estourar os 512MB do Render Free
+ENTRYPOINT ["java", "-Xms128m", "-Xmx384m", "-Dvaadin.productionMode=true", "-Dserver.port=${PORT:-8082}", "-jar", "app.jar"]
