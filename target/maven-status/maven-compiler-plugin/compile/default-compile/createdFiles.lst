@@ -4,6 +4,7 @@ br\com\ivanildo\tms\repository\EntregaRepository.class
 br\com\ivanildo\tms\views\MainView.class
 br\com\ivanildo\tms\Application.class
 br\com\ivanildo\tms\service\ExcelService.class
+br\com\ivanildo\tms\controller\PdfController.class
 br\com\ivanildo\tms\views\EntregasView.class
 br\com\ivanildo\tms\views\LoginView.class
 br\com\ivanildo\tms\repository\CarregamentoRepository.class

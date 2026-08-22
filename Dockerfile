@@ -26,9 +26,9 @@ WORKDIR /app
 
 # Copia apenas o JAR final gerado
 COPY --from=build /app/target/*.jar app.jar
-EXPOSE 8080
+EXPOSE 8082
 
 COPY src ./src
 COPY frontend ./frontend
 
-ENTRYPOINT ["java", "-Xmx384m", "-Dvaadin.productionMode=true", "-Dserver.port=${PORT:-8080}", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Xmx384m", "-Dvaadin.productionMode=true", "-Dserver.port=${PORT:-8082}", "-jar", "app.jar"]
