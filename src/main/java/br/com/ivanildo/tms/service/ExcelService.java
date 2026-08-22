@@ -77,7 +77,6 @@ public class ExcelService {
                 c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", formatter, evaluator));
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter, evaluator));
 
-                // Validação de linha válida de carregamento
                 if (!c.getViagem().isEmpty() || !c.getPlaca().isEmpty() || !c.getTransportadora().isEmpty()) {
                     novosCarregamentos.add(c);
                 }
@@ -91,6 +90,9 @@ public class ExcelService {
                     }
                 }
             }
+
+            // Limpa a primeira aba da memória se possível
+            novosCarregamentos.clear();
 
             // ==========================================
             // 2. LEITURA DA ABA "ENTREGAS"
@@ -158,12 +160,22 @@ public class ExcelService {
 
                         novasEntregas.add(entrega);
                     }
+
+                    // Grava em blocos de 500 para poupar memória RAM
+                    if (novasEntregas.size() >= 500) {
+                        entregaRepository.saveAll(novasEntregas);
+                        novasEntregas.clear();
+                    }
                 }
 
                 if (!novasEntregas.isEmpty()) {
                     entregaRepository.saveAll(novasEntregas);
+                    novasEntregas.clear();
                 }
             }
+
+            // Força a limpeza de memória no final
+            System.gc();
 
         } catch (Exception e) {
             throw new RuntimeException("Erro ao processar planilha Excel: " + e.getMessage(), e);
@@ -215,7 +227,6 @@ public class ExcelService {
             }
             return formatter.formatCellValue(cell).trim();
         } catch (Exception e) {
-            // Se a avaliação da fórmula falhar, tenta pegar como valor formatado direto
             return formatter.formatCellValue(cell).trim();
         }
     }

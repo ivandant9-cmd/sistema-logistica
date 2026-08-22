@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-22 14:50:39 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-22 15:13:46 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 263
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -193,7 +193,7 @@
 │       │                   │   ├── 📄 CarregamentoRepository.java (396 B)
 │       │                   │   └── 📄 EntregaRepository.java (599 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (11.73 KB)
+│       │                   │   ├── 📄 ExcelService.java (12.06 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 views/
 │       │                   │   ├── 📄 EntregasView.java (18.25 KB)
@@ -222,7 +222,7 @@
 │   │   │               │   ├── 📄 CarregamentoRepository.class (655 B)
 │   │   │               │   └── 📄 EntregaRepository.class (889 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (13.05 KB)
+│   │   │               │   ├── 📄 ExcelService.class (13.24 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 views/
 │   │   │               │   ├── 📄 EntregasView.class (23.28 KB)
@@ -603,7 +603,7 @@
 | Total Directories | 63 |
 | Text Files | 240 |
 | Binary Files | 23 |
-| Total Size | 94.48 MB |
+| Total Size | 94.49 MB |
 
 ### 📄 File Types Distribution
 
@@ -12255,15 +12255,15 @@ public interface EntregaRepository extends JpaRepository<Entrega, Long> {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-service-excelservice-java"></a>📄 `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 
 **File Info:**
-- **Size**: 11.73 KB
+- **Size**: 12.06 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/service`
 - **Created**: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-22 14:50:38 (America/Bahia / GMT-03:00)
-- **MD5**: `b0a4ccfc8f2392f762cac2e470a65df5`
-- **SHA256**: `439b8c8c354f55b267a758b9c53238f08628356533fd7b556178a3a5190bcd5e`
+- **Modified**: 2026-08-22 15:13:45 (America/Bahia / GMT-03:00)
+- **MD5**: `e487ace942772ea58dea3837fb4601c7`
+- **SHA256**: `133d5d3314bd65395e26560f67a842e6621c22b4bf30c3f1d55068478a154509`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -12348,7 +12348,6 @@ public class ExcelService {
                 c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", formatter, evaluator));
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter, evaluator));
 
-                // Validação de linha válida de carregamento
                 if (!c.getViagem().isEmpty() || !c.getPlaca().isEmpty() || !c.getTransportadora().isEmpty()) {
                     novosCarregamentos.add(c);
                 }
@@ -12362,6 +12361,9 @@ public class ExcelService {
                     }
                 }
             }
+
+            // Limpa a primeira aba da memória se possível
+            novosCarregamentos.clear();
 
             // ==========================================
             // 2. LEITURA DA ABA "ENTREGAS"
@@ -12429,12 +12431,22 @@ public class ExcelService {
 
                         novasEntregas.add(entrega);
                     }
+
+                    // Grava em blocos de 500 para poupar memória RAM
+                    if (novasEntregas.size() >= 500) {
+                        entregaRepository.saveAll(novasEntregas);
+                        novasEntregas.clear();
+                    }
                 }
 
                 if (!novasEntregas.isEmpty()) {
                     entregaRepository.saveAll(novasEntregas);
+                    novasEntregas.clear();
                 }
             }
+
+            // Força a limpeza de memória no final
+            System.gc();
 
         } catch (Exception e) {
             throw new RuntimeException("Erro ao processar planilha Excel: " + e.getMessage(), e);
@@ -12486,7 +12498,6 @@ public class ExcelService {
             }
             return formatter.formatCellValue(cell).trim();
         } catch (Exception e) {
-            // Se a avaliação da fórmula falhar, tenta pegar como valor formatado direto
             return formatter.formatCellValue(cell).trim();
         }
     }
