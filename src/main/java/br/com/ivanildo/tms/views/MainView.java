@@ -132,22 +132,28 @@ public class MainView extends VerticalLayout {
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
 
         MemoryBuffer buffer = new MemoryBuffer();
-        Upload uploadExcel = new Upload(buffer);
-        uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
-        uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
-        uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
+Upload uploadExcel = new Upload(buffer);
+uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
+uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
+uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
 
-        uploadExcel.addSucceededListener(event -> {
-            try (InputStream is = buffer.getInputStream()) {
-                excelService.processarExcel(is);
-                Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.TOP_END);
-                n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-                atualizarGridEIndicators();
-            } catch (Exception ex) {
-                Notification n = Notification.show("Erro ao processar: " + ex.getMessage(), 5000, Notification.Position.TOP_END);
-                n.addThemeVariants(NotificationVariant.LUMO_ERROR);
-            }
-        });
+uploadExcel.addSucceededListener(event -> {
+    try (InputStream is = buffer.getInputStream()) {
+        excelService.processarExcel(is);
+        Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+        n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+        atualizarGridEIndicators();
+    } catch (Exception ex) {
+        ex.printStackTrace(); // <--- IMPRIME O ERRO DETALHADO NO LOG DO RENDER
+        Notification n = Notification.show("Erro ao processar: " + ex.getMessage(), 5000, Notification.Position.MIDDLE);
+        n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+    }
+});
+
+// <--- ADICIONE ESTE LISTENER LOGO ABAIXO DO SUCCEEDED LISTENER
+uploadExcel.addFailedListener(event -> {
+    System.err.println("Erro na transferência do arquivo pelo browser: " + event.getReason().getMessage());
+});
 
         layout.add(btnNovo, uploadExcel);
         return layout;
