@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-22 17:50:23 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-22 18:15:32 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 246
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -196,7 +196,7 @@
 │       │                   │   ├── 📄 ExcelService.java (13.33 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 views/
-│       │                   │   ├── 📄 EntregasView.java (18.25 KB)
+│       │                   │   ├── 📄 EntregasView.java (18.21 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
 │       │                   │   └── 📄 MainView.java (16.64 KB)
 │       │                   ├── 📄 Application.java (850 B)
@@ -225,7 +225,7 @@
 │   │   │               │   ├── 📄 ExcelService.class (13.62 KB)
 │   │   │               │   └── 📄 PdfService.class (5.92 KB)
 │   │   │               ├── 📁 views/
-│   │   │               │   ├── 📄 EntregasView.class (23.12 KB)
+│   │   │               │   ├── 📄 EntregasView.class (23.11 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
 │   │   │               │   └── 📄 MainView.class (28.27 KB)
@@ -12652,15 +12652,15 @@ public class PdfService {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-entregasview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/EntregasView.java`
 
 **File Info:**
-- **Size**: 18.25 KB
+- **Size**: 18.21 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/EntregasView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-19 13:39:55 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-20 19:50:14 (America/Bahia / GMT-03:00)
-- **MD5**: `a06a58008580a925be4ef622edb607f9`
-- **SHA256**: `64918b44be8642f5478b4bed5f55af039cf4a3c8ad45c293eb75da1158dfe759`
+- **Modified**: 2026-08-22 18:15:31 (America/Bahia / GMT-03:00)
+- **MD5**: `c61cdea7f245abc27af7a79f26ce9577`
+- **SHA256**: `8d3484fd7cd862bfcd51f1ba17cd833e4d83abbfeb82c5319929abd8ae0e55a5`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -13011,30 +13011,30 @@ btnPdf.add(pdfButton);
     }
 
     private double converterPesoParaDouble(String pesoStr) {
-        if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
-        try {
-            String limpo = pesoStr.replaceAll("[^0-9,. ]", "").trim();
+    if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
+    try {
+        // Mantém apenas dígitos, vírgula e ponto
+        String limpo = pesoStr.replaceAll("[^0-9,. ]", "").trim();
 
-            if (limpo.contains(",") && limpo.contains(".")) {
-                if (limpo.lastIndexOf(",") > limpo.lastIndexOf(".")) {
-                    limpo = limpo.replace(".", "").replace(",", ".");
-                } else {
-                    limpo = limpo.replace(",", "");
-                }
-            } else if (limpo.contains(",")) {
-                limpo = limpo.replace(",", ".");
-            } else if (limpo.contains(".")) {
-                int dotIndex = limpo.indexOf(".");
-                if (limpo.length() - dotIndex - 1 == 3 && limpo.indexOf(".", dotIndex + 1) == -1) {
-                    limpo = limpo.replace(".", "");
-                }
+        // Se tem ponto e vírgula (ex: "2.577,68" ou "2,577.68")
+        if (limpo.contains(",") && limpo.contains(".")) {
+            if (limpo.lastIndexOf(",") > limpo.lastIndexOf(".")) {
+                limpo = limpo.replace(".", "").replace(",", ".");
+            } else {
+                limpo = limpo.replace(",", "");
             }
-            return Double.parseDouble(limpo);
-        } catch (Exception e) {
-            return 0.0;
-        }
-    }
+        } 
+        // Se tem apenas vírgula (ex: "2577,68")
+        else if (limpo.contains(",")) {
+            limpo = limpo.replace(",", ".");
+        } 
+        // Se tem apenas ponto (ex: "2577.679" do Excel) -> O ponto É O DECIMAL, não deve ser removido!
 
+        return Double.parseDouble(limpo);
+    } catch (Exception e) {
+        return 0.0;
+    }
+}
     private Div criarCard(String titulo, Span valor, String corBorda) {
         return criarCard(titulo, valor, corBorda, false);
     }

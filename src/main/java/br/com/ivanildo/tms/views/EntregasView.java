@@ -343,30 +343,30 @@ btnPdf.add(pdfButton);
     }
 
     private double converterPesoParaDouble(String pesoStr) {
-        if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
-        try {
-            String limpo = pesoStr.replaceAll("[^0-9,. ]", "").trim();
+    if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
+    try {
+        // Mantém apenas dígitos, vírgula e ponto
+        String limpo = pesoStr.replaceAll("[^0-9,. ]", "").trim();
 
-            if (limpo.contains(",") && limpo.contains(".")) {
-                if (limpo.lastIndexOf(",") > limpo.lastIndexOf(".")) {
-                    limpo = limpo.replace(".", "").replace(",", ".");
-                } else {
-                    limpo = limpo.replace(",", "");
-                }
-            } else if (limpo.contains(",")) {
-                limpo = limpo.replace(",", ".");
-            } else if (limpo.contains(".")) {
-                int dotIndex = limpo.indexOf(".");
-                if (limpo.length() - dotIndex - 1 == 3 && limpo.indexOf(".", dotIndex + 1) == -1) {
-                    limpo = limpo.replace(".", "");
-                }
+        // Se tem ponto e vírgula (ex: "2.577,68" ou "2,577.68")
+        if (limpo.contains(",") && limpo.contains(".")) {
+            if (limpo.lastIndexOf(",") > limpo.lastIndexOf(".")) {
+                limpo = limpo.replace(".", "").replace(",", ".");
+            } else {
+                limpo = limpo.replace(",", "");
             }
-            return Double.parseDouble(limpo);
-        } catch (Exception e) {
-            return 0.0;
-        }
-    }
+        } 
+        // Se tem apenas vírgula (ex: "2577,68")
+        else if (limpo.contains(",")) {
+            limpo = limpo.replace(",", ".");
+        } 
+        // Se tem apenas ponto (ex: "2577.679" do Excel) -> O ponto É O DECIMAL, não deve ser removido!
 
+        return Double.parseDouble(limpo);
+    } catch (Exception e) {
+        return 0.0;
+    }
+}
     private Div criarCard(String titulo, Span valor, String corBorda) {
         return criarCard(titulo, valor, corBorda, false);
     }
