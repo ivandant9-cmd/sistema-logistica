@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-22 18:15:32 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-22 18:31:59 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 246
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -196,7 +196,7 @@
 │       │                   │   ├── 📄 ExcelService.java (13.33 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 views/
-│       │                   │   ├── 📄 EntregasView.java (18.21 KB)
+│       │                   │   ├── 📄 EntregasView.java (18.94 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
 │       │                   │   └── 📄 MainView.java (16.64 KB)
 │       │                   ├── 📄 Application.java (850 B)
@@ -225,7 +225,7 @@
 │   │   │               │   ├── 📄 ExcelService.class (13.62 KB)
 │   │   │               │   └── 📄 PdfService.class (5.92 KB)
 │   │   │               ├── 📁 views/
-│   │   │               │   ├── 📄 EntregasView.class (23.11 KB)
+│   │   │               │   ├── 📄 EntregasView.class (23.92 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
 │   │   │               │   └── 📄 MainView.class (28.27 KB)
@@ -564,7 +564,7 @@
 | Total Directories | 56 |
 | Text Files | 225 |
 | Binary Files | 21 |
-| Total Size | 4.74 MB |
+| Total Size | 4.75 MB |
 
 ### 📄 File Types Distribution
 
@@ -12652,15 +12652,15 @@ public class PdfService {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-entregasview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/EntregasView.java`
 
 **File Info:**
-- **Size**: 18.21 KB
+- **Size**: 18.94 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/EntregasView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-19 13:39:55 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-22 18:15:31 (America/Bahia / GMT-03:00)
-- **MD5**: `c61cdea7f245abc27af7a79f26ce9577`
-- **SHA256**: `8d3484fd7cd862bfcd51f1ba17cd833e4d83abbfeb82c5319929abd8ae0e55a5`
+- **Modified**: 2026-08-22 18:31:58 (America/Bahia / GMT-03:00)
+- **MD5**: `44813318483639039da1e29ae179195d`
+- **SHA256**: `3fda19e3df4b3158cccc22b09ad29c176134b31dffa17c17d2518363bb828264`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -12736,70 +12736,97 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
             .set("color", "#f8fafc")
             .set("min-height", "100vh");
 
-        // Injeção CSS para Tela (Tema Dark) + Impressão (@media print)
-        UI.getCurrent().getPage().executeJs(
-            "var style = document.createElement('style');" +
-            "style.innerHTML = '" +
-            "  /* VARIÁVEIS DE TEMA DO VAADIN (DARK) */ " +
-            "  vaadin-grid { " +
-            "    width: 100% !important; " +
-            "    background-color: #1e293b !important; " +
-            "    border: 1px solid #334155 !important; " +
-            "    border-radius: 8px !important; " +
-            "  } " +
-            "  vaadin-grid::part(cell) { " +
-            "    background-color: #1e293b !important; " +
-            "    color: #f8fafc !important; " +
-            "    border-bottom: 1px solid #334155 !important; " +
-            "  } " +
-            "  vaadin-grid::part(header-cell) { " +
-            "    background-color: #0f172a !important; " +
-            "    color: #94a3b8 !important; " +
-            "    font-weight: 700 !important; " +
-            "    border-bottom: 2px solid #334155 !important; " +
-            "  } " +
-            "  vaadin-grid-cell-content { " +
-            "    color: #f8fafc !important; " +
-            "    font-size: 12px !important; " +
-            "    white-space: nowrap !important; " +
-            "    text-overflow: ellipsis !important; " +
-            "    overflow: hidden !important; " +
-            "  } " +
-            "  /* LINHAS DE SUBTOTAL */ " +
-            "  .subtotal-row::part(cell) { " +
-            "    background-color: #334155 !important; " +
-            "  } " +
-            "  .subtotal-row vaadin-grid-cell-content { " +
-            "    color: #38bdf8 !important; " +
-            "    font-weight: bold !important; " +
-            "  } " +
+        // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
+UI.getCurrent().getPage().executeJs(
+    "var style = document.createElement('style');" +
+    "style.innerHTML = '" +
+    "  /* VARIÁVEIS DE TEMA DO VAADIN (DARK) */ " +
+    "  vaadin-grid { " +
+    "    width: 100% !important; " +
+    "    background-color: #1e293b !important; " +
+    "    border: 1px solid #334155 !important; " +
+    "    border-radius: 8px !important; " +
+    "  } " +
+    "  vaadin-grid::part(cell) { " +
+    "    background-color: #1e293b !important; " +
+    "    color: #f8fafc !important; " +
+    "    border-bottom: 1px solid #334155 !important; " +
+    "  } " +
+    "  vaadin-grid::part(header-cell) { " +
+    "    background-color: #0f172a !important; " +
+    "    color: #94a3b8 !important; " +
+    "    font-weight: 700 !important; " +
+    "    border-bottom: 2px solid #334155 !important; " +
+    "  } " +
+    "  vaadin-grid-cell-content { " +
+    "    color: #f8fafc !important; " +
+    "    font-size: 12px !important; " +
+    "    white-space: nowrap !important; " +
+    "    text-overflow: ellipsis !important; " +
+    "    overflow: hidden !important; " +
+    "  } " +
 
-            "  /* REGRAS DE IMPRESSÃO */ " +
-            "  @media print { " +
-            "    @page { size: landscape; margin: 5mm; } " +
-            "    .no-print { display: none !important; } " +
-            "    body { background-color: #ffffff !important; color: #000000 !important; } " +
-            "    vaadin-grid { width: 100% !important; height: auto !important; max-height: none !important; overflow: visible !important; border: none !important; } " +
-            "    vaadin-grid, vaadin-grid *, vaadin-grid::part(row), vaadin-grid::part(cell) { " +
-            "      transform: none !important; " +
-            "      position: static !important; " +
-            "      background-color: #ffffff !important; " +
-            "      color: #000000 !important; " +
-            "    } " +
-            "    vaadin-grid-cell-content { " +
-            "      padding: 3px 4px !important; " +
-            "      font-size: 9px !important; " +
-            "      color: #000000 !important; " +
-            "    } " +
-            "    .subtotal-row::part(cell) { " +
-            "      background-color: #e5e7eb !important; " +
-            "    } " +
-            "    .subtotal-row vaadin-grid-cell-content { color: #000000 !important; font-weight: bold !important; } " +
-            "  } " +
-            "';" +
-            "document.head.appendChild(style);"
-        );
+    "  /* CORREÇÃO DOS INPUTS E CAMPOS DO FORMULÁRIO DE EDIÇÃO */ " +
+    "  vaadin-text-field::part(input-field), " +
+    "  vaadin-date-picker::part(input-field), " +
+    "  vaadin-select::part(input-field), " +
+    "  vaadin-combo-box::part(input-field), " +
+    "  vaadin-text-area::part(input-field) { " +
+    "    background-color: #1e293b !important; " + // Fundo escuro combinando com a interface
+    "    border: 1px solid #334155 !important; " +
+    "    border-radius: 6px !important; " +
+    "  } " +
+    "  vaadin-text-field input, " +
+    "  vaadin-date-picker input, " +
+    "  vaadin-select input, " +
+    "  vaadin-combo-box input, " +
+    "  vaadin-text-area textarea { " +
+    "    color: #ffffff !important; " + // Texto digitado totalmente branco e legível
+    "    font-weight: 600 !important; " +
+    "  } " +
+    "  vaadin-text-field [part=\"label\"], " +
+    "  vaadin-date-picker [part=\"label\"], " +
+    "  vaadin-select [part=\"label\"], " +
+    "  vaadin-combo-box [part=\"label\"], " +
+    "  vaadin-text-area [part=\"label\"] { " +
+    "    color: #94a3b8 !important; " + // Rótulo do campo em cinza claro
+    "    font-weight: 600 !important; " +
+    "  } " +
 
+    "  /* LINHAS DE SUBTOTAL */ " +
+    "  .subtotal-row::part(cell) { " +
+    "    background-color: #334155 !important; " +
+    "  } " +
+    "  .subtotal-row vaadin-grid-cell-content { " +
+    "    color: #38bdf8 !important; " +
+    "    font-weight: bold !important; " +
+    "  } " +
+
+    "  /* REGRAS DE IMPRESSÃO */ " +
+    "  @media print { " +
+    "    @page { size: landscape; margin: 5mm; } " +
+    "    .no-print { display: none !important; } " +
+    "    body { background-color: #ffffff !important; color: #000000 !important; } " +
+    "    vaadin-grid { width: 100% !important; height: auto !important; max-height: none !important; overflow: visible !important; border: none !important; } " +
+    "    vaadin-grid, vaadin-grid *, vaadin-grid::part(row), vaadin-grid::part(cell) { " +
+    "      transform: none !important; " +
+    "      position: static !important; " +
+    "      background-color: #ffffff !important; " +
+    "      color: #000000 !important; " +
+    "    } " +
+    "    vaadin-grid-cell-content { " +
+    "      padding: 3px 4px !important; " +
+    "      font-size: 9px !important; " +
+    "      color: #000000 !important; " +
+    "    } " +
+    "    .subtotal-row::part(cell) { " +
+    "      background-color: #e5e7eb !important; " +
+    "    } " +
+    "    .subtotal-row vaadin-grid-cell-content { color: #000000 !important; font-weight: bold !important; } " +
+    "  } " +
+    "';" +
+    "document.head.appendChild(style);"
+);
         // Botão Voltar
         Button btnVoltar = new Button("← Voltar para Carregamentos", e -> UI.getCurrent().navigate(""));
         btnVoltar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);

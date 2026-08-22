@@ -68,70 +68,97 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
             .set("color", "#f8fafc")
             .set("min-height", "100vh");
 
-        // Injeção CSS para Tela (Tema Dark) + Impressão (@media print)
-        UI.getCurrent().getPage().executeJs(
-            "var style = document.createElement('style');" +
-            "style.innerHTML = '" +
-            "  /* VARIÁVEIS DE TEMA DO VAADIN (DARK) */ " +
-            "  vaadin-grid { " +
-            "    width: 100% !important; " +
-            "    background-color: #1e293b !important; " +
-            "    border: 1px solid #334155 !important; " +
-            "    border-radius: 8px !important; " +
-            "  } " +
-            "  vaadin-grid::part(cell) { " +
-            "    background-color: #1e293b !important; " +
-            "    color: #f8fafc !important; " +
-            "    border-bottom: 1px solid #334155 !important; " +
-            "  } " +
-            "  vaadin-grid::part(header-cell) { " +
-            "    background-color: #0f172a !important; " +
-            "    color: #94a3b8 !important; " +
-            "    font-weight: 700 !important; " +
-            "    border-bottom: 2px solid #334155 !important; " +
-            "  } " +
-            "  vaadin-grid-cell-content { " +
-            "    color: #f8fafc !important; " +
-            "    font-size: 12px !important; " +
-            "    white-space: nowrap !important; " +
-            "    text-overflow: ellipsis !important; " +
-            "    overflow: hidden !important; " +
-            "  } " +
-            "  /* LINHAS DE SUBTOTAL */ " +
-            "  .subtotal-row::part(cell) { " +
-            "    background-color: #334155 !important; " +
-            "  } " +
-            "  .subtotal-row vaadin-grid-cell-content { " +
-            "    color: #38bdf8 !important; " +
-            "    font-weight: bold !important; " +
-            "  } " +
+        // Injeção CSS para Tela (Tema Dark + Formulários) + Impressão (@media print)
+UI.getCurrent().getPage().executeJs(
+    "var style = document.createElement('style');" +
+    "style.innerHTML = '" +
+    "  /* VARIÁVEIS DE TEMA DO VAADIN (DARK) */ " +
+    "  vaadin-grid { " +
+    "    width: 100% !important; " +
+    "    background-color: #1e293b !important; " +
+    "    border: 1px solid #334155 !important; " +
+    "    border-radius: 8px !important; " +
+    "  } " +
+    "  vaadin-grid::part(cell) { " +
+    "    background-color: #1e293b !important; " +
+    "    color: #f8fafc !important; " +
+    "    border-bottom: 1px solid #334155 !important; " +
+    "  } " +
+    "  vaadin-grid::part(header-cell) { " +
+    "    background-color: #0f172a !important; " +
+    "    color: #94a3b8 !important; " +
+    "    font-weight: 700 !important; " +
+    "    border-bottom: 2px solid #334155 !important; " +
+    "  } " +
+    "  vaadin-grid-cell-content { " +
+    "    color: #f8fafc !important; " +
+    "    font-size: 12px !important; " +
+    "    white-space: nowrap !important; " +
+    "    text-overflow: ellipsis !important; " +
+    "    overflow: hidden !important; " +
+    "  } " +
 
-            "  /* REGRAS DE IMPRESSÃO */ " +
-            "  @media print { " +
-            "    @page { size: landscape; margin: 5mm; } " +
-            "    .no-print { display: none !important; } " +
-            "    body { background-color: #ffffff !important; color: #000000 !important; } " +
-            "    vaadin-grid { width: 100% !important; height: auto !important; max-height: none !important; overflow: visible !important; border: none !important; } " +
-            "    vaadin-grid, vaadin-grid *, vaadin-grid::part(row), vaadin-grid::part(cell) { " +
-            "      transform: none !important; " +
-            "      position: static !important; " +
-            "      background-color: #ffffff !important; " +
-            "      color: #000000 !important; " +
-            "    } " +
-            "    vaadin-grid-cell-content { " +
-            "      padding: 3px 4px !important; " +
-            "      font-size: 9px !important; " +
-            "      color: #000000 !important; " +
-            "    } " +
-            "    .subtotal-row::part(cell) { " +
-            "      background-color: #e5e7eb !important; " +
-            "    } " +
-            "    .subtotal-row vaadin-grid-cell-content { color: #000000 !important; font-weight: bold !important; } " +
-            "  } " +
-            "';" +
-            "document.head.appendChild(style);"
-        );
+    "  /* CORREÇÃO DOS INPUTS E CAMPOS DO FORMULÁRIO DE EDIÇÃO */ " +
+    "  vaadin-text-field::part(input-field), " +
+    "  vaadin-date-picker::part(input-field), " +
+    "  vaadin-select::part(input-field), " +
+    "  vaadin-combo-box::part(input-field), " +
+    "  vaadin-text-area::part(input-field) { " +
+    "    background-color: #1e293b !important; " + // Fundo escuro combinando com a interface
+    "    border: 1px solid #334155 !important; " +
+    "    border-radius: 6px !important; " +
+    "  } " +
+    "  vaadin-text-field input, " +
+    "  vaadin-date-picker input, " +
+    "  vaadin-select input, " +
+    "  vaadin-combo-box input, " +
+    "  vaadin-text-area textarea { " +
+    "    color: #ffffff !important; " + // Texto digitado totalmente branco e legível
+    "    font-weight: 600 !important; " +
+    "  } " +
+    "  vaadin-text-field [part=\"label\"], " +
+    "  vaadin-date-picker [part=\"label\"], " +
+    "  vaadin-select [part=\"label\"], " +
+    "  vaadin-combo-box [part=\"label\"], " +
+    "  vaadin-text-area [part=\"label\"] { " +
+    "    color: #94a3b8 !important; " + // Rótulo do campo em cinza claro
+    "    font-weight: 600 !important; " +
+    "  } " +
 
+    "  /* LINHAS DE SUBTOTAL */ " +
+    "  .subtotal-row::part(cell) { " +
+    "    background-color: #334155 !important; " +
+    "  } " +
+    "  .subtotal-row vaadin-grid-cell-content { " +
+    "    color: #38bdf8 !important; " +
+    "    font-weight: bold !important; " +
+    "  } " +
+
+    "  /* REGRAS DE IMPRESSÃO */ " +
+    "  @media print { " +
+    "    @page { size: landscape; margin: 5mm; } " +
+    "    .no-print { display: none !important; } " +
+    "    body { background-color: #ffffff !important; color: #000000 !important; } " +
+    "    vaadin-grid { width: 100% !important; height: auto !important; max-height: none !important; overflow: visible !important; border: none !important; } " +
+    "    vaadin-grid, vaadin-grid *, vaadin-grid::part(row), vaadin-grid::part(cell) { " +
+    "      transform: none !important; " +
+    "      position: static !important; " +
+    "      background-color: #ffffff !important; " +
+    "      color: #000000 !important; " +
+    "    } " +
+    "    vaadin-grid-cell-content { " +
+    "      padding: 3px 4px !important; " +
+    "      font-size: 9px !important; " +
+    "      color: #000000 !important; " +
+    "    } " +
+    "    .subtotal-row::part(cell) { " +
+    "      background-color: #e5e7eb !important; " +
+    "    } " +
+    "    .subtotal-row vaadin-grid-cell-content { color: #000000 !important; font-weight: bold !important; } " +
+    "  } " +
+    "';" +
+    "document.head.appendChild(style);"
+);
         // Botão Voltar
         Button btnVoltar = new Button("← Voltar para Carregamentos", e -> UI.getCurrent().navigate(""));
         btnVoltar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
