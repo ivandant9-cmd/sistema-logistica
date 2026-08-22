@@ -91,7 +91,6 @@ public class ExcelService {
                 }
             }
 
-            // Limpa a primeira aba da memória se possível
             novosCarregamentos.clear();
 
             // ==========================================
@@ -126,7 +125,7 @@ public class ExcelService {
                     String viagemRef = getValorFlexivel(row, colunasEntregas, "VIAGEM", 1, formatter, evaluator);
                     String codigoCliente = getValorFlexivel(row, colunasEntregas, "CODIGOCLIENTE", 2, formatter, evaluator);
                     if (codigoCliente.isEmpty()) codigoCliente = getValorFlexivel(row, colunasEntregas, "CODCLIENTE", 2, formatter, evaluator);
-                    
+
                     String delivery = getValorFlexivel(row, colunasEntregas, "DELIVERY", 5, formatter, evaluator);
                     String nf = getValorFlexivel(row, colunasEntregas, "NOTAFISCAL", 6, formatter, evaluator);
                     if (nf.isEmpty()) nf = getValorFlexivel(row, colunasEntregas, "NF", 6, formatter, evaluator);
@@ -161,8 +160,7 @@ public class ExcelService {
                         novasEntregas.add(entrega);
                     }
 
-                    // Grava em blocos de 500 para poupar memória RAM
-                    if (novasEntregas.size() >= 500) {
+                    if (novasEntregas.size() >= 200) {
                         entregaRepository.saveAll(novasEntregas);
                         novasEntregas.clear();
                     }
@@ -174,7 +172,7 @@ public class ExcelService {
                 }
             }
 
-            // Força a limpeza de memória no final
+            evaluator.clearAllCachedResultValues();
             System.gc();
 
         } catch (Exception e) {
@@ -212,17 +210,17 @@ public class ExcelService {
         if (cell == null) return "";
         try {
             if (cell.getCellType() == CellType.FORMULA) {
-                CellValue cellValue = evaluator.evaluate(cell);
-                if (cellValue == null) return "";
-                switch (cellValue.getCellType()) {
+                switch (cell.getCachedFormulaResultType()) {
                     case STRING:
-                        return cellValue.getStringValue().trim();
+                        return cell.getStringCellValue().trim();
                     case NUMERIC:
-                        return formatter.formatCellValue(cell, evaluator).trim();
+                        return formatter.formatCellValue(cell).trim();
                     case BOOLEAN:
-                        return String.valueOf(cellValue.getBooleanValue());
+                        return String.valueOf(cell.getBooleanCellValue());
                     default:
-                        return "";
+                        CellValue cellValue = evaluator.evaluate(cell);
+                        if (cellValue == null) return "";
+                        return formatter.formatCellValue(cell, evaluator).trim();
                 }
             }
             return formatter.formatCellValue(cell).trim();

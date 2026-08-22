@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-22 15:13:46 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-22 15:38:23 (America/Bahia / GMT-03:00)
 Total Files Processed: 263
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -195,7 +195,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 CarregamentoRepository.java (396 B)
 │       │                   │   └── 📄 EntregaRepository.java (599 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (12.06 KB)
+│       │                   │   ├── 📄 ExcelService.java (11.97 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 views/
 │       │                   │   ├── 📄 EntregasView.java (18.25 KB)
@@ -224,7 +224,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 CarregamentoRepository.class (655 B)
 │   │   │               │   └── 📄 EntregaRepository.class (889 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (13.24 KB)
+│   │   │               │   ├── 📄 ExcelService.class (7.2 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 views/
 │   │   │               │   ├── 📄 EntregasView.class (23.28 KB)
@@ -356,7 +356,7 @@ Total Files: 263
 Total Directories: 63
 Text Files: 240
 Binary Files: 23
-Total Size: 94.49 MB
+Total Size: 94.48 MB
 
 FILE TYPES DISTRIBUTION:
 ------------------------------
@@ -12152,15 +12152,15 @@ FILE: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 12.06 KB
+Size: 11.97 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 Relative Path: src/main/java/br/com/ivanildo/tms/service
 Created: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 15:13:45 (America/Bahia / GMT-03:00)
-MD5: e487ace942772ea58dea3837fb4601c7
-SHA256: 133d5d3314bd65395e26560f67a842e6621c22b4bf30c3f1d55068478a154509
+Modified: 2026-08-22 15:38:22 (America/Bahia / GMT-03:00)
+MD5: 300add59b3c2e0468cb3e42787f66c96
+SHA256: d8970a081a3d706e45633b91380cceeea9f8714b753daf0b56f3c50475241cf7
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12258,7 +12258,6 @@ public class ExcelService {
                 }
             }
 
-            // Limpa a primeira aba da memória se possível
             novosCarregamentos.clear();
 
             // ==========================================
@@ -12293,7 +12292,7 @@ public class ExcelService {
                     String viagemRef = getValorFlexivel(row, colunasEntregas, "VIAGEM", 1, formatter, evaluator);
                     String codigoCliente = getValorFlexivel(row, colunasEntregas, "CODIGOCLIENTE", 2, formatter, evaluator);
                     if (codigoCliente.isEmpty()) codigoCliente = getValorFlexivel(row, colunasEntregas, "CODCLIENTE", 2, formatter, evaluator);
-                    
+
                     String delivery = getValorFlexivel(row, colunasEntregas, "DELIVERY", 5, formatter, evaluator);
                     String nf = getValorFlexivel(row, colunasEntregas, "NOTAFISCAL", 6, formatter, evaluator);
                     if (nf.isEmpty()) nf = getValorFlexivel(row, colunasEntregas, "NF", 6, formatter, evaluator);
@@ -12328,8 +12327,7 @@ public class ExcelService {
                         novasEntregas.add(entrega);
                     }
 
-                    // Grava em blocos de 500 para poupar memória RAM
-                    if (novasEntregas.size() >= 500) {
+                    if (novasEntregas.size() >= 200) {
                         entregaRepository.saveAll(novasEntregas);
                         novasEntregas.clear();
                     }
@@ -12341,7 +12339,7 @@ public class ExcelService {
                 }
             }
 
-            // Força a limpeza de memória no final
+            evaluator.clearAllCachedResultValues();
             System.gc();
 
         } catch (Exception e) {
@@ -12379,17 +12377,17 @@ public class ExcelService {
         if (cell == null) return "";
         try {
             if (cell.getCellType() == CellType.FORMULA) {
-                CellValue cellValue = evaluator.evaluate(cell);
-                if (cellValue == null) return "";
-                switch (cellValue.getCellType()) {
+                switch (cell.getCachedFormulaResultType()) {
                     case STRING:
-                        return cellValue.getStringValue().trim();
+                        return cell.getStringCellValue().trim();
                     case NUMERIC:
-                        return formatter.formatCellValue(cell, evaluator).trim();
+                        return formatter.formatCellValue(cell).trim();
                     case BOOLEAN:
-                        return String.valueOf(cellValue.getBooleanValue());
+                        return String.valueOf(cell.getBooleanCellValue());
                     default:
-                        return "";
+                        CellValue cellValue = evaluator.evaluate(cell);
+                        if (cellValue == null) return "";
+                        return formatter.formatCellValue(cell, evaluator).trim();
                 }
             }
             return formatter.formatCellValue(cell).trim();
