@@ -64,28 +64,37 @@ public class MainView extends VerticalLayout {
     private final Span txtPendentes = new Span("0");
 
     public MainView(CarregamentoRepository repository, ExcelService excelService) {
-        this.repository = repository;
-        this.excelService = excelService;
+    this.repository = repository;
+    this.excelService = excelService;
 
-        setSizeFull();
-        setPadding(true);
-        setSpacing(true);
-        getStyle().set("background-color", "#0b1329").set("color", "#f8fafc");
+    setSizeFull();
+    setPadding(true);
+    setSpacing(true);
 
-        H2 titulo = new H2("🚚 Gestão Operacional de Carregamento");
-        titulo.getStyle()
-                .set("color", "#ffffff")
-                .set("margin", "0")
-                .set("font-size", "1.6rem")
-                .set("font-weight", "700");
+    // FIX DEFINITIVO: Define o fundo escuro E força as variáveis do Lumo diretamente no escopo global da View
+    getStyle()
+        .set("background-color", "#0b1329")
+        .set("color", "#f8fafc")
+        .set("--lumo-secondary-text-color", "#cbd5e1")
+        .set("--lumo-body-text-color", "#f8fafc")
+        .set("--lumo-primary-text-color", "#f8fafc")
+        .set("--lumo-contrast-60pct", "#cbd5e1")
+        .set("--lumo-contrast-70pct", "#cbd5e1");
 
-        Div containerKPI = criarCardsKPIs();
-        HorizontalLayout barraAcoes = criarBarraAcoes();
-        configurarGrid();
+    H2 titulo = new H2("🚚 Gestão Operacional de Carregamento");
+    titulo.getStyle()
+            .set("color", "#ffffff")
+            .set("margin", "0")
+            .set("font-size", "1.6rem")
+            .set("font-weight", "700");
 
-        add(titulo, containerKPI, barraAcoes, grid);
-        atualizarGridEIndicators();
-    }
+    Div containerKPI = criarCardsKPIs();
+    HorizontalLayout barraAcoes = criarBarraAcoes();
+    configurarGrid();
+
+    add(titulo, containerKPI, barraAcoes, grid);
+    atualizarGridEIndicators();
+}
     
 
     private Div criarCardsKPIs() {
@@ -137,17 +146,36 @@ private Div criarCardSingle(String titulo, Span valorSpan, Icon icone, String cl
     } // <-- Fecha o método criarCardSingle aqui!
 
     private void aplicarFiltroStatus(String status) {
-    List<Carregamento> todos = repository.findAll();
-    
-    if ("TODOS".equalsIgnoreCase(status)) {
-        grid.setItems(todos);
-    } else {
-        List<Carregamento> filtrados = todos.stream()
-            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase(status))
-            .toList();
-        grid.setItems(filtrados);
-    }
-}
+        List<Carregamento> todos = repository.findAll();
+
+        if (status == null) {
+            return;
+        }
+
+        if ("TODOS".equalsIgnoreCase(status)) {
+            grid.setItems(todos);
+        } else if ("PENDENTE".equalsIgnoreCase(status) || "PENDENTES".equalsIgnoreCase(status)) {
+            List<Carregamento> pendentes = todos.stream()
+                .filter(c -> {
+                    if (c.getStatus() == null || c.getStatus().trim().isEmpty()) {
+                        return true;
+                    }
+                    String st = c.getStatus().trim();
+                    return "Pendente".equalsIgnoreCase(st)
+                        || (!"Apresentado".equalsIgnoreCase(st) 
+                         && !"Carregando".equalsIgnoreCase(st) 
+                         && !"Expedido".equalsIgnoreCase(st));
+                })
+                .toList();
+            grid.setItems(pendentes);
+        } else {
+            List<Carregamento> filtrados = todos.stream()
+                .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase(status))
+                .toList();
+            grid.setItems(filtrados);
+        }
+    } // Fechamento correto do método aplicarFiltroStatus
+
  // Fechamento da classe MainView
 
     private HorizontalLayout criarBarraAcoes() {

@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-23 19:20:35 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-23 20:16:46 (America/Bahia / GMT-03:00)
 Total Files Processed: 263
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -205,7 +205,7 @@ PROJECT STRUCTURE
 │       │                   ├── 📁 views/
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   └── 📄 MainView.java (19.81 KB)
+│       │                   │   └── 📄 MainView.java (21 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (942 B)
 │       └── 📁 resources/
@@ -235,7 +235,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   └── 📄 MainView.class (31.06 KB)
+│   │   │               │   └── 📄 MainView.class (31.47 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
 │   │   ├── 📁 templates/
@@ -13529,15 +13529,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/MainView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 19.81 KB
+Size: 21 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/MainView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-Modified: 2026-08-23 19:20:34 (America/Bahia / GMT-03:00)
-MD5: 2325753607e4f47ea9d887f56eed442f
-SHA256: b777de597c8fcdcb6d4ce4e7af680a33151340366bfe92f691bf7c560fcb7b40
+Modified: 2026-08-23 20:16:46 (America/Bahia / GMT-03:00)
+MD5: e51092110ac0cc8bc6d55772f053e4ae
+SHA256: ff0cdf3596e5cfad8ed2bfd0f4f075c5f8e9f05991be59c6880d040e4c004750
 Encoding: ASCII
 
 FILE CONTENT:
@@ -13608,28 +13608,37 @@ public class MainView extends VerticalLayout {
     private final Span txtPendentes = new Span("0");
 
     public MainView(CarregamentoRepository repository, ExcelService excelService) {
-        this.repository = repository;
-        this.excelService = excelService;
+    this.repository = repository;
+    this.excelService = excelService;
 
-        setSizeFull();
-        setPadding(true);
-        setSpacing(true);
-        getStyle().set("background-color", "#0b1329").set("color", "#f8fafc");
+    setSizeFull();
+    setPadding(true);
+    setSpacing(true);
 
-        H2 titulo = new H2("🚚 Gestão Operacional de Carregamento");
-        titulo.getStyle()
-                .set("color", "#ffffff")
-                .set("margin", "0")
-                .set("font-size", "1.6rem")
-                .set("font-weight", "700");
+    // FIX DEFINITIVO: Define o fundo escuro E força as variáveis do Lumo diretamente no escopo global da View
+    getStyle()
+        .set("background-color", "#0b1329")
+        .set("color", "#f8fafc")
+        .set("--lumo-secondary-text-color", "#cbd5e1")
+        .set("--lumo-body-text-color", "#f8fafc")
+        .set("--lumo-primary-text-color", "#f8fafc")
+        .set("--lumo-contrast-60pct", "#cbd5e1")
+        .set("--lumo-contrast-70pct", "#cbd5e1");
 
-        Div containerKPI = criarCardsKPIs();
-        HorizontalLayout barraAcoes = criarBarraAcoes();
-        configurarGrid();
+    H2 titulo = new H2("🚚 Gestão Operacional de Carregamento");
+    titulo.getStyle()
+            .set("color", "#ffffff")
+            .set("margin", "0")
+            .set("font-size", "1.6rem")
+            .set("font-weight", "700");
 
-        add(titulo, containerKPI, barraAcoes, grid);
-        atualizarGridEIndicators();
-    }
+    Div containerKPI = criarCardsKPIs();
+    HorizontalLayout barraAcoes = criarBarraAcoes();
+    configurarGrid();
+
+    add(titulo, containerKPI, barraAcoes, grid);
+    atualizarGridEIndicators();
+}
     
 
     private Div criarCardsKPIs() {
@@ -13681,17 +13690,36 @@ private Div criarCardSingle(String titulo, Span valorSpan, Icon icone, String cl
     } // <-- Fecha o método criarCardSingle aqui!
 
     private void aplicarFiltroStatus(String status) {
-    List<Carregamento> todos = repository.findAll();
-    
-    if ("TODOS".equalsIgnoreCase(status)) {
-        grid.setItems(todos);
-    } else {
-        List<Carregamento> filtrados = todos.stream()
-            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase(status))
-            .toList();
-        grid.setItems(filtrados);
-    }
-}
+        List<Carregamento> todos = repository.findAll();
+
+        if (status == null) {
+            return;
+        }
+
+        if ("TODOS".equalsIgnoreCase(status)) {
+            grid.setItems(todos);
+        } else if ("PENDENTE".equalsIgnoreCase(status) || "PENDENTES".equalsIgnoreCase(status)) {
+            List<Carregamento> pendentes = todos.stream()
+                .filter(c -> {
+                    if (c.getStatus() == null || c.getStatus().trim().isEmpty()) {
+                        return true;
+                    }
+                    String st = c.getStatus().trim();
+                    return "Pendente".equalsIgnoreCase(st)
+                        || (!"Apresentado".equalsIgnoreCase(st) 
+                         && !"Carregando".equalsIgnoreCase(st) 
+                         && !"Expedido".equalsIgnoreCase(st));
+                })
+                .toList();
+            grid.setItems(pendentes);
+        } else {
+            List<Carregamento> filtrados = todos.stream()
+                .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase(status))
+                .toList();
+            grid.setItems(filtrados);
+        }
+    } // Fechamento correto do método aplicarFiltroStatus
+
  // Fechamento da classe MainView
 
     private HorizontalLayout criarBarraAcoes() {
