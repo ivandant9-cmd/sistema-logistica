@@ -30,6 +30,7 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import java.util.Locale;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -130,6 +131,8 @@ public class MainView extends VerticalLayout {
                 .set("border-radius", "6px")
                 .set("box-shadow", "0 4px 12px rgba(37, 99, 235, 0.3)");
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
+        // Oculta o botão na interface preservando toda a estrutura existente:
+        btnNovo.setVisible(false);
 
         MemoryBuffer buffer = new MemoryBuffer();
 Upload uploadExcel = new Upload(buffer);
@@ -159,13 +162,15 @@ uploadExcel.addFailedListener(event -> {
         return layout;
     }
 @SuppressWarnings("null")
-
-    private void configurarGrid() {
+private void configurarGrid() {
     grid.setSizeFull();
-    grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER);
+    // LUMO_COMPACT reduz a altura das linhas nativamente no Vaadin
+    grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_COMPACT);
 
-    // Ajusta as variáveis CSS internas do Vaadin para aplicar o modo escuro na tabela
+    // Ajustes de tema e dimensões escopados exclusivamente no Grid
     grid.getStyle()
+        .set("--lumo-size-m", "36px")                  // Altura ideal para acomodar o botão 'Entregas'
+        .set("--lumo-font-size-s", "12px")
         .set("--lumo-base-color", "#0f172a")
         .set("--lumo-body-text-color", "#f8fafc")
         .set("--lumo-header-text-color", "#94a3b8")
@@ -194,21 +199,26 @@ uploadExcel.addFailedListener(event -> {
     grid.addColumn(new ComponentRenderer<>(carregamento -> {
         HorizontalLayout acoes = new HorizontalLayout();
         acoes.setSpacing(true);
+        acoes.setPadding(false);
+        acoes.setMargin(false);
 
         Button btnEditar = new Button(VaadinIcon.EDIT.create());
         btnEditar.addThemeVariants(ButtonVariant.LUMO_TERTIARY, ButtonVariant.LUMO_SMALL);
-        btnEditar.getStyle().set("color", "#38bdf8").set("cursor", "pointer");
+        btnEditar.getStyle()
+                .set("color", "#38bdf8")
+                .set("cursor", "pointer");
         btnEditar.setTooltipText("Editar Carregamento");
         btnEditar.addClickListener(e -> abrirFormularioModal(carregamento));
 
         Button btnEntregas = new Button("Entregas", VaadinIcon.PACKAGE.create());
         btnEntregas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnEntregas.getStyle()
-                .set("background-color", "#059669")
+                .set("background-color", "#2563eb")
                 .set("color", "#ffffff")
                 .set("font-weight", "600")
                 .set("border-radius", "4px")
                 .set("cursor", "pointer");
+
         btnEntregas.addClickListener(e -> {
             if (carregamento.getId() != null) {
                 UI.getCurrent().navigate("entregas/" + carregamento.getId());
