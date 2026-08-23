@@ -5,8 +5,8 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-23 20:16:46 (America/Bahia / GMT-03:00)
-Total Files Processed: 263
+Generated On: 2026-08-23 22:40:47 (America/Bahia / GMT-03:00)
+Total Files Processed: 276
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
 
@@ -190,22 +190,29 @@ PROJECT STRUCTURE
 │       │           └── 📁 ivanildo/
 │       │               └── 📁 tms/
 │       │                   ├── 📁 config/
-│       │                   │   └── 📄 SecurityConfig.java (2.16 KB)
+│       │                   │   └── 📄 SecurityConfig.java (2.24 KB)
 │       │                   ├── 📁 controller/
+│       │                   │   ├── 📄 CheckinController.java (2.12 KB)
+│       │                   │   ├── 📄 CheckinDTO.java (473 B)
 │       │                   │   └── 📄 PdfController.java (2.68 KB)
 │       │                   ├── 📁 model/
-│       │                   │   ├── 📄 Carregamento.java (2.53 KB)
-│       │                   │   └── 📄 Entrega.java (2.18 KB)
+│       │                   │   ├── 📄 Carregamento.java (3.29 KB)
+│       │                   │   ├── 📄 Entrega.java (2.18 KB)
+│       │                   │   └── 📄 Motorista.java (1.36 KB)
 │       │                   ├── 📁 repository/
-│       │                   │   ├── 📄 CarregamentoRepository.java (396 B)
-│       │                   │   └── 📄 EntregaRepository.java (599 B)
+│       │                   │   ├── 📄 CarregamentoRepository.java (778 B)
+│       │                   │   ├── 📄 EntregaRepository.java (599 B)
+│       │                   │   └── 📄 MotoristaRepository.java (309 B)
 │       │                   ├── 📁 service/
 │       │                   │   ├── 📄 ExcelService.java (15.97 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
+│       │                   ├── 📁 util/
+│       │                   │   └── 📄 UiBroadcaster.java (1010 B)
 │       │                   ├── 📁 views/
+│       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   └── 📄 MainView.java (21 KB)
+│       │                   │   └── 📄 MainView.java (22.19 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (942 B)
 │       └── 📁 resources/
@@ -219,23 +226,31 @@ PROJECT STRUCTURE
 │   │   │       └── 📁 ivanildo/
 │   │   │           └── 📁 tms/
 │   │   │               ├── 📁 config/
-│   │   │               │   └── 📄 SecurityConfig.class (4.82 KB)
+│   │   │               │   └── 📄 SecurityConfig.class (4.86 KB)
 │   │   │               ├── 📁 controller/
+│   │   │               │   ├── 📄 CheckinController.class (4.94 KB)
+│   │   │               │   ├── 📄 CheckinDTO.class (971 B)
 │   │   │               │   └── 📄 PdfController.class (4.68 KB)
 │   │   │               ├── 📁 model/
-│   │   │               │   ├── 📄 Carregamento.class (3.51 KB)
-│   │   │               │   └── 📄 Entrega.class (2.98 KB)
+│   │   │               │   ├── 📄 Carregamento.class (4.29 KB)
+│   │   │               │   ├── 📄 Entrega.class (2.98 KB)
+│   │   │               │   └── 📄 Motorista.class (2.18 KB)
 │   │   │               ├── 📁 repository/
-│   │   │               │   ├── 📄 CarregamentoRepository.class (655 B)
-│   │   │               │   └── 📄 EntregaRepository.class (889 B)
+│   │   │               │   ├── 📄 CarregamentoRepository.class (1.04 KB)
+│   │   │               │   ├── 📄 EntregaRepository.class (889 B)
+│   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
 │   │   │               │   ├── 📄 ExcelService.class (15.83 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
+│   │   │               ├── 📁 util/
+│   │   │               │   ├── 📄 UiBroadcaster.class (3.76 KB)
+│   │   │               │   └── 📄 UiBroadcaster$Registration.class (379 B)
 │   │   │               ├── 📁 views/
+│   │   │               │   ├── 📄 CheckInView.class (10 KB)
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   └── 📄 MainView.class (31.47 KB)
+│   │   │               │   └── 📄 MainView.class (33.78 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
 │   │   ├── 📁 templates/
@@ -318,7 +333,7 @@ PROJECT STRUCTURE
 │   │       └── 📁 compile/
 │   │           └── 📁 default-compile/
 │   │               ├── 📄 createdFiles.lst (660 B)
-│   │               └── 📄 inputFiles.lst (1.32 KB)
+│   │               └── 📄 inputFiles.lst (1.73 KB)
 │   ├── 📁 plugins/
 │   │   ├── 📁 application-theme-plugin/
 │   │   │   ├── 📄 application-theme-plugin.js (2.17 KB)
@@ -353,18 +368,18 @@ PROJECT STRUCTURE
 ================================================================================
 PROJECT STATISTICS
 ================================================================================
-Total Files: 263
-Total Directories: 64
-Text Files: 242
-Binary Files: 21
-Total Size: 4.82 MB
+Total Files: 276
+Total Directories: 66
+Text Files: 248
+Binary Files: 28
+Total Size: 4.86 MB
 
 FILE TYPES DISTRIBUTION:
 ------------------------------
 .js             : 153
 .ts             : 50
-.class          : 14
-.java           : 13
+.class          : 21
+.java           : 19
 .json           : 11
 .css            : 5
 .html           : 4
@@ -11919,15 +11934,15 @@ FILE: src/main/java/br/com/ivanildo/tms/config/SecurityConfig.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 2.16 KB
+Size: 2.24 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/config/SecurityConfig.java
 Relative Path: src/main/java/br/com/ivanildo/tms/config
 Created: 2026-08-18 16:18:31 (America/Bahia / GMT-03:00)
-Modified: 2026-08-21 20:33:09 (America/Bahia / GMT-03:00)
-MD5: b841de3c377309a3d1bf28644e13b19d
-SHA256: 29dcca3fe043e37cd8dbf4fd05cceee7490a7d090ec2ceaae681cece905bf32f
+Modified: 2026-08-23 21:13:15 (America/Bahia / GMT-03:00)
+MD5: 8d805d16e660ac090372d856b73b4181
+SHA256: 87a137f698d6e59151c085c9820b703988da50a32fcbd551bd2ce342141da80b
 Encoding: ASCII
 
 FILE CONTENT:
@@ -11953,20 +11968,21 @@ public class SecurityConfig extends VaadinWebSecurity {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // 1. Libera recursos estáticos e assets do Vaadin
+        // 1. Libera recursos estáticos, assets do Vaadin e a rota pública de check-in
         http.authorizeHttpRequests(auth -> 
             auth.requestMatchers(
                 new AntPathRequestMatcher("/images/**"),
                 new AntPathRequestMatcher("/icons/**"),
                 new AntPathRequestMatcher("/VAADIN/**"),
-                new AntPathRequestMatcher("/line-awesome/**")
+                new AntPathRequestMatcher("/line-awesome/**"),
+                new AntPathRequestMatcher("/checkin/**") // Libera a rota para o motorista
             ).permitAll()
         );
 
         // 2. Aplica as configurações padrão de rotas do Vaadin
         super.configure(http);
 
-        // 3. Define a View de Login (libera acesso público automaticamente a ela)
+        // 3. Define a View de Login
         setLoginView(http, LoginView.class);
     }
 
@@ -11986,6 +12002,122 @@ public class SecurityConfig extends VaadinWebSecurity {
     public ForwardedHeaderFilter forwardedHeaderFilter() {
         return new ForwardedHeaderFilter();
     }
+}
+================================================================================
+
+
+================================================================================
+FILE: src/main/java/br/com/ivanildo/tms/controller/CheckinController.java
+================================================================================
+
+FILE INFORMATION:
+----------------------------------------
+Size: 2.12 KB
+Extension: .java
+Language: java
+Location: src/main/java/br/com/ivanildo/tms/controller/CheckinController.java
+Relative Path: src/main/java/br/com/ivanildo/tms/controller
+Created: 2026-08-23 22:38:26 (America/Bahia / GMT-03:00)
+Modified: 2026-08-23 22:38:26 (America/Bahia / GMT-03:00)
+MD5: 8077426dabde57c1ccce61c3a0826623
+SHA256: 0f2a7c7735090cfb710cde6a513f488549979c080564367e8b1a32bccf355d02
+Encoding: UTF-8
+
+FILE CONTENT:
+----------------------------------------
+package br.com.ivanildo.tms.controller;
+
+import br.com.ivanildo.tms.model.Carregamento;
+import br.com.ivanildo.tms.model.Motorista;
+import br.com.ivanildo.tms.repository.CarregamentoRepository;
+import br.com.ivanildo.tms.repository.MotoristaRepository;
+import br.com.ivanildo.tms.util.UiBroadcaster; // ajuste se necessário
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api")
+public class CheckinController {
+
+    @Autowired
+    private CarregamentoRepository carregamentoRepository;
+
+    @Autowired
+    private MotoristaRepository motoristaRepository;
+
+    @PostMapping("/checkin")
+    public ResponseEntity<?> realizarCheckin(@RequestBody CheckinDTO request) {
+        String placaInformada = request.getPlaca().replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
+
+        List<Carregamento> carregamentos = carregamentoRepository.findByPlacaIgnoreCase(placaInformada);
+
+        if (carregamentos.isEmpty()) {
+            return ResponseEntity.badRequest().body("Nenhum agendamento encontrado para a placa: " + request.getPlaca());
+        }
+
+        Motorista motorista = motoristaRepository.findByCpf(request.getCpf())
+                .orElseGet(() -> {
+                    Motorista novo = new Motorista();
+                    novo.setCpf(request.getCpf());
+                    novo.setNome(request.getNome());
+                    return motoristaRepository.save(novo);
+                });
+
+        LocalDateTime agora = LocalDateTime.now();
+        for (Carregamento c : carregamentos) {
+            c.setStatus("Apresentado");
+            c.setMotorista(motorista.getNome());
+            c.setMotoristaEntidade(motorista);
+            c.setDataHoraApresentacao(agora);
+            carregamentoRepository.save(c);
+        }
+
+        UiBroadcaster.broadcast("CHECKIN_REALIZADO");
+
+        return ResponseEntity.ok().body("Check-in realizado com sucesso para " + carregamentos.size() + " viagem(ns)!");
+    }
+}
+================================================================================
+
+
+================================================================================
+FILE: src/main/java/br/com/ivanildo/tms/controller/CheckinDTO.java
+================================================================================
+
+FILE INFORMATION:
+----------------------------------------
+Size: 473 B
+Extension: .java
+Language: java
+Location: src/main/java/br/com/ivanildo/tms/controller/CheckinDTO.java
+Relative Path: src/main/java/br/com/ivanildo/tms/controller
+Created: 2026-08-23 22:38:57 (America/Bahia / GMT-03:00)
+Modified: 2026-08-23 22:39:10 (America/Bahia / GMT-03:00)
+MD5: 98db716d3fa60be1fd2041648f27284a
+SHA256: 13ad4f64503a9c04e6da73c175d5f9af66890979ab9c0a0ca0174e156b2054e4
+Encoding: ASCII
+
+FILE CONTENT:
+----------------------------------------
+package br.com.ivanildo.tms.controller;
+
+public class CheckinDTO {
+    private String placa;
+    private String cpf;
+    private String nome;
+
+    public String getPlaca() { return placa; }
+    public void setPlaca(String placa) { this.placa = placa; }
+
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 }
 ================================================================================
 
@@ -12087,15 +12219,15 @@ FILE: src/main/java/br/com/ivanildo/tms/model/Carregamento.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 2.53 KB
+Size: 3.29 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/model/Carregamento.java
 Relative Path: src/main/java/br/com/ivanildo/tms/model
 Created: 2026-08-16 19:12:42 (America/Bahia / GMT-03:00)
-Modified: 2026-08-19 14:30:40 (America/Bahia / GMT-03:00)
-MD5: 9dd9869289134618d5b7697a4208e3ed
-SHA256: a267985ff479fa9d5b55cca9574fd00d680ae62494e16c399083046412e15aea
+Modified: 2026-08-23 21:00:11 (America/Bahia / GMT-03:00)
+MD5: 0eb257bfae88eac8066a3e9c17a6adde
+SHA256: a221202dcce9c2122381179518975f3c6e47da95e8d406eec79122da17dd6902
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12103,6 +12235,7 @@ FILE CONTENT:
 package br.com.ivanildo.tms.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "carregamentos")
@@ -12115,7 +12248,7 @@ public class Carregamento {
     private String viagem;
     private String transportadora;
     private String ordemCarga;
-    private String motorista;
+    private String motorista; // Mantido exatamente como estava
     private String status;
     private String dataProgramacao;
     private String placa;
@@ -12126,8 +12259,16 @@ public class Carregamento {
     private String notasFiscais;
     private String observacao;
 
+    // --- NOVOS CAMPOS PARA O CHECK-IN SELF-SERVICE ---
+    @ManyToOne
+    @JoinColumn(name = "motorista_entidade_id")
+    private Motorista motoristaEntidade;
+
+    private LocalDateTime dataHoraApresentacao;
+
     public Carregamento() {}
 
+    // Getters e Setters Originais
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -12169,6 +12310,13 @@ public class Carregamento {
 
     public String getObservacao() { return observacao; }
     public void setObservacao(String observacao) { this.observacao = observacao; }
+
+    // Getters e Setters dos novos campos
+    public Motorista getMotoristaEntidade() { return motoristaEntidade; }
+    public void setMotoristaEntidade(Motorista motoristaEntidade) { this.motoristaEntidade = motoristaEntidade; }
+
+    public LocalDateTime getDataHoraApresentacao() { return dataHoraApresentacao; }
+    public void setDataHoraApresentacao(LocalDateTime dataHoraApresentacao) { this.dataHoraApresentacao = dataHoraApresentacao; }
 }
 ================================================================================
 
@@ -12307,21 +12455,93 @@ public class Entrega {
 
 
 ================================================================================
+FILE: src/main/java/br/com/ivanildo/tms/model/Motorista.java
+================================================================================
+
+FILE INFORMATION:
+----------------------------------------
+Size: 1.36 KB
+Extension: .java
+Language: java
+Location: src/main/java/br/com/ivanildo/tms/model/Motorista.java
+Relative Path: src/main/java/br/com/ivanildo/tms/model
+Created: 2026-08-23 20:52:12 (America/Bahia / GMT-03:00)
+Modified: 2026-08-23 20:52:21 (America/Bahia / GMT-03:00)
+MD5: 861ff31d72a25ade0dbfe6b736c7d7e4
+SHA256: 289dff4ce053423db67b4fc5588315b5f7a4668260fe9f77967fe77df5869c51
+Encoding: ASCII
+
+FILE CONTENT:
+----------------------------------------
+package br.com.ivanildo.tms.model;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "tb_motorista")
+public class Motorista {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String cpf;
+
+    @Column(nullable = false)
+    private String nome;
+
+    private String placa;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String fotoBase64;
+
+    private LocalDateTime dataCadastro;
+
+    public Motorista() {
+        this.dataCadastro = LocalDateTime.now();
+    }
+
+    // Getters e Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getPlaca() { return placa; }
+    public void setPlaca(String placa) { this.placa = placa; }
+
+    public String getFotoBase64() { return fotoBase64; }
+    public void setFotoBase64(String fotoBase64) { this.fotoBase64 = fotoBase64; }
+
+    public LocalDateTime getDataCadastro() { return dataCadastro; }
+    public void setDataCadastro(LocalDateTime dataCadastro) { this.dataCadastro = dataCadastro; }
+}
+================================================================================
+
+
+================================================================================
 FILE: src/main/java/br/com/ivanildo/tms/repository/CarregamentoRepository.java
 ================================================================================
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 396 B
+Size: 778 B
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/repository/CarregamentoRepository.java
 Relative Path: src/main/java/br/com/ivanildo/tms/repository
 Created: 2026-08-16 19:18:53 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 14:42:41 (America/Bahia / GMT-03:00)
-MD5: fea3c5fe679d4296e60336733dfb5a19
-SHA256: cdef78dacee35b733421219e92e207899ca61e4d35c1e6bb38160c5d8fdd9c25
-Encoding: ASCII
+Modified: 2026-08-23 22:40:46 (America/Bahia / GMT-03:00)
+MD5: 97af9c04777802ec5d0a5a14222982a9
+SHA256: 0cba9acce282ced1e66cb32153a452e8ae66fc9a70284f6b19dda69c4d5cccee
+Encoding: UTF-8
 
 FILE CONTENT:
 ----------------------------------------
@@ -12331,12 +12551,20 @@ import br.com.ivanildo.tms.model.Carregamento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 import java.util.Optional;
 
 @Repository
 public interface CarregamentoRepository extends JpaRepository<Carregamento, Long> {
+
+    // Busca todos os carregamentos atrelados a uma placa específica (ignorando maiúsculas/minúsculas)
+    List<Carregamento> findByPlacaIgnoreCase(String placa);
+
+    // Opcional: buscar por placa e status específico (ex: apenas agendados / não apresentados)
+    List<Carregamento> findByPlacaIgnoreCaseAndStatusNot(String placa, String status);
     Optional<Carregamento> findByViagem(String viagem);
-}   
+}
 ================================================================================
 
 
@@ -12374,6 +12602,37 @@ public interface EntregaRepository extends JpaRepository<Entrega, Long> {
 
     @Query("SELECT e FROM Entrega e WHERE e.carregamento.id = :carregamentoId")
     List<Entrega> findByCarregamentoId(@Param("carregamentoId") Long carregamentoId);
+}
+================================================================================
+
+
+================================================================================
+FILE: src/main/java/br/com/ivanildo/tms/repository/MotoristaRepository.java
+================================================================================
+
+FILE INFORMATION:
+----------------------------------------
+Size: 309 B
+Extension: .java
+Language: java
+Location: src/main/java/br/com/ivanildo/tms/repository/MotoristaRepository.java
+Relative Path: src/main/java/br/com/ivanildo/tms/repository
+Created: 2026-08-23 20:52:52 (America/Bahia / GMT-03:00)
+Modified: 2026-08-23 20:53:15 (America/Bahia / GMT-03:00)
+MD5: dab88aa4ab34604725607417b3acead2
+SHA256: 256f7084756d6bd1be312afedba29b75bc9156ee2579ca82db88e01fd7873b66
+Encoding: ASCII
+
+FILE CONTENT:
+----------------------------------------
+package br.com.ivanildo.tms.repository;
+
+import br.com.ivanildo.tms.model.Motorista;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface MotoristaRepository extends JpaRepository<Motorista, Long> {
+    Optional<Motorista> findByCpf(String cpf);
 }
 ================================================================================
 
@@ -12882,6 +13141,238 @@ public class PdfService {
         }
 
         return out.toByteArray();
+    }
+}
+================================================================================
+
+
+================================================================================
+FILE: src/main/java/br/com/ivanildo/tms/util/UiBroadcaster.java
+================================================================================
+
+FILE INFORMATION:
+----------------------------------------
+Size: 1010 B
+Extension: .java
+Language: java
+Location: src/main/java/br/com/ivanildo/tms/util/UiBroadcaster.java
+Relative Path: src/main/java/br/com/ivanildo/tms/util
+Created: 2026-08-23 21:40:08 (America/Bahia / GMT-03:00)
+Modified: 2026-08-23 21:43:32 (America/Bahia / GMT-03:00)
+MD5: 181734cef71bcd784a32ba96fba53d83
+SHA256: 8da5a35674c1b6005ebc678ff75f435d9863109007579a0bf09e7371f0903b1a
+Encoding: ASCII
+
+FILE CONTENT:
+----------------------------------------
+package br.com.ivanildo.tms.util;
+
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.function.Consumer;
+
+public class UiBroadcaster {
+
+    @FunctionalInterface
+    public interface Registration extends Serializable {
+        void remove();
+    }
+
+    private static final Executor executor = Executors.newSingleThreadExecutor();
+    private static final LinkedList<Consumer<String>> listeners = new LinkedList<>();
+
+    public static synchronized Registration register(Consumer<String> listener) {
+        listeners.add(listener);
+        return () -> {
+            synchronized (UiBroadcaster.class) {
+                listeners.remove(listener);
+            }
+        };
+    }
+
+    public static synchronized void broadcast(String message) {
+        for (Consumer<String> listener : listeners) {
+            executor.execute(() -> listener.accept(message));
+        }
+    }
+}
+================================================================================
+
+
+================================================================================
+FILE: src/main/java/br/com/ivanildo/tms/views/CheckInView.java
+================================================================================
+
+FILE INFORMATION:
+----------------------------------------
+Size: 6.46 KB
+Extension: .java
+Language: java
+Location: src/main/java/br/com/ivanildo/tms/views/CheckInView.java
+Relative Path: src/main/java/br/com/ivanildo/tms/views
+Created: 2026-08-23 21:11:25 (America/Bahia / GMT-03:00)
+Modified: 2026-08-23 22:35:21 (America/Bahia / GMT-03:00)
+MD5: d3fc9dc58b672adeac61ca3950428205
+SHA256: 40e3325e4f6f7d716f9bd12118e878f44f3b9dbd974f2864b8fe918229d2de1a
+Encoding: UTF-8
+
+FILE CONTENT:
+----------------------------------------
+package br.com.ivanildo.tms.views;
+
+import br.com.ivanildo.tms.model.Carregamento;
+import br.com.ivanildo.tms.model.Motorista;
+import br.com.ivanildo.tms.repository.CarregamentoRepository;
+import br.com.ivanildo.tms.repository.MotoristaRepository;
+import br.com.ivanildo.tms.util.UiBroadcaster; // Se você utiliza para atualizar a grid em tempo real
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+@Route("checkin")
+@AnonymousAllowed // Permite acesso público sem exigir login
+public class CheckInView extends VerticalLayout {
+
+    private final CarregamentoRepository carregamentoRepository;
+    private final MotoristaRepository motoristaRepository;
+
+    private TextField txtCpf = new TextField("CPF do Motorista");
+    private TextField txtNome = new TextField("Nome Completo");
+    private TextField txtPlaca = new TextField("Placa do Veículo");
+    private Button btnBuscar = new Button("Validar CPF");
+    private Button btnConfirmar = new Button("Confirmar Chegada e Apresentar");
+    private Span lblStatus = new Span();
+
+    public CheckInView(CarregamentoRepository carregamentoRepository, MotoristaRepository motoristaRepository) {
+        this.carregamentoRepository = carregamentoRepository;
+        this.motoristaRepository = motoristaRepository;
+
+        setAlignItems(Alignment.CENTER);
+        setJustifyContentMode(JustifyContentMode.CENTER);
+        setSizeFull();
+        getStyle().set("background-color", "#0b1329").set("color", "#ffffff");
+
+        H2 titulo = new H2("📱 Self Check-in Portaria");
+        titulo.getStyle().set("color", "#ffffff");
+
+        lblStatus.setText("Informe seu CPF para iniciar o check-in");
+        lblStatus.getStyle().set("color", "#cbd5e1").set("margin-bottom", "15px");
+
+        txtCpf.setPlaceholder("Digite apenas números");
+        txtCpf.setMaxLength(11);
+
+        estilizarCampo(txtCpf);
+        estilizarCampo(txtNome);
+        estilizarCampo(txtPlaca);
+
+        txtNome.setVisible(false);
+        txtPlaca.setVisible(false);
+        btnConfirmar.setVisible(false);
+
+        btnBuscar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        btnBuscar.getStyle().set("margin-top", "15px");
+        btnBuscar.addClickListener(e -> processarCpf());
+
+        btnConfirmar.addThemeVariants(ButtonVariant.LUMO_SUCCESS);
+        btnConfirmar.getStyle().set("margin-top", "15px");
+        btnConfirmar.addClickListener(e -> realizarCheckIn());
+
+        add(titulo, lblStatus, txtCpf, btnBuscar, txtNome, txtPlaca, btnConfirmar);
+    }
+
+    private void processarCpf() {
+        String cpf = txtCpf.getValue().replaceAll("\\D", "");
+        if (cpf.length() < 11) {
+            Notification.show("Informe um CPF válido com 11 dígitos!", 3000, Notification.Position.MIDDLE);
+            return;
+        }
+
+        Optional<Motorista> opt = motoristaRepository.findByCpf(cpf);
+        if (opt.isPresent()) {
+            Motorista m = opt.get();
+            txtNome.setValue(m.getNome() != null ? m.getNome() : "");
+            txtPlaca.setValue(m.getPlaca() != null ? m.getPlaca() : "");
+            Notification.show("Motorista localizado no banco de dados!", 3000, Notification.Position.MIDDLE);
+        } else {
+            txtNome.setValue("");
+            txtPlaca.setValue("");
+            Notification.show("Primeiro acesso! Preencha seu nome e a placa do veículo.", 3000, Notification.Position.MIDDLE);
+        }
+
+        txtNome.setVisible(true);
+        txtPlaca.setVisible(true);
+        btnConfirmar.setVisible(true);
+        btnBuscar.setVisible(false);
+    }
+
+    private void realizarCheckIn() {
+        String placaDigitada = txtPlaca.getValue();
+        if (placaDigitada == null || placaDigitada.trim().isEmpty()) {
+            Notification.show("Informe a placa do veículo!", 3000, Notification.Position.MIDDLE);
+            return;
+        }
+
+        // Limpa a placa (remove espaços e hífens)
+        String placaFormatada = placaDigitada.replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
+
+        // 1. Busca todos os carregamentos atrelados a esta placa
+        List<Carregamento> carregamentos = carregamentoRepository.findByPlacaIgnoreCase(placaFormatada);
+
+        if (carregamentos.isEmpty()) {
+            Notification.show("Nenhum agendamento encontrado para a placa: " + placaDigitada, 4000, Notification.Position.MIDDLE);
+            return;
+        }
+
+        // 2. Cadastra ou atualiza o Motorista
+        String cpf = txtCpf.getValue().replaceAll("\\D", "");
+        Motorista motorista = motoristaRepository.findByCpf(cpf).orElse(new Motorista());
+        motorista.setCpf(cpf);
+        motorista.setNome(txtNome.getValue());
+        motorista.setPlaca(placaFormatada);
+        motoristaRepository.save(motorista);
+
+        // 3. Atualiza os carregamentos encontrados para "Apresentado"
+        LocalDateTime agora = LocalDateTime.now();
+        for (Carregamento c : carregamentos) {
+            c.setMotorista(motorista.getNome());
+            c.setMotoristaEntidade(motorista);
+            c.setStatus("Apresentado");
+            c.setDataHoraApresentacao(agora);
+            carregamentoRepository.save(c);
+        }
+
+        // Notifica as views ativas para atualizarem o Grid se usar UiBroadcaster
+        // UiBroadcaster.broadcast("CHECKIN_REALIZADO");
+
+        // 4. Exibe a tela de confirmação/sucesso
+        removeAll();
+        H2 msgSucesso = new H2("✅ Check-in realizado!");
+        msgSucesso.getStyle().set("color", "#22c55e");
+        
+        Span detalhe = new Span("Apresentação confirmada para " + carregamentos.size() + " viagem(ns). Aguarde a chamada para a doca.");
+        detalhe.getStyle().set("color", "#f8fafc");
+        
+        add(msgSucesso, detalhe);
+    }
+
+    private void estilizarCampo(TextField campo) {
+        campo.setWidth("300px");
+        campo.getElement().getStyle()
+            .set("--lumo-secondary-text-color", "#cbd5e1")
+            .set("--lumo-body-text-color", "#f8fafc")
+            .set("color", "#f8fafc");
     }
 }
 ================================================================================
@@ -13529,15 +14020,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/MainView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 21 KB
+Size: 22.19 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/MainView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-Modified: 2026-08-23 20:16:46 (America/Bahia / GMT-03:00)
-MD5: e51092110ac0cc8bc6d55772f053e4ae
-SHA256: ff0cdf3596e5cfad8ed2bfd0f4f075c5f8e9f05991be59c6880d040e4c004750
+Modified: 2026-08-23 22:04:35 (America/Bahia / GMT-03:00)
+MD5: 8c34e7de1645e8b9768cfa7de3331028
+SHA256: 964f0cc8ac7eabed0cd36c0150fa5f8d3f9076ad9ff1887af19bc58ffa8180cf
 Encoding: ASCII
 
 FILE CONTENT:
@@ -13547,8 +14038,10 @@ package br.com.ivanildo.tms.views;
 import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.service.ExcelService;
+import br.com.ivanildo.tms.util.UiBroadcaster;
 import jakarta.annotation.security.PermitAll;
-import com.vaadin.flow.component.HasElement;
+import com.vaadin.flow.component.AttachEvent;
+import com.vaadin.flow.component.DetachEvent;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -13573,14 +14066,13 @@ import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import java.util.Locale;
-
-
+import br.com.ivanildo.tms.util.UiBroadcaster;
 
 import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 
 @Route("")
 @PageTitle("Gestão Operacional de Carregamento | TMS")
@@ -13607,64 +14099,87 @@ public class MainView extends VerticalLayout {
     private final Span txtPeso = new Span("0 kg");
     private final Span txtPendentes = new Span("0");
 
+    private UiBroadcaster.Registration broadcasterRegistration;
+
     public MainView(CarregamentoRepository repository, ExcelService excelService) {
-    this.repository = repository;
-    this.excelService = excelService;
+        this.repository = repository;
+        this.excelService = excelService;
 
-    setSizeFull();
-    setPadding(true);
-    setSpacing(true);
+        setSizeFull();
+        setPadding(true);
+        setSpacing(true);
 
-    // FIX DEFINITIVO: Define o fundo escuro E força as variáveis do Lumo diretamente no escopo global da View
-    getStyle()
-        .set("background-color", "#0b1329")
-        .set("color", "#f8fafc")
-        .set("--lumo-secondary-text-color", "#cbd5e1")
-        .set("--lumo-body-text-color", "#f8fafc")
-        .set("--lumo-primary-text-color", "#f8fafc")
-        .set("--lumo-contrast-60pct", "#cbd5e1")
-        .set("--lumo-contrast-70pct", "#cbd5e1");
+        getStyle()
+            .set("background-color", "#0b1329")
+            .set("color", "#f8fafc")
+            .set("--lumo-secondary-text-color", "#cbd5e1")
+            .set("--lumo-body-text-color", "#f8fafc")
+            .set("--lumo-primary-text-color", "#f8fafc")
+            .set("--lumo-contrast-60pct", "#cbd5e1")
+            .set("--lumo-contrast-70pct", "#cbd5e1");
 
-    H2 titulo = new H2("🚚 Gestão Operacional de Carregamento");
-    titulo.getStyle()
-            .set("color", "#ffffff")
-            .set("margin", "0")
-            .set("font-size", "1.6rem")
-            .set("font-weight", "700");
+        H2 titulo = new H2("🚚 Gestão Operacional de Carregamento");
+        titulo.getStyle()
+                .set("color", "#ffffff")
+                .set("margin", "0")
+                .set("font-size", "1.6rem")
+                .set("font-weight", "700");
 
-    Div containerKPI = criarCardsKPIs();
-    HorizontalLayout barraAcoes = criarBarraAcoes();
-    configurarGrid();
+        Div containerKPI = criarCardsKPIs();
+        HorizontalLayout barraAcoes = criarBarraAcoes();
+        configurarGrid();
 
-    add(titulo, containerKPI, barraAcoes, grid);
-    atualizarGridEIndicators();
-}
-    
+        add(titulo, containerKPI, barraAcoes, grid);
+        atualizarGridEIndicators();
+    }
+
+    @Override
+    protected void onAttach(AttachEvent attachEvent) {
+        super.onAttach(attachEvent);
+        UI ui = attachEvent.getUI();
+
+        broadcasterRegistration = UiBroadcaster.register(message -> {
+            ui.access(() -> {
+                atualizarGridEIndicators();
+                Notification.show("⚡ Motorista realizou o check-in!", 3000, Notification.Position.TOP_END)
+                            .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+            });
+        });
+    }
+
+    @Override
+    protected void onDetach(DetachEvent detachEvent) {
+        if (broadcasterRegistration != null) {
+            broadcasterRegistration.remove();
+            broadcasterRegistration = null;
+        }
+        super.onDetach(detachEvent);
+    }
 
     private Div criarCardsKPIs() {
-    Div container = new Div();
-    container.addClassName("kpi-container");
+        Div container = new Div();
+        container.addClassName("kpi-container");
 
-    txtTotal.addClassName("kpi-value");
-    txtPendentes.addClassName("kpi-value");
-    txtApresentados.addClassName("kpi-value");
-    txtCarregando.addClassName("kpi-value");
-    txtExpedidos.addClassName("kpi-value");
-    txtPeso.addClassName("kpi-value");
+        txtTotal.addClassName("kpi-value");
+        txtPendentes.addClassName("kpi-value");
+        txtApresentados.addClassName("kpi-value");
+        txtCarregando.addClassName("kpi-value");
+        txtExpedidos.addClassName("kpi-value");
+        txtPeso.addClassName("kpi-value");
 
-    container.add(
-        criarCardSingle("TOTAL CARREGAMENTOS", txtTotal, VaadinIcon.TRUCK.create(), "total", "kpi-icon-total", "TODOS"),
-        criarCardSingle("PENDENTES", txtPendentes, VaadinIcon.TIME_BACKWARD.create(), "pendentes", "kpi-icon-pendentes", "Pendente"),
-        criarCardSingle("APRESENTADOS", txtApresentados, VaadinIcon.CHECK_CIRCLE.create(), "apresentados", "kpi-icon-apresentados", "Apresentado"),
-        criarCardSingle("CARREGANDO", txtCarregando, VaadinIcon.CLOCK.create(), "carregando", "kpi-icon-carregando", "Carregando"),
-        criarCardSingle("EXPEDIDOS", txtExpedidos, VaadinIcon.PACKAGE.create(), "expedidos", "kpi-icon-expedidos", "Expedido"),
-        criarCardSingle("PESO PROGRAMADO", txtPeso, VaadinIcon.SCALE.create(), "peso", "kpi-icon-peso", null) // Sem filtro para Peso
-    );
+        container.add(
+            criarCardSingle("TOTAL CARREGAMENTOS", txtTotal, VaadinIcon.TRUCK.create(), "total", "kpi-icon-total", "TODOS"),
+            criarCardSingle("PENDENTES", txtPendentes, VaadinIcon.TIME_BACKWARD.create(), "pendentes", "kpi-icon-pendentes", "Pendente"),
+            criarCardSingle("APRESENTADOS", txtApresentados, VaadinIcon.CHECK_CIRCLE.create(), "apresentados", "kpi-icon-apresentados", "Apresentado"),
+            criarCardSingle("CARREGANDO", txtCarregando, VaadinIcon.CLOCK.create(), "carregando", "kpi-icon-carregando", "Carregando"),
+            criarCardSingle("EXPEDIDOS", txtExpedidos, VaadinIcon.PACKAGE.create(), "expedidos", "kpi-icon-expedidos", "Expedido"),
+            criarCardSingle("PESO PROGRAMADO", txtPeso, VaadinIcon.SCALE.create(), "peso", "kpi-icon-peso", null)
+        );
 
-    return container;
-}
+        return container;
+    }
 
-private Div criarCardSingle(String titulo, Span valorSpan, Icon icone, String classeVariacao, String classeIcone, String statusFiltro) {
+    private Div criarCardSingle(String titulo, Span valorSpan, Icon icone, String classeVariacao, String classeIcone, String statusFiltro) {
         Div card = new Div();
         card.addClassName("kpi-card");
         card.addClassName(classeVariacao);
@@ -13680,21 +14195,18 @@ private Div criarCardSingle(String titulo, Span valorSpan, Icon icone, String cl
 
         card.add(header, valorSpan);
 
-        // Se houver um status associado, habilita a interatividade de filtro
         if (statusFiltro != null) {
             card.getStyle().set("cursor", "pointer");
             card.addClickListener(e -> aplicarFiltroStatus(statusFiltro));
         }
 
         return card;
-    } // <-- Fecha o método criarCardSingle aqui!
+    }
 
     private void aplicarFiltroStatus(String status) {
         List<Carregamento> todos = repository.findAll();
 
-        if (status == null) {
-            return;
-        }
+        if (status == null) return;
 
         if ("TODOS".equalsIgnoreCase(status)) {
             grid.setItems(todos);
@@ -13718,9 +14230,7 @@ private Div criarCardSingle(String titulo, Span valorSpan, Icon icone, String cl
                 .toList();
             grid.setItems(filtrados);
         }
-    } // Fechamento correto do método aplicarFiltroStatus
-
- // Fechamento da classe MainView
+    }
 
     private HorizontalLayout criarBarraAcoes() {
         HorizontalLayout layout = new HorizontalLayout();
@@ -13736,41 +14246,41 @@ private Div criarCardSingle(String titulo, Span valorSpan, Icon icone, String cl
                 .set("border-radius", "6px")
                 .set("box-shadow", "0 4px 12px rgba(37, 99, 235, 0.3)");
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
-        // Oculta o botão na interface preservando toda a estrutura existente:
         btnNovo.setVisible(false);
 
         MemoryBuffer buffer = new MemoryBuffer();
-Upload uploadExcel = new Upload(buffer);
-uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
-uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
-uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
+        Upload uploadExcel = new Upload(buffer);
+        uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
+        uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
+        uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
 
-uploadExcel.addSucceededListener(event -> {
-    try (InputStream is = buffer.getInputStream()) {
-        excelService.processarExcel(is);
-        Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
-        n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-        atualizarGridEIndicators();
-    } catch (Exception ex) {
-        ex.printStackTrace(); // <--- IMPRIME O ERRO DETALHADO NO LOG DO RENDER
-        Notification n = Notification.show("Erro ao processar: " + ex.getMessage(), 5000, Notification.Position.MIDDLE);
-        n.addThemeVariants(NotificationVariant.LUMO_ERROR);
-    }
-});
+        uploadExcel.addSucceededListener(event -> {
+            try (InputStream is = buffer.getInputStream()) {
+                excelService.processarExcel(is);
+                Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+                n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+                atualizarGridEIndicators();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                Notification n = Notification.show("Erro ao processar: " + ex.getMessage(), 5000, Notification.Position.MIDDLE);
+                n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+            }
+        });
 
-// <--- ADICIONE ESTE LISTENER LOGO ABAIXO DO SUCCEEDED LISTENER
-uploadExcel.addFailedListener(event -> {
-    System.err.println("Erro na transferência do arquivo pelo browser: " + event.getReason().getMessage());
-});
+        uploadExcel.addFailedListener(event -> {
+            System.err.println("Erro na transferência do arquivo pelo browser: " + event.getReason().getMessage());
+        });
 
         layout.add(btnNovo, uploadExcel);
         return layout;
     }
-@SuppressWarnings("null")
+
+    @SuppressWarnings("null")
 private void configurarGrid() {
     grid.setSizeFull();
     grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_COMPACT);
 
+    // Estilização Dark Theme do Grid
     grid.getStyle()
         .set("--lumo-size-m", "36px")
         .set("--lumo-font-size-s", "12px")
@@ -13782,10 +14292,20 @@ private void configurarGrid() {
         .set("border", "1px solid #1e293b")
         .set("border-radius", "8px");
 
+    // Colunas do Grid
     grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
     grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
     grid.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
     grid.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
+
+    // Nova coluna MOTORISTA
+    grid.addColumn(c -> {
+        if (c.getMotoristaEntidade() != null && c.getMotoristaEntidade().getNome() != null) {
+            return c.getMotoristaEntidade().getNome();
+        }
+        return c.getMotorista() != null ? c.getMotorista() : "-";
+    }).setHeader("MOTORISTA").setAutoWidth(true);
+
     grid.addColumn(Carregamento::getTipoVeiculo).setHeader("TIPO DE VEÍCULO").setAutoWidth(true);
     grid.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
     grid.addColumn(Carregamento::getOrdemCarga).setHeader("ORDEM DE CARGA").setAutoWidth(true);
@@ -13798,6 +14318,7 @@ private void configurarGrid() {
 
     grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
 
+    // Coluna de Ações
     grid.addColumn(new ComponentRenderer<>(carregamento -> {
         HorizontalLayout acoes = new HorizontalLayout();
         acoes.setSpacing(true);
@@ -13833,6 +14354,7 @@ private void configurarGrid() {
         return acoes;
     })).setHeader("AÇÕES").setAutoWidth(true);
 }
+
     private Span criarBadgeStatus(Carregamento c) {
         String statusTxt = c.getStatus() != null && !c.getStatus().isEmpty() ? c.getStatus() : "Pendente";
         Span badge = new Span(statusTxt);
@@ -13865,127 +14387,125 @@ private void configurarGrid() {
     }
 
     private void abrirFormularioModal(Carregamento carregamento) {
-    Dialog dialog = new Dialog();
-    dialog.setHeaderTitle(carregamento.getId() == null ? "Novo Carregamento" : "Editar Carregamento #" + carregamento.getId());
+        Dialog dialog = new Dialog();
+        dialog.setHeaderTitle(carregamento.getId() == null ? "Novo Carregamento" : "Editar Carregamento #" + carregamento.getId());
 
-    // Define as variáveis globais do Dialog para forçar dark mode no cabeçalho e corpo
-    dialog.getElement().getStyle()
-        .set("background-color", "#0f172a")
-        .set("color", "#ffffff")
-        .set("--lumo-base-color", "#0f172a")
-        .set("--lumo-body-text-color", "#ffffff")
-        .set("--lumo-header-text-color", "#ffffff")
-        .set("--lumo-secondary-text-color", "#cbd5e1");
+        dialog.getElement().getStyle()
+            .set("background-color", "#0f172a")
+            .set("color", "#ffffff")
+            .set("--lumo-base-color", "#0f172a")
+            .set("--lumo-body-text-color", "#ffffff")
+            .set("--lumo-header-text-color", "#ffffff")
+            .set("--lumo-secondary-text-color", "#cbd5e1");
 
-    FormLayout form = new FormLayout();
+        FormLayout form = new FormLayout();
 
-    TextField txtData = new TextField("Data Programação");
-    txtData.setValue(carregamento.getDataProgramacao() != null ? carregamento.getDataProgramacao() : "");
+        TextField txtData = new TextField("Data Programação");
+        txtData.setValue(carregamento.getDataProgramacao() != null ? carregamento.getDataProgramacao() : "");
 
-    TextField txtTransp = new TextField("Transportadora");
-    txtTransp.setValue(carregamento.getTransportadora() != null ? carregamento.getTransportadora() : "");
+        TextField txtTransp = new TextField("Transportadora");
+        txtTransp.setValue(carregamento.getTransportadora() != null ? carregamento.getTransportadora() : "");
 
-    TextField txtPlaca = new TextField("Placa");
-    txtPlaca.setValue(carregamento.getPlaca() != null ? carregamento.getPlaca() : "");
+        TextField txtPlaca = new TextField("Placa");
+        txtPlaca.setValue(carregamento.getPlaca() != null ? carregamento.getPlaca() : "");
 
-    TextField txtTipoVeiculo = new TextField("Tipo de Veículo");
-    txtTipoVeiculo.setValue(carregamento.getTipoVeiculo() != null ? carregamento.getTipoVeiculo() : "");
+        TextField txtTipoVeiculo = new TextField("Tipo de Veículo");
+        txtTipoVeiculo.setValue(carregamento.getTipoVeiculo() != null ? carregamento.getTipoVeiculo() : "");
 
-    TextField txtViagem = new TextField("Viagem");
-    txtViagem.setValue(carregamento.getViagem() != null ? carregamento.getViagem() : "");
+        TextField txtViagem = new TextField("Viagem");
+        txtViagem.setValue(carregamento.getViagem() != null ? carregamento.getViagem() : "");
 
-    TextField txtOrdemCarga = new TextField("Ordem de Carga");
-    txtOrdemCarga.setValue(carregamento.getOrdemCarga() != null ? carregamento.getOrdemCarga() : "");
+        TextField txtOrdemCarga = new TextField("Ordem de Carga");
+        txtOrdemCarga.setValue(carregamento.getOrdemCarga() != null ? carregamento.getOrdemCarga() : "");
 
-    TextField txtPeso = new TextField("Peso");
-    txtPeso.setValue(carregamento.getPeso() != null ? carregamento.getPeso() : "");
+        TextField txtPeso = new TextField("Peso");
+        txtPeso.setValue(carregamento.getPeso() != null ? carregamento.getPeso() : "");
 
-    TextField txtEncaixe = new TextField("Encaixe");
-    txtEncaixe.setValue(carregamento.getEncaixe() != null ? carregamento.getEncaixe() : "");
+        TextField txtEncaixe = new TextField("Encaixe");
+        txtEncaixe.setValue(carregamento.getEncaixe() != null ? carregamento.getEncaixe() : "");
 
-    ComboBox<String> cbStatus = new ComboBox<>("Status");
-    cbStatus.setItems("Pendente", "Apresentado", "Carregando", "Expedido");
-    cbStatus.setValue(carregamento.getStatus() != null ? carregamento.getStatus() : "Pendente");
+        ComboBox<String> cbStatus = new ComboBox<>("Status");
+        cbStatus.setItems("Pendente", "Apresentado", "Carregando", "Expedido");
+        cbStatus.setValue(carregamento.getStatus() != null ? carregamento.getStatus() : "Pendente");
 
-    TextField txtObs = new TextField("Observação");
-    txtObs.setValue(carregamento.getObservacao() != null ? carregamento.getObservacao() : "");
+        TextField txtObs = new TextField("Observação");
+        txtObs.setValue(carregamento.getObservacao() != null ? carregamento.getObservacao() : "");
 
-    // Aplica a estilização dos rótulos
-    estilizarCampoEscuro(txtData);
-    estilizarCampoEscuro(txtTransp);
-    estilizarCampoEscuro(txtPlaca);
-    estilizarCampoEscuro(txtTipoVeiculo);
-    estilizarCampoEscuro(txtViagem);
-    estilizarCampoEscuro(txtOrdemCarga);
-    estilizarCampoEscuro(txtPeso);
-    estilizarCampoEscuro(txtEncaixe);
-    estilizarCampoEscuro(cbStatus);
-    estilizarCampoEscuro(txtObs);
+        estilitarCampoEscuro(txtData);
+        estilitarCampoEscuro(txtTransp);
+        estilitarCampoEscuro(txtPlaca);
+        estilitarCampoEscuro(txtTipoVeiculo);
+        estilitarCampoEscuro(txtViagem);
+        estilitarCampoEscuro(txtOrdemCarga);
+        estilitarCampoEscuro(txtPeso);
+        estilitarCampoEscuro(txtEncaixe);
+        estilitarCampoEscuro(cbStatus);
+        estilitarCampoEscuro(txtObs);
 
-    form.add(txtData, txtTransp, txtPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbStatus, txtObs);
-    dialog.add(form);
+        form.add(txtData, txtTransp, txtPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbStatus, txtObs);
+        dialog.add(form);
 
-    Button btnSalvar = new Button("Salvar", e -> {
-        carregamento.setDataProgramacao(txtData.getValue());
-        carregamento.setTransportadora(txtTransp.getValue());
-        carregamento.setPlaca(txtPlaca.getValue());
-        carregamento.setTipoVeiculo(txtTipoVeiculo.getValue());
-        carregamento.setViagem(txtViagem.getValue());
-        carregamento.setOrdemCarga(txtOrdemCarga.getValue());
-        carregamento.setPeso(txtPeso.getValue());
-        carregamento.setEncaixe(txtEncaixe.getValue());
-        carregamento.setStatus(cbStatus.getValue());
-        carregamento.setObservacao(txtObs.getValue());
+        Button btnSalvar = new Button("Salvar", e -> {
+            carregamento.setDataProgramacao(txtData.getValue());
+            carregamento.setTransportadora(txtTransp.getValue());
+            carregamento.setPlaca(txtPlaca.getValue());
+            carregamento.setTipoVeiculo(txtTipoVeiculo.getValue());
+            carregamento.setViagem(txtViagem.getValue());
+            carregamento.setOrdemCarga(txtOrdemCarga.getValue());
+            carregamento.setPeso(txtPeso.getValue());
+            carregamento.setEncaixe(txtEncaixe.getValue());
+            carregamento.setStatus(cbStatus.getValue());
+            carregamento.setObservacao(txtObs.getValue());
 
-        repository.save(carregamento);
-        Notification.show("Carregamento salvo com sucesso!", 3000, Notification.Position.TOP_END)
-                .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-        atualizarGridEIndicators();
-        dialog.close();
-    });
-    btnSalvar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            repository.save(carregamento);
+            UiBroadcaster.broadcast("CARREGAMENTO_ATUALIZADO");
 
-    Button btnCancelar = new Button("Cancelar", e -> dialog.close());
+            Notification.show("Carregamento salvo com sucesso!", 3000, Notification.Position.TOP_END)
+                    .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+            atualizarGridEIndicators();
+            dialog.close();
+        });
+        btnSalvar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
-    dialog.getFooter().add(btnCancelar, btnSalvar);
-    dialog.open();
-}
+        Button btnCancelar = new Button("Cancelar", e -> dialog.close());
+
+        dialog.getFooter().add(btnCancelar, btnSalvar);
+        dialog.open();
+    }
 
     private void atualizarGridEIndicators() {
-    List<Carregamento> lista = repository.findAll();
-    grid.setItems(lista);
+        List<Carregamento> lista = repository.findAll();
+        grid.setItems(lista);
 
-    long total = lista.size();
+        long total = lista.size();
 
-    long apresentados = lista.stream()
-        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Apresentado"))
-        .count();
+        long apresentados = lista.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Apresentado"))
+            .count();
 
-    long carregando = lista.stream()
-        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Carregando"))
-        .count();
+        long carregando = lista.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Carregando"))
+            .count();
 
-    long expedidos = lista.stream()
-        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
-        .count();
+        long expedidos = lista.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
+            .count();
 
-    // Cálculo do Pendentes: Total subtraído dos demais status
-    long pendentes = total - (apresentados + carregando + expedidos);
+        long pendentes = total - (apresentados + carregando + expedidos);
 
-    double pesoTotal = lista.stream()
-        .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
-        .sum();
+        double pesoTotal = lista.stream()
+            .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
+            .sum();
 
-    DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
+        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
 
-    // Atualização dos indicadores na tela:
-    txtTotal.setText(String.valueOf(total));
-    txtPendentes.setText(String.valueOf(pendentes)); // Adicionado o set do Pendentes
-    txtApresentados.setText(String.valueOf(apresentados));
-    txtCarregando.setText(String.valueOf(carregando));
-    txtExpedidos.setText(String.valueOf(expedidos));
-    txtPeso.setText(df.format(pesoTotal) + " kg");
-}
+        txtTotal.setText(String.valueOf(total));
+        txtPendentes.setText(String.valueOf(pendentes));
+        txtApresentados.setText(String.valueOf(apresentados));
+        txtCarregando.setText(String.valueOf(carregando));
+        txtExpedidos.setText(String.valueOf(expedidos));
+        txtPeso.setText(df.format(pesoTotal) + " kg");
+    }
 
     private double converterPesoParaDouble(String pesoStr) {
         if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
@@ -14011,18 +14531,15 @@ private void configurarGrid() {
         }
     }
 
-    private void estilizarCampoEscuro(com.vaadin.flow.component.Component campo) {
-    campo.getElement().getStyle()
-        .set("--lumo-secondary-text-color", "#cbd5e1") // Cor do LABEL (Cinza claro/Azul)
-        .set("--lumo-body-text-color", "#f8fafc")      // Cor do texto digitado
-        .set("--lumo-primary-text-color", "#f8fafc")   // Cor do texto selecionado
-        .set("--lumo-contrast-60pct", "#cbd5e1")       // Fallback de contraste do label
-        .set("--lumo-contrast-70pct", "#cbd5e1");
+    private void estilitarCampoEscuro(com.vaadin.flow.component.Component campo) {
+        campo.getElement().getStyle()
+            .set("--lumo-secondary-text-color", "#cbd5e1")
+            .set("--lumo-body-text-color", "#f8fafc")
+            .set("--lumo-primary-text-color", "#f8fafc")
+            .set("--lumo-contrast-60pct", "#cbd5e1")
+            .set("--lumo-contrast-70pct", "#cbd5e1");
+    }
 }
-}
-
-
-
 ================================================================================
 
 
@@ -14367,6 +14884,8 @@ BINARY/EXCLUDED FILES (not included in text content)
 ================================================================================
 BINARY/EXCLUDED FILES (not included in text content)
 ================================================================================
+- target/classes/br/com/ivanildo/tms/controller/CheckinController.class
+- target/classes/br/com/ivanildo/tms/controller/CheckinDTO.class
 - target/classes/br/com/ivanildo/tms/controller/PdfController.class
 
 
@@ -14375,6 +14894,7 @@ BINARY/EXCLUDED FILES (not included in text content)
 ================================================================================
 - target/classes/br/com/ivanildo/tms/model/Carregamento.class
 - target/classes/br/com/ivanildo/tms/model/Entrega.class
+- target/classes/br/com/ivanildo/tms/model/Motorista.class
 
 
 ================================================================================
@@ -14382,6 +14902,7 @@ BINARY/EXCLUDED FILES (not included in text content)
 ================================================================================
 - target/classes/br/com/ivanildo/tms/repository/CarregamentoRepository.class
 - target/classes/br/com/ivanildo/tms/repository/EntregaRepository.class
+- target/classes/br/com/ivanildo/tms/repository/MotoristaRepository.class
 
 
 ================================================================================
@@ -14394,6 +14915,14 @@ BINARY/EXCLUDED FILES (not included in text content)
 ================================================================================
 BINARY/EXCLUDED FILES (not included in text content)
 ================================================================================
+- target/classes/br/com/ivanildo/tms/util/UiBroadcaster.class
+- target/classes/br/com/ivanildo/tms/util/UiBroadcaster$Registration.class
+
+
+================================================================================
+BINARY/EXCLUDED FILES (not included in text content)
+================================================================================
+- target/classes/br/com/ivanildo/tms/views/CheckInView.class
 - target/classes/br/com/ivanildo/tms/views/EntregasView.class
 - target/classes/br/com/ivanildo/tms/views/EntregasView$ItemGridEntrega.class
 - target/classes/br/com/ivanildo/tms/views/LoginView.class
@@ -14418,7 +14947,7 @@ Extension: .html
 Language: html
 Location: target/classes/templates/entregas.html
 Relative Path: target/classes/templates
-Created: 2026-08-22 19:50:41 (America/Bahia / GMT-03:00)
+Created: 2026-08-23 22:39:10 (America/Bahia / GMT-03:00)
 Modified: 2026-08-19 15:06:12 (America/Bahia / GMT-03:00)
 MD5: 6665e1d9621fc3667a9be7f173454777
 SHA256: 77437b52d27dd1614bc900dd80be3294e1525376f270d0beb8a236f53cffc078
@@ -14607,7 +15136,7 @@ Language: text
 Location: target/classes/application.properties
 Relative Path: target/classes
 Created: 2026-08-22 16:14:00 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 19:50:41 (America/Bahia / GMT-03:00)
+Modified: 2026-08-23 22:39:10 (America/Bahia / GMT-03:00)
 MD5: c19d3fc859c8c9fa24587583ffbe178d
 SHA256: 32f1e1678af9f835dad810d3b7f614004f98f912b4b0bb2525139171f4c62369
 Encoding: UTF-8

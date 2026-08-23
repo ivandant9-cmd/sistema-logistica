@@ -1,6 +1,7 @@
 package br.com.ivanildo.tms.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "carregamentos")
@@ -13,7 +14,7 @@ public class Carregamento {
     private String viagem;
     private String transportadora;
     private String ordemCarga;
-    private String motorista;
+    private String motorista; // Mantido exatamente como estava
     private String status;
     private String dataProgramacao;
     private String placa;
@@ -24,8 +25,16 @@ public class Carregamento {
     private String notasFiscais;
     private String observacao;
 
+    // --- NOVOS CAMPOS PARA O CHECK-IN SELF-SERVICE ---
+    @ManyToOne
+    @JoinColumn(name = "motorista_entidade_id")
+    private Motorista motoristaEntidade;
+
+    private LocalDateTime dataHoraApresentacao;
+
     public Carregamento() {}
 
+    // Getters e Setters Originais
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -67,4 +76,11 @@ public class Carregamento {
 
     public String getObservacao() { return observacao; }
     public void setObservacao(String observacao) { this.observacao = observacao; }
+
+    // Getters e Setters dos novos campos
+    public Motorista getMotoristaEntidade() { return motoristaEntidade; }
+    public void setMotoristaEntidade(Motorista motoristaEntidade) { this.motoristaEntidade = motoristaEntidade; }
+
+    public LocalDateTime getDataHoraApresentacao() { return dataHoraApresentacao; }
+    public void setDataHoraApresentacao(LocalDateTime dataHoraApresentacao) { this.dataHoraApresentacao = dataHoraApresentacao; }
 }
