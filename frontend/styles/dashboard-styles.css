@@ -19,10 +19,16 @@
     flex-direction: column;
     gap: 0.25rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.kpi-card:hover {
+    border-color: #475569;
 }
 
 /* Variações de Cor no Topo */
 .kpi-card.total { border-top: 4px solid #64748b; }
+.kpi-card.pendentes { border-top: 4px solid #f59e0b !important; }
 .kpi-card.apresentados { border-top: 4px solid #2563eb; }
 .kpi-card.carregando { border-top: 4px solid #d97706; }
 .kpi-card.expedidos { border-top: 4px solid #16a34a; }
@@ -45,6 +51,7 @@
 
 /* Cores dos Ícones */
 .kpi-icon-total { color: #64748b; width: 16px; height: 16px; }
+.kpi-icon-pendentes { color: #f59e0b !important; width: 16px; height: 16px; }
 .kpi-icon-apresentados { color: #2563eb; width: 16px; height: 16px; }
 .kpi-icon-carregando { color: #d97706; width: 16px; height: 16px; }
 .kpi-icon-expedidos { color: #16a34a; width: 16px; height: 16px; }

@@ -1,0 +1,29 @@
+/* Sobrescreve as variáveis globais de cor de texto secundário (Labels) no Shadow DOM */
+:host {
+    --lumo-secondary-text-color: #cbd5e1 !important;
+    --lumo-body-text-color: #f8fafc !important;
+    --lumo-primary-text-color: #f8fafc !important;
+    --lumo-contrast-70pct: #cbd5e1 !important;
+    --lumo-contrast-60pct: #cbd5e1 !important;
+    --lumo-contrast-50pct: #94a3b8 !important;
+}
+
+/* Força a cor clara e legível diretamente no elemento do Label */
+:host [part~='label'] {
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    opacity: 1 !important;
+}
+
+/* Garante o fundo escuro e bordas nítidas no campo */
+:host [part~='input-field'] {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    border-radius: 6px !important;
+}
+
+/* Cor do texto digitado / selecionado */
+:host [part~='value'] {
+    color: #f8fafc !important;
+}

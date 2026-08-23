@@ -3,8 +3,8 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-23 17:06:56 (America/Bahia / GMT-03:00)
-- **Total Files Processed**: 260
+- **Generated On**: 2026-08-23 19:20:35 (America/Bahia / GMT-03:00)
+- **Total Files Processed**: 263
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
 
@@ -28,7 +28,7 @@
 │   │   │   ├── 📁 chunks/
 │   │   │   ├── 📁 web-components/
 │   │   │   ├── 📄 generated-flow-imports.d.ts (9 B)
-│   │   │   └── 📄 generated-flow-imports.js (5.82 KB)
+│   │   │   └── 📄 generated-flow-imports.js (7.54 KB)
 │   │   ├── 📁 jar-resources/
 │   │   │   ├── 📁 vaadin-dev-tools/
 │   │   │   │   ├── 📁 assets/
@@ -168,13 +168,18 @@
 │   │   ├── 📄 vaadin.ts (140 B)
 │   │   └── 📄 vite-devmode.ts (922 B)
 │   ├── 📁 styles/
-│   │   ├── 📄 dashboard-styles.css (1.51 KB)
-│   │   └── 📄 styles.css (1.67 KB)
+│   │   ├── 📁 frontend/
+│   │   │   └── 📁 styles/
+│   │   ├── 📄 dashboard-styles.css (1.74 KB)
+│   │   ├── 📄 styles.css (2.83 KB)
+│   │   ├── 📄 vaadin-dialog-custom.css (258 B)
+│   │   ├── 📄 vaadin-form-fields-custom.css (948 B)
+│   │   └── 📄 vaadin-grid-custom.css (415 B)
 │   └── 📄 index.html (497 B)
 ├── 📁 src/
 │   └── 📁 main/
 │       ├── 📁 bundles/
-│       │   ├── 📄 dev.bundle (589.56 KB)
+│       │   ├── 📄 dev.bundle (590.38 KB)
 │       │   ├── 📄 prod.bundle (572.27 KB)
 │       │   └── 📄 README.md (1.36 KB)
 │       ├── 📁 java/
@@ -198,7 +203,7 @@
 │       │                   ├── 📁 views/
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   └── 📄 MainView.java (18.32 KB)
+│       │                   │   └── 📄 MainView.java (19.81 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (942 B)
 │       └── 📁 resources/
@@ -228,7 +233,7 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   └── 📄 MainView.class (29.17 KB)
+│   │   │               │   └── 📄 MainView.class (31.06 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
 │   │   ├── 📁 templates/
@@ -236,72 +241,72 @@
 │   │   └── 📄 application.properties (939 B)
 │   ├── 📁 dev-bundle/
 │   │   ├── 📁 config/
-│   │   │   └── 📄 stats.json (11.72 KB)
+│   │   │   └── 📄 stats.json (12.17 KB)
 │   │   ├── 📁 webapp/
 │   │   │   ├── 📁 VAADIN/
 │   │   │   │   └── 📁 build/
 │   │   │   │       ├── 📄 FlowBootstrap-CHUuW4WK.js (3.34 KB)
 │   │   │   │       ├── 📄 FlowClient-BZ2ixoyw.js (137.47 KB)
-│   │   │   │       ├── 📄 generated-flow-imports-_7H-nYp-.js (1.27 MB)
-│   │   │   │       ├── 📄 indexhtml-DUgpeDmv.js (211.48 KB)
-│   │   │   │       ├── 📄 vaadin-accordion-eed3b794-CTUaHpOX.js (604 B)
-│   │   │   │       ├── 📄 vaadin-accordion-heading-c0acdd6d-P45QSixF.js (710 B)
-│   │   │   │       ├── 📄 vaadin-accordion-panel-616e55d6-DXUJMsaT.js (580 B)
-│   │   │   │       ├── 📄 vaadin-app-layout-e56de2e9-D-Cl15nF.js (437 B)
-│   │   │   │       ├── 📄 vaadin-avatar-7599297d-S_fyg3Nv.js (479 B)
-│   │   │   │       ├── 📄 vaadin-big-decimal-field-e51def24-DYUwrPY7.js (850 B)
-│   │   │   │       ├── 📄 vaadin-board-828ebdea-CMpUShDi.js (406 B)
-│   │   │   │       ├── 📄 vaadin-board-row-c70d0c55-DIJaAkbF.js (552 B)
-│   │   │   │       ├── 📄 vaadin-button-2511ad84-DTAIizqr.js (518 B)
-│   │   │   │       ├── 📄 vaadin-chart-5192dc15-BA0hKQiU.js (1.06 KB)
-│   │   │   │       ├── 📄 vaadin-checkbox-4e68df64-Bvs1c_el.js (1.05 KB)
-│   │   │   │       ├── 📄 vaadin-checkbox-group-a7c65bf2-DERJcN9V.js (1.49 KB)
-│   │   │   │       ├── 📄 vaadin-combo-box-96451ddd-MljBTuJK.js (1.38 KB)
-│   │   │   │       ├── 📄 vaadin-confirm-dialog-4d718829-CpJOTecI.js (1.51 KB)
-│   │   │   │       ├── 📄 vaadin-cookie-consent-46c09f8b-C1pbD94U.js (374 B)
-│   │   │   │       ├── 📄 vaadin-crud-8d161a22-akWizKRU.js (739 B)
-│   │   │   │       ├── 📄 vaadin-custom-field-42c85b9e-BfRDvk7i.js (526 B)
-│   │   │   │       ├── 📄 vaadin-date-picker-f2001167-CSFuUVWI.js (1.75 KB)
-│   │   │   │       ├── 📄 vaadin-date-time-picker-c8c047a7-Bt-eQenH.js (546 B)
-│   │   │   │       ├── 📄 vaadin-details-bf336660-APrKIcTE.js (202 B)
-│   │   │   │       ├── 📄 vaadin-details-summary-351a1448-DsM_j61k.js (375 B)
-│   │   │   │       ├── 📄 vaadin-dialog-53253a08-CnUuiko7.js (669 B)
-│   │   │   │       ├── 📄 vaadin-email-field-d7a35f04-Dd31uwzi.js (809 B)
-│   │   │   │       ├── 📄 vaadin-form-layout-47744b1d-hcGkenEi.js (279 B)
-│   │   │   │       ├── 📄 vaadin-grid-0a4791c2-5B6lFOo_.js (1.53 KB)
-│   │   │   │       ├── 📄 vaadin-grid-pro-ff415555-D9_wQ6zN.js (1.97 KB)
-│   │   │   │       ├── 📄 vaadin-horizontal-layout-3193943f-DTuXaIxA.js (303 B)
-│   │   │   │       ├── 📄 vaadin-icon-601f36ed-Bdxkfd_F.js (276 B)
-│   │   │   │       ├── 📄 vaadin-integer-field-85078932-CGrZ9Ih0.js (1.1 KB)
-│   │   │   │       ├── 📄 vaadin-list-box-d7a8433b-CL9pxlSn.js (528 B)
-│   │   │   │       ├── 📄 vaadin-login-form-638996c6-8cW9qGXg.js (2.1 KB)
-│   │   │   │       ├── 📄 vaadin-login-overlay-f8a5db8a-ChWaYbK9.js (2.98 KB)
-│   │   │   │       ├── 📄 vaadin-map-d40a0116-DSRy3sQr.js (261 B)
-│   │   │   │       ├── 📄 vaadin-menu-bar-3f5ab096-CRAiJ5PJ.js (1.9 KB)
-│   │   │   │       ├── 📄 vaadin-message-input-996ac37c-DvS042v2.js (620 B)
-│   │   │   │       ├── 📄 vaadin-message-list-70a435ba-DYG4vdQ8.js (1.35 KB)
-│   │   │   │       ├── 📄 vaadin-multi-select-combo-box-a3373557-D-tiNhi8.js (2.3 KB)
-│   │   │   │       ├── 📄 vaadin-notification-bd6eb776-BFcPpOYQ.js (337 B)
-│   │   │   │       ├── 📄 vaadin-number-field-cb3ee8b2-DfkIleLd.js (1.09 KB)
-│   │   │   │       ├── 📄 vaadin-password-field-d289cb18-CEsJb57e.js (962 B)
-│   │   │   │       ├── 📄 vaadin-progress-bar-309ecf1f-CdTkpbbU.js (334 B)
-│   │   │   │       ├── 📄 vaadin-radio-group-88b5afd8-H74vT_M8.js (1.82 KB)
-│   │   │   │       ├── 📄 vaadin-rich-text-editor-8cd892f2-Bnx9nNnE.js (839 B)
-│   │   │   │       ├── 📄 vaadin-scroller-35e68818-BdembEl8.js (272 B)
-│   │   │   │       ├── 📄 vaadin-select-df6e9947-B3ZVvRom.js (1.54 KB)
-│   │   │   │       ├── 📄 vaadin-side-nav-ba80d91d-Dx5bsE6E.js (1.44 KB)
-│   │   │   │       ├── 📄 vaadin-side-nav-item-34918f92-B01CTcaJ.js (1.4 KB)
-│   │   │   │       ├── 📄 vaadin-split-layout-80c92131-DQQIALWy.js (494 B)
-│   │   │   │       ├── 📄 vaadin-spreadsheet-59d8c5ef-Boin3Wp5.js (284 B)
-│   │   │   │       ├── 📄 vaadin-tab-aaf32809-CMobBBfO.js (740 B)
-│   │   │   │       ├── 📄 vaadin-tabs-d9a5e24e-H4FKhyWT.js (833 B)
-│   │   │   │       ├── 📄 vaadin-tabsheet-dd99ed9a-CdpJ7fLw.js (273 B)
-│   │   │   │       ├── 📄 vaadin-text-area-83627ebc-D1efmKr_.js (795 B)
-│   │   │   │       ├── 📄 vaadin-text-field-0b3db014-BFnVBCtC.js (947 B)
-│   │   │   │       ├── 📄 vaadin-time-picker-715ec415-DwbMT7mX.js (1.37 KB)
-│   │   │   │       ├── 📄 vaadin-upload-d3c162ed-B4_TFbv_.js (1.04 KB)
-│   │   │   │       ├── 📄 vaadin-vertical-layout-ad4174c4-CeM38jex.js (297 B)
-│   │   │   │       └── 📄 vaadin-virtual-list-96896203-BPeGOfR1.js (270 B)
+│   │   │   │       ├── 📄 generated-flow-imports-Dp23KHu7.js (1.28 MB)
+│   │   │   │       ├── 📄 indexhtml-BBeNFWsa.js (211.48 KB)
+│   │   │   │       ├── 📄 vaadin-accordion-eed3b794-CcUGTQLq.js (604 B)
+│   │   │   │       ├── 📄 vaadin-accordion-heading-c0acdd6d-OuR2rskR.js (710 B)
+│   │   │   │       ├── 📄 vaadin-accordion-panel-616e55d6-CRS1LmTc.js (580 B)
+│   │   │   │       ├── 📄 vaadin-app-layout-e56de2e9-CqdhQd1v.js (437 B)
+│   │   │   │       ├── 📄 vaadin-avatar-7599297d-KB3tQTNP.js (479 B)
+│   │   │   │       ├── 📄 vaadin-big-decimal-field-e51def24-BiZUXoe0.js (850 B)
+│   │   │   │       ├── 📄 vaadin-board-828ebdea-C-PA412w.js (406 B)
+│   │   │   │       ├── 📄 vaadin-board-row-c70d0c55-BVIhqi2c.js (552 B)
+│   │   │   │       ├── 📄 vaadin-button-2511ad84-jPPu0iwl.js (518 B)
+│   │   │   │       ├── 📄 vaadin-chart-5192dc15-BoFlJ0TZ.js (1.06 KB)
+│   │   │   │       ├── 📄 vaadin-checkbox-4e68df64-CR3rwJqb.js (1.05 KB)
+│   │   │   │       ├── 📄 vaadin-checkbox-group-a7c65bf2-D2Wkxrgw.js (1.49 KB)
+│   │   │   │       ├── 📄 vaadin-combo-box-96451ddd-B0sfE29V.js (1.38 KB)
+│   │   │   │       ├── 📄 vaadin-confirm-dialog-4d718829-BYEXvBki.js (1.51 KB)
+│   │   │   │       ├── 📄 vaadin-cookie-consent-46c09f8b-Cb4_37Ok.js (374 B)
+│   │   │   │       ├── 📄 vaadin-crud-8d161a22-BsB4Hth5.js (739 B)
+│   │   │   │       ├── 📄 vaadin-custom-field-42c85b9e-ceQyxDkl.js (526 B)
+│   │   │   │       ├── 📄 vaadin-date-picker-f2001167-DNvuzi_B.js (1.75 KB)
+│   │   │   │       ├── 📄 vaadin-date-time-picker-c8c047a7-C5CUFXJ3.js (546 B)
+│   │   │   │       ├── 📄 vaadin-details-bf336660-B5lWMHdP.js (202 B)
+│   │   │   │       ├── 📄 vaadin-details-summary-351a1448-CxVlguiC.js (375 B)
+│   │   │   │       ├── 📄 vaadin-dialog-53253a08-DqfvLXei.js (669 B)
+│   │   │   │       ├── 📄 vaadin-email-field-d7a35f04-o56pd7ML.js (809 B)
+│   │   │   │       ├── 📄 vaadin-form-layout-47744b1d-Cd8bo_Qm.js (279 B)
+│   │   │   │       ├── 📄 vaadin-grid-0a4791c2-CEkw2KK8.js (1.53 KB)
+│   │   │   │       ├── 📄 vaadin-grid-pro-ff415555-Bpokhmrx.js (1.97 KB)
+│   │   │   │       ├── 📄 vaadin-horizontal-layout-3193943f-D45p_cRT.js (303 B)
+│   │   │   │       ├── 📄 vaadin-icon-601f36ed-DfUQX80Y.js (276 B)
+│   │   │   │       ├── 📄 vaadin-integer-field-85078932-CIor2RcU.js (1.1 KB)
+│   │   │   │       ├── 📄 vaadin-list-box-d7a8433b-Bl-jiz7w.js (528 B)
+│   │   │   │       ├── 📄 vaadin-login-form-638996c6-CgopvKtR.js (2.1 KB)
+│   │   │   │       ├── 📄 vaadin-login-overlay-f8a5db8a-ByaPAFRd.js (2.98 KB)
+│   │   │   │       ├── 📄 vaadin-map-d40a0116-CsU-I73n.js (261 B)
+│   │   │   │       ├── 📄 vaadin-menu-bar-3f5ab096-DyO8YE4f.js (1.9 KB)
+│   │   │   │       ├── 📄 vaadin-message-input-996ac37c-CuF72pK9.js (620 B)
+│   │   │   │       ├── 📄 vaadin-message-list-70a435ba-BkAARQot.js (1.35 KB)
+│   │   │   │       ├── 📄 vaadin-multi-select-combo-box-a3373557-Ckujobn1.js (2.3 KB)
+│   │   │   │       ├── 📄 vaadin-notification-bd6eb776-PMkzGhEL.js (337 B)
+│   │   │   │       ├── 📄 vaadin-number-field-cb3ee8b2-_0rgHa8T.js (1.09 KB)
+│   │   │   │       ├── 📄 vaadin-password-field-d289cb18-ViNpNsgS.js (962 B)
+│   │   │   │       ├── 📄 vaadin-progress-bar-309ecf1f-BjgckM5h.js (334 B)
+│   │   │   │       ├── 📄 vaadin-radio-group-88b5afd8-Bd5oaUB6.js (1.82 KB)
+│   │   │   │       ├── 📄 vaadin-rich-text-editor-8cd892f2-aGRC8AQs.js (839 B)
+│   │   │   │       ├── 📄 vaadin-scroller-35e68818-63sQS7i3.js (272 B)
+│   │   │   │       ├── 📄 vaadin-select-df6e9947-DazjWTUu.js (1.54 KB)
+│   │   │   │       ├── 📄 vaadin-side-nav-ba80d91d-BXMUA18X.js (1.44 KB)
+│   │   │   │       ├── 📄 vaadin-side-nav-item-34918f92-D9MGRCFe.js (1.4 KB)
+│   │   │   │       ├── 📄 vaadin-split-layout-80c92131-DbNR1GKm.js (494 B)
+│   │   │   │       ├── 📄 vaadin-spreadsheet-59d8c5ef-CtHRftV0.js (284 B)
+│   │   │   │       ├── 📄 vaadin-tab-aaf32809-cWon-hid.js (740 B)
+│   │   │   │       ├── 📄 vaadin-tabs-d9a5e24e-DUcTcgqc.js (833 B)
+│   │   │   │       ├── 📄 vaadin-tabsheet-dd99ed9a-CELggbX_.js (273 B)
+│   │   │   │       ├── 📄 vaadin-text-area-83627ebc-DRZVrWZP.js (795 B)
+│   │   │   │       ├── 📄 vaadin-text-field-0b3db014-DIwQvPFw.js (947 B)
+│   │   │   │       ├── 📄 vaadin-time-picker-715ec415-BPL7OaGI.js (1.37 KB)
+│   │   │   │       ├── 📄 vaadin-upload-d3c162ed-DRLccIU_.js (1.04 KB)
+│   │   │   │       ├── 📄 vaadin-vertical-layout-ad4174c4-BtV2SBZm.js (297 B)
+│   │   │   │       └── 📄 vaadin-virtual-list-96896203-BdU3J8jH.js (270 B)
 │   │   │   └── 📄 index.html (586 B)
 │   │   └── 📄 package-lock.json (594.16 KB)
 │   ├── 📁 generated-sources/
@@ -480,6 +485,9 @@
 - [📄 frontend/generated/vite-devmode.ts](#📄-frontend-generated-vite-devmode-ts)
 - [📄 frontend/styles/dashboard-styles.css](#📄-frontend-styles-dashboard-styles-css)
 - [📄 frontend/styles/styles.css](#📄-frontend-styles-styles-css)
+- [📄 frontend/styles/vaadin-dialog-custom.css](#📄-frontend-styles-vaadin-dialog-custom-css)
+- [📄 frontend/styles/vaadin-form-fields-custom.css](#📄-frontend-styles-vaadin-form-fields-custom-css)
+- [📄 frontend/styles/vaadin-grid-custom.css](#📄-frontend-styles-vaadin-grid-custom-css)
 - [📄 frontend/index.html](#📄-frontend-index-html)
 - [📄 src/main/bundles/README.md](#📄-src-main-bundles-readme-md)
 - [📄 src/main/java/br/com/ivanildo/tms/config/SecurityConfig.java](#📄-src-main-java-br-com-ivanildo-tms-config-securityconfig-java)
@@ -502,66 +510,66 @@
 - [📄 target/dev-bundle/config/stats.json](#📄-target-dev-bundle-config-stats-json)
 - [📄 target/dev-bundle/webapp/VAADIN/build/FlowBootstrap-CHUuW4WK.js](#📄-target-dev-bundle-webapp-vaadin-build-flowbootstrap-chuuw4wk-js)
 - [📄 target/dev-bundle/webapp/VAADIN/build/FlowClient-BZ2ixoyw.js](#📄-target-dev-bundle-webapp-vaadin-build-flowclient-bz2ixoyw-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/generated-flow-imports-_7H-nYp-.js](#📄-target-dev-bundle-webapp-vaadin-build-generated-flow-imports-7h-nyp-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/indexhtml-DUgpeDmv.js](#📄-target-dev-bundle-webapp-vaadin-build-indexhtml-dugpedmv-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-eed3b794-CTUaHpOX.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-eed3b794-ctuahpox-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-heading-c0acdd6d-P45QSixF.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-heading-c0acdd6d-p45qsixf-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-panel-616e55d6-DXUJMsaT.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-panel-616e55d6-dxujmsat-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-app-layout-e56de2e9-D-Cl15nF.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-app-layout-e56de2e9-d-cl15nf-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-avatar-7599297d-S_fyg3Nv.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-avatar-7599297d-s-fyg3nv-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-big-decimal-field-e51def24-DYUwrPY7.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-big-decimal-field-e51def24-dyuwrpy7-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-board-828ebdea-CMpUShDi.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-board-828ebdea-cmpushdi-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-board-row-c70d0c55-DIJaAkbF.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-board-row-c70d0c55-dijaakbf-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-button-2511ad84-DTAIizqr.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-button-2511ad84-dtaiizqr-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-chart-5192dc15-BA0hKQiU.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-chart-5192dc15-ba0hkqiu-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-4e68df64-Bvs1c_el.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-checkbox-4e68df64-bvs1c-el-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-group-a7c65bf2-DERJcN9V.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-checkbox-group-a7c65bf2-derjcn9v-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-combo-box-96451ddd-MljBTuJK.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-combo-box-96451ddd-mljbtujk-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-confirm-dialog-4d718829-CpJOTecI.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-confirm-dialog-4d718829-cpjoteci-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-cookie-consent-46c09f8b-C1pbD94U.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-cookie-consent-46c09f8b-c1pbd94u-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-crud-8d161a22-akWizKRU.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-crud-8d161a22-akwizkru-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-custom-field-42c85b9e-BfRDvk7i.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-custom-field-42c85b9e-bfrdvk7i-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-date-picker-f2001167-CSFuUVWI.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-date-picker-f2001167-csfuuvwi-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-date-time-picker-c8c047a7-Bt-eQenH.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-date-time-picker-c8c047a7-bt-eqenh-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-details-bf336660-APrKIcTE.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-details-bf336660-aprkicte-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-details-summary-351a1448-DsM_j61k.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-details-summary-351a1448-dsm-j61k-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-dialog-53253a08-CnUuiko7.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-dialog-53253a08-cnuuiko7-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-email-field-d7a35f04-Dd31uwzi.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-email-field-d7a35f04-dd31uwzi-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-form-layout-47744b1d-hcGkenEi.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-form-layout-47744b1d-hcgkenei-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-grid-0a4791c2-5B6lFOo_.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-grid-0a4791c2-5b6lfoo-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-grid-pro-ff415555-D9_wQ6zN.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-grid-pro-ff415555-d9-wq6zn-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-horizontal-layout-3193943f-DTuXaIxA.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-horizontal-layout-3193943f-dtuxaixa-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-icon-601f36ed-Bdxkfd_F.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-icon-601f36ed-bdxkfd-f-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-integer-field-85078932-CGrZ9Ih0.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-integer-field-85078932-cgrz9ih0-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-list-box-d7a8433b-CL9pxlSn.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-list-box-d7a8433b-cl9pxlsn-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-login-form-638996c6-8cW9qGXg.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-login-form-638996c6-8cw9qgxg-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-login-overlay-f8a5db8a-ChWaYbK9.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-login-overlay-f8a5db8a-chwaybk9-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-map-d40a0116-DSRy3sQr.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-map-d40a0116-dsry3sqr-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-menu-bar-3f5ab096-CRAiJ5PJ.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-menu-bar-3f5ab096-craij5pj-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-message-input-996ac37c-DvS042v2.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-message-input-996ac37c-dvs042v2-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-message-list-70a435ba-DYG4vdQ8.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-message-list-70a435ba-dyg4vdq8-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-multi-select-combo-box-a3373557-D-tiNhi8.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-multi-select-combo-box-a3373557-d-tinhi8-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-notification-bd6eb776-BFcPpOYQ.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-notification-bd6eb776-bfcppoyq-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-number-field-cb3ee8b2-DfkIleLd.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-number-field-cb3ee8b2-dfkileld-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-password-field-d289cb18-CEsJb57e.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-password-field-d289cb18-cesjb57e-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-progress-bar-309ecf1f-CdTkpbbU.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-progress-bar-309ecf1f-cdtkpbbu-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-radio-group-88b5afd8-H74vT_M8.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-radio-group-88b5afd8-h74vt-m8-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-rich-text-editor-8cd892f2-Bnx9nNnE.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-rich-text-editor-8cd892f2-bnx9nnne-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-scroller-35e68818-BdembEl8.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-scroller-35e68818-bdembel8-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-select-df6e9947-B3ZVvRom.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-select-df6e9947-b3zvvrom-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-ba80d91d-Dx5bsE6E.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-side-nav-ba80d91d-dx5bse6e-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-item-34918f92-B01CTcaJ.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-side-nav-item-34918f92-b01ctcaj-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-split-layout-80c92131-DQQIALWy.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-split-layout-80c92131-dqqialwy-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-spreadsheet-59d8c5ef-Boin3Wp5.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-spreadsheet-59d8c5ef-boin3wp5-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-tab-aaf32809-CMobBBfO.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-tab-aaf32809-cmobbbfo-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-tabs-d9a5e24e-H4FKhyWT.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-tabs-d9a5e24e-h4fkhywt-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-tabsheet-dd99ed9a-CdpJ7fLw.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-tabsheet-dd99ed9a-cdpj7flw-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-text-area-83627ebc-D1efmKr_.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-text-area-83627ebc-d1efmkr-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-text-field-0b3db014-BFnVBCtC.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-text-field-0b3db014-bfnvbctc-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-time-picker-715ec415-DwbMT7mX.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-time-picker-715ec415-dwbmt7mx-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-upload-d3c162ed-B4_TFbv_.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-upload-d3c162ed-b4-tfbv-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-vertical-layout-ad4174c4-CeM38jex.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-vertical-layout-ad4174c4-cem38jex-js)
-- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-virtual-list-96896203-BPeGOfR1.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-virtual-list-96896203-bpegofr1-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/generated-flow-imports-Dp23KHu7.js](#📄-target-dev-bundle-webapp-vaadin-build-generated-flow-imports-dp23khu7-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/indexhtml-BBeNFWsa.js](#📄-target-dev-bundle-webapp-vaadin-build-indexhtml-bbenfwsa-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-eed3b794-CcUGTQLq.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-eed3b794-ccugtqlq-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-heading-c0acdd6d-OuR2rskR.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-heading-c0acdd6d-our2rskr-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-panel-616e55d6-CRS1LmTc.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-panel-616e55d6-crs1lmtc-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-app-layout-e56de2e9-CqdhQd1v.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-app-layout-e56de2e9-cqdhqd1v-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-avatar-7599297d-KB3tQTNP.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-avatar-7599297d-kb3tqtnp-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-big-decimal-field-e51def24-BiZUXoe0.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-big-decimal-field-e51def24-bizuxoe0-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-board-828ebdea-C-PA412w.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-board-828ebdea-c-pa412w-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-board-row-c70d0c55-BVIhqi2c.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-board-row-c70d0c55-bvihqi2c-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-button-2511ad84-jPPu0iwl.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-button-2511ad84-jppu0iwl-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-chart-5192dc15-BoFlJ0TZ.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-chart-5192dc15-boflj0tz-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-4e68df64-CR3rwJqb.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-checkbox-4e68df64-cr3rwjqb-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-group-a7c65bf2-D2Wkxrgw.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-checkbox-group-a7c65bf2-d2wkxrgw-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-combo-box-96451ddd-B0sfE29V.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-combo-box-96451ddd-b0sfe29v-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-confirm-dialog-4d718829-BYEXvBki.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-confirm-dialog-4d718829-byexvbki-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-cookie-consent-46c09f8b-Cb4_37Ok.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-cookie-consent-46c09f8b-cb4-37ok-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-crud-8d161a22-BsB4Hth5.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-crud-8d161a22-bsb4hth5-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-custom-field-42c85b9e-ceQyxDkl.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-custom-field-42c85b9e-ceqyxdkl-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-date-picker-f2001167-DNvuzi_B.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-date-picker-f2001167-dnvuzi-b-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-date-time-picker-c8c047a7-C5CUFXJ3.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-date-time-picker-c8c047a7-c5cufxj3-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-details-bf336660-B5lWMHdP.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-details-bf336660-b5lwmhdp-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-details-summary-351a1448-CxVlguiC.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-details-summary-351a1448-cxvlguic-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-dialog-53253a08-DqfvLXei.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-dialog-53253a08-dqfvlxei-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-email-field-d7a35f04-o56pd7ML.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-email-field-d7a35f04-o56pd7ml-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-form-layout-47744b1d-Cd8bo_Qm.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-form-layout-47744b1d-cd8bo-qm-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-grid-0a4791c2-CEkw2KK8.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-grid-0a4791c2-cekw2kk8-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-grid-pro-ff415555-Bpokhmrx.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-grid-pro-ff415555-bpokhmrx-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-horizontal-layout-3193943f-D45p_cRT.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-horizontal-layout-3193943f-d45p-crt-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-icon-601f36ed-DfUQX80Y.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-icon-601f36ed-dfuqx80y-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-integer-field-85078932-CIor2RcU.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-integer-field-85078932-cior2rcu-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-list-box-d7a8433b-Bl-jiz7w.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-list-box-d7a8433b-bl-jiz7w-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-login-form-638996c6-CgopvKtR.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-login-form-638996c6-cgopvktr-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-login-overlay-f8a5db8a-ByaPAFRd.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-login-overlay-f8a5db8a-byapafrd-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-map-d40a0116-CsU-I73n.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-map-d40a0116-csu-i73n-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-menu-bar-3f5ab096-DyO8YE4f.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-menu-bar-3f5ab096-dyo8ye4f-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-message-input-996ac37c-CuF72pK9.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-message-input-996ac37c-cuf72pk9-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-message-list-70a435ba-BkAARQot.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-message-list-70a435ba-bkaarqot-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-multi-select-combo-box-a3373557-Ckujobn1.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-multi-select-combo-box-a3373557-ckujobn1-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-notification-bd6eb776-PMkzGhEL.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-notification-bd6eb776-pmkzghel-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-number-field-cb3ee8b2-_0rgHa8T.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-number-field-cb3ee8b2-0rgha8t-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-password-field-d289cb18-ViNpNsgS.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-password-field-d289cb18-vinpnsgs-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-progress-bar-309ecf1f-BjgckM5h.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-progress-bar-309ecf1f-bjgckm5h-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-radio-group-88b5afd8-Bd5oaUB6.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-radio-group-88b5afd8-bd5oaub6-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-rich-text-editor-8cd892f2-aGRC8AQs.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-rich-text-editor-8cd892f2-agrc8aqs-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-scroller-35e68818-63sQS7i3.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-scroller-35e68818-63sqs7i3-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-select-df6e9947-DazjWTUu.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-select-df6e9947-dazjwtuu-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-ba80d91d-BXMUA18X.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-side-nav-ba80d91d-bxmua18x-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-item-34918f92-D9MGRCFe.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-side-nav-item-34918f92-d9mgrcfe-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-split-layout-80c92131-DbNR1GKm.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-split-layout-80c92131-dbnr1gkm-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-spreadsheet-59d8c5ef-CtHRftV0.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-spreadsheet-59d8c5ef-cthrftv0-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-tab-aaf32809-cWon-hid.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-tab-aaf32809-cwon-hid-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-tabs-d9a5e24e-DUcTcgqc.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-tabs-d9a5e24e-ductcgqc-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-tabsheet-dd99ed9a-CELggbX_.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-tabsheet-dd99ed9a-celggbx-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-text-area-83627ebc-DRZVrWZP.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-text-area-83627ebc-drzvrwzp-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-text-field-0b3db014-DIwQvPFw.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-text-field-0b3db014-diwqvpfw-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-time-picker-715ec415-BPL7OaGI.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-time-picker-715ec415-bpl7oagi-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-upload-d3c162ed-DRLccIU_.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-upload-d3c162ed-drlcciu-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-vertical-layout-ad4174c4-BtV2SBZm.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-vertical-layout-ad4174c4-btv2sbzm-js)
+- [📄 target/dev-bundle/webapp/VAADIN/build/vaadin-virtual-list-96896203-BdU3J8jH.js](#📄-target-dev-bundle-webapp-vaadin-build-vaadin-virtual-list-96896203-bdu3j8jh-js)
 - [📄 target/dev-bundle/webapp/index.html](#📄-target-dev-bundle-webapp-index-html)
 - [📄 target/dev-bundle/package-lock.json](#📄-target-dev-bundle-package-lock-json)
 - [📄 target/plugins/application-theme-plugin/application-theme-plugin.js](#📄-target-plugins-application-theme-plugin-application-theme-plugin-js)
@@ -594,11 +602,11 @@
 
 | Metric | Count |
 |--------|-------|
-| Total Files | 260 |
-| Total Directories | 62 |
-| Text Files | 239 |
+| Total Files | 263 |
+| Total Directories | 64 |
+| Text Files | 242 |
 | Binary Files | 21 |
-| Total Size | 4.81 MB |
+| Total Size | 4.82 MB |
 
 ### 📄 File Types Distribution
 
@@ -609,10 +617,10 @@
 | `.class` | 14 |
 | `.java` | 13 |
 | `.json` | 11 |
+| `.css` | 5 |
 | `.html` | 4 |
 | `.properties` | 3 |
 | `.map` | 2 |
-| `.css` | 2 |
 | `.bundle` | 2 |
 | `.lst` | 2 |
 | `.jsx` | 1 |
@@ -759,15 +767,15 @@ export {}
 ### <a id="📄-frontend-generated-flow-generated-flow-imports-js"></a>📄 `frontend/generated/flow/generated-flow-imports.js`
 
 **File Info:**
-- **Size**: 5.82 KB
+- **Size**: 7.54 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
 - **Location**: `frontend/generated/flow/generated-flow-imports.js`
 - **Relative Path**: `frontend/generated/flow`
 - **Created**: 2026-08-16 19:22:23 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-22 12:17:39 (America/Bahia / GMT-03:00)
-- **MD5**: `42800550375a797f2f3cb8693ef92f5a`
-- **SHA256**: `0609089630ad909e31105dede06292dd7066ddd4928b73695e2d38d1e4e267fc`
+- **Modified**: 2026-08-23 18:47:16 (America/Bahia / GMT-03:00)
+- **MD5**: `6d2fd719a0ca6c71e67da3a515de6213`
+- **SHA256**: `e72453c60be5cc0857813886e808da1c8aff4fe0a8f41746967680fa98105ae4`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -782,6 +790,27 @@ injectGlobalCss($cssFromFile_0.toString(), 'CSSImport end', document);
 import $cssFromFile_1 from 'Frontend/styles/dashboard-styles.css?inline';
 
 injectGlobalCss($cssFromFile_1.toString(), 'CSSImport end', document);
+import $cssFromFile_2 from 'Frontend/styles/vaadin-grid-custom.css?inline';
+const $css_2 = typeof $cssFromFile_2  === 'string' ? unsafeCSS($cssFromFile_2) : $cssFromFile_2;
+registerStyles('vaadin-grid', $css_2, {moduleId: 'flow_css_mod_2'});
+import $cssFromFile_3 from 'Frontend/styles/vaadin-form-fields-custom.css?inline';
+const $css_3 = typeof $cssFromFile_3  === 'string' ? unsafeCSS($cssFromFile_3) : $cssFromFile_3;
+registerStyles('vaadin-text-field', $css_3, {moduleId: 'flow_css_mod_3'});
+import $cssFromFile_4 from 'Frontend/styles/vaadin-form-fields-custom.css?inline';
+const $css_4 = typeof $cssFromFile_4  === 'string' ? unsafeCSS($cssFromFile_4) : $cssFromFile_4;
+registerStyles('vaadin-date-picker', $css_4, {moduleId: 'flow_css_mod_4'});
+import $cssFromFile_5 from 'Frontend/styles/vaadin-form-fields-custom.css?inline';
+const $css_5 = typeof $cssFromFile_5  === 'string' ? unsafeCSS($cssFromFile_5) : $cssFromFile_5;
+registerStyles('vaadin-select', $css_5, {moduleId: 'flow_css_mod_5'});
+import $cssFromFile_6 from 'Frontend/styles/vaadin-form-fields-custom.css?inline';
+const $css_6 = typeof $cssFromFile_6  === 'string' ? unsafeCSS($cssFromFile_6) : $cssFromFile_6;
+registerStyles('vaadin-combo-box', $css_6, {moduleId: 'flow_css_mod_6'});
+import $cssFromFile_7 from 'Frontend/styles/vaadin-form-fields-custom.css?inline';
+const $css_7 = typeof $cssFromFile_7  === 'string' ? unsafeCSS($cssFromFile_7) : $cssFromFile_7;
+registerStyles('vaadin-text-area', $css_7, {moduleId: 'flow_css_mod_7'});
+import $cssFromFile_8 from 'Frontend/styles/vaadin-dialog-custom.css?inline';
+const $css_8 = typeof $cssFromFile_8  === 'string' ? unsafeCSS($cssFromFile_8) : $cssFromFile_8;
+registerStyles('vaadin-dialog-overlay', $css_8, {moduleId: 'flow_css_mod_8'});
 import '@vaadin/polymer-legacy-adapter/style-modules.js';
 import '@vaadin/vertical-layout/theme/lumo/vaadin-vertical-layout.js';
 import '@vaadin/common-frontend/ConnectionIndicator.js';
@@ -11570,15 +11599,15 @@ if (import.meta.hot) {
 ### <a id="📄-frontend-styles-dashboard-styles-css"></a>📄 `frontend/styles/dashboard-styles.css`
 
 **File Info:**
-- **Size**: 1.51 KB
+- **Size**: 1.74 KB
 - **Extension**: `.css`
 - **Language**: `css`
 - **Location**: `frontend/styles/dashboard-styles.css`
 - **Relative Path**: `frontend/styles`
 - **Created**: 2026-08-18 13:29:22 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-18 20:24:42 (America/Bahia / GMT-03:00)
-- **MD5**: `1c30700c039c0972d3630d611c392ccf`
-- **SHA256**: `75a8c71a4d50fba9dbdb71e2317b63757f0acfe1eb12becde88f1c552049f20a`
+- **Modified**: 2026-08-23 18:55:07 (America/Bahia / GMT-03:00)
+- **MD5**: `2a1b2740f41a9a4a180cf6bdfc5d27bd`
+- **SHA256**: `b9435cf35b593eaa506e4c2bf5a9cf99df5eda890ef7b045b84abdaf2cc21538`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -11605,10 +11634,16 @@ if (import.meta.hot) {
     flex-direction: column;
     gap: 0.25rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.kpi-card:hover {
+    border-color: #475569;
 }
 
 /* Variações de Cor no Topo */
 .kpi-card.total { border-top: 4px solid #64748b; }
+.kpi-card.pendentes { border-top: 4px solid #f59e0b !important; }
 .kpi-card.apresentados { border-top: 4px solid #2563eb; }
 .kpi-card.carregando { border-top: 4px solid #d97706; }
 .kpi-card.expedidos { border-top: 4px solid #16a34a; }
@@ -11631,6 +11666,7 @@ if (import.meta.hot) {
 
 /* Cores dos Ícones */
 .kpi-icon-total { color: #64748b; width: 16px; height: 16px; }
+.kpi-icon-pendentes { color: #f59e0b !important; width: 16px; height: 16px; }
 .kpi-icon-apresentados { color: #2563eb; width: 16px; height: 16px; }
 .kpi-icon-carregando { color: #d97706; width: 16px; height: 16px; }
 .kpi-icon-expedidos { color: #16a34a; width: 16px; height: 16px; }
@@ -11649,16 +11685,16 @@ if (import.meta.hot) {
 ### <a id="📄-frontend-styles-styles-css"></a>📄 `frontend/styles/styles.css`
 
 **File Info:**
-- **Size**: 1.67 KB
+- **Size**: 2.83 KB
 - **Extension**: `.css`
 - **Language**: `css`
 - **Location**: `frontend/styles/styles.css`
 - **Relative Path**: `frontend/styles`
 - **Created**: 2026-08-21 20:21:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:06:55 (America/Bahia / GMT-03:00)
-- **MD5**: `5d7a8aef69b2c5c1507f000d613df249`
-- **SHA256**: `39b1d153b526298b144d6bcb9247f0f4f8a3780cd230b4d2fee73e5fc5c9b41a`
-- **Encoding**: UTF-8
+- **Modified**: 2026-08-23 18:55:31 (America/Bahia / GMT-03:00)
+- **MD5**: `44ef4be3bce738a1efff0be241066967`
+- **SHA256**: `eeffc505ce301733a49744b540b98e18c23d62c15573d28eac9677b3c84e3132`
+- **Encoding**: ASCII
 
 **File code content:**
 
@@ -11693,9 +11729,28 @@ vaadin-date-picker::part(label),
 vaadin-select::part(label), 
 vaadin-combo-box::part(label),
 vaadin-text-area::part(label),
+vaadin-form-item label,
 label {
     color: #cbd5e1 !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+}
+
+/* FIX DO MODAL: Fundo do Diálogo e Título */
+vaadin-dialog-overlay::part(overlay) {
+    background-color: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 12px !important;
+}
+
+vaadin-dialog-overlay::part(header) {
+    background-color: #0f172a !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+vaadin-dialog-overlay::part(title),
+vaadin-dialog-overlay h2 {
+    color: #f8fafc !important;
 }
 
 /* Botões */
@@ -11713,6 +11768,7 @@ vaadin-button[theme~="tertiary"] {
 /* FIX DO GRID: Ajuste fluido de altura sem quebrar o alinhamento dos botões */
 vaadin-grid {
     --lumo-size-m: 34px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5) !important;
 }
 
 vaadin-grid::part(cell) {
@@ -11726,6 +11782,138 @@ vaadin-grid-cell-content {
     padding: 0 8px !important;
     display: flex !important;
     align-items: center !important;
+}
+
+/* Estilização Premium do Cabeçalho do Grid */
+vaadin-grid::part(header-cell) {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+    border-bottom: 2px solid #3b82f6 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+/* Tipografia e cor dos títulos */
+vaadin-grid-cell-content::slotted(vaadin-grid-sorter),
+vaadin-grid::part(header-cell) {
+    color: #38bdf8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+```
+
+---
+
+### <a id="📄-frontend-styles-vaadin-dialog-custom-css"></a>📄 `frontend/styles/vaadin-dialog-custom.css`
+
+**File Info:**
+- **Size**: 258 B
+- **Extension**: `.css`
+- **Language**: `css`
+- **Location**: `frontend/styles/vaadin-dialog-custom.css`
+- **Relative Path**: `frontend/styles`
+- **Created**: 2026-08-23 18:44:39 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:44:53 (America/Bahia / GMT-03:00)
+- **MD5**: `b5f126a4abea0b51e71316c86c547719`
+- **SHA256**: `b07a4a67e336492b6e9f02055a4fffe2ec772b537b905d557bce7f09e6831579`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```css
+:host [part~='overlay'] {
+    background-color: #020617 !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 12px !important;
+}
+
+:host [part~='content'] {
+    background-color: #020617 !important;
+    color: #f8fafc !important;
+}
+```
+
+---
+
+### <a id="📄-frontend-styles-vaadin-form-fields-custom-css"></a>📄 `frontend/styles/vaadin-form-fields-custom.css`
+
+**File Info:**
+- **Size**: 948 B
+- **Extension**: `.css`
+- **Language**: `css`
+- **Location**: `frontend/styles/vaadin-form-fields-custom.css`
+- **Relative Path**: `frontend/styles`
+- **Created**: 2026-08-23 18:09:27 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:44:04 (America/Bahia / GMT-03:00)
+- **MD5**: `7b43b062cc347506f3f300c1efa2e52d`
+- **SHA256**: `0c51abefc1af29bce0212531736820180b6e458c3cb1ad9ec9ebe605466b440a`
+- **Encoding**: UTF-8
+
+**File code content:**
+
+```css
+/* Sobrescreve as variáveis globais de cor de texto secundário (Labels) no Shadow DOM */
+:host {
+    --lumo-secondary-text-color: #cbd5e1 !important;
+    --lumo-body-text-color: #f8fafc !important;
+    --lumo-primary-text-color: #f8fafc !important;
+    --lumo-contrast-70pct: #cbd5e1 !important;
+    --lumo-contrast-60pct: #cbd5e1 !important;
+    --lumo-contrast-50pct: #94a3b8 !important;
+}
+
+/* Força a cor clara e legível diretamente no elemento do Label */
+:host [part~='label'] {
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    opacity: 1 !important;
+}
+
+/* Garante o fundo escuro e bordas nítidas no campo */
+:host [part~='input-field'] {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    border-radius: 6px !important;
+}
+
+/* Cor do texto digitado / selecionado */
+:host [part~='value'] {
+    color: #f8fafc !important;
+}
+```
+
+---
+
+### <a id="📄-frontend-styles-vaadin-grid-custom-css"></a>📄 `frontend/styles/vaadin-grid-custom.css`
+
+**File Info:**
+- **Size**: 415 B
+- **Extension**: `.css`
+- **Language**: `css`
+- **Location**: `frontend/styles/vaadin-grid-custom.css`
+- **Relative Path**: `frontend/styles`
+- **Created**: 2026-08-23 18:01:23 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:01:36 (America/Bahia / GMT-03:00)
+- **MD5**: `93880e0e03fe483fdc0c82a9a55b2e37`
+- **SHA256**: `59962b088c37b5eef0f0bda75ce2561cb95c3fbdf591c761bd70824848e76498`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```css
+:host [part~='header-cell'] {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+    border-bottom: 2px solid #3b82f6 !important;
+}
+
+:host [part~='header-cell'] ::slotted(vaadin-grid-cell-content) {
+    color: #38bdf8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
 }
 ```
 
@@ -13439,15 +13627,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 18.32 KB
+- **Size**: 19.81 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 16:58:55 (America/Bahia / GMT-03:00)
-- **MD5**: `69be0123712ead381c3d59088eb2bc45`
-- **SHA256**: `77e5b85b7b602f59f32d81493c5d17275707836a79ac6b35d5cd1ee6d94712ef`
+- **Modified**: 2026-08-23 19:20:34 (America/Bahia / GMT-03:00)
+- **MD5**: `2325753607e4f47ea9d887f56eed442f`
+- **SHA256**: `b777de597c8fcdcb6d4ce4e7af680a33151340366bfe92f691bf7c560fcb7b40`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -13485,7 +13673,8 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import java.util.Locale;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
+
+
 
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -13496,6 +13685,13 @@ import java.util.List;
 @PageTitle("Gestão Operacional de Carregamento | TMS")
 @CssImport("./styles/dashboard-styles.css")
 @PermitAll
+@CssImport(value = "./styles/vaadin-grid-custom.css", themeFor = "vaadin-grid")
+@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-text-field")
+@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-date-picker")
+@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-select")
+@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-combo-box")
+@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-text-area")
+@CssImport(value = "./styles/vaadin-dialog-custom.css", themeFor = "vaadin-dialog-overlay")
 public class MainView extends VerticalLayout {
 
     private final CarregamentoRepository repository;
@@ -13508,6 +13704,7 @@ public class MainView extends VerticalLayout {
     private final Span txtCarregando = new Span("0");
     private final Span txtExpedidos = new Span("0");
     private final Span txtPeso = new Span("0 kg");
+    private final Span txtPendentes = new Span("0");
 
     public MainView(CarregamentoRepository repository, ExcelService excelService) {
         this.repository = repository;
@@ -13532,29 +13729,32 @@ public class MainView extends VerticalLayout {
         add(titulo, containerKPI, barraAcoes, grid);
         atualizarGridEIndicators();
     }
+    
 
     private Div criarCardsKPIs() {
-        Div container = new Div();
-        container.addClassName("kpi-container");
+    Div container = new Div();
+    container.addClassName("kpi-container");
 
-        txtTotal.addClassName("kpi-value");
-        txtApresentados.addClassName("kpi-value");
-        txtCarregando.addClassName("kpi-value");
-        txtExpedidos.addClassName("kpi-value");
-        txtPeso.addClassName("kpi-value");
+    txtTotal.addClassName("kpi-value");
+    txtPendentes.addClassName("kpi-value");
+    txtApresentados.addClassName("kpi-value");
+    txtCarregando.addClassName("kpi-value");
+    txtExpedidos.addClassName("kpi-value");
+    txtPeso.addClassName("kpi-value");
 
-        container.add(
-            criarCardSingle("TOTAL CARREGAMENTOS", txtTotal, VaadinIcon.TRUCK.create(), "total", "kpi-icon-total"),
-            criarCardSingle("APRESENTADOS", txtApresentados, VaadinIcon.CHECK_CIRCLE.create(), "apresentados", "kpi-icon-apresentados"),
-            criarCardSingle("CARREGANDO", txtCarregando, VaadinIcon.CLOCK.create(), "carregando", "kpi-icon-carregando"),
-            criarCardSingle("EXPEDIDOS", txtExpedidos, VaadinIcon.PACKAGE.create(), "expedidos", "kpi-icon-expedidos"),
-            criarCardSingle("PESO PROGRAMADO", txtPeso, VaadinIcon.SCALE.create(), "peso", "kpi-icon-peso")
-        );
+    container.add(
+        criarCardSingle("TOTAL CARREGAMENTOS", txtTotal, VaadinIcon.TRUCK.create(), "total", "kpi-icon-total", "TODOS"),
+        criarCardSingle("PENDENTES", txtPendentes, VaadinIcon.TIME_BACKWARD.create(), "pendentes", "kpi-icon-pendentes", "Pendente"),
+        criarCardSingle("APRESENTADOS", txtApresentados, VaadinIcon.CHECK_CIRCLE.create(), "apresentados", "kpi-icon-apresentados", "Apresentado"),
+        criarCardSingle("CARREGANDO", txtCarregando, VaadinIcon.CLOCK.create(), "carregando", "kpi-icon-carregando", "Carregando"),
+        criarCardSingle("EXPEDIDOS", txtExpedidos, VaadinIcon.PACKAGE.create(), "expedidos", "kpi-icon-expedidos", "Expedido"),
+        criarCardSingle("PESO PROGRAMADO", txtPeso, VaadinIcon.SCALE.create(), "peso", "kpi-icon-peso", null) // Sem filtro para Peso
+    );
 
-        return container;
-    }
+    return container;
+}
 
-    private Div criarCardSingle(String titulo, Span valorSpan, Icon icone, String classeVariacao, String classeIcone) {
+private Div criarCardSingle(String titulo, Span valorSpan, Icon icone, String classeVariacao, String classeIcone, String statusFiltro) {
         Div card = new Div();
         card.addClassName("kpi-card");
         card.addClassName(classeVariacao);
@@ -13569,8 +13769,29 @@ public class MainView extends VerticalLayout {
         header.add(lblTitulo, icone);
 
         card.add(header, valorSpan);
+
+        // Se houver um status associado, habilita a interatividade de filtro
+        if (statusFiltro != null) {
+            card.getStyle().set("cursor", "pointer");
+            card.addClickListener(e -> aplicarFiltroStatus(statusFiltro));
+        }
+
         return card;
+    } // <-- Fecha o método criarCardSingle aqui!
+
+    private void aplicarFiltroStatus(String status) {
+    List<Carregamento> todos = repository.findAll();
+    
+    if ("TODOS".equalsIgnoreCase(status)) {
+        grid.setItems(todos);
+    } else {
+        List<Carregamento> filtrados = todos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase(status))
+            .toList();
+        grid.setItems(filtrados);
     }
+}
+ // Fechamento da classe MainView
 
     private HorizontalLayout criarBarraAcoes() {
         HorizontalLayout layout = new HorizontalLayout();
@@ -13619,16 +13840,13 @@ uploadExcel.addFailedListener(event -> {
 @SuppressWarnings("null")
 private void configurarGrid() {
     grid.setSizeFull();
-    // LUMO_COMPACT reduz a altura das linhas nativamente no Vaadin
     grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_COMPACT);
 
-    // Ajustes de tema e dimensões escopados exclusivamente no Grid
     grid.getStyle()
-        .set("--lumo-size-m", "36px")                  // Altura ideal para acomodar o botão 'Entregas'
+        .set("--lumo-size-m", "36px")
         .set("--lumo-font-size-s", "12px")
         .set("--lumo-base-color", "#0f172a")
         .set("--lumo-body-text-color", "#f8fafc")
-        .set("--lumo-header-text-color", "#94a3b8")
         .set("--lumo-contrast-5pct", "rgba(255, 255, 255, 0.05)")
         .set("--lumo-contrast-10pct", "rgba(255, 255, 255, 0.1)")
         .set("background-color", "#0f172a")
@@ -13686,7 +13904,6 @@ private void configurarGrid() {
         return acoes;
     })).setHeader("AÇÕES").setAutoWidth(true);
 }
-
     private Span criarBadgeStatus(Carregamento c) {
         String statusTxt = c.getStatus() != null && !c.getStatus().isEmpty() ? c.getStatus() : "Pendente";
         Span badge = new Span(statusTxt);
@@ -13719,88 +13936,91 @@ private void configurarGrid() {
     }
 
     private void abrirFormularioModal(Carregamento carregamento) {
-        Dialog dialog = new Dialog();
-        dialog.setHeaderTitle(carregamento.getId() == null ? "Novo Carregamento" : "Editar Carregamento #" + carregamento.getId());
+    Dialog dialog = new Dialog();
+    dialog.setHeaderTitle(carregamento.getId() == null ? "Novo Carregamento" : "Editar Carregamento #" + carregamento.getId());
 
-        // Define as cores base do Dialog para o tema dark
-        dialog.getElement().getStyle()
-            .set("--lumo-base-color", "#0f172a")
-            .set("--lumo-body-text-color", "#ffffff")
-            .set("--lumo-header-text-color", "#ffffff");
+    // Define as variáveis globais do Dialog para forçar dark mode no cabeçalho e corpo
+    dialog.getElement().getStyle()
+        .set("background-color", "#0f172a")
+        .set("color", "#ffffff")
+        .set("--lumo-base-color", "#0f172a")
+        .set("--lumo-body-text-color", "#ffffff")
+        .set("--lumo-header-text-color", "#ffffff")
+        .set("--lumo-secondary-text-color", "#cbd5e1");
 
-        FormLayout form = new FormLayout();
+    FormLayout form = new FormLayout();
 
-        TextField txtData = new TextField("Data Programação");
-        txtData.setValue(carregamento.getDataProgramacao() != null ? carregamento.getDataProgramacao() : "");
+    TextField txtData = new TextField("Data Programação");
+    txtData.setValue(carregamento.getDataProgramacao() != null ? carregamento.getDataProgramacao() : "");
 
-        TextField txtTransp = new TextField("Transportadora");
-        txtTransp.setValue(carregamento.getTransportadora() != null ? carregamento.getTransportadora() : "");
+    TextField txtTransp = new TextField("Transportadora");
+    txtTransp.setValue(carregamento.getTransportadora() != null ? carregamento.getTransportadora() : "");
 
-        TextField txtPlaca = new TextField("Placa");
-        txtPlaca.setValue(carregamento.getPlaca() != null ? carregamento.getPlaca() : "");
+    TextField txtPlaca = new TextField("Placa");
+    txtPlaca.setValue(carregamento.getPlaca() != null ? carregamento.getPlaca() : "");
 
-        TextField txtTipoVeiculo = new TextField("Tipo de Veículo");
-        txtTipoVeiculo.setValue(carregamento.getTipoVeiculo() != null ? carregamento.getTipoVeiculo() : "");
+    TextField txtTipoVeiculo = new TextField("Tipo de Veículo");
+    txtTipoVeiculo.setValue(carregamento.getTipoVeiculo() != null ? carregamento.getTipoVeiculo() : "");
 
-        TextField txtViagem = new TextField("Viagem");
-        txtViagem.setValue(carregamento.getViagem() != null ? carregamento.getViagem() : "");
+    TextField txtViagem = new TextField("Viagem");
+    txtViagem.setValue(carregamento.getViagem() != null ? carregamento.getViagem() : "");
 
-        TextField txtOrdemCarga = new TextField("Ordem de Carga");
-        txtOrdemCarga.setValue(carregamento.getOrdemCarga() != null ? carregamento.getOrdemCarga() : "");
+    TextField txtOrdemCarga = new TextField("Ordem de Carga");
+    txtOrdemCarga.setValue(carregamento.getOrdemCarga() != null ? carregamento.getOrdemCarga() : "");
 
-        TextField txtPeso = new TextField("Peso");
-        txtPeso.setValue(carregamento.getPeso() != null ? carregamento.getPeso() : "");
+    TextField txtPeso = new TextField("Peso");
+    txtPeso.setValue(carregamento.getPeso() != null ? carregamento.getPeso() : "");
 
-        TextField txtEncaixe = new TextField("Encaixe");
-        txtEncaixe.setValue(carregamento.getEncaixe() != null ? carregamento.getEncaixe() : "");
+    TextField txtEncaixe = new TextField("Encaixe");
+    txtEncaixe.setValue(carregamento.getEncaixe() != null ? carregamento.getEncaixe() : "");
 
-        ComboBox<String> cbStatus = new ComboBox<>("Status");
-        cbStatus.setItems("Pendente", "Apresentado", "Carregando", "Expedido");
-        cbStatus.setValue(carregamento.getStatus() != null ? carregamento.getStatus() : "Pendente");
+    ComboBox<String> cbStatus = new ComboBox<>("Status");
+    cbStatus.setItems("Pendente", "Apresentado", "Carregando", "Expedido");
+    cbStatus.setValue(carregamento.getStatus() != null ? carregamento.getStatus() : "Pendente");
 
-        TextField txtObs = new TextField("Observação");
-        txtObs.setValue(carregamento.getObservacao() != null ? carregamento.getObservacao() : "");
+    TextField txtObs = new TextField("Observação");
+    txtObs.setValue(carregamento.getObservacao() != null ? carregamento.getObservacao() : "");
 
-        // Aplica o estilo escuro com texto claro em cada campo
-        estilizarCampoEscuro(txtData);
-        estilizarCampoEscuro(txtTransp);
-        estilizarCampoEscuro(txtPlaca);
-        estilizarCampoEscuro(txtTipoVeiculo);
-        estilizarCampoEscuro(txtViagem);
-        estilizarCampoEscuro(txtOrdemCarga);
-        estilizarCampoEscuro(txtPeso);
-        estilizarCampoEscuro(txtEncaixe);
-        estilizarCampoEscuro(cbStatus);
-        estilizarCampoEscuro(txtObs);
+    // Aplica a estilização dos rótulos
+    estilizarCampoEscuro(txtData);
+    estilizarCampoEscuro(txtTransp);
+    estilizarCampoEscuro(txtPlaca);
+    estilizarCampoEscuro(txtTipoVeiculo);
+    estilizarCampoEscuro(txtViagem);
+    estilizarCampoEscuro(txtOrdemCarga);
+    estilizarCampoEscuro(txtPeso);
+    estilizarCampoEscuro(txtEncaixe);
+    estilizarCampoEscuro(cbStatus);
+    estilizarCampoEscuro(txtObs);
 
-        form.add(txtData, txtTransp, txtPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbStatus, txtObs);
-        dialog.add(form);
+    form.add(txtData, txtTransp, txtPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbStatus, txtObs);
+    dialog.add(form);
 
-        Button btnSalvar = new Button("Salvar", e -> {
-            carregamento.setDataProgramacao(txtData.getValue());
-            carregamento.setTransportadora(txtTransp.getValue());
-            carregamento.setPlaca(txtPlaca.getValue());
-            carregamento.setTipoVeiculo(txtTipoVeiculo.getValue());
-            carregamento.setViagem(txtViagem.getValue());
-            carregamento.setOrdemCarga(txtOrdemCarga.getValue());
-            carregamento.setPeso(txtPeso.getValue());
-            carregamento.setEncaixe(txtEncaixe.getValue());
-            carregamento.setStatus(cbStatus.getValue());
-            carregamento.setObservacao(txtObs.getValue());
+    Button btnSalvar = new Button("Salvar", e -> {
+        carregamento.setDataProgramacao(txtData.getValue());
+        carregamento.setTransportadora(txtTransp.getValue());
+        carregamento.setPlaca(txtPlaca.getValue());
+        carregamento.setTipoVeiculo(txtTipoVeiculo.getValue());
+        carregamento.setViagem(txtViagem.getValue());
+        carregamento.setOrdemCarga(txtOrdemCarga.getValue());
+        carregamento.setPeso(txtPeso.getValue());
+        carregamento.setEncaixe(txtEncaixe.getValue());
+        carregamento.setStatus(cbStatus.getValue());
+        carregamento.setObservacao(txtObs.getValue());
 
-            repository.save(carregamento);
-            Notification.show("Carregamento salvo com sucesso!", 3000, Notification.Position.TOP_END)
-                    .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            atualizarGridEIndicators();
-            dialog.close();
-        });
-        btnSalvar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        repository.save(carregamento);
+        Notification.show("Carregamento salvo com sucesso!", 3000, Notification.Position.TOP_END)
+                .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+        atualizarGridEIndicators();
+        dialog.close();
+    });
+    btnSalvar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
-        Button btnCancelar = new Button("Cancelar", e -> dialog.close());
+    Button btnCancelar = new Button("Cancelar", e -> dialog.close());
 
-        dialog.getFooter().add(btnCancelar, btnSalvar);
-        dialog.open();
-    }
+    dialog.getFooter().add(btnCancelar, btnSalvar);
+    dialog.open();
+}
 
     private void atualizarGridEIndicators() {
     List<Carregamento> lista = repository.findAll();
@@ -13820,14 +14040,18 @@ private void configurarGrid() {
         .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
         .count();
 
+    // Cálculo do Pendentes: Total subtraído dos demais status
+    long pendentes = total - (apresentados + carregando + expedidos);
+
     double pesoTotal = lista.stream()
         .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
         .sum();
 
     DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
 
-    // Utilizando as variáveis reais da sua tela:
+    // Atualização dos indicadores na tela:
     txtTotal.setText(String.valueOf(total));
+    txtPendentes.setText(String.valueOf(pendentes)); // Adicionado o set do Pendentes
     txtApresentados.setText(String.valueOf(apresentados));
     txtCarregando.setText(String.valueOf(carregando));
     txtExpedidos.setText(String.valueOf(expedidos));
@@ -13858,16 +14082,16 @@ private void configurarGrid() {
         }
     }
 
-    private void estilizarCampoEscuro(HasElement campo) {
+    private void estilizarCampoEscuro(com.vaadin.flow.component.Component campo) {
     campo.getElement().getStyle()
-        .set("background-color", "#1e293b")
-        .set("--vaadin-input-field-value-color", "#ffffff")
-        .set("--lumo-body-text-color", "#ffffff")
-        .set("--lumo-secondary-text-color", "#94a3b8") // Define a cor das labels (rótulos) para azul claro/cinza visível
-        .set("--lumo-primary-text-color", "#ffffff")
-        .set("color", "#ffffff");
+        .set("--lumo-secondary-text-color", "#cbd5e1") // Cor do LABEL (Cinza claro/Azul)
+        .set("--lumo-body-text-color", "#f8fafc")      // Cor do texto digitado
+        .set("--lumo-primary-text-color", "#f8fafc")   // Cor do texto selecionado
+        .set("--lumo-contrast-60pct", "#cbd5e1")       // Fallback de contraste do label
+        .set("--lumo-contrast-70pct", "#cbd5e1");
 }
 }
+
 
 
 ```
@@ -14490,15 +14714,15 @@ spring.h2.console.enabled=true
 ### <a id="📄-target-dev-bundle-config-stats-json"></a>📄 `target/dev-bundle/config/stats.json`
 
 **File Info:**
-- **Size**: 11.72 KB
+- **Size**: 12.17 KB
 - **Extension**: `.json`
 - **Language**: `json`
 - **Location**: `target/dev-bundle/config/stats.json`
 - **Relative Path**: `target/dev-bundle/config`
 - **Created**: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:02 (America/Bahia / GMT-03:00)
-- **MD5**: `472d961d61014a8125b00263bf39f3a0`
-- **SHA256**: `46bfa52d24bb6141ffe024cfb889154f0d742665d68e5821185190e7089f2fb7`
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `0b09d16b3ebe4053109a340016f2e32b`
+- **SHA256**: `2923662d53fd4862955d0bdc522d1903bac94ea75a2217345a2b11ed48961d47`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14734,11 +14958,17 @@ spring.h2.console.enabled=true
   "Frontend/generated/jar-resources/vaadin-time-picker/timepickerConnector.js",
   "Frontend/generated/jar-resources/virtualListConnector.js",
   "Frontend/styles/dashboard-styles.css",
-  "Frontend/styles/styles.css"
+  "Frontend/styles/styles.css",
+  "Frontend/styles/vaadin-dialog-custom.css",
+  "Frontend/styles/vaadin-form-fields-custom.css",
+  "Frontend/styles/vaadin-grid-custom.css"
  ],
  "frontendHashes": {
-  "styles/styles.css": "03e6cf7467b0a0ceb9a41bb23f1a47bfe3d2d5bab4bbf446cfcd36bf8d81fabf",
-  "styles/dashboard-styles.css": "59aba01c46c68b29dd67c956f5d959024a169bd554858c2c1b42f4007be0fbcd",
+  "styles/styles.css": "0992eb429e2e6213605648632cb26df9c58506fa6da66efd278bdd0b558606c3",
+  "styles/dashboard-styles.css": "8cc84bc84ae3fb378fdc24302caec7c463581fabdd04832b13df409597929fd3",
+  "styles/vaadin-grid-custom.css": "b6385c0585ecf240164ccb8574a6466c821cbf1e20f65f7c0c70129f34085496",
+  "styles/vaadin-form-fields-custom.css": "acb7054fb38090c46d5e9006fdacab5a04e8dd05967652157447e8456b798ab5",
+  "styles/vaadin-dialog-custom.css": "5c49da1217c348fb213f2d1446b4178f2a4c9ae1d020347880d47d81d3ccf08d",
   "buttonFunctions.js": "c852123f9b2c44eb75e555119d3e05a7dbe78b91d0ab616feb9df1654474707d",
   "comboBoxConnector.js": "1d004c3dae9c76f8bcc68678abe1b8f7bdc8b456f5c9c4c7f190df8ed25d66cd",
   "contextMenuConnector.js": "b3e8b1b38de09aa65321338d3c149e18b4c5b53959ba134afe3be2d14942d86d",
@@ -14760,13 +14990,13 @@ spring.h2.console.enabled=true
  },
  "themeJsonContents": {},
  "entryScripts": [
-  "VAADIN/build/indexhtml-DUgpeDmv.js"
+  "VAADIN/build/indexhtml-BBeNFWsa.js"
  ],
  "webComponents": [],
  "cvdlModules": {},
  "packageJsonHash": "c077a98be83a50df5a3692e09006ff035e3abb24e79b9d284e9cfb72cf49395f",
  "indexHtmlGenerated": [
-  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-DUgpeDmv.js\"></script>"
+  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-BBeNFWsa.js\"></script>"
  ]
 }
 ```
@@ -14781,8 +15011,8 @@ spring.h2.console.enabled=true
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/FlowBootstrap-CHUuW4WK.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
 - **MD5**: `86c7b60228bd60b898bd22f12bb25dd6`
 - **SHA256**: `0ac22f6cb8eb2c1d41ed286f9eec90709698126fdb50db16582e64eafe9e063c`
 - **Encoding**: ASCII
@@ -14806,8 +15036,8 @@ Please submit an issue to https://github.com/vaadin/flow-components/issues/new/c
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/FlowClient-BZ2ixoyw.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:02 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
 - **MD5**: `0edf40db2b012272c780faeab1a30432`
 - **SHA256**: `fd1aeef752290c1dac7a285bc5c90c3534d0800c1a7f8f5cdbd197f498a67411`
 - **Encoding**: ASCII
@@ -14823,18 +15053,18 @@ function init(){function client(){var Jb="",Kb=0,Lb="gwt.codesvr=",Mb="gwt.hoste
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-indexhtml-dugpedmv-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/indexhtml-DUgpeDmv.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-indexhtml-bbenfwsa-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/indexhtml-BBeNFWsa.js`
 
 **File Info:**
 - **Size**: 211.48 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/indexhtml-DUgpeDmv.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/indexhtml-BBeNFWsa.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `cde04731d196c54127f1758ea07d2ad7`
-- **SHA256**: `d4e87926c5352b4ce9d197443f640dd8d7c1e65c5d5e1a0d3fe0975dd15005eb`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `2f66ee37197148daf6a0cc64ee39e61c`
+- **SHA256**: `0f518b1540c5a2e787c33b0b833d21c548ad4839d33181979361cdf7f4b5e2b1`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -15065,7 +15295,7 @@ Please use the static 'html' tag function. See https://lit.dev/docs/templates/ex
       }
     `}getLoadingBarStyle(){switch(this.loadingBarState){case J.IDLE:return"display: none";case J.FIRST:case J.SECOND:case J.THIRD:return"display: block";default:return""}}timeoutFor(e,o,i,n){return e!==0&&window.clearTimeout(e),o?window.setTimeout(i,n):0}static get instance(){return O.create()}}H([b({type:Number})],O.prototype,"firstDelay",void 0);H([b({type:Number})],O.prototype,"secondDelay",void 0);H([b({type:Number})],O.prototype,"thirdDelay",void 0);H([b({type:Number})],O.prototype,"expandedDuration",void 0);H([b({type:String})],O.prototype,"onlineText",void 0);H([b({type:String})],O.prototype,"offlineText",void 0);H([b({type:String})],O.prototype,"reconnectingText",void 0);H([b({type:Boolean,reflect:!0})],O.prototype,"offline",void 0);H([b({type:Boolean,reflect:!0})],O.prototype,"reconnecting",void 0);H([b({type:Boolean,reflect:!0})],O.prototype,"expanded",void 0);H([b({type:Boolean,reflect:!0})],O.prototype,"loading",void 0);H([b({type:String})],O.prototype,"loadingBarState",void 0);H([b({type:Boolean})],O.prototype,"applyDefaultTheme",null);customElements.get("vaadin-connection-indicator")===void 0&&customElements.define("vaadin-connection-indicator",O);O.instance;var pi;const Tt=window;Tt.Vaadin||(Tt.Vaadin={});(pi=Tt.Vaadin).registrations||(pi.registrations=[]);Tt.Vaadin.registrations.push({is:"@vaadin/common-frontend",version:"0.0.18"});class mi extends Error{}const Fe=window.document.body,x=window;class Qs{constructor(e){this.response=void 0,this.pathname="",this.isActive=!1,this.baseRegex=/^\//,this.navigation="",Fe.$=Fe.$||[],this.config=e||{},x.Vaadin=x.Vaadin||{},x.Vaadin.Flow=x.Vaadin.Flow||{},x.Vaadin.Flow.clients={TypeScript:{isActive:()=>this.isActive}};const o=document.head.querySelector("base");this.baseRegex=new RegExp(`^${(document.baseURI||o&&o.href||"/").replace(/^https?:\/\/[^/]+/i,"")}`),this.appShellTitle=document.title,this.addConnectionIndicator()}get serverSideRoutes(){return[{path:"(.*)",action:this.action}]}loadingStarted(){this.isActive=!0,x.Vaadin.connectionState.loadingStarted()}loadingFinished(){this.isActive=!1,x.Vaadin.connectionState.loadingFinished(),!x.Vaadin.listener&&(x.Vaadin.listener={},document.addEventListener("click",e=>{e.target&&(e.target.hasAttribute("router-link")?this.navigation="link":e.composedPath().some(o=>o.nodeName==="A")&&(this.navigation="client"))},{capture:!0}))}get action(){return async e=>{if(this.pathname=e.pathname,x.Vaadin.connectionState.online)try{await this.flowInit()}catch(o){if(o instanceof mi)return x.Vaadin.connectionState.state=A.CONNECTION_LOST,this.offlineStubAction();throw o}else return this.offlineStubAction();return this.container.onBeforeEnter=(o,i)=>this.flowNavigate(o,i),this.container.onBeforeLeave=(o,i)=>this.flowLeave(o,i),this.container}}async flowLeave(e,o){const{connectionState:i}=x.Vaadin;return this.pathname===e.pathname||!this.isFlowClientLoaded()||i.offline?Promise.resolve({}):new Promise(n=>{this.loadingStarted(),this.container.serverConnected=s=>{n(o&&s?o.prevent():{}),this.loadingFinished()},Fe.$server.leaveNavigation(this.getFlowRoutePath(e),this.getFlowRouteQuery(e))})}async flowNavigate(e,o){return this.response?new Promise(i=>{this.loadingStarted(),this.container.serverConnected=(n,s)=>{o&&n?i(o.prevent()):o&&o.redirect&&s?i(o.redirect(s.pathname)):(this.container.style.display="",i(this.container)),this.loadingFinished()},this.container.serverPaused=()=>{this.loadingFinished()},Fe.$server.connectClient(this.getFlowRoutePath(e),this.getFlowRouteQuery(e),this.appShellTitle,history.state,this.navigation),this.navigation="history"}):Promise.resolve(this.container)}getFlowRoutePath(e){return decodeURIComponent(e.pathname).replace(this.baseRegex,"")}getFlowRouteQuery(e){return e.search&&e.search.substring(1)||""}async flowInit(){if(!this.isFlowClientLoaded()){this.loadingStarted(),this.response=await this.flowInitUi();const{pushScript:e,appConfig:o}=this.response;typeof e=="string"&&await this.loadScript(e);const{appId:i}=o;await(await g(()=>import("./FlowBootstrap-CHUuW4WK.js"),__vite__mapDeps([]),import.meta.url)).init(this.response),typeof this.config.imports=="function"&&(this.injectAppIdScript(i),await this.config.imports());const s=`flow-container-${i.toLowerCase()}`,r=document.querySelector(s);r?this.container=r:(this.container=document.createElement(s),this.container.id=i),Fe.$[i]=this.container;const l=await g(()=>import("./FlowClient-BZ2ixoyw.js"),__vite__mapDeps([]),import.meta.url);await this.flowInitClient(l),this.loadingFinished()}return this.container&&!this.container.isConnected&&(this.container.style.display="none",document.body.appendChild(this.container)),this.response}async loadScript(e){return new Promise((o,i)=>{const n=document.createElement("script");n.onload=()=>o(),n.onerror=i,n.src=e,document.body.appendChild(n)})}injectAppIdScript(e){const o=e.substring(0,e.lastIndexOf("-")),i=document.createElement("script");i.type="module",i.setAttribute("data-app-id",o),document.body.append(i)}async flowInitClient(e){return e.init(),new Promise(o=>{const i=setInterval(()=>{Object.keys(x.Vaadin.Flow.clients).filter(s=>s!=="TypeScript").reduce((s,r)=>s||x.Vaadin.Flow.clients[r].isActive(),!1)||(clearInterval(i),o())},5)})}async flowInitUi(){const e=x.Vaadin&&x.Vaadin.TypeScript&&x.Vaadin.TypeScript.initial;return e?(x.Vaadin.TypeScript.initial=void 0,Promise.resolve(e)):new Promise((o,i)=>{const s=new XMLHttpRequest,r=`?v-r=init&location=${encodeURIComponent(this.getFlowRoutePath(location))}&query=${encodeURIComponent(this.getFlowRouteQuery(location))}`;s.open("GET",r),s.onerror=()=>i(new mi(`Invalid server response when initializing Flow UI.
         ${s.status}
-        ${s.responseText}`)),s.onload=()=>{const l=s.getResponseHeader("content-type");l&&l.indexOf("application/json")!==-1?o(JSON.parse(s.responseText)):s.onerror()},s.send()})}addConnectionIndicator(){O.create(),x.addEventListener("online",()=>{if(!this.isFlowClientLoaded()){x.Vaadin.connectionState.state=A.RECONNECTING;const e=new XMLHttpRequest;e.open("HEAD","sw.js"),e.onload=()=>{x.Vaadin.connectionState.state=A.CONNECTED},e.onerror=()=>{x.Vaadin.connectionState.state=A.CONNECTION_LOST},setTimeout(()=>e.send(),50)}}),x.addEventListener("offline",()=>{this.isFlowClientLoaded()||(x.Vaadin.connectionState.state=A.CONNECTION_LOST)})}async offlineStubAction(){const e=document.createElement("iframe");e.setAttribute("src","./offline-stub.html"),e.setAttribute("style","width: 100%; height: 100%; border: 0"),this.response=void 0;let i;const n=()=>{i!==void 0&&(x.Vaadin.connectionState.removeStateChangeListener(i),i=void 0)};return e.onBeforeEnter=(s,r,l)=>{i=()=>{x.Vaadin.connectionState.online&&(n(),l.render(s,!1))},x.Vaadin.connectionState.addStateChangeListener(i)},e.onBeforeLeave=(s,r,l)=>{n()},e}isFlowClientLoaded(){return this.response!==void 0}}const{serverSideRoutes:Zs}=new Qs({imports:()=>g(()=>import("./generated-flow-imports-_7H-nYp-.js"),__vite__mapDeps([]),import.meta.url)}),er=[...Zs],tr=new pe(document.querySelector("#outlet"));tr.setRoutes(er);(function(){if(typeof document>"u"||"adoptedStyleSheets"in document)return;var t="ShadyCSS"in window&&!ShadyCSS.nativeShadow,e=document.implementation.createHTMLDocument(""),o=new WeakMap,i=typeof DOMException=="object"?Error:DOMException,n=Object.defineProperty,s=Array.prototype.forEach,r=/@import.+?;?$/gm;function l(c){var m=c.replace(r,"");return m!==c&&console.warn("@import rules are not allowed here. See https://github.com/WICG/construct-stylesheets/issues/119#issuecomment-588352418"),m.trim()}function a(c){return"isConnected"in c?c.isConnected:document.contains(c)}function d(c){return c.filter(function(m,w){return c.indexOf(m)===w})}function h(c,m){return c.filter(function(w){return m.indexOf(w)===-1})}function p(c){c.parentNode.removeChild(c)}function u(c){return c.shadowRoot||o.get(c)}var _=["addRule","deleteRule","insertRule","removeRule"],se=CSSStyleSheet,G=se.prototype;G.replace=function(){return Promise.reject(new i("Can't call replace on non-constructed CSSStyleSheets."))},G.replaceSync=function(){throw new i("Failed to execute 'replaceSync' on 'CSSStyleSheet': Can't call replaceSync on non-constructed CSSStyleSheets.")};function ot(c){return typeof c=="object"?Te.isPrototypeOf(c)||G.isPrototypeOf(c):!1}function zt(c){return typeof c=="object"?G.isPrototypeOf(c):!1}var q=new WeakMap,ie=new WeakMap,Ce=new WeakMap,ke=new WeakMap;function jt(c,m){var w=document.createElement("style");return Ce.get(c).set(m,w),ie.get(c).push(m),w}function re(c,m){return Ce.get(c).get(m)}function it(c,m){Ce.get(c).delete(m),ie.set(c,ie.get(c).filter(function(w){return w!==m}))}function Ro(c,m){requestAnimationFrame(function(){m.textContent=q.get(c).textContent,ke.get(c).forEach(function(w){return m.sheet[w.method].apply(m.sheet,w.args)})})}function nt(c){if(!q.has(c))throw new TypeError("Illegal invocation")}function Ft(){var c=this,m=document.createElement("style");e.body.appendChild(m),q.set(c,m),ie.set(c,[]),Ce.set(c,new WeakMap),ke.set(c,[])}var Te=Ft.prototype;Te.replace=function(m){try{return this.replaceSync(m),Promise.resolve(this)}catch(w){return Promise.reject(w)}},Te.replaceSync=function(m){if(nt(this),typeof m=="string"){var w=this;q.get(w).textContent=l(m),ke.set(w,[]),ie.get(w).forEach(function(U){U.isConnected()&&Ro(w,re(w,U))})}},n(Te,"cssRules",{configurable:!0,enumerable:!0,get:function(){return nt(this),q.get(this).sheet.cssRules}}),n(Te,"media",{configurable:!0,enumerable:!0,get:function(){return nt(this),q.get(this).sheet.media}}),_.forEach(function(c){Te[c]=function(){var m=this;nt(m);var w=arguments;ke.get(m).push({method:c,args:w}),ie.get(m).forEach(function(B){if(B.isConnected()){var L=re(m,B).sheet;L[c].apply(L,w)}});var U=q.get(m).sheet;return U[c].apply(U,w)}}),n(Ft,Symbol.hasInstance,{configurable:!0,value:ot});var No={childList:!0,subtree:!0},Io=new WeakMap;function $e(c){var m=Io.get(c);return m||(m=new Lo(c),Io.set(c,m)),m}function Po(c){n(c.prototype,"adoptedStyleSheets",{configurable:!0,enumerable:!0,get:function(){return $e(this).sheets},set:function(m){$e(this).update(m)}})}function Bt(c,m){for(var w=document.createNodeIterator(c,NodeFilter.SHOW_ELEMENT,function(B){return u(B)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT},null,!1),U=void 0;U=w.nextNode();)m(u(U))}var st=new WeakMap,Ae=new WeakMap,rt=new WeakMap;function En(c,m){return m instanceof HTMLStyleElement&&Ae.get(c).some(function(w){return re(w,c)})}function Oo(c){var m=st.get(c);return m instanceof Document?m.body:m}function Ht(c){var m=document.createDocumentFragment(),w=Ae.get(c),U=rt.get(c),B=Oo(c);U.disconnect(),w.forEach(function(L){m.appendChild(re(L,c)||jt(L,c))}),B.insertBefore(m,null),U.observe(B,No),w.forEach(function(L){Ro(L,re(L,c))})}function Lo(c){var m=this;m.sheets=[],st.set(m,c),Ae.set(m,[]),rt.set(m,new MutationObserver(function(w,U){if(!document){U.disconnect();return}w.forEach(function(B){t||s.call(B.addedNodes,function(L){L instanceof Element&&Bt(L,function(Re){$e(Re).connect()})}),s.call(B.removedNodes,function(L){L instanceof Element&&(En(m,L)&&Ht(m),t||Bt(L,function(Re){$e(Re).disconnect()}))})})}))}if(Lo.prototype={isConnected:function(){var c=st.get(this);return c instanceof Document?c.readyState!=="loading":a(c.host)},connect:function(){var c=Oo(this);rt.get(this).observe(c,No),Ae.get(this).length>0&&Ht(this),Bt(c,function(m){$e(m).connect()})},disconnect:function(){rt.get(this).disconnect()},update:function(c){var m=this,w=st.get(m)===document?"Document":"ShadowRoot";if(!Array.isArray(c))throw new TypeError("Failed to set the 'adoptedStyleSheets' property on "+w+": Iterator getter is not callable.");if(!c.every(ot))throw new TypeError("Failed to set the 'adoptedStyleSheets' property on "+w+": Failed to convert value to 'CSSStyleSheet'");if(c.some(zt))throw new TypeError("Failed to set the 'adoptedStyleSheets' property on "+w+": Can't adopt non-constructed stylesheets");m.sheets=c;var U=Ae.get(m),B=d(c),L=h(U,B);L.forEach(function(Re){p(re(Re,m)),it(Re,m)}),Ae.set(m,B),m.isConnected()&&B.length>0&&Ht(m)}},window.CSSStyleSheet=Ft,Po(Document),"ShadowRoot"in window){Po(ShadowRoot);var Mo=Element.prototype,Sn=Mo.attachShadow;Mo.attachShadow=function(m){var w=Sn.call(this,m);return m.mode==="closed"&&o.set(this,w),w}}var at=$e(document);at.isConnected()?at.connect():document.addEventListener("DOMContentLoaded",at.connect.bind(at))})();/**
+        ${s.responseText}`)),s.onload=()=>{const l=s.getResponseHeader("content-type");l&&l.indexOf("application/json")!==-1?o(JSON.parse(s.responseText)):s.onerror()},s.send()})}addConnectionIndicator(){O.create(),x.addEventListener("online",()=>{if(!this.isFlowClientLoaded()){x.Vaadin.connectionState.state=A.RECONNECTING;const e=new XMLHttpRequest;e.open("HEAD","sw.js"),e.onload=()=>{x.Vaadin.connectionState.state=A.CONNECTED},e.onerror=()=>{x.Vaadin.connectionState.state=A.CONNECTION_LOST},setTimeout(()=>e.send(),50)}}),x.addEventListener("offline",()=>{this.isFlowClientLoaded()||(x.Vaadin.connectionState.state=A.CONNECTION_LOST)})}async offlineStubAction(){const e=document.createElement("iframe");e.setAttribute("src","./offline-stub.html"),e.setAttribute("style","width: 100%; height: 100%; border: 0"),this.response=void 0;let i;const n=()=>{i!==void 0&&(x.Vaadin.connectionState.removeStateChangeListener(i),i=void 0)};return e.onBeforeEnter=(s,r,l)=>{i=()=>{x.Vaadin.connectionState.online&&(n(),l.render(s,!1))},x.Vaadin.connectionState.addStateChangeListener(i)},e.onBeforeLeave=(s,r,l)=>{n()},e}isFlowClientLoaded(){return this.response!==void 0}}const{serverSideRoutes:Zs}=new Qs({imports:()=>g(()=>import("./generated-flow-imports-Dp23KHu7.js"),__vite__mapDeps([]),import.meta.url)}),er=[...Zs],tr=new pe(document.querySelector("#outlet"));tr.setRoutes(er);(function(){if(typeof document>"u"||"adoptedStyleSheets"in document)return;var t="ShadyCSS"in window&&!ShadyCSS.nativeShadow,e=document.implementation.createHTMLDocument(""),o=new WeakMap,i=typeof DOMException=="object"?Error:DOMException,n=Object.defineProperty,s=Array.prototype.forEach,r=/@import.+?;?$/gm;function l(c){var m=c.replace(r,"");return m!==c&&console.warn("@import rules are not allowed here. See https://github.com/WICG/construct-stylesheets/issues/119#issuecomment-588352418"),m.trim()}function a(c){return"isConnected"in c?c.isConnected:document.contains(c)}function d(c){return c.filter(function(m,w){return c.indexOf(m)===w})}function h(c,m){return c.filter(function(w){return m.indexOf(w)===-1})}function p(c){c.parentNode.removeChild(c)}function u(c){return c.shadowRoot||o.get(c)}var _=["addRule","deleteRule","insertRule","removeRule"],se=CSSStyleSheet,G=se.prototype;G.replace=function(){return Promise.reject(new i("Can't call replace on non-constructed CSSStyleSheets."))},G.replaceSync=function(){throw new i("Failed to execute 'replaceSync' on 'CSSStyleSheet': Can't call replaceSync on non-constructed CSSStyleSheets.")};function ot(c){return typeof c=="object"?Te.isPrototypeOf(c)||G.isPrototypeOf(c):!1}function zt(c){return typeof c=="object"?G.isPrototypeOf(c):!1}var q=new WeakMap,ie=new WeakMap,Ce=new WeakMap,ke=new WeakMap;function jt(c,m){var w=document.createElement("style");return Ce.get(c).set(m,w),ie.get(c).push(m),w}function re(c,m){return Ce.get(c).get(m)}function it(c,m){Ce.get(c).delete(m),ie.set(c,ie.get(c).filter(function(w){return w!==m}))}function Ro(c,m){requestAnimationFrame(function(){m.textContent=q.get(c).textContent,ke.get(c).forEach(function(w){return m.sheet[w.method].apply(m.sheet,w.args)})})}function nt(c){if(!q.has(c))throw new TypeError("Illegal invocation")}function Ft(){var c=this,m=document.createElement("style");e.body.appendChild(m),q.set(c,m),ie.set(c,[]),Ce.set(c,new WeakMap),ke.set(c,[])}var Te=Ft.prototype;Te.replace=function(m){try{return this.replaceSync(m),Promise.resolve(this)}catch(w){return Promise.reject(w)}},Te.replaceSync=function(m){if(nt(this),typeof m=="string"){var w=this;q.get(w).textContent=l(m),ke.set(w,[]),ie.get(w).forEach(function(U){U.isConnected()&&Ro(w,re(w,U))})}},n(Te,"cssRules",{configurable:!0,enumerable:!0,get:function(){return nt(this),q.get(this).sheet.cssRules}}),n(Te,"media",{configurable:!0,enumerable:!0,get:function(){return nt(this),q.get(this).sheet.media}}),_.forEach(function(c){Te[c]=function(){var m=this;nt(m);var w=arguments;ke.get(m).push({method:c,args:w}),ie.get(m).forEach(function(B){if(B.isConnected()){var L=re(m,B).sheet;L[c].apply(L,w)}});var U=q.get(m).sheet;return U[c].apply(U,w)}}),n(Ft,Symbol.hasInstance,{configurable:!0,value:ot});var No={childList:!0,subtree:!0},Io=new WeakMap;function $e(c){var m=Io.get(c);return m||(m=new Lo(c),Io.set(c,m)),m}function Po(c){n(c.prototype,"adoptedStyleSheets",{configurable:!0,enumerable:!0,get:function(){return $e(this).sheets},set:function(m){$e(this).update(m)}})}function Bt(c,m){for(var w=document.createNodeIterator(c,NodeFilter.SHOW_ELEMENT,function(B){return u(B)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT},null,!1),U=void 0;U=w.nextNode();)m(u(U))}var st=new WeakMap,Ae=new WeakMap,rt=new WeakMap;function En(c,m){return m instanceof HTMLStyleElement&&Ae.get(c).some(function(w){return re(w,c)})}function Oo(c){var m=st.get(c);return m instanceof Document?m.body:m}function Ht(c){var m=document.createDocumentFragment(),w=Ae.get(c),U=rt.get(c),B=Oo(c);U.disconnect(),w.forEach(function(L){m.appendChild(re(L,c)||jt(L,c))}),B.insertBefore(m,null),U.observe(B,No),w.forEach(function(L){Ro(L,re(L,c))})}function Lo(c){var m=this;m.sheets=[],st.set(m,c),Ae.set(m,[]),rt.set(m,new MutationObserver(function(w,U){if(!document){U.disconnect();return}w.forEach(function(B){t||s.call(B.addedNodes,function(L){L instanceof Element&&Bt(L,function(Re){$e(Re).connect()})}),s.call(B.removedNodes,function(L){L instanceof Element&&(En(m,L)&&Ht(m),t||Bt(L,function(Re){$e(Re).disconnect()}))})})}))}if(Lo.prototype={isConnected:function(){var c=st.get(this);return c instanceof Document?c.readyState!=="loading":a(c.host)},connect:function(){var c=Oo(this);rt.get(this).observe(c,No),Ae.get(this).length>0&&Ht(this),Bt(c,function(m){$e(m).connect()})},disconnect:function(){rt.get(this).disconnect()},update:function(c){var m=this,w=st.get(m)===document?"Document":"ShadowRoot";if(!Array.isArray(c))throw new TypeError("Failed to set the 'adoptedStyleSheets' property on "+w+": Iterator getter is not callable.");if(!c.every(ot))throw new TypeError("Failed to set the 'adoptedStyleSheets' property on "+w+": Failed to convert value to 'CSSStyleSheet'");if(c.some(zt))throw new TypeError("Failed to set the 'adoptedStyleSheets' property on "+w+": Can't adopt non-constructed stylesheets");m.sheets=c;var U=Ae.get(m),B=d(c),L=h(U,B);L.forEach(function(Re){p(re(Re,m)),it(Re,m)}),Ae.set(m,B),m.isConnected()&&B.length>0&&Ht(m)}},window.CSSStyleSheet=Ft,Po(Document),"ShadowRoot"in window){Po(ShadowRoot);var Mo=Element.prototype,Sn=Mo.attachShadow;Mo.attachShadow=function(m){var w=Sn.call(this,m);return m.mode==="closed"&&o.set(this,w),w}}var at=$e(document);at.isConnected()?at.connect():document.addEventListener("DOMContentLoaded",at.connect.bind(at))})();/**
  * @license
  * Copyright 2020 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
@@ -15094,7 +15324,7 @@ Please use the static 'html' tag function. See https://lit.dev/docs/templates/ex
     box-shadow: var(--dev-tools-box-shadow);
     outline: none;
   }
-`,vr=(t,e)=>{const o=t[e];return o?typeof o=="function"?o():Promise.resolve(o):new Promise((i,n)=>{(typeof queueMicrotask=="function"?queueMicrotask:setTimeout)(n.bind(null,new Error("Unknown variable dynamic import: "+e)))})};var R;(function(t){t.text="text",t.checkbox="checkbox",t.range="range",t.color="color"})(R||(R={}));const oe={lumoSize:["--lumo-size-xs","--lumo-size-s","--lumo-size-m","--lumo-size-l","--lumo-size-xl"],lumoSpace:["--lumo-space-xs","--lumo-space-s","--lumo-space-m","--lumo-space-l","--lumo-space-xl"],lumoBorderRadius:["0","--lumo-border-radius-m","--lumo-border-radius-l"],lumoFontSize:["--lumo-font-size-xxs","--lumo-font-size-xs","--lumo-font-size-s","--lumo-font-size-m","--lumo-font-size-l","--lumo-font-size-xl","--lumo-font-size-xxl","--lumo-font-size-xxxl"],lumoTextColor:["--lumo-header-text-color","--lumo-body-text-color","--lumo-secondary-text-color","--lumo-tertiary-text-color","--lumo-disabled-text-color","--lumo-primary-text-color","--lumo-error-text-color","--lumo-success-text-color"],basicBorderSize:["0px","1px","2px","3px"]},fr=Object.freeze(Object.defineProperty({__proto__:null,presets:oe},Symbol.toStringTag,{value:"Module"})),le={textColor:{propertyName:"color",displayName:"Text color",editorType:R.color,presets:oe.lumoTextColor},fontSize:{propertyName:"font-size",displayName:"Font size",editorType:R.range,presets:oe.lumoFontSize,icon:"font"},fontWeight:{propertyName:"font-weight",displayName:"Bold",editorType:R.checkbox,checkedValue:"bold"},fontStyle:{propertyName:"font-style",displayName:"Italic",editorType:R.checkbox,checkedValue:"italic"}},ee={backgroundColor:{propertyName:"background-color",displayName:"Background color",editorType:R.color},borderColor:{propertyName:"border-color",displayName:"Border color",editorType:R.color},borderWidth:{propertyName:"border-width",displayName:"Border width",editorType:R.range,presets:oe.basicBorderSize,icon:"square"},borderRadius:{propertyName:"border-radius",displayName:"Border radius",editorType:R.range,presets:oe.lumoBorderRadius,icon:"square"},padding:{propertyName:"padding",displayName:"Padding",editorType:R.range,presets:oe.lumoSpace,icon:"square"},gap:{propertyName:"gap",displayName:"Spacing",editorType:R.range,presets:oe.lumoSpace,icon:"square"}},gr={height:{propertyName:"height",displayName:"Size",editorType:R.range,presets:oe.lumoSize,icon:"square"},paddingInline:{propertyName:"padding-inline",displayName:"Padding",editorType:R.range,presets:oe.lumoSpace,icon:"square"}},uo={iconColor:{propertyName:"color",displayName:"Icon color",editorType:R.color,presets:oe.lumoTextColor},iconSize:{propertyName:"font-size",displayName:"Icon size",editorType:R.range,presets:oe.lumoFontSize,icon:"font"}},yr=[ee.backgroundColor,ee.borderColor,ee.borderWidth,ee.borderRadius,ee.padding],_r=[le.textColor,le.fontSize,le.fontWeight,le.fontStyle],br=[uo.iconColor,uo.iconSize],wr=Object.freeze(Object.defineProperty({__proto__:null,fieldProperties:gr,iconProperties:uo,shapeProperties:ee,standardIconProperties:br,standardShapeProperties:yr,standardTextProperties:_r,textProperties:le},Symbol.toStringTag,{value:"Module"}));function fn(t){const e=t.charAt(0).toUpperCase()+t.slice(1);return{tagName:t,displayName:e,elements:[{selector:t,displayName:"Element",properties:[ee.backgroundColor,ee.borderColor,ee.borderWidth,ee.borderRadius,ee.padding,le.textColor,le.fontSize,le.fontWeight,le.fontStyle]}]}}const Er=Object.freeze(Object.defineProperty({__proto__:null,createGenericMetadata:fn},Symbol.toStringTag,{value:"Module"})),Sr=t=>vr(Object.assign({"./components/defaults.ts":()=>f(()=>Promise.resolve().then(()=>wr),void 0),"./components/generic.ts":()=>f(()=>Promise.resolve().then(()=>Er),void 0),"./components/presets.ts":()=>f(()=>Promise.resolve().then(()=>fr),void 0),"./components/vaadin-accordion-heading.ts":()=>f(()=>g(()=>import("./vaadin-accordion-heading-c0acdd6d-P45QSixF.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-accordion-panel.ts":()=>f(()=>g(()=>import("./vaadin-accordion-panel-616e55d6-DXUJMsaT.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-accordion.ts":()=>f(()=>g(()=>import("./vaadin-accordion-eed3b794-CTUaHpOX.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-app-layout.ts":()=>f(()=>g(()=>import("./vaadin-app-layout-e56de2e9-D-Cl15nF.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-avatar.ts":()=>f(()=>g(()=>import("./vaadin-avatar-7599297d-S_fyg3Nv.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-big-decimal-field.ts":()=>f(()=>g(()=>import("./vaadin-big-decimal-field-e51def24-DYUwrPY7.js"),__vite__mapDeps([0,1,2]),import.meta.url),["assets/vaadin-big-decimal-field-e51def24.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-board-row.ts":()=>f(()=>g(()=>import("./vaadin-board-row-c70d0c55-DIJaAkbF.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-board.ts":()=>f(()=>g(()=>import("./vaadin-board-828ebdea-CMpUShDi.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-button.ts":()=>f(()=>g(()=>import("./vaadin-button-2511ad84-DTAIizqr.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-chart.ts":()=>f(()=>g(()=>import("./vaadin-chart-5192dc15-BA0hKQiU.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-checkbox-group.ts":()=>f(()=>g(()=>import("./vaadin-checkbox-group-a7c65bf2-DERJcN9V.js"),__vite__mapDeps([3,1,4]),import.meta.url),["assets/vaadin-checkbox-group-a7c65bf2.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-checkbox-4e68df64.js"]),"./components/vaadin-checkbox.ts":()=>f(()=>g(()=>import("./vaadin-checkbox-4e68df64-Bvs1c_el.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-combo-box.ts":()=>f(()=>g(()=>import("./vaadin-combo-box-96451ddd-MljBTuJK.js"),__vite__mapDeps([5,1]),import.meta.url),["assets/vaadin-combo-box-96451ddd.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-confirm-dialog.ts":()=>f(()=>g(()=>import("./vaadin-confirm-dialog-4d718829-CpJOTecI.js"),__vite__mapDeps([6,2]),import.meta.url),["assets/vaadin-confirm-dialog-4d718829.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-cookie-consent.ts":()=>f(()=>g(()=>import("./vaadin-cookie-consent-46c09f8b-C1pbD94U.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-crud.ts":()=>f(()=>g(()=>import("./vaadin-crud-8d161a22-akWizKRU.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-custom-field.ts":()=>f(()=>g(()=>import("./vaadin-custom-field-42c85b9e-BfRDvk7i.js"),__vite__mapDeps([7,1]),import.meta.url),["assets/vaadin-custom-field-42c85b9e.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-date-picker.ts":()=>f(()=>g(()=>import("./vaadin-date-picker-f2001167-CSFuUVWI.js"),__vite__mapDeps([8,1]),import.meta.url),["assets/vaadin-date-picker-f2001167.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-date-time-picker.ts":()=>f(()=>g(()=>import("./vaadin-date-time-picker-c8c047a7-Bt-eQenH.js"),__vite__mapDeps([9,1]),import.meta.url),["assets/vaadin-date-time-picker-c8c047a7.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-details-summary.ts":()=>f(()=>g(()=>import("./vaadin-details-summary-351a1448-DsM_j61k.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-details.ts":()=>f(()=>g(()=>import("./vaadin-details-bf336660-APrKIcTE.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-dialog.ts":()=>f(()=>g(()=>import("./vaadin-dialog-53253a08-CnUuiko7.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-email-field.ts":()=>f(()=>g(()=>import("./vaadin-email-field-d7a35f04-Dd31uwzi.js"),__vite__mapDeps([10,1,2]),import.meta.url),["assets/vaadin-email-field-d7a35f04.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-form-layout.ts":()=>f(()=>g(()=>import("./vaadin-form-layout-47744b1d-hcGkenEi.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-grid-pro.ts":()=>f(()=>g(()=>import("./vaadin-grid-pro-ff415555-D9_wQ6zN.js"),__vite__mapDeps([11,4,12,1]),import.meta.url),["assets/vaadin-grid-pro-ff415555.js","assets/vaadin-checkbox-4e68df64.js","assets/vaadin-grid-0a4791c2.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-grid.ts":()=>f(()=>g(()=>import("./vaadin-grid-0a4791c2-5B6lFOo_.js"),__vite__mapDeps([12,4]),import.meta.url),["assets/vaadin-grid-0a4791c2.js","assets/vaadin-checkbox-4e68df64.js"]),"./components/vaadin-horizontal-layout.ts":()=>f(()=>g(()=>import("./vaadin-horizontal-layout-3193943f-DTuXaIxA.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-icon.ts":()=>f(()=>g(()=>import("./vaadin-icon-601f36ed-Bdxkfd_F.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-integer-field.ts":()=>f(()=>g(()=>import("./vaadin-integer-field-85078932-CGrZ9Ih0.js"),__vite__mapDeps([13,1,2]),import.meta.url),["assets/vaadin-integer-field-85078932.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-list-box.ts":()=>f(()=>g(()=>import("./vaadin-list-box-d7a8433b-CL9pxlSn.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-login-form.ts":()=>f(()=>g(()=>import("./vaadin-login-form-638996c6-8cW9qGXg.js"),__vite__mapDeps([14,1,2]),import.meta.url),["assets/vaadin-login-form-638996c6.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-login-overlay.ts":()=>f(()=>g(()=>import("./vaadin-login-overlay-f8a5db8a-ChWaYbK9.js"),__vite__mapDeps([15,1,2]),import.meta.url),["assets/vaadin-login-overlay-f8a5db8a.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-map.ts":()=>f(()=>g(()=>import("./vaadin-map-d40a0116-DSRy3sQr.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-menu-bar.ts":()=>f(()=>g(()=>import("./vaadin-menu-bar-3f5ab096-CRAiJ5PJ.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-message-input.ts":()=>f(()=>g(()=>import("./vaadin-message-input-996ac37c-DvS042v2.js"),__vite__mapDeps([16,1]),import.meta.url),["assets/vaadin-message-input-996ac37c.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-message-list.ts":()=>f(()=>g(()=>import("./vaadin-message-list-70a435ba-DYG4vdQ8.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-multi-select-combo-box.ts":()=>f(()=>g(()=>import("./vaadin-multi-select-combo-box-a3373557-D-tiNhi8.js"),__vite__mapDeps([17,1]),import.meta.url),["assets/vaadin-multi-select-combo-box-a3373557.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-notification.ts":()=>f(()=>g(()=>import("./vaadin-notification-bd6eb776-BFcPpOYQ.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-number-field.ts":()=>f(()=>g(()=>import("./vaadin-number-field-cb3ee8b2-DfkIleLd.js"),__vite__mapDeps([18,1,2]),import.meta.url),["assets/vaadin-number-field-cb3ee8b2.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-password-field.ts":()=>f(()=>g(()=>import("./vaadin-password-field-d289cb18-CEsJb57e.js"),__vite__mapDeps([19,1,2]),import.meta.url),["assets/vaadin-password-field-d289cb18.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-progress-bar.ts":()=>f(()=>g(()=>import("./vaadin-progress-bar-309ecf1f-CdTkpbbU.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-radio-group.ts":()=>f(()=>g(()=>import("./vaadin-radio-group-88b5afd8-H74vT_M8.js"),__vite__mapDeps([20,1]),import.meta.url),["assets/vaadin-radio-group-88b5afd8.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-rich-text-editor.ts":()=>f(()=>g(()=>import("./vaadin-rich-text-editor-8cd892f2-Bnx9nNnE.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-scroller.ts":()=>f(()=>g(()=>import("./vaadin-scroller-35e68818-BdembEl8.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-select.ts":()=>f(()=>g(()=>import("./vaadin-select-df6e9947-B3ZVvRom.js"),__vite__mapDeps([21,1]),import.meta.url),["assets/vaadin-select-df6e9947.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-side-nav-item.ts":()=>f(()=>g(()=>import("./vaadin-side-nav-item-34918f92-B01CTcaJ.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-side-nav.ts":()=>f(()=>g(()=>import("./vaadin-side-nav-ba80d91d-Dx5bsE6E.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-split-layout.ts":()=>f(()=>g(()=>import("./vaadin-split-layout-80c92131-DQQIALWy.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-spreadsheet.ts":()=>f(()=>g(()=>import("./vaadin-spreadsheet-59d8c5ef-Boin3Wp5.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-tab.ts":()=>f(()=>g(()=>import("./vaadin-tab-aaf32809-CMobBBfO.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-tabs.ts":()=>f(()=>g(()=>import("./vaadin-tabs-d9a5e24e-H4FKhyWT.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-tabsheet.ts":()=>f(()=>g(()=>import("./vaadin-tabsheet-dd99ed9a-CdpJ7fLw.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-text-area.ts":()=>f(()=>g(()=>import("./vaadin-text-area-83627ebc-D1efmKr_.js"),__vite__mapDeps([22,1,2]),import.meta.url),["assets/vaadin-text-area-83627ebc.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-text-field.ts":()=>f(()=>g(()=>import("./vaadin-text-field-0b3db014-BFnVBCtC.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-time-picker.ts":()=>f(()=>g(()=>import("./vaadin-time-picker-715ec415-DwbMT7mX.js"),__vite__mapDeps([23,1]),import.meta.url),["assets/vaadin-time-picker-715ec415.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-upload.ts":()=>f(()=>g(()=>import("./vaadin-upload-d3c162ed-B4_TFbv_.js"),__vite__mapDeps([24,2]),import.meta.url),["assets/vaadin-upload-d3c162ed.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-vertical-layout.ts":()=>f(()=>g(()=>import("./vaadin-vertical-layout-ad4174c4-CeM38jex.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-virtual-list.ts":()=>f(()=>g(()=>import("./vaadin-virtual-list-96896203-BPeGOfR1.js"),__vite__mapDeps([]),import.meta.url),[])}),`./components/${t}.ts`);class xr{constructor(e=Sr){this.loader=e,this.metadata={}}async getMetadata(e){var o;const i=(o=e.element)==null?void 0:o.localName;if(!i)return null;if(!i.startsWith("vaadin-"))return fn(i);let n=this.metadata[i];if(n)return n;try{n=(await this.loader(i)).default,this.metadata[i]=n}catch{console.warn(`Failed to load metadata for component: ${i}`)}return n||null}}const Cr=new xr,yt={crosshair:Ne`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+`,vr=(t,e)=>{const o=t[e];return o?typeof o=="function"?o():Promise.resolve(o):new Promise((i,n)=>{(typeof queueMicrotask=="function"?queueMicrotask:setTimeout)(n.bind(null,new Error("Unknown variable dynamic import: "+e)))})};var R;(function(t){t.text="text",t.checkbox="checkbox",t.range="range",t.color="color"})(R||(R={}));const oe={lumoSize:["--lumo-size-xs","--lumo-size-s","--lumo-size-m","--lumo-size-l","--lumo-size-xl"],lumoSpace:["--lumo-space-xs","--lumo-space-s","--lumo-space-m","--lumo-space-l","--lumo-space-xl"],lumoBorderRadius:["0","--lumo-border-radius-m","--lumo-border-radius-l"],lumoFontSize:["--lumo-font-size-xxs","--lumo-font-size-xs","--lumo-font-size-s","--lumo-font-size-m","--lumo-font-size-l","--lumo-font-size-xl","--lumo-font-size-xxl","--lumo-font-size-xxxl"],lumoTextColor:["--lumo-header-text-color","--lumo-body-text-color","--lumo-secondary-text-color","--lumo-tertiary-text-color","--lumo-disabled-text-color","--lumo-primary-text-color","--lumo-error-text-color","--lumo-success-text-color"],basicBorderSize:["0px","1px","2px","3px"]},fr=Object.freeze(Object.defineProperty({__proto__:null,presets:oe},Symbol.toStringTag,{value:"Module"})),le={textColor:{propertyName:"color",displayName:"Text color",editorType:R.color,presets:oe.lumoTextColor},fontSize:{propertyName:"font-size",displayName:"Font size",editorType:R.range,presets:oe.lumoFontSize,icon:"font"},fontWeight:{propertyName:"font-weight",displayName:"Bold",editorType:R.checkbox,checkedValue:"bold"},fontStyle:{propertyName:"font-style",displayName:"Italic",editorType:R.checkbox,checkedValue:"italic"}},ee={backgroundColor:{propertyName:"background-color",displayName:"Background color",editorType:R.color},borderColor:{propertyName:"border-color",displayName:"Border color",editorType:R.color},borderWidth:{propertyName:"border-width",displayName:"Border width",editorType:R.range,presets:oe.basicBorderSize,icon:"square"},borderRadius:{propertyName:"border-radius",displayName:"Border radius",editorType:R.range,presets:oe.lumoBorderRadius,icon:"square"},padding:{propertyName:"padding",displayName:"Padding",editorType:R.range,presets:oe.lumoSpace,icon:"square"},gap:{propertyName:"gap",displayName:"Spacing",editorType:R.range,presets:oe.lumoSpace,icon:"square"}},gr={height:{propertyName:"height",displayName:"Size",editorType:R.range,presets:oe.lumoSize,icon:"square"},paddingInline:{propertyName:"padding-inline",displayName:"Padding",editorType:R.range,presets:oe.lumoSpace,icon:"square"}},uo={iconColor:{propertyName:"color",displayName:"Icon color",editorType:R.color,presets:oe.lumoTextColor},iconSize:{propertyName:"font-size",displayName:"Icon size",editorType:R.range,presets:oe.lumoFontSize,icon:"font"}},yr=[ee.backgroundColor,ee.borderColor,ee.borderWidth,ee.borderRadius,ee.padding],_r=[le.textColor,le.fontSize,le.fontWeight,le.fontStyle],br=[uo.iconColor,uo.iconSize],wr=Object.freeze(Object.defineProperty({__proto__:null,fieldProperties:gr,iconProperties:uo,shapeProperties:ee,standardIconProperties:br,standardShapeProperties:yr,standardTextProperties:_r,textProperties:le},Symbol.toStringTag,{value:"Module"}));function fn(t){const e=t.charAt(0).toUpperCase()+t.slice(1);return{tagName:t,displayName:e,elements:[{selector:t,displayName:"Element",properties:[ee.backgroundColor,ee.borderColor,ee.borderWidth,ee.borderRadius,ee.padding,le.textColor,le.fontSize,le.fontWeight,le.fontStyle]}]}}const Er=Object.freeze(Object.defineProperty({__proto__:null,createGenericMetadata:fn},Symbol.toStringTag,{value:"Module"})),Sr=t=>vr(Object.assign({"./components/defaults.ts":()=>f(()=>Promise.resolve().then(()=>wr),void 0),"./components/generic.ts":()=>f(()=>Promise.resolve().then(()=>Er),void 0),"./components/presets.ts":()=>f(()=>Promise.resolve().then(()=>fr),void 0),"./components/vaadin-accordion-heading.ts":()=>f(()=>g(()=>import("./vaadin-accordion-heading-c0acdd6d-OuR2rskR.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-accordion-panel.ts":()=>f(()=>g(()=>import("./vaadin-accordion-panel-616e55d6-CRS1LmTc.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-accordion.ts":()=>f(()=>g(()=>import("./vaadin-accordion-eed3b794-CcUGTQLq.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-app-layout.ts":()=>f(()=>g(()=>import("./vaadin-app-layout-e56de2e9-CqdhQd1v.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-avatar.ts":()=>f(()=>g(()=>import("./vaadin-avatar-7599297d-KB3tQTNP.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-big-decimal-field.ts":()=>f(()=>g(()=>import("./vaadin-big-decimal-field-e51def24-BiZUXoe0.js"),__vite__mapDeps([0,1,2]),import.meta.url),["assets/vaadin-big-decimal-field-e51def24.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-board-row.ts":()=>f(()=>g(()=>import("./vaadin-board-row-c70d0c55-BVIhqi2c.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-board.ts":()=>f(()=>g(()=>import("./vaadin-board-828ebdea-C-PA412w.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-button.ts":()=>f(()=>g(()=>import("./vaadin-button-2511ad84-jPPu0iwl.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-chart.ts":()=>f(()=>g(()=>import("./vaadin-chart-5192dc15-BoFlJ0TZ.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-checkbox-group.ts":()=>f(()=>g(()=>import("./vaadin-checkbox-group-a7c65bf2-D2Wkxrgw.js"),__vite__mapDeps([3,1,4]),import.meta.url),["assets/vaadin-checkbox-group-a7c65bf2.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-checkbox-4e68df64.js"]),"./components/vaadin-checkbox.ts":()=>f(()=>g(()=>import("./vaadin-checkbox-4e68df64-CR3rwJqb.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-combo-box.ts":()=>f(()=>g(()=>import("./vaadin-combo-box-96451ddd-B0sfE29V.js"),__vite__mapDeps([5,1]),import.meta.url),["assets/vaadin-combo-box-96451ddd.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-confirm-dialog.ts":()=>f(()=>g(()=>import("./vaadin-confirm-dialog-4d718829-BYEXvBki.js"),__vite__mapDeps([6,2]),import.meta.url),["assets/vaadin-confirm-dialog-4d718829.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-cookie-consent.ts":()=>f(()=>g(()=>import("./vaadin-cookie-consent-46c09f8b-Cb4_37Ok.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-crud.ts":()=>f(()=>g(()=>import("./vaadin-crud-8d161a22-BsB4Hth5.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-custom-field.ts":()=>f(()=>g(()=>import("./vaadin-custom-field-42c85b9e-ceQyxDkl.js"),__vite__mapDeps([7,1]),import.meta.url),["assets/vaadin-custom-field-42c85b9e.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-date-picker.ts":()=>f(()=>g(()=>import("./vaadin-date-picker-f2001167-DNvuzi_B.js"),__vite__mapDeps([8,1]),import.meta.url),["assets/vaadin-date-picker-f2001167.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-date-time-picker.ts":()=>f(()=>g(()=>import("./vaadin-date-time-picker-c8c047a7-C5CUFXJ3.js"),__vite__mapDeps([9,1]),import.meta.url),["assets/vaadin-date-time-picker-c8c047a7.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-details-summary.ts":()=>f(()=>g(()=>import("./vaadin-details-summary-351a1448-CxVlguiC.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-details.ts":()=>f(()=>g(()=>import("./vaadin-details-bf336660-B5lWMHdP.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-dialog.ts":()=>f(()=>g(()=>import("./vaadin-dialog-53253a08-DqfvLXei.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-email-field.ts":()=>f(()=>g(()=>import("./vaadin-email-field-d7a35f04-o56pd7ML.js"),__vite__mapDeps([10,1,2]),import.meta.url),["assets/vaadin-email-field-d7a35f04.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-form-layout.ts":()=>f(()=>g(()=>import("./vaadin-form-layout-47744b1d-Cd8bo_Qm.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-grid-pro.ts":()=>f(()=>g(()=>import("./vaadin-grid-pro-ff415555-Bpokhmrx.js"),__vite__mapDeps([11,4,12,1]),import.meta.url),["assets/vaadin-grid-pro-ff415555.js","assets/vaadin-checkbox-4e68df64.js","assets/vaadin-grid-0a4791c2.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-grid.ts":()=>f(()=>g(()=>import("./vaadin-grid-0a4791c2-CEkw2KK8.js"),__vite__mapDeps([12,4]),import.meta.url),["assets/vaadin-grid-0a4791c2.js","assets/vaadin-checkbox-4e68df64.js"]),"./components/vaadin-horizontal-layout.ts":()=>f(()=>g(()=>import("./vaadin-horizontal-layout-3193943f-D45p_cRT.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-icon.ts":()=>f(()=>g(()=>import("./vaadin-icon-601f36ed-DfUQX80Y.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-integer-field.ts":()=>f(()=>g(()=>import("./vaadin-integer-field-85078932-CIor2RcU.js"),__vite__mapDeps([13,1,2]),import.meta.url),["assets/vaadin-integer-field-85078932.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-list-box.ts":()=>f(()=>g(()=>import("./vaadin-list-box-d7a8433b-Bl-jiz7w.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-login-form.ts":()=>f(()=>g(()=>import("./vaadin-login-form-638996c6-CgopvKtR.js"),__vite__mapDeps([14,1,2]),import.meta.url),["assets/vaadin-login-form-638996c6.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-login-overlay.ts":()=>f(()=>g(()=>import("./vaadin-login-overlay-f8a5db8a-ByaPAFRd.js"),__vite__mapDeps([15,1,2]),import.meta.url),["assets/vaadin-login-overlay-f8a5db8a.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-map.ts":()=>f(()=>g(()=>import("./vaadin-map-d40a0116-CsU-I73n.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-menu-bar.ts":()=>f(()=>g(()=>import("./vaadin-menu-bar-3f5ab096-DyO8YE4f.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-message-input.ts":()=>f(()=>g(()=>import("./vaadin-message-input-996ac37c-CuF72pK9.js"),__vite__mapDeps([16,1]),import.meta.url),["assets/vaadin-message-input-996ac37c.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-message-list.ts":()=>f(()=>g(()=>import("./vaadin-message-list-70a435ba-BkAARQot.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-multi-select-combo-box.ts":()=>f(()=>g(()=>import("./vaadin-multi-select-combo-box-a3373557-Ckujobn1.js"),__vite__mapDeps([17,1]),import.meta.url),["assets/vaadin-multi-select-combo-box-a3373557.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-notification.ts":()=>f(()=>g(()=>import("./vaadin-notification-bd6eb776-PMkzGhEL.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-number-field.ts":()=>f(()=>g(()=>import("./vaadin-number-field-cb3ee8b2-_0rgHa8T.js"),__vite__mapDeps([18,1,2]),import.meta.url),["assets/vaadin-number-field-cb3ee8b2.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-password-field.ts":()=>f(()=>g(()=>import("./vaadin-password-field-d289cb18-ViNpNsgS.js"),__vite__mapDeps([19,1,2]),import.meta.url),["assets/vaadin-password-field-d289cb18.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-progress-bar.ts":()=>f(()=>g(()=>import("./vaadin-progress-bar-309ecf1f-BjgckM5h.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-radio-group.ts":()=>f(()=>g(()=>import("./vaadin-radio-group-88b5afd8-Bd5oaUB6.js"),__vite__mapDeps([20,1]),import.meta.url),["assets/vaadin-radio-group-88b5afd8.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-rich-text-editor.ts":()=>f(()=>g(()=>import("./vaadin-rich-text-editor-8cd892f2-aGRC8AQs.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-scroller.ts":()=>f(()=>g(()=>import("./vaadin-scroller-35e68818-63sQS7i3.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-select.ts":()=>f(()=>g(()=>import("./vaadin-select-df6e9947-DazjWTUu.js"),__vite__mapDeps([21,1]),import.meta.url),["assets/vaadin-select-df6e9947.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-side-nav-item.ts":()=>f(()=>g(()=>import("./vaadin-side-nav-item-34918f92-D9MGRCFe.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-side-nav.ts":()=>f(()=>g(()=>import("./vaadin-side-nav-ba80d91d-BXMUA18X.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-split-layout.ts":()=>f(()=>g(()=>import("./vaadin-split-layout-80c92131-DbNR1GKm.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-spreadsheet.ts":()=>f(()=>g(()=>import("./vaadin-spreadsheet-59d8c5ef-CtHRftV0.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-tab.ts":()=>f(()=>g(()=>import("./vaadin-tab-aaf32809-cWon-hid.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-tabs.ts":()=>f(()=>g(()=>import("./vaadin-tabs-d9a5e24e-DUcTcgqc.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-tabsheet.ts":()=>f(()=>g(()=>import("./vaadin-tabsheet-dd99ed9a-CELggbX_.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-text-area.ts":()=>f(()=>g(()=>import("./vaadin-text-area-83627ebc-DRZVrWZP.js"),__vite__mapDeps([22,1,2]),import.meta.url),["assets/vaadin-text-area-83627ebc.js","assets/vaadin-text-field-0b3db014.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-text-field.ts":()=>f(()=>g(()=>import("./vaadin-text-field-0b3db014-DIwQvPFw.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-time-picker.ts":()=>f(()=>g(()=>import("./vaadin-time-picker-715ec415-BPL7OaGI.js"),__vite__mapDeps([23,1]),import.meta.url),["assets/vaadin-time-picker-715ec415.js","assets/vaadin-text-field-0b3db014.js"]),"./components/vaadin-upload.ts":()=>f(()=>g(()=>import("./vaadin-upload-d3c162ed-DRLccIU_.js"),__vite__mapDeps([24,2]),import.meta.url),["assets/vaadin-upload-d3c162ed.js","assets/vaadin-button-2511ad84.js"]),"./components/vaadin-vertical-layout.ts":()=>f(()=>g(()=>import("./vaadin-vertical-layout-ad4174c4-BtV2SBZm.js"),__vite__mapDeps([]),import.meta.url),[]),"./components/vaadin-virtual-list.ts":()=>f(()=>g(()=>import("./vaadin-virtual-list-96896203-BdU3J8jH.js"),__vite__mapDeps([]),import.meta.url),[])}),`./components/${t}.ts`);class xr{constructor(e=Sr){this.loader=e,this.metadata={}}async getMetadata(e){var o;const i=(o=e.element)==null?void 0:o.localName;if(!i)return null;if(!i.startsWith("vaadin-"))return fn(i);let n=this.metadata[i];if(n)return n;try{n=(await this.loader(i)).default,this.metadata[i]=n}catch{console.warn(`Failed to load metadata for component: ${i}`)}return n||null}}const Cr=new xr,yt={crosshair:Ne`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <path d="M4 8v-2a2 2 0 0 1 2 -2h2"></path>
    <path d="M4 16v2a2 2 0 0 0 2 2h2"></path>
@@ -16749,7 +16979,7 @@ Please use the static 'html' tag function. See https://lit.dev/docs/templates/ex
     ></vaadin-dev-tools-theme-editor>`}toggleFeatureFlag(t,e){const o=t.target.checked;this.frontendConnection?(this.frontendConnection.send("setFeature",{featureId:e.id,enabled:o}),this.showNotification(z.INFORMATION,`“${e.title}” ${o?"enabled":"disabled"}`,e.requiresServerRestart?"This feature requires a server restart":void 0,void 0,`feature${e.id}${o?"Enabled":"Disabled"}`)):this.log(z.ERROR,`Unable to toggle feature ${e.title}: No server connection available`)}};C.MAX_LOG_ROWS=1e3;C.DISMISSED_NOTIFICATIONS_IN_LOCAL_STORAGE="vaadin.live-reload.dismissedNotifications";C.ACTIVE_KEY_IN_SESSION_STORAGE="vaadin.live-reload.active";C.TRIGGERED_KEY_IN_SESSION_STORAGE="vaadin.live-reload.triggered";C.TRIGGERED_COUNT_KEY_IN_SESSION_STORAGE="vaadin.live-reload.triggeredCount";C.AUTO_DEMOTE_NOTIFICATION_DELAY=5e3;C.HOTSWAP_AGENT="HOTSWAP_AGENT";C.JREBEL="JREBEL";C.SPRING_BOOT_DEVTOOLS="SPRING_BOOT_DEVTOOLS";C.BACKEND_DISPLAY_NAME={HOTSWAP_AGENT:"HotswapAgent",JREBEL:"JRebel",SPRING_BOOT_DEVTOOLS:"Spring Boot Devtools"};v([b({type:Boolean,attribute:!1})],C.prototype,"expanded",void 0);v([b({type:Array,attribute:!1})],C.prototype,"messages",void 0);v([b({type:String,attribute:!1})],C.prototype,"splashMessage",void 0);v([b({type:Array,attribute:!1})],C.prototype,"notifications",void 0);v([b({type:String,attribute:!1})],C.prototype,"frontendStatus",void 0);v([b({type:String,attribute:!1})],C.prototype,"javaStatus",void 0);v([I()],C.prototype,"tabs",void 0);v([I()],C.prototype,"activeTab",void 0);v([I()],C.prototype,"features",void 0);v([I()],C.prototype,"unreadErrors",void 0);v([tt(".window")],C.prototype,"root",void 0);v([tt("vaadin-dev-tools-component-picker")],C.prototype,"componentPicker",void 0);v([I()],C.prototype,"componentPickActive",void 0);v([I()],C.prototype,"themeEditorState",void 0);C=k=v([D("vaadin-dev-tools")],C);export{br as A,tn as C,Ys as D,ee as I,N as L,oe as N,le as O,Ks as P,ba as R,yr as S,_r as T,uo as _,Se as a,R as b,$ as c,Js as d,wa as e,gr as f,Ea as g,y as h,Ra as i,Na as j,T as n,be as r,Ne as s,ms as u};
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["./vaadin-big-decimal-field-e51def24-DYUwrPY7.js","./vaadin-text-field-0b3db014-BFnVBCtC.js","./vaadin-button-2511ad84-DTAIizqr.js","./vaadin-checkbox-group-a7c65bf2-DERJcN9V.js","./vaadin-checkbox-4e68df64-Bvs1c_el.js","./vaadin-combo-box-96451ddd-MljBTuJK.js","./vaadin-confirm-dialog-4d718829-CpJOTecI.js","./vaadin-custom-field-42c85b9e-BfRDvk7i.js","./vaadin-date-picker-f2001167-CSFuUVWI.js","./vaadin-date-time-picker-c8c047a7-Bt-eQenH.js","./vaadin-email-field-d7a35f04-Dd31uwzi.js","./vaadin-grid-pro-ff415555-D9_wQ6zN.js","./vaadin-grid-0a4791c2-5B6lFOo_.js","./vaadin-integer-field-85078932-CGrZ9Ih0.js","./vaadin-login-form-638996c6-8cW9qGXg.js","./vaadin-login-overlay-f8a5db8a-ChWaYbK9.js","./vaadin-message-input-996ac37c-DvS042v2.js","./vaadin-multi-select-combo-box-a3373557-D-tiNhi8.js","./vaadin-number-field-cb3ee8b2-DfkIleLd.js","./vaadin-password-field-d289cb18-CEsJb57e.js","./vaadin-radio-group-88b5afd8-H74vT_M8.js","./vaadin-select-df6e9947-B3ZVvRom.js","./vaadin-text-area-83627ebc-D1efmKr_.js","./vaadin-time-picker-715ec415-DwbMT7mX.js","./vaadin-upload-d3c162ed-B4_TFbv_.js"]
+    __vite__mapDeps.viteFileDeps = ["./vaadin-big-decimal-field-e51def24-BiZUXoe0.js","./vaadin-text-field-0b3db014-DIwQvPFw.js","./vaadin-button-2511ad84-jPPu0iwl.js","./vaadin-checkbox-group-a7c65bf2-D2Wkxrgw.js","./vaadin-checkbox-4e68df64-CR3rwJqb.js","./vaadin-combo-box-96451ddd-B0sfE29V.js","./vaadin-confirm-dialog-4d718829-BYEXvBki.js","./vaadin-custom-field-42c85b9e-ceQyxDkl.js","./vaadin-date-picker-f2001167-DNvuzi_B.js","./vaadin-date-time-picker-c8c047a7-C5CUFXJ3.js","./vaadin-email-field-d7a35f04-o56pd7ML.js","./vaadin-grid-pro-ff415555-Bpokhmrx.js","./vaadin-grid-0a4791c2-CEkw2KK8.js","./vaadin-integer-field-85078932-CIor2RcU.js","./vaadin-login-form-638996c6-CgopvKtR.js","./vaadin-login-overlay-f8a5db8a-ByaPAFRd.js","./vaadin-message-input-996ac37c-CuF72pK9.js","./vaadin-multi-select-combo-box-a3373557-Ckujobn1.js","./vaadin-number-field-cb3ee8b2-_0rgHa8T.js","./vaadin-password-field-d289cb18-ViNpNsgS.js","./vaadin-radio-group-88b5afd8-Bd5oaUB6.js","./vaadin-select-df6e9947-DazjWTUu.js","./vaadin-text-area-83627ebc-DRZVrWZP.js","./vaadin-time-picker-715ec415-BPL7OaGI.js","./vaadin-upload-d3c162ed-DRLccIU_.js"]
   }
   return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
 }
@@ -16758,47 +16988,47 @@ function __vite__mapDeps(indexes) {
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-eed3b794-ctuahpox-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-eed3b794-CTUaHpOX.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-eed3b794-ccugtqlq-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-eed3b794-CcUGTQLq.js`
 
 **File Info:**
 - **Size**: 604 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-eed3b794-CTUaHpOX.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-eed3b794-CcUGTQLq.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `93af178bbeebb7573f705b0876b4b508`
-- **SHA256**: `dc0fc19d568605fe25cd59c2e49cb1725fd1b3773a97d197040dfbfca2db812e`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `04d78098925884b1fe123682cd3ec4eb`
+- **SHA256**: `527322ff41ce9cd7394ce80e27470acadf82bf8cc2b56e3dbadb9dcaac0f8bf4`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{O as o,I as a,_ as e}from"./indexhtml-DUgpeDmv.js";const d={tagName:"vaadin-accordion",displayName:"Accordion",elements:[{selector:"vaadin-accordion > vaadin-accordion-panel > vaadin-accordion-heading",displayName:"Heading",properties:[o.textColor,o.fontSize,a.padding]},{selector:"vaadin-accordion > vaadin-accordion-panel > vaadin-accordion-heading::part(toggle)",displayName:"Toggle",properties:[e.iconColor,e.iconSize]},{selector:"vaadin-accordion > vaadin-accordion-panel",displayName:"Panel",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius]}]};export{d as default};
+import{O as o,I as a,_ as e}from"./indexhtml-BBeNFWsa.js";const d={tagName:"vaadin-accordion",displayName:"Accordion",elements:[{selector:"vaadin-accordion > vaadin-accordion-panel > vaadin-accordion-heading",displayName:"Heading",properties:[o.textColor,o.fontSize,a.padding]},{selector:"vaadin-accordion > vaadin-accordion-panel > vaadin-accordion-heading::part(toggle)",displayName:"Toggle",properties:[e.iconColor,e.iconSize]},{selector:"vaadin-accordion > vaadin-accordion-panel",displayName:"Panel",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius]}]};export{d as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-heading-c0acdd6d-p45qsixf-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-heading-c0acdd6d-P45QSixF.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-heading-c0acdd6d-our2rskr-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-heading-c0acdd6d-OuR2rskR.js`
 
 **File Info:**
 - **Size**: 710 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-heading-c0acdd6d-P45QSixF.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-heading-c0acdd6d-OuR2rskR.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `780cc433023756236a4e73ee1ab62ae1`
-- **SHA256**: `c72333a8b4e513f2ef709b3ce108694c82ac8a64a926dcb1ee498bedcc970d1c`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `cdc063daa7d7e783acceb8c50357f5e4`
+- **SHA256**: `7b5ae1045f5e0a71b1e7f4c987c91aee0e0120c548de0572704c77e8af7d347e`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{h as e,O as o,I as i,_ as a}from"./indexhtml-DUgpeDmv.js";const d={tagName:"vaadin-accordion-heading",displayName:"Accordion Heading",description:e`You are trying to style selected heading only, if you wish to style all panel headings of given
+import{h as e,O as o,I as i,_ as a}from"./indexhtml-BBeNFWsa.js";const d={tagName:"vaadin-accordion-heading",displayName:"Accordion Heading",description:e`You are trying to style selected heading only, if you wish to style all panel headings of given
     accordion please pick <code>vaadin-accordion</code> instead.`,notAccessibleDescription:e`If you wish to style all panel headings of current accordion please pick
     <code>vaadin-accordion</code> instead.`,elements:[{selector:"vaadin-accordion-heading",displayName:"Heading",properties:[o.textColor,o.fontSize,i.padding]},{selector:"vaadin-accordion-heading::part(toggle)",displayName:"Toggle",properties:[a.iconColor,a.iconSize]}]};export{d as default};
 
@@ -16806,24 +17036,24 @@ import{h as e,O as o,I as i,_ as a}from"./indexhtml-DUgpeDmv.js";const d={tagNam
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-panel-616e55d6-dxujmsat-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-panel-616e55d6-DXUJMsaT.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-accordion-panel-616e55d6-crs1lmtc-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-panel-616e55d6-CRS1LmTc.js`
 
 **File Info:**
 - **Size**: 580 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-panel-616e55d6-DXUJMsaT.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-panel-616e55d6-CRS1LmTc.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `f7d3334d617fca87af5aded7bf4d1c5d`
-- **SHA256**: `202311970e550b67602a29a1b2c7e9e40b06bc0ffb55978a0f433c948e2216c0`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `a6f710aff8746feadd49c8167a52fe33`
+- **SHA256**: `13f3f9e4ea69b2ebd39b4124d4804c921b831e8b7f9515b64d1c1e6f48ca2c84`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{h as o,I as e}from"./indexhtml-DUgpeDmv.js";const i={tagName:"vaadin-accordion-panel",displayName:"Accordion Panel",description:o`You are styling selected panel only, if you wish to style all panel of given accordion please pick
+import{h as o,I as e}from"./indexhtml-BBeNFWsa.js";const i={tagName:"vaadin-accordion-panel",displayName:"Accordion Panel",description:o`You are styling selected panel only, if you wish to style all panel of given accordion please pick
     <code>vaadin-accordion</code> instead.`,notAccessibleDescription:o`If you wish to style all panels of current accordion please pick
     <code>vaadin-accordion</code> instead.`,elements:[{selector:"vaadin-accordion-panel",displayName:"Panel",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius]}]};export{i as default};
 
@@ -16831,116 +17061,116 @@ import{h as o,I as e}from"./indexhtml-DUgpeDmv.js";const i={tagName:"vaadin-acco
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-app-layout-e56de2e9-d-cl15nf-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-app-layout-e56de2e9-D-Cl15nF.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-app-layout-e56de2e9-cqdhqd1v-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-app-layout-e56de2e9-CqdhQd1v.js`
 
 **File Info:**
 - **Size**: 437 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-app-layout-e56de2e9-D-Cl15nF.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-app-layout-e56de2e9-CqdhQd1v.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `1ed3663e0830808c2e1455bb274f18b4`
-- **SHA256**: `62c5bd23628ea2bd048cd794611422bfffbb2a7ed30102c5e14da24274f41e20`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `ca2ff5cce68cc4ce129d92791ef39ae6`
+- **SHA256**: `dc7dda7b7149521008502a6c0f6fbd140463b5de3b9a90e2230e2c4045502501`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as a}from"./indexhtml-DUgpeDmv.js";const r={tagName:"vaadin-app-layout",displayName:"App Layout",elements:[{selector:"vaadin-app-layout",displayName:"Layout",properties:[a.backgroundColor]},{selector:"vaadin-app-layout::part(drawer)",displayName:"Drawer",properties:[a.backgroundColor,a.padding]},{selector:"vaadin-app-layout::part(navbar)",displayName:"Navbar",properties:[a.backgroundColor,a.padding]}]};export{r as default};
+import{I as a}from"./indexhtml-BBeNFWsa.js";const r={tagName:"vaadin-app-layout",displayName:"App Layout",elements:[{selector:"vaadin-app-layout",displayName:"Layout",properties:[a.backgroundColor]},{selector:"vaadin-app-layout::part(drawer)",displayName:"Drawer",properties:[a.backgroundColor,a.padding]},{selector:"vaadin-app-layout::part(navbar)",displayName:"Navbar",properties:[a.backgroundColor,a.padding]}]};export{r as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-avatar-7599297d-s-fyg3nv-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-avatar-7599297d-S_fyg3Nv.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-avatar-7599297d-kb3tqtnp-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-avatar-7599297d-KB3tQTNP.js`
 
 **File Info:**
 - **Size**: 479 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-avatar-7599297d-S_fyg3Nv.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-avatar-7599297d-KB3tQTNP.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `9caf633d6d2ab0f96b57dd4f0f78913e`
-- **SHA256**: `c9ede96390aaf9029ddc482cb0ab0b97d7d3dc1c6e4cbbc7d54195494f1e1bb2`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `6417f15141c4c400d21d0bf7fcc8d7d0`
+- **SHA256**: `f44da684b153eb2590b2e1877b7530ca0dad088f3bf0c2d124c7c9621b1b43b2`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as a,b as r,N as t,O as e}from"./indexhtml-DUgpeDmv.js";const i={tagName:"vaadin-avatar",displayName:"Avatar",elements:[{selector:"vaadin-avatar",displayName:"Root element",properties:[a.backgroundColor,a.borderColor,a.borderWidth,{propertyName:"--vaadin-avatar-size",displayName:"Size",editorType:r.range,presets:t.lumoSize,icon:"square"}]},{selector:"vaadin-avatar::part(abbr)",displayName:"Abbreviation",properties:[e.textColor,e.fontWeight]}]};export{i as default};
+import{I as a,b as r,N as t,O as e}from"./indexhtml-BBeNFWsa.js";const i={tagName:"vaadin-avatar",displayName:"Avatar",elements:[{selector:"vaadin-avatar",displayName:"Root element",properties:[a.backgroundColor,a.borderColor,a.borderWidth,{propertyName:"--vaadin-avatar-size",displayName:"Size",editorType:r.range,presets:t.lumoSize,icon:"square"}]},{selector:"vaadin-avatar::part(abbr)",displayName:"Abbreviation",properties:[e.textColor,e.fontWeight]}]};export{i as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-big-decimal-field-e51def24-dyuwrpy7-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-big-decimal-field-e51def24-DYUwrPY7.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-big-decimal-field-e51def24-bizuxoe0-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-big-decimal-field-e51def24-BiZUXoe0.js`
 
 **File Info:**
 - **Size**: 850 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-big-decimal-field-e51def24-DYUwrPY7.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-big-decimal-field-e51def24-BiZUXoe0.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `23858a63d02789b9848113a6e339a3da`
-- **SHA256**: `9eaab23fe45b3cd53196cd592387ff2ab99e7987c0caba6db5f4e3c6776b74b0`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `94d5d018641056d35c146d12a58a839f`
+- **SHA256**: `88a6f012eaa8e0beb64e9e441af8c4defbaca1cf1d5e7d7494a132ecb3d09a8e`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{inputFieldProperties as e,labelProperties as a,helperTextProperties as i,errorMessageProperties as r}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{standardButtonProperties as t}from"./vaadin-button-2511ad84-DTAIizqr.js";import"./indexhtml-DUgpeDmv.js";const d={tagName:"vaadin-big-decimal-field",displayName:"BigDecimal Field",elements:[{selector:"vaadin-big-decimal-field::part(input-field)",displayName:"Input field",properties:e},{selector:"vaadin-big-decimal-field::part(label)",displayName:"Label",properties:a},{selector:"vaadin-big-decimal-field::part(helper-text)",displayName:"Helper text",properties:i},{selector:"vaadin-big-decimal-field::part(error-message)",displayName:"Error message",properties:r},{selector:"vaadin-big-decimal-field::part(clear-button)",displayName:"Clear button",properties:t}]};export{d as default};
+import{inputFieldProperties as e,labelProperties as a,helperTextProperties as i,errorMessageProperties as r}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{standardButtonProperties as t}from"./vaadin-button-2511ad84-jPPu0iwl.js";import"./indexhtml-BBeNFWsa.js";const d={tagName:"vaadin-big-decimal-field",displayName:"BigDecimal Field",elements:[{selector:"vaadin-big-decimal-field::part(input-field)",displayName:"Input field",properties:e},{selector:"vaadin-big-decimal-field::part(label)",displayName:"Label",properties:a},{selector:"vaadin-big-decimal-field::part(helper-text)",displayName:"Helper text",properties:i},{selector:"vaadin-big-decimal-field::part(error-message)",displayName:"Error message",properties:r},{selector:"vaadin-big-decimal-field::part(clear-button)",displayName:"Clear button",properties:t}]};export{d as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-board-828ebdea-cmpushdi-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-board-828ebdea-CMpUShDi.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-board-828ebdea-c-pa412w-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-board-828ebdea-C-PA412w.js`
 
 **File Info:**
 - **Size**: 406 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-board-828ebdea-CMpUShDi.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-board-828ebdea-C-PA412w.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `5fdf0ffbdbdee1297abf92efff083ed1`
-- **SHA256**: `1f97233f3c4691cb4b7bec1976bf5f0c3a21a842937d7be235abdd23d0d7d7f4`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `fcfc1cbc9728241fe4b9f1269646b105`
+- **SHA256**: `e4d2d168275d1f996969d93510dcd238c100b5adcfc0700b39f847cd586a6cd3`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as r}from"./indexhtml-DUgpeDmv.js";const a={tagName:"vaadin-board",displayName:"Board",elements:[{selector:"vaadin-board",displayName:"Layout",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius,r.padding]},{selector:"vaadin-board vaadin-board-row",displayName:"Row",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius,r.padding]}]};export{a as default};
+import{I as r}from"./indexhtml-BBeNFWsa.js";const a={tagName:"vaadin-board",displayName:"Board",elements:[{selector:"vaadin-board",displayName:"Layout",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius,r.padding]},{selector:"vaadin-board vaadin-board-row",displayName:"Row",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius,r.padding]}]};export{a as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-board-row-c70d0c55-dijaakbf-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-board-row-c70d0c55-DIJaAkbF.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-board-row-c70d0c55-bvihqi2c-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-board-row-c70d0c55-BVIhqi2c.js`
 
 **File Info:**
 - **Size**: 552 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-board-row-c70d0c55-DIJaAkbF.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-board-row-c70d0c55-BVIhqi2c.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `e33244035905763090ae45157d9069a6`
-- **SHA256**: `e11e0a558610771bef1a4f667ab494273af1fd6b650f7e9ead08584a7d76aff4`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `3036923838a2a1c7b9d43c02651d8c2a`
+- **SHA256**: `2980beab197e6f177c69df9d822d5ee44b0fb2a349d651c2d97bbd9320b4fc01`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{h as e,I as o}from"./indexhtml-DUgpeDmv.js";const r={tagName:"vaadin-board-row",description:e`You are styling selected row only, if you wish to style all rows of given board please pick
+import{h as e,I as o}from"./indexhtml-BBeNFWsa.js";const r={tagName:"vaadin-board-row",description:e`You are styling selected row only, if you wish to style all rows of given board please pick
     <code>vaadin-board</code> instead.`,notAccessibleDescription:e`If you wish to style all rows of current board please pick
     <code>vaadin-board</code> instead.`,displayName:"Board Row",elements:[{selector:"vaadin-board-row",displayName:"Layout",properties:[o.backgroundColor,o.borderColor,o.borderWidth,o.borderRadius,o.padding]}]};export{r as default};
 
@@ -16948,898 +17178,898 @@ import{h as e,I as o}from"./indexhtml-DUgpeDmv.js";const r={tagName:"vaadin-boar
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-button-2511ad84-dtaiizqr-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-button-2511ad84-DTAIizqr.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-button-2511ad84-jppu0iwl-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-button-2511ad84-jPPu0iwl.js`
 
 **File Info:**
 - **Size**: 518 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-button-2511ad84-DTAIizqr.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-button-2511ad84-jPPu0iwl.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `7b6b91cd7c0493f0611edc6e9a695fb0`
-- **SHA256**: `e4fc5f92a1b7fb6fe3a115df110e7c540742368cac13ab2765ba0b513614100b`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `2121c00e26a5f5ae6ba6049282ec8bd7`
+- **SHA256**: `70df3797dbd5efa10d78fbc441796719c5c54b8152fe556adfa8fb1f8e45fa6b`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as e,b as t,N as a,f as o,T as r}from"./indexhtml-DUgpeDmv.js";const s=[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,{propertyName:"--lumo-button-size",displayName:"Size",editorType:t.range,presets:a.lumoSize,icon:"square"},o.paddingInline],d={tagName:"vaadin-button",displayName:"Button",elements:[{selector:"vaadin-button",displayName:"Root element",properties:s},{selector:"vaadin-button::part(label)",displayName:"Label",properties:r}]};export{d as default,s as standardButtonProperties};
+import{I as e,b as t,N as a,f as o,T as r}from"./indexhtml-BBeNFWsa.js";const s=[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,{propertyName:"--lumo-button-size",displayName:"Size",editorType:t.range,presets:a.lumoSize,icon:"square"},o.paddingInline],d={tagName:"vaadin-button",displayName:"Button",elements:[{selector:"vaadin-button",displayName:"Root element",properties:s},{selector:"vaadin-button::part(label)",displayName:"Label",properties:r}]};export{d as default,s as standardButtonProperties};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-chart-5192dc15-ba0hkqiu-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-chart-5192dc15-BA0hKQiU.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-chart-5192dc15-boflj0tz-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-chart-5192dc15-BoFlJ0TZ.js`
 
 **File Info:**
 - **Size**: 1.06 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-chart-5192dc15-BA0hKQiU.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-chart-5192dc15-BoFlJ0TZ.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `7db34ca5b68d298058c3e3b8d08e779e`
-- **SHA256**: `c2ddf52259c5c7109cf74f43ba1c5e2fb3b2e5d358e9adf2261199527ad50a4e`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `f168876bd7076094d834ce6a228573c3`
+- **SHA256**: `16f4d71ec15e33019dce418cd6ffa17c7deb0e9ece7f70ef12f1efc2b1d14477`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{S as r,b as o}from"./indexhtml-DUgpeDmv.js";const e={tagName:"vaadin-chart",displayName:"Chart",elements:[{selector:"vaadin-chart",displayName:"Root element",properties:r},{selector:"vaadin-chart",displayName:"Data series",properties:[{propertyName:"--vaadin-charts-color-0",displayName:"Color 0",editorType:o.color},{propertyName:"--vaadin-charts-color-1",displayName:"Color 1",editorType:o.color},{propertyName:"--vaadin-charts-color-2",displayName:"Color 2",editorType:o.color},{propertyName:"--vaadin-charts-color-3",displayName:"Color 3",editorType:o.color},{propertyName:"--vaadin-charts-color-4",displayName:"Color 4",editorType:o.color},{propertyName:"--vaadin-charts-color-5",displayName:"Color 5",editorType:o.color},{propertyName:"--vaadin-charts-color-6",displayName:"Color 6",editorType:o.color},{propertyName:"--vaadin-charts-color-7",displayName:"Color 7",editorType:o.color},{propertyName:"--vaadin-charts-color-8",displayName:"Color 8",editorType:o.color},{propertyName:"--vaadin-charts-color-9",displayName:"Color 9",editorType:o.color}]}]};export{e as default};
+import{S as r,b as o}from"./indexhtml-BBeNFWsa.js";const e={tagName:"vaadin-chart",displayName:"Chart",elements:[{selector:"vaadin-chart",displayName:"Root element",properties:r},{selector:"vaadin-chart",displayName:"Data series",properties:[{propertyName:"--vaadin-charts-color-0",displayName:"Color 0",editorType:o.color},{propertyName:"--vaadin-charts-color-1",displayName:"Color 1",editorType:o.color},{propertyName:"--vaadin-charts-color-2",displayName:"Color 2",editorType:o.color},{propertyName:"--vaadin-charts-color-3",displayName:"Color 3",editorType:o.color},{propertyName:"--vaadin-charts-color-4",displayName:"Color 4",editorType:o.color},{propertyName:"--vaadin-charts-color-5",displayName:"Color 5",editorType:o.color},{propertyName:"--vaadin-charts-color-6",displayName:"Color 6",editorType:o.color},{propertyName:"--vaadin-charts-color-7",displayName:"Color 7",editorType:o.color},{propertyName:"--vaadin-charts-color-8",displayName:"Color 8",editorType:o.color},{propertyName:"--vaadin-charts-color-9",displayName:"Color 9",editorType:o.color}]}]};export{e as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-checkbox-4e68df64-bvs1c-el-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-4e68df64-Bvs1c_el.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-checkbox-4e68df64-cr3rwjqb-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-4e68df64-CR3rwJqb.js`
 
 **File Info:**
 - **Size**: 1.05 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-4e68df64-Bvs1c_el.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-4e68df64-CR3rwJqb.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `5cdabd4fc17055a2eb1e9e56a451b801`
-- **SHA256**: `2080795dc92a68181609a88a70d7ed66829caddec1bfc2fa515a4e716832c12f`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `5ca6606da33459bd14077def18fdeb5b`
+- **SHA256**: `f4bd2171a8c3f6a476c78b96b90ed931719acf59851e740e1a742c861adf80f7`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{b as a,N as r,I as e,_ as c,O as o}from"./indexhtml-DUgpeDmv.js";const t={selector:"vaadin-checkbox",displayName:"Checkbox",properties:[{propertyName:"--vaadin-checkbox-size",displayName:"Checkbox size",defaultValue:"var(--lumo-font-size-l)",editorType:a.range,presets:r.lumoFontSize,icon:"square"}]},l={selector:"vaadin-checkbox::part(checkbox)",displayName:"Checkbox box",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius]},s={selector:"vaadin-checkbox[checked]::part(checkbox)",stateAttribute:"checked",displayName:"Checkbox box (when checked)",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius]},i={selector:"vaadin-checkbox::part(checkbox)::after",displayName:"Checkmark",properties:[c.iconColor]},d={selector:"vaadin-checkbox label",displayName:"Label",properties:[o.textColor,o.fontSize,o.fontWeight,o.fontStyle]},h={tagName:"vaadin-checkbox",displayName:"Checkbox",elements:[t,l,s,i,d]};export{l as checkboxElement,s as checkedCheckboxElement,i as checkmarkElement,h as default,t as hostElement,d as labelElement};
+import{b as a,N as r,I as e,_ as c,O as o}from"./indexhtml-BBeNFWsa.js";const t={selector:"vaadin-checkbox",displayName:"Checkbox",properties:[{propertyName:"--vaadin-checkbox-size",displayName:"Checkbox size",defaultValue:"var(--lumo-font-size-l)",editorType:a.range,presets:r.lumoFontSize,icon:"square"}]},l={selector:"vaadin-checkbox::part(checkbox)",displayName:"Checkbox box",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius]},s={selector:"vaadin-checkbox[checked]::part(checkbox)",stateAttribute:"checked",displayName:"Checkbox box (when checked)",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius]},i={selector:"vaadin-checkbox::part(checkbox)::after",displayName:"Checkmark",properties:[c.iconColor]},d={selector:"vaadin-checkbox label",displayName:"Label",properties:[o.textColor,o.fontSize,o.fontWeight,o.fontStyle]},h={tagName:"vaadin-checkbox",displayName:"Checkbox",elements:[t,l,s,i,d]};export{l as checkboxElement,s as checkedCheckboxElement,i as checkmarkElement,h as default,t as hostElement,d as labelElement};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-checkbox-group-a7c65bf2-derjcn9v-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-group-a7c65bf2-DERJcN9V.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-checkbox-group-a7c65bf2-d2wkxrgw-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-group-a7c65bf2-D2Wkxrgw.js`
 
 **File Info:**
 - **Size**: 1.49 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-group-a7c65bf2-DERJcN9V.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-group-a7c65bf2-D2Wkxrgw.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `93c7ba5bf21f1505d7f7284ad96cc519`
-- **SHA256**: `d378e0377e855b4cb746c60bf27897cb17b6d2ed39efa3d86d927109bda5f801`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `15c234b96751014747a35b80c03bf221`
+- **SHA256**: `37312ee13f8c27c425f92f958e78feb03d843159e936cfe69259301631aba17c`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as e}from"./indexhtml-DUgpeDmv.js";import{labelProperties as d,helperTextProperties as i,errorMessageProperties as m}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{hostElement as r,checkboxElement as t,checkedCheckboxElement as c,checkmarkElement as s,labelElement as l}from"./vaadin-checkbox-4e68df64-Bvs1c_el.js";const k={tagName:"vaadin-checkbox-group",displayName:"Checkbox Group",elements:[{selector:"vaadin-checkbox-group",displayName:"Root element",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-checkbox-group::part(label)",displayName:"Label",properties:d},{selector:"vaadin-checkbox-group::part(helper-text)",displayName:"Helper text",properties:i},{selector:"vaadin-checkbox-group::part(error-message)",displayName:"Error message",properties:m},{...r,selector:`vaadin-checkbox-group ${r.selector}`,displayName:"Checkboxes"},{...t,selector:`vaadin-checkbox-group ${t.selector}`,displayName:"Checkmark boxes"},{...c,selector:`vaadin-checkbox-group ${c.selector}`,displayName:"Checkmark boxes (when checked)",stateElementSelector:"vaadin-checkbox-group vaadin-checkbox"},{...s,selector:`vaadin-checkbox-group ${s.selector}`,displayName:"Checkmarks"},{...l,selector:`vaadin-checkbox-group ${l.selector}`,displayName:"Checkbox labels"}],setupElement(p){const o=document.createElement("vaadin-checkbox"),a=document.createElement("label");a.textContent="Some label",a.setAttribute("slot","label"),o.append(a),p.append(o)}};export{k as default};
+import{I as e}from"./indexhtml-BBeNFWsa.js";import{labelProperties as d,helperTextProperties as i,errorMessageProperties as m}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{hostElement as r,checkboxElement as t,checkedCheckboxElement as c,checkmarkElement as s,labelElement as l}from"./vaadin-checkbox-4e68df64-CR3rwJqb.js";const k={tagName:"vaadin-checkbox-group",displayName:"Checkbox Group",elements:[{selector:"vaadin-checkbox-group",displayName:"Root element",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-checkbox-group::part(label)",displayName:"Label",properties:d},{selector:"vaadin-checkbox-group::part(helper-text)",displayName:"Helper text",properties:i},{selector:"vaadin-checkbox-group::part(error-message)",displayName:"Error message",properties:m},{...r,selector:`vaadin-checkbox-group ${r.selector}`,displayName:"Checkboxes"},{...t,selector:`vaadin-checkbox-group ${t.selector}`,displayName:"Checkmark boxes"},{...c,selector:`vaadin-checkbox-group ${c.selector}`,displayName:"Checkmark boxes (when checked)",stateElementSelector:"vaadin-checkbox-group vaadin-checkbox"},{...s,selector:`vaadin-checkbox-group ${s.selector}`,displayName:"Checkmarks"},{...l,selector:`vaadin-checkbox-group ${l.selector}`,displayName:"Checkbox labels"}],setupElement(p){const o=document.createElement("vaadin-checkbox"),a=document.createElement("label");a.textContent="Some label",a.setAttribute("slot","label"),o.append(a),p.append(o)}};export{k as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-combo-box-96451ddd-mljbtujk-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-combo-box-96451ddd-MljBTuJK.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-combo-box-96451ddd-b0sfe29v-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-combo-box-96451ddd-B0sfE29V.js`
 
 **File Info:**
 - **Size**: 1.38 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-combo-box-96451ddd-MljBTuJK.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-combo-box-96451ddd-B0sfE29V.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `136f0ce2068a397e0119bca5a60eb570`
-- **SHA256**: `d69dc75544c8ee3d361296ad597b3d0ff68212a2abbc5d5e1a9a9425211bba7c`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `25a50a00fe7f23664fa0da8b436ad69c`
+- **SHA256**: `d15407616eb026206ddd0ba843e20daba62a38d48b277a73741ec06a5347f5e9`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{inputFieldProperties as s,labelProperties as l,helperTextProperties as p,errorMessageProperties as m}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{_ as r,I as a,O as i,R as b,e as c}from"./indexhtml-DUgpeDmv.js";const v={tagName:"vaadin-combo-box",displayName:"Combo Box",elements:[{selector:"vaadin-combo-box::part(input-field)",displayName:"Input field",properties:s},{selector:"vaadin-combo-box::part(toggle-button)",displayName:"Toggle button",properties:[r.iconColor,r.iconSize]},{selector:"vaadin-combo-box::part(label)",displayName:"Label",properties:l},{selector:"vaadin-combo-box::part(helper-text)",displayName:"Helper text",properties:p},{selector:"vaadin-combo-box::part(error-message)",displayName:"Error message",properties:m},{selector:"vaadin-combo-box-overlay::part(overlay)",displayName:"Overlay",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding]},{selector:"vaadin-combo-box-overlay vaadin-combo-box-item",displayName:"Overlay items",properties:[i.textColor,i.fontSize,i.fontWeight]},{selector:"vaadin-combo-box-overlay vaadin-combo-box-item::part(checkmark)::before",displayName:"Overlay item checkmark",properties:[r.iconColor,r.iconSize]}],async setupElement(o){o.overlayClass=o.getAttribute("class")},openOverlay:o=>{const e=o.element,t=e.$.overlay;b(e,e,t)},hideOverlay:o=>{const e=o.element,t=e.$.overlay;c(e,e,t)}};export{v as default};
+import{inputFieldProperties as s,labelProperties as l,helperTextProperties as p,errorMessageProperties as m}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{_ as r,I as a,O as i,R as b,e as c}from"./indexhtml-BBeNFWsa.js";const v={tagName:"vaadin-combo-box",displayName:"Combo Box",elements:[{selector:"vaadin-combo-box::part(input-field)",displayName:"Input field",properties:s},{selector:"vaadin-combo-box::part(toggle-button)",displayName:"Toggle button",properties:[r.iconColor,r.iconSize]},{selector:"vaadin-combo-box::part(label)",displayName:"Label",properties:l},{selector:"vaadin-combo-box::part(helper-text)",displayName:"Helper text",properties:p},{selector:"vaadin-combo-box::part(error-message)",displayName:"Error message",properties:m},{selector:"vaadin-combo-box-overlay::part(overlay)",displayName:"Overlay",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding]},{selector:"vaadin-combo-box-overlay vaadin-combo-box-item",displayName:"Overlay items",properties:[i.textColor,i.fontSize,i.fontWeight]},{selector:"vaadin-combo-box-overlay vaadin-combo-box-item::part(checkmark)::before",displayName:"Overlay item checkmark",properties:[r.iconColor,r.iconSize]}],async setupElement(o){o.overlayClass=o.getAttribute("class")},openOverlay:o=>{const e=o.element,t=e.$.overlay;b(e,e,t)},hideOverlay:o=>{const e=o.element,t=e.$.overlay;c(e,e,t)}};export{v as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-confirm-dialog-4d718829-cpjoteci-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-confirm-dialog-4d718829-CpJOTecI.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-confirm-dialog-4d718829-byexvbki-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-confirm-dialog-4d718829-BYEXvBki.js`
 
 **File Info:**
 - **Size**: 1.51 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-confirm-dialog-4d718829-CpJOTecI.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-confirm-dialog-4d718829-BYEXvBki.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `81d1996c7301c1f9cdc02b2c540c9ab6`
-- **SHA256**: `a86ad70396476eb1292ae50ba429cf202e542a8035e59f2a1ddfd37e6a13292f`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `3e64ca156d5eda6c70e51f34b040081d`
+- **SHA256**: `663153539f594660090d81e60c0e676fa809bf80ccb5e6694c433fa1283e386f`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{S as a,T as e}from"./indexhtml-DUgpeDmv.js";import{standardButtonProperties as o}from"./vaadin-button-2511ad84-DTAIizqr.js";const l={tagName:"vaadin-confirm-dialog",displayName:"Confirm Dialog",elements:[{selector:"vaadin-confirm-dialog-overlay::part(backdrop)",displayName:"Modality curtain (backdrop)",properties:a},{selector:"vaadin-confirm-dialog-overlay::part(overlay)",displayName:"Dialog surface",properties:a},{selector:"vaadin-confirm-dialog-overlay::part(header)",displayName:"Header",properties:[...a,...e]},{selector:"vaadin-confirm-dialog-overlay::part(content)",displayName:"Content",properties:a},{selector:"vaadin-confirm-dialog-overlay::part(message)",displayName:"Message",properties:e},{selector:"vaadin-confirm-dialog-overlay::part(footer)",displayName:"Footer",properties:a},{selector:'vaadin-confirm-dialog-overlay > [slot="confirm-button"]',displayName:"Confirm button",properties:o},{selector:'vaadin-confirm-dialog-overlay > [slot="confirm-button"]::part(label)',displayName:"Confirm button label",properties:e},{selector:'vaadin-confirm-dialog-overlay > [slot="reject-button"]',displayName:"Reject button",properties:o},{selector:'vaadin-confirm-dialog-overlay > [slot="reject-button"]::part(label)',displayName:"Reject button label",properties:e},{selector:'vaadin-confirm-dialog-overlay > [slot="cancel-button"]',displayName:"Cancel button",properties:o},{selector:'vaadin-confirm-dialog-overlay > [slot="cancel-button"]::part(label)',displayName:"Cancel button label",properties:e}]};export{l as default};
+import{S as a,T as e}from"./indexhtml-BBeNFWsa.js";import{standardButtonProperties as o}from"./vaadin-button-2511ad84-jPPu0iwl.js";const l={tagName:"vaadin-confirm-dialog",displayName:"Confirm Dialog",elements:[{selector:"vaadin-confirm-dialog-overlay::part(backdrop)",displayName:"Modality curtain (backdrop)",properties:a},{selector:"vaadin-confirm-dialog-overlay::part(overlay)",displayName:"Dialog surface",properties:a},{selector:"vaadin-confirm-dialog-overlay::part(header)",displayName:"Header",properties:[...a,...e]},{selector:"vaadin-confirm-dialog-overlay::part(content)",displayName:"Content",properties:a},{selector:"vaadin-confirm-dialog-overlay::part(message)",displayName:"Message",properties:e},{selector:"vaadin-confirm-dialog-overlay::part(footer)",displayName:"Footer",properties:a},{selector:'vaadin-confirm-dialog-overlay > [slot="confirm-button"]',displayName:"Confirm button",properties:o},{selector:'vaadin-confirm-dialog-overlay > [slot="confirm-button"]::part(label)',displayName:"Confirm button label",properties:e},{selector:'vaadin-confirm-dialog-overlay > [slot="reject-button"]',displayName:"Reject button",properties:o},{selector:'vaadin-confirm-dialog-overlay > [slot="reject-button"]::part(label)',displayName:"Reject button label",properties:e},{selector:'vaadin-confirm-dialog-overlay > [slot="cancel-button"]',displayName:"Cancel button",properties:o},{selector:'vaadin-confirm-dialog-overlay > [slot="cancel-button"]::part(label)',displayName:"Cancel button label",properties:e}]};export{l as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-cookie-consent-46c09f8b-c1pbd94u-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-cookie-consent-46c09f8b-C1pbD94U.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-cookie-consent-46c09f8b-cb4-37ok-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-cookie-consent-46c09f8b-Cb4_37Ok.js`
 
 **File Info:**
 - **Size**: 374 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-cookie-consent-46c09f8b-C1pbD94U.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-cookie-consent-46c09f8b-Cb4_37Ok.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `275d017f41f40aa7bf9eaa4ffa1e2b75`
-- **SHA256**: `5aab08dd5da1a292569d68d41ce554364a4d3be6e3ca1b9a00d5abbce9491284`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `807c5889d8f5284845e6c6b0a7167dcb`
+- **SHA256**: `dd5e06e2325c05e3d060bfa32c638e892a9ca30f66d469dc0187421f077df1f4`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{S as e,T as a}from"./indexhtml-DUgpeDmv.js";const t={tagName:"vaadin-cookie-consent",displayName:"Cookie Consent",elements:[{selector:"div.cc-banner",displayName:"Banner",properties:e},{selector:"div.cc-banner span.cc-message",displayName:"Message",properties:a},{selector:"div.cc-banner a.cc-btn",displayName:"Button",properties:[...e,...a]}]};export{t as default};
+import{S as e,T as a}from"./indexhtml-BBeNFWsa.js";const t={tagName:"vaadin-cookie-consent",displayName:"Cookie Consent",elements:[{selector:"div.cc-banner",displayName:"Banner",properties:e},{selector:"div.cc-banner span.cc-message",displayName:"Message",properties:a},{selector:"div.cc-banner a.cc-btn",displayName:"Button",properties:[...e,...a]}]};export{t as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-crud-8d161a22-akwizkru-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-crud-8d161a22-akWizKRU.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-crud-8d161a22-bsb4hth5-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-crud-8d161a22-BsB4Hth5.js`
 
 **File Info:**
 - **Size**: 739 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-crud-8d161a22-akWizKRU.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-crud-8d161a22-BsB4Hth5.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `27fd85bed1ca018afa91973fe29082bc`
-- **SHA256**: `6a82ec5f7b80f375bafbee826f7d410709109463016e6a07afa91295e8a3dbd8`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `21a0801bda63801d4f36fdcac2c140d2`
+- **SHA256**: `7e53a49e02ec6a3d05fc634eb21362b8cbf5899809fc2083b692ed961029dc34`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as r,_ as o}from"./indexhtml-DUgpeDmv.js";const d={tagName:"vaadin-crud",displayName:"CRUD",elements:[{selector:"vaadin-crud",displayName:"Root element",properties:[r.borderColor,r.borderWidth]},{selector:"vaadin-crud::part(toolbar)",displayName:"Toolbar below grid",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.padding]},{selector:"vaadin-crud::part(editor)",displayName:"Editor panel",properties:[r.backgroundColor]},{selector:"vaadin-crud vaadin-crud-edit",displayName:"Edit button in grid",properties:[r.backgroundColor,r.borderColor,r.borderWidth]},{selector:"vaadin-crud vaadin-crud-edit::part(icon)::before",displayName:"Edit button in grid icon",properties:[o.iconColor,o.iconSize]}]};export{d as default};
+import{I as r,_ as o}from"./indexhtml-BBeNFWsa.js";const d={tagName:"vaadin-crud",displayName:"CRUD",elements:[{selector:"vaadin-crud",displayName:"Root element",properties:[r.borderColor,r.borderWidth]},{selector:"vaadin-crud::part(toolbar)",displayName:"Toolbar below grid",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.padding]},{selector:"vaadin-crud::part(editor)",displayName:"Editor panel",properties:[r.backgroundColor]},{selector:"vaadin-crud vaadin-crud-edit",displayName:"Edit button in grid",properties:[r.backgroundColor,r.borderColor,r.borderWidth]},{selector:"vaadin-crud vaadin-crud-edit::part(icon)::before",displayName:"Edit button in grid icon",properties:[o.iconColor,o.iconSize]}]};export{d as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-custom-field-42c85b9e-bfrdvk7i-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-custom-field-42c85b9e-BfRDvk7i.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-custom-field-42c85b9e-ceqyxdkl-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-custom-field-42c85b9e-ceQyxDkl.js`
 
 **File Info:**
 - **Size**: 526 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-custom-field-42c85b9e-BfRDvk7i.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-custom-field-42c85b9e-ceQyxDkl.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `ff08fe8ac57bc8f5e4e693d917be9f38`
-- **SHA256**: `43801e7b8b7862bf202d4e490a9584bbbf4c8670e0658a7b38b512dc304ba167`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `03acccd53b147b2ff412c0d65b2d7ca3`
+- **SHA256**: `bdba9937e310f3a594f7defb4abea73604bb9d62f31fc197033522ba5376ad52`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{labelProperties as e,helperTextProperties as r,errorMessageProperties as a}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import"./indexhtml-DUgpeDmv.js";const p={tagName:"vaadin-custom-field",displayName:"Custom Field",elements:[{selector:"vaadin-custom-field::part(label)",displayName:"Label",properties:e},{selector:"vaadin-custom-field::part(helper-text)",displayName:"Helper text",properties:r},{selector:"vaadin-custom-field::part(error-message)",displayName:"Error message",properties:a}]};export{p as default};
+import{labelProperties as e,helperTextProperties as r,errorMessageProperties as a}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import"./indexhtml-BBeNFWsa.js";const p={tagName:"vaadin-custom-field",displayName:"Custom Field",elements:[{selector:"vaadin-custom-field::part(label)",displayName:"Label",properties:e},{selector:"vaadin-custom-field::part(helper-text)",displayName:"Helper text",properties:r},{selector:"vaadin-custom-field::part(error-message)",displayName:"Error message",properties:a}]};export{p as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-date-picker-f2001167-csfuuvwi-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-date-picker-f2001167-CSFuUVWI.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-date-picker-f2001167-dnvuzi-b-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-date-picker-f2001167-DNvuzi_B.js`
 
 **File Info:**
 - **Size**: 1.75 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-date-picker-f2001167-CSFuUVWI.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-date-picker-f2001167-DNvuzi_B.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `c0121ea3c3396fa5653a770243da1762`
-- **SHA256**: `770502ba60b7553513061228a147b2ed7219b6dabebeabca701ab5397107bc73`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `3f0ff67e1a7533a9d2eb2efa2544c2b1`
+- **SHA256**: `1e0d805a24984d4b23fe9514b2fbae4fbf040af5113364b86dc0ad5896723c5a`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{inputFieldProperties as i,labelProperties as p,helperTextProperties as d,errorMessageProperties as l}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{_ as o,I as a,O as e,R as n,e as s}from"./indexhtml-DUgpeDmv.js";const m={tagName:"vaadin-date-picker",displayName:"Date Picker",elements:[{selector:"vaadin-date-picker::part(input-field)",displayName:"Input field",properties:i},{selector:"vaadin-date-picker::part(toggle-button)",displayName:"Toggle button",properties:[o.iconColor,o.iconSize]},{selector:"vaadin-date-picker::part(label)",displayName:"Label",properties:p},{selector:"vaadin-date-picker::part(helper-text)",displayName:"Helper text",properties:d},{selector:"vaadin-date-picker::part(error-message)",displayName:"Error message",properties:l},{selector:"vaadin-date-picker-overlay::part(overlay)",displayName:"Overlay content",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding]},{selector:"vaadin-date-picker-overlay vaadin-month-calendar::part(month-header)",displayName:"Month header",properties:[e.textColor,e.fontSize,e.fontWeight,e.fontStyle]},{selector:"vaadin-date-picker-overlay vaadin-month-calendar::part(weekday)",displayName:"Weekday",properties:[e.textColor,e.fontSize,e.fontWeight,e.fontStyle]},{selector:"vaadin-date-picker-overlay vaadin-month-calendar::part(date)",displayName:"Day",properties:[e.textColor,e.fontSize,e.fontWeight,e.fontStyle,a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius]},{selector:"vaadin-date-picker-overlay vaadin-date-picker-year::part(year-number)",displayName:"Year number",properties:[e.textColor,e.fontSize,e.fontWeight,e.fontStyle]}],openOverlay:t=>{if(!t||!t.element)return;const r=t.element;n(r,r,r)},hideOverlay:t=>{const r=t.element;s(r,r,r)}};export{m as default};
+import{inputFieldProperties as i,labelProperties as p,helperTextProperties as d,errorMessageProperties as l}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{_ as o,I as a,O as e,R as n,e as s}from"./indexhtml-BBeNFWsa.js";const m={tagName:"vaadin-date-picker",displayName:"Date Picker",elements:[{selector:"vaadin-date-picker::part(input-field)",displayName:"Input field",properties:i},{selector:"vaadin-date-picker::part(toggle-button)",displayName:"Toggle button",properties:[o.iconColor,o.iconSize]},{selector:"vaadin-date-picker::part(label)",displayName:"Label",properties:p},{selector:"vaadin-date-picker::part(helper-text)",displayName:"Helper text",properties:d},{selector:"vaadin-date-picker::part(error-message)",displayName:"Error message",properties:l},{selector:"vaadin-date-picker-overlay::part(overlay)",displayName:"Overlay content",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding]},{selector:"vaadin-date-picker-overlay vaadin-month-calendar::part(month-header)",displayName:"Month header",properties:[e.textColor,e.fontSize,e.fontWeight,e.fontStyle]},{selector:"vaadin-date-picker-overlay vaadin-month-calendar::part(weekday)",displayName:"Weekday",properties:[e.textColor,e.fontSize,e.fontWeight,e.fontStyle]},{selector:"vaadin-date-picker-overlay vaadin-month-calendar::part(date)",displayName:"Day",properties:[e.textColor,e.fontSize,e.fontWeight,e.fontStyle,a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius]},{selector:"vaadin-date-picker-overlay vaadin-date-picker-year::part(year-number)",displayName:"Year number",properties:[e.textColor,e.fontSize,e.fontWeight,e.fontStyle]}],openOverlay:t=>{if(!t||!t.element)return;const r=t.element;n(r,r,r)},hideOverlay:t=>{const r=t.element;s(r,r,r)}};export{m as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-date-time-picker-c8c047a7-bt-eqenh-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-date-time-picker-c8c047a7-Bt-eQenH.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-date-time-picker-c8c047a7-c5cufxj3-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-date-time-picker-c8c047a7-C5CUFXJ3.js`
 
 **File Info:**
 - **Size**: 546 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-date-time-picker-c8c047a7-Bt-eQenH.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-date-time-picker-c8c047a7-C5CUFXJ3.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `95e69ad288c509ca83960b288d791616`
-- **SHA256**: `53fd7ac6550ffeee0b316a7b7d63c2d2a755d8772e161907d02d5a6f8e0866b2`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `53055a9689ff143bc1592597b2176571`
+- **SHA256**: `ba56e440d1a00ec4ab6ea6306690f120d56504634451e4877620149c967a8b2e`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{labelProperties as e,helperTextProperties as r,errorMessageProperties as a}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import"./indexhtml-DUgpeDmv.js";const i={tagName:"vaadin-date-time-picker",displayName:"Date Time Picker",elements:[{selector:"vaadin-date-time-picker::part(label)",displayName:"Label",properties:e},{selector:"vaadin-date-time-picker::part(helper-text)",displayName:"Helper text",properties:r},{selector:"vaadin-date-time-picker::part(error-message)",displayName:"Error message",properties:a}]};export{i as default};
+import{labelProperties as e,helperTextProperties as r,errorMessageProperties as a}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import"./indexhtml-BBeNFWsa.js";const i={tagName:"vaadin-date-time-picker",displayName:"Date Time Picker",elements:[{selector:"vaadin-date-time-picker::part(label)",displayName:"Label",properties:e},{selector:"vaadin-date-time-picker::part(helper-text)",displayName:"Helper text",properties:r},{selector:"vaadin-date-time-picker::part(error-message)",displayName:"Error message",properties:a}]};export{i as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-details-bf336660-aprkicte-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-details-bf336660-APrKIcTE.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-details-bf336660-b5lwmhdp-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-details-bf336660-B5lWMHdP.js`
 
 **File Info:**
 - **Size**: 202 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-details-bf336660-APrKIcTE.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-details-bf336660-B5lWMHdP.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `395f275c1cbf45016811cbce6184961d`
-- **SHA256**: `aaf8c1b24dabae1324fb53b71dc78caad9897d184e8b9a3c85f609a74dd5360a`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `fb6e020c17dce49901a2e9c07a04fd0c`
+- **SHA256**: `a061184aebea6f01df758faf938b466541ff9c9b21eae4f910ef3d43eee20875`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{S as e}from"./indexhtml-DUgpeDmv.js";const t={tagName:"vaadin-details",displayName:"Details",elements:[{selector:"vaadin-details",displayName:"Root element",properties:e}]};export{t as default};
+import{S as e}from"./indexhtml-BBeNFWsa.js";const t={tagName:"vaadin-details",displayName:"Details",elements:[{selector:"vaadin-details",displayName:"Root element",properties:e}]};export{t as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-details-summary-351a1448-dsm-j61k-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-details-summary-351a1448-DsM_j61k.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-details-summary-351a1448-cxvlguic-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-details-summary-351a1448-CxVlguiC.js`
 
 **File Info:**
 - **Size**: 375 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-details-summary-351a1448-DsM_j61k.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-details-summary-351a1448-CxVlguiC.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `3e4dba650633514c1cb6a40559c9e89a`
-- **SHA256**: `3362e0e176de186433fb84c0648c055610f741b5d1582fbfad38e2025d4ebd5c`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `c1df1ff511e659d2d4846c6f3fc5d7e0`
+- **SHA256**: `558130ec6b43429c2cfe63cf0a9096370916d900b606a2ef41439eb55a2deaa3`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{O as a,I as t,_ as e}from"./indexhtml-DUgpeDmv.js";const s={tagName:"vaadin-details-summary",displayName:"Details Summary",elements:[{selector:"vaadin-details-summary",displayName:"Summary",properties:[a.textColor,a.fontSize,t.padding]},{selector:"vaadin-details-summary::part(toggle)",displayName:"Toggle",properties:[e.iconColor,e.iconSize]}]};export{s as default};
+import{O as a,I as t,_ as e}from"./indexhtml-BBeNFWsa.js";const s={tagName:"vaadin-details-summary",displayName:"Details Summary",elements:[{selector:"vaadin-details-summary",displayName:"Summary",properties:[a.textColor,a.fontSize,t.padding]},{selector:"vaadin-details-summary::part(toggle)",displayName:"Toggle",properties:[e.iconColor,e.iconSize]}]};export{s as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-dialog-53253a08-cnuuiko7-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-dialog-53253a08-CnUuiko7.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-dialog-53253a08-dqfvlxei-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-dialog-53253a08-DqfvLXei.js`
 
 **File Info:**
 - **Size**: 669 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-dialog-53253a08-CnUuiko7.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-dialog-53253a08-DqfvLXei.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `9a5d6bb99a95db6004f75dcf77d6f92b`
-- **SHA256**: `3b6c14b8c86c779210a3354112f9a629ea033fab8b45bbbea9530742e3864657`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `b578e3f72d5755ac72e2f568c7c917b6`
+- **SHA256**: `4fd1653dce04cd58238a23af54bfab366d586badf70b10e1a09a70c258417980`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{S as a,T as e}from"./indexhtml-DUgpeDmv.js";const o={tagName:"vaadin-dialog",displayName:"Dialog",elements:[{selector:"vaadin-dialog-overlay::part(backdrop)",displayName:"Modality curtain (backdrop)",properties:a},{selector:"vaadin-dialog-overlay::part(overlay)",displayName:"Dialog surface",properties:a},{selector:"vaadin-dialog-overlay::part(header)",displayName:"Header",properties:a},{selector:"vaadin-dialog-overlay::part(title)",displayName:"Title",properties:e},{selector:"vaadin-dialog-overlay::part(content)",displayName:"Content",properties:a},{selector:"vaadin-dialog-overlay::part(footer)",displayName:"Footer",properties:a}]};export{o as default};
+import{S as a,T as e}from"./indexhtml-BBeNFWsa.js";const o={tagName:"vaadin-dialog",displayName:"Dialog",elements:[{selector:"vaadin-dialog-overlay::part(backdrop)",displayName:"Modality curtain (backdrop)",properties:a},{selector:"vaadin-dialog-overlay::part(overlay)",displayName:"Dialog surface",properties:a},{selector:"vaadin-dialog-overlay::part(header)",displayName:"Header",properties:a},{selector:"vaadin-dialog-overlay::part(title)",displayName:"Title",properties:e},{selector:"vaadin-dialog-overlay::part(content)",displayName:"Content",properties:a},{selector:"vaadin-dialog-overlay::part(footer)",displayName:"Footer",properties:a}]};export{o as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-email-field-d7a35f04-dd31uwzi-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-email-field-d7a35f04-Dd31uwzi.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-email-field-d7a35f04-o56pd7ml-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-email-field-d7a35f04-o56pd7ML.js`
 
 **File Info:**
 - **Size**: 809 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-email-field-d7a35f04-Dd31uwzi.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-email-field-d7a35f04-o56pd7ML.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `57f34f3e5000b67cf21cf68e5bb8a5d8`
-- **SHA256**: `1368e947a75e5faafc5922cded170edc3ff28e7225a96ec9b658b9f132cb3ac6`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `0dca762502dbb4af15c9a40d1d9ac89e`
+- **SHA256**: `9bce2bf1059d8816c459fbe0bf6e54abe0edb6efc9532fdc3c65a0ee984368ef`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{inputFieldProperties as e,labelProperties as a,helperTextProperties as r,errorMessageProperties as i}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{standardButtonProperties as t}from"./vaadin-button-2511ad84-DTAIizqr.js";import"./indexhtml-DUgpeDmv.js";const o={tagName:"vaadin-email-field",displayName:"Email Field",elements:[{selector:"vaadin-email-field::part(input-field)",displayName:"Input field",properties:e},{selector:"vaadin-email-field::part(label)",displayName:"Label",properties:a},{selector:"vaadin-email-field::part(helper-text)",displayName:"Helper text",properties:r},{selector:"vaadin-email-field::part(error-message)",displayName:"Error message",properties:i},{selector:"vaadin-email-field::part(clear-button)",displayName:"Clear button",properties:t}]};export{o as default};
+import{inputFieldProperties as e,labelProperties as a,helperTextProperties as r,errorMessageProperties as i}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{standardButtonProperties as t}from"./vaadin-button-2511ad84-jPPu0iwl.js";import"./indexhtml-BBeNFWsa.js";const o={tagName:"vaadin-email-field",displayName:"Email Field",elements:[{selector:"vaadin-email-field::part(input-field)",displayName:"Input field",properties:e},{selector:"vaadin-email-field::part(label)",displayName:"Label",properties:a},{selector:"vaadin-email-field::part(helper-text)",displayName:"Helper text",properties:r},{selector:"vaadin-email-field::part(error-message)",displayName:"Error message",properties:i},{selector:"vaadin-email-field::part(clear-button)",displayName:"Clear button",properties:t}]};export{o as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-form-layout-47744b1d-hcgkenei-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-form-layout-47744b1d-hcGkenEi.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-form-layout-47744b1d-cd8bo-qm-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-form-layout-47744b1d-Cd8bo_Qm.js`
 
 **File Info:**
 - **Size**: 279 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-form-layout-47744b1d-hcGkenEi.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-form-layout-47744b1d-Cd8bo_Qm.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `35197a14f056d69f31383c3188c33359`
-- **SHA256**: `a7dd5720f5f84738b15fc9f41f968eb0fe2c4f002679ab5d60e5058e2fc6970d`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `d31df019d745dfa8f153d1d192d5036f`
+- **SHA256**: `f2b8583cd1162c6a1a0f4d676efa164dcee271c5b5e3ab1d8e586932d01ffcb1`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as o}from"./indexhtml-DUgpeDmv.js";const r={tagName:"vaadin-form-layout",displayName:"Form Layout",elements:[{selector:"vaadin-form-layout",displayName:"Layout",properties:[o.backgroundColor,o.borderColor,o.borderWidth,o.borderRadius,o.padding]}]};export{r as default};
+import{I as o}from"./indexhtml-BBeNFWsa.js";const r={tagName:"vaadin-form-layout",displayName:"Form Layout",elements:[{selector:"vaadin-form-layout",displayName:"Layout",properties:[o.backgroundColor,o.borderColor,o.borderWidth,o.borderRadius,o.padding]}]};export{r as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-grid-0a4791c2-5b6lfoo-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-grid-0a4791c2-5B6lFOo_.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-grid-0a4791c2-cekw2kk8-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-grid-0a4791c2-CEkw2KK8.js`
 
 **File Info:**
 - **Size**: 1.53 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-grid-0a4791c2-5B6lFOo_.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-grid-0a4791c2-CEkw2KK8.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `34a1390783d7ebec687388a7ec48720a`
-- **SHA256**: `8aaa5c087714f6f5dcdd4f98e45ff7797a6777aca7c3b2806f1936c0a5b993ad`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `f4afdc94309e92fbd752c19e600fd4c4`
+- **SHA256**: `045f658dc73048bee9551b0d8f3edced4fc6683e6adabb2f988491f7661ac137`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{O as e,I as o,_ as a}from"./indexhtml-DUgpeDmv.js";import{checkboxElement as i,checkedCheckboxElement as t}from"./vaadin-checkbox-4e68df64-Bvs1c_el.js";const r=[e.textColor,e.fontSize,e.fontWeight,e.fontStyle,o.backgroundColor],c={tagName:"vaadin-grid",displayName:"Grid",elements:[{selector:"vaadin-grid",displayName:"Root element",properties:[o.borderColor,o.borderWidth]},{selector:"vaadin-grid::part(header-cell)",displayName:"Header row cell",properties:[e.textColor,{...e.fontSize,propertyName:"--lumo-font-size-s"},e.fontStyle,o.backgroundColor]},{selector:"vaadin-grid::part(body-cell)",displayName:"Body cell",properties:r},{selector:"vaadin-grid::part(even-row-cell)",displayName:"Cell in even row",properties:r},{selector:"vaadin-grid::part(odd-row-cell)",displayName:"Cell in odd row",properties:r},{selector:"vaadin-grid::part(selected-row-cell)",displayName:"Cell in selected row",properties:r},{selector:"vaadin-grid vaadin-grid-cell-content > vaadin-checkbox::part(checkbox)",displayName:"Row selection checkbox",properties:i.properties},{selector:"vaadin-grid vaadin-grid-cell-content > vaadin-checkbox[checked]::part(checkbox)",displayName:"Row selection checkbox (when checked)",properties:t.properties},{selector:"vaadin-grid vaadin-grid-cell-content > vaadin-checkbox::part(checkbox)::after",displayName:"Row selection checkbox checkmark",properties:[a.iconColor]},{selector:"vaadin-grid vaadin-grid-tree-toggle::part(toggle)",displayName:"Expand icon (for tree grid)",properties:[a.iconColor]}]};export{r as cellProperties,c as default};
+import{O as e,I as o,_ as a}from"./indexhtml-BBeNFWsa.js";import{checkboxElement as i,checkedCheckboxElement as t}from"./vaadin-checkbox-4e68df64-CR3rwJqb.js";const r=[e.textColor,e.fontSize,e.fontWeight,e.fontStyle,o.backgroundColor],c={tagName:"vaadin-grid",displayName:"Grid",elements:[{selector:"vaadin-grid",displayName:"Root element",properties:[o.borderColor,o.borderWidth]},{selector:"vaadin-grid::part(header-cell)",displayName:"Header row cell",properties:[e.textColor,{...e.fontSize,propertyName:"--lumo-font-size-s"},e.fontStyle,o.backgroundColor]},{selector:"vaadin-grid::part(body-cell)",displayName:"Body cell",properties:r},{selector:"vaadin-grid::part(even-row-cell)",displayName:"Cell in even row",properties:r},{selector:"vaadin-grid::part(odd-row-cell)",displayName:"Cell in odd row",properties:r},{selector:"vaadin-grid::part(selected-row-cell)",displayName:"Cell in selected row",properties:r},{selector:"vaadin-grid vaadin-grid-cell-content > vaadin-checkbox::part(checkbox)",displayName:"Row selection checkbox",properties:i.properties},{selector:"vaadin-grid vaadin-grid-cell-content > vaadin-checkbox[checked]::part(checkbox)",displayName:"Row selection checkbox (when checked)",properties:t.properties},{selector:"vaadin-grid vaadin-grid-cell-content > vaadin-checkbox::part(checkbox)::after",displayName:"Row selection checkbox checkmark",properties:[a.iconColor]},{selector:"vaadin-grid vaadin-grid-tree-toggle::part(toggle)",displayName:"Expand icon (for tree grid)",properties:[a.iconColor]}]};export{r as cellProperties,c as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-grid-pro-ff415555-d9-wq6zn-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-grid-pro-ff415555-D9_wQ6zN.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-grid-pro-ff415555-bpokhmrx-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-grid-pro-ff415555-Bpokhmrx.js`
 
 **File Info:**
 - **Size**: 1.97 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-grid-pro-ff415555-D9_wQ6zN.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-grid-pro-ff415555-Bpokhmrx.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `1096c6168ffe9cfb6e6b028096b4457e`
-- **SHA256**: `8de2f8b0cb5dd9cd8e5398c94a4e139f866784bf375fc2d46f3a17401f79e482`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `5613111d245ae6690d93b2728df3fced`
+- **SHA256**: `a6c6ccae2def2cc86e12d1fff09f67247fea3ff10152647137c43b3e7d2019b6`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as r,O as o,_ as a,b as t,N as d}from"./indexhtml-DUgpeDmv.js";import{checkboxElement as l,checkedCheckboxElement as p}from"./vaadin-checkbox-4e68df64-Bvs1c_el.js";import{cellProperties as e}from"./vaadin-grid-0a4791c2-5B6lFOo_.js";import{inputFieldProperties as i}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";const v={tagName:"vaadin-grid-pro",displayName:"Grid Pro",elements:[{selector:"vaadin-grid-pro",displayName:"Root element",properties:[r.borderColor,r.borderWidth]},{selector:"vaadin-grid-pro::part(header-cell)",displayName:"Header row cell",properties:[o.textColor,{...o.fontSize,propertyName:"--lumo-font-size-s"},o.fontStyle,r.backgroundColor]},{selector:"vaadin-grid-pro::part(body-cell)",displayName:"Body cell",properties:e},{selector:"vaadin-grid-pro::part(even-row-cell)",displayName:"Cell in even row",properties:e},{selector:"vaadin-grid-pro::part(odd-row-cell)",displayName:"Cell in odd row",properties:e},{selector:"vaadin-grid-pro::part(selected-row-cell)",displayName:"Cell in selected row",properties:e},{selector:"vaadin-grid-pro vaadin-grid-cell-content > vaadin-checkbox::part(checkbox)",displayName:"Row selection checkbox",properties:l.properties},{selector:"vaadin-grid-pro vaadin-grid-cell-content > vaadin-checkbox[checked]::part(checkbox)",displayName:"Row selection checkbox (when checked)",properties:p.properties},{selector:"vaadin-grid-pro vaadin-grid-cell-content > vaadin-checkbox::part(checkbox)::after",displayName:"Row selection checkbox checkmark",properties:[a.iconColor]},{selector:"vaadin-grid-pro vaadin-grid-pro-edit-text-field",displayName:"Text field editor",properties:i},{selector:"vaadin-grid-pro vaadin-grid-pro-edit-checkbox",displayName:"Checkbox editor",properties:[{propertyName:"--vaadin-checkbox-size",displayName:"Checkbox size",defaultValue:"var(--lumo-font-size-l)",editorType:t.range,presets:d.lumoFontSize,icon:"square"}]},{selector:"vaadin-grid-pro vaadin-grid-pro-edit-select",displayName:"Select editor",properties:i}]};export{v as default};
+import{I as r,O as o,_ as a,b as t,N as d}from"./indexhtml-BBeNFWsa.js";import{checkboxElement as l,checkedCheckboxElement as p}from"./vaadin-checkbox-4e68df64-CR3rwJqb.js";import{cellProperties as e}from"./vaadin-grid-0a4791c2-CEkw2KK8.js";import{inputFieldProperties as i}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";const v={tagName:"vaadin-grid-pro",displayName:"Grid Pro",elements:[{selector:"vaadin-grid-pro",displayName:"Root element",properties:[r.borderColor,r.borderWidth]},{selector:"vaadin-grid-pro::part(header-cell)",displayName:"Header row cell",properties:[o.textColor,{...o.fontSize,propertyName:"--lumo-font-size-s"},o.fontStyle,r.backgroundColor]},{selector:"vaadin-grid-pro::part(body-cell)",displayName:"Body cell",properties:e},{selector:"vaadin-grid-pro::part(even-row-cell)",displayName:"Cell in even row",properties:e},{selector:"vaadin-grid-pro::part(odd-row-cell)",displayName:"Cell in odd row",properties:e},{selector:"vaadin-grid-pro::part(selected-row-cell)",displayName:"Cell in selected row",properties:e},{selector:"vaadin-grid-pro vaadin-grid-cell-content > vaadin-checkbox::part(checkbox)",displayName:"Row selection checkbox",properties:l.properties},{selector:"vaadin-grid-pro vaadin-grid-cell-content > vaadin-checkbox[checked]::part(checkbox)",displayName:"Row selection checkbox (when checked)",properties:p.properties},{selector:"vaadin-grid-pro vaadin-grid-cell-content > vaadin-checkbox::part(checkbox)::after",displayName:"Row selection checkbox checkmark",properties:[a.iconColor]},{selector:"vaadin-grid-pro vaadin-grid-pro-edit-text-field",displayName:"Text field editor",properties:i},{selector:"vaadin-grid-pro vaadin-grid-pro-edit-checkbox",displayName:"Checkbox editor",properties:[{propertyName:"--vaadin-checkbox-size",displayName:"Checkbox size",defaultValue:"var(--lumo-font-size-l)",editorType:t.range,presets:d.lumoFontSize,icon:"square"}]},{selector:"vaadin-grid-pro vaadin-grid-pro-edit-select",displayName:"Select editor",properties:i}]};export{v as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-horizontal-layout-3193943f-dtuxaixa-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-horizontal-layout-3193943f-DTuXaIxA.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-horizontal-layout-3193943f-d45p-crt-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-horizontal-layout-3193943f-D45p_cRT.js`
 
 **File Info:**
 - **Size**: 303 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-horizontal-layout-3193943f-DTuXaIxA.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-horizontal-layout-3193943f-D45p_cRT.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `8f4e733ac1cdb9adc6c595260eaf7335`
-- **SHA256**: `3c28bc7fc12a46db2536262a06d3e2f7ebb896d0117f9fa0a3c655a32a001880`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `716a9e3ed9a411b1943f5b8a25a27717`
+- **SHA256**: `0c20f4297b4bea921d01815f6969ba8bd30c1ab1d8fb04e4a4b177d6a1e65df7`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as o}from"./indexhtml-DUgpeDmv.js";const r={tagName:"vaadin-horizontal-layout",displayName:"Horizontal Layout",elements:[{selector:"vaadin-horizontal-layout",displayName:"Layout",properties:[o.backgroundColor,o.borderColor,o.borderWidth,o.borderRadius,o.padding,o.gap]}]};export{r as default};
+import{I as o}from"./indexhtml-BBeNFWsa.js";const r={tagName:"vaadin-horizontal-layout",displayName:"Horizontal Layout",elements:[{selector:"vaadin-horizontal-layout",displayName:"Layout",properties:[o.backgroundColor,o.borderColor,o.borderWidth,o.borderRadius,o.padding,o.gap]}]};export{r as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-icon-601f36ed-bdxkfd-f-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-icon-601f36ed-Bdxkfd_F.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-icon-601f36ed-dfuqx80y-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-icon-601f36ed-DfUQX80Y.js`
 
 **File Info:**
 - **Size**: 276 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-icon-601f36ed-Bdxkfd_F.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-icon-601f36ed-DfUQX80Y.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `71b950f59b6e101e4d8746c0046a0f29`
-- **SHA256**: `1f2bd27708dc8d567052def06073a69782d69ad72b81cad6e4ab917dcd65134f`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `db238868dcc827fbc22c525ce6253e58`
+- **SHA256**: `20170d1601b08f81234698ad938e72191c342aa4b0dfd5c521241cc3c5838517`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{_ as e,I as o}from"./indexhtml-DUgpeDmv.js";const a={tagName:"vaadin-icon",displayName:"Icon",elements:[{selector:"vaadin-icon",displayName:"Icon",properties:[e.iconColor,e.iconSize,o.backgroundColor,o.borderColor,o.borderWidth,o.borderRadius]}]};export{a as default};
+import{_ as e,I as o}from"./indexhtml-BBeNFWsa.js";const a={tagName:"vaadin-icon",displayName:"Icon",elements:[{selector:"vaadin-icon",displayName:"Icon",properties:[e.iconColor,e.iconSize,o.backgroundColor,o.borderColor,o.borderWidth,o.borderRadius]}]};export{a as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-integer-field-85078932-cgrz9ih0-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-integer-field-85078932-CGrZ9Ih0.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-integer-field-85078932-cior2rcu-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-integer-field-85078932-CIor2RcU.js`
 
 **File Info:**
 - **Size**: 1.1 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-integer-field-85078932-CGrZ9Ih0.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-integer-field-85078932-CIor2RcU.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `38f1512288ee9800c898d9c3983bd87b`
-- **SHA256**: `24f9db4551b21f45449d1082e1ea285fa145a4f6a695f0fb7b5ac516329bee15`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `36cc465b44550086535ed4c131bcfab6`
+- **SHA256**: `44ce5f97d40ba5313e9fe30c7fe4c19a8d294fa77c590873415850c98ac17990`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{inputFieldProperties as t,labelProperties as a,helperTextProperties as i,errorMessageProperties as s}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{_ as e}from"./indexhtml-DUgpeDmv.js";import{standardButtonProperties as p}from"./vaadin-button-2511ad84-DTAIizqr.js";const d={tagName:"vaadin-integer-field",displayName:"Integer Field",elements:[{selector:"vaadin-integer-field::part(input-field)",displayName:"Input field",properties:t},{selector:"vaadin-integer-field::part(label)",displayName:"Label",properties:a},{selector:"vaadin-integer-field::part(helper-text)",displayName:"Helper text",properties:i},{selector:"vaadin-integer-field::part(error-message)",displayName:"Error message",properties:s},{selector:"vaadin-integer-field::part(clear-button)",displayName:"Clear button",properties:p},{selector:"vaadin-integer-field::part(decrease-button)",displayName:"Decrease button",properties:[e.iconColor,e.iconSize]},{selector:"vaadin-integer-field::part(increase-button)",displayName:"Increase button",properties:[e.iconColor,e.iconSize]}],setupElement(r){r.stepButtonsVisible=!0}};export{d as default};
+import{inputFieldProperties as t,labelProperties as a,helperTextProperties as i,errorMessageProperties as s}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{_ as e}from"./indexhtml-BBeNFWsa.js";import{standardButtonProperties as p}from"./vaadin-button-2511ad84-jPPu0iwl.js";const d={tagName:"vaadin-integer-field",displayName:"Integer Field",elements:[{selector:"vaadin-integer-field::part(input-field)",displayName:"Input field",properties:t},{selector:"vaadin-integer-field::part(label)",displayName:"Label",properties:a},{selector:"vaadin-integer-field::part(helper-text)",displayName:"Helper text",properties:i},{selector:"vaadin-integer-field::part(error-message)",displayName:"Error message",properties:s},{selector:"vaadin-integer-field::part(clear-button)",displayName:"Clear button",properties:p},{selector:"vaadin-integer-field::part(decrease-button)",displayName:"Decrease button",properties:[e.iconColor,e.iconSize]},{selector:"vaadin-integer-field::part(increase-button)",displayName:"Increase button",properties:[e.iconColor,e.iconSize]}],setupElement(r){r.stepButtonsVisible=!0}};export{d as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-list-box-d7a8433b-cl9pxlsn-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-list-box-d7a8433b-CL9pxlSn.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-list-box-d7a8433b-bl-jiz7w-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-list-box-d7a8433b-Bl-jiz7w.js`
 
 **File Info:**
 - **Size**: 528 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-list-box-d7a8433b-CL9pxlSn.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-list-box-d7a8433b-Bl-jiz7w.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `81c5c5aa39d91decc6aee190a779a95c`
-- **SHA256**: `0cdf4b752126fb4d574ce1875877fee215f73bdf362754cc2250a6ae6fbb0eeb`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `1421d1be32a848fc6f0953920729b13a`
+- **SHA256**: `262be83ea4ad0b3ba7ba477b92cae42f2676bba6c761c13dd6691f47386cb8a1`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as e,f as o}from"./indexhtml-DUgpeDmv.js";const a={tagName:"vaadin-list-box",displayName:"List Box",elements:[{selector:"vaadin-list-box",displayName:"Root element",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,o.paddingInline]},{selector:"vaadin-list-box > hr",displayName:"Divider",properties:[e.backgroundColor]},{selector:"vaadin-list-box > vaadin-item",displayName:"Item",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,o.paddingInline]}]};export{a as default};
+import{I as e,f as o}from"./indexhtml-BBeNFWsa.js";const a={tagName:"vaadin-list-box",displayName:"List Box",elements:[{selector:"vaadin-list-box",displayName:"Root element",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,o.paddingInline]},{selector:"vaadin-list-box > hr",displayName:"Divider",properties:[e.backgroundColor]},{selector:"vaadin-list-box > vaadin-item",displayName:"Item",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,o.paddingInline]}]};export{a as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-login-form-638996c6-8cw9qgxg-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-login-form-638996c6-8cW9qGXg.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-login-form-638996c6-cgopvktr-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-login-form-638996c6-CgopvKtR.js`
 
 **File Info:**
 - **Size**: 2.1 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-login-form-638996c6-8cW9qGXg.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-login-form-638996c6-CgopvKtR.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `5a1d3201396e86eda78efe50ba4a3da6`
-- **SHA256**: `866da7df2a0afd32c15e94b52c37c6c26455c8544d8b2aee48371069fc764192`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `530cc74314043af91ed6410a51d73302`
+- **SHA256**: `efafd9232d863fe3947574a8152b6f46d8413b00f4e914f5666db6a9d234ca3d`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{S as e,T as r,A as o}from"./indexhtml-DUgpeDmv.js";import{inputFieldProperties as i,labelProperties as t,helperTextProperties as s,errorMessageProperties as p}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{standardButtonProperties as a}from"./vaadin-button-2511ad84-DTAIizqr.js";const d={tagName:"vaadin-login-form",displayName:"Login",elements:[{selector:"vaadin-login-form",displayName:"Login form root component",properties:e},{selector:"vaadin-login-form vaadin-login-form-wrapper",displayName:"Login form",properties:e},{selector:"vaadin-login-form vaadin-login-form-wrapper::part(form-title)",displayName:"Form title",properties:r},{selector:"vaadin-login-form vaadin-login-form-wrapper::part(error-message)",displayName:"Error message section",properties:e},{selector:"vaadin-login-form vaadin-login-form-wrapper::part(error-message-title)",displayName:"Error message heading",properties:r},{selector:"vaadin-login-form vaadin-login-form-wrapper::part(error-message-description)",displayName:"Error message description",properties:r},{selector:"vaadin-login-form vaadin-login-form-wrapper [required]::part(input-field)",displayName:"Input field",properties:i},{selector:"vaadin-login-form vaadin-login-form-wrapper [required]::part(label)",displayName:"Label",properties:t},{selector:"vaadin-login-form vaadin-login-form-wrapper [required]::part(helper-text)",displayName:"Helper text",properties:s},{selector:"vaadin-login-form vaadin-login-form-wrapper [required]::part(error-message)",displayName:"Error message",properties:p},{selector:"vaadin-login-form vaadin-password-field::part(reveal-button)",displayName:"Reveal button",properties:o},{selector:'vaadin-login-form vaadin-button[theme~="submit"]',displayName:"Log In Button",properties:a},{selector:'vaadin-login-form vaadin-button[theme~="submit"]::part(label)',displayName:"Log In Button Label",properties:r},{selector:'vaadin-login-form [slot="forgot-password"]',displayName:"Forgot password button",properties:a},{selector:'vaadin-login-form [slot="forgot-password"]::part(label)',displayName:"Forgot password button label",properties:r}]};export{d as default};
+import{S as e,T as r,A as o}from"./indexhtml-BBeNFWsa.js";import{inputFieldProperties as i,labelProperties as t,helperTextProperties as s,errorMessageProperties as p}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{standardButtonProperties as a}from"./vaadin-button-2511ad84-jPPu0iwl.js";const d={tagName:"vaadin-login-form",displayName:"Login",elements:[{selector:"vaadin-login-form",displayName:"Login form root component",properties:e},{selector:"vaadin-login-form vaadin-login-form-wrapper",displayName:"Login form",properties:e},{selector:"vaadin-login-form vaadin-login-form-wrapper::part(form-title)",displayName:"Form title",properties:r},{selector:"vaadin-login-form vaadin-login-form-wrapper::part(error-message)",displayName:"Error message section",properties:e},{selector:"vaadin-login-form vaadin-login-form-wrapper::part(error-message-title)",displayName:"Error message heading",properties:r},{selector:"vaadin-login-form vaadin-login-form-wrapper::part(error-message-description)",displayName:"Error message description",properties:r},{selector:"vaadin-login-form vaadin-login-form-wrapper [required]::part(input-field)",displayName:"Input field",properties:i},{selector:"vaadin-login-form vaadin-login-form-wrapper [required]::part(label)",displayName:"Label",properties:t},{selector:"vaadin-login-form vaadin-login-form-wrapper [required]::part(helper-text)",displayName:"Helper text",properties:s},{selector:"vaadin-login-form vaadin-login-form-wrapper [required]::part(error-message)",displayName:"Error message",properties:p},{selector:"vaadin-login-form vaadin-password-field::part(reveal-button)",displayName:"Reveal button",properties:o},{selector:'vaadin-login-form vaadin-button[theme~="submit"]',displayName:"Log In Button",properties:a},{selector:'vaadin-login-form vaadin-button[theme~="submit"]::part(label)',displayName:"Log In Button Label",properties:r},{selector:'vaadin-login-form [slot="forgot-password"]',displayName:"Forgot password button",properties:a},{selector:'vaadin-login-form [slot="forgot-password"]::part(label)',displayName:"Forgot password button label",properties:r}]};export{d as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-login-overlay-f8a5db8a-chwaybk9-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-login-overlay-f8a5db8a-ChWaYbK9.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-login-overlay-f8a5db8a-byapafrd-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-login-overlay-f8a5db8a-ByaPAFRd.js`
 
 **File Info:**
 - **Size**: 2.98 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-login-overlay-f8a5db8a-ChWaYbK9.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-login-overlay-f8a5db8a-ByaPAFRd.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `15e9f795a121d73fb433aa0ff3555263`
-- **SHA256**: `2557ec3cc0e6ff9f90af4597eccf9a63456671eee6e45eb5ed2e444dedc5788f`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `22bac51df9519e9889323403d0800fef`
+- **SHA256**: `372c229b67caf9ce5f007d00d322f8d2eb51cf3d98a3da340b1506fd9a45de75`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as o,S as a,T as r,A as i}from"./indexhtml-DUgpeDmv.js";import{inputFieldProperties as p,labelProperties as l,helperTextProperties as t,errorMessageProperties as n}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{standardButtonProperties as e}from"./vaadin-button-2511ad84-DTAIizqr.js";const m={tagName:"vaadin-login-overlay",displayName:"Login Overlay",elements:[{selector:"vaadin-login-overlay-wrapper::part(backdrop)",displayName:"Overlay backdrop / modality curtain",properties:[o.backgroundColor]},{selector:"vaadin-login-overlay-wrapper::part(card)",displayName:"Overlay card",properties:a},{selector:"vaadin-login-overlay-wrapper::part(brand)",displayName:"Card header",properties:a},{selector:"vaadin-login-overlay-wrapper::part(title)",displayName:"Title",properties:r},{selector:"vaadin-login-overlay-wrapper::part(description)",displayName:"Description",properties:r},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper",displayName:"Login form",properties:a},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper::part(form-title)",displayName:"Form title",properties:r},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper::part(error-message)",displayName:"Error message section",properties:a},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper::part(error-message-title)",displayName:"Error message heading",properties:r},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper::part(error-message-description)",displayName:"Error message description",properties:r},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper [required]::part(input-field)",displayName:"Input field",properties:p},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper [required]::part(label)",displayName:"Input field label",properties:l},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper [required]::part(helper-text)",displayName:"Input field helper text",properties:t},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper [required]::part(error-message)",displayName:"Input field error message",properties:n},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-password-field::part(reveal-button)",displayName:"Password field reveal button",properties:i},{selector:'vaadin-login-overlay-wrapper vaadin-login-form vaadin-button[theme~="submit"]',displayName:"Log In Button",properties:e},{selector:'vaadin-login-overlay-wrapper vaadin-login-form vaadin-button[theme~="submit"]::part(label)',displayName:"Log In Button Label",properties:r},{selector:'vaadin-login-overlay-wrapper vaadin-login-form [slot="forgot-password"]',displayName:"Forgot password button",properties:e},{selector:'vaadin-login-overlay-wrapper vaadin-login-form [slot="forgot-password"]::part(label)',displayName:"Forgot password button label",properties:r}]};export{m as default};
+import{I as o,S as a,T as r,A as i}from"./indexhtml-BBeNFWsa.js";import{inputFieldProperties as p,labelProperties as l,helperTextProperties as t,errorMessageProperties as n}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{standardButtonProperties as e}from"./vaadin-button-2511ad84-jPPu0iwl.js";const m={tagName:"vaadin-login-overlay",displayName:"Login Overlay",elements:[{selector:"vaadin-login-overlay-wrapper::part(backdrop)",displayName:"Overlay backdrop / modality curtain",properties:[o.backgroundColor]},{selector:"vaadin-login-overlay-wrapper::part(card)",displayName:"Overlay card",properties:a},{selector:"vaadin-login-overlay-wrapper::part(brand)",displayName:"Card header",properties:a},{selector:"vaadin-login-overlay-wrapper::part(title)",displayName:"Title",properties:r},{selector:"vaadin-login-overlay-wrapper::part(description)",displayName:"Description",properties:r},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper",displayName:"Login form",properties:a},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper::part(form-title)",displayName:"Form title",properties:r},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper::part(error-message)",displayName:"Error message section",properties:a},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper::part(error-message-title)",displayName:"Error message heading",properties:r},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper::part(error-message-description)",displayName:"Error message description",properties:r},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper [required]::part(input-field)",displayName:"Input field",properties:p},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper [required]::part(label)",displayName:"Input field label",properties:l},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper [required]::part(helper-text)",displayName:"Input field helper text",properties:t},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-login-form-wrapper [required]::part(error-message)",displayName:"Input field error message",properties:n},{selector:"vaadin-login-overlay-wrapper vaadin-login-form vaadin-password-field::part(reveal-button)",displayName:"Password field reveal button",properties:i},{selector:'vaadin-login-overlay-wrapper vaadin-login-form vaadin-button[theme~="submit"]',displayName:"Log In Button",properties:e},{selector:'vaadin-login-overlay-wrapper vaadin-login-form vaadin-button[theme~="submit"]::part(label)',displayName:"Log In Button Label",properties:r},{selector:'vaadin-login-overlay-wrapper vaadin-login-form [slot="forgot-password"]',displayName:"Forgot password button",properties:e},{selector:'vaadin-login-overlay-wrapper vaadin-login-form [slot="forgot-password"]::part(label)',displayName:"Forgot password button label",properties:r}]};export{m as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-map-d40a0116-dsry3sqr-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-map-d40a0116-DSRy3sQr.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-map-d40a0116-csu-i73n-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-map-d40a0116-CsU-I73n.js`
 
 **File Info:**
 - **Size**: 261 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-map-d40a0116-DSRy3sQr.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-map-d40a0116-CsU-I73n.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `98e790a3c555a5fee08cd9874eaeef4a`
-- **SHA256**: `b3abcbcc84278cc30a55e7db5f33e4368cb6205e288e620c8c4dd455388466a0`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `58caf8ab708dd816a5aab2042957b277`
+- **SHA256**: `61c9f98fb02efa0a02c8dded38b00f519e07427d7e019f9a5ae10968e6334527`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as a}from"./indexhtml-DUgpeDmv.js";const o={tagName:"vaadin-map",displayName:"Map",elements:[{selector:"vaadin-map",displayName:"Root element",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding]}]};export{o as default};
+import{I as a}from"./indexhtml-BBeNFWsa.js";const o={tagName:"vaadin-map",displayName:"Map",elements:[{selector:"vaadin-map",displayName:"Root element",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding]}]};export{o as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-menu-bar-3f5ab096-craij5pj-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-menu-bar-3f5ab096-CRAiJ5PJ.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-menu-bar-3f5ab096-dyo8ye4f-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-menu-bar-3f5ab096-DyO8YE4f.js`
 
 **File Info:**
 - **Size**: 1.9 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-menu-bar-3f5ab096-CRAiJ5PJ.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-menu-bar-3f5ab096-DyO8YE4f.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `cae2b774e088a63ba01a20d23cdef3b8`
-- **SHA256**: `7940da908293114f994ed8725330d118685d4f5f3dbbcae899e57cf22d9d1932`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `71a7a95db26d851386b2fa2fc83ef433`
+- **SHA256**: `30f51b50eaace96596ba23ddfe85e4771b7e8ebca7388f3d420ff87ee79cea35`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as r,b as a,N as i,f as s,O as n,g as d}from"./indexhtml-DUgpeDmv.js";const m={tagName:"vaadin-menu-bar",displayName:"Menu Bar",elements:[{selector:"vaadin-menu-bar vaadin-menu-bar-button",displayName:"Buttons",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius,{propertyName:"--lumo-button-size",displayName:"Size",editorType:a.range,presets:i.lumoSize,icon:"square"},s.paddingInline]},{selector:"vaadin-menu-bar vaadin-menu-bar-button vaadin-menu-bar-item",displayName:"Button labels",properties:[n.textColor,n.fontSize,n.fontWeight]},{selector:"vaadin-menu-bar-overlay::part(overlay)",displayName:"Overlay",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius,r.padding]},{selector:"vaadin-menu-bar-overlay vaadin-menu-bar-item",displayName:"Menu Items",properties:[n.textColor,n.fontSize,n.fontWeight]}],async setupElement(t){t.overlayClass=t.getAttribute("class");const o=document.createElement("vaadin-menu-bar-item");t.items=[{component:o,children:[{text:"Sub item"}]}],await new Promise(e=>setTimeout(e,10))},async cleanupElement(t){t._close()},openOverlay(t){t.element.querySelector("vaadin-menu-bar-button").click();const o=t.element.shadowRoot.querySelector("vaadin-menu-bar-submenu");if(!o)return;const e=o.$.overlay;e&&(e._storedModeless=e.modeless,e.modeless=!0,document._themeEditorDocClickListener=d(o,e),document.addEventListener("click",document._themeEditorDocClickListener),document.documentElement.removeEventListener("click",o.__itemsOutsideClickListener))},hideOverlay(t){const o=t.element.shadowRoot.querySelector("vaadin-menu-bar-submenu");if(!o)return;const e=o.$.overlay;e&&(e.close(),e.modeless=e._storedModeless,delete e._storedModeless,document.removeEventListener("click",document._themeEditorDocClickListener),document.documentElement.addEventListener("click",o.__itemsOutsideClickListener),delete document._themeEditorDocClickListener)}};export{m as default};
+import{I as r,b as a,N as i,f as s,O as n,g as d}from"./indexhtml-BBeNFWsa.js";const m={tagName:"vaadin-menu-bar",displayName:"Menu Bar",elements:[{selector:"vaadin-menu-bar vaadin-menu-bar-button",displayName:"Buttons",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius,{propertyName:"--lumo-button-size",displayName:"Size",editorType:a.range,presets:i.lumoSize,icon:"square"},s.paddingInline]},{selector:"vaadin-menu-bar vaadin-menu-bar-button vaadin-menu-bar-item",displayName:"Button labels",properties:[n.textColor,n.fontSize,n.fontWeight]},{selector:"vaadin-menu-bar-overlay::part(overlay)",displayName:"Overlay",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius,r.padding]},{selector:"vaadin-menu-bar-overlay vaadin-menu-bar-item",displayName:"Menu Items",properties:[n.textColor,n.fontSize,n.fontWeight]}],async setupElement(t){t.overlayClass=t.getAttribute("class");const o=document.createElement("vaadin-menu-bar-item");t.items=[{component:o,children:[{text:"Sub item"}]}],await new Promise(e=>setTimeout(e,10))},async cleanupElement(t){t._close()},openOverlay(t){t.element.querySelector("vaadin-menu-bar-button").click();const o=t.element.shadowRoot.querySelector("vaadin-menu-bar-submenu");if(!o)return;const e=o.$.overlay;e&&(e._storedModeless=e.modeless,e.modeless=!0,document._themeEditorDocClickListener=d(o,e),document.addEventListener("click",document._themeEditorDocClickListener),document.documentElement.removeEventListener("click",o.__itemsOutsideClickListener))},hideOverlay(t){const o=t.element.shadowRoot.querySelector("vaadin-menu-bar-submenu");if(!o)return;const e=o.$.overlay;e&&(e.close(),e.modeless=e._storedModeless,delete e._storedModeless,document.removeEventListener("click",document._themeEditorDocClickListener),document.documentElement.addEventListener("click",o.__itemsOutsideClickListener),delete document._themeEditorDocClickListener)}};export{m as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-message-input-996ac37c-dvs042v2-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-message-input-996ac37c-DvS042v2.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-message-input-996ac37c-cuf72pk9-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-message-input-996ac37c-CuF72pK9.js`
 
 **File Info:**
 - **Size**: 620 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-message-input-996ac37c-DvS042v2.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-message-input-996ac37c-CuF72pK9.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `c5e48c94ec9ca1ed97883d306ac255f0`
-- **SHA256**: `eceb3cca83c89c1cf71d8ccfce275776803d4d0eccdafd9a9eabbeddb6ce5b27`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `324cff7421bf58d6d27316947f2612de`
+- **SHA256**: `03569157f01a815f145d3acfeede5ed616cba5bab1e14bcee60edb644508188e`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as e,b as a,N as t,f as i}from"./indexhtml-DUgpeDmv.js";import{inputFieldProperties as r}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";const p={tagName:"vaadin-message-input",displayName:"Message Input",elements:[{selector:"vaadin-message-input vaadin-text-area::part(input-field)",displayName:"Text area",properties:r},{selector:"vaadin-message-input vaadin-button",displayName:"Button",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,{propertyName:"--lumo-button-size",displayName:"Size",editorType:a.range,presets:t.lumoSize,icon:"square"},i.paddingInline]}]};export{p as default};
+import{I as e,b as a,N as t,f as i}from"./indexhtml-BBeNFWsa.js";import{inputFieldProperties as r}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";const p={tagName:"vaadin-message-input",displayName:"Message Input",elements:[{selector:"vaadin-message-input vaadin-text-area::part(input-field)",displayName:"Text area",properties:r},{selector:"vaadin-message-input vaadin-button",displayName:"Button",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,{propertyName:"--lumo-button-size",displayName:"Size",editorType:a.range,presets:t.lumoSize,icon:"square"},i.paddingInline]}]};export{p as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-message-list-70a435ba-dyg4vdq8-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-message-list-70a435ba-DYG4vdQ8.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-message-list-70a435ba-bkaarqot-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-message-list-70a435ba-BkAARQot.js`
 
 **File Info:**
 - **Size**: 1.35 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-message-list-70a435ba-DYG4vdQ8.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-message-list-70a435ba-BkAARQot.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `d707b1dacfe439e0c03b74cb2a9eb260`
-- **SHA256**: `c7992f4a4c8e4c584ef1ec82b522eda8423a5075c7c6bcf4fd6c2a3e3fe08b63`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `f6d43df0b2736ded95e5983f68b81a6a`
+- **SHA256**: `d36f3409e4d1fd4e85b4538ed29a9e77f1b36b37dafd6d16f3a89fccaae8099f`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as e,O as a}from"./indexhtml-DUgpeDmv.js";const s={tagName:"vaadin-message-list",displayName:"Message List",elements:[{selector:"vaadin-message-list",displayName:"Root element",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-message-list::part(list)",displayName:"Internal list layout",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-message-list vaadin-message",displayName:"Message item",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-message-list vaadin-message::part(name)",displayName:"Name",properties:[a.textColor,a.fontSize,a.fontWeight,a.fontStyle]},{selector:"vaadin-message-list vaadin-message::part(time)",displayName:"Time",properties:[a.textColor,a.fontSize,a.fontWeight,a.fontStyle]},{selector:"vaadin-message-list vaadin-message::part(message)",displayName:"Text",properties:[a.textColor,a.fontSize,a.fontWeight,a.fontStyle]},{selector:"vaadin-message-list vaadin-message > vaadin-avatar",displayName:"Avatar",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-message-list vaadin-message > vaadin-avatar::part(abbr)",displayName:"Avatar abbreviation",properties:[a.textColor,a.fontSize,a.fontWeight,a.fontStyle]}]};export{s as default};
+import{I as e,O as a}from"./indexhtml-BBeNFWsa.js";const s={tagName:"vaadin-message-list",displayName:"Message List",elements:[{selector:"vaadin-message-list",displayName:"Root element",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-message-list::part(list)",displayName:"Internal list layout",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-message-list vaadin-message",displayName:"Message item",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-message-list vaadin-message::part(name)",displayName:"Name",properties:[a.textColor,a.fontSize,a.fontWeight,a.fontStyle]},{selector:"vaadin-message-list vaadin-message::part(time)",displayName:"Time",properties:[a.textColor,a.fontSize,a.fontWeight,a.fontStyle]},{selector:"vaadin-message-list vaadin-message::part(message)",displayName:"Text",properties:[a.textColor,a.fontSize,a.fontWeight,a.fontStyle]},{selector:"vaadin-message-list vaadin-message > vaadin-avatar",displayName:"Avatar",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-message-list vaadin-message > vaadin-avatar::part(abbr)",displayName:"Avatar abbreviation",properties:[a.textColor,a.fontSize,a.fontWeight,a.fontStyle]}]};export{s as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-multi-select-combo-box-a3373557-d-tinhi8-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-multi-select-combo-box-a3373557-D-tiNhi8.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-multi-select-combo-box-a3373557-ckujobn1-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-multi-select-combo-box-a3373557-Ckujobn1.js`
 
 **File Info:**
 - **Size**: 2.3 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-multi-select-combo-box-a3373557-D-tiNhi8.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-multi-select-combo-box-a3373557-Ckujobn1.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `b1f18a0dd0c65695c88bf3fe6f89330f`
-- **SHA256**: `073f07a820e093c2fbc4049dddf1c9513ffb13ebf891f52e3e9f6052b037d27d`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `a61c8ef0cf24597ec1530bdb753a7714`
+- **SHA256**: `d55d9b64ebdaddffe80a2c39b4111764c1439eeb876841427065bc6bb20b4662`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{inputFieldProperties as i,labelProperties as l,helperTextProperties as s,errorMessageProperties as m}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{_ as t,I as e,O as a,i as p,j as c}from"./indexhtml-DUgpeDmv.js";const n={tagName:"vaadin-multi-select-combo-box",displayName:"Multi-Select Combo Box",elements:[{selector:"vaadin-multi-select-combo-box::part(input-field)",displayName:"Input field",properties:i},{selector:"vaadin-multi-select-combo-box::part(toggle-button)",displayName:"Toggle button",properties:[t.iconColor,t.iconSize]},{selector:"vaadin-multi-select-combo-box::part(label)",displayName:"Label",properties:l},{selector:"vaadin-multi-select-combo-box::part(helper-text)",displayName:"Helper text",properties:s},{selector:"vaadin-multi-select-combo-box::part(error-message)",displayName:"Error message",properties:m},{selector:"vaadin-multi-select-combo-box-overlay::part(overlay)",displayName:"Overlay",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-multi-select-combo-box-overlay vaadin-multi-select-combo-box-item",displayName:"Overlay items",properties:[a.textColor,a.fontSize,a.fontWeight]},{selector:"vaadin-multi-select-combo-box-overlay vaadin-multi-select-combo-box-item::part(checkmark)::before",displayName:"Overlay item checkmark",properties:[t.iconColor,t.iconSize]},{selector:"vaadin-multi-select-combo-box vaadin-multi-select-combo-box-chip",displayName:"Chip",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-multi-select-combo-box vaadin-multi-select-combo-box-chip",displayName:"Chip label",properties:[a.textColor,a.fontSize,a.fontWeight]},{selector:"vaadin-multi-select-combo-box vaadin-multi-select-combo-box-chip::part(remove-button)",displayName:"Chip remove button",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-multi-select-combo-box vaadin-multi-select-combo-box-chip::part(remove-button)::before",displayName:"Chip remove button icon",properties:[t.iconColor,t.iconSize]}],async setupElement(o){o.overlayClass=o.getAttribute("class"),o.items=[{label:"Item",value:"value"}],o.value="value",o.opened=!0,await new Promise(r=>setTimeout(r,10))},async cleanupElement(o){o.opened=!1},openOverlay:p,hideOverlay:c};export{n as default};
+import{inputFieldProperties as i,labelProperties as l,helperTextProperties as s,errorMessageProperties as m}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{_ as t,I as e,O as a,i as p,j as c}from"./indexhtml-BBeNFWsa.js";const n={tagName:"vaadin-multi-select-combo-box",displayName:"Multi-Select Combo Box",elements:[{selector:"vaadin-multi-select-combo-box::part(input-field)",displayName:"Input field",properties:i},{selector:"vaadin-multi-select-combo-box::part(toggle-button)",displayName:"Toggle button",properties:[t.iconColor,t.iconSize]},{selector:"vaadin-multi-select-combo-box::part(label)",displayName:"Label",properties:l},{selector:"vaadin-multi-select-combo-box::part(helper-text)",displayName:"Helper text",properties:s},{selector:"vaadin-multi-select-combo-box::part(error-message)",displayName:"Error message",properties:m},{selector:"vaadin-multi-select-combo-box-overlay::part(overlay)",displayName:"Overlay",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-multi-select-combo-box-overlay vaadin-multi-select-combo-box-item",displayName:"Overlay items",properties:[a.textColor,a.fontSize,a.fontWeight]},{selector:"vaadin-multi-select-combo-box-overlay vaadin-multi-select-combo-box-item::part(checkmark)::before",displayName:"Overlay item checkmark",properties:[t.iconColor,t.iconSize]},{selector:"vaadin-multi-select-combo-box vaadin-multi-select-combo-box-chip",displayName:"Chip",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-multi-select-combo-box vaadin-multi-select-combo-box-chip",displayName:"Chip label",properties:[a.textColor,a.fontSize,a.fontWeight]},{selector:"vaadin-multi-select-combo-box vaadin-multi-select-combo-box-chip::part(remove-button)",displayName:"Chip remove button",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-multi-select-combo-box vaadin-multi-select-combo-box-chip::part(remove-button)::before",displayName:"Chip remove button icon",properties:[t.iconColor,t.iconSize]}],async setupElement(o){o.overlayClass=o.getAttribute("class"),o.items=[{label:"Item",value:"value"}],o.value="value",o.opened=!0,await new Promise(r=>setTimeout(r,10))},async cleanupElement(o){o.opened=!1},openOverlay:p,hideOverlay:c};export{n as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-notification-bd6eb776-bfcppoyq-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-notification-bd6eb776-BFcPpOYQ.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-notification-bd6eb776-pmkzghel-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-notification-bd6eb776-PMkzGhEL.js`
 
 **File Info:**
 - **Size**: 337 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-notification-bd6eb776-BFcPpOYQ.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-notification-bd6eb776-PMkzGhEL.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `3398c885ccaad76a1af41d32e00da6e8`
-- **SHA256**: `b2d75bb1eea1cd4098354a397a46b08fbe5cfd994145ed3e243e2aefa14a30c4`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `7028e0a127391aa4103a4f40a759fbaf`
+- **SHA256**: `5d90b209ba138d3f27ac5b54b897e3d9551bd5d0a41a6740b1e6e188144e228e`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{S as a,T as t}from"./indexhtml-DUgpeDmv.js";const o={tagName:"vaadin-notification",displayName:"Notification",elements:[{selector:"vaadin-notification-card::part(overlay)",displayName:"Notification card",properties:a},{selector:"vaadin-notification-card::part(content)",displayName:"Content",properties:t}]};export{o as default};
+import{S as a,T as t}from"./indexhtml-BBeNFWsa.js";const o={tagName:"vaadin-notification",displayName:"Notification",elements:[{selector:"vaadin-notification-card::part(overlay)",displayName:"Notification card",properties:a},{selector:"vaadin-notification-card::part(content)",displayName:"Content",properties:t}]};export{o as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-number-field-cb3ee8b2-dfkileld-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-number-field-cb3ee8b2-DfkIleLd.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-number-field-cb3ee8b2-0rgha8t-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-number-field-cb3ee8b2-_0rgHa8T.js`
 
 **File Info:**
 - **Size**: 1.09 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-number-field-cb3ee8b2-DfkIleLd.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-number-field-cb3ee8b2-_0rgHa8T.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `bd266887c1c6d59a5c6beee618b01da5`
-- **SHA256**: `0ad12194da7c59200aee561c8d5eb79fdd414e799f42510c83184b3360c12fb7`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `2400aa2bdfe16514552c62b89b3677ea`
+- **SHA256**: `0ccf5ad9555bf548ea5eaa94a123be10d6740ace2774db0ada49df41b287cabe`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{inputFieldProperties as a,labelProperties as t,helperTextProperties as i,errorMessageProperties as s}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{_ as e}from"./indexhtml-DUgpeDmv.js";import{standardButtonProperties as p}from"./vaadin-button-2511ad84-DTAIizqr.js";const d={tagName:"vaadin-number-field",displayName:"Number Field",elements:[{selector:"vaadin-number-field::part(input-field)",displayName:"Input field",properties:a},{selector:"vaadin-number-field::part(label)",displayName:"Label",properties:t},{selector:"vaadin-number-field::part(helper-text)",displayName:"Helper text",properties:i},{selector:"vaadin-number-field::part(error-message)",displayName:"Error message",properties:s},{selector:"vaadin-number-field::part(clear-button)",displayName:"Clear button",properties:p},{selector:"vaadin-number-field::part(increase-button)",displayName:"Increase button",properties:[e.iconColor,e.iconSize]},{selector:"vaadin-number-field::part(decrease-button)",displayName:"Decrease button",properties:[e.iconColor,e.iconSize]}],setupElement(r){r.stepButtonsVisible=!0}};export{d as default};
+import{inputFieldProperties as a,labelProperties as t,helperTextProperties as i,errorMessageProperties as s}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{_ as e}from"./indexhtml-BBeNFWsa.js";import{standardButtonProperties as p}from"./vaadin-button-2511ad84-jPPu0iwl.js";const d={tagName:"vaadin-number-field",displayName:"Number Field",elements:[{selector:"vaadin-number-field::part(input-field)",displayName:"Input field",properties:a},{selector:"vaadin-number-field::part(label)",displayName:"Label",properties:t},{selector:"vaadin-number-field::part(helper-text)",displayName:"Helper text",properties:i},{selector:"vaadin-number-field::part(error-message)",displayName:"Error message",properties:s},{selector:"vaadin-number-field::part(clear-button)",displayName:"Clear button",properties:p},{selector:"vaadin-number-field::part(increase-button)",displayName:"Increase button",properties:[e.iconColor,e.iconSize]},{selector:"vaadin-number-field::part(decrease-button)",displayName:"Decrease button",properties:[e.iconColor,e.iconSize]}],setupElement(r){r.stepButtonsVisible=!0}};export{d as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-password-field-d289cb18-cesjb57e-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-password-field-d289cb18-CEsJb57e.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-password-field-d289cb18-vinpnsgs-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-password-field-d289cb18-ViNpNsgS.js`
 
 **File Info:**
 - **Size**: 962 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-password-field-d289cb18-CEsJb57e.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-password-field-d289cb18-ViNpNsgS.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `4511444e5db73421fcb8fd1586f473a5`
-- **SHA256**: `00403f7008408b7ebcba820455f7e439de9ad0234ee0504e1c4a937cecea5a34`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `e6685c9bbb904601f0f3589be43103ec`
+- **SHA256**: `36e920a3c66cd44e47619b16f3d6fd69e58e39d447fcd0d93818c29920853d0a`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{inputFieldProperties as r,labelProperties as a,helperTextProperties as s,errorMessageProperties as t}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{_ as e}from"./indexhtml-DUgpeDmv.js";import{standardButtonProperties as p}from"./vaadin-button-2511ad84-DTAIizqr.js";const d={tagName:"vaadin-password-field",displayName:"Password Field",elements:[{selector:"vaadin-password-field::part(input-field)",displayName:"Input field",properties:r},{selector:"vaadin-password-field::part(label)",displayName:"Label",properties:a},{selector:"vaadin-password-field::part(helper-text)",displayName:"Helper text",properties:s},{selector:"vaadin-password-field::part(error-message)",displayName:"Error message",properties:t},{selector:"vaadin-password-field::part(clear-button)",displayName:"Clear button",properties:p},{selector:"vaadin-password-field::part(reveal-button)",displayName:"Reveal button",properties:[e.iconColor,e.iconSize]}]};export{d as default};
+import{inputFieldProperties as r,labelProperties as a,helperTextProperties as s,errorMessageProperties as t}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{_ as e}from"./indexhtml-BBeNFWsa.js";import{standardButtonProperties as p}from"./vaadin-button-2511ad84-jPPu0iwl.js";const d={tagName:"vaadin-password-field",displayName:"Password Field",elements:[{selector:"vaadin-password-field::part(input-field)",displayName:"Input field",properties:r},{selector:"vaadin-password-field::part(label)",displayName:"Label",properties:a},{selector:"vaadin-password-field::part(helper-text)",displayName:"Helper text",properties:s},{selector:"vaadin-password-field::part(error-message)",displayName:"Error message",properties:t},{selector:"vaadin-password-field::part(clear-button)",displayName:"Clear button",properties:p},{selector:"vaadin-password-field::part(reveal-button)",displayName:"Reveal button",properties:[e.iconColor,e.iconSize]}]};export{d as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-progress-bar-309ecf1f-cdtkpbbu-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-progress-bar-309ecf1f-CdTkpbbU.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-progress-bar-309ecf1f-bjgckm5h-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-progress-bar-309ecf1f-BjgckM5h.js`
 
 **File Info:**
 - **Size**: 334 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-progress-bar-309ecf1f-CdTkpbbU.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-progress-bar-309ecf1f-BjgckM5h.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `c43660aab45ee6ca3c2f1bb4360edc9c`
-- **SHA256**: `ccc4902e8804cb2053209a05bbe9f3e71ca76ceb61d2345c3f1d5ff4854a4fe1`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `e6e07e5ac649361843a3ed30d310b124`
+- **SHA256**: `68663610c6602cfe5ea315f3aacaddae40f12ad5b202731738be2e91a3d63f13`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as r}from"./indexhtml-DUgpeDmv.js";const e={tagName:"vaadin-progress-bar",displayName:"Progress Bar",elements:[{selector:"vaadin-progress-bar::part(bar)",displayName:"Bar",properties:[r.backgroundColor]},{selector:"vaadin-progress-bar::part(value)",displayName:"Value",properties:[r.backgroundColor]}]};export{e as default};
+import{I as r}from"./indexhtml-BBeNFWsa.js";const e={tagName:"vaadin-progress-bar",displayName:"Progress Bar",elements:[{selector:"vaadin-progress-bar::part(bar)",displayName:"Bar",properties:[r.backgroundColor]},{selector:"vaadin-progress-bar::part(value)",displayName:"Value",properties:[r.backgroundColor]}]};export{e as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-radio-group-88b5afd8-h74vt-m8-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-radio-group-88b5afd8-H74vT_M8.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-radio-group-88b5afd8-bd5oaub6-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-radio-group-88b5afd8-Bd5oaUB6.js`
 
 **File Info:**
 - **Size**: 1.82 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-radio-group-88b5afd8-H74vT_M8.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-radio-group-88b5afd8-Bd5oaUB6.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `d48f85459118d77d83af3bf8c1a416c7`
-- **SHA256**: `b28b45a2ad0a374c6ea5b0e2fa922e8469aab82f63f42f808e1edefcaa2a13cc`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `c3931df4fe53e47f21b4dc683d613cad`
+- **SHA256**: `976e60604aa27b86cb292920e628ff0c69d35687e9d83374c190590a3c34100f`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as e,b as i,N as d,_ as p,O as a}from"./indexhtml-DUgpeDmv.js";import{labelProperties as l,helperTextProperties as s,errorMessageProperties as n}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";const c={tagName:"vaadin-radio-group",displayName:"Radio Button Group",elements:[{selector:"vaadin-radio-group",displayName:"Group",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-radio-group::part(label)",displayName:"Label",properties:l},{selector:"vaadin-radio-group::part(helper-text)",displayName:"Helper text",properties:s},{selector:"vaadin-radio-group::part(error-message)",displayName:"Error message",properties:n},{selector:"vaadin-radio-group vaadin-radio-button",displayName:"Radio buttons",properties:[{propertyName:"--vaadin-radio-button-size",displayName:"Radio button size",defaultValue:"var(--lumo-font-size-l)",editorType:i.range,presets:d.lumoFontSize,icon:"square"}]},{selector:"vaadin-radio-group vaadin-radio-button::part(radio)",displayName:"Radio part",properties:[e.backgroundColor,e.borderColor,e.borderWidth]},{selector:"vaadin-radio-group vaadin-radio-button[checked]::part(radio)",stateAttribute:"checked",stateElementSelector:"vaadin-radio-group vaadin-radio-button",displayName:"Radio part (when checked)",properties:[e.backgroundColor,e.borderColor,e.borderWidth]},{selector:"vaadin-radio-group vaadin-radio-button::part(radio)::after",displayName:"Selection indicator",properties:[{...p.iconColor,propertyName:"border-color"}]},{selector:"vaadin-radio-group vaadin-radio-button label",displayName:"Label",properties:[a.textColor,a.fontSize,a.fontWeight,a.fontStyle]}],setupElement(t){const o=document.createElement("vaadin-radio-button"),r=document.createElement("label");r.textContent="Some label",r.setAttribute("slot","label"),o.append(r),t.append(o)}};export{c as default};
+import{I as e,b as i,N as d,_ as p,O as a}from"./indexhtml-BBeNFWsa.js";import{labelProperties as l,helperTextProperties as s,errorMessageProperties as n}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";const c={tagName:"vaadin-radio-group",displayName:"Radio Button Group",elements:[{selector:"vaadin-radio-group",displayName:"Group",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-radio-group::part(label)",displayName:"Label",properties:l},{selector:"vaadin-radio-group::part(helper-text)",displayName:"Helper text",properties:s},{selector:"vaadin-radio-group::part(error-message)",displayName:"Error message",properties:n},{selector:"vaadin-radio-group vaadin-radio-button",displayName:"Radio buttons",properties:[{propertyName:"--vaadin-radio-button-size",displayName:"Radio button size",defaultValue:"var(--lumo-font-size-l)",editorType:i.range,presets:d.lumoFontSize,icon:"square"}]},{selector:"vaadin-radio-group vaadin-radio-button::part(radio)",displayName:"Radio part",properties:[e.backgroundColor,e.borderColor,e.borderWidth]},{selector:"vaadin-radio-group vaadin-radio-button[checked]::part(radio)",stateAttribute:"checked",stateElementSelector:"vaadin-radio-group vaadin-radio-button",displayName:"Radio part (when checked)",properties:[e.backgroundColor,e.borderColor,e.borderWidth]},{selector:"vaadin-radio-group vaadin-radio-button::part(radio)::after",displayName:"Selection indicator",properties:[{...p.iconColor,propertyName:"border-color"}]},{selector:"vaadin-radio-group vaadin-radio-button label",displayName:"Label",properties:[a.textColor,a.fontSize,a.fontWeight,a.fontStyle]}],setupElement(t){const o=document.createElement("vaadin-radio-button"),r=document.createElement("label");r.textContent="Some label",r.setAttribute("slot","label"),o.append(r),t.append(o)}};export{c as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-rich-text-editor-8cd892f2-bnx9nnne-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-rich-text-editor-8cd892f2-Bnx9nNnE.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-rich-text-editor-8cd892f2-agrc8aqs-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-rich-text-editor-8cd892f2-aGRC8AQs.js`
 
 **File Info:**
 - **Size**: 839 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-rich-text-editor-8cd892f2-Bnx9nNnE.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-rich-text-editor-8cd892f2-aGRC8AQs.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `461f4cdb53c169bcd0171ebc3bbbc269`
-- **SHA256**: `c9cfaa2b126badda7eef5015ad3cdbe049813f46874086cd4d1e99e9fa7a053f`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `baf20da9f56d21a4d92d274c54f5ab74`
+- **SHA256**: `4f4da1bb7249fed850118beddd9d8c988f17cb0fadea6ccfd3229bd3a05df577`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as r,O as o}from"./indexhtml-DUgpeDmv.js";const t={tagName:"vaadin-rich-text-editor",displayName:"Rich Text Editor",elements:[{selector:"vaadin-rich-text-editor",displayName:"Editor",properties:[r.backgroundColor,r.borderRadius,r.borderWidth,r.borderColor,r.padding]},{selector:"vaadin-rich-text-editor::part(toolbar)",displayName:"Toolbar",properties:[r.backgroundColor,r.borderRadius,r.borderWidth,r.borderColor,r.padding]},{selector:"vaadin-rich-text-editor::part(toolbar-button)",displayName:"Toolbar Buttons",properties:[{...o.textColor,displayName:"Color"},{...o.textColor,displayName:"Highlight Color",propertyName:"--lumo-primary-color"}]},{selector:"vaadin-rich-text-editor::part(content)",displayName:"Content",properties:[r.backgroundColor,r.borderRadius,r.borderWidth,r.borderColor,r.padding]}]};export{t as default};
+import{I as r,O as o}from"./indexhtml-BBeNFWsa.js";const t={tagName:"vaadin-rich-text-editor",displayName:"Rich Text Editor",elements:[{selector:"vaadin-rich-text-editor",displayName:"Editor",properties:[r.backgroundColor,r.borderRadius,r.borderWidth,r.borderColor,r.padding]},{selector:"vaadin-rich-text-editor::part(toolbar)",displayName:"Toolbar",properties:[r.backgroundColor,r.borderRadius,r.borderWidth,r.borderColor,r.padding]},{selector:"vaadin-rich-text-editor::part(toolbar-button)",displayName:"Toolbar Buttons",properties:[{...o.textColor,displayName:"Color"},{...o.textColor,displayName:"Highlight Color",propertyName:"--lumo-primary-color"}]},{selector:"vaadin-rich-text-editor::part(content)",displayName:"Content",properties:[r.backgroundColor,r.borderRadius,r.borderWidth,r.borderColor,r.padding]}]};export{t as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-scroller-35e68818-bdembel8-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-scroller-35e68818-BdembEl8.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-scroller-35e68818-63sqs7i3-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-scroller-35e68818-63sQS7i3.js`
 
 **File Info:**
 - **Size**: 272 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-scroller-35e68818-BdembEl8.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-scroller-35e68818-63sQS7i3.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `2fd47cdf003939e427deb7a63b3421eb`
-- **SHA256**: `d27cc67dabc4cceeaec1f66da68dd0b64d06fc6d8d411d56a8cd27bd2da5b0a0`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `de1f0f9463819baa8a6ef1a20880d3c7`
+- **SHA256**: `064c666cda0dc424a97df50fc24ee52a6e7b7a3ca79032b062e8b2cf391c2db0`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as r}from"./indexhtml-DUgpeDmv.js";const o={tagName:"vaadin-scroller",displayName:"Scroller",elements:[{selector:"vaadin-scroller",displayName:"Scroller",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius,r.padding]}]};export{o as default};
+import{I as r}from"./indexhtml-BBeNFWsa.js";const o={tagName:"vaadin-scroller",displayName:"Scroller",elements:[{selector:"vaadin-scroller",displayName:"Scroller",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius,r.padding]}]};export{o as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-select-df6e9947-b3zvvrom-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-select-df6e9947-B3ZVvRom.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-select-df6e9947-dazjwtuu-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-select-df6e9947-DazjWTUu.js`
 
 **File Info:**
 - **Size**: 1.54 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-select-df6e9947-B3ZVvRom.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-select-df6e9947-DazjWTUu.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `7be304d364f4333e426df4ba7db7a1b1`
-- **SHA256**: `eb7b30d54abb9f991fd8ef54088dbedeefdf55f3f3413a8d940541004b25a514`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `0f32c58038408e5e81503d596020cfb8`
+- **SHA256**: `426ec4a545a87a04f43c0eff8742079c7681a98aea7e8fd9795c152e10b3e294`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as e,f as l,O as t,_ as o,R as s,e as i}from"./indexhtml-DUgpeDmv.js";import{labelProperties as p,helperTextProperties as d,errorMessageProperties as n}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";const v={tagName:"vaadin-select",displayName:"Select",elements:[{selector:"vaadin-select::part(input-field)",displayName:"Field",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,l.height,l.paddingInline]},{selector:"vaadin-select vaadin-select-value-button>vaadin-select-item",displayName:"Field text",properties:[t.textColor,t.fontSize,t.fontWeight]},{selector:"vaadin-select::part(toggle-button)",displayName:"Field toggle button",properties:[o.iconColor,o.iconSize]},{selector:"vaadin-select::part(label)",displayName:"Label",properties:p},{selector:"vaadin-select::part(helper-text)",displayName:"Helper text",properties:d},{selector:"vaadin-select::part(error-message)",displayName:"Error message",properties:n},{selector:"vaadin-select-overlay::part(overlay)",displayName:"Overlay",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-select-overlay vaadin-select-item",displayName:"Overlay items",properties:[t.textColor,t.fontSize,t.fontWeight]},{selector:"vaadin-select-overlay vaadin-select-item::part(checkmark)::before",displayName:"Overlay item checkmark",properties:[o.iconColor,o.iconSize]}],async setupElement(r){r.overlayClass=r.getAttribute("class")},openOverlay:r=>{const a=r.element;s(a,a,a)},hideOverlay:r=>{const a=r.element;a.opened=!1,i(a,a,a)}};export{v as default};
+import{I as e,f as l,O as t,_ as o,R as s,e as i}from"./indexhtml-BBeNFWsa.js";import{labelProperties as p,helperTextProperties as d,errorMessageProperties as n}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";const v={tagName:"vaadin-select",displayName:"Select",elements:[{selector:"vaadin-select::part(input-field)",displayName:"Field",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,l.height,l.paddingInline]},{selector:"vaadin-select vaadin-select-value-button>vaadin-select-item",displayName:"Field text",properties:[t.textColor,t.fontSize,t.fontWeight]},{selector:"vaadin-select::part(toggle-button)",displayName:"Field toggle button",properties:[o.iconColor,o.iconSize]},{selector:"vaadin-select::part(label)",displayName:"Label",properties:p},{selector:"vaadin-select::part(helper-text)",displayName:"Helper text",properties:d},{selector:"vaadin-select::part(error-message)",displayName:"Error message",properties:n},{selector:"vaadin-select-overlay::part(overlay)",displayName:"Overlay",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-select-overlay vaadin-select-item",displayName:"Overlay items",properties:[t.textColor,t.fontSize,t.fontWeight]},{selector:"vaadin-select-overlay vaadin-select-item::part(checkmark)::before",displayName:"Overlay item checkmark",properties:[o.iconColor,o.iconSize]}],async setupElement(r){r.overlayClass=r.getAttribute("class")},openOverlay:r=>{const a=r.element;s(a,a,a)},hideOverlay:r=>{const a=r.element;a.opened=!1,i(a,a,a)}};export{v as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-side-nav-ba80d91d-dx5bse6e-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-ba80d91d-Dx5bsE6E.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-side-nav-ba80d91d-bxmua18x-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-ba80d91d-BXMUA18X.js`
 
 **File Info:**
 - **Size**: 1.44 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-ba80d91d-Dx5bsE6E.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-ba80d91d-BXMUA18X.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `8c1dec4e13ed6fc5049264c5703f7c3f`
-- **SHA256**: `b893c88f0b717150a79ef4aad3415977b6c020c638c3c0c41bc05f4b00da74f6`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `80d47e0c5c7a46348397d8fefd1797fe`
+- **SHA256**: `ec11f0731a7201a161c1fa522010996171674d46d9f33b8f5264ef606e988609`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as e,O as i,_ as a}from"./indexhtml-DUgpeDmv.js";const t={tagName:"vaadin-side-nav",displayName:"Side Navigation",elements:[{selector:"vaadin-side-nav",displayName:"Root element",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:'vaadin-side-nav > [slot="label"]',displayName:"Label",properties:[i.textColor,i.fontSize,i.fontWeight,i.fontStyle]},{selector:'vaadin-side-nav vaadin-side-nav-item > [slot="prefix"]',displayName:"Nav item icon",properties:[a.iconSize,a.iconColor]},{selector:'vaadin-side-nav vaadin-side-nav-item[active] > [slot="prefix"]',displayName:"Nav item icon (active)",properties:[a.iconSize,a.iconColor]},{selector:"vaadin-side-nav vaadin-side-nav-item::part(item)",displayName:"Nav item",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding,i.textColor,i.fontSize,i.fontWeight,i.fontStyle]},{selector:"vaadin-side-nav vaadin-side-nav-item[active]::part(item)",displayName:"Nav item (active)",properties:[i.textColor,i.fontSize,i.fontWeight,i.fontStyle,e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-side-nav vaadin-side-nav-item::part(toggle-button)::before",displayName:"Expand/collapse icon",properties:[a.iconSize,a.iconColor]},{selector:"vaadin-side-nav vaadin-side-nav-item[active]::part(toggle-button)::before",displayName:"Expand/collapse icon (active)",properties:[a.iconSize,a.iconColor]}]};export{t as default};
+import{I as e,O as i,_ as a}from"./indexhtml-BBeNFWsa.js";const t={tagName:"vaadin-side-nav",displayName:"Side Navigation",elements:[{selector:"vaadin-side-nav",displayName:"Root element",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:'vaadin-side-nav > [slot="label"]',displayName:"Label",properties:[i.textColor,i.fontSize,i.fontWeight,i.fontStyle]},{selector:'vaadin-side-nav vaadin-side-nav-item > [slot="prefix"]',displayName:"Nav item icon",properties:[a.iconSize,a.iconColor]},{selector:'vaadin-side-nav vaadin-side-nav-item[active] > [slot="prefix"]',displayName:"Nav item icon (active)",properties:[a.iconSize,a.iconColor]},{selector:"vaadin-side-nav vaadin-side-nav-item::part(item)",displayName:"Nav item",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding,i.textColor,i.fontSize,i.fontWeight,i.fontStyle]},{selector:"vaadin-side-nav vaadin-side-nav-item[active]::part(item)",displayName:"Nav item (active)",properties:[i.textColor,i.fontSize,i.fontWeight,i.fontStyle,e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-side-nav vaadin-side-nav-item::part(toggle-button)::before",displayName:"Expand/collapse icon",properties:[a.iconSize,a.iconColor]},{selector:"vaadin-side-nav vaadin-side-nav-item[active]::part(toggle-button)::before",displayName:"Expand/collapse icon (active)",properties:[a.iconSize,a.iconColor]}]};export{t as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-side-nav-item-34918f92-b01ctcaj-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-item-34918f92-B01CTcaJ.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-side-nav-item-34918f92-d9mgrcfe-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-item-34918f92-D9MGRCFe.js`
 
 **File Info:**
 - **Size**: 1.4 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-item-34918f92-B01CTcaJ.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-item-34918f92-D9MGRCFe.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `85b1b0fc7bcc38015d9381724aec9b6c`
-- **SHA256**: `5b578c72b5aa083d0a2f554f74e82bfed2c1648f0f7833aa3c435782fb48a8b7`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `042a8a28233c80ad53abfad2b92dccef`
+- **SHA256**: `79bb1770a52583bf5219d885f5432f37f27e7c5723e9efb764da66e5ec222b96`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{h as t,_ as i,I as e,O as o}from"./indexhtml-DUgpeDmv.js";const n={tagName:"vaadin-side-nav-item",displayName:"Side Navigation Item",description:t`You are styling selected item only, if you wish to style all items of given SideNav component please
+import{h as t,_ as i,I as e,O as o}from"./indexhtml-BBeNFWsa.js";const n={tagName:"vaadin-side-nav-item",displayName:"Side Navigation Item",description:t`You are styling selected item only, if you wish to style all items of given SideNav component please
     pick <code>vaadin-side-nav</code> instead.`,notAccessibleDescription:t`If you wish to style all items of current SideNav component please pick
     <code>vaadin-side-nav</code> instead.`,elements:[{selector:'vaadin-side-nav-item > [slot="prefix"]',displayName:"Nav item icon",properties:[i.iconSize,i.iconColor]},{selector:'vaadin-side-nav-item[active] > [slot="prefix"]',displayName:"Nav item icon (active)",properties:[i.iconSize,i.iconColor]},{selector:"vaadin-side-nav-item::part(item)",displayName:"Nav item",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding,o.textColor,o.fontSize,o.fontWeight,o.fontStyle]},{selector:"vaadin-side-nav-item[active]::part(item)",displayName:"Nav item (active)",properties:[o.textColor,o.fontSize,o.fontWeight,o.fontStyle,e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-side-nav-item::part(toggle-button)::before",displayName:"Expand/collapse icon",properties:[i.iconSize,i.iconColor]},{selector:"vaadin-side-nav-item[active]::part(toggle-button)::before",displayName:"Expand/collapse icon (active)",properties:[i.iconSize,i.iconColor]}]};export{n as default};
 
@@ -17847,255 +18077,255 @@ import{h as t,_ as i,I as e,O as o}from"./indexhtml-DUgpeDmv.js";const n={tagNam
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-split-layout-80c92131-dqqialwy-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-split-layout-80c92131-DQQIALWy.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-split-layout-80c92131-dbnr1gkm-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-split-layout-80c92131-DbNR1GKm.js`
 
 **File Info:**
 - **Size**: 494 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-split-layout-80c92131-DQQIALWy.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-split-layout-80c92131-DbNR1GKm.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `8510e88e72b6c9fac2a27e640a022198`
-- **SHA256**: `a54e78c38f9ec0ad60d398e1d48083af16af2551fc71380102777b26618c70f8`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `b06e75c0b396544169f12875b96f0edc`
+- **SHA256**: `8c0b9b092bd7f3a1b0ccb34520d3f7450b4d90508ebeead6ba0f52c5f5fbf4f5`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as a}from"./indexhtml-DUgpeDmv.js";const r={tagName:"vaadin-split-layout",displayName:"Split Layout",elements:[{selector:"vaadin-split-layout",displayName:"Layout",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius]},{selector:"vaadin-split-layout::part(splitter)",displayName:"Splitter bar",properties:[a.backgroundColor]},{selector:"vaadin-split-layout::part(handle)::after",displayName:"Splitter handle",properties:[a.backgroundColor]}]};export{r as default};
+import{I as a}from"./indexhtml-BBeNFWsa.js";const r={tagName:"vaadin-split-layout",displayName:"Split Layout",elements:[{selector:"vaadin-split-layout",displayName:"Layout",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius]},{selector:"vaadin-split-layout::part(splitter)",displayName:"Splitter bar",properties:[a.backgroundColor]},{selector:"vaadin-split-layout::part(handle)::after",displayName:"Splitter handle",properties:[a.backgroundColor]}]};export{r as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-spreadsheet-59d8c5ef-boin3wp5-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-spreadsheet-59d8c5ef-Boin3Wp5.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-spreadsheet-59d8c5ef-cthrftv0-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-spreadsheet-59d8c5ef-CtHRftV0.js`
 
 **File Info:**
 - **Size**: 284 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-spreadsheet-59d8c5ef-Boin3Wp5.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-spreadsheet-59d8c5ef-CtHRftV0.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `3682f21720bfc972274f3d8572f53817`
-- **SHA256**: `dbc07333f13b6cfc991e0fdade145b94a939844bd2fd765ee3caefeb30663a41`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `83908caebafcd3555ba630b04d38e451`
+- **SHA256**: `a95a09c30985a1714bae8aedbef08d58e0cd5f026fcd6aa204e41e4774baf8e6`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as e}from"./indexhtml-DUgpeDmv.js";const r={tagName:"vaadin-spreadsheet",displayName:"Spreadsheet",elements:[{selector:"vaadin-spreadsheet",displayName:"Spreadsheet",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]}]};export{r as default};
+import{I as e}from"./indexhtml-BBeNFWsa.js";const r={tagName:"vaadin-spreadsheet",displayName:"Spreadsheet",elements:[{selector:"vaadin-spreadsheet",displayName:"Spreadsheet",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]}]};export{r as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-tab-aaf32809-cmobbbfo-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-tab-aaf32809-CMobBBfO.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-tab-aaf32809-cwon-hid-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-tab-aaf32809-cWon-hid.js`
 
 **File Info:**
 - **Size**: 740 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-tab-aaf32809-CMobBBfO.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-tab-aaf32809-cWon-hid.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `d48032f978dab2775e58921a87d5c29a`
-- **SHA256**: `57e78ede236efdd773624fb52901758cd3db45e0068a98b3356e16586f2065d6`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `6d43eda4c8f9a6c9e69f8d1932c494b0`
+- **SHA256**: `5c357ce0ee4511a8e42a8693a65b8bb0162142a93aa89d5221a4e5af6772b19b`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{h as t,O as e,I as a}from"./indexhtml-DUgpeDmv.js";const i={tagName:"vaadin-tab",displayName:"Tab",description:t`You are styling selected tab only, if you wish to style all tabs please pick
+import{h as t,O as e,I as a}from"./indexhtml-BBeNFWsa.js";const i={tagName:"vaadin-tab",displayName:"Tab",description:t`You are styling selected tab only, if you wish to style all tabs please pick
     <code>vaadin-tabs</code> instead.`,notAccessibleDescription:t`If you wish to style all tabs please pick <code>vaadin-tabs</code> instead.`,elements:[{selector:"vaadin-tab",displayName:"Tab item",properties:[e.textColor,e.fontSize,e.fontWeight,a.backgroundColor,a.padding]},{selector:"vaadin-tab[selected]",displayName:"Tab item (selected)",properties:[e.textColor,e.fontSize,e.fontWeight,a.backgroundColor,a.padding]},{selector:"vaadin-tab::before",displayName:"Selection indicator",properties:[a.backgroundColor]}]};export{i as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-tabs-d9a5e24e-h4fkhywt-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-tabs-d9a5e24e-H4FKhyWT.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-tabs-d9a5e24e-ductcgqc-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-tabs-d9a5e24e-DUcTcgqc.js`
 
 **File Info:**
 - **Size**: 833 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-tabs-d9a5e24e-H4FKhyWT.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-tabs-d9a5e24e-DUcTcgqc.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `e8a6701ee4c6ebcba707530b08f9533d`
-- **SHA256**: `fa0f7800d7c8fece6319c5cdb69c5eba625a1719fdddfb90b75717ed9cbbecc8`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `7dd813b08de43e6243226b1a045afed4`
+- **SHA256**: `0ba9f3dc6e9d7394b4c1ce77d801022a217066abcb91760f34e48a34e99b9914`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as a,O as e,_ as t}from"./indexhtml-DUgpeDmv.js";const i={tagName:"vaadin-tabs",displayName:"Tabs",elements:[{selector:"vaadin-tabs",displayName:"Tabs",properties:[a.padding]},{selector:"vaadin-tabs vaadin-tab",displayName:"Tab item",properties:[e.textColor,e.fontSize,e.fontWeight,a.backgroundColor,a.padding]},{selector:"vaadin-tabs > vaadin-tab[selected]",displayName:"Tab item (selected)",properties:[e.textColor,e.fontSize,e.fontWeight,a.backgroundColor,a.padding]},{selector:"vaadin-tabs > vaadin-tab::before",displayName:"Selection indicator",properties:[a.backgroundColor]},{selector:"vaadin-tabs::part(back-button)",displayName:"Back button",properties:[t.iconColor,t.iconSize]},{selector:"vaadin-tabs::part(forward-button)",displayName:"Forward button",properties:[t.iconColor,t.iconSize]}]};export{i as default};
+import{I as a,O as e,_ as t}from"./indexhtml-BBeNFWsa.js";const i={tagName:"vaadin-tabs",displayName:"Tabs",elements:[{selector:"vaadin-tabs",displayName:"Tabs",properties:[a.padding]},{selector:"vaadin-tabs vaadin-tab",displayName:"Tab item",properties:[e.textColor,e.fontSize,e.fontWeight,a.backgroundColor,a.padding]},{selector:"vaadin-tabs > vaadin-tab[selected]",displayName:"Tab item (selected)",properties:[e.textColor,e.fontSize,e.fontWeight,a.backgroundColor,a.padding]},{selector:"vaadin-tabs > vaadin-tab::before",displayName:"Selection indicator",properties:[a.backgroundColor]},{selector:"vaadin-tabs::part(back-button)",displayName:"Back button",properties:[t.iconColor,t.iconSize]},{selector:"vaadin-tabs::part(forward-button)",displayName:"Forward button",properties:[t.iconColor,t.iconSize]}]};export{i as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-tabsheet-dd99ed9a-cdpj7flw-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-tabsheet-dd99ed9a-CdpJ7fLw.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-tabsheet-dd99ed9a-celggbx-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-tabsheet-dd99ed9a-CELggbX_.js`
 
 **File Info:**
 - **Size**: 273 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-tabsheet-dd99ed9a-CdpJ7fLw.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-tabsheet-dd99ed9a-CELggbX_.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `6067be0953e13016851d7be2732d6792`
-- **SHA256**: `6015c0312bd5a7592be821ee060c1f16040eece5cad91324aae18a27ae1289ac`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `f01d418cdb6a6d19b947d069c136a992`
+- **SHA256**: `0b637df8499b240034443822200511c4771e2662473e41b4d46d272df8befa2e`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as e}from"./indexhtml-DUgpeDmv.js";const r={tagName:"vaadin-tabsheet",displayName:"Tab Sheet",elements:[{selector:"vaadin-tabsheet",displayName:"TabSheet",properties:[e.padding,e.backgroundColor,e.borderWidth,e.borderColor,e.borderRadius]}]};export{r as default};
+import{I as e}from"./indexhtml-BBeNFWsa.js";const r={tagName:"vaadin-tabsheet",displayName:"Tab Sheet",elements:[{selector:"vaadin-tabsheet",displayName:"TabSheet",properties:[e.padding,e.backgroundColor,e.borderWidth,e.borderColor,e.borderRadius]}]};export{r as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-text-area-83627ebc-d1efmkr-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-text-area-83627ebc-D1efmKr_.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-text-area-83627ebc-drzvrwzp-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-text-area-83627ebc-DRZVrWZP.js`
 
 **File Info:**
 - **Size**: 795 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-text-area-83627ebc-D1efmKr_.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-text-area-83627ebc-DRZVrWZP.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `03e744163182edf38efa0c0cd2ad20af`
-- **SHA256**: `ff32f0bc77adb2a82db73a6627e767a76d7e984c53de89ce02e1664e16db8d54`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `ba46ed12b0921991eab600181c62f214`
+- **SHA256**: `f1794be1706a04e0a1969a9e19fdca3b8774faf600f6de4fc0d5be064a45efce`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{inputFieldProperties as e,labelProperties as a,helperTextProperties as r,errorMessageProperties as t}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{standardButtonProperties as s}from"./vaadin-button-2511ad84-DTAIizqr.js";import"./indexhtml-DUgpeDmv.js";const l={tagName:"vaadin-text-area",displayName:"Text Area",elements:[{selector:"vaadin-text-area::part(input-field)",displayName:"Input field",properties:e},{selector:"vaadin-text-area::part(label)",displayName:"Label",properties:a},{selector:"vaadin-text-area::part(helper-text)",displayName:"Helper text",properties:r},{selector:"vaadin-text-area::part(error-message)",displayName:"Error message",properties:t},{selector:"vaadin-text-area::part(clear-button)",displayName:"Clear button",properties:s}]};export{l as default};
+import{inputFieldProperties as e,labelProperties as a,helperTextProperties as r,errorMessageProperties as t}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{standardButtonProperties as s}from"./vaadin-button-2511ad84-jPPu0iwl.js";import"./indexhtml-BBeNFWsa.js";const l={tagName:"vaadin-text-area",displayName:"Text Area",elements:[{selector:"vaadin-text-area::part(input-field)",displayName:"Input field",properties:e},{selector:"vaadin-text-area::part(label)",displayName:"Label",properties:a},{selector:"vaadin-text-area::part(helper-text)",displayName:"Helper text",properties:r},{selector:"vaadin-text-area::part(error-message)",displayName:"Error message",properties:t},{selector:"vaadin-text-area::part(clear-button)",displayName:"Clear button",properties:s}]};export{l as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-text-field-0b3db014-bfnvbctc-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-text-field-0b3db014-BFnVBCtC.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-text-field-0b3db014-diwqvpfw-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-text-field-0b3db014-DIwQvPFw.js`
 
 **File Info:**
 - **Size**: 947 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-text-field-0b3db014-BFnVBCtC.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-text-field-0b3db014-DIwQvPFw.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `b3895ad2df701a5bb47836ffaf86464e`
-- **SHA256**: `a1668b2e111aadf1191c25df794699d4f73f26eae979ff559c004f6e807cc5b9`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `5d70cd7a7ccd0cd1383da87fb53ba4ca`
+- **SHA256**: `795d66eb31b0f2b23c3f0b6b9607e053a950af6f720fe4d88434de80161a1222`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as t,f as r,O as e,A as a}from"./indexhtml-DUgpeDmv.js";const i=[t.backgroundColor,t.borderColor,t.borderWidth,t.borderRadius,r.height,r.paddingInline,e.textColor,e.fontSize,e.fontWeight],o=[e.textColor,e.fontSize,e.fontWeight],l=[e.textColor,e.fontSize,e.fontWeight],s=[e.textColor,e.fontSize,e.fontWeight],d={tagName:"vaadin-text-field",displayName:"Text Field",elements:[{selector:"vaadin-text-field::part(input-field)",displayName:"Input field",properties:i},{selector:"vaadin-text-field::part(label)",displayName:"Label",properties:o},{selector:"vaadin-text-field::part(helper-text)",displayName:"Helper text",properties:l},{selector:"vaadin-text-field::part(error-message)",displayName:"Error message",properties:s},{selector:"vaadin-text-field::part(clear-button)",displayName:"Clear button",properties:a}]};export{d as default,s as errorMessageProperties,l as helperTextProperties,i as inputFieldProperties,o as labelProperties};
+import{I as t,f as r,O as e,A as a}from"./indexhtml-BBeNFWsa.js";const i=[t.backgroundColor,t.borderColor,t.borderWidth,t.borderRadius,r.height,r.paddingInline,e.textColor,e.fontSize,e.fontWeight],o=[e.textColor,e.fontSize,e.fontWeight],l=[e.textColor,e.fontSize,e.fontWeight],s=[e.textColor,e.fontSize,e.fontWeight],d={tagName:"vaadin-text-field",displayName:"Text Field",elements:[{selector:"vaadin-text-field::part(input-field)",displayName:"Input field",properties:i},{selector:"vaadin-text-field::part(label)",displayName:"Label",properties:o},{selector:"vaadin-text-field::part(helper-text)",displayName:"Helper text",properties:l},{selector:"vaadin-text-field::part(error-message)",displayName:"Error message",properties:s},{selector:"vaadin-text-field::part(clear-button)",displayName:"Clear button",properties:a}]};export{d as default,s as errorMessageProperties,l as helperTextProperties,i as inputFieldProperties,o as labelProperties};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-time-picker-715ec415-dwbmt7mx-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-time-picker-715ec415-DwbMT7mX.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-time-picker-715ec415-bpl7oagi-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-time-picker-715ec415-BPL7OaGI.js`
 
 **File Info:**
 - **Size**: 1.37 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-time-picker-715ec415-DwbMT7mX.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-time-picker-715ec415-BPL7OaGI.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `ac4cb1561719015010ad95747999832d`
-- **SHA256**: `40b826274ee94678c712323264a226415a156b189b1bd23036e8da994164893e`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `3104f12471d2b8706afd84fa7cbbf3c7`
+- **SHA256**: `e4c25fc894414ef4b172ec5b635d1404e34c4d320acd3e3a635058ece2ef202c`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{inputFieldProperties as o,labelProperties as p,helperTextProperties as s,errorMessageProperties as l}from"./vaadin-text-field-0b3db014-BFnVBCtC.js";import{_ as r,I as e,O as i,i as m,j as d}from"./indexhtml-DUgpeDmv.js";const v={tagName:"vaadin-time-picker",displayName:"Time Picker",elements:[{selector:"vaadin-time-picker::part(input-field)",displayName:"Input field",properties:o},{selector:"vaadin-time-picker::part(toggle-button)",displayName:"Toggle button",properties:[r.iconColor,r.iconSize]},{selector:"vaadin-time-picker::part(label)",displayName:"Label",properties:p},{selector:"vaadin-time-picker::part(helper-text)",displayName:"Helper text",properties:s},{selector:"vaadin-time-picker::part(error-message)",displayName:"Error message",properties:l},{selector:"vaadin-time-picker-overlay::part(overlay)",displayName:"Overlay",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-time-picker-overlay vaadin-time-picker-item",displayName:"Overlay items",properties:[i.textColor,i.fontSize,i.fontWeight]},{selector:"vaadin-time-picker-overlay vaadin-time-picker-item::part(checkmark)::before",displayName:"Overlay item checkmark",properties:[r.iconColor,r.iconSize]}],async setupElement(a){a.overlayClass=a.getAttribute("class"),a.value="00:00",await new Promise(t=>setTimeout(t,10))},openOverlay:m,hideOverlay:d};export{v as default};
+import{inputFieldProperties as o,labelProperties as p,helperTextProperties as s,errorMessageProperties as l}from"./vaadin-text-field-0b3db014-DIwQvPFw.js";import{_ as r,I as e,O as i,i as m,j as d}from"./indexhtml-BBeNFWsa.js";const v={tagName:"vaadin-time-picker",displayName:"Time Picker",elements:[{selector:"vaadin-time-picker::part(input-field)",displayName:"Input field",properties:o},{selector:"vaadin-time-picker::part(toggle-button)",displayName:"Toggle button",properties:[r.iconColor,r.iconSize]},{selector:"vaadin-time-picker::part(label)",displayName:"Label",properties:p},{selector:"vaadin-time-picker::part(helper-text)",displayName:"Helper text",properties:s},{selector:"vaadin-time-picker::part(error-message)",displayName:"Error message",properties:l},{selector:"vaadin-time-picker-overlay::part(overlay)",displayName:"Overlay",properties:[e.backgroundColor,e.borderColor,e.borderWidth,e.borderRadius,e.padding]},{selector:"vaadin-time-picker-overlay vaadin-time-picker-item",displayName:"Overlay items",properties:[i.textColor,i.fontSize,i.fontWeight]},{selector:"vaadin-time-picker-overlay vaadin-time-picker-item::part(checkmark)::before",displayName:"Overlay item checkmark",properties:[r.iconColor,r.iconSize]}],async setupElement(a){a.overlayClass=a.getAttribute("class"),a.value="00:00",await new Promise(t=>setTimeout(t,10))},openOverlay:m,hideOverlay:d};export{v as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-upload-d3c162ed-b4-tfbv-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-upload-d3c162ed-B4_TFbv_.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-upload-d3c162ed-drlcciu-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-upload-d3c162ed-DRLccIU_.js`
 
 **File Info:**
 - **Size**: 1.04 KB
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-upload-d3c162ed-B4_TFbv_.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-upload-d3c162ed-DRLccIU_.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `f04b6b72ce10665b0b968f0f3a3146b6`
-- **SHA256**: `1d4c3dd35edde043c07ad92ae83f826b8b211600f22eba437f5b55c7ee3014b7`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `b033ffbc2075fc8e45eeef9f254e09f9`
+- **SHA256**: `4a68b6946314a1d5a101cfd428176222cf8ecfa49804afadbcf4a916fc274304`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{standardButtonProperties as e}from"./vaadin-button-2511ad84-DTAIizqr.js";import{O as o,I as a}from"./indexhtml-DUgpeDmv.js";const d={tagName:"vaadin-upload",displayName:"Upload",elements:[{selector:"vaadin-upload > vaadin-button",displayName:"Upload button",properties:e},{selector:"vaadin-upload > vaadin-button::part(label)",displayName:"Upload button text",properties:[o.textColor,o.fontSize,o.fontWeight]},{selector:"vaadin-upload::part(drop-label)",displayName:"Drop label",properties:[o.textColor,o.fontSize,o.fontWeight]},{selector:"vaadin-upload vaadin-upload-file-list::part(list)",displayName:"File list",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding]},{selector:"vaadin-upload vaadin-upload-file",displayName:"File element",properties:[o.textColor,o.fontSize,o.fontWeight,a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding]},{selector:"vaadin-upload vaadin-upload-file > vaadin-progress-bar::part(value)",displayName:"Progress bar",properties:[a.backgroundColor]}]};export{d as default};
+import{standardButtonProperties as e}from"./vaadin-button-2511ad84-jPPu0iwl.js";import{O as o,I as a}from"./indexhtml-BBeNFWsa.js";const d={tagName:"vaadin-upload",displayName:"Upload",elements:[{selector:"vaadin-upload > vaadin-button",displayName:"Upload button",properties:e},{selector:"vaadin-upload > vaadin-button::part(label)",displayName:"Upload button text",properties:[o.textColor,o.fontSize,o.fontWeight]},{selector:"vaadin-upload::part(drop-label)",displayName:"Drop label",properties:[o.textColor,o.fontSize,o.fontWeight]},{selector:"vaadin-upload vaadin-upload-file-list::part(list)",displayName:"File list",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding]},{selector:"vaadin-upload vaadin-upload-file",displayName:"File element",properties:[o.textColor,o.fontSize,o.fontWeight,a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding]},{selector:"vaadin-upload vaadin-upload-file > vaadin-progress-bar::part(value)",displayName:"Progress bar",properties:[a.backgroundColor]}]};export{d as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-vertical-layout-ad4174c4-cem38jex-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-vertical-layout-ad4174c4-CeM38jex.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-vertical-layout-ad4174c4-btv2sbzm-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-vertical-layout-ad4174c4-BtV2SBZm.js`
 
 **File Info:**
 - **Size**: 297 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-vertical-layout-ad4174c4-CeM38jex.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-vertical-layout-ad4174c4-BtV2SBZm.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `4a1d3edd4b960b65985e8f32fd5eed5c`
-- **SHA256**: `bd1359bd24042a2f01f4afd570200e3a9866fa397550e615b3d548f4127fc3b6`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `309aa219fcb95bfde4b2ed827c421767`
+- **SHA256**: `6f973d8e082a976da2fdacfdbb1684881b4ab5d6b2e6760a0394be0c88a7f3d4`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as a}from"./indexhtml-DUgpeDmv.js";const o={tagName:"vaadin-vertical-layout",displayName:"Vertical Layout",elements:[{selector:"vaadin-vertical-layout",displayName:"Layout",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding,a.gap]}]};export{o as default};
+import{I as a}from"./indexhtml-BBeNFWsa.js";const o={tagName:"vaadin-vertical-layout",displayName:"Vertical Layout",elements:[{selector:"vaadin-vertical-layout",displayName:"Layout",properties:[a.backgroundColor,a.borderColor,a.borderWidth,a.borderRadius,a.padding,a.gap]}]};export{o as default};
 
 ```
 
 ---
 
-### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-virtual-list-96896203-bpegofr1-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-virtual-list-96896203-BPeGOfR1.js`
+### <a id="📄-target-dev-bundle-webapp-vaadin-build-vaadin-virtual-list-96896203-bdu3j8jh-js"></a>📄 `target/dev-bundle/webapp/VAADIN/build/vaadin-virtual-list-96896203-BdU3J8jH.js`
 
 **File Info:**
 - **Size**: 270 B
 - **Extension**: `.js`
 - **Language**: `javascript`
-- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-virtual-list-96896203-BPeGOfR1.js`
+- **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-virtual-list-96896203-BdU3J8jH.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:01 (America/Bahia / GMT-03:00)
-- **MD5**: `e13b0d10e942285be9d7233a30cd4187`
-- **SHA256**: `64f6c79ae924cfc44dfc345c96573e8d7d534bdde9bd7cf91baa44cfb88499a7`
+- **Created**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `c5ab9f4b29e9a31dc06d1c1229705cc9`
+- **SHA256**: `617c76966574941e489724ee81d5d40854cc6eb923f481e0828172152adb6831`
 - **Encoding**: ASCII
 
 **File code content:**
 
 ```javascript
-import{I as r}from"./indexhtml-DUgpeDmv.js";const t={tagName:"vaadin-virtual-list",displayName:"Virtual List",elements:[{selector:"vaadin-virtual-list",displayName:"List",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius]}]};export{t as default};
+import{I as r}from"./indexhtml-BBeNFWsa.js";const t={tagName:"vaadin-virtual-list",displayName:"Virtual List",elements:[{selector:"vaadin-virtual-list",displayName:"List",properties:[r.backgroundColor,r.borderColor,r.borderWidth,r.borderRadius]}]};export{t as default};
 
 ```
 
@@ -18105,7 +18335,7 @@ import{I as r}from"./indexhtml-DUgpeDmv.js";const t={tagName:"vaadin-virtual-lis
 
 The following files were not included in the text content:
 
-- `target/dev-bundle/webapp/VAADIN/build/generated-flow-imports-_7H-nYp-.js`
+- `target/dev-bundle/webapp/VAADIN/build/generated-flow-imports-Dp23KHu7.js`
 
 ### <a id="📄-target-dev-bundle-webapp-index-html"></a>📄 `target/dev-bundle/webapp/index.html`
 
@@ -18116,9 +18346,9 @@ The following files were not included in the text content:
 - **Location**: `target/dev-bundle/webapp/index.html`
 - **Relative Path**: `target/dev-bundle/webapp`
 - **Created**: 2026-08-22 16:14:08 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 17:02:02 (America/Bahia / GMT-03:00)
-- **MD5**: `3719013e1265f72f1ba38062dbcd35ad`
-- **SHA256**: `a3f8ffc2c763f99349463c27b24fc672291520f3c00dfe6df36d6a5a9523483b`
+- **Modified**: 2026-08-23 18:56:44 (America/Bahia / GMT-03:00)
+- **MD5**: `f653a5d4cd8a297d5ee5c5acd60566dc`
+- **SHA256**: `be141b58697e7f4091a08470eedb83feb0eb8df671a0c53d05d3f0ce0c618ce3`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -18141,7 +18371,7 @@ This file is auto-generated by Vaadin.
     }
   </style>
   <!-- index.ts is included here automatically (either by the dev server or during the build) -->
-  <script type="module" crossorigin src="./VAADIN/build/indexhtml-DUgpeDmv.js"></script>
+  <script type="module" crossorigin src="./VAADIN/build/indexhtml-BBeNFWsa.js"></script>
 </head>
 <body>
   <!-- This outlet div is where the views are rendered -->

@@ -30,7 +30,8 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import java.util.Locale;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
+
+
 
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -41,6 +42,13 @@ import java.util.List;
 @PageTitle("Gestão Operacional de Carregamento | TMS")
 @CssImport("./styles/dashboard-styles.css")
 @PermitAll
+@CssImport(value = "./styles/vaadin-grid-custom.css", themeFor = "vaadin-grid")
+@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-text-field")
+@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-date-picker")
+@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-select")
+@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-combo-box")
+@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-text-area")
+@CssImport(value = "./styles/vaadin-dialog-custom.css", themeFor = "vaadin-dialog-overlay")
 public class MainView extends VerticalLayout {
 
     private final CarregamentoRepository repository;
@@ -53,6 +61,7 @@ public class MainView extends VerticalLayout {
     private final Span txtCarregando = new Span("0");
     private final Span txtExpedidos = new Span("0");
     private final Span txtPeso = new Span("0 kg");
+    private final Span txtPendentes = new Span("0");
 
     public MainView(CarregamentoRepository repository, ExcelService excelService) {
         this.repository = repository;
@@ -77,29 +86,32 @@ public class MainView extends VerticalLayout {
         add(titulo, containerKPI, barraAcoes, grid);
         atualizarGridEIndicators();
     }
+    
 
     private Div criarCardsKPIs() {
-        Div container = new Div();
-        container.addClassName("kpi-container");
+    Div container = new Div();
+    container.addClassName("kpi-container");
 
-        txtTotal.addClassName("kpi-value");
-        txtApresentados.addClassName("kpi-value");
-        txtCarregando.addClassName("kpi-value");
-        txtExpedidos.addClassName("kpi-value");
-        txtPeso.addClassName("kpi-value");
+    txtTotal.addClassName("kpi-value");
+    txtPendentes.addClassName("kpi-value");
+    txtApresentados.addClassName("kpi-value");
+    txtCarregando.addClassName("kpi-value");
+    txtExpedidos.addClassName("kpi-value");
+    txtPeso.addClassName("kpi-value");
 
-        container.add(
-            criarCardSingle("TOTAL CARREGAMENTOS", txtTotal, VaadinIcon.TRUCK.create(), "total", "kpi-icon-total"),
-            criarCardSingle("APRESENTADOS", txtApresentados, VaadinIcon.CHECK_CIRCLE.create(), "apresentados", "kpi-icon-apresentados"),
-            criarCardSingle("CARREGANDO", txtCarregando, VaadinIcon.CLOCK.create(), "carregando", "kpi-icon-carregando"),
-            criarCardSingle("EXPEDIDOS", txtExpedidos, VaadinIcon.PACKAGE.create(), "expedidos", "kpi-icon-expedidos"),
-            criarCardSingle("PESO PROGRAMADO", txtPeso, VaadinIcon.SCALE.create(), "peso", "kpi-icon-peso")
-        );
+    container.add(
+        criarCardSingle("TOTAL CARREGAMENTOS", txtTotal, VaadinIcon.TRUCK.create(), "total", "kpi-icon-total", "TODOS"),
+        criarCardSingle("PENDENTES", txtPendentes, VaadinIcon.TIME_BACKWARD.create(), "pendentes", "kpi-icon-pendentes", "Pendente"),
+        criarCardSingle("APRESENTADOS", txtApresentados, VaadinIcon.CHECK_CIRCLE.create(), "apresentados", "kpi-icon-apresentados", "Apresentado"),
+        criarCardSingle("CARREGANDO", txtCarregando, VaadinIcon.CLOCK.create(), "carregando", "kpi-icon-carregando", "Carregando"),
+        criarCardSingle("EXPEDIDOS", txtExpedidos, VaadinIcon.PACKAGE.create(), "expedidos", "kpi-icon-expedidos", "Expedido"),
+        criarCardSingle("PESO PROGRAMADO", txtPeso, VaadinIcon.SCALE.create(), "peso", "kpi-icon-peso", null) // Sem filtro para Peso
+    );
 
-        return container;
-    }
+    return container;
+}
 
-    private Div criarCardSingle(String titulo, Span valorSpan, Icon icone, String classeVariacao, String classeIcone) {
+private Div criarCardSingle(String titulo, Span valorSpan, Icon icone, String classeVariacao, String classeIcone, String statusFiltro) {
         Div card = new Div();
         card.addClassName("kpi-card");
         card.addClassName(classeVariacao);
@@ -114,8 +126,29 @@ public class MainView extends VerticalLayout {
         header.add(lblTitulo, icone);
 
         card.add(header, valorSpan);
+
+        // Se houver um status associado, habilita a interatividade de filtro
+        if (statusFiltro != null) {
+            card.getStyle().set("cursor", "pointer");
+            card.addClickListener(e -> aplicarFiltroStatus(statusFiltro));
+        }
+
         return card;
+    } // <-- Fecha o método criarCardSingle aqui!
+
+    private void aplicarFiltroStatus(String status) {
+    List<Carregamento> todos = repository.findAll();
+    
+    if ("TODOS".equalsIgnoreCase(status)) {
+        grid.setItems(todos);
+    } else {
+        List<Carregamento> filtrados = todos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase(status))
+            .toList();
+        grid.setItems(filtrados);
     }
+}
+ // Fechamento da classe MainView
 
     private HorizontalLayout criarBarraAcoes() {
         HorizontalLayout layout = new HorizontalLayout();
@@ -164,16 +197,13 @@ uploadExcel.addFailedListener(event -> {
 @SuppressWarnings("null")
 private void configurarGrid() {
     grid.setSizeFull();
-    // LUMO_COMPACT reduz a altura das linhas nativamente no Vaadin
     grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_COMPACT);
 
-    // Ajustes de tema e dimensões escopados exclusivamente no Grid
     grid.getStyle()
-        .set("--lumo-size-m", "36px")                  // Altura ideal para acomodar o botão 'Entregas'
+        .set("--lumo-size-m", "36px")
         .set("--lumo-font-size-s", "12px")
         .set("--lumo-base-color", "#0f172a")
         .set("--lumo-body-text-color", "#f8fafc")
-        .set("--lumo-header-text-color", "#94a3b8")
         .set("--lumo-contrast-5pct", "rgba(255, 255, 255, 0.05)")
         .set("--lumo-contrast-10pct", "rgba(255, 255, 255, 0.1)")
         .set("background-color", "#0f172a")
@@ -231,7 +261,6 @@ private void configurarGrid() {
         return acoes;
     })).setHeader("AÇÕES").setAutoWidth(true);
 }
-
     private Span criarBadgeStatus(Carregamento c) {
         String statusTxt = c.getStatus() != null && !c.getStatus().isEmpty() ? c.getStatus() : "Pendente";
         Span badge = new Span(statusTxt);
@@ -264,88 +293,91 @@ private void configurarGrid() {
     }
 
     private void abrirFormularioModal(Carregamento carregamento) {
-        Dialog dialog = new Dialog();
-        dialog.setHeaderTitle(carregamento.getId() == null ? "Novo Carregamento" : "Editar Carregamento #" + carregamento.getId());
+    Dialog dialog = new Dialog();
+    dialog.setHeaderTitle(carregamento.getId() == null ? "Novo Carregamento" : "Editar Carregamento #" + carregamento.getId());
 
-        // Define as cores base do Dialog para o tema dark
-        dialog.getElement().getStyle()
-            .set("--lumo-base-color", "#0f172a")
-            .set("--lumo-body-text-color", "#ffffff")
-            .set("--lumo-header-text-color", "#ffffff");
+    // Define as variáveis globais do Dialog para forçar dark mode no cabeçalho e corpo
+    dialog.getElement().getStyle()
+        .set("background-color", "#0f172a")
+        .set("color", "#ffffff")
+        .set("--lumo-base-color", "#0f172a")
+        .set("--lumo-body-text-color", "#ffffff")
+        .set("--lumo-header-text-color", "#ffffff")
+        .set("--lumo-secondary-text-color", "#cbd5e1");
 
-        FormLayout form = new FormLayout();
+    FormLayout form = new FormLayout();
 
-        TextField txtData = new TextField("Data Programação");
-        txtData.setValue(carregamento.getDataProgramacao() != null ? carregamento.getDataProgramacao() : "");
+    TextField txtData = new TextField("Data Programação");
+    txtData.setValue(carregamento.getDataProgramacao() != null ? carregamento.getDataProgramacao() : "");
 
-        TextField txtTransp = new TextField("Transportadora");
-        txtTransp.setValue(carregamento.getTransportadora() != null ? carregamento.getTransportadora() : "");
+    TextField txtTransp = new TextField("Transportadora");
+    txtTransp.setValue(carregamento.getTransportadora() != null ? carregamento.getTransportadora() : "");
 
-        TextField txtPlaca = new TextField("Placa");
-        txtPlaca.setValue(carregamento.getPlaca() != null ? carregamento.getPlaca() : "");
+    TextField txtPlaca = new TextField("Placa");
+    txtPlaca.setValue(carregamento.getPlaca() != null ? carregamento.getPlaca() : "");
 
-        TextField txtTipoVeiculo = new TextField("Tipo de Veículo");
-        txtTipoVeiculo.setValue(carregamento.getTipoVeiculo() != null ? carregamento.getTipoVeiculo() : "");
+    TextField txtTipoVeiculo = new TextField("Tipo de Veículo");
+    txtTipoVeiculo.setValue(carregamento.getTipoVeiculo() != null ? carregamento.getTipoVeiculo() : "");
 
-        TextField txtViagem = new TextField("Viagem");
-        txtViagem.setValue(carregamento.getViagem() != null ? carregamento.getViagem() : "");
+    TextField txtViagem = new TextField("Viagem");
+    txtViagem.setValue(carregamento.getViagem() != null ? carregamento.getViagem() : "");
 
-        TextField txtOrdemCarga = new TextField("Ordem de Carga");
-        txtOrdemCarga.setValue(carregamento.getOrdemCarga() != null ? carregamento.getOrdemCarga() : "");
+    TextField txtOrdemCarga = new TextField("Ordem de Carga");
+    txtOrdemCarga.setValue(carregamento.getOrdemCarga() != null ? carregamento.getOrdemCarga() : "");
 
-        TextField txtPeso = new TextField("Peso");
-        txtPeso.setValue(carregamento.getPeso() != null ? carregamento.getPeso() : "");
+    TextField txtPeso = new TextField("Peso");
+    txtPeso.setValue(carregamento.getPeso() != null ? carregamento.getPeso() : "");
 
-        TextField txtEncaixe = new TextField("Encaixe");
-        txtEncaixe.setValue(carregamento.getEncaixe() != null ? carregamento.getEncaixe() : "");
+    TextField txtEncaixe = new TextField("Encaixe");
+    txtEncaixe.setValue(carregamento.getEncaixe() != null ? carregamento.getEncaixe() : "");
 
-        ComboBox<String> cbStatus = new ComboBox<>("Status");
-        cbStatus.setItems("Pendente", "Apresentado", "Carregando", "Expedido");
-        cbStatus.setValue(carregamento.getStatus() != null ? carregamento.getStatus() : "Pendente");
+    ComboBox<String> cbStatus = new ComboBox<>("Status");
+    cbStatus.setItems("Pendente", "Apresentado", "Carregando", "Expedido");
+    cbStatus.setValue(carregamento.getStatus() != null ? carregamento.getStatus() : "Pendente");
 
-        TextField txtObs = new TextField("Observação");
-        txtObs.setValue(carregamento.getObservacao() != null ? carregamento.getObservacao() : "");
+    TextField txtObs = new TextField("Observação");
+    txtObs.setValue(carregamento.getObservacao() != null ? carregamento.getObservacao() : "");
 
-        // Aplica o estilo escuro com texto claro em cada campo
-        estilizarCampoEscuro(txtData);
-        estilizarCampoEscuro(txtTransp);
-        estilizarCampoEscuro(txtPlaca);
-        estilizarCampoEscuro(txtTipoVeiculo);
-        estilizarCampoEscuro(txtViagem);
-        estilizarCampoEscuro(txtOrdemCarga);
-        estilizarCampoEscuro(txtPeso);
-        estilizarCampoEscuro(txtEncaixe);
-        estilizarCampoEscuro(cbStatus);
-        estilizarCampoEscuro(txtObs);
+    // Aplica a estilização dos rótulos
+    estilizarCampoEscuro(txtData);
+    estilizarCampoEscuro(txtTransp);
+    estilizarCampoEscuro(txtPlaca);
+    estilizarCampoEscuro(txtTipoVeiculo);
+    estilizarCampoEscuro(txtViagem);
+    estilizarCampoEscuro(txtOrdemCarga);
+    estilizarCampoEscuro(txtPeso);
+    estilizarCampoEscuro(txtEncaixe);
+    estilizarCampoEscuro(cbStatus);
+    estilizarCampoEscuro(txtObs);
 
-        form.add(txtData, txtTransp, txtPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbStatus, txtObs);
-        dialog.add(form);
+    form.add(txtData, txtTransp, txtPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbStatus, txtObs);
+    dialog.add(form);
 
-        Button btnSalvar = new Button("Salvar", e -> {
-            carregamento.setDataProgramacao(txtData.getValue());
-            carregamento.setTransportadora(txtTransp.getValue());
-            carregamento.setPlaca(txtPlaca.getValue());
-            carregamento.setTipoVeiculo(txtTipoVeiculo.getValue());
-            carregamento.setViagem(txtViagem.getValue());
-            carregamento.setOrdemCarga(txtOrdemCarga.getValue());
-            carregamento.setPeso(txtPeso.getValue());
-            carregamento.setEncaixe(txtEncaixe.getValue());
-            carregamento.setStatus(cbStatus.getValue());
-            carregamento.setObservacao(txtObs.getValue());
+    Button btnSalvar = new Button("Salvar", e -> {
+        carregamento.setDataProgramacao(txtData.getValue());
+        carregamento.setTransportadora(txtTransp.getValue());
+        carregamento.setPlaca(txtPlaca.getValue());
+        carregamento.setTipoVeiculo(txtTipoVeiculo.getValue());
+        carregamento.setViagem(txtViagem.getValue());
+        carregamento.setOrdemCarga(txtOrdemCarga.getValue());
+        carregamento.setPeso(txtPeso.getValue());
+        carregamento.setEncaixe(txtEncaixe.getValue());
+        carregamento.setStatus(cbStatus.getValue());
+        carregamento.setObservacao(txtObs.getValue());
 
-            repository.save(carregamento);
-            Notification.show("Carregamento salvo com sucesso!", 3000, Notification.Position.TOP_END)
-                    .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            atualizarGridEIndicators();
-            dialog.close();
-        });
-        btnSalvar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        repository.save(carregamento);
+        Notification.show("Carregamento salvo com sucesso!", 3000, Notification.Position.TOP_END)
+                .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+        atualizarGridEIndicators();
+        dialog.close();
+    });
+    btnSalvar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
-        Button btnCancelar = new Button("Cancelar", e -> dialog.close());
+    Button btnCancelar = new Button("Cancelar", e -> dialog.close());
 
-        dialog.getFooter().add(btnCancelar, btnSalvar);
-        dialog.open();
-    }
+    dialog.getFooter().add(btnCancelar, btnSalvar);
+    dialog.open();
+}
 
     private void atualizarGridEIndicators() {
     List<Carregamento> lista = repository.findAll();
@@ -365,14 +397,18 @@ private void configurarGrid() {
         .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
         .count();
 
+    // Cálculo do Pendentes: Total subtraído dos demais status
+    long pendentes = total - (apresentados + carregando + expedidos);
+
     double pesoTotal = lista.stream()
         .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
         .sum();
 
     DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
 
-    // Utilizando as variáveis reais da sua tela:
+    // Atualização dos indicadores na tela:
     txtTotal.setText(String.valueOf(total));
+    txtPendentes.setText(String.valueOf(pendentes)); // Adicionado o set do Pendentes
     txtApresentados.setText(String.valueOf(apresentados));
     txtCarregando.setText(String.valueOf(carregando));
     txtExpedidos.setText(String.valueOf(expedidos));
@@ -403,14 +439,14 @@ private void configurarGrid() {
         }
     }
 
-    private void estilizarCampoEscuro(HasElement campo) {
+    private void estilizarCampoEscuro(com.vaadin.flow.component.Component campo) {
     campo.getElement().getStyle()
-        .set("background-color", "#1e293b")
-        .set("--vaadin-input-field-value-color", "#ffffff")
-        .set("--lumo-body-text-color", "#ffffff")
-        .set("--lumo-secondary-text-color", "#94a3b8") // Define a cor das labels (rótulos) para azul claro/cinza visível
-        .set("--lumo-primary-text-color", "#ffffff")
-        .set("color", "#ffffff");
+        .set("--lumo-secondary-text-color", "#cbd5e1") // Cor do LABEL (Cinza claro/Azul)
+        .set("--lumo-body-text-color", "#f8fafc")      // Cor do texto digitado
+        .set("--lumo-primary-text-color", "#f8fafc")   // Cor do texto selecionado
+        .set("--lumo-contrast-60pct", "#cbd5e1")       // Fallback de contraste do label
+        .set("--lumo-contrast-70pct", "#cbd5e1");
 }
 }
+
 

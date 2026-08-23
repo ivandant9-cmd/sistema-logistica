@@ -28,9 +28,28 @@ vaadin-date-picker::part(label),
 vaadin-select::part(label), 
 vaadin-combo-box::part(label),
 vaadin-text-area::part(label),
+vaadin-form-item label,
 label {
     color: #cbd5e1 !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+}
+
+/* FIX DO MODAL: Fundo do Diálogo e Título */
+vaadin-dialog-overlay::part(overlay) {
+    background-color: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 12px !important;
+}
+
+vaadin-dialog-overlay::part(header) {
+    background-color: #0f172a !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+vaadin-dialog-overlay::part(title),
+vaadin-dialog-overlay h2 {
+    color: #f8fafc !important;
 }
 
 /* Botões */
@@ -48,6 +67,7 @@ vaadin-button[theme~="tertiary"] {
 /* FIX DO GRID: Ajuste fluido de altura sem quebrar o alinhamento dos botões */
 vaadin-grid {
     --lumo-size-m: 34px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5) !important;
 }
 
 vaadin-grid::part(cell) {
@@ -61,4 +81,22 @@ vaadin-grid-cell-content {
     padding: 0 8px !important;
     display: flex !important;
     align-items: center !important;
+}
+
+/* Estilização Premium do Cabeçalho do Grid */
+vaadin-grid::part(header-cell) {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+    border-bottom: 2px solid #3b82f6 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+/* Tipografia e cor dos títulos */
+vaadin-grid-cell-content::slotted(vaadin-grid-sorter),
+vaadin-grid::part(header-cell) {
+    color: #38bdf8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
 }
