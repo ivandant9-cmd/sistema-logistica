@@ -4,7 +4,7 @@ import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.model.Motorista;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.repository.MotoristaRepository;
-import br.com.ivanildo.tms.util.UiBroadcaster; // Se você utiliza para atualizar a grid em tempo real
+//import br.com.ivanildo.tms.util.UiBroadcaster; // Se você utiliza para atualizar a grid em tempo real
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H2;

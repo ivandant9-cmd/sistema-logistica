@@ -7,8 +7,10 @@ import br.com.ivanildo.tms.repository.EntregaRepository;
 import com.github.pjfanning.xlsx.StreamingReader;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
+//import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.beans.factory.annotation.Autowired;
+
 
 import java.io.InputStream;
 import java.text.Normalizer;
@@ -27,7 +29,6 @@ public class ExcelService {
     private final CarregamentoRepository carregamentoRepository;
     private final EntregaRepository entregaRepository;
 
-    // Padrão Regex para validar se a Nota Fiscal é estritamente numérica
     private static final Pattern NOTA_FISCAL_NUMERICA = Pattern.compile("^\\d+$");
 
     public ExcelService(CarregamentoRepository carregamentoRepository, EntregaRepository entregaRepository) {
@@ -35,14 +36,20 @@ public class ExcelService {
         this.entregaRepository = entregaRepository;
     }
 
+    @Transactional // Transação principal garantindo rollback seguro se a planilha falhar
     public void processarExcel(InputStream inputStream) {
-        try (Workbook workbook = StreamingReader.builder()
-                .rowCacheSize(100)
-                .bufferSize(4096)
-                .open(inputStream)) {
+        try {
+            // OPTIONAL: Se cada Excel substitui a carga ativa do dia,
+            // limpamos as tabelas filhas e pais para não corromper o PostgreSQL.
+            entregaRepository.deleteAllInBatch();
+            carregamentoRepository.deleteAllInBatch();
+
+            Workbook workbook = StreamingReader.builder()
+                    .rowCacheSize(100)
+                    .bufferSize(4096)
+                    .open(inputStream);
 
             DataFormatter formatter = new DataFormatter(new Locale.Builder().setLanguage("pt").setRegion("BR").build());
-
             // ==========================================
             // 1. LEITURA DA PRIMEIRA ABA (CARREGAMENTOS)
             // ==========================================
@@ -251,9 +258,10 @@ public class ExcelService {
         return valores;
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional
     public void salvarCarregamentosLote(List<Carregamento> lista, Map<String, Carregamento> mapaCache) {
         List<Carregamento> salvos = carregamentoRepository.saveAll(lista);
+        carregamentoRepository.flush(); // Força a escrita imediata no PostgreSQL
         for (Carregamento c : salvos) {
             if (c.getViagem() != null && !c.getViagem().trim().isEmpty()) {
                 mapaCache.put(c.getViagem().trim().toUpperCase(), c);
@@ -261,9 +269,10 @@ public class ExcelService {
         }
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional
     public void salvarEntregasLote(List<Entrega> lista) {
         entregaRepository.saveAll(lista);
+        entregaRepository.flush(); // Força a escrita imediata no PostgreSQL
     }
 
     private boolean isEntregaValida(String delivery, String nf, String cliente) {

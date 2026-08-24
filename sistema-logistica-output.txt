@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-24 14:10:12 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-24 22:29:47 (America/Bahia / GMT-03:00)
 Total Files Processed: 276
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -204,7 +204,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 EntregaRepository.java (599 B)
 │       │                   │   └── 📄 MotoristaRepository.java (309 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (15.97 KB)
+│       │                   │   ├── 📄 ExcelService.java (16.42 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 util/
 │       │                   │   └── 📄 UiBroadcaster.java (1010 B)
@@ -240,7 +240,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 EntregaRepository.class (889 B)
 │   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (15.83 KB)
+│   │   │               │   ├── 📄 ExcelService.class (15.52 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 util/
 │   │   │               │   ├── 📄 UiBroadcaster.class (3.76 KB)
@@ -360,7 +360,7 @@ PROJECT STRUCTURE
 ├── 📄 package.json (9.66 KB)
 ├── 📄 pom.xml (4.16 KB)
 ├── 📄 system.properties (23 B)
-├── 📄 tsconfig.json (1.22 KB)
+├── 📄 tsconfig.json (1.26 KB)
 ├── 📄 types.d.ts (494 B)
 ├── 📄 vite.config.ts (275 B)
 └── 📄 vite.generated.ts (29.61 KB)
@@ -11811,7 +11811,7 @@ Language: css
 Location: frontend/styles/vaadin-form-fields-custom.css
 Relative Path: frontend/styles
 Created: 2026-08-23 18:09:27 (America/Bahia / GMT-03:00)
-Modified: 2026-08-24 14:10:11 (America/Bahia / GMT-03:00)
+Modified: 2026-08-24 14:11:02 (America/Bahia / GMT-03:00)
 MD5: 0d096ccbdb4c868e23b5302df320ed59
 SHA256: 6284c80a9976208bfa4f796799f9f4fd6b7580f7ef130618ae401bf1bfccf8f6
 Encoding: UTF-8
@@ -12721,16 +12721,16 @@ FILE: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 15.97 KB
+Size: 16.42 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 Relative Path: src/main/java/br/com/ivanildo/tms/service
 Created: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 21:42:38 (America/Bahia / GMT-03:00)
-MD5: 8fe27b5a6b21b22f3bd8aa4f48d93029
-SHA256: 5fafccbc6d8e654a36fe727c31cba1c04cd252410ffae1a5c01ef078f8b45651
-Encoding: UTF-8
+Modified: 2026-08-24 22:28:45 (America/Bahia / GMT-03:00)
+MD5: eebf63c8daaf3f9d87ec00bf6e914041
+SHA256: 02ebf9e06323d917da2165f9da92d677fdd10a90eef14e725a0f7a0757516276
+Encoding: ASCII
 
 FILE CONTENT:
 ----------------------------------------
@@ -12743,8 +12743,10 @@ import br.com.ivanildo.tms.repository.EntregaRepository;
 import com.github.pjfanning.xlsx.StreamingReader;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
+//import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.beans.factory.annotation.Autowired;
+
 
 import java.io.InputStream;
 import java.text.Normalizer;
@@ -12763,7 +12765,6 @@ public class ExcelService {
     private final CarregamentoRepository carregamentoRepository;
     private final EntregaRepository entregaRepository;
 
-    // Padrão Regex para validar se a Nota Fiscal é estritamente numérica
     private static final Pattern NOTA_FISCAL_NUMERICA = Pattern.compile("^\\d+$");
 
     public ExcelService(CarregamentoRepository carregamentoRepository, EntregaRepository entregaRepository) {
@@ -12771,14 +12772,20 @@ public class ExcelService {
         this.entregaRepository = entregaRepository;
     }
 
+    @Transactional // Transação principal garantindo rollback seguro se a planilha falhar
     public void processarExcel(InputStream inputStream) {
-        try (Workbook workbook = StreamingReader.builder()
-                .rowCacheSize(100)
-                .bufferSize(4096)
-                .open(inputStream)) {
+        try {
+            // OPTIONAL: Se cada Excel substitui a carga ativa do dia,
+            // limpamos as tabelas filhas e pais para não corromper o PostgreSQL.
+            entregaRepository.deleteAllInBatch();
+            carregamentoRepository.deleteAllInBatch();
+
+            Workbook workbook = StreamingReader.builder()
+                    .rowCacheSize(100)
+                    .bufferSize(4096)
+                    .open(inputStream);
 
             DataFormatter formatter = new DataFormatter(new Locale.Builder().setLanguage("pt").setRegion("BR").build());
-
             // ==========================================
             // 1. LEITURA DA PRIMEIRA ABA (CARREGAMENTOS)
             // ==========================================
@@ -12987,9 +12994,10 @@ public class ExcelService {
         return valores;
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional
     public void salvarCarregamentosLote(List<Carregamento> lista, Map<String, Carregamento> mapaCache) {
         List<Carregamento> salvos = carregamentoRepository.saveAll(lista);
+        carregamentoRepository.flush(); // Força a escrita imediata no PostgreSQL
         for (Carregamento c : salvos) {
             if (c.getViagem() != null && !c.getViagem().trim().isEmpty()) {
                 mapaCache.put(c.getViagem().trim().toUpperCase(), c);
@@ -12997,9 +13005,10 @@ public class ExcelService {
         }
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional
     public void salvarEntregasLote(List<Entrega> lista) {
         entregaRepository.saveAll(lista);
+        entregaRepository.flush(); // Força a escrita imediata no PostgreSQL
     }
 
     private boolean isEntregaValida(String delivery, String nf, String cliente) {
@@ -13291,9 +13300,9 @@ Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/CheckInView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-23 21:11:25 (America/Bahia / GMT-03:00)
-Modified: 2026-08-23 22:35:21 (America/Bahia / GMT-03:00)
-MD5: d3fc9dc58b672adeac61ca3950428205
-SHA256: 40e3325e4f6f7d716f9bd12118e878f44f3b9dbd974f2864b8fe918229d2de1a
+Modified: 2026-08-24 22:28:43 (America/Bahia / GMT-03:00)
+MD5: 94d15b1afd9ab28a08de047a668da728
+SHA256: accb1704121914a5d8c318a4114c20303a5ca6f0dac1c78d003f908a82c82f2d
 Encoding: UTF-8
 
 FILE CONTENT:
@@ -13304,7 +13313,7 @@ import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.model.Motorista;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.repository.MotoristaRepository;
-import br.com.ivanildo.tms.util.UiBroadcaster; // Se você utiliza para atualizar a grid em tempo real
+//import br.com.ivanildo.tms.util.UiBroadcaster; // Se você utiliza para atualizar a grid em tempo real
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H2;
@@ -14104,9 +14113,9 @@ Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/MainView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-Modified: 2026-08-23 22:04:35 (America/Bahia / GMT-03:00)
-MD5: 8c34e7de1645e8b9768cfa7de3331028
-SHA256: 964f0cc8ac7eabed0cd36c0150fa5f8d3f9076ad9ff1887af19bc58ffa8180cf
+Modified: 2026-08-24 22:28:41 (America/Bahia / GMT-03:00)
+MD5: 70e28f5ba4d376fa62a901edfe20f3f7
+SHA256: 2b0983fb46ccc5b348bff218bd018324556aa760406d74eea004586866756f07
 Encoding: ASCII
 
 FILE CONTENT:
@@ -14144,7 +14153,7 @@ import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import br.com.ivanildo.tms.util.UiBroadcaster;
+//import br.com.ivanildo.tms.util.UiBroadcaster;
 
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -14915,7 +14924,7 @@ Language: text
 Location: src/main/resources/application.properties
 Relative Path: src/main/resources
 Created: 2026-08-16 19:20:26 (America/Bahia / GMT-03:00)
-Modified: 2026-08-24 13:36:38 (America/Bahia / GMT-03:00)
+Modified: 2026-08-24 14:19:50 (America/Bahia / GMT-03:00)
 MD5: 9c678635e7b2f2d2e2c3d32481333217
 SHA256: b4c767c5790ba2dc9a97901fe703bba6b3b89a06889653d01d6669d79d2b8b2c
 Encoding: UTF-8
@@ -51624,15 +51633,15 @@ FILE: tsconfig.json
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 1.22 KB
+Size: 1.26 KB
 Extension: .json
 Language: json
 Location: tsconfig.json
 Relative Path: root
 Created: 2026-08-17 21:26:13 (America/Bahia / GMT-03:00)
-Modified: 2026-08-17 21:26:13 (America/Bahia / GMT-03:00)
-MD5: 5efe3949d073f622fb2da0db6e08ae07
-SHA256: abe6e7dcf0fc800074b44a33f15107b3f91eabd2b1f7aa4ffa095e312e8dbc4a
+Modified: 2026-08-24 22:29:46 (America/Bahia / GMT-03:00)
+MD5: 88d80c8a4206c0a1ff620b92ecc49a5e
+SHA256: a9ac586576817e65082e4cde93eac39da1f5c21ad5fd835dc2a9515afc219f7a
 Encoding: ASCII
 
 FILE CONTENT:
@@ -51645,6 +51654,7 @@ FILE CONTENT:
 {
   "_version": "9",
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "sourceMap": true,
     "jsx": "react-jsx",
     "inlineSources": true,
@@ -51667,6 +51677,7 @@ FILE CONTENT:
       "@vaadin/flow-frontend/*": ["generated/jar-resources/*"],
       "Frontend/*": ["*"]
     }
+    
   },
   "include": [
     "frontend/**/*",
@@ -51675,6 +51686,7 @@ FILE CONTENT:
   "exclude": [
     "frontend/generated/jar-resources/**"
   ]
+  
 }
 
 ================================================================================

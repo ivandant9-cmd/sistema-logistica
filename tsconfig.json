@@ -6,6 +6,7 @@
 {
   "_version": "9",
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "sourceMap": true,
     "jsx": "react-jsx",
     "inlineSources": true,
@@ -28,6 +29,7 @@
       "@vaadin/flow-frontend/*": ["generated/jar-resources/*"],
       "Frontend/*": ["*"]
     }
+    
   },
   "include": [
     "frontend/**/*",
@@ -36,4 +38,5 @@
   "exclude": [
     "frontend/generated/jar-resources/**"
   ]
+  
 }
