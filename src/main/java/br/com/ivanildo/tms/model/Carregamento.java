@@ -22,7 +22,9 @@ public class Carregamento {
     private String tipoVeiculo;
     private String peso;
     private String encaixe;
+    @Column(length = 2000)
     private String notasFiscais;
+    @Column(length = 1000)
     private String observacao;
 
     // --- NOVOS CAMPOS PARA O CHECK-IN SELF-SERVICE ---

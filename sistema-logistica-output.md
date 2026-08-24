@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-24 22:29:47 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-24 23:39:06 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 276
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -194,7 +194,7 @@
 │       │                   │   ├── 📄 CheckinDTO.java (473 B)
 │       │                   │   └── 📄 PdfController.java (2.68 KB)
 │       │                   ├── 📁 model/
-│       │                   │   ├── 📄 Carregamento.java (3.29 KB)
+│       │                   │   ├── 📄 Carregamento.java (3.34 KB)
 │       │                   │   ├── 📄 Entrega.java (2.18 KB)
 │       │                   │   └── 📄 Motorista.java (1.36 KB)
 │       │                   ├── 📁 repository/
@@ -210,13 +210,13 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   └── 📄 MainView.java (22.19 KB)
+│       │                   │   └── 📄 MainView.java (22.93 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (942 B)
 │       └── 📁 resources/
 │           ├── 📁 templates/
 │           │   └── 📄 entregas.html (7.96 KB)
-│           └── 📄 application.properties (952 B)
+│           └── 📄 application.properties (1.07 KB)
 ├── 📁 target/
 │   ├── 📁 classes/
 │   │   ├── 📁 br/
@@ -248,12 +248,12 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   └── 📄 MainView.class (33.78 KB)
+│   │   │               │   └── 📄 MainView.class (34.2 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
 │   │   ├── 📁 templates/
 │   │   │   └── 📄 entregas.html (7.96 KB)
-│   │   └── 📄 application.properties (952 B)
+│   │   └── 📄 application.properties (1.07 KB)
 │   ├── 📁 dev-bundle/
 │   │   ├── 📁 config/
 │   │   │   └── 📄 stats.json (12.17 KB)
@@ -352,11 +352,12 @@
 │   │       ├── 📄 package.json (531 B)
 │   │       ├── 📄 theme-loader-utils.js (3.21 KB)
 │   │       └── 📄 theme-loader.js (1.34 KB)
+│   ├── 📁 test-classes/
 │   └── 📄 vaadin-dev-server-settings.json (1.07 KB)
 ├── 📄 Dockerfile (861 B)
 ├── 📄 package-lock.json (594.16 KB)
 ├── 📄 package.json (9.66 KB)
-├── 📄 pom.xml (4.16 KB)
+├── 📄 pom.xml (4 KB)
 ├── 📄 system.properties (23 B)
 ├── 📄 tsconfig.json (1.26 KB)
 ├── 📄 types.d.ts (494 B)
@@ -624,10 +625,10 @@
 | Metric | Count |
 |--------|-------|
 | Total Files | 276 |
-| Total Directories | 66 |
+| Total Directories | 67 |
 | Text Files | 248 |
 | Binary Files | 28 |
-| Total Size | 4.86 MB |
+| Total Size | 4.87 MB |
 
 ### 📄 File Types Distribution
 
@@ -12407,15 +12408,15 @@ public class PdfController {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-model-carregamento-java"></a>📄 `src/main/java/br/com/ivanildo/tms/model/Carregamento.java`
 
 **File Info:**
-- **Size**: 3.29 KB
+- **Size**: 3.34 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/model/Carregamento.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/model`
 - **Created**: 2026-08-16 19:12:42 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 21:00:11 (America/Bahia / GMT-03:00)
-- **MD5**: `0eb257bfae88eac8066a3e9c17a6adde`
-- **SHA256**: `a221202dcce9c2122381179518975f3c6e47da95e8d406eec79122da17dd6902`
+- **Modified**: 2026-08-24 23:39:05 (America/Bahia / GMT-03:00)
+- **MD5**: `81c90e2706390a320d6f6bc049a05b69`
+- **SHA256**: `10a62a5228743b89b3f80d875512ffc8d32d3276aa595def9a59e34ee193485e`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -12445,7 +12446,9 @@ public class Carregamento {
     private String tipoVeiculo;
     private String peso;
     private String encaixe;
+    @Column(length = 2000)
     private String notasFiscais;
+    @Column(length = 1000)
     private String observacao;
 
     // --- NOVOS CAMPOS PARA O CHECK-IN SELF-SERVICE ---
@@ -14205,15 +14208,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 22.19 KB
+- **Size**: 22.93 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-24 22:28:41 (America/Bahia / GMT-03:00)
-- **MD5**: `70e28f5ba4d376fa62a901edfe20f3f7`
-- **SHA256**: `2b0983fb46ccc5b348bff218bd018324556aa760406d74eea004586866756f07`
+- **Modified**: 2026-08-24 23:04:25 (America/Bahia / GMT-03:00)
+- **MD5**: `c0b9264a4f29008aeb9063363fa458c9`
+- **SHA256**: `71fd8deb9c79db7f8cbd88306bbe0e1135a5b9b916faf819e962a17f481993b5`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14250,9 +14253,10 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-//import br.com.ivanildo.tms.util.UiBroadcaster;
 
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -14271,7 +14275,7 @@ import java.util.Locale;
 @CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-combo-box")
 @CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-text-area")
 @CssImport(value = "./styles/vaadin-dialog-custom.css", themeFor = "vaadin-dialog-overlay")
-public class MainView extends VerticalLayout {
+public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
     private final CarregamentoRepository repository;
     private final ExcelService excelService;
@@ -14316,6 +14320,12 @@ public class MainView extends VerticalLayout {
         configurarGrid();
 
         add(titulo, containerKPI, barraAcoes, grid);
+        atualizarGridEIndicators();
+    }
+
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        // Recarrega as informações e re-aplica estilos ao navegar de volta para esta tela
         atualizarGridEIndicators();
     }
 
@@ -14462,84 +14472,85 @@ public class MainView extends VerticalLayout {
     }
 
     @SuppressWarnings("null")
-private void configurarGrid() {
-    grid.setSizeFull();
-    grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_COMPACT);
 
-    // Estilização Dark Theme do Grid
-    grid.getStyle()
-        .set("--lumo-size-m", "36px")
-        .set("--lumo-font-size-s", "12px")
-        .set("--lumo-base-color", "#0f172a")
-        .set("--lumo-body-text-color", "#f8fafc")
-        .set("--lumo-contrast-5pct", "rgba(255, 255, 255, 0.05)")
-        .set("--lumo-contrast-10pct", "rgba(255, 255, 255, 0.1)")
-        .set("background-color", "#0f172a")
-        .set("border", "1px solid #1e293b")
-        .set("border-radius", "8px");
+    private void configurarGrid() {
+        grid.setSizeFull();
+        grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_COMPACT);
 
-    // Colunas do Grid
-    grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
-    grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
-    grid.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
-    grid.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
+        // Estilização Dark Theme do Grid
+        grid.getStyle()
+            .set("--lumo-size-m", "36px")
+            .set("--lumo-font-size-s", "12px")
+            .set("--lumo-base-color", "#0f172a")
+            .set("--lumo-body-text-color", "#f8fafc")
+            .set("--lumo-contrast-5pct", "rgba(255, 255, 255, 0.05)")
+            .set("--lumo-contrast-10pct", "rgba(255, 255, 255, 0.1)")
+            .set("background-color", "#0f172a")
+            .set("border", "1px solid #1e293b")
+            .set("border-radius", "8px");
 
-    // Nova coluna MOTORISTA
-    grid.addColumn(c -> {
-        if (c.getMotoristaEntidade() != null && c.getMotoristaEntidade().getNome() != null) {
-            return c.getMotoristaEntidade().getNome();
-        }
-        return c.getMotorista() != null ? c.getMotorista() : "-";
-    }).setHeader("MOTORISTA").setAutoWidth(true);
+        // Colunas do Grid
+        grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
+        grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
+        grid.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
+        grid.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
 
-    grid.addColumn(Carregamento::getTipoVeiculo).setHeader("TIPO DE VEÍCULO").setAutoWidth(true);
-    grid.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
-    grid.addColumn(Carregamento::getOrdemCarga).setHeader("ORDEM DE CARGA").setAutoWidth(true);
-    grid.addColumn(Carregamento::getPeso).setHeader("PESO").setAutoWidth(true);
-    grid.addColumn(Carregamento::getEncaixe).setHeader("ENCAIXE").setAutoWidth(true);
-
-    grid.addColumn(new ComponentRenderer<>(this::criarBadgeStatus))
-        .setHeader("STATUS")
-        .setAutoWidth(true);
-
-    grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
-
-    // Coluna de Ações
-    grid.addColumn(new ComponentRenderer<>(carregamento -> {
-        HorizontalLayout acoes = new HorizontalLayout();
-        acoes.setSpacing(true);
-        acoes.setPadding(false);
-        acoes.setMargin(false);
-
-        Button btnEditar = new Button(VaadinIcon.EDIT.create());
-        btnEditar.addThemeVariants(ButtonVariant.LUMO_TERTIARY, ButtonVariant.LUMO_SMALL);
-        btnEditar.getStyle()
-                .set("color", "#38bdf8")
-                .set("cursor", "pointer");
-        btnEditar.setTooltipText("Editar Carregamento");
-        btnEditar.addClickListener(e -> abrirFormularioModal(carregamento));
-
-        Button btnEntregas = new Button("Entregas", VaadinIcon.PACKAGE.create());
-        btnEntregas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
-        btnEntregas.getStyle()
-                .set("background-color", "#2563eb")
-                .set("color", "#ffffff")
-                .set("font-weight", "600")
-                .set("border-radius", "4px")
-                .set("cursor", "pointer");
-
-        btnEntregas.addClickListener(e -> {
-            if (carregamento.getId() != null) {
-                UI.getCurrent().navigate("entregas/" + carregamento.getId());
-            } else {
-                Notification.show("Salve o carregamento primeiro para gerenciar as entregas.", 3000, Notification.Position.MIDDLE);
+        // Nova coluna MOTORISTA
+        grid.addColumn(c -> {
+            if (c.getMotoristaEntidade() != null && c.getMotoristaEntidade().getNome() != null) {
+                return c.getMotoristaEntidade().getNome();
             }
-        });
+            return c.getMotorista() != null ? c.getMotorista() : "-";
+        }).setHeader("MOTORISTA").setAutoWidth(true);
 
-        acoes.add(btnEditar, btnEntregas);
-        return acoes;
-    })).setHeader("AÇÕES").setAutoWidth(true);
-}
+        grid.addColumn(Carregamento::getTipoVeiculo).setHeader("TIPO DE VEÍCULO").setAutoWidth(true);
+        grid.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
+        grid.addColumn(Carregamento::getOrdemCarga).setHeader("ORDEM DE CARGA").setAutoWidth(true);
+        grid.addColumn(Carregamento::getPeso).setHeader("PESO").setAutoWidth(true);
+        grid.addColumn(Carregamento::getEncaixe).setHeader("ENCAIXE").setAutoWidth(true);
+
+        grid.addColumn(new ComponentRenderer<>(this::criarBadgeStatus))
+            .setHeader("STATUS")
+            .setAutoWidth(true);
+
+        grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
+
+        // Coluna de Ações
+        grid.addColumn(new ComponentRenderer<>(carregamento -> {
+            HorizontalLayout acoes = new HorizontalLayout();
+            acoes.setSpacing(true);
+            acoes.setPadding(false);
+            acoes.setMargin(false);
+
+            Button btnEditar = new Button(VaadinIcon.EDIT.create());
+            btnEditar.addThemeVariants(ButtonVariant.LUMO_TERTIARY, ButtonVariant.LUMO_SMALL);
+            btnEditar.getStyle()
+                    .set("color", "#38bdf8")
+                    .set("cursor", "pointer");
+            btnEditar.setTooltipText("Editar Carregamento");
+            btnEditar.addClickListener(e -> abrirFormularioModal(carregamento));
+
+            Button btnEntregas = new Button("Entregas", VaadinIcon.PACKAGE.create());
+            btnEntregas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
+            btnEntregas.getStyle()
+                    .set("background-color", "#2563eb")
+                    .set("color", "#ffffff")
+                    .set("font-weight", "600")
+                    .set("border-radius", "4px")
+                    .set("cursor", "pointer");
+
+            btnEntregas.addClickListener(e -> {
+                if (carregamento.getId() != null) {
+                    UI.getCurrent().navigate("entregas/" + carregamento.getId());
+                } else {
+                    Notification.show("Salve o carregamento primeiro para gerenciar as entregas.", 3000, Notification.Position.MIDDLE);
+                }
+            });
+
+            acoes.add(btnEditar, btnEntregas);
+            return acoes;
+        })).setHeader("AÇÕES").setAutoWidth(true);
+    }
 
     private Span criarBadgeStatus(Carregamento c) {
         String statusTxt = c.getStatus() != null && !c.getStatus().isEmpty() ? c.getStatus() : "Pendente";
@@ -14719,11 +14730,14 @@ private void configurarGrid() {
 
     private void estilitarCampoEscuro(com.vaadin.flow.component.Component campo) {
         campo.getElement().getStyle()
-            .set("--lumo-secondary-text-color", "#cbd5e1")
-            .set("--lumo-body-text-color", "#f8fafc")
-            .set("--lumo-primary-text-color", "#f8fafc")
-            .set("--lumo-contrast-60pct", "#cbd5e1")
-            .set("--lumo-contrast-70pct", "#cbd5e1");
+            .set("--vaadin-input-field-label-color", "#90caf9")
+            .set("--vaadin-input-field-value-color", "#ffffff")
+            .set("--vaadin-input-field-background", "#1e293b")
+            .set("--lumo-secondary-text-color", "#90caf9")
+            .set("--lumo-body-text-color", "#ffffff")
+            .set("--lumo-primary-text-color", "#90caf9")
+            .set("--lumo-contrast-60pct", "#90caf9")
+            .set("--lumo-contrast-70pct", "#90caf9");
     }
 }
 ```
@@ -15012,15 +15026,15 @@ public class DataInitializer implements CommandLineRunner {
 ### <a id="📄-src-main-resources-application-properties"></a>📄 `src/main/resources/application.properties`
 
 **File Info:**
-- **Size**: 952 B
+- **Size**: 1.07 KB
 - **Extension**: `.properties`
 - **Language**: `text`
 - **Location**: `src/main/resources/application.properties`
 - **Relative Path**: `src/main/resources`
 - **Created**: 2026-08-16 19:20:26 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-24 14:19:50 (America/Bahia / GMT-03:00)
-- **MD5**: `9c678635e7b2f2d2e2c3d32481333217`
-- **SHA256**: `b4c767c5790ba2dc9a97901fe703bba6b3b89a06889653d01d6669d79d2b8b2c`
+- **Modified**: 2026-08-24 23:35:26 (America/Bahia / GMT-03:00)
+- **MD5**: `34c6bf6a7d28d4c0205ba3cdd4ebb5a3`
+- **SHA256**: `a41a01e438fbc66c2cb926194895734a069b58ab2bd7c6bd2a9cfa3ffe865eed`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -15038,12 +15052,14 @@ server.tomcat.remoteip.internal-proxies=.*
 vaadin.pushMode=disabled
 
 # Configuração do Banco PostgreSQL (Render)
-spring.datasource.url=jdbc:postgresql://dpg-da63v96k1f9s738v74gg-a:5432/tmsdb_6ikg
-spring.datasource.username=tmsuser
-spring.datasource.password=PhFrOrvtf7dgIH2aSIInzcrN011QdltG
+spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:postgresql://dpg-da63v96k1f9s738v74gg-a/tmsdb_6ikg}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME:tmsuser}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:PhFrOrvtf7dgIH2aSIInzcrN011QdltG}
 spring.datasource.driver-class-name=org.postgresql.Driver
+
 spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-spring.jpa.hibernate.ddl-auto=update
+spring.jpa.hibernate.ddl-auto=${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+spring.jpa.show-sql=false
 
 # Limite para upload de arquivos
 spring.servlet.multipart.max-file-size=10MB
@@ -15124,7 +15140,7 @@ The following files were not included in the text content:
 - **Language**: `html`
 - **Location**: `target/classes/templates/entregas.html`
 - **Relative Path**: `target/classes/templates`
-- **Created**: 2026-08-24 12:59:26 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-24 23:34:40 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-19 15:06:12 (America/Bahia / GMT-03:00)
 - **MD5**: `6665e1d9621fc3667a9be7f173454777`
 - **SHA256**: `77437b52d27dd1614bc900dd80be3294e1525376f270d0beb8a236f53cffc078`
@@ -15306,15 +15322,15 @@ The following files were not included in the text content:
 ### <a id="📄-target-classes-application-properties"></a>📄 `target/classes/application.properties`
 
 **File Info:**
-- **Size**: 952 B
+- **Size**: 1.07 KB
 - **Extension**: `.properties`
 - **Language**: `text`
 - **Location**: `target/classes/application.properties`
 - **Relative Path**: `target/classes`
 - **Created**: 2026-08-22 16:14:00 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-24 13:36:39 (America/Bahia / GMT-03:00)
-- **MD5**: `9c678635e7b2f2d2e2c3d32481333217`
-- **SHA256**: `b4c767c5790ba2dc9a97901fe703bba6b3b89a06889653d01d6669d79d2b8b2c`
+- **Modified**: 2026-08-24 23:35:26 (America/Bahia / GMT-03:00)
+- **MD5**: `34c6bf6a7d28d4c0205ba3cdd4ebb5a3`
+- **SHA256**: `a41a01e438fbc66c2cb926194895734a069b58ab2bd7c6bd2a9cfa3ffe865eed`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -15332,12 +15348,14 @@ server.tomcat.remoteip.internal-proxies=.*
 vaadin.pushMode=disabled
 
 # Configuração do Banco PostgreSQL (Render)
-spring.datasource.url=jdbc:postgresql://dpg-da63v96k1f9s738v74gg-a:5432/tmsdb_6ikg
-spring.datasource.username=tmsuser
-spring.datasource.password=PhFrOrvtf7dgIH2aSIInzcrN011QdltG
+spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:postgresql://dpg-da63v96k1f9s738v74gg-a/tmsdb_6ikg}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME:tmsuser}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:PhFrOrvtf7dgIH2aSIInzcrN011QdltG}
 spring.datasource.driver-class-name=org.postgresql.Driver
+
 spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-spring.jpa.hibernate.ddl-auto=update
+spring.jpa.hibernate.ddl-auto=${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+spring.jpa.show-sql=false
 
 # Limite para upload de arquivos
 spring.servlet.multipart.max-file-size=10MB
@@ -51471,15 +51489,15 @@ export default function (source, map) {
 ### <a id="📄-pom-xml"></a>📄 `pom.xml`
 
 **File Info:**
-- **Size**: 4.16 KB
+- **Size**: 4 KB
 - **Extension**: `.xml`
 - **Language**: `xml`
 - **Location**: `pom.xml`
 - **Relative Path**: `root`
 - **Created**: 2026-08-16 18:53:38 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-24 12:58:54 (America/Bahia / GMT-03:00)
-- **MD5**: `6c70e04e1c94e0e16a7f7faf0f4b547c`
-- **SHA256**: `de5c36d4fb68af499447bb1e7ebec26d16a865469602f0512093cc071472ad5d`
+- **Modified**: 2026-08-24 23:34:32 (America/Bahia / GMT-03:00)
+- **MD5**: `cb13337c2d31cae4d51ed976cf37037f`
+- **SHA256**: `bfd99241d2f4fd7bcfac4c9732ae4f10451a76d594180cc5a272a66222f4c542`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -51559,12 +51577,7 @@ export default function (source, map) {
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
+        
         <!-- PDF -->
         <dependency>
             <groupId>com.github.librepdf</groupId>
