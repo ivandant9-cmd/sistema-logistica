@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-24 13:29:09 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-24 13:36:39 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 276
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -216,7 +216,7 @@
 │       └── 📁 resources/
 │           ├── 📁 templates/
 │           │   └── 📄 entregas.html (7.96 KB)
-│           └── 📄 application.properties (951 B)
+│           └── 📄 application.properties (952 B)
 ├── 📁 target/
 │   ├── 📁 classes/
 │   │   ├── 📁 br/
@@ -253,7 +253,7 @@
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
 │   │   ├── 📁 templates/
 │   │   │   └── 📄 entregas.html (7.96 KB)
-│   │   └── 📄 application.properties (951 B)
+│   │   └── 📄 application.properties (952 B)
 │   ├── 📁 dev-bundle/
 │   │   ├── 📁 config/
 │   │   │   └── 📄 stats.json (12.17 KB)
@@ -14925,15 +14925,15 @@ public class DataInitializer implements CommandLineRunner {
 ### <a id="📄-src-main-resources-application-properties"></a>📄 `src/main/resources/application.properties`
 
 **File Info:**
-- **Size**: 951 B
+- **Size**: 952 B
 - **Extension**: `.properties`
 - **Language**: `text`
 - **Location**: `src/main/resources/application.properties`
 - **Relative Path**: `src/main/resources`
 - **Created**: 2026-08-16 19:20:26 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-24 13:29:08 (America/Bahia / GMT-03:00)
-- **MD5**: `a6cc9ad91f0958d8faf72269a453e693`
-- **SHA256**: `da8ef54b8e6961e909affd52e24e3f26312b3401287514a026964d16d6eec24b`
+- **Modified**: 2026-08-24 13:36:38 (America/Bahia / GMT-03:00)
+- **MD5**: `9c678635e7b2f2d2e2c3d32481333217`
+- **SHA256**: `b4c767c5790ba2dc9a97901fe703bba6b3b89a06889653d01d6669d79d2b8b2c`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -14963,7 +14963,7 @@ spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=10MB
 
 # Porta dinâmica do Render
-server.port=${PORT:8082}
+server.port=${PORT:10000}
 ```
 
 ---
@@ -15219,15 +15219,15 @@ The following files were not included in the text content:
 ### <a id="📄-target-classes-application-properties"></a>📄 `target/classes/application.properties`
 
 **File Info:**
-- **Size**: 951 B
+- **Size**: 952 B
 - **Extension**: `.properties`
 - **Language**: `text`
 - **Location**: `target/classes/application.properties`
 - **Relative Path**: `target/classes`
 - **Created**: 2026-08-22 16:14:00 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-24 13:29:09 (America/Bahia / GMT-03:00)
-- **MD5**: `a6cc9ad91f0958d8faf72269a453e693`
-- **SHA256**: `da8ef54b8e6961e909affd52e24e3f26312b3401287514a026964d16d6eec24b`
+- **Modified**: 2026-08-24 13:36:39 (America/Bahia / GMT-03:00)
+- **MD5**: `9c678635e7b2f2d2e2c3d32481333217`
+- **SHA256**: `b4c767c5790ba2dc9a97901fe703bba6b3b89a06889653d01d6669d79d2b8b2c`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -15257,7 +15257,7 @@ spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=10MB
 
 # Porta dinâmica do Render
-server.port=${PORT:8082}
+server.port=${PORT:10000}
 ```
 
 ---
