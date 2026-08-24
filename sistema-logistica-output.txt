@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-24 13:13:52 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-24 13:29:09 (America/Bahia / GMT-03:00)
 Total Files Processed: 276
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -218,7 +218,7 @@ PROJECT STRUCTURE
 │       └── 📁 resources/
 │           ├── 📁 templates/
 │           │   └── 📄 entregas.html (7.96 KB)
-│           └── 📄 application.properties (973 B)
+│           └── 📄 application.properties (951 B)
 ├── 📁 target/
 │   ├── 📁 classes/
 │   │   ├── 📁 br/
@@ -255,7 +255,7 @@ PROJECT STRUCTURE
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
 │   │   ├── 📁 templates/
 │   │   │   └── 📄 entregas.html (7.96 KB)
-│   │   └── 📄 application.properties (973 B)
+│   │   └── 📄 application.properties (951 B)
 │   ├── 📁 dev-bundle/
 │   │   ├── 📁 config/
 │   │   │   └── 📄 stats.json (12.17 KB)
@@ -14831,15 +14831,15 @@ FILE: src/main/resources/application.properties
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 973 B
+Size: 951 B
 Extension: .properties
 Language: text
 Location: src/main/resources/application.properties
 Relative Path: src/main/resources
 Created: 2026-08-16 19:20:26 (America/Bahia / GMT-03:00)
-Modified: 2026-08-24 13:13:51 (America/Bahia / GMT-03:00)
-MD5: 3c58608118756c0ce720845e48cee3f3
-SHA256: 7501e0cbdc957f9c148aedf80cfd631281f5a013f972de607aa39afe5e146dc1
+Modified: 2026-08-24 13:29:08 (America/Bahia / GMT-03:00)
+MD5: a6cc9ad91f0958d8faf72269a453e693
+SHA256: da8ef54b8e6961e909affd52e24e3f26312b3401287514a026964d16d6eec24b
 Encoding: UTF-8
 
 FILE CONTENT:
@@ -14855,8 +14855,8 @@ server.tomcat.remoteip.internal-proxies=.*
 # Desativa Push e força Long Polling
 vaadin.pushMode=disabled
 
-# Configuração do Banco PostgreSQL (Dados Persistentes)
-spring.datasource.url=jdbc:postgresql://<HOSTNAME_DO_RENDER>:5432/dpg-da63v96k1f9s738v74gg-a
+# Configuração do Banco PostgreSQL (Render)
+spring.datasource.url=jdbc:postgresql://dpg-da63v96k1f9s738v74gg-a:5432/tmsdb_6ikg
 spring.datasource.username=tmsuser
 spring.datasource.password=PhFrOrvtf7dgIH2aSIInzcrN011QdltG
 spring.datasource.driver-class-name=org.postgresql.Driver
@@ -15127,15 +15127,15 @@ FILE: target/classes/application.properties
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 973 B
+Size: 951 B
 Extension: .properties
 Language: text
 Location: target/classes/application.properties
 Relative Path: target/classes
 Created: 2026-08-22 16:14:00 (America/Bahia / GMT-03:00)
-Modified: 2026-08-24 13:12:04 (America/Bahia / GMT-03:00)
-MD5: 3c58608118756c0ce720845e48cee3f3
-SHA256: 7501e0cbdc957f9c148aedf80cfd631281f5a013f972de607aa39afe5e146dc1
+Modified: 2026-08-24 13:29:09 (America/Bahia / GMT-03:00)
+MD5: a6cc9ad91f0958d8faf72269a453e693
+SHA256: da8ef54b8e6961e909affd52e24e3f26312b3401287514a026964d16d6eec24b
 Encoding: UTF-8
 
 FILE CONTENT:
@@ -15151,8 +15151,8 @@ server.tomcat.remoteip.internal-proxies=.*
 # Desativa Push e força Long Polling
 vaadin.pushMode=disabled
 
-# Configuração do Banco PostgreSQL (Dados Persistentes)
-spring.datasource.url=jdbc:postgresql://<HOSTNAME_DO_RENDER>:5432/dpg-da63v96k1f9s738v74gg-a
+# Configuração do Banco PostgreSQL (Render)
+spring.datasource.url=jdbc:postgresql://dpg-da63v96k1f9s738v74gg-a:5432/tmsdb_6ikg
 spring.datasource.username=tmsuser
 spring.datasource.password=PhFrOrvtf7dgIH2aSIInzcrN011QdltG
 spring.datasource.driver-class-name=org.postgresql.Driver
