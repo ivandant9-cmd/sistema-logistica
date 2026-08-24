@@ -29,9 +29,10 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-//import br.com.ivanildo.tms.util.UiBroadcaster;
 
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -50,7 +51,7 @@ import java.util.Locale;
 @CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-combo-box")
 @CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-text-area")
 @CssImport(value = "./styles/vaadin-dialog-custom.css", themeFor = "vaadin-dialog-overlay")
-public class MainView extends VerticalLayout {
+public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
     private final CarregamentoRepository repository;
     private final ExcelService excelService;
@@ -95,6 +96,12 @@ public class MainView extends VerticalLayout {
         configurarGrid();
 
         add(titulo, containerKPI, barraAcoes, grid);
+        atualizarGridEIndicators();
+    }
+
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        // Recarrega as informações e re-aplica estilos ao navegar de volta para esta tela
         atualizarGridEIndicators();
     }
 
@@ -241,84 +248,85 @@ public class MainView extends VerticalLayout {
     }
 
     @SuppressWarnings("null")
-private void configurarGrid() {
-    grid.setSizeFull();
-    grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_COMPACT);
 
-    // Estilização Dark Theme do Grid
-    grid.getStyle()
-        .set("--lumo-size-m", "36px")
-        .set("--lumo-font-size-s", "12px")
-        .set("--lumo-base-color", "#0f172a")
-        .set("--lumo-body-text-color", "#f8fafc")
-        .set("--lumo-contrast-5pct", "rgba(255, 255, 255, 0.05)")
-        .set("--lumo-contrast-10pct", "rgba(255, 255, 255, 0.1)")
-        .set("background-color", "#0f172a")
-        .set("border", "1px solid #1e293b")
-        .set("border-radius", "8px");
+    private void configurarGrid() {
+        grid.setSizeFull();
+        grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_COMPACT);
 
-    // Colunas do Grid
-    grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
-    grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
-    grid.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
-    grid.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
+        // Estilização Dark Theme do Grid
+        grid.getStyle()
+            .set("--lumo-size-m", "36px")
+            .set("--lumo-font-size-s", "12px")
+            .set("--lumo-base-color", "#0f172a")
+            .set("--lumo-body-text-color", "#f8fafc")
+            .set("--lumo-contrast-5pct", "rgba(255, 255, 255, 0.05)")
+            .set("--lumo-contrast-10pct", "rgba(255, 255, 255, 0.1)")
+            .set("background-color", "#0f172a")
+            .set("border", "1px solid #1e293b")
+            .set("border-radius", "8px");
 
-    // Nova coluna MOTORISTA
-    grid.addColumn(c -> {
-        if (c.getMotoristaEntidade() != null && c.getMotoristaEntidade().getNome() != null) {
-            return c.getMotoristaEntidade().getNome();
-        }
-        return c.getMotorista() != null ? c.getMotorista() : "-";
-    }).setHeader("MOTORISTA").setAutoWidth(true);
+        // Colunas do Grid
+        grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
+        grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
+        grid.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
+        grid.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
 
-    grid.addColumn(Carregamento::getTipoVeiculo).setHeader("TIPO DE VEÍCULO").setAutoWidth(true);
-    grid.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
-    grid.addColumn(Carregamento::getOrdemCarga).setHeader("ORDEM DE CARGA").setAutoWidth(true);
-    grid.addColumn(Carregamento::getPeso).setHeader("PESO").setAutoWidth(true);
-    grid.addColumn(Carregamento::getEncaixe).setHeader("ENCAIXE").setAutoWidth(true);
-
-    grid.addColumn(new ComponentRenderer<>(this::criarBadgeStatus))
-        .setHeader("STATUS")
-        .setAutoWidth(true);
-
-    grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
-
-    // Coluna de Ações
-    grid.addColumn(new ComponentRenderer<>(carregamento -> {
-        HorizontalLayout acoes = new HorizontalLayout();
-        acoes.setSpacing(true);
-        acoes.setPadding(false);
-        acoes.setMargin(false);
-
-        Button btnEditar = new Button(VaadinIcon.EDIT.create());
-        btnEditar.addThemeVariants(ButtonVariant.LUMO_TERTIARY, ButtonVariant.LUMO_SMALL);
-        btnEditar.getStyle()
-                .set("color", "#38bdf8")
-                .set("cursor", "pointer");
-        btnEditar.setTooltipText("Editar Carregamento");
-        btnEditar.addClickListener(e -> abrirFormularioModal(carregamento));
-
-        Button btnEntregas = new Button("Entregas", VaadinIcon.PACKAGE.create());
-        btnEntregas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
-        btnEntregas.getStyle()
-                .set("background-color", "#2563eb")
-                .set("color", "#ffffff")
-                .set("font-weight", "600")
-                .set("border-radius", "4px")
-                .set("cursor", "pointer");
-
-        btnEntregas.addClickListener(e -> {
-            if (carregamento.getId() != null) {
-                UI.getCurrent().navigate("entregas/" + carregamento.getId());
-            } else {
-                Notification.show("Salve o carregamento primeiro para gerenciar as entregas.", 3000, Notification.Position.MIDDLE);
+        // Nova coluna MOTORISTA
+        grid.addColumn(c -> {
+            if (c.getMotoristaEntidade() != null && c.getMotoristaEntidade().getNome() != null) {
+                return c.getMotoristaEntidade().getNome();
             }
-        });
+            return c.getMotorista() != null ? c.getMotorista() : "-";
+        }).setHeader("MOTORISTA").setAutoWidth(true);
 
-        acoes.add(btnEditar, btnEntregas);
-        return acoes;
-    })).setHeader("AÇÕES").setAutoWidth(true);
-}
+        grid.addColumn(Carregamento::getTipoVeiculo).setHeader("TIPO DE VEÍCULO").setAutoWidth(true);
+        grid.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
+        grid.addColumn(Carregamento::getOrdemCarga).setHeader("ORDEM DE CARGA").setAutoWidth(true);
+        grid.addColumn(Carregamento::getPeso).setHeader("PESO").setAutoWidth(true);
+        grid.addColumn(Carregamento::getEncaixe).setHeader("ENCAIXE").setAutoWidth(true);
+
+        grid.addColumn(new ComponentRenderer<>(this::criarBadgeStatus))
+            .setHeader("STATUS")
+            .setAutoWidth(true);
+
+        grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
+
+        // Coluna de Ações
+        grid.addColumn(new ComponentRenderer<>(carregamento -> {
+            HorizontalLayout acoes = new HorizontalLayout();
+            acoes.setSpacing(true);
+            acoes.setPadding(false);
+            acoes.setMargin(false);
+
+            Button btnEditar = new Button(VaadinIcon.EDIT.create());
+            btnEditar.addThemeVariants(ButtonVariant.LUMO_TERTIARY, ButtonVariant.LUMO_SMALL);
+            btnEditar.getStyle()
+                    .set("color", "#38bdf8")
+                    .set("cursor", "pointer");
+            btnEditar.setTooltipText("Editar Carregamento");
+            btnEditar.addClickListener(e -> abrirFormularioModal(carregamento));
+
+            Button btnEntregas = new Button("Entregas", VaadinIcon.PACKAGE.create());
+            btnEntregas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
+            btnEntregas.getStyle()
+                    .set("background-color", "#2563eb")
+                    .set("color", "#ffffff")
+                    .set("font-weight", "600")
+                    .set("border-radius", "4px")
+                    .set("cursor", "pointer");
+
+            btnEntregas.addClickListener(e -> {
+                if (carregamento.getId() != null) {
+                    UI.getCurrent().navigate("entregas/" + carregamento.getId());
+                } else {
+                    Notification.show("Salve o carregamento primeiro para gerenciar as entregas.", 3000, Notification.Position.MIDDLE);
+                }
+            });
+
+            acoes.add(btnEditar, btnEntregas);
+            return acoes;
+        })).setHeader("AÇÕES").setAutoWidth(true);
+    }
 
     private Span criarBadgeStatus(Carregamento c) {
         String statusTxt = c.getStatus() != null && !c.getStatus().isEmpty() ? c.getStatus() : "Pendente";
@@ -498,10 +506,13 @@ private void configurarGrid() {
 
     private void estilitarCampoEscuro(com.vaadin.flow.component.Component campo) {
         campo.getElement().getStyle()
-            .set("--lumo-secondary-text-color", "#cbd5e1")
-            .set("--lumo-body-text-color", "#f8fafc")
-            .set("--lumo-primary-text-color", "#f8fafc")
-            .set("--lumo-contrast-60pct", "#cbd5e1")
-            .set("--lumo-contrast-70pct", "#cbd5e1");
+            .set("--vaadin-input-field-label-color", "#90caf9")
+            .set("--vaadin-input-field-value-color", "#ffffff")
+            .set("--vaadin-input-field-background", "#1e293b")
+            .set("--lumo-secondary-text-color", "#90caf9")
+            .set("--lumo-body-text-color", "#ffffff")
+            .set("--lumo-primary-text-color", "#90caf9")
+            .set("--lumo-contrast-60pct", "#90caf9")
+            .set("--lumo-contrast-70pct", "#90caf9");
     }
 }
