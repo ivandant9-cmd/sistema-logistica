@@ -62,4 +62,28 @@
     font-size: 1.5rem;
     font-weight: 800;
     color: #ffffff;
+
+    /* Corrigi a visibilidade do texto digitado (<input> nativo dentro da Shadow DOM) */
+vaadin-text-field input,
+vaadin-password-field input,
+vaadin-date-picker input,
+vaadin-combo-box input,
+vaadin-text-area textarea,
+vaadin-number-field input,
+vaadin-integer-field input {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* Modal e Diálogos Globais */
+vaadin-dialog-overlay::part(overlay) {
+    background-color: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 12px !important;
+}
+
+vaadin-dialog-overlay::part(title) {
+    color: #f8fafc !important;
+}
 }

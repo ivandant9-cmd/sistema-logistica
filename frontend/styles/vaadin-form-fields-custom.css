@@ -26,4 +26,19 @@
 /* Cor do texto digitado / selecionado */
 :host [part~='value'] {
     color: #f8fafc !important;
+
+    /* Rótulos (Labels) internos dos campos */
+[part="label"] {
+    color: #f1f5f9 !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    opacity: 1 !important;
+}
+
+/* Área interna do input */
+[part="input-field"] {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+}
 }
