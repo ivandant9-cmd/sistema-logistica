@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-23 22:40:47 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-24 13:13:52 (America/Bahia / GMT-03:00)
 Total Files Processed: 276
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -218,7 +218,7 @@ PROJECT STRUCTURE
 │       └── 📁 resources/
 │           ├── 📁 templates/
 │           │   └── 📄 entregas.html (7.96 KB)
-│           └── 📄 application.properties (939 B)
+│           └── 📄 application.properties (973 B)
 ├── 📁 target/
 │   ├── 📁 classes/
 │   │   ├── 📁 br/
@@ -255,7 +255,7 @@ PROJECT STRUCTURE
 │   │   │               └── 📄 DataInitializer.class (1.15 KB)
 │   │   ├── 📁 templates/
 │   │   │   └── 📄 entregas.html (7.96 KB)
-│   │   └── 📄 application.properties (939 B)
+│   │   └── 📄 application.properties (973 B)
 │   ├── 📁 dev-bundle/
 │   │   ├── 📁 config/
 │   │   │   └── 📄 stats.json (12.17 KB)
@@ -333,7 +333,7 @@ PROJECT STRUCTURE
 │   │       └── 📁 compile/
 │   │           └── 📁 default-compile/
 │   │               ├── 📄 createdFiles.lst (660 B)
-│   │               └── 📄 inputFiles.lst (1.73 KB)
+│   │               └── 📄 inputFiles.lst (1.95 KB)
 │   ├── 📁 plugins/
 │   │   ├── 📁 application-theme-plugin/
 │   │   │   ├── 📄 application-theme-plugin.js (2.17 KB)
@@ -358,7 +358,7 @@ PROJECT STRUCTURE
 ├── 📄 Dockerfile (861 B)
 ├── 📄 package-lock.json (594.16 KB)
 ├── 📄 package.json (9.66 KB)
-├── 📄 pom.xml (4.02 KB)
+├── 📄 pom.xml (4.16 KB)
 ├── 📄 system.properties (23 B)
 ├── 📄 tsconfig.json (1.22 KB)
 ├── 📄 types.d.ts (494 B)
@@ -14831,15 +14831,15 @@ FILE: src/main/resources/application.properties
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 939 B
+Size: 973 B
 Extension: .properties
 Language: text
 Location: src/main/resources/application.properties
 Relative Path: src/main/resources
 Created: 2026-08-16 19:20:26 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 13:50:36 (America/Bahia / GMT-03:00)
-MD5: c19d3fc859c8c9fa24587583ffbe178d
-SHA256: 32f1e1678af9f835dad810d3b7f614004f98f912b4b0bb2525139171f4c62369
+Modified: 2026-08-24 13:13:51 (America/Bahia / GMT-03:00)
+MD5: 3c58608118756c0ce720845e48cee3f3
+SHA256: 7501e0cbdc957f9c148aedf80cfd631281f5a013f972de607aa39afe5e146dc1
 Encoding: UTF-8
 
 FILE CONTENT:
@@ -14855,12 +14855,12 @@ server.tomcat.remoteip.internal-proxies=.*
 # Desativa Push e força Long Polling
 vaadin.pushMode=disabled
 
-# Configuração do Banco H2 (Em Memória)
-spring.datasource.url=jdbc:h2:mem:tmsdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+# Configuração do Banco PostgreSQL (Dados Persistentes)
+spring.datasource.url=jdbc:postgresql://<HOSTNAME_DO_RENDER>:5432/dpg-da63v96k1f9s738v74gg-a
+spring.datasource.username=tmsuser
+spring.datasource.password=PhFrOrvtf7dgIH2aSIInzcrN011QdltG
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.hibernate.ddl-auto=update
 
 # Limite para upload de arquivos
@@ -14869,9 +14869,6 @@ spring.servlet.multipart.max-request-size=10MB
 
 # Porta dinâmica do Render
 server.port=${PORT:8082}
-
-# Console H2
-spring.h2.console.enabled=true
 ================================================================================
 
 
@@ -14947,7 +14944,7 @@ Extension: .html
 Language: html
 Location: target/classes/templates/entregas.html
 Relative Path: target/classes/templates
-Created: 2026-08-23 22:39:10 (America/Bahia / GMT-03:00)
+Created: 2026-08-24 12:59:26 (America/Bahia / GMT-03:00)
 Modified: 2026-08-19 15:06:12 (America/Bahia / GMT-03:00)
 MD5: 6665e1d9621fc3667a9be7f173454777
 SHA256: 77437b52d27dd1614bc900dd80be3294e1525376f270d0beb8a236f53cffc078
@@ -15130,15 +15127,15 @@ FILE: target/classes/application.properties
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 939 B
+Size: 973 B
 Extension: .properties
 Language: text
 Location: target/classes/application.properties
 Relative Path: target/classes
 Created: 2026-08-22 16:14:00 (America/Bahia / GMT-03:00)
-Modified: 2026-08-23 22:39:10 (America/Bahia / GMT-03:00)
-MD5: c19d3fc859c8c9fa24587583ffbe178d
-SHA256: 32f1e1678af9f835dad810d3b7f614004f98f912b4b0bb2525139171f4c62369
+Modified: 2026-08-24 13:12:04 (America/Bahia / GMT-03:00)
+MD5: 3c58608118756c0ce720845e48cee3f3
+SHA256: 7501e0cbdc957f9c148aedf80cfd631281f5a013f972de607aa39afe5e146dc1
 Encoding: UTF-8
 
 FILE CONTENT:
@@ -15154,12 +15151,12 @@ server.tomcat.remoteip.internal-proxies=.*
 # Desativa Push e força Long Polling
 vaadin.pushMode=disabled
 
-# Configuração do Banco H2 (Em Memória)
-spring.datasource.url=jdbc:h2:mem:tmsdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+# Configuração do Banco PostgreSQL (Dados Persistentes)
+spring.datasource.url=jdbc:postgresql://<HOSTNAME_DO_RENDER>:5432/dpg-da63v96k1f9s738v74gg-a
+spring.datasource.username=tmsuser
+spring.datasource.password=PhFrOrvtf7dgIH2aSIInzcrN011QdltG
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.hibernate.ddl-auto=update
 
 # Limite para upload de arquivos
@@ -15168,9 +15165,6 @@ spring.servlet.multipart.max-request-size=10MB
 
 # Porta dinâmica do Render
 server.port=${PORT:8082}
-
-# Console H2
-spring.h2.console.enabled=true
 ================================================================================
 
 
@@ -51380,15 +51374,15 @@ FILE: pom.xml
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 4.02 KB
+Size: 4.16 KB
 Extension: .xml
 Language: xml
 Location: pom.xml
 Relative Path: root
 Created: 2026-08-16 18:53:38 (America/Bahia / GMT-03:00)
-Modified: 2026-08-22 17:07:59 (America/Bahia / GMT-03:00)
-MD5: 5409550708af69c835cbfff9f1bf2175
-SHA256: 195f46bf7fedc1d24fb53ca3e0ce4d055b3164de5fc899effa781c8e1d428e03
+Modified: 2026-08-24 12:58:54 (America/Bahia / GMT-03:00)
+MD5: 6c70e04e1c94e0e16a7f7faf0f4b547c
+SHA256: de5c36d4fb68af499447bb1e7ebec26d16a865469602f0512093cc071472ad5d
 Encoding: UTF-8
 
 FILE CONTENT:
@@ -51431,6 +51425,12 @@ FILE CONTENT:
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-spring-boot-starter</artifactId>
         </dependency>
+
+        <dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <scope>runtime</scope>
+</dependency>
 
         <!-- Commons IO atualizado para suprir a classe org.apache.commons.io.function.IOIterator -->
         <dependency>
