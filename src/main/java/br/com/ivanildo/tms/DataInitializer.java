@@ -18,8 +18,8 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Apaga os dados fictícios já existentes (se houver) no banco de dados
-        entregaRepository.deleteAll();
-        carregamentoRepository.deleteAll();
+        // Exclui em lote via instrução SQL direta, evitando StaleObjectStateException e falhas de lock
+        entregaRepository.deleteAllInBatch();
+        carregamentoRepository.deleteAllInBatch();
     }
 }
