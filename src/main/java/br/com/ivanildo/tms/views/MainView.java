@@ -220,30 +220,37 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnNovo.setVisible(false);
 
         MemoryBuffer buffer = new MemoryBuffer();
-        Upload uploadExcel = new Upload(buffer);
-        uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
-        uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
-        uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
+Upload uploadExcel = new Upload(buffer);
+uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
+uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
+uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
 
-        uploadExcel.addSucceededListener(event -> {
-            try (InputStream is = buffer.getInputStream()) {
-                excelService.processarExcel(is);
-                
-                // Sincroniza a atualização diretamente com a UI ativa do Vaadin
-                getUI().ifPresent(ui -> ui.access(() -> {
-                    atualizarGridEIndicators();
-                    Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
-                    n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-                }));
+uploadExcel.addSucceededListener(event -> {
+    System.out.println(">>> UPLOAD SUCCEEDED EVENT ACIONADO PARA O ARQUIVO: " + event.getFileName());
+    try {
+        InputStream is = buffer.getInputStream();
+        System.out.println(">>> INPUTSTREAM OBTIDO COM SUCESSO. CHAMANDO EXCEL SERVICE...");
+        
+        excelService.processarExcel(is);
+        System.out.println(">>> PROCESSAMENTO DO EXCEL FINALIZADO COM SUCESSO!");
 
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                getUI().ifPresent(ui -> ui.access(() -> {
-                    Notification n = Notification.show("Erro ao processar: " + ex.getMessage(), 5000, Notification.Position.MIDDLE);
-                    n.addThemeVariants(NotificationVariant.LUMO_ERROR);
-                }));
-            }
-        });
+        getUI().ifPresent(ui -> ui.access(() -> {
+            atualizarGridEIndicators();
+            Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+            n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+        }));
+
+    } catch (Exception ex) {
+        System.err.println(">>> ERRO CAPTURADO NO UPLOAD LISTENER:");
+        ex.printStackTrace();
+        
+        getUI().ifPresent(ui -> ui.access(() -> {
+            String msg = ex.getMessage() != null ? ex.getMessage() : ex.getClass().getSimpleName();
+            Notification n = Notification.show("Erro ao processar: " + msg, 5000, Notification.Position.MIDDLE);
+            n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+        }));
+    }
+});
 
         uploadExcel.addFailedListener(event -> {
             System.err.println("Erro na transferência do arquivo pelo browser: " + event.getReason().getMessage());

@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-25 21:42:40 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-25 22:02:52 (America/Bahia / GMT-03:00)
 Total Files Processed: 282
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -213,7 +213,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   └── 📄 MainView.java (22.98 KB)
+│       │                   │   └── 📄 MainView.java (23.19 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
 │       └── 📁 resources/
@@ -252,7 +252,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   └── 📄 MainView.class (35.34 KB)
+│   │   │               │   └── 📄 MainView.class (35.58 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
 │   │   ├── 📁 templates/
@@ -14205,15 +14205,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/MainView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 22.98 KB
+Size: 23.19 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/MainView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-Modified: 2026-08-25 21:13:33 (America/Bahia / GMT-03:00)
-MD5: 093f2caa6b6780e0065f1d50db387561
-SHA256: eb86af0bbd88c0eeb10d962228e0dab0f4d4247f9c166bde90b1bb6e4b0645d1
+Modified: 2026-08-25 22:02:52 (America/Bahia / GMT-03:00)
+MD5: ba65c3c97d327a217d1f5d77495190bf
+SHA256: da2c442ddc581ce43f7782fc8f25d7f8d03268671214dd2cc29607f827ce3ab0
 Encoding: ASCII
 
 FILE CONTENT:
@@ -14440,30 +14440,37 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnNovo.setVisible(false);
 
         MemoryBuffer buffer = new MemoryBuffer();
-        Upload uploadExcel = new Upload(buffer);
-        uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
-        uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
-        uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
+Upload uploadExcel = new Upload(buffer);
+uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
+uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
+uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
 
-        uploadExcel.addSucceededListener(event -> {
-            try (InputStream is = buffer.getInputStream()) {
-                excelService.processarExcel(is);
-                
-                // Sincroniza a atualização diretamente com a UI ativa do Vaadin
-                getUI().ifPresent(ui -> ui.access(() -> {
-                    atualizarGridEIndicators();
-                    Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
-                    n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-                }));
+uploadExcel.addSucceededListener(event -> {
+    System.out.println(">>> UPLOAD SUCCEEDED EVENT ACIONADO PARA O ARQUIVO: " + event.getFileName());
+    try {
+        InputStream is = buffer.getInputStream();
+        System.out.println(">>> INPUTSTREAM OBTIDO COM SUCESSO. CHAMANDO EXCEL SERVICE...");
+        
+        excelService.processarExcel(is);
+        System.out.println(">>> PROCESSAMENTO DO EXCEL FINALIZADO COM SUCESSO!");
 
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                getUI().ifPresent(ui -> ui.access(() -> {
-                    Notification n = Notification.show("Erro ao processar: " + ex.getMessage(), 5000, Notification.Position.MIDDLE);
-                    n.addThemeVariants(NotificationVariant.LUMO_ERROR);
-                }));
-            }
-        });
+        getUI().ifPresent(ui -> ui.access(() -> {
+            atualizarGridEIndicators();
+            Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+            n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+        }));
+
+    } catch (Exception ex) {
+        System.err.println(">>> ERRO CAPTURADO NO UPLOAD LISTENER:");
+        ex.printStackTrace();
+        
+        getUI().ifPresent(ui -> ui.access(() -> {
+            String msg = ex.getMessage() != null ? ex.getMessage() : ex.getClass().getSimpleName();
+            Notification n = Notification.show("Erro ao processar: " + msg, 5000, Notification.Position.MIDDLE);
+            n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+        }));
+    }
+});
 
         uploadExcel.addFailedListener(event -> {
             System.err.println("Erro na transferência do arquivo pelo browser: " + event.getReason().getMessage());
