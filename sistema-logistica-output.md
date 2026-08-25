@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-24 23:39:06 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-25 00:06:01 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 276
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -171,7 +171,7 @@
 │   │   ├── 📁 frontend/
 │   │   │   └── 📁 styles/
 │   │   ├── 📄 dashboard-styles.css (2.4 KB)
-│   │   ├── 📄 styles.css (4.33 KB)
+│   │   ├── 📄 styles.css (4.75 KB)
 │   │   ├── 📄 vaadin-dialog-custom.css (258 B)
 │   │   ├── 📄 vaadin-form-fields-custom.css (1.3 KB)
 │   │   └── 📄 vaadin-grid-custom.css (415 B)
@@ -230,7 +230,7 @@
 │   │   │               │   ├── 📄 CheckinDTO.class (971 B)
 │   │   │               │   └── 📄 PdfController.class (4.68 KB)
 │   │   │               ├── 📁 model/
-│   │   │               │   ├── 📄 Carregamento.class (4.29 KB)
+│   │   │               │   ├── 📄 Carregamento.class (4.37 KB)
 │   │   │               │   ├── 📄 Entrega.class (2.98 KB)
 │   │   │               │   └── 📄 Motorista.class (2.18 KB)
 │   │   │               ├── 📁 repository/
@@ -11731,15 +11731,15 @@ vaadin-dialog-overlay::part(title) {
 ### <a id="📄-frontend-styles-styles-css"></a>📄 `frontend/styles/styles.css`
 
 **File Info:**
-- **Size**: 4.33 KB
+- **Size**: 4.75 KB
 - **Extension**: `.css`
 - **Language**: `css`
 - **Location**: `frontend/styles/styles.css`
 - **Relative Path**: `frontend/styles`
 - **Created**: 2026-08-21 20:21:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-24 14:05:36 (America/Bahia / GMT-03:00)
-- **MD5**: `462c7ea3f6e83177a9f258d0042ca787`
-- **SHA256**: `602e5f51a0d759e076c2d4abeb6b391a6d7f4889ef5de45ed846720c107bd4f0`
+- **Modified**: 2026-08-25 00:06:00 (America/Bahia / GMT-03:00)
+- **MD5**: `1682777b87908c214cef277e527e8829`
+- **SHA256**: `6d4ca0e01c929ddfab2dad48e52933840111c49162557776c4182631b3595e4c`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -11764,8 +11764,8 @@ vaadin-combo-box::part(input-field),
 vaadin-text-area::part(input-field),
 vaadin-number-field::part(input-field),
 vaadin-integer-field::part(input-field) { 
-    background-color: #0f172a !important; 
-    border: 1px solid #334155 !important; 
+    background-color: #1a2332 !important; 
+    border: 1px solid #3b82f6 !important; 
     border-radius: 8px !important; 
     color: #ffffff !important;
 } 
@@ -11782,6 +11782,44 @@ vaadin-select vaadin-select-value-button {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important; /* Evita que temas do navegador alterem a cor */
     font-weight: 500 !important;
+    opacity: 1 !important;
+}
+
+/* FIX DE CAMPOS READONLY E DISABLED (Impede o efeito ofuscado ao recarregar/navegar) */
+vaadin-text-field[readonly],
+vaadin-text-field[disabled],
+vaadin-password-field[readonly],
+vaadin-password-field[disabled],
+vaadin-date-picker[readonly],
+vaadin-date-picker[disabled],
+vaadin-combo-box[readonly],
+vaadin-combo-box[disabled],
+vaadin-text-area[readonly],
+vaadin-text-area[disabled],
+vaadin-number-field[readonly],
+vaadin-number-field[disabled],
+vaadin-integer-field[readonly],
+vaadin-integer-field[disabled] {
+    opacity: 1 !important;
+}
+
+vaadin-text-field[readonly] input,
+vaadin-text-field[disabled] input,
+vaadin-password-field[readonly] input,
+vaadin-password-field[disabled] input,
+vaadin-date-picker[readonly] input,
+vaadin-date-picker[disabled] input,
+vaadin-combo-box[readonly] input,
+vaadin-combo-box[disabled] input,
+vaadin-text-area[readonly] textarea,
+vaadin-text-area[disabled] textarea,
+vaadin-number-field[readonly] input,
+vaadin-number-field[disabled] input,
+vaadin-integer-field[readonly] input,
+vaadin-integer-field[disabled] input {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    opacity: 1 !important;
 }
 
 /* FIX DO MODAL/FORMULÁRIO: Garante legibilidade total dos Labels no Tema Escuro */
@@ -11795,10 +11833,10 @@ vaadin-number-field::part(label),
 vaadin-integer-field::part(label),
 vaadin-form-item label,
 label {
-    color: #f1f5f9 !important; /* Cor clara brilhante (Slate 100) */
+    color: #e0e6ed !important;
     font-weight: 700 !important;
     font-size: 13px !important;
-    opacity: 1 !important; /* Impede que o Vaadin force opacidade reduzida */
+    opacity: 1 !important;
 }
 
 /* FIX DO MODAL: Fundo do Diálogo e Título */
@@ -11857,7 +11895,7 @@ vaadin-grid::part(header-cell) {
     padding-bottom: 10px !important;
 }
 
-/* Tipografia e cor dos títulos */
+/* Tipografia e cor dos títulos do Grid */
 vaadin-grid-cell-content::slotted(vaadin-grid-sorter),
 vaadin-grid::part(header-cell) {
     color: #38bdf8 !important;
@@ -11865,26 +11903,6 @@ vaadin-grid::part(header-cell) {
     font-weight: 700 !important;
     letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
-
-    /* Força alto contraste em rótulos e campos no tema escuro do Vaadin */
-vaadin-text-field::part(label),
-vaadin-date-picker::part(label),
-vaadin-combo-box::part(label),
-vaadin-text-area::part(label),
-vaadin-integer-field::part(label),
-vaadin-number-field::part(label) {
-    color: #e0e6ed !important; /* Cor do texto do rótulo brilhante */
-    font-weight: 600;
-    opacity: 1 !important;
-}
-
-vaadin-text-field::part(input-field),
-vaadin-date-picker::part(input-field),
-vaadin-combo-box::part(input-field),
-vaadin-text-area::part(input-field) {
-    background-color: #1a2332 !important; /* Fundo do campo levemente mais claro */
-    border: 1px solid #3b82f6 !important; /* Borda visível */
-}
 }
 ```
 
