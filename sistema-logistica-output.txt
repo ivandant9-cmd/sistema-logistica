@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-25 22:02:52 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-25 22:39:26 (America/Bahia / GMT-03:00)
 Total Files Processed: 282
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -197,11 +197,11 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 CheckinDTO.java (473 B)
 │       │                   │   └── 📄 PdfController.java (2.68 KB)
 │       │                   ├── 📁 model/
-│       │                   │   ├── 📄 Carregamento.java (3.34 KB)
+│       │                   │   ├── 📄 Carregamento.java (3.63 KB)
 │       │                   │   ├── 📄 Entrega.java (2.18 KB)
 │       │                   │   └── 📄 Motorista.java (1.36 KB)
 │       │                   ├── 📁 repository/
-│       │                   │   ├── 📄 CarregamentoRepository.java (778 B)
+│       │                   │   ├── 📄 CarregamentoRepository.java (1.04 KB)
 │       │                   │   ├── 📄 EntregaRepository.java (599 B)
 │       │                   │   └── 📄 MotoristaRepository.java (309 B)
 │       │                   ├── 📁 service/
@@ -213,7 +213,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   └── 📄 MainView.java (23.19 KB)
+│       │                   │   └── 📄 MainView.java (28.5 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
 │       └── 📁 resources/
@@ -234,11 +234,11 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 CheckinDTO.class (971 B)
 │   │   │               │   └── 📄 PdfController.class (4.68 KB)
 │   │   │               ├── 📁 model/
-│   │   │               │   ├── 📄 Carregamento.class (4.37 KB)
+│   │   │               │   ├── 📄 Carregamento.class (4.79 KB)
 │   │   │               │   ├── 📄 Entrega.class (2.98 KB)
 │   │   │               │   └── 📄 Motorista.class (2.18 KB)
 │   │   │               ├── 📁 repository/
-│   │   │               │   ├── 📄 CarregamentoRepository.class (1.04 KB)
+│   │   │               │   ├── 📄 CarregamentoRepository.class (1.21 KB)
 │   │   │               │   ├── 📄 EntregaRepository.class (889 B)
 │   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
@@ -252,7 +252,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   └── 📄 MainView.class (35.58 KB)
+│   │   │               │   └── 📄 MainView.class (41.08 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
 │   │   ├── 📁 templates/
@@ -379,7 +379,7 @@ Total Files: 282
 Total Directories: 67
 Text Files: 250
 Binary Files: 32
-Total Size: 95.25 MB
+Total Size: 95.27 MB
 
 FILE TYPES DISTRIBUTION:
 ------------------------------
@@ -12404,15 +12404,15 @@ FILE: src/main/java/br/com/ivanildo/tms/model/Carregamento.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 3.34 KB
+Size: 3.63 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/model/Carregamento.java
 Relative Path: src/main/java/br/com/ivanildo/tms/model
 Created: 2026-08-16 19:12:42 (America/Bahia / GMT-03:00)
-Modified: 2026-08-25 20:38:33 (America/Bahia / GMT-03:00)
-MD5: 81c90e2706390a320d6f6bc049a05b69
-SHA256: 10a62a5228743b89b3f80d875512ffc8d32d3276aa595def9a59e34ee193485e
+Modified: 2026-08-25 22:31:48 (America/Bahia / GMT-03:00)
+MD5: 959ee06b8ea929ec5e11480011b8a129
+SHA256: 1299168945ee4b0f36326433e558438c094bf85b5c3a2e58584c070efc06679d
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12452,6 +12452,9 @@ public class Carregamento {
     private Motorista motoristaEntidade;
 
     private LocalDateTime dataHoraApresentacao;
+
+    // --- CAMPO PARA ARQUIVAMENTO ---
+    private Boolean arquivado = false;
 
     public Carregamento() {}
 
@@ -12504,6 +12507,10 @@ public class Carregamento {
 
     public LocalDateTime getDataHoraApresentacao() { return dataHoraApresentacao; }
     public void setDataHoraApresentacao(LocalDateTime dataHoraApresentacao) { this.dataHoraApresentacao = dataHoraApresentacao; }
+
+    // Getters e Setters do Arquivamento
+    public Boolean getArquivado() { return arquivado != null ? arquivado : false; }
+    public void setArquivado(Boolean arquivado) { this.arquivado = arquivado; }
 }
 ================================================================================
 
@@ -12719,15 +12726,15 @@ FILE: src/main/java/br/com/ivanildo/tms/repository/CarregamentoRepository.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 778 B
+Size: 1.04 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/repository/CarregamentoRepository.java
 Relative Path: src/main/java/br/com/ivanildo/tms/repository
 Created: 2026-08-16 19:18:53 (America/Bahia / GMT-03:00)
-Modified: 2026-08-25 20:38:33 (America/Bahia / GMT-03:00)
-MD5: 97af9c04777802ec5d0a5a14222982a9
-SHA256: 0cba9acce282ced1e66cb32153a452e8ae66fc9a70284f6b19dda69c4d5cccee
+Modified: 2026-08-25 22:39:25 (America/Bahia / GMT-03:00)
+MD5: 11561e60e658475f9ca4e5d1c1aa210b
+SHA256: 4ba2a56cc96561046477ee1cbdc48073cdcec09a8b7662ed2b7830e9c612805f
 Encoding: UTF-8
 
 FILE CONTENT:
@@ -12739,7 +12746,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
 import java.util.Optional;
 
 @Repository
@@ -12750,7 +12756,16 @@ public interface CarregamentoRepository extends JpaRepository<Carregamento, Long
 
     // Opcional: buscar por placa e status específico (ex: apenas agendados / não apresentados)
     List<Carregamento> findByPlacaIgnoreCaseAndStatusNot(String placa, String status);
+    
     Optional<Carregamento> findByViagem(String viagem);
+
+    // --- NOVOS MÉTODOS PARA O ARQUIVAMENTO ---
+    
+    // Busca cargas que estão arquivadas (true)
+    List<Carregamento> findByArquivadoTrue();
+
+    // Busca cargas que NÃO estão arquivadas (false ou nulo)
+    List<Carregamento> findByArquivadoFalseOrArquivadoIsNull();
 }
 ================================================================================
 
@@ -14205,15 +14220,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/MainView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 23.19 KB
+Size: 28.5 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/MainView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-Modified: 2026-08-25 22:02:52 (America/Bahia / GMT-03:00)
-MD5: ba65c3c97d327a217d1f5d77495190bf
-SHA256: da2c442ddc581ce43f7782fc8f25d7f8d03268671214dd2cc29607f827ce3ab0
+Modified: 2026-08-25 22:35:36 (America/Bahia / GMT-03:00)
+MD5: ae0e6badb4a83c3afc05cb4be7c29da7
+SHA256: 2217e20cd46b8241add6c750823e52126febc39d70fe6116e0c0a45c4c709f9f
 Encoding: ASCII
 
 FILE CONTENT:
@@ -14395,14 +14410,17 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void aplicarFiltroStatus(String status) {
-        List<Carregamento> todos = repository.findAll();
+        // Considera apenas as cargas ativas (não arquivadas)
+        List<Carregamento> todosAtivos = repository.findAll().stream()
+            .filter(c -> c.getArquivado() == null || !c.getArquivado())
+            .toList();
 
         if (status == null) return;
 
         if ("TODOS".equalsIgnoreCase(status)) {
-            grid.setItems(todos);
+            grid.setItems(todosAtivos);
         } else if ("PENDENTE".equalsIgnoreCase(status) || "PENDENTES".equalsIgnoreCase(status)) {
-            List<Carregamento> pendentes = todos.stream()
+            List<Carregamento> pendentes = todosAtivos.stream()
                 .filter(c -> {
                     if (c.getStatus() == null || c.getStatus().trim().isEmpty()) {
                         return true;
@@ -14416,7 +14434,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 .toList();
             grid.setItems(pendentes);
         } else {
-            List<Carregamento> filtrados = todos.stream()
+            List<Carregamento> filtrados = todosAtivos.stream()
                 .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase(status))
                 .toList();
             grid.setItems(filtrados);
@@ -14429,6 +14447,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         layout.setAlignItems(Alignment.CENTER);
         layout.setJustifyContentMode(JustifyContentMode.BETWEEN);
 
+        HorizontalLayout grupoEsquerda = new HorizontalLayout();
+        grupoEsquerda.setAlignItems(Alignment.CENTER);
+
         Button btnNovo = new Button("Novo Carregamento", VaadinIcon.PLUS.create());
         btnNovo.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         btnNovo.getStyle()
@@ -14439,45 +14460,134 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
         btnNovo.setVisible(false);
 
-        MemoryBuffer buffer = new MemoryBuffer();
-Upload uploadExcel = new Upload(buffer);
-uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
-uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
-uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
+        // Botão para arquivar todas as cargas expedidas ativas
+        Button btnArquivarExpedidas = new Button("Arquivar Expedidas", VaadinIcon.ARCHIVE.create());
+        btnArquivarExpedidas.addThemeVariants(ButtonVariant.LUMO_CONTRAST, ButtonVariant.LUMO_SMALL);
+        btnArquivarExpedidas.addClickListener(e -> {
+            List<Carregamento> expedidosAtivos = repository.findAll().stream()
+                .filter(c -> (c.getArquivado() == null || !c.getArquivado()) && 
+                             c.getStatus() != null && 
+                             c.getStatus().equalsIgnoreCase("Expedido"))
+                .toList();
+            
+            if (expedidosAtivos.isEmpty()) {
+                Notification.show("Nenhuma carga expedida ativa para arquivar.", 3000, Notification.Position.BOTTOM_END);
+                return;
+            }
 
-uploadExcel.addSucceededListener(event -> {
-    System.out.println(">>> UPLOAD SUCCEEDED EVENT ACIONADO PARA O ARQUIVO: " + event.getFileName());
-    try {
-        InputStream is = buffer.getInputStream();
-        System.out.println(">>> INPUTSTREAM OBTIDO COM SUCESSO. CHAMANDO EXCEL SERVICE...");
-        
-        excelService.processarExcel(is);
-        System.out.println(">>> PROCESSAMENTO DO EXCEL FINALIZADO COM SUCESSO!");
-
-        getUI().ifPresent(ui -> ui.access(() -> {
+            for (Carregamento c : expedidosAtivos) {
+                c.setArquivado(true);
+                repository.save(c);
+            }
             atualizarGridEIndicators();
-            Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
-            n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-        }));
+            Notification.show(expedidosAtivos.size() + " cargas expedidas foram arquivadas.", 3000, Notification.Position.BOTTOM_END);
+        });
 
-    } catch (Exception ex) {
-        System.err.println(">>> ERRO CAPTURADO NO UPLOAD LISTENER:");
-        ex.printStackTrace();
-        
-        getUI().ifPresent(ui -> ui.access(() -> {
-            String msg = ex.getMessage() != null ? ex.getMessage() : ex.getClass().getSimpleName();
-            Notification n = Notification.show("Erro ao processar: " + msg, 5000, Notification.Position.MIDDLE);
-            n.addThemeVariants(NotificationVariant.LUMO_ERROR);
-        }));
-    }
-});
+        // Botão para abrir o modal de histórico de arquivados
+        Button btnVerArquivados = new Button("Ver Arquivados", VaadinIcon.FOLDER_OPEN.create());
+        btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        btnVerArquivados.addClickListener(e -> abrirModalArquivados());
+
+        grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnVerArquivados);
+
+        MemoryBuffer buffer = new MemoryBuffer();
+        Upload uploadExcel = new Upload(buffer);
+        uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
+        uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
+        uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
+
+        uploadExcel.addSucceededListener(event -> {
+            System.out.println(">>> UPLOAD SUCCEEDED EVENT ACIONADO PARA O ARQUIVO: " + event.getFileName());
+            try {
+                InputStream is = buffer.getInputStream();
+                System.out.println(">>> INPUTSTREAM OBTIDO COM SUCESSO. CHAMANDO EXCEL SERVICE...");
+                
+                excelService.processarExcel(is);
+                System.out.println(">>> PROCESSAMENTO DO EXCEL FINALIZADO COM SUCESSO!");
+
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    atualizarGridEIndicators();
+                    Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+                    n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+                }));
+
+            } catch (Exception ex) {
+                System.err.println(">>> ERRO CAPTURADO NO UPLOAD LISTENER:");
+                ex.printStackTrace();
+                
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    String msg = ex.getMessage() != null ? ex.getMessage() : ex.getClass().getSimpleName();
+                    Notification n = Notification.show("Erro ao processar: " + msg, 5000, Notification.Position.MIDDLE);
+                    n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+                }));
+            }
+        });
 
         uploadExcel.addFailedListener(event -> {
             System.err.println("Erro na transferência do arquivo pelo browser: " + event.getReason().getMessage());
         });
 
-        layout.add(btnNovo, uploadExcel);
+        layout.add(grupoEsquerda, uploadExcel);
         return layout;
+    }
+
+    @SuppressWarnings("null")
+
+    private void abrirModalArquivados() {
+        Dialog modalArquivados = new Dialog();
+        modalArquivados.setWidth("85vw");
+        modalArquivados.setHeight("80vh");
+        modalArquivados.setHeaderTitle("Histórico de Cargas Arquivadas");
+
+        modalArquivados.getElement().getStyle()
+            .set("background-color", "#0f172a")
+            .set("color", "#ffffff")
+            .set("--lumo-base-color", "#0f172a")
+            .set("--lumo-body-text-color", "#ffffff");
+
+        Grid<Carregamento> gridArquivados = new Grid<>(Carregamento.class, false);
+        gridArquivados.setSizeFull();
+        gridArquivados.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COMPACT);
+
+        gridArquivados.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
+
+        // Coluna com botão para desarquivar
+        gridArquivados.addColumn(new ComponentRenderer<>(carregamento -> {
+            Button btnDesarquivar = new Button("Desarquivar", VaadinIcon.UPLOAD_ALT.create());
+            btnDesarquivar.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_SUCCESS);
+            btnDesarquivar.addClickListener(e -> {
+                carregamento.setArquivado(false);
+                repository.save(carregamento);
+                
+                // Atualiza o grid do modal e a tela principal
+                List<Carregamento> listaArquivados = repository.findAll().stream()
+                    .filter(c -> c.getArquivado() != null && c.getArquivado())
+                    .toList();
+                gridArquivados.setItems(listaArquivados);
+                
+                atualizarGridEIndicators();
+                Notification.show("Viagem desarquivada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+            });
+            return btnDesarquivar;
+        })).setHeader("AÇÃO").setAutoWidth(true);
+
+        // Carrega inicialmente apenas os arquivados
+        List<Carregamento> listaArquivados = repository.findAll().stream()
+            .filter(c -> c.getArquivado() != null && c.getArquivado())
+            .toList();
+        gridArquivados.setItems(listaArquivados);
+
+        Button btnFechar = new Button("Fechar", e -> modalArquivados.close());
+        btnFechar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+
+        modalArquivados.getFooter().add(btnFechar);
+        modalArquivados.add(gridArquivados);
+        modalArquivados.open();
     }
 
     @SuppressWarnings("null")
@@ -14675,26 +14785,30 @@ uploadExcel.addSucceededListener(event -> {
     }
 
     private void atualizarGridEIndicators() {
-        List<Carregamento> lista = repository.findAll();
-        grid.setItems(lista);
+        // Considera apenas as cargas que não estão arquivadas para a tela principal e KPIs
+        List<Carregamento> listaAtivos = repository.findAll().stream()
+            .filter(c -> c.getArquivado() == null || !c.getArquivado())
+            .toList();
 
-        long total = lista.size();
+        grid.setItems(listaAtivos);
 
-        long apresentados = lista.stream()
+        long total = listaAtivos.size();
+
+        long apresentados = listaAtivos.stream()
             .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Apresentado"))
             .count();
 
-        long carregando = lista.stream()
+        long carregando = listaAtivos.stream()
             .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Carregando"))
             .count();
 
-        long expedidos = lista.stream()
+        long expedidos = listaAtivos.stream()
             .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
             .count();
 
         long pendentes = total - (apresentados + carregando + expedidos);
 
-        double pesoTotal = lista.stream()
+        double pesoTotal = listaAtivos.stream()
             .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
             .sum();
 

@@ -175,14 +175,17 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void aplicarFiltroStatus(String status) {
-        List<Carregamento> todos = repository.findAll();
+        // Considera apenas as cargas ativas (não arquivadas)
+        List<Carregamento> todosAtivos = repository.findAll().stream()
+            .filter(c -> c.getArquivado() == null || !c.getArquivado())
+            .toList();
 
         if (status == null) return;
 
         if ("TODOS".equalsIgnoreCase(status)) {
-            grid.setItems(todos);
+            grid.setItems(todosAtivos);
         } else if ("PENDENTE".equalsIgnoreCase(status) || "PENDENTES".equalsIgnoreCase(status)) {
-            List<Carregamento> pendentes = todos.stream()
+            List<Carregamento> pendentes = todosAtivos.stream()
                 .filter(c -> {
                     if (c.getStatus() == null || c.getStatus().trim().isEmpty()) {
                         return true;
@@ -196,7 +199,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 .toList();
             grid.setItems(pendentes);
         } else {
-            List<Carregamento> filtrados = todos.stream()
+            List<Carregamento> filtrados = todosAtivos.stream()
                 .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase(status))
                 .toList();
             grid.setItems(filtrados);
@@ -209,6 +212,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         layout.setAlignItems(Alignment.CENTER);
         layout.setJustifyContentMode(JustifyContentMode.BETWEEN);
 
+        HorizontalLayout grupoEsquerda = new HorizontalLayout();
+        grupoEsquerda.setAlignItems(Alignment.CENTER);
+
         Button btnNovo = new Button("Novo Carregamento", VaadinIcon.PLUS.create());
         btnNovo.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         btnNovo.getStyle()
@@ -219,45 +225,134 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
         btnNovo.setVisible(false);
 
-        MemoryBuffer buffer = new MemoryBuffer();
-Upload uploadExcel = new Upload(buffer);
-uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
-uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
-uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
+        // Botão para arquivar todas as cargas expedidas ativas
+        Button btnArquivarExpedidas = new Button("Arquivar Expedidas", VaadinIcon.ARCHIVE.create());
+        btnArquivarExpedidas.addThemeVariants(ButtonVariant.LUMO_CONTRAST, ButtonVariant.LUMO_SMALL);
+        btnArquivarExpedidas.addClickListener(e -> {
+            List<Carregamento> expedidosAtivos = repository.findAll().stream()
+                .filter(c -> (c.getArquivado() == null || !c.getArquivado()) && 
+                             c.getStatus() != null && 
+                             c.getStatus().equalsIgnoreCase("Expedido"))
+                .toList();
+            
+            if (expedidosAtivos.isEmpty()) {
+                Notification.show("Nenhuma carga expedida ativa para arquivar.", 3000, Notification.Position.BOTTOM_END);
+                return;
+            }
 
-uploadExcel.addSucceededListener(event -> {
-    System.out.println(">>> UPLOAD SUCCEEDED EVENT ACIONADO PARA O ARQUIVO: " + event.getFileName());
-    try {
-        InputStream is = buffer.getInputStream();
-        System.out.println(">>> INPUTSTREAM OBTIDO COM SUCESSO. CHAMANDO EXCEL SERVICE...");
-        
-        excelService.processarExcel(is);
-        System.out.println(">>> PROCESSAMENTO DO EXCEL FINALIZADO COM SUCESSO!");
-
-        getUI().ifPresent(ui -> ui.access(() -> {
+            for (Carregamento c : expedidosAtivos) {
+                c.setArquivado(true);
+                repository.save(c);
+            }
             atualizarGridEIndicators();
-            Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
-            n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-        }));
+            Notification.show(expedidosAtivos.size() + " cargas expedidas foram arquivadas.", 3000, Notification.Position.BOTTOM_END);
+        });
 
-    } catch (Exception ex) {
-        System.err.println(">>> ERRO CAPTURADO NO UPLOAD LISTENER:");
-        ex.printStackTrace();
-        
-        getUI().ifPresent(ui -> ui.access(() -> {
-            String msg = ex.getMessage() != null ? ex.getMessage() : ex.getClass().getSimpleName();
-            Notification n = Notification.show("Erro ao processar: " + msg, 5000, Notification.Position.MIDDLE);
-            n.addThemeVariants(NotificationVariant.LUMO_ERROR);
-        }));
-    }
-});
+        // Botão para abrir o modal de histórico de arquivados
+        Button btnVerArquivados = new Button("Ver Arquivados", VaadinIcon.FOLDER_OPEN.create());
+        btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        btnVerArquivados.addClickListener(e -> abrirModalArquivados());
+
+        grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnVerArquivados);
+
+        MemoryBuffer buffer = new MemoryBuffer();
+        Upload uploadExcel = new Upload(buffer);
+        uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
+        uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
+        uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
+
+        uploadExcel.addSucceededListener(event -> {
+            System.out.println(">>> UPLOAD SUCCEEDED EVENT ACIONADO PARA O ARQUIVO: " + event.getFileName());
+            try {
+                InputStream is = buffer.getInputStream();
+                System.out.println(">>> INPUTSTREAM OBTIDO COM SUCESSO. CHAMANDO EXCEL SERVICE...");
+                
+                excelService.processarExcel(is);
+                System.out.println(">>> PROCESSAMENTO DO EXCEL FINALIZADO COM SUCESSO!");
+
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    atualizarGridEIndicators();
+                    Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+                    n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+                }));
+
+            } catch (Exception ex) {
+                System.err.println(">>> ERRO CAPTURADO NO UPLOAD LISTENER:");
+                ex.printStackTrace();
+                
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    String msg = ex.getMessage() != null ? ex.getMessage() : ex.getClass().getSimpleName();
+                    Notification n = Notification.show("Erro ao processar: " + msg, 5000, Notification.Position.MIDDLE);
+                    n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+                }));
+            }
+        });
 
         uploadExcel.addFailedListener(event -> {
             System.err.println("Erro na transferência do arquivo pelo browser: " + event.getReason().getMessage());
         });
 
-        layout.add(btnNovo, uploadExcel);
+        layout.add(grupoEsquerda, uploadExcel);
         return layout;
+    }
+
+    @SuppressWarnings("null")
+
+    private void abrirModalArquivados() {
+        Dialog modalArquivados = new Dialog();
+        modalArquivados.setWidth("85vw");
+        modalArquivados.setHeight("80vh");
+        modalArquivados.setHeaderTitle("Histórico de Cargas Arquivadas");
+
+        modalArquivados.getElement().getStyle()
+            .set("background-color", "#0f172a")
+            .set("color", "#ffffff")
+            .set("--lumo-base-color", "#0f172a")
+            .set("--lumo-body-text-color", "#ffffff");
+
+        Grid<Carregamento> gridArquivados = new Grid<>(Carregamento.class, false);
+        gridArquivados.setSizeFull();
+        gridArquivados.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COMPACT);
+
+        gridArquivados.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
+
+        // Coluna com botão para desarquivar
+        gridArquivados.addColumn(new ComponentRenderer<>(carregamento -> {
+            Button btnDesarquivar = new Button("Desarquivar", VaadinIcon.UPLOAD_ALT.create());
+            btnDesarquivar.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_SUCCESS);
+            btnDesarquivar.addClickListener(e -> {
+                carregamento.setArquivado(false);
+                repository.save(carregamento);
+                
+                // Atualiza o grid do modal e a tela principal
+                List<Carregamento> listaArquivados = repository.findAll().stream()
+                    .filter(c -> c.getArquivado() != null && c.getArquivado())
+                    .toList();
+                gridArquivados.setItems(listaArquivados);
+                
+                atualizarGridEIndicators();
+                Notification.show("Viagem desarquivada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+            });
+            return btnDesarquivar;
+        })).setHeader("AÇÃO").setAutoWidth(true);
+
+        // Carrega inicialmente apenas os arquivados
+        List<Carregamento> listaArquivados = repository.findAll().stream()
+            .filter(c -> c.getArquivado() != null && c.getArquivado())
+            .toList();
+        gridArquivados.setItems(listaArquivados);
+
+        Button btnFechar = new Button("Fechar", e -> modalArquivados.close());
+        btnFechar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+
+        modalArquivados.getFooter().add(btnFechar);
+        modalArquivados.add(gridArquivados);
+        modalArquivados.open();
     }
 
     @SuppressWarnings("null")
@@ -455,26 +550,30 @@ uploadExcel.addSucceededListener(event -> {
     }
 
     private void atualizarGridEIndicators() {
-        List<Carregamento> lista = repository.findAll();
-        grid.setItems(lista);
+        // Considera apenas as cargas que não estão arquivadas para a tela principal e KPIs
+        List<Carregamento> listaAtivos = repository.findAll().stream()
+            .filter(c -> c.getArquivado() == null || !c.getArquivado())
+            .toList();
 
-        long total = lista.size();
+        grid.setItems(listaAtivos);
 
-        long apresentados = lista.stream()
+        long total = listaAtivos.size();
+
+        long apresentados = listaAtivos.stream()
             .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Apresentado"))
             .count();
 
-        long carregando = lista.stream()
+        long carregando = listaAtivos.stream()
             .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Carregando"))
             .count();
 
-        long expedidos = lista.stream()
+        long expedidos = listaAtivos.stream()
             .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
             .count();
 
         long pendentes = total - (apresentados + carregando + expedidos);
 
-        double pesoTotal = lista.stream()
+        double pesoTotal = listaAtivos.stream()
             .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
             .sum();
 

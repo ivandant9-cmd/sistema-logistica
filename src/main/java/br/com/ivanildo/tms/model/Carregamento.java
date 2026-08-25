@@ -34,6 +34,9 @@ public class Carregamento {
 
     private LocalDateTime dataHoraApresentacao;
 
+    // --- CAMPO PARA ARQUIVAMENTO ---
+    private Boolean arquivado = false;
+
     public Carregamento() {}
 
     // Getters e Setters Originais
@@ -85,4 +88,8 @@ public class Carregamento {
 
     public LocalDateTime getDataHoraApresentacao() { return dataHoraApresentacao; }
     public void setDataHoraApresentacao(LocalDateTime dataHoraApresentacao) { this.dataHoraApresentacao = dataHoraApresentacao; }
+
+    // Getters e Setters do Arquivamento
+    public Boolean getArquivado() { return arquivado != null ? arquivado : false; }
+    public void setArquivado(Boolean arquivado) { this.arquivado = arquivado; }
 }
