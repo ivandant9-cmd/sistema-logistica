@@ -7,10 +7,7 @@ import br.com.ivanildo.tms.repository.EntregaRepository;
 import com.github.pjfanning.xlsx.StreamingReader;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-//import org.springframework.beans.factory.annotation.Autowired;
-
 
 import java.io.InputStream;
 import java.text.Normalizer;
@@ -36,11 +33,9 @@ public class ExcelService {
         this.entregaRepository = entregaRepository;
     }
 
-    @Transactional // Transação principal garantindo rollback seguro se a planilha falhar
+    @Transactional 
     public void processarExcel(InputStream inputStream) {
         try {
-            // OPTIONAL: Se cada Excel substitui a carga ativa do dia,
-            // limpamos as tabelas filhas e pais para não corromper o PostgreSQL.
             entregaRepository.deleteAllInBatch();
             carregamentoRepository.deleteAllInBatch();
 
@@ -50,6 +45,7 @@ public class ExcelService {
                     .open(inputStream);
 
             DataFormatter formatter = new DataFormatter(new Locale.Builder().setLanguage("pt").setRegion("BR").build());
+            
             // ==========================================
             // 1. LEITURA DA PRIMEIRA ABA (CARREGAMENTOS)
             // ==========================================
@@ -121,8 +117,8 @@ public class ExcelService {
             // ============================================================
             // 2. EXTRAÇÃO DE CONJUNTOS DE REENTREGAS E COLOG / NUTRÍCIA
             // ============================================================
-            Set<String> reentregasDeliveries = extrairValoresColunaAba(workbook, "ENCAIXE REENTREGAS", 1, formatter); // Coluna B
-            Set<String> cologNutriciaNfs = extrairValoresColunaAba(workbook, "ENCAIXE NUTRICIA_COLOG", 0, formatter); // Coluna A
+            Set<String> reentregasDeliveries = extrairValoresColunaAba(workbook, "ENCAIXE REENTREGAS", 1, formatter);
+            Set<String> cologNutriciaNfs = extrairValoresColunaAba(workbook, "ENCAIXE NUTRICIA_COLOG", 0, formatter);
 
             // ============================================================
             // 3. LEITURA DE TODAS AS ABAS DE ENTREGAS
@@ -178,7 +174,6 @@ public class ExcelService {
                     String cidade = getValorSeguro(row, colunasEntregas, "CIDADE", formatter);
                     String peso = normalizarFormatoPeso(getValorSeguro(row, colunasEntregas, "PESO", formatter));
 
-                    // --- RIGOROSA VALIDAÇÃO DE LINHA DE ENTREGA ---
                     if (!isEntregaValida(delivery, nf, cliente)) {
                         continue;
                     }
@@ -261,7 +256,7 @@ public class ExcelService {
     @Transactional
     public void salvarCarregamentosLote(List<Carregamento> lista, Map<String, Carregamento> mapaCache) {
         List<Carregamento> salvos = carregamentoRepository.saveAll(lista);
-        carregamentoRepository.flush(); // Força a escrita imediata no PostgreSQL
+        carregamentoRepository.flush(); 
         for (Carregamento c : salvos) {
             if (c.getViagem() != null && !c.getViagem().trim().isEmpty()) {
                 mapaCache.put(c.getViagem().trim().toUpperCase(), c);
@@ -272,7 +267,7 @@ public class ExcelService {
     @Transactional
     public void salvarEntregasLote(List<Entrega> lista) {
         entregaRepository.saveAll(lista);
-        entregaRepository.flush(); // Força a escrita imediata no PostgreSQL
+        entregaRepository.flush(); 
     }
 
     private boolean isEntregaValida(String delivery, String nf, String cliente) {
@@ -281,15 +276,12 @@ public class ExcelService {
         String nfTrim = nf.trim().toUpperCase();
         String clienteTrim = cliente.trim().toUpperCase();
 
-        // 1. A Nota Fiscal precisa conter apenas dígitos numéricos (descarta placas como PJL9A52)
         if (!nfTrim.isEmpty() && !NOTA_FISCAL_NUMERICA.matcher(nfTrim).matches()) {
             return false;
         }
 
-        // 2. Filtra linhas de Subtotal e Total
         if (nfTrim.contains("SUBTOTAL") || nfTrim.contains("TOTAL")) return false;
 
-        // 3. Filtra veículos e descrições técnicas no campo cliente
         if (clienteTrim.equals("HR") ||
             clienteTrim.equals("TRUCK") ||
             clienteTrim.equals("CARRETA") ||
@@ -311,15 +303,16 @@ public class ExcelService {
     private Map<String, Integer> mapearCabecalhos(Row row, DataFormatter formatter) {
         Map<String, Integer> map = new HashMap<>();
         for (Cell cell : row) {
-            String val = normalizarTexto(getValorCelula(cell, formatter));
+            String valOriginal = getValorCelula(cell, formatter);
+            String val = normalizarTexto(valOriginal);
             if (!val.isEmpty()) {
                 map.put(val, cell.getColumnIndex());
+                System.out.println("COLUNA MAPEADA -> Original: [" + valOriginal + "] Normalizada: [" + val + "] Index: " + cell.getColumnIndex());
             }
         }
         return map;
     }
 
-    // Leitura estrita baseada exclusivamente na chave do cabeçalho mapeado
     private String getValorSeguro(Row row, Map<String, Integer> colunas, String nomeColuna, DataFormatter formatter) {
         Integer index = colunas.get(normalizarTexto(nomeColuna));
         if (index == null) return "";
