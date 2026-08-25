@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
+
 
 @Service
 public class ExcelService {
@@ -26,8 +26,7 @@ public class ExcelService {
     private final CarregamentoRepository carregamentoRepository;
     private final EntregaRepository entregaRepository;
 
-    private static final Pattern NOTA_FISCAL_NUMERICA = Pattern.compile("^\\d+$");
-
+  
     public ExcelService(CarregamentoRepository carregamentoRepository, EntregaRepository entregaRepository) {
         this.carregamentoRepository = carregamentoRepository;
         this.entregaRepository = entregaRepository;
@@ -166,6 +165,8 @@ public class ExcelService {
                     if (codigoCliente.isEmpty()) codigoCliente = getValorSeguro(row, colunasEntregas, "CODCLIENTE", formatter);
 
                     String delivery = getValorSeguro(row, colunasEntregas, "DELIVERY", formatter);
+                    if (delivery.isEmpty()) delivery = getValorSeguro(row, colunasEntregas, "DELIVERY2", formatter);
+
                     String nf = getValorSeguro(row, colunasEntregas, "NOTAFISCAL", formatter);
                     if (nf.isEmpty()) nf = getValorSeguro(row, colunasEntregas, "NF", formatter);
 
@@ -174,7 +175,7 @@ public class ExcelService {
                     String cidade = getValorSeguro(row, colunasEntregas, "CIDADE", formatter);
                     String peso = normalizarFormatoPeso(getValorSeguro(row, colunasEntregas, "PESO", formatter));
 
-                    if (!isEntregaValida(delivery, nf, cliente)) {
+                    if (!isEntregaValida(delivery, nf, codigoCliente, cliente)) {
                         continue;
                     }
 
@@ -270,15 +271,11 @@ public class ExcelService {
         entregaRepository.flush(); 
     }
 
-    private boolean isEntregaValida(String delivery, String nf, String cliente) {
-        if (delivery.isEmpty() && nf.isEmpty()) return false;
+    private boolean isEntregaValida(String delivery, String nf, String codigoCliente, String cliente) {
+        if (delivery.isEmpty() && nf.isEmpty() && codigoCliente.isEmpty()) return false;
 
         String nfTrim = nf.trim().toUpperCase();
         String clienteTrim = cliente.trim().toUpperCase();
-
-        if (!nfTrim.isEmpty() && !NOTA_FISCAL_NUMERICA.matcher(nfTrim).matches()) {
-            return false;
-        }
 
         if (nfTrim.contains("SUBTOTAL") || nfTrim.contains("TOTAL")) return false;
 
@@ -307,7 +304,6 @@ public class ExcelService {
             String val = normalizarTexto(valOriginal);
             if (!val.isEmpty()) {
                 map.put(val, cell.getColumnIndex());
-                System.out.println("COLUNA MAPEADA -> Original: [" + valOriginal + "] Normalizada: [" + val + "] Index: " + cell.getColumnIndex());
             }
         }
         return map;

@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-25 21:30:55 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-25 21:42:40 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 282
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -203,7 +203,7 @@
 │       │                   │   ├── 📄 EntregaRepository.java (599 B)
 │       │                   │   └── 📄 MotoristaRepository.java (309 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (15.79 KB)
+│       │                   │   ├── 📄 ExcelService.java (15.6 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 util/
 │       │                   │   └── 📄 UiBroadcaster.java (1010 B)
@@ -240,7 +240,7 @@
 │   │   │               │   ├── 📄 EntregaRepository.class (889 B)
 │   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (15.79 KB)
+│   │   │               │   ├── 📄 ExcelService.class (15.24 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 util/
 │   │   │               │   ├── 📄 UiBroadcaster.class (3.84 KB)
@@ -12935,15 +12935,15 @@ public interface MotoristaRepository extends JpaRepository<Motorista, Long> {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-service-excelservice-java"></a>📄 `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 
 **File Info:**
-- **Size**: 15.79 KB
+- **Size**: 15.6 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/service`
 - **Created**: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-25 21:30:54 (America/Bahia / GMT-03:00)
-- **MD5**: `7c4c953d456cbae51ee4fadcd437c094`
-- **SHA256**: `0bfb951202d73aaab6065157542654cd5bf5d467c6ed5b075ef61956f4bf9c34`
+- **Modified**: 2026-08-25 21:42:40 (America/Bahia / GMT-03:00)
+- **MD5**: `628ab5d56aadc1bb342e4afbbe61f33c`
+- **SHA256**: `cfbfb44d485f43019f5878817bdc91b5be59bd02f4b6d622433cf8aeded9d928`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -12969,7 +12969,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
+
 
 @Service
 public class ExcelService {
@@ -12977,8 +12977,7 @@ public class ExcelService {
     private final CarregamentoRepository carregamentoRepository;
     private final EntregaRepository entregaRepository;
 
-    private static final Pattern NOTA_FISCAL_NUMERICA = Pattern.compile("^\\d+$");
-
+  
     public ExcelService(CarregamentoRepository carregamentoRepository, EntregaRepository entregaRepository) {
         this.carregamentoRepository = carregamentoRepository;
         this.entregaRepository = entregaRepository;
@@ -13117,6 +13116,8 @@ public class ExcelService {
                     if (codigoCliente.isEmpty()) codigoCliente = getValorSeguro(row, colunasEntregas, "CODCLIENTE", formatter);
 
                     String delivery = getValorSeguro(row, colunasEntregas, "DELIVERY", formatter);
+                    if (delivery.isEmpty()) delivery = getValorSeguro(row, colunasEntregas, "DELIVERY2", formatter);
+
                     String nf = getValorSeguro(row, colunasEntregas, "NOTAFISCAL", formatter);
                     if (nf.isEmpty()) nf = getValorSeguro(row, colunasEntregas, "NF", formatter);
 
@@ -13125,7 +13126,7 @@ public class ExcelService {
                     String cidade = getValorSeguro(row, colunasEntregas, "CIDADE", formatter);
                     String peso = normalizarFormatoPeso(getValorSeguro(row, colunasEntregas, "PESO", formatter));
 
-                    if (!isEntregaValida(delivery, nf, cliente)) {
+                    if (!isEntregaValida(delivery, nf, codigoCliente, cliente)) {
                         continue;
                     }
 
@@ -13221,15 +13222,11 @@ public class ExcelService {
         entregaRepository.flush(); 
     }
 
-    private boolean isEntregaValida(String delivery, String nf, String cliente) {
-        if (delivery.isEmpty() && nf.isEmpty()) return false;
+    private boolean isEntregaValida(String delivery, String nf, String codigoCliente, String cliente) {
+        if (delivery.isEmpty() && nf.isEmpty() && codigoCliente.isEmpty()) return false;
 
         String nfTrim = nf.trim().toUpperCase();
         String clienteTrim = cliente.trim().toUpperCase();
-
-        if (!nfTrim.isEmpty() && !NOTA_FISCAL_NUMERICA.matcher(nfTrim).matches()) {
-            return false;
-        }
 
         if (nfTrim.contains("SUBTOTAL") || nfTrim.contains("TOTAL")) return false;
 
@@ -13258,7 +13255,6 @@ public class ExcelService {
             String val = normalizarTexto(valOriginal);
             if (!val.isEmpty()) {
                 map.put(val, cell.getColumnIndex());
-                System.out.println("COLUNA MAPEADA -> Original: [" + valOriginal + "] Normalizada: [" + val + "] Index: " + cell.getColumnIndex());
             }
         }
         return map;
