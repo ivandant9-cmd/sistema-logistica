@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-25 00:06:01 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-25 00:34:15 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 276
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -171,7 +171,7 @@
 │   │   ├── 📁 frontend/
 │   │   │   └── 📁 styles/
 │   │   ├── 📄 dashboard-styles.css (2.4 KB)
-│   │   ├── 📄 styles.css (4.75 KB)
+│   │   ├── 📄 styles.css (5.8 KB)
 │   │   ├── 📄 vaadin-dialog-custom.css (258 B)
 │   │   ├── 📄 vaadin-form-fields-custom.css (1.3 KB)
 │   │   └── 📄 vaadin-grid-custom.css (415 B)
@@ -11731,15 +11731,15 @@ vaadin-dialog-overlay::part(title) {
 ### <a id="📄-frontend-styles-styles-css"></a>📄 `frontend/styles/styles.css`
 
 **File Info:**
-- **Size**: 4.75 KB
+- **Size**: 5.8 KB
 - **Extension**: `.css`
 - **Language**: `css`
 - **Location**: `frontend/styles/styles.css`
 - **Relative Path**: `frontend/styles`
 - **Created**: 2026-08-21 20:21:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-25 00:06:00 (America/Bahia / GMT-03:00)
-- **MD5**: `1682777b87908c214cef277e527e8829`
-- **SHA256**: `6d4ca0e01c929ddfab2dad48e52933840111c49162557776c4182631b3595e4c`
+- **Modified**: 2026-08-25 00:34:14 (America/Bahia / GMT-03:00)
+- **MD5**: `bce384485cfcbed5715e253adbc68638`
+- **SHA256**: `f99263d7db8ca59528c421ef107a27e6b2fa4367f81ca1982ab505b8ae565f4f`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -11903,6 +11903,41 @@ vaadin-grid::part(header-cell) {
     font-weight: 700 !important;
     letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
+
+    /* Força visibilidade e contraste máximo para todos os campos do Vaadin */
+vaadin-text-field,
+vaadin-date-picker,
+vaadin-select,
+vaadin-text-area,
+vaadin-combo-box,
+vaadin-input-container {
+    opacity: 1 !important;
+    --vaadin-input-field-readonly-line-color: transparent !important;
+}
+
+/* Força a cor e opacidade dos rótulos (labels) e valores digitados */
+vaadin-text-field::part(label),
+vaadin-date-picker::part(label),
+vaadin-select::part(label),
+vaadin-text-area::part(label),
+vaadin-text-field::part(value),
+vaadin-date-picker::part(value),
+vaadin-select::part(value),
+vaadin-text-area::part(value),
+vaadin-input-container [part="value"] {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Garante fundo visível nos inputs */
+vaadin-text-field::part(input-field),
+vaadin-date-picker::part(input-field),
+vaadin-select::part(input-field),
+vaadin-text-area::part(input-field) {
+    background-color: #1a2332 !important;
+    border: 1px solid #2b3b54 !important;
+}
 }
 ```
 

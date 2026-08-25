@@ -156,4 +156,39 @@ vaadin-grid::part(header-cell) {
     font-weight: 700 !important;
     letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
+
+    /* Força visibilidade e contraste máximo para todos os campos do Vaadin */
+vaadin-text-field,
+vaadin-date-picker,
+vaadin-select,
+vaadin-text-area,
+vaadin-combo-box,
+vaadin-input-container {
+    opacity: 1 !important;
+    --vaadin-input-field-readonly-line-color: transparent !important;
+}
+
+/* Força a cor e opacidade dos rótulos (labels) e valores digitados */
+vaadin-text-field::part(label),
+vaadin-date-picker::part(label),
+vaadin-select::part(label),
+vaadin-text-area::part(label),
+vaadin-text-field::part(value),
+vaadin-date-picker::part(value),
+vaadin-select::part(value),
+vaadin-text-area::part(value),
+vaadin-input-container [part="value"] {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Garante fundo visível nos inputs */
+vaadin-text-field::part(input-field),
+vaadin-date-picker::part(input-field),
+vaadin-select::part(input-field),
+vaadin-text-area::part(input-field) {
+    background-color: #1a2332 !important;
+    border: 1px solid #2b3b54 !important;
+}
 }
