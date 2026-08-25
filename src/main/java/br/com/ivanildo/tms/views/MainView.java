@@ -225,9 +225,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
         btnNovo.setVisible(false);
 
-        // Botão para arquivar todas as cargas expedidas ativas
+        // Botão para arquivar todas as cargas expedidas ativas (com destaque/aceso)
         Button btnArquivarExpedidas = new Button("Arquivar Expedidas", VaadinIcon.ARCHIVE.create());
-        btnArquivarExpedidas.addThemeVariants(ButtonVariant.LUMO_CONTRAST, ButtonVariant.LUMO_SMALL);
+        btnArquivarExpedidas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
+        btnArquivarExpedidas.getStyle()
+                .set("background", "linear-gradient(135deg, #059669, #047857)")
+                .set("color", "#ffffff")
+                .set("font-weight", "600");
+
         btnArquivarExpedidas.addClickListener(e -> {
             List<Carregamento> expedidosAtivos = repository.findAll().stream()
                 .filter(c -> (c.getArquivado() == null || !c.getArquivado()) && 
@@ -262,13 +267,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
 
         uploadExcel.addSucceededListener(event -> {
-            System.out.println(">>> UPLOAD SUCCEEDED EVENT ACIONADO PARA O ARQUIVO: " + event.getFileName());
             try {
                 InputStream is = buffer.getInputStream();
-                System.out.println(">>> INPUTSTREAM OBTIDO COM SUCESSO. CHAMANDO EXCEL SERVICE...");
-                
                 excelService.processarExcel(is);
-                System.out.println(">>> PROCESSAMENTO DO EXCEL FINALIZADO COM SUCESSO!");
 
                 getUI().ifPresent(ui -> ui.access(() -> {
                     atualizarGridEIndicators();
@@ -277,19 +278,13 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 }));
 
             } catch (Exception ex) {
-                System.err.println(">>> ERRO CAPTURADO NO UPLOAD LISTENER:");
                 ex.printStackTrace();
-                
                 getUI().ifPresent(ui -> ui.access(() -> {
                     String msg = ex.getMessage() != null ? ex.getMessage() : ex.getClass().getSimpleName();
                     Notification n = Notification.show("Erro ao processar: " + msg, 5000, Notification.Position.MIDDLE);
                     n.addThemeVariants(NotificationVariant.LUMO_ERROR);
                 }));
             }
-        });
-
-        uploadExcel.addFailedListener(event -> {
-            System.err.println("Erro na transferência do arquivo pelo browser: " + event.getReason().getMessage());
         });
 
         layout.add(grupoEsquerda, uploadExcel);

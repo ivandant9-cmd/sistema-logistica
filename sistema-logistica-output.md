@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-25 22:39:26 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-25 23:02:07 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 282
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -211,7 +211,7 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   └── 📄 MainView.java (28.5 KB)
+│       │                   │   └── 📄 MainView.java (28.14 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
 │       └── 📁 resources/
@@ -250,7 +250,7 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   └── 📄 MainView.class (41.08 KB)
+│   │   │               │   └── 📄 MainView.class (40.06 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
 │   │   ├── 📁 templates/
@@ -636,7 +636,7 @@
 | Total Directories | 67 |
 | Text Files | 250 |
 | Binary Files | 32 |
-| Total Size | 95.27 MB |
+| Total Size | 95.26 MB |
 
 ### 📄 File Types Distribution
 
@@ -14319,15 +14319,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 28.5 KB
+- **Size**: 28.14 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-25 22:35:36 (America/Bahia / GMT-03:00)
-- **MD5**: `ae0e6badb4a83c3afc05cb4be7c29da7`
-- **SHA256**: `2217e20cd46b8241add6c750823e52126febc39d70fe6116e0c0a45c4c709f9f`
+- **Modified**: 2026-08-25 23:02:06 (America/Bahia / GMT-03:00)
+- **MD5**: `b388d93e9577419954cbc4bb9db34a10`
+- **SHA256**: `ce47ad740b2b470ca72366c82ba93a387f727729662d4cf8a3dfd6fe56b8bbe0`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14560,9 +14560,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
         btnNovo.setVisible(false);
 
-        // Botão para arquivar todas as cargas expedidas ativas
+        // Botão para arquivar todas as cargas expedidas ativas (com destaque/aceso)
         Button btnArquivarExpedidas = new Button("Arquivar Expedidas", VaadinIcon.ARCHIVE.create());
-        btnArquivarExpedidas.addThemeVariants(ButtonVariant.LUMO_CONTRAST, ButtonVariant.LUMO_SMALL);
+        btnArquivarExpedidas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
+        btnArquivarExpedidas.getStyle()
+                .set("background", "linear-gradient(135deg, #059669, #047857)")
+                .set("color", "#ffffff")
+                .set("font-weight", "600");
+
         btnArquivarExpedidas.addClickListener(e -> {
             List<Carregamento> expedidosAtivos = repository.findAll().stream()
                 .filter(c -> (c.getArquivado() == null || !c.getArquivado()) && 
@@ -14597,13 +14602,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
 
         uploadExcel.addSucceededListener(event -> {
-            System.out.println(">>> UPLOAD SUCCEEDED EVENT ACIONADO PARA O ARQUIVO: " + event.getFileName());
             try {
                 InputStream is = buffer.getInputStream();
-                System.out.println(">>> INPUTSTREAM OBTIDO COM SUCESSO. CHAMANDO EXCEL SERVICE...");
-                
                 excelService.processarExcel(is);
-                System.out.println(">>> PROCESSAMENTO DO EXCEL FINALIZADO COM SUCESSO!");
 
                 getUI().ifPresent(ui -> ui.access(() -> {
                     atualizarGridEIndicators();
@@ -14612,19 +14613,13 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 }));
 
             } catch (Exception ex) {
-                System.err.println(">>> ERRO CAPTURADO NO UPLOAD LISTENER:");
                 ex.printStackTrace();
-                
                 getUI().ifPresent(ui -> ui.access(() -> {
                     String msg = ex.getMessage() != null ? ex.getMessage() : ex.getClass().getSimpleName();
                     Notification n = Notification.show("Erro ao processar: " + msg, 5000, Notification.Position.MIDDLE);
                     n.addThemeVariants(NotificationVariant.LUMO_ERROR);
                 }));
             }
-        });
-
-        uploadExcel.addFailedListener(event -> {
-            System.err.println("Erro na transferência do arquivo pelo browser: " + event.getReason().getMessage());
         });
 
         layout.add(grupoEsquerda, uploadExcel);
