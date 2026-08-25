@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-25 00:51:08 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-25 01:04:19 (America/Bahia / GMT-03:00)
 Total Files Processed: 199
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -214,7 +214,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
 │       │                   │   └── 📄 MainView.java (22.93 KB)
 │       │                   ├── 📄 Application.java (850 B)
-│       │                   └── 📄 DataInitializer.java (980 B)
+│       │                   └── 📄 DataInitializer.java (374 B)
 │       └── 📁 resources/
 │           ├── 📁 templates/
 │           │   └── 📄 entregas.html (7.96 KB)
@@ -252,7 +252,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
 │   │   │               │   └── 📄 MainView.class (34.38 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
-│   │   │               └── 📄 DataInitializer.class (1.16 KB)
+│   │   │               └── 📄 DataInitializer.class (650 B)
 │   │   ├── 📁 templates/
 │   │   │   └── 📄 entregas.html (7.96 KB)
 │   │   └── 📄 application.properties (1.07 KB)
@@ -14664,42 +14664,30 @@ FILE: src/main/java/br/com/ivanildo/tms/DataInitializer.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 980 B
+Size: 374 B
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/DataInitializer.java
 Relative Path: src/main/java/br/com/ivanildo/tms
 Created: 2026-08-16 19:30:34 (America/Bahia / GMT-03:00)
-Modified: 2026-08-25 00:51:07 (America/Bahia / GMT-03:00)
-MD5: eabd12ecce9b4d846b3438ad8fa5a449
-SHA256: 5ee0ab4145fff30fa318ca7b83d1165e3c0f25a48387703e1f0cdccae27ad783
-Encoding: UTF-8
+Modified: 2026-08-25 01:04:18 (America/Bahia / GMT-03:00)
+MD5: 64c8610515b22c9e904fba2ace3ba39b
+SHA256: b6d7ba2356caaccc630d1439f3bb095a306b1e74ecfbdac4f31ba52fdde08e06
+Encoding: ASCII
 
 FILE CONTENT:
 ----------------------------------------
 package br.com.ivanildo.tms;
 
-import br.com.ivanildo.tms.repository.CarregamentoRepository;
-import br.com.ivanildo.tms.repository.EntregaRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-    private final CarregamentoRepository carregamentoRepository;
-    private final EntregaRepository entregaRepository;
-
-    public DataInitializer(CarregamentoRepository carregamentoRepository, EntregaRepository entregaRepository) {
-        this.carregamentoRepository = carregamentoRepository;
-        this.entregaRepository = entregaRepository;
-    }
-
     @Override
     public void run(String... args) throws Exception {
-        // Exclui em lote via instrução SQL direta, evitando StaleObjectStateException e falhas de lock
-        entregaRepository.deleteAllInBatch();
-        carregamentoRepository.deleteAllInBatch();
+        // Mantido vazio para evitar apagar os dados salvos no Render ao reiniciar
     }
 }
 ================================================================================
