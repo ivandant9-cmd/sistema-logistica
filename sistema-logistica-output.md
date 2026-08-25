@@ -3,8 +3,8 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-25 21:01:38 (America/Bahia / GMT-03:00)
-- **Total Files Processed**: 281
+- **Generated On**: 2026-08-25 21:13:34 (America/Bahia / GMT-03:00)
+- **Total Files Processed**: 282
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
 
@@ -211,7 +211,7 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   └── 📄 MainView.java (22.93 KB)
+│       │                   │   └── 📄 MainView.java (22.98 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
 │       └── 📁 resources/
@@ -227,7 +227,7 @@
 │   │   │               ├── 📁 config/
 │   │   │               │   └── 📄 SecurityConfig.class (4.59 KB)
 │   │   │               ├── 📁 controller/
-│   │   │               │   ├── 📄 CarregamentoController.class (2.3 KB)
+│   │   │               │   ├── 📄 CarregamentoController.class (1.03 KB)
 │   │   │               │   ├── 📄 CheckinController.class (4.94 KB)
 │   │   │               │   ├── 📄 CheckinDTO.class (971 B)
 │   │   │               │   └── 📄 PdfController.class (4.68 KB)
@@ -250,7 +250,7 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   └── 📄 MainView.class (34.2 KB)
+│   │   │               │   └── 📄 MainView.class (35.34 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
 │   │   ├── 📁 templates/
@@ -367,6 +367,7 @@
 ├── 📄 tsconfig.json (1.26 KB)
 ├── 📄 types.d.ts (494 B)
 ├── 📄 vite.config.ts (275 B)
+├── 📄 vite.config.ts.timestamp-1787691770682-fccb386178692.mjs (186.6 KB)
 └── 📄 vite.generated.ts (29.61 KB)
 ```
 
@@ -631,11 +632,11 @@
 
 | Metric | Count |
 |--------|-------|
-| Total Files | 281 |
+| Total Files | 282 |
 | Total Directories | 67 |
 | Text Files | 250 |
-| Binary Files | 31 |
-| Total Size | 95.07 MB |
+| Binary Files | 32 |
+| Total Size | 95.25 MB |
 
 ### 📄 File Types Distribution
 
@@ -658,6 +659,7 @@
 | `.original` | 1 |
 | `no extension` | 1 |
 | `.xml` | 1 |
+| `.mjs` | 1 |
 
 ## 💻 File Code Contents
 
@@ -14313,15 +14315,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 22.93 KB
+- **Size**: 22.98 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-25 20:38:33 (America/Bahia / GMT-03:00)
-- **MD5**: `c0b9264a4f29008aeb9063363fa458c9`
-- **SHA256**: `71fd8deb9c79db7f8cbd88306bbe0e1135a5b9b916faf819e962a17f481993b5`
+- **Modified**: 2026-08-25 21:13:33 (America/Bahia / GMT-03:00)
+- **MD5**: `093f2caa6b6780e0065f1d50db387561`
+- **SHA256**: `eb86af0bbd88c0eeb10d962228e0dab0f4d4247f9c166bde90b1bb6e4b0645d1`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14430,7 +14432,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
-        // Recarrega as informações e re-aplica estilos ao navegar de volta para esta tela
         atualizarGridEIndicators();
     }
 
@@ -14558,13 +14559,20 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         uploadExcel.addSucceededListener(event -> {
             try (InputStream is = buffer.getInputStream()) {
                 excelService.processarExcel(is);
-                Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
-                n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-                atualizarGridEIndicators();
+                
+                // Sincroniza a atualização diretamente com a UI ativa do Vaadin
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    atualizarGridEIndicators();
+                    Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+                    n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+                }));
+
             } catch (Exception ex) {
                 ex.printStackTrace();
-                Notification n = Notification.show("Erro ao processar: " + ex.getMessage(), 5000, Notification.Position.MIDDLE);
-                n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    Notification n = Notification.show("Erro ao processar: " + ex.getMessage(), 5000, Notification.Position.MIDDLE);
+                    n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+                }));
             }
         });
 
@@ -14577,12 +14585,10 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     @SuppressWarnings("null")
-
     private void configurarGrid() {
         grid.setSizeFull();
         grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_COMPACT);
 
-        // Estilização Dark Theme do Grid
         grid.getStyle()
             .set("--lumo-size-m", "36px")
             .set("--lumo-font-size-s", "12px")
@@ -14594,13 +14600,11 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             .set("border", "1px solid #1e293b")
             .set("border-radius", "8px");
 
-        // Colunas do Grid
         grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
         grid.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
         grid.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
 
-        // Nova coluna MOTORISTA
         grid.addColumn(c -> {
             if (c.getMotoristaEntidade() != null && c.getMotoristaEntidade().getNome() != null) {
                 return c.getMotoristaEntidade().getNome();
@@ -14620,7 +14624,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
 
-        // Coluna de Ações
         grid.addColumn(new ComponentRenderer<>(carregamento -> {
             HorizontalLayout acoes = new HorizontalLayout();
             acoes.setSpacing(true);
@@ -52778,4 +52781,5 @@ function getCvdlName(module: string): string {
 The following files were not included in the text content:
 
 - `Dockerfile`
+- `vite.config.ts.timestamp-1787691770682-fccb386178692.mjs`
 

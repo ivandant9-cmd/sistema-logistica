@@ -101,7 +101,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
-        // Recarrega as informações e re-aplica estilos ao navegar de volta para esta tela
         atualizarGridEIndicators();
     }
 
@@ -229,13 +228,20 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         uploadExcel.addSucceededListener(event -> {
             try (InputStream is = buffer.getInputStream()) {
                 excelService.processarExcel(is);
-                Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
-                n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-                atualizarGridEIndicators();
+                
+                // Sincroniza a atualização diretamente com a UI ativa do Vaadin
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    atualizarGridEIndicators();
+                    Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+                    n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+                }));
+
             } catch (Exception ex) {
                 ex.printStackTrace();
-                Notification n = Notification.show("Erro ao processar: " + ex.getMessage(), 5000, Notification.Position.MIDDLE);
-                n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    Notification n = Notification.show("Erro ao processar: " + ex.getMessage(), 5000, Notification.Position.MIDDLE);
+                    n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+                }));
             }
         });
 
@@ -248,12 +254,10 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     @SuppressWarnings("null")
-
     private void configurarGrid() {
         grid.setSizeFull();
         grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_COMPACT);
 
-        // Estilização Dark Theme do Grid
         grid.getStyle()
             .set("--lumo-size-m", "36px")
             .set("--lumo-font-size-s", "12px")
@@ -265,13 +269,11 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             .set("border", "1px solid #1e293b")
             .set("border-radius", "8px");
 
-        // Colunas do Grid
         grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
         grid.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
         grid.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
 
-        // Nova coluna MOTORISTA
         grid.addColumn(c -> {
             if (c.getMotoristaEntidade() != null && c.getMotoristaEntidade().getNome() != null) {
                 return c.getMotoristaEntidade().getNome();
@@ -291,7 +293,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
 
-        // Coluna de Ações
         grid.addColumn(new ComponentRenderer<>(carregamento -> {
             HorizontalLayout acoes = new HorizontalLayout();
             acoes.setSpacing(true);
