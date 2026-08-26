@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-26 00:33:04 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-26 00:54:52 (America/Bahia / GMT-03:00)
 Total Files Processed: 284
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -205,7 +205,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 EntregaRepository.java (599 B)
 │       │                   │   └── 📄 MotoristaRepository.java (309 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (16.17 KB)
+│       │                   │   ├── 📄 ExcelService.java (20.75 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 util/
 │       │                   │   └── 📄 UiBroadcaster.java (1010 B)
@@ -243,7 +243,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 EntregaRepository.class (889 B)
 │   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (15.8 KB)
+│   │   │               │   ├── 📄 ExcelService.class (18.21 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 util/
 │   │   │               │   ├── 📄 UiBroadcaster.class (3.84 KB)
@@ -12858,15 +12858,15 @@ FILE: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 16.17 KB
+Size: 20.75 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 Relative Path: src/main/java/br/com/ivanildo/tms/service
 Created: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-Modified: 2026-08-26 00:17:31 (America/Bahia / GMT-03:00)
-MD5: a965d102d2529bfe3607f2fffa17154b
-SHA256: c23e79822ac0ce66b85efe600bc2a7f7977e32e9b7896d2a3b7a5e2bb8ac667a
+Modified: 2026-08-26 00:54:51 (America/Bahia / GMT-03:00)
+MD5: 49f6f9aefc4c5aa7b12a3e19251c3ffe
+SHA256: fff4c515b74b08c3edb4735161f0b165eab129b4639f01374de7ce5a78826c2b
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12884,13 +12884,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.InputStream;
 import java.text.Normalizer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -12899,7 +12894,6 @@ public class ExcelService {
     private final CarregamentoRepository carregamentoRepository;
     private final EntregaRepository entregaRepository;
 
-  
     public ExcelService(CarregamentoRepository carregamentoRepository, EntregaRepository entregaRepository) {
         this.carregamentoRepository = carregamentoRepository;
         this.entregaRepository = entregaRepository;
@@ -12908,8 +12902,7 @@ public class ExcelService {
     @Transactional 
     public void processarExcel(InputStream inputStream) {
         try {
-            entregaRepository.deleteAllInBatch();
-            carregamentoRepository.deleteAllInBatch();
+            // ATENÇÃO: Removemos o deleteAllInBatch() para preservar os dados existentes e não apagar nada construído!
 
             Workbook workbook = StreamingReader.builder()
                     .rowCacheSize(100)
@@ -12972,33 +12965,32 @@ public class ExcelService {
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter));
 
                 String valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETES", formatter);
-if (valPaletes.isEmpty()) {
-    valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETE", formatter);
-}
-if (!valPaletes.isEmpty()) {
-    try {
-        // Remove pontos ou vírgulas caso venha formatado como número decimal
-        String limpo = valPaletes.replaceAll("[^0-9]", "");
-        c.setPaletes(limpo.isEmpty() ? 0 : Integer.parseInt(limpo));
-    } catch (NumberFormatException e) {
-        c.setPaletes(0);
-    }
-} else {
-    c.setPaletes(0);
-}
+                if (valPaletes.isEmpty()) {
+                    valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETE", formatter);
+                }
+                if (!valPaletes.isEmpty()) {
+                    try {
+                        String limpo = valPaletes.replaceAll("[^0-9]", "");
+                        c.setPaletes(limpo.isEmpty() ? 0 : Integer.parseInt(limpo));
+                    } catch (NumberFormatException e) {
+                        c.setPaletes(0);
+                    }
+                } else {
+                    c.setPaletes(0);
+                }
 
                 if (!c.getViagem().isEmpty() || !c.getPlaca().isEmpty() || !c.getTransportadora().isEmpty()) {
                     novosCarregamentos.add(c);
                 }
 
                 if (novosCarregamentos.size() >= 100) {
-                    salvarCarregamentosLote(novosCarregamentos, carregamentosPorViagem);
+                    salvarCarregamentosLoteInteligente(novosCarregamentos, carregamentosPorViagem);
                     novosCarregamentos.clear();
                 }
             }
 
             if (!novosCarregamentos.isEmpty()) {
-                salvarCarregamentosLote(novosCarregamentos, carregamentosPorViagem);
+                salvarCarregamentosLoteInteligente(novosCarregamentos, carregamentosPorViagem);
                 novosCarregamentos.clear();
             }
 
@@ -13100,14 +13092,14 @@ if (!valPaletes.isEmpty()) {
                     }
 
                     if (novasEntregas.size() >= 100) {
-                        salvarEntregasLote(novasEntregas);
+                        salvarEntregasLoteInteligente(novasEntregas);
                         novasEntregas.clear();
                     }
                 }
             }
 
             if (!novasEntregas.isEmpty()) {
-                salvarEntregasLote(novasEntregas);
+                salvarEntregasLoteInteligente(novasEntregas);
                 novasEntregas.clear();
             }
 
@@ -13144,8 +13136,36 @@ if (!valPaletes.isEmpty()) {
     }
 
     @Transactional
-    public void salvarCarregamentosLote(List<Carregamento> lista, Map<String, Carregamento> mapaCache) {
-        List<Carregamento> salvos = carregamentoRepository.saveAll(lista);
+    public void salvarCarregamentosLoteInteligente(List<Carregamento> lista, Map<String, Carregamento> mapaCache) {
+        List<Carregamento> paraSalvarOrAtualizar = new ArrayList<>();
+
+        for (Carregamento cNovo : lista) {
+            if (cNovo.getViagem() != null && !cNovo.getViagem().trim().isEmpty()) {
+                Optional<Carregamento> existenteOpt = carregamentoRepository.findByViagem(cNovo.getViagem().trim());
+                if (existenteOpt.isPresent()) {
+                    Carregamento existente = existenteOpt.get();
+                    // Mesclagem Inteligente: preenche apenas campos vazios/nulos do banco com os dados novos
+                    if (isNullOrEmpty(existente.getDataProgramacao()) && !isNullOrEmpty(cNovo.getDataProgramacao())) existente.setDataProgramacao(cNovo.getDataProgramacao());
+                    if (isNullOrEmpty(existente.getTransportadora()) && !isNullOrEmpty(cNovo.getTransportadora())) existente.setTransportadora(cNovo.getTransportadora());
+                    if (isNullOrEmpty(existente.getPlaca()) && !isNullOrEmpty(cNovo.getPlaca())) existente.setPlaca(cNovo.getPlaca());
+                    if (isNullOrEmpty(existente.getTipoVeiculo()) && !isNullOrEmpty(cNovo.getTipoVeiculo())) existente.setTipoVeiculo(cNovo.getTipoVeiculo());
+                    if (isNullOrEmpty(existente.getOrdemCarga()) && !isNullOrEmpty(cNovo.getOrdemCarga())) existente.setOrdemCarga(cNovo.getOrdemCarga());
+                    if (isNullOrEmpty(existente.getPeso()) || existente.getPeso().equals("0")) if (!isNullOrEmpty(cNovo.getPeso())) existente.setPeso(cNovo.getPeso());
+                    if (isNullOrEmpty(existente.getEncaixe()) && !isNullOrEmpty(cNovo.getEncaixe())) existente.setEncaixe(cNovo.getEncaixe());
+                    if (isNullOrEmpty(existente.getStatus()) && !isNullOrEmpty(cNovo.getStatus())) existente.setStatus(cNovo.getStatus());
+                    if (isNullOrEmpty(existente.getObservacao()) && !isNullOrEmpty(cNovo.getObservacao())) existente.setObservacao(cNovo.getObservacao());
+                    if ((existente.getPaletes() == null || existente.getPaletes() == 0) && cNovo.getPaletes() != null && cNovo.getPaletes() > 0) existente.setPaletes(cNovo.getPaletes());
+
+                    paraSalvarOrAtualizar.add(existente);
+                } else {
+                    paraSalvarOrAtualizar.add(cNovo);
+                }
+            } else {
+                paraSalvarOrAtualizar.add(cNovo);
+            }
+        }
+
+        List<Carregamento> salvos = carregamentoRepository.saveAll(paraSalvarOrAtualizar);
         carregamentoRepository.flush(); 
         for (Carregamento c : salvos) {
             if (c.getViagem() != null && !c.getViagem().trim().isEmpty()) {
@@ -13155,9 +13175,45 @@ if (!valPaletes.isEmpty()) {
     }
 
     @Transactional
-    public void salvarEntregasLote(List<Entrega> lista) {
-        entregaRepository.saveAll(lista);
+    public void salvarEntregasLoteInteligente(List<Entrega> lista) {
+        List<Entrega> paraSalvarOrAtualizar = new ArrayList<>();
+
+        for (Entrega eNovo : lista) {
+            boolean jaExiste = false;
+            if (eNovo.getCarregamento() != null && eNovo.getCarregamento().getId() != null) {
+                // Busca as entregas existentes daquele carregamento pelo ID do carregamento
+                List<Entrega> existentes = entregaRepository.findByCarregamentoId(eNovo.getCarregamento().getId());
+                for (Entrega ex : existentes) {
+                    boolean matchDelivery = !isNullOrEmpty(eNovo.getDelivery()) && eNovo.getDelivery().equalsIgnoreCase(ex.getDelivery());
+                    boolean matchNf = !isNullOrEmpty(eNovo.getNf()) && eNovo.getNf().equalsIgnoreCase(ex.getNf());
+
+                    if (matchDelivery || matchNf) {
+                        jaExiste = true;
+                        // Merge inteligente nos campos da entrega
+                        if (isNullOrEmpty(ex.getCodigoCliente()) && !isNullOrEmpty(eNovo.getCodigoCliente())) ex.setCodigoCliente(eNovo.getCodigoCliente());
+                        if (isNullOrEmpty(ex.getCliente()) && !isNullOrEmpty(eNovo.getCliente())) ex.setCliente(eNovo.getCliente());
+                        if (isNullOrEmpty(ex.getBairro()) && !isNullOrEmpty(eNovo.getBairro())) ex.setBairro(eNovo.getBairro());
+                        if (isNullOrEmpty(ex.getCidade()) && !isNullOrEmpty(eNovo.getCidade())) ex.setCidade(eNovo.getCidade());
+                        if (isNullOrEmpty(ex.getPeso()) || ex.getPeso().equals("0")) if (!isNullOrEmpty(eNovo.getPeso())) ex.setPeso(eNovo.getPeso());
+                        if (isNullOrEmpty(ex.getOrigemSheet()) && !isNullOrEmpty(eNovo.getOrigemSheet())) ex.setOrigemSheet(eNovo.getOrigemSheet());
+                        
+                        paraSalvarOrAtualizar.add(ex);
+                        break;
+                    }
+                }
+            }
+
+            if (!jaExiste) {
+                paraSalvarOrAtualizar.add(eNovo);
+            }
+        }
+
+        entregaRepository.saveAll(paraSalvarOrAtualizar);
         entregaRepository.flush(); 
+    }
+
+    private boolean isNullOrEmpty(String str) {
+        return str == null || str.trim().isEmpty();
     }
 
     private boolean isEntregaValida(String delivery, String nf, String codigoCliente, String cliente) {
