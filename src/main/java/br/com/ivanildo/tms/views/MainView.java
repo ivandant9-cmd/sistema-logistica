@@ -175,7 +175,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void aplicarFiltroStatus(String status) {
-        // Considera apenas as cargas ativas (não arquivadas)
         List<Carregamento> todosAtivos = repository.findAll().stream()
             .filter(c -> c.getArquivado() == null || !c.getArquivado())
             .toList();
@@ -225,7 +224,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
         btnNovo.setVisible(false);
 
-        // Botão para arquivar todas as cargas expedidas ativas (com destaque/aceso)
+        // Botão para arquivar todas as cargas expedidas ativas
         Button btnArquivarExpedidas = new Button("Arquivar Expedidas", VaadinIcon.ARCHIVE.create());
         btnArquivarExpedidas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnArquivarExpedidas.getStyle()
@@ -258,12 +257,16 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnVerArquivados.addClickListener(e -> abrirModalArquivados());
 
-        // Botão para ir para o Relatório de Paletes
+        // Botão para ir para o Relatório de Paletes (integrado perfeitamente)
         Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
-        btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
+        btnRelatorioPaletes.getStyle()
+                .set("background", "linear-gradient(135deg, #059669, #047857)")
+                .set("color", "#ffffff")
+                .set("font-weight", "600");
         btnRelatorioPaletes.addClickListener(e -> UI.getCurrent().navigate(RelatorioPaletesView.class));
 
-        grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnVerArquivados);
+        grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnVerArquivados, btnRelatorioPaletes);
 
         MemoryBuffer buffer = new MemoryBuffer();
         Upload uploadExcel = new Upload(buffer);
@@ -297,7 +300,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     @SuppressWarnings("null")
-
     private void abrirModalArquivados() {
         Dialog modalArquivados = new Dialog();
         modalArquivados.setWidth("85vw");
@@ -321,7 +323,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         gridArquivados.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
         gridArquivados.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
 
-        // Coluna com botão para desarquivar
         gridArquivados.addColumn(new ComponentRenderer<>(carregamento -> {
             Button btnDesarquivar = new Button("Desarquivar", VaadinIcon.UPLOAD_ALT.create());
             btnDesarquivar.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_SUCCESS);
@@ -329,7 +330,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 carregamento.setArquivado(false);
                 repository.save(carregamento);
                 
-                // Atualiza o grid do modal e a tela principal
                 List<Carregamento> listaArquivados = repository.findAll().stream()
                     .filter(c -> c.getArquivado() != null && c.getArquivado())
                     .toList();
@@ -341,7 +341,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             return btnDesarquivar;
         })).setHeader("AÇÃO").setAutoWidth(true);
 
-        // Carrega inicialmente apenas os arquivados
         List<Carregamento> listaArquivados = repository.findAll().stream()
             .filter(c -> c.getArquivado() != null && c.getArquivado())
             .toList();
@@ -550,7 +549,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void atualizarGridEIndicators() {
-        // Considera apenas as cargas que não estão arquivadas para a tela principal e KPIs
         List<Carregamento> listaAtivos = repository.findAll().stream()
             .filter(c -> c.getArquivado() == null || !c.getArquivado())
             .toList();

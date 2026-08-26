@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-26 01:28:17 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-26 13:44:10 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 284
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -211,7 +211,7 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   ├── 📄 MainView.java (28.47 KB)
+│       │                   │   ├── 📄 MainView.java (28.41 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (12.29 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
@@ -251,7 +251,7 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   ├── 📄 MainView.class (40.59 KB)
+│   │   │               │   ├── 📄 MainView.class (33.98 KB)
 │   │   │               │   └── 📄 RelatorioPaletesView.class (17.88 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
@@ -14416,15 +14416,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 28.47 KB
+- **Size**: 28.41 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-26 00:23:44 (America/Bahia / GMT-03:00)
-- **MD5**: `6a5d0febb4baaeaa671d0ea3527acbc1`
-- **SHA256**: `cc82658af878d4d26430ed7a1b7f1ddf9028625103feebc399d36e637999432e`
+- **Modified**: 2026-08-26 13:44:08 (America/Bahia / GMT-03:00)
+- **MD5**: `108b0545739abe4fc9e9b87a8efa0ef8`
+- **SHA256**: `9c0df37216cc1c4d789b699f4ec9df17d6fb10dcccdca7acf7dfbf01203fedcc`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14607,7 +14607,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void aplicarFiltroStatus(String status) {
-        // Considera apenas as cargas ativas (não arquivadas)
         List<Carregamento> todosAtivos = repository.findAll().stream()
             .filter(c -> c.getArquivado() == null || !c.getArquivado())
             .toList();
@@ -14657,7 +14656,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
         btnNovo.setVisible(false);
 
-        // Botão para arquivar todas as cargas expedidas ativas (com destaque/aceso)
+        // Botão para arquivar todas as cargas expedidas ativas
         Button btnArquivarExpedidas = new Button("Arquivar Expedidas", VaadinIcon.ARCHIVE.create());
         btnArquivarExpedidas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnArquivarExpedidas.getStyle()
@@ -14690,12 +14689,16 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnVerArquivados.addClickListener(e -> abrirModalArquivados());
 
-        // Botão para ir para o Relatório de Paletes
+        // Botão para ir para o Relatório de Paletes (integrado perfeitamente)
         Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
-        btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
+        btnRelatorioPaletes.getStyle()
+                .set("background", "linear-gradient(135deg, #059669, #047857)")
+                .set("color", "#ffffff")
+                .set("font-weight", "600");
         btnRelatorioPaletes.addClickListener(e -> UI.getCurrent().navigate(RelatorioPaletesView.class));
 
-        grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnVerArquivados);
+        grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnVerArquivados, btnRelatorioPaletes);
 
         MemoryBuffer buffer = new MemoryBuffer();
         Upload uploadExcel = new Upload(buffer);
@@ -14729,7 +14732,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     @SuppressWarnings("null")
-
     private void abrirModalArquivados() {
         Dialog modalArquivados = new Dialog();
         modalArquivados.setWidth("85vw");
@@ -14753,7 +14755,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         gridArquivados.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
         gridArquivados.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
 
-        // Coluna com botão para desarquivar
         gridArquivados.addColumn(new ComponentRenderer<>(carregamento -> {
             Button btnDesarquivar = new Button("Desarquivar", VaadinIcon.UPLOAD_ALT.create());
             btnDesarquivar.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_SUCCESS);
@@ -14761,7 +14762,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 carregamento.setArquivado(false);
                 repository.save(carregamento);
                 
-                // Atualiza o grid do modal e a tela principal
                 List<Carregamento> listaArquivados = repository.findAll().stream()
                     .filter(c -> c.getArquivado() != null && c.getArquivado())
                     .toList();
@@ -14773,7 +14773,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             return btnDesarquivar;
         })).setHeader("AÇÃO").setAutoWidth(true);
 
-        // Carrega inicialmente apenas os arquivados
         List<Carregamento> listaArquivados = repository.findAll().stream()
             .filter(c -> c.getArquivado() != null && c.getArquivado())
             .toList();
@@ -14982,7 +14981,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void atualizarGridEIndicators() {
-        // Considera apenas as cargas que não estão arquivadas para a tela principal e KPIs
         List<Carregamento> listaAtivos = repository.findAll().stream()
             .filter(c -> c.getArquivado() == null || !c.getArquivado())
             .toList();
