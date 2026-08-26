@@ -91,10 +91,21 @@ public class ExcelService {
                 c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", formatter));
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter));
 
+                // Tenta buscar por "PALETES", "PALETE" ou pega diretamente pelo índice 14 (que é a última coluna da aba Visor)
                 String valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETES", formatter);
                 if (valPaletes.isEmpty()) {
                     valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETE", formatter);
                 }
+                if (valPaletes.isEmpty()) {
+                    try {
+                        // Fallback direto para a coluna 14 (índice 14 = Paletes na aba Visor)
+                        org.apache.poi.ss.usermodel.Cell cellPaletes = row.getCell(14);
+                        if (cellPaletes != null) {
+                            valPaletes = cellPaletes.toString();
+                        }
+                    } catch (Exception ignored) {}
+                }
+
                 if (!valPaletes.isEmpty()) {
                     try {
                         String limpo = valPaletes.replaceAll("[^0-9]", "");

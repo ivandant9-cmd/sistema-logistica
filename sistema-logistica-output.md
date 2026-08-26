@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-26 00:54:52 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-26 01:28:17 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 284
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -203,7 +203,7 @@
 │       │                   │   ├── 📄 EntregaRepository.java (599 B)
 │       │                   │   └── 📄 MotoristaRepository.java (309 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (20.75 KB)
+│       │                   │   ├── 📄 ExcelService.java (21.34 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 util/
 │       │                   │   └── 📄 UiBroadcaster.java (1010 B)
@@ -241,7 +241,7 @@
 │   │   │               │   ├── 📄 EntregaRepository.class (889 B)
 │   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (18.21 KB)
+│   │   │               │   ├── 📄 ExcelService.class (18.32 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 util/
 │   │   │               │   ├── 📄 UiBroadcaster.class (3.84 KB)
@@ -12964,15 +12964,15 @@ public interface MotoristaRepository extends JpaRepository<Motorista, Long> {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-service-excelservice-java"></a>📄 `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 
 **File Info:**
-- **Size**: 20.75 KB
+- **Size**: 21.34 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/service`
 - **Created**: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-26 00:54:51 (America/Bahia / GMT-03:00)
-- **MD5**: `49f6f9aefc4c5aa7b12a3e19251c3ffe`
-- **SHA256**: `fff4c515b74b08c3edb4735161f0b165eab129b4639f01374de7ce5a78826c2b`
+- **Modified**: 2026-08-26 01:28:16 (America/Bahia / GMT-03:00)
+- **MD5**: `e0c0338f971435ec552d526d794086a5`
+- **SHA256**: `52dc7184aa5d656c74110c1b3d07e436977d32b59a99ea24b6910c9d5dcf7bb0`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -13071,10 +13071,21 @@ public class ExcelService {
                 c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", formatter));
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter));
 
+                // Tenta buscar por "PALETES", "PALETE" ou pega diretamente pelo índice 14 (que é a última coluna da aba Visor)
                 String valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETES", formatter);
                 if (valPaletes.isEmpty()) {
                     valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETE", formatter);
                 }
+                if (valPaletes.isEmpty()) {
+                    try {
+                        // Fallback direto para a coluna 14 (índice 14 = Paletes na aba Visor)
+                        org.apache.poi.ss.usermodel.Cell cellPaletes = row.getCell(14);
+                        if (cellPaletes != null) {
+                            valPaletes = cellPaletes.toString();
+                        }
+                    } catch (Exception ignored) {}
+                }
+
                 if (!valPaletes.isEmpty()) {
                     try {
                         String limpo = valPaletes.replaceAll("[^0-9]", "");
