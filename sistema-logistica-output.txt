@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-26 21:07:46 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-26 21:42:49 (America/Bahia / GMT-03:00)
 Total Files Processed: 284
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -213,7 +213,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   ├── 📄 MainView.java (31.54 KB)
+│       │                   │   ├── 📄 MainView.java (31.94 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (12.54 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
@@ -253,7 +253,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   ├── 📄 MainView.class (45.73 KB)
+│   │   │               │   ├── 📄 MainView.class (45.88 KB)
 │   │   │               │   └── 📄 RelatorioPaletesView.class (19.51 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
@@ -14324,15 +14324,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/MainView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 31.54 KB
+Size: 31.94 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/MainView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-Modified: 2026-08-26 21:07:45 (America/Bahia / GMT-03:00)
-MD5: a7535da79055f3ddc656cfe4405364e8
-SHA256: 8819299cf6f436729ab3b8b32b9ed7adc61088e34dce8d8f6091bd6f3bd94291
+Modified: 2026-08-26 21:42:49 (America/Bahia / GMT-03:00)
+MD5: 628fd6ab9eeb1e1654a81b89b70e6043
+SHA256: f468a3ca8c66539e1df1b42e07a1bbba2747ac8b28e5a6d638a24a49d7dfe136
 Encoding: ASCII
 
 FILE CONTENT:
@@ -14612,8 +14612,10 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             }
 
             repository.deleteAll(selecionados);
+            mapaCheckboxesMain.clear(); // Limpa o mapa para redefinir as seleções
+            atualizarGridEIndicators(); // Atualiza a tela e limpa os itens excluídos da grid
+            
             Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
-            atualizarGridEIndicators();
         });
 
         // Botão Limpar Checkin em Lote
@@ -14633,10 +14635,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
             for (Carregamento c : selecionados) {
                 c.setStatus("Pendente");
+                c.setMotorista(null);          // Limpa o nome do motorista (texto)
+                c.setMotoristaEntidade(null);   // Limpa o vínculo com a entidade de motorista, se houver
             }
             repository.saveAll(selecionados);
-            Notification.show("Checkin limpo para " + selecionados.size() + " carga(s)!", 3000, Notification.Position.BOTTOM_END);
+            mapaCheckboxesMain.clear();
             atualizarGridEIndicators();
+            
+            Notification.show("Checkin e motorista limpos para " + selecionados.size() + " carga(s)!", 3000, Notification.Position.BOTTOM_END);
         });
 
         // Botão para abrir o modal de histórico de arquivados

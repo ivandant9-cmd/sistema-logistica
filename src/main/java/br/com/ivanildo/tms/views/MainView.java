@@ -273,8 +273,10 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             }
 
             repository.deleteAll(selecionados);
+            mapaCheckboxesMain.clear(); // Limpa o mapa para redefinir as seleções
+            atualizarGridEIndicators(); // Atualiza a tela e limpa os itens excluídos da grid
+            
             Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
-            atualizarGridEIndicators();
         });
 
         // Botão Limpar Checkin em Lote
@@ -294,10 +296,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
             for (Carregamento c : selecionados) {
                 c.setStatus("Pendente");
+                c.setMotorista(null);          // Limpa o nome do motorista (texto)
+                c.setMotoristaEntidade(null);   // Limpa o vínculo com a entidade de motorista, se houver
             }
             repository.saveAll(selecionados);
-            Notification.show("Checkin limpo para " + selecionados.size() + " carga(s)!", 3000, Notification.Position.BOTTOM_END);
+            mapaCheckboxesMain.clear();
             atualizarGridEIndicators();
+            
+            Notification.show("Checkin e motorista limpos para " + selecionados.size() + " carga(s)!", 3000, Notification.Position.BOTTOM_END);
         });
 
         // Botão para abrir o modal de histórico de arquivados
