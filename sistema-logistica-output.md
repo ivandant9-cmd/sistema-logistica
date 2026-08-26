@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-26 22:19:08 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-26 22:40:15 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 284
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -200,7 +200,7 @@
 │       │                   │   └── 📄 Motorista.java (1.36 KB)
 │       │                   ├── 📁 repository/
 │       │                   │   ├── 📄 CarregamentoRepository.java (1.04 KB)
-│       │                   │   ├── 📄 EntregaRepository.java (599 B)
+│       │                   │   ├── 📄 EntregaRepository.java (921 B)
 │       │                   │   └── 📄 MotoristaRepository.java (309 B)
 │       │                   ├── 📁 service/
 │       │                   │   ├── 📄 ExcelService.java (21.22 KB)
@@ -211,7 +211,7 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   ├── 📄 MainView.java (32.1 KB)
+│       │                   │   ├── 📄 MainView.java (32.63 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (12.54 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
@@ -238,7 +238,7 @@
 │   │   │               │   └── 📄 Motorista.class (2.18 KB)
 │   │   │               ├── 📁 repository/
 │   │   │               │   ├── 📄 CarregamentoRepository.class (1.21 KB)
-│   │   │               │   ├── 📄 EntregaRepository.class (889 B)
+│   │   │               │   ├── 📄 EntregaRepository.class (1.15 KB)
 │   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
 │   │   │               │   ├── 📄 ExcelService.class (18.44 KB)
@@ -251,7 +251,7 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   ├── 📄 MainView.class (46.03 KB)
+│   │   │               │   ├── 📄 MainView.class (46.37 KB)
 │   │   │               │   └── 📄 RelatorioPaletesView.class (19.51 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
@@ -639,7 +639,7 @@
 | Total Directories | 67 |
 | Text Files | 251 |
 | Binary Files | 33 |
-| Total Size | 95.31 MB |
+| Total Size | 95.32 MB |
 
 ### 📄 File Types Distribution
 
@@ -12897,15 +12897,15 @@ public interface CarregamentoRepository extends JpaRepository<Carregamento, Long
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-repository-entregarepository-java"></a>📄 `src/main/java/br/com/ivanildo/tms/repository/EntregaRepository.java`
 
 **File Info:**
-- **Size**: 599 B
+- **Size**: 921 B
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/repository/EntregaRepository.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/repository`
 - **Created**: 2026-08-16 19:19:16 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-19 15:40:44 (America/Bahia / GMT-03:00)
-- **MD5**: `b809c7e300214b94b645a93a69e70b9a`
-- **SHA256**: `df8b98dd016cd098de7c10c75143d706f7517ef8b4c8654fb4cff2ab6ae0839e`
+- **Modified**: 2026-08-26 22:37:12 (America/Bahia / GMT-03:00)
+- **MD5**: `70218333119a7da1348daa061fc33691`
+- **SHA256**: `48aa9c66838e8d9359e2784c00fa968870ff92b949146de6f2792bc044c2955b`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -12915,9 +12915,11 @@ package br.com.ivanildo.tms.repository;
 
 import br.com.ivanildo.tms.model.Entrega;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12926,6 +12928,11 @@ public interface EntregaRepository extends JpaRepository<Entrega, Long> {
 
     @Query("SELECT e FROM Entrega e WHERE e.carregamento.id = :carregamentoId")
     List<Entrega> findByCarregamentoId(@Param("carregamentoId") Long carregamentoId);
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Entrega e WHERE e.carregamento.id = :carregamentoId")
+    void deleteByCarregamentoId(@Param("carregamentoId") Long carregamentoId);
 }
 ```
 
@@ -14424,15 +14431,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 32.1 KB
+- **Size**: 32.63 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-26 22:19:07 (America/Bahia / GMT-03:00)
-- **MD5**: `cd04933693da90f7226f165636955d77`
-- **SHA256**: `03f9687e7a55e5f499b4b8bdfb95f12081abf52b4969db404817905379ba6510`
+- **Modified**: 2026-08-26 22:40:14 (America/Bahia / GMT-03:00)
+- **MD5**: `97d9d634507018c595cb0dcb20353531`
+- **SHA256**: `a4e612677943f4f4cad42d371d8a8fbf338aa3204989329929caf0feb3d30159`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14442,6 +14449,7 @@ package br.com.ivanildo.tms.views;
 
 import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
+import br.com.ivanildo.tms.repository.EntregaRepository;
 import br.com.ivanildo.tms.service.ExcelService;
 import br.com.ivanildo.tms.util.UiBroadcaster;
 import jakarta.annotation.security.PermitAll;
@@ -14498,6 +14506,7 @@ import java.util.stream.Collectors;
 public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
     private final CarregamentoRepository repository;
+    private final EntregaRepository entregaRepository;
     private final ExcelService excelService;
 
     private final Grid<Carregamento> grid = new Grid<>(Carregamento.class, false);
@@ -14512,10 +14521,11 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
     private UiBroadcaster.Registration broadcasterRegistration;
 
-    public MainView(CarregamentoRepository repository, ExcelService excelService) {
-        this.repository = repository;
-        this.excelService = excelService;
-
+    public MainView(CarregamentoRepository repository, EntregaRepository entregaRepository, ExcelService excelService) {
+    this.repository = repository;
+    this.entregaRepository = entregaRepository; // Agora a atribuição funciona e inicializa o campo final
+    this.excelService = excelService;
+    
         setSizeFull();
         setPadding(true);
         setSpacing(true);
@@ -14713,15 +14723,22 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             }
 
             try {
+                // Remove as entregas vinculadas de cada carregamento antes de exclui-lo
+                for (Carregamento c : selecionados) {
+                    entregaRepository.deleteByCarregamentoId(c.getId()); // Certifique-se de ter este método ou equivalente no EntregaRepository
+                }
+
                 repository.deleteAll(selecionados);
                 mapaCheckboxesMain.clear();
                 atualizarGridEIndicators();
                 
                 Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
             } catch (Exception ex) {
-                Notification.show("Erro ao excluir: Existem entregas vinculadas a estes carregamentos.", 5000, Notification.Position.MIDDLE);
+                Notification.show("Erro ao excluir: " + ex.getMessage(), 5000, Notification.Position.MIDDLE);
             }
-        });        // Botão Limpar Checkin em Lote
+        }); 
+        
+        // Botão Limpar Checkin em Lote
         Button btnLimparCheckin = new Button("Limpar Checkin", VaadinIcon.REFRESH.create());
         btnLimparCheckin.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnLimparCheckin.getStyle().set("font-weight", "600");

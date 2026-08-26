@@ -2,6 +2,7 @@ package br.com.ivanildo.tms.views;
 
 import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
+import br.com.ivanildo.tms.repository.EntregaRepository;
 import br.com.ivanildo.tms.service.ExcelService;
 import br.com.ivanildo.tms.util.UiBroadcaster;
 import jakarta.annotation.security.PermitAll;
@@ -58,6 +59,7 @@ import java.util.stream.Collectors;
 public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
     private final CarregamentoRepository repository;
+    private final EntregaRepository entregaRepository;
     private final ExcelService excelService;
 
     private final Grid<Carregamento> grid = new Grid<>(Carregamento.class, false);
@@ -72,10 +74,11 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
     private UiBroadcaster.Registration broadcasterRegistration;
 
-    public MainView(CarregamentoRepository repository, ExcelService excelService) {
-        this.repository = repository;
-        this.excelService = excelService;
-
+    public MainView(CarregamentoRepository repository, EntregaRepository entregaRepository, ExcelService excelService) {
+    this.repository = repository;
+    this.entregaRepository = entregaRepository; // Agora a atribuição funciona e inicializa o campo final
+    this.excelService = excelService;
+    
         setSizeFull();
         setPadding(true);
         setSpacing(true);
@@ -273,15 +276,22 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             }
 
             try {
+                // Remove as entregas vinculadas de cada carregamento antes de exclui-lo
+                for (Carregamento c : selecionados) {
+                    entregaRepository.deleteByCarregamentoId(c.getId()); // Certifique-se de ter este método ou equivalente no EntregaRepository
+                }
+
                 repository.deleteAll(selecionados);
                 mapaCheckboxesMain.clear();
                 atualizarGridEIndicators();
                 
                 Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
             } catch (Exception ex) {
-                Notification.show("Erro ao excluir: Existem entregas vinculadas a estes carregamentos.", 5000, Notification.Position.MIDDLE);
+                Notification.show("Erro ao excluir: " + ex.getMessage(), 5000, Notification.Position.MIDDLE);
             }
-        });        // Botão Limpar Checkin em Lote
+        }); 
+        
+        // Botão Limpar Checkin em Lote
         Button btnLimparCheckin = new Button("Limpar Checkin", VaadinIcon.REFRESH.create());
         btnLimparCheckin.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnLimparCheckin.getStyle().set("font-weight", "600");
