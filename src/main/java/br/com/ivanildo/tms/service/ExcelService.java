@@ -91,37 +91,39 @@ public class ExcelService {
                 c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", formatter));
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter));
 
-                // Tenta buscar por "PALETES", "PALETE" ou pega diretamente pelo índice 14 (que é a última coluna da aba Visor)
-               if (valPaletes.isEmpty()) {
-                    try {
-                        // Coluna O corresponde ao índice 14 (começando do 0)
-                        org.apache.poi.ss.usermodel.Cell cellPaletes = row.getCell(14);
-                        if (cellPaletes != null) {
-                            if (cellPaletes.getCellType() == org.apache.poi.ss.usermodel.CellType.NUMERIC) {
-                                // Pega o valor numérico exato sem o ponto flutuante indesejado do toString()
-                                int qtd = (int) cellPaletes.getNumericCellValue();
-                                valPaletes = String.valueOf(qtd);
-                            } else {
-                                valPaletes = cellPaletes.toString();
-                            }
-                        }
-                    } catch (Exception ignored) {}
-                }
+               String valPaletes = "";
 
-                if (!valPaletes.isEmpty()) {
-                    try {
-                        // Remove qualquer caractere que não seja número (cuidado com decimais como .0)
-                        String limpo = valPaletes.replaceAll("[^0-9]", "");
-                        
-                        // Se veio com formato decimal antigo que gerou zeros à direita, tratamos aqui:
-                        double numeroParsed = Double.parseDouble(valPaletes.replace(",", "."));
-                        c.setPaletes((int) numeroParsed);
-                    } catch (Exception e) {
-                        c.setPaletes(0);
-                    }
-                } else {
-                    c.setPaletes(0);
-                }
+// Tenta pegar pelo nome da coluna primeiro
+valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETES", formatter);
+if (valPaletes.isEmpty()) {
+    valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETE", formatter);
+}
+
+// Fallback direto para a coluna 14 ou 15 (índice 14 se for a coluna O, ou 15 se estiver ajustando)
+if (valPaletes.isEmpty()) {
+    try {
+        org.apache.poi.ss.usermodel.Cell cellPaletes = row.getCell(14); // ou 15 conforme sua contagem
+        if (cellPaletes != null) {
+            if (cellPaletes.getCellType() == org.apache.poi.ss.usermodel.CellType.NUMERIC) {
+                int qtd = (int) cellPaletes.getNumericCellValue();
+                valPaletes = String.valueOf(qtd);
+            } else {
+                valPaletes = cellPaletes.toString();
+            }
+        }
+    } catch (Exception ignored) {}
+}
+
+if (!valPaletes.isEmpty()) {
+    try {
+        double numeroParsed = Double.parseDouble(valPaletes.replace(",", "."));
+        c.setPaletes((int) numeroParsed);
+    } catch (Exception e) {
+        c.setPaletes(0);
+    }
+} else {
+    c.setPaletes(0);
+}
 
                 if (!c.getViagem().isEmpty() || !c.getPlaca().isEmpty() || !c.getTransportadora().isEmpty()) {
                     novosCarregamentos.add(c);

@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-26 20:27:08 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-26 20:31:45 (America/Bahia / GMT-03:00)
 Total Files Processed: 284
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -205,7 +205,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 EntregaRepository.java (599 B)
 │       │                   │   └── 📄 MotoristaRepository.java (309 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (21.79 KB)
+│       │                   │   ├── 📄 ExcelService.java (21.22 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 util/
 │       │                   │   └── 📄 UiBroadcaster.java (1010 B)
@@ -243,7 +243,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 EntregaRepository.class (889 B)
 │   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (12.21 KB)
+│   │   │               │   ├── 📄 ExcelService.class (18.44 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 util/
 │   │   │               │   ├── 📄 UiBroadcaster.class (3.84 KB)
@@ -381,7 +381,7 @@ Total Files: 284
 Total Directories: 67
 Text Files: 251
 Binary Files: 33
-Total Size: 95.3 MB
+Total Size: 95.31 MB
 
 FILE TYPES DISTRIBUTION:
 ------------------------------
@@ -12858,15 +12858,15 @@ FILE: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 21.79 KB
+Size: 21.22 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 Relative Path: src/main/java/br/com/ivanildo/tms/service
 Created: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-Modified: 2026-08-26 20:27:07 (America/Bahia / GMT-03:00)
-MD5: fbdabd927af233961fb2379508bfc47c
-SHA256: ca14c3dd21394e6b0dc9e77fff948ae30bb517b62f706b235a28490f2f60ede5
+Modified: 2026-08-26 20:31:44 (America/Bahia / GMT-03:00)
+MD5: 3a767b985c47bfae70d0250df4e1b05d
+SHA256: 4587c31833373ac43d3eb7e7e3e312f7751206550c0e3554da2568467850d831
 Encoding: ASCII
 
 FILE CONTENT:
@@ -12964,37 +12964,39 @@ public class ExcelService {
                 c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", formatter));
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter));
 
-                // Tenta buscar por "PALETES", "PALETE" ou pega diretamente pelo índice 14 (que é a última coluna da aba Visor)
-               if (valPaletes.isEmpty()) {
-                    try {
-                        // Coluna O corresponde ao índice 14 (começando do 0)
-                        org.apache.poi.ss.usermodel.Cell cellPaletes = row.getCell(14);
-                        if (cellPaletes != null) {
-                            if (cellPaletes.getCellType() == org.apache.poi.ss.usermodel.CellType.NUMERIC) {
-                                // Pega o valor numérico exato sem o ponto flutuante indesejado do toString()
-                                int qtd = (int) cellPaletes.getNumericCellValue();
-                                valPaletes = String.valueOf(qtd);
-                            } else {
-                                valPaletes = cellPaletes.toString();
-                            }
-                        }
-                    } catch (Exception ignored) {}
-                }
+               String valPaletes = "";
 
-                if (!valPaletes.isEmpty()) {
-                    try {
-                        // Remove qualquer caractere que não seja número (cuidado com decimais como .0)
-                        String limpo = valPaletes.replaceAll("[^0-9]", "");
-                        
-                        // Se veio com formato decimal antigo que gerou zeros à direita, tratamos aqui:
-                        double numeroParsed = Double.parseDouble(valPaletes.replace(",", "."));
-                        c.setPaletes((int) numeroParsed);
-                    } catch (Exception e) {
-                        c.setPaletes(0);
-                    }
-                } else {
-                    c.setPaletes(0);
-                }
+// Tenta pegar pelo nome da coluna primeiro
+valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETES", formatter);
+if (valPaletes.isEmpty()) {
+    valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETE", formatter);
+}
+
+// Fallback direto para a coluna 14 ou 15 (índice 14 se for a coluna O, ou 15 se estiver ajustando)
+if (valPaletes.isEmpty()) {
+    try {
+        org.apache.poi.ss.usermodel.Cell cellPaletes = row.getCell(14); // ou 15 conforme sua contagem
+        if (cellPaletes != null) {
+            if (cellPaletes.getCellType() == org.apache.poi.ss.usermodel.CellType.NUMERIC) {
+                int qtd = (int) cellPaletes.getNumericCellValue();
+                valPaletes = String.valueOf(qtd);
+            } else {
+                valPaletes = cellPaletes.toString();
+            }
+        }
+    } catch (Exception ignored) {}
+}
+
+if (!valPaletes.isEmpty()) {
+    try {
+        double numeroParsed = Double.parseDouble(valPaletes.replace(",", "."));
+        c.setPaletes((int) numeroParsed);
+    } catch (Exception e) {
+        c.setPaletes(0);
+    }
+} else {
+    c.setPaletes(0);
+}
 
                 if (!c.getViagem().isEmpty() || !c.getPlaca().isEmpty() || !c.getTransportadora().isEmpty()) {
                     novosCarregamentos.add(c);
