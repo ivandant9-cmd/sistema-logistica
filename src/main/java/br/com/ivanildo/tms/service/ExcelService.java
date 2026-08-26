@@ -98,6 +98,22 @@ public class ExcelService {
                 c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", formatter));
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter));
 
+                String valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETES", formatter);
+if (valPaletes.isEmpty()) {
+    valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETE", formatter);
+}
+if (!valPaletes.isEmpty()) {
+    try {
+        // Remove pontos ou vírgulas caso venha formatado como número decimal
+        String limpo = valPaletes.replaceAll("[^0-9]", "");
+        c.setPaletes(limpo.isEmpty() ? 0 : Integer.parseInt(limpo));
+    } catch (NumberFormatException e) {
+        c.setPaletes(0);
+    }
+} else {
+    c.setPaletes(0);
+}
+
                 if (!c.getViagem().isEmpty() || !c.getPlaca().isEmpty() || !c.getTransportadora().isEmpty()) {
                     novosCarregamentos.add(c);
                 }

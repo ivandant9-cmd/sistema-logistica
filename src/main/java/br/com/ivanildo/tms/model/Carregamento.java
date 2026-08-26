@@ -92,4 +92,15 @@ public class Carregamento {
     // Getters e Setters do Arquivamento
     public Boolean getArquivado() { return arquivado != null ? arquivado : false; }
     public void setArquivado(Boolean arquivado) { this.arquivado = arquivado; }
+
+    // Novo campo para quantidade de paletes
+    private Integer paletes;
+
+    public Integer getPaletes() {
+        return paletes;
+    }
+
+    public void setPaletes(Integer paletes) {
+        this.paletes = paletes;
+    }
 }

@@ -3,8 +3,8 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-25 23:02:07 (America/Bahia / GMT-03:00)
-- **Total Files Processed**: 282
+- **Generated On**: 2026-08-26 00:33:04 (America/Bahia / GMT-03:00)
+- **Total Files Processed**: 284
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
 
@@ -195,7 +195,7 @@
 │       │                   │   ├── 📄 CheckinDTO.java (473 B)
 │       │                   │   └── 📄 PdfController.java (2.68 KB)
 │       │                   ├── 📁 model/
-│       │                   │   ├── 📄 Carregamento.java (3.63 KB)
+│       │                   │   ├── 📄 Carregamento.java (3.86 KB)
 │       │                   │   ├── 📄 Entrega.java (2.18 KB)
 │       │                   │   └── 📄 Motorista.java (1.36 KB)
 │       │                   ├── 📁 repository/
@@ -203,7 +203,7 @@
 │       │                   │   ├── 📄 EntregaRepository.java (599 B)
 │       │                   │   └── 📄 MotoristaRepository.java (309 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (15.6 KB)
+│       │                   │   ├── 📄 ExcelService.java (16.17 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 util/
 │       │                   │   └── 📄 UiBroadcaster.java (1010 B)
@@ -211,7 +211,8 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   └── 📄 MainView.java (28.14 KB)
+│       │                   │   ├── 📄 MainView.java (28.47 KB)
+│       │                   │   └── 📄 RelatorioPaletesView.java (12.29 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
 │       └── 📁 resources/
@@ -232,7 +233,7 @@
 │   │   │               │   ├── 📄 CheckinDTO.class (971 B)
 │   │   │               │   └── 📄 PdfController.class (4.68 KB)
 │   │   │               ├── 📁 model/
-│   │   │               │   ├── 📄 Carregamento.class (4.79 KB)
+│   │   │               │   ├── 📄 Carregamento.class (5.06 KB)
 │   │   │               │   ├── 📄 Entrega.class (2.98 KB)
 │   │   │               │   └── 📄 Motorista.class (2.18 KB)
 │   │   │               ├── 📁 repository/
@@ -240,7 +241,7 @@
 │   │   │               │   ├── 📄 EntregaRepository.class (889 B)
 │   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (15.24 KB)
+│   │   │               │   ├── 📄 ExcelService.class (15.8 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 util/
 │   │   │               │   ├── 📄 UiBroadcaster.class (3.84 KB)
@@ -250,7 +251,8 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   └── 📄 MainView.class (40.06 KB)
+│   │   │               │   ├── 📄 MainView.class (40.59 KB)
+│   │   │               │   └── 📄 RelatorioPaletesView.class (17.88 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
 │   │   ├── 📁 templates/
@@ -530,6 +532,7 @@
 - [📄 src/main/java/br/com/ivanildo/tms/views/EntregasView.java](#📄-src-main-java-br-com-ivanildo-tms-views-entregasview-java)
 - [📄 src/main/java/br/com/ivanildo/tms/views/LoginView.java](#📄-src-main-java-br-com-ivanildo-tms-views-loginview-java)
 - [📄 src/main/java/br/com/ivanildo/tms/views/MainView.java](#📄-src-main-java-br-com-ivanildo-tms-views-mainview-java)
+- [📄 src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java](#📄-src-main-java-br-com-ivanildo-tms-views-relatoriopaletesview-java)
 - [📄 src/main/java/br/com/ivanildo/tms/Application.java](#📄-src-main-java-br-com-ivanildo-tms-application-java)
 - [📄 src/main/java/br/com/ivanildo/tms/DataInitializer.java](#📄-src-main-java-br-com-ivanildo-tms-datainitializer-java)
 - [📄 src/main/resources/templates/entregas.html](#📄-src-main-resources-templates-entregas-html)
@@ -632,11 +635,11 @@
 
 | Metric | Count |
 |--------|-------|
-| Total Files | 282 |
+| Total Files | 284 |
 | Total Directories | 67 |
-| Text Files | 250 |
-| Binary Files | 32 |
-| Total Size | 95.26 MB |
+| Text Files | 251 |
+| Binary Files | 33 |
+| Total Size | 95.3 MB |
 
 ### 📄 File Types Distribution
 
@@ -644,8 +647,8 @@
 |-----------|-------|
 | `.js` | 153 |
 | `.ts` | 50 |
-| `.class` | 22 |
-| `.java` | 20 |
+| `.class` | 23 |
+| `.java` | 21 |
 | `.json` | 11 |
 | `.css` | 5 |
 | `.html` | 4 |
@@ -12515,15 +12518,15 @@ public class PdfController {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-model-carregamento-java"></a>📄 `src/main/java/br/com/ivanildo/tms/model/Carregamento.java`
 
 **File Info:**
-- **Size**: 3.63 KB
+- **Size**: 3.86 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/model/Carregamento.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/model`
 - **Created**: 2026-08-16 19:12:42 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-25 22:31:48 (America/Bahia / GMT-03:00)
-- **MD5**: `959ee06b8ea929ec5e11480011b8a129`
-- **SHA256**: `1299168945ee4b0f36326433e558438c094bf85b5c3a2e58584c070efc06679d`
+- **Modified**: 2026-08-26 00:11:42 (America/Bahia / GMT-03:00)
+- **MD5**: `cca968d11284f68254f6bd4f806b6d7a`
+- **SHA256**: `6fd785f5de32bf8da35063a75e7173d41e8f383ab84324ce8dcb228e72b3a2fb`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -12623,6 +12626,17 @@ public class Carregamento {
     // Getters e Setters do Arquivamento
     public Boolean getArquivado() { return arquivado != null ? arquivado : false; }
     public void setArquivado(Boolean arquivado) { this.arquivado = arquivado; }
+
+    // Novo campo para quantidade de paletes
+    private Integer paletes;
+
+    public Integer getPaletes() {
+        return paletes;
+    }
+
+    public void setPaletes(Integer paletes) {
+        this.paletes = paletes;
+    }
 }
 ```
 
@@ -12950,15 +12964,15 @@ public interface MotoristaRepository extends JpaRepository<Motorista, Long> {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-service-excelservice-java"></a>📄 `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 
 **File Info:**
-- **Size**: 15.6 KB
+- **Size**: 16.17 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/service`
 - **Created**: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-25 21:42:40 (America/Bahia / GMT-03:00)
-- **MD5**: `628ab5d56aadc1bb342e4afbbe61f33c`
-- **SHA256**: `cfbfb44d485f43019f5878817bdc91b5be59bd02f4b6d622433cf8aeded9d928`
+- **Modified**: 2026-08-26 00:17:31 (America/Bahia / GMT-03:00)
+- **MD5**: `a965d102d2529bfe3607f2fffa17154b`
+- **SHA256**: `c23e79822ac0ce66b85efe600bc2a7f7977e32e9b7896d2a3b7a5e2bb8ac667a`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -13063,6 +13077,22 @@ public class ExcelService {
                 c.setEncaixe(getValorPorColuna(row, colunasCarregamentos, "ENCAIXE", formatter));
                 c.setStatus(getValorPorColuna(row, colunasCarregamentos, "STATUS", formatter));
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter));
+
+                String valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETES", formatter);
+if (valPaletes.isEmpty()) {
+    valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETE", formatter);
+}
+if (!valPaletes.isEmpty()) {
+    try {
+        // Remove pontos ou vírgulas caso venha formatado como número decimal
+        String limpo = valPaletes.replaceAll("[^0-9]", "");
+        c.setPaletes(limpo.isEmpty() ? 0 : Integer.parseInt(limpo));
+    } catch (NumberFormatException e) {
+        c.setPaletes(0);
+    }
+} else {
+    c.setPaletes(0);
+}
 
                 if (!c.getViagem().isEmpty() || !c.getPlaca().isEmpty() || !c.getTransportadora().isEmpty()) {
                     novosCarregamentos.add(c);
@@ -14319,15 +14349,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 28.14 KB
+- **Size**: 28.47 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-25 23:02:06 (America/Bahia / GMT-03:00)
-- **MD5**: `b388d93e9577419954cbc4bb9db34a10`
-- **SHA256**: `ce47ad740b2b470ca72366c82ba93a387f727729662d4cf8a3dfd6fe56b8bbe0`
+- **Modified**: 2026-08-26 00:23:44 (America/Bahia / GMT-03:00)
+- **MD5**: `6a5d0febb4baaeaa671d0ea3527acbc1`
+- **SHA256**: `cc82658af878d4d26430ed7a1b7f1ddf9028625103feebc399d36e637999432e`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14592,6 +14622,11 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         Button btnVerArquivados = new Button("Ver Arquivados", VaadinIcon.FOLDER_OPEN.create());
         btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnVerArquivados.addClickListener(e -> abrirModalArquivados());
+
+        // Botão para ir para o Relatório de Paletes
+        Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
+        btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        btnRelatorioPaletes.addClickListener(e -> UI.getCurrent().navigate(RelatorioPaletesView.class));
 
         grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnVerArquivados);
 
@@ -14951,6 +14986,257 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             .set("--lumo-primary-text-color", "#90caf9")
             .set("--lumo-contrast-60pct", "#90caf9")
             .set("--lumo-contrast-70pct", "#90caf9");
+    }
+}
+```
+
+---
+
+### <a id="📄-src-main-java-br-com-ivanildo-tms-views-relatoriopaletesview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java`
+
+**File Info:**
+- **Size**: 12.29 KB
+- **Extension**: `.java`
+- **Language**: `java`
+- **Location**: `src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java`
+- **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
+- **Created**: 2026-08-26 00:20:01 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-26 00:33:01 (America/Bahia / GMT-03:00)
+- **MD5**: `1f4926132d2853bcfa262628faf7b5b5`
+- **SHA256**: `ba71c628f4e1fad4fbd6519e0dc92cb77e00594dce6fc852a103d2634defaed8`
+- **Encoding**: UTF-8
+
+**File code content:**
+
+```java
+package br.com.ivanildo.tms.views;
+
+import br.com.ivanildo.tms.model.Carregamento;
+import br.com.ivanildo.tms.repository.CarregamentoRepository;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.checkbox.Checkbox;
+import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
+
+@Route(value = "relatorio-paletes")
+@PageTitle("Relatório de Paletes | TMS")
+public class RelatorioPaletesView extends VerticalLayout {
+
+    private final CarregamentoRepository repository;
+    private Grid<Carregamento> grid;
+    private List<Carregamento> itensAtuais = new ArrayList<>();
+    // Mapa para controlar os checkboxes selecionados
+    private final Map<Carregamento, Checkbox> mapaCheckboxes = new HashMap<>();
+
+    @SuppressWarnings("null")
+    public RelatorioPaletesView(CarregamentoRepository repository) {
+        this.repository = repository;
+        setSizeFull();
+        setPadding(true);
+
+        H3 titulo = new H3("Seleção de Viagens para Relatório de Paletes");
+        
+        Button btnVoltar = new Button("Voltar ao Sistema", e -> UI.getCurrent().navigate(MainView.class));
+        btnVoltar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+
+        Button btnImprimir = new Button("Gerar Relatório A4", e -> gerarRelatorioSelecionados());
+        btnImprimir.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        btnImprimir.getStyle().set("background", "linear-gradient(135deg, #059669, #047857)");
+
+        HorizontalLayout topoBotoes = new HorizontalLayout(btnVoltar, btnImprimir);
+        topoBotoes.setAlignItems(Alignment.CENTER);
+
+        HorizontalLayout topo = new HorizontalLayout(titulo, topoBotoes);
+        topo.setWidthFull();
+        topo.setJustifyContentMode(JustifyContentMode.BETWEEN);
+        topo.setAlignItems(Alignment.CENTER);
+
+        grid = new Grid<>(Carregamento.class, false);
+        grid.setSizeFull();
+
+        mapaCheckboxes.clear();
+
+        grid.addComponentColumn(carregamento -> {
+            Checkbox checkbox = new Checkbox();
+            checkbox.setValue(true); // Selecionado por padrão
+            mapaCheckboxes.put(carregamento, checkbox);
+            return checkbox;
+        }).setHeader("Selecionar").setWidth("100px").setFlexGrow(0);
+
+        grid.addColumn(Carregamento::getDataProgramacao).setHeader("Data Operação");
+        grid.addColumn(Carregamento::getViagem).setHeader("Nº Viagem");
+        grid.addColumn(Carregamento::getTransportadora).setHeader("Transportadora");
+        grid.addColumn(Carregamento::getPlaca).setHeader("Placa");
+        grid.addColumn(Carregamento::getTipoVeiculo).setHeader("Perfil Veículo");
+        grid.addColumn(Carregamento::getPaletes).setHeader("Paletes");
+
+        atualizarGrid();
+
+        add(topo, grid);
+    }
+
+    private void atualizarGrid() {
+        mapaCheckboxes.clear();
+        itensAtuais = repository.findAll().stream()
+                .filter(c -> c.getPaletes() != null && c.getPaletes() > 0)
+                .filter(c -> c.getTipoVeiculo() == null || !c.getTipoVeiculo().trim().equalsIgnoreCase("HR"))
+                .collect(Collectors.toList());
+
+        grid.setItems(itensAtuais);
+    }
+
+    private void gerarRelatorioSelecionados() {
+        List<Carregamento> selecionados = itensAtuais.stream()
+                .filter(c -> mapaCheckboxes.containsKey(c) && mapaCheckboxes.get(c).getValue())
+                .collect(Collectors.toList());
+
+        if (selecionados.isEmpty()) {
+            Notification.show("Nenhuma viagem selecionada para impressão.", 3000, Notification.Position.MIDDLE);
+            return;
+        }
+
+        StringBuilder htmlBuilder = new StringBuilder();
+        htmlBuilder.append("<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Relatório de Paletes</title>");
+        htmlBuilder.append("<style>");
+        htmlBuilder.append("@page { size: A4; margin: 8mm; }");
+        htmlBuilder.append("body { font-family: Arial, sans-serif; font-size: 10px; color: #000; margin: 0; background: #fff; }");
+        htmlBuilder.append(".via-container { border: 1px solid #000; margin-bottom: 12px; page-break-inside: avoid; background: #fff; }");
+        htmlBuilder.append(".header-bar { background: #333; color: #fff; padding: 4px 8mm; font-weight: bold; display: flex; justify-content: space-between; font-size: 11px; }");
+        htmlBuilder.append("table { width: 100%; border-collapse: collapse; margin-top: 0; }");
+        htmlBuilder.append("th, td { border: 1px solid #000; padding: 3px 5px; text-align: left; font-size: 10px; }");
+        htmlBuilder.append("th { background: #f2f2f2; font-weight: bold; }");
+        htmlBuilder.append(".center { text-align: center; }");
+        htmlBuilder.append(".obs-box { border: 1px solid #000; border-top: none; padding: 4px; min-height: 25px; font-size: 9px; }");
+        htmlBuilder.append(".assinaturas { display: flex; border-top: 1px solid #000; }");
+        htmlBuilder.append(".assinatura-box { flex: 1; border-right: 1px solid #000; padding: 4px; height: 35px; position: relative; }");
+        htmlBuilder.append(".assinatura-box:last-child { border-right: none; }");
+        htmlBuilder.append(".assinatura-label { font-weight: bold; font-size: 9px; }");
+        htmlBuilder.append(".assinatura-linha { position: absolute; bottom: 4px; font-size: 8px; color: #555; }");
+        htmlBuilder.append("@media print { .no-print { display: none; } }");
+        htmlBuilder.append("</style></head><body>");
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        String dataEmissao = LocalDateTime.now().format(dtf);
+
+        for (Carregamento c : selecionados) {
+            String nomeClienteFinal = c.getTransportadora() != null ? c.getTransportadora() : "-";
+            String strPedidos = c.getOrdemCarga() != null ? c.getOrdemCarga() : "-";
+            String strDestino = "-"; 
+            int qtdPaletes = c.getPaletes() != null ? c.getPaletes() : 0;
+
+            String[] tiposVias = {"VIA GUARDA", "VIA MOTORISTA", "VIA EMERGÊNCIA"};
+
+            for (String tipoVia : tiposVias) {
+                htmlBuilder.append("<div class='via-container'>");
+                
+                // Cabeçalho da Via
+                htmlBuilder.append("<div class='header-bar'>");
+                htmlBuilder.append("<span>RELATÓRIO DE PALETES &mdash; TMS Logistics &ndash; Controle de Expedição</span>");
+                htmlBuilder.append("<span>").append(tipoVia).append("</span>");
+                htmlBuilder.append("</div>");
+
+                // Info da Viagem
+                htmlBuilder.append("<table>");
+                htmlBuilder.append("<tr>");
+                htmlBuilder.append("<th style='width: 30%;'>Nº VIAGEM</th>");
+                htmlBuilder.append("<th style='width: 40%;'>TRANSPORTADORA</th>");
+                htmlBuilder.append("<th style='width: 15%;'>PLACA</th>");
+                htmlBuilder.append("<th style='width: 15%;'>DATA OPERAÇÃO</th>");
+                htmlBuilder.append("</tr>");
+                htmlBuilder.append("<tr>");
+                htmlBuilder.append("<td><b>").append(c.getViagem() != null ? c.getViagem() : "-").append("</b></td>");
+                htmlBuilder.append("<td>").append(c.getTransportadora() != null ? c.getTransportadora() : "-").append("</td>");
+                htmlBuilder.append("<td><b>").append(c.getPlaca() != null ? c.getPlaca() : "-").append("</b></td>");
+                htmlBuilder.append("<td>").append(c.getDataProgramacao() != null ? c.getDataProgramacao() : "-").append("</td>");
+                htmlBuilder.append("</tr>");
+                htmlBuilder.append("</table>");
+
+                // Sub-cabeçalho Carregamento / Emissão
+                htmlBuilder.append("<table style='border-top: none;'>");
+                htmlBuilder.append("<tr>");
+                htmlBuilder.append("<th style='width: 50%;'>CARREGAMENTO</th>");
+                htmlBuilder.append("<th style='width: 30%;'>PERFIL VEÍCULO</th>");
+                htmlBuilder.append("<th style='width: 20%;'>EMISSÃO</th>");
+                htmlBuilder.append("</tr>");
+                htmlBuilder.append("<tr>");
+                htmlBuilder.append("<td>&mdash;</td>");
+                htmlBuilder.append("<td>").append(c.getTipoVeiculo() != null ? c.getTipoVeiculo() : "-").append("</td>");
+                htmlBuilder.append("<td>").append(dataEmissao).append("</td>");
+                htmlBuilder.append("</tr>");
+                htmlBuilder.append("</table>");
+
+                // Tabela de Itens
+                htmlBuilder.append("<table style='border-top: none;'>");
+                htmlBuilder.append("<tr>");
+                htmlBuilder.append("<th style='width: 35%;'>OC / Nº PEDIDO</th>");
+                htmlBuilder.append("<th style='width: 35%;'>CLIENTE</th>");
+                htmlBuilder.append("<th style='width: 18%;'>DESTINO</th>");
+                htmlBuilder.append("<th style='width: 6%; text-align: center;'>PAL.</th>");
+                htmlBuilder.append("<th style='width: 6%; text-align: center;'>EMC.</th>");
+                htmlBuilder.append("</tr>");
+                htmlBuilder.append("<tr>");
+                htmlBuilder.append("<td>").append(strPedidos).append("</td>");
+                htmlBuilder.append("<td><b>").append(nomeClienteFinal).append("</b></td>");
+                htmlBuilder.append("<td>").append(strDestino).append("</td>");
+                htmlBuilder.append("<td class='center'><b>").append(qtdPaletes).append("</b></td>");
+                htmlBuilder.append("<td class='center'>&mdash;</td>");
+                htmlBuilder.append("</tr>");
+
+                // Linha Total
+                htmlBuilder.append("<tr style='background: #f9f9f9;'>");
+                htmlBuilder.append("<td colspan='3'><b>TOTAL &ndash; 1 OC(s)</b></td>");
+                htmlBuilder.append("<td class='center'><b>").append(qtdPaletes).append("</b></td>");
+                htmlBuilder.append("<td class='center'><b>&mdash;</b></td>");
+                htmlBuilder.append("</tr>");
+                htmlBuilder.append("</table>");
+
+                // Observação de Quantidade Devolvida
+                htmlBuilder.append("<div class='obs-box'>");
+                htmlBuilder.append("<span style='font-weight: bold; color: #444;'>OBS. QUANTIDADE DEVOLVIDA</span>");
+                htmlBuilder.append("</div>");
+
+                // Bloco de Assinaturas
+                htmlBuilder.append("<div class='assinaturas'>");
+                htmlBuilder.append("<div class='assinatura-box'>");
+                htmlBuilder.append("<span class='assinatura-label'>ASSINATURA DO MOTORISTA</span>");
+                htmlBuilder.append("<span class='assinatura-linha'>Nome / Data</span>");
+                htmlBuilder.append("</div>");
+                htmlBuilder.append("<div class='assinatura-box'>");
+                htmlBuilder.append("<span class='assinatura-label'>CONFERENTE / RESPONSÁVEL</span>");
+                htmlBuilder.append("<span class='assinatura-linha'>Nome / Data</span>");
+                htmlBuilder.append("</div>");
+                htmlBuilder.append("</div>");
+
+                htmlBuilder.append("</div>"); 
+            }
+        }
+
+        htmlBuilder.append("<script>window.onload = function() { window.print(); }</script>");
+        htmlBuilder.append("</body></html>");
+
+        UI.getCurrent().getPage().executeJs(
+            "var win = window.open('', '_blank');" +
+            "win.document.write(" + jsEscape(htmlBuilder.toString()) + ");" +
+            "win.document.close();"
+        );
+
+        Notification.show("Relatório gerado com sucesso!", 3000, Notification.Position.BOTTOM_END);
+    }
+
+    private String jsEscape(String content) {
+        return "'" + content.replace("\\", "\\\\").replace("'", "\\'").replace("\n", "").replace("\r", "") + "'";
     }
 }
 ```
@@ -15326,6 +15612,7 @@ The following files were not included in the text content:
 - `target/classes/br/com/ivanildo/tms/views/EntregasView$ItemGridEntrega.class`
 - `target/classes/br/com/ivanildo/tms/views/LoginView.class`
 - `target/classes/br/com/ivanildo/tms/views/MainView.class`
+- `target/classes/br/com/ivanildo/tms/views/RelatorioPaletesView.class`
 
 ## 🚫 Binary/Excluded Files
 

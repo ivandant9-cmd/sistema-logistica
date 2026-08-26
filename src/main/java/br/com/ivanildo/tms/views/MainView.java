@@ -258,6 +258,11 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnVerArquivados.addClickListener(e -> abrirModalArquivados());
 
+        // Botão para ir para o Relatório de Paletes
+        Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
+        btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        btnRelatorioPaletes.addClickListener(e -> UI.getCurrent().navigate(RelatorioPaletesView.class));
+
         grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnVerArquivados);
 
         MemoryBuffer buffer = new MemoryBuffer();
