@@ -92,25 +92,31 @@ public class ExcelService {
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter));
 
                 // Tenta buscar por "PALETES", "PALETE" ou pega diretamente pelo índice 14 (que é a última coluna da aba Visor)
-                String valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETES", formatter);
-                if (valPaletes.isEmpty()) {
-                    valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETE", formatter);
-                }
-                if (valPaletes.isEmpty()) {
+               if (valPaletes.isEmpty()) {
                     try {
-                        // Fallback direto para a coluna 14 (índice 14 = Paletes na aba Visor)
+                        // Coluna O corresponde ao índice 14 (começando do 0)
                         org.apache.poi.ss.usermodel.Cell cellPaletes = row.getCell(14);
                         if (cellPaletes != null) {
-                            valPaletes = cellPaletes.toString();
+                            if (cellPaletes.getCellType() == org.apache.poi.ss.usermodel.CellType.NUMERIC) {
+                                // Pega o valor numérico exato sem o ponto flutuante indesejado do toString()
+                                int qtd = (int) cellPaletes.getNumericCellValue();
+                                valPaletes = String.valueOf(qtd);
+                            } else {
+                                valPaletes = cellPaletes.toString();
+                            }
                         }
                     } catch (Exception ignored) {}
                 }
 
                 if (!valPaletes.isEmpty()) {
                     try {
+                        // Remove qualquer caractere que não seja número (cuidado com decimais como .0)
                         String limpo = valPaletes.replaceAll("[^0-9]", "");
-                        c.setPaletes(limpo.isEmpty() ? 0 : Integer.parseInt(limpo));
-                    } catch (NumberFormatException e) {
+                        
+                        // Se veio com formato decimal antigo que gerou zeros à direita, tratamos aqui:
+                        double numeroParsed = Double.parseDouble(valPaletes.replace(",", "."));
+                        c.setPaletes((int) numeroParsed);
+                    } catch (Exception e) {
                         c.setPaletes(0);
                     }
                 } else {

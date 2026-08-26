@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-26 14:03:20 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-26 20:27:08 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 284
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -203,7 +203,7 @@
 │       │                   │   ├── 📄 EntregaRepository.java (599 B)
 │       │                   │   └── 📄 MotoristaRepository.java (309 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (21.34 KB)
+│       │                   │   ├── 📄 ExcelService.java (21.79 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 util/
 │       │                   │   └── 📄 UiBroadcaster.java (1010 B)
@@ -212,7 +212,7 @@
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
 │       │                   │   ├── 📄 MainView.java (28.41 KB)
-│       │                   │   └── 📄 RelatorioPaletesView.java (11.97 KB)
+│       │                   │   └── 📄 RelatorioPaletesView.java (12.54 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
 │       └── 📁 resources/
@@ -241,7 +241,7 @@
 │   │   │               │   ├── 📄 EntregaRepository.class (889 B)
 │   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (18.32 KB)
+│   │   │               │   ├── 📄 ExcelService.class (12.21 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 util/
 │   │   │               │   ├── 📄 UiBroadcaster.class (3.84 KB)
@@ -252,7 +252,7 @@
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
 │   │   │               │   ├── 📄 MainView.class (40.66 KB)
-│   │   │               │   └── 📄 RelatorioPaletesView.class (17.92 KB)
+│   │   │               │   └── 📄 RelatorioPaletesView.class (19.51 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
 │   │   ├── 📁 templates/
@@ -12964,15 +12964,15 @@ public interface MotoristaRepository extends JpaRepository<Motorista, Long> {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-service-excelservice-java"></a>📄 `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 
 **File Info:**
-- **Size**: 21.34 KB
+- **Size**: 21.79 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/service`
 - **Created**: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-26 01:28:16 (America/Bahia / GMT-03:00)
-- **MD5**: `e0c0338f971435ec552d526d794086a5`
-- **SHA256**: `52dc7184aa5d656c74110c1b3d07e436977d32b59a99ea24b6910c9d5dcf7bb0`
+- **Modified**: 2026-08-26 20:27:07 (America/Bahia / GMT-03:00)
+- **MD5**: `fbdabd927af233961fb2379508bfc47c`
+- **SHA256**: `ca14c3dd21394e6b0dc9e77fff948ae30bb517b62f706b235a28490f2f60ede5`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -13072,25 +13072,31 @@ public class ExcelService {
                 c.setObservacao(getValorPorColuna(row, colunasCarregamentos, "OBSERVACAO", formatter));
 
                 // Tenta buscar por "PALETES", "PALETE" ou pega diretamente pelo índice 14 (que é a última coluna da aba Visor)
-                String valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETES", formatter);
-                if (valPaletes.isEmpty()) {
-                    valPaletes = getValorPorColuna(row, colunasCarregamentos, "PALETE", formatter);
-                }
-                if (valPaletes.isEmpty()) {
+               if (valPaletes.isEmpty()) {
                     try {
-                        // Fallback direto para a coluna 14 (índice 14 = Paletes na aba Visor)
+                        // Coluna O corresponde ao índice 14 (começando do 0)
                         org.apache.poi.ss.usermodel.Cell cellPaletes = row.getCell(14);
                         if (cellPaletes != null) {
-                            valPaletes = cellPaletes.toString();
+                            if (cellPaletes.getCellType() == org.apache.poi.ss.usermodel.CellType.NUMERIC) {
+                                // Pega o valor numérico exato sem o ponto flutuante indesejado do toString()
+                                int qtd = (int) cellPaletes.getNumericCellValue();
+                                valPaletes = String.valueOf(qtd);
+                            } else {
+                                valPaletes = cellPaletes.toString();
+                            }
                         }
                     } catch (Exception ignored) {}
                 }
 
                 if (!valPaletes.isEmpty()) {
                     try {
+                        // Remove qualquer caractere que não seja número (cuidado com decimais como .0)
                         String limpo = valPaletes.replaceAll("[^0-9]", "");
-                        c.setPaletes(limpo.isEmpty() ? 0 : Integer.parseInt(limpo));
-                    } catch (NumberFormatException e) {
+                        
+                        // Se veio com formato decimal antigo que gerou zeros à direita, tratamos aqui:
+                        double numeroParsed = Double.parseDouble(valPaletes.replace(",", "."));
+                        c.setPaletes((int) numeroParsed);
+                    } catch (Exception e) {
                         c.setPaletes(0);
                     }
                 } else {
@@ -15060,15 +15066,15 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-relatoriopaletesview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java`
 
 **File Info:**
-- **Size**: 11.97 KB
+- **Size**: 12.54 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-26 00:20:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-26 14:03:19 (America/Bahia / GMT-03:00)
-- **MD5**: `86eaacecdb72f087048431bd9a24ad77`
-- **SHA256**: `eb712e91a66af4ddc94dab663929d42bb740de48e3cb90bc83fed6abeb9aa320`
+- **Modified**: 2026-08-26 20:14:05 (America/Bahia / GMT-03:00)
+- **MD5**: `4df0b7bcf44e4a87f600e35256fa9e19`
+- **SHA256**: `b4c30396bcec77374d7ff726f79e896a24d21e18c72de068289bdc067fd24f8e`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -15134,12 +15140,24 @@ public class RelatorioPaletesView extends VerticalLayout {
 
         mapaCheckboxes.clear();
 
+        // Checkbox Mestre no Cabeçalho
+        Checkbox masterCheckbox = new Checkbox();
+        masterCheckbox.setValue(true); // Começa marcado por padrão
+        masterCheckbox.addValueChangeListener(event -> {
+            boolean masterValue = event.getValue();
+            // Atualiza todos os checkboxes individuais com o mesmo valor do mestre
+            for (Checkbox cb : mapaCheckboxes.values()) {
+                cb.setValue(masterValue);
+            }
+        });
+
+        // Coluna com o Checkbox mestre no cabeçalho
         grid.addComponentColumn(carregamento -> {
             Checkbox checkbox = new Checkbox();
-            checkbox.setValue(true);
+            checkbox.setValue(true); // Selecionado por padrão
             mapaCheckboxes.put(carregamento, checkbox);
             return checkbox;
-        }).setHeader("Selecionar").setWidth("100px").setFlexGrow(0);
+        }).setHeader(masterCheckbox).setWidth("110px").setFlexGrow(0);
 
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("Data Operação");
         grid.addColumn(Carregamento::getViagem).setHeader("Nº Viagem");

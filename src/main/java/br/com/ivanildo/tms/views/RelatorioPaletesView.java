@@ -58,12 +58,24 @@ public class RelatorioPaletesView extends VerticalLayout {
 
         mapaCheckboxes.clear();
 
+        // Checkbox Mestre no Cabeçalho
+        Checkbox masterCheckbox = new Checkbox();
+        masterCheckbox.setValue(true); // Começa marcado por padrão
+        masterCheckbox.addValueChangeListener(event -> {
+            boolean masterValue = event.getValue();
+            // Atualiza todos os checkboxes individuais com o mesmo valor do mestre
+            for (Checkbox cb : mapaCheckboxes.values()) {
+                cb.setValue(masterValue);
+            }
+        });
+
+        // Coluna com o Checkbox mestre no cabeçalho
         grid.addComponentColumn(carregamento -> {
             Checkbox checkbox = new Checkbox();
-            checkbox.setValue(true);
+            checkbox.setValue(true); // Selecionado por padrão
             mapaCheckboxes.put(carregamento, checkbox);
             return checkbox;
-        }).setHeader("Selecionar").setWidth("100px").setFlexGrow(0);
+        }).setHeader(masterCheckbox).setWidth("110px").setFlexGrow(0);
 
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("Data Operação");
         grid.addColumn(Carregamento::getViagem).setHeader("Nº Viagem");
