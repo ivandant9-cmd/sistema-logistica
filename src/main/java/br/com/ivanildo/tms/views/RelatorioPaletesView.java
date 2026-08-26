@@ -2,6 +2,7 @@ package br.com.ivanildo.tms.views;
 
 import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
+import jakarta.annotation.security.PermitAll;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -21,12 +22,12 @@ import java.util.stream.Collectors;
 
 @Route(value = "relatorio-paletes")
 @PageTitle("Relatório de Paletes | TMS")
+@PermitAll
 public class RelatorioPaletesView extends VerticalLayout {
 
     private final CarregamentoRepository repository;
     private Grid<Carregamento> grid;
     private List<Carregamento> itensAtuais = new ArrayList<>();
-    // Mapa para controlar os checkboxes selecionados
     private final Map<Carregamento, Checkbox> mapaCheckboxes = new HashMap<>();
 
     @SuppressWarnings("null")
@@ -59,7 +60,7 @@ public class RelatorioPaletesView extends VerticalLayout {
 
         grid.addComponentColumn(carregamento -> {
             Checkbox checkbox = new Checkbox();
-            checkbox.setValue(true); // Selecionado por padrão
+            checkbox.setValue(true);
             mapaCheckboxes.put(carregamento, checkbox);
             return checkbox;
         }).setHeader("Selecionar").setWidth("100px").setFlexGrow(0);
@@ -130,13 +131,11 @@ public class RelatorioPaletesView extends VerticalLayout {
             for (String tipoVia : tiposVias) {
                 htmlBuilder.append("<div class='via-container'>");
                 
-                // Cabeçalho da Via
                 htmlBuilder.append("<div class='header-bar'>");
                 htmlBuilder.append("<span>RELATÓRIO DE PALETES &mdash; TMS Logistics &ndash; Controle de Expedição</span>");
                 htmlBuilder.append("<span>").append(tipoVia).append("</span>");
                 htmlBuilder.append("</div>");
 
-                // Info da Viagem
                 htmlBuilder.append("<table>");
                 htmlBuilder.append("<tr>");
                 htmlBuilder.append("<th style='width: 30%;'>Nº VIAGEM</th>");
@@ -152,7 +151,6 @@ public class RelatorioPaletesView extends VerticalLayout {
                 htmlBuilder.append("</tr>");
                 htmlBuilder.append("</table>");
 
-                // Sub-cabeçalho Carregamento / Emissão
                 htmlBuilder.append("<table style='border-top: none;'>");
                 htmlBuilder.append("<tr>");
                 htmlBuilder.append("<th style='width: 50%;'>CARREGAMENTO</th>");
@@ -166,7 +164,6 @@ public class RelatorioPaletesView extends VerticalLayout {
                 htmlBuilder.append("</tr>");
                 htmlBuilder.append("</table>");
 
-                // Tabela de Itens
                 htmlBuilder.append("<table style='border-top: none;'>");
                 htmlBuilder.append("<tr>");
                 htmlBuilder.append("<th style='width: 35%;'>OC / Nº PEDIDO</th>");
@@ -183,7 +180,6 @@ public class RelatorioPaletesView extends VerticalLayout {
                 htmlBuilder.append("<td class='center'>&mdash;</td>");
                 htmlBuilder.append("</tr>");
 
-                // Linha Total
                 htmlBuilder.append("<tr style='background: #f9f9f9;'>");
                 htmlBuilder.append("<td colspan='3'><b>TOTAL &ndash; 1 OC(s)</b></td>");
                 htmlBuilder.append("<td class='center'><b>").append(qtdPaletes).append("</b></td>");
@@ -191,12 +187,10 @@ public class RelatorioPaletesView extends VerticalLayout {
                 htmlBuilder.append("</tr>");
                 htmlBuilder.append("</table>");
 
-                // Observação de Quantidade Devolvida
                 htmlBuilder.append("<div class='obs-box'>");
                 htmlBuilder.append("<span style='font-weight: bold; color: #444;'>OBS. QUANTIDADE DEVOLVIDA</span>");
                 htmlBuilder.append("</div>");
 
-                // Bloco de Assinaturas
                 htmlBuilder.append("<div class='assinaturas'>");
                 htmlBuilder.append("<div class='assinatura-box'>");
                 htmlBuilder.append("<span class='assinatura-label'>ASSINATURA DO MOTORISTA</span>");

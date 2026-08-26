@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-26 13:44:10 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-26 14:03:20 (America/Bahia / GMT-03:00)
 Total Files Processed: 284
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -214,7 +214,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
 │       │                   │   ├── 📄 MainView.java (28.41 KB)
-│       │                   │   └── 📄 RelatorioPaletesView.java (12.29 KB)
+│       │                   │   └── 📄 RelatorioPaletesView.java (11.97 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
 │       └── 📁 resources/
@@ -253,8 +253,8 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   ├── 📄 MainView.class (33.98 KB)
-│   │   │               │   └── 📄 RelatorioPaletesView.class (17.88 KB)
+│   │   │               │   ├── 📄 MainView.class (40.66 KB)
+│   │   │               │   └── 📄 RelatorioPaletesView.class (17.92 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
 │   │   ├── 📁 templates/
@@ -14961,15 +14961,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 12.29 KB
+Size: 11.97 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-26 00:20:01 (America/Bahia / GMT-03:00)
-Modified: 2026-08-26 00:33:01 (America/Bahia / GMT-03:00)
-MD5: 1f4926132d2853bcfa262628faf7b5b5
-SHA256: ba71c628f4e1fad4fbd6519e0dc92cb77e00594dce6fc852a103d2634defaed8
+Modified: 2026-08-26 14:03:19 (America/Bahia / GMT-03:00)
+MD5: 86eaacecdb72f087048431bd9a24ad77
+SHA256: eb712e91a66af4ddc94dab663929d42bb740de48e3cb90bc83fed6abeb9aa320
 Encoding: UTF-8
 
 FILE CONTENT:
@@ -14978,6 +14978,7 @@ package br.com.ivanildo.tms.views;
 
 import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
+import jakarta.annotation.security.PermitAll;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -14997,12 +14998,12 @@ import java.util.stream.Collectors;
 
 @Route(value = "relatorio-paletes")
 @PageTitle("Relatório de Paletes | TMS")
+@PermitAll
 public class RelatorioPaletesView extends VerticalLayout {
 
     private final CarregamentoRepository repository;
     private Grid<Carregamento> grid;
     private List<Carregamento> itensAtuais = new ArrayList<>();
-    // Mapa para controlar os checkboxes selecionados
     private final Map<Carregamento, Checkbox> mapaCheckboxes = new HashMap<>();
 
     @SuppressWarnings("null")
@@ -15035,7 +15036,7 @@ public class RelatorioPaletesView extends VerticalLayout {
 
         grid.addComponentColumn(carregamento -> {
             Checkbox checkbox = new Checkbox();
-            checkbox.setValue(true); // Selecionado por padrão
+            checkbox.setValue(true);
             mapaCheckboxes.put(carregamento, checkbox);
             return checkbox;
         }).setHeader("Selecionar").setWidth("100px").setFlexGrow(0);
@@ -15106,13 +15107,11 @@ public class RelatorioPaletesView extends VerticalLayout {
             for (String tipoVia : tiposVias) {
                 htmlBuilder.append("<div class='via-container'>");
                 
-                // Cabeçalho da Via
                 htmlBuilder.append("<div class='header-bar'>");
                 htmlBuilder.append("<span>RELATÓRIO DE PALETES &mdash; TMS Logistics &ndash; Controle de Expedição</span>");
                 htmlBuilder.append("<span>").append(tipoVia).append("</span>");
                 htmlBuilder.append("</div>");
 
-                // Info da Viagem
                 htmlBuilder.append("<table>");
                 htmlBuilder.append("<tr>");
                 htmlBuilder.append("<th style='width: 30%;'>Nº VIAGEM</th>");
@@ -15128,7 +15127,6 @@ public class RelatorioPaletesView extends VerticalLayout {
                 htmlBuilder.append("</tr>");
                 htmlBuilder.append("</table>");
 
-                // Sub-cabeçalho Carregamento / Emissão
                 htmlBuilder.append("<table style='border-top: none;'>");
                 htmlBuilder.append("<tr>");
                 htmlBuilder.append("<th style='width: 50%;'>CARREGAMENTO</th>");
@@ -15142,7 +15140,6 @@ public class RelatorioPaletesView extends VerticalLayout {
                 htmlBuilder.append("</tr>");
                 htmlBuilder.append("</table>");
 
-                // Tabela de Itens
                 htmlBuilder.append("<table style='border-top: none;'>");
                 htmlBuilder.append("<tr>");
                 htmlBuilder.append("<th style='width: 35%;'>OC / Nº PEDIDO</th>");
@@ -15159,7 +15156,6 @@ public class RelatorioPaletesView extends VerticalLayout {
                 htmlBuilder.append("<td class='center'>&mdash;</td>");
                 htmlBuilder.append("</tr>");
 
-                // Linha Total
                 htmlBuilder.append("<tr style='background: #f9f9f9;'>");
                 htmlBuilder.append("<td colspan='3'><b>TOTAL &ndash; 1 OC(s)</b></td>");
                 htmlBuilder.append("<td class='center'><b>").append(qtdPaletes).append("</b></td>");
@@ -15167,12 +15163,10 @@ public class RelatorioPaletesView extends VerticalLayout {
                 htmlBuilder.append("</tr>");
                 htmlBuilder.append("</table>");
 
-                // Observação de Quantidade Devolvida
                 htmlBuilder.append("<div class='obs-box'>");
                 htmlBuilder.append("<span style='font-weight: bold; color: #444;'>OBS. QUANTIDADE DEVOLVIDA</span>");
                 htmlBuilder.append("</div>");
 
-                // Bloco de Assinaturas
                 htmlBuilder.append("<div class='assinaturas'>");
                 htmlBuilder.append("<div class='assinatura-box'>");
                 htmlBuilder.append("<span class='assinatura-label'>ASSINATURA DO MOTORISTA</span>");
