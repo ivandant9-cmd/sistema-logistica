@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-26 21:42:49 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-26 22:01:02 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 284
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -211,7 +211,7 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   ├── 📄 MainView.java (31.94 KB)
+│       │                   │   ├── 📄 MainView.java (32.15 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (12.54 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
@@ -251,7 +251,7 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   ├── 📄 MainView.class (45.88 KB)
+│   │   │               │   ├── 📄 MainView.class (45.91 KB)
 │   │   │               │   └── 📄 RelatorioPaletesView.class (19.51 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
@@ -14424,15 +14424,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 31.94 KB
+- **Size**: 32.15 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-26 21:42:49 (America/Bahia / GMT-03:00)
-- **MD5**: `628fd6ab9eeb1e1654a81b89b70e6043`
-- **SHA256**: `f468a3ca8c66539e1df1b42e07a1bbba2747ac8b28e5a6d638a24a49d7dfe136`
+- **Modified**: 2026-08-26 22:01:01 (America/Bahia / GMT-03:00)
+- **MD5**: `6f753606f644fbf64d34fc03d5a29654`
+- **SHA256**: `3aea46d8b4162ec97e8cdaf3348123f465ebedc180a7f46583e8ca02ab3a1195`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14702,8 +14702,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
         btnExcluirSelecionadas.addThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_SMALL);
         btnExcluirSelecionadas.addClickListener(e -> {
+            // Coleta todas as entradas do mapa cujos checkboxes estão marcados
             List<Carregamento> selecionados = mapaCheckboxesMain.entrySet().stream()
-                    .filter(entry -> entry.getValue().getValue())
+                    .filter(entry -> entry.getValue() != null && entry.getValue().getValue())
                     .map(Map.Entry::getKey)
                     .collect(Collectors.toList());
 
@@ -14712,9 +14713,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 return;
             }
 
+            // Exclui do repositório
             repository.deleteAll(selecionados);
-            mapaCheckboxesMain.clear(); // Limpa o mapa para redefinir as seleções
-            atualizarGridEIndicators(); // Atualiza a tela e limpa os itens excluídos da grid
+            
+            // Limpa o mapa de checkboxes para resetar a seleção
+            mapaCheckboxesMain.clear();
+            
+            // Atualiza os indicadores e a grid imediatamente
+            atualizarGridEIndicators();
             
             Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
         });

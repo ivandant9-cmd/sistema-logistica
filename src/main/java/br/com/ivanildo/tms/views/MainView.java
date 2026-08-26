@@ -262,8 +262,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
         btnExcluirSelecionadas.addThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_SMALL);
         btnExcluirSelecionadas.addClickListener(e -> {
+            // Coleta todas as entradas do mapa cujos checkboxes estão marcados
             List<Carregamento> selecionados = mapaCheckboxesMain.entrySet().stream()
-                    .filter(entry -> entry.getValue().getValue())
+                    .filter(entry -> entry.getValue() != null && entry.getValue().getValue())
                     .map(Map.Entry::getKey)
                     .collect(Collectors.toList());
 
@@ -272,9 +273,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 return;
             }
 
+            // Exclui do repositório
             repository.deleteAll(selecionados);
-            mapaCheckboxesMain.clear(); // Limpa o mapa para redefinir as seleções
-            atualizarGridEIndicators(); // Atualiza a tela e limpa os itens excluídos da grid
+            
+            // Limpa o mapa de checkboxes para resetar a seleção
+            mapaCheckboxesMain.clear();
+            
+            // Atualiza os indicadores e a grid imediatamente
+            atualizarGridEIndicators();
             
             Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
         });
