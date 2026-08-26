@@ -78,7 +78,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     this.repository = repository;
     this.entregaRepository = entregaRepository; // Agora a atribuição funciona e inicializa o campo final
     this.excelService = excelService;
-    
+
         setSizeFull();
         setPadding(true);
         setSpacing(true);
@@ -113,14 +113,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     @Override
-    protected void onAttach(AttachEvent attachEvent) {
+        protected void onAttach(AttachEvent attachEvent) {
         super.onAttach(attachEvent);
         UI ui = attachEvent.getUI();
 
         broadcasterRegistration = UiBroadcaster.register(message -> {
             ui.access(() -> {
-                atualizarGridEIndicators();
-                Notification.show("⚡ Motorista realizou o check-in!", 3000, Notification.Position.TOP_END)
+                atualizarGridEIndicators(); // Atualiza a grid e os indicadores automaticamente na tela!
+                Notification.show("⚡ Status atualizado em tempo real!", 3000, Notification.Position.TOP_END)
                             .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
             });
         });
@@ -322,6 +322,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         Button btnVerArquivados = new Button("Ver Arquivados", VaadinIcon.FOLDER_OPEN.create());
         btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnVerArquivados.addClickListener(e -> abrirModalArquivados());
+
+        // Botão Atualizar Viagens Manual
+        Button btnAtualizarViagens = new Button("Atualizar Viagens", VaadinIcon.REFRESH.create());
+        btnAtualizarViagens.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        btnAtualizarViagens.addClickListener(e -> {
+            atualizarGridEIndicators();
+            Notification.show("Lista de viagens atualizada!", 2000, Notification.Position.BOTTOM_END);
+        });
 
         // Botão para ir para o Relatório de Paletes
         Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());

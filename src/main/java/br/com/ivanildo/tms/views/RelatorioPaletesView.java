@@ -1,7 +1,9 @@
 package br.com.ivanildo.tms.views;
 
 import br.com.ivanildo.tms.model.Carregamento;
+import br.com.ivanildo.tms.model.Entrega;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
+import br.com.ivanildo.tms.repository.EntregaRepository;
 import jakarta.annotation.security.PermitAll;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -26,13 +28,15 @@ import java.util.stream.Collectors;
 public class RelatorioPaletesView extends VerticalLayout {
 
     private final CarregamentoRepository repository;
+    private final EntregaRepository entregaRepository;
     private Grid<Carregamento> grid;
     private List<Carregamento> itensAtuais = new ArrayList<>();
     private final Map<Carregamento, Checkbox> mapaCheckboxes = new HashMap<>();
 
     @SuppressWarnings("null")
-    public RelatorioPaletesView(CarregamentoRepository repository) {
+    public RelatorioPaletesView(CarregamentoRepository repository, EntregaRepository entregaRepository) {
         this.repository = repository;
+        this.entregaRepository = entregaRepository;
         setSizeFull();
         setPadding(true);
 
@@ -63,7 +67,6 @@ public class RelatorioPaletesView extends VerticalLayout {
         masterCheckbox.setValue(true); // Começa marcado por padrão
         masterCheckbox.addValueChangeListener(event -> {
             boolean masterValue = event.getValue();
-            // Atualiza todos os checkboxes individuais com o mesmo valor do mestre
             for (Checkbox cb : mapaCheckboxes.values()) {
                 cb.setValue(masterValue);
             }
@@ -114,15 +117,19 @@ public class RelatorioPaletesView extends VerticalLayout {
         htmlBuilder.append("<style>");
         htmlBuilder.append("@page { size: A4; margin: 8mm; }");
         htmlBuilder.append("body { font-family: Arial, sans-serif; font-size: 10px; color: #000; margin: 0; background: #fff; }");
-        htmlBuilder.append(".via-container { border: 1px solid #000; margin-bottom: 12px; page-break-inside: avoid; background: #fff; }");
+        
+        // Garante que cada bloco de carregamento ocupe exatamente uma página e o espaço total da folha
+        htmlBuilder.append(".carregamento-pagina { page-break-after: always; break-after: page; height: 100vh; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }");
+        
+        htmlBuilder.append(".via-container { border: 1px solid #000; margin-bottom: 6px; background: #fff; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }");
         htmlBuilder.append(".header-bar { background: #333; color: #fff; padding: 4px 8mm; font-weight: bold; display: flex; justify-content: space-between; font-size: 11px; }");
         htmlBuilder.append("table { width: 100%; border-collapse: collapse; margin-top: 0; }");
         htmlBuilder.append("th, td { border: 1px solid #000; padding: 3px 5px; text-align: left; font-size: 10px; }");
         htmlBuilder.append("th { background: #f2f2f2; font-weight: bold; }");
         htmlBuilder.append(".center { text-align: center; }");
-        htmlBuilder.append(".obs-box { border: 1px solid #000; border-top: none; padding: 4px; min-height: 25px; font-size: 9px; }");
+        htmlBuilder.append(".obs-box { border: 1px solid #000; border-top: none; padding: 4px; min-height: 20px; font-size: 9px; }");
         htmlBuilder.append(".assinaturas { display: flex; border-top: 1px solid #000; }");
-        htmlBuilder.append(".assinatura-box { flex: 1; border-right: 1px solid #000; padding: 4px; height: 35px; position: relative; }");
+        htmlBuilder.append(".assinatura-box { flex: 1; border-right: 1px solid #000; padding: 4px; height: 30px; position: relative; }");
         htmlBuilder.append(".assinatura-box:last-child { border-right: none; }");
         htmlBuilder.append(".assinatura-label { font-weight: bold; font-size: 9px; }");
         htmlBuilder.append(".assinatura-linha { position: absolute; bottom: 4px; font-size: 8px; color: #555; }");
@@ -133,12 +140,30 @@ public class RelatorioPaletesView extends VerticalLayout {
         String dataEmissao = LocalDateTime.now().format(dtf);
 
         for (Carregamento c : selecionados) {
-            String nomeClienteFinal = c.getTransportadora() != null ? c.getTransportadora() : "-";
+            // Regra do Cliente: Se houver mais de 1 cliente distinto nas entregas -> "DIVERSOS", se houver 1 -> Nome do cliente, senão -> "-"
+            List<Entrega> entregas = entregaRepository.findByCarregamentoId(c.getId());
+            Set<String> clientesDistintos = entregas.stream()
+                    .map(e -> e.getCliente())
+                    .filter(cli -> cli != null && !cli.trim().isEmpty())
+                    .collect(Collectors.toSet());
+
+            String nomeClienteFinal;
+            if (clientesDistintos.size() > 1) {
+                nomeClienteFinal = "DIVERSOS";
+            } else if (clientesDistintos.size() == 1) {
+                nomeClienteFinal = clientesDistintos.iterator().next();
+            } else {
+                nomeClienteFinal = c.getTransportadora() != null ? c.getTransportadora() : "-";
+            }
+
             String strPedidos = c.getOrdemCarga() != null ? c.getOrdemCarga() : "-";
             String strDestino = "-"; 
             int qtdPaletes = c.getPaletes() != null ? c.getPaletes() : 0;
 
             String[] tiposVias = {"VIA GUARDA", "VIA MOTORISTA", "VIA EMERGÊNCIA"};
+
+            // Agrupa as 3 vias de um mesmo carregamento dentro de uma página dedicada
+            htmlBuilder.append("<div class='carregamento-pagina'>");
 
             for (String tipoVia : tiposVias) {
                 htmlBuilder.append("<div class='via-container'>");
@@ -214,23 +239,33 @@ public class RelatorioPaletesView extends VerticalLayout {
                 htmlBuilder.append("</div>");
                 htmlBuilder.append("</div>");
 
-                htmlBuilder.append("</div>"); 
+                htmlBuilder.append("</div>"); // fim via-container
             }
+
+            htmlBuilder.append("</div>"); // fim carregamento-pagina
         }
 
         htmlBuilder.append("<script>window.onload = function() { window.print(); }</script>");
         htmlBuilder.append("</body></html>");
 
+        // Solução robusta e limpa para abrir a nova aba e injetar o HTML sem falhar em branco
         UI.getCurrent().getPage().executeJs(
             "var win = window.open('', '_blank');" +
-            "win.document.write(" + jsEscape(htmlBuilder.toString()) + ");" +
-            "win.document.close();"
+            "if (win) {" +
+            "  win.document.open();" +
+            "  win.document.write(" + jsEscape(htmlBuilder.toString()) + ");" +
+            "  win.document.close();" +
+            "}"
         );
 
         Notification.show("Relatório gerado com sucesso!", 3000, Notification.Position.BOTTOM_END);
     }
 
     private String jsEscape(String content) {
-        return "'" + content.replace("\\", "\\\\").replace("'", "\\'").replace("\n", "").replace("\r", "") + "'";
+        return "'" + content
+                .replace("\\", "\\\\")
+                .replace("'", "\\'")
+                .replace("\n", "")
+                .replace("\r", "") + "'";
     }
 }

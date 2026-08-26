@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-26 22:40:15 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-26 23:14:10 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 284
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -211,8 +211,8 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   ├── 📄 MainView.java (32.63 KB)
-│       │                   │   └── 📄 RelatorioPaletesView.java (12.54 KB)
+│       │                   │   ├── 📄 MainView.java (33.11 KB)
+│       │                   │   └── 📄 RelatorioPaletesView.java (14.33 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
 │       └── 📁 resources/
@@ -251,8 +251,8 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   ├── 📄 MainView.class (46.37 KB)
-│   │   │               │   └── 📄 RelatorioPaletesView.class (19.51 KB)
+│   │   │               │   ├── 📄 MainView.class (46.79 KB)
+│   │   │               │   └── 📄 RelatorioPaletesView.class (21.17 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
 │   │   ├── 📁 templates/
@@ -14431,15 +14431,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 32.63 KB
+- **Size**: 33.11 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-26 22:40:14 (America/Bahia / GMT-03:00)
-- **MD5**: `97d9d634507018c595cb0dcb20353531`
-- **SHA256**: `a4e612677943f4f4cad42d371d8a8fbf338aa3204989329929caf0feb3d30159`
+- **Modified**: 2026-08-26 23:11:50 (America/Bahia / GMT-03:00)
+- **MD5**: `84a5280c8f2e7f7679cfbf3da0821b20`
+- **SHA256**: `f7c441c13c21388f6e068cae708b41f9d320b92d460063066870ea9a0b8b0690`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14525,7 +14525,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     this.repository = repository;
     this.entregaRepository = entregaRepository; // Agora a atribuição funciona e inicializa o campo final
     this.excelService = excelService;
-    
+
         setSizeFull();
         setPadding(true);
         setSpacing(true);
@@ -14560,14 +14560,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     @Override
-    protected void onAttach(AttachEvent attachEvent) {
+        protected void onAttach(AttachEvent attachEvent) {
         super.onAttach(attachEvent);
         UI ui = attachEvent.getUI();
 
         broadcasterRegistration = UiBroadcaster.register(message -> {
             ui.access(() -> {
-                atualizarGridEIndicators();
-                Notification.show("⚡ Motorista realizou o check-in!", 3000, Notification.Position.TOP_END)
+                atualizarGridEIndicators(); // Atualiza a grid e os indicadores automaticamente na tela!
+                Notification.show("⚡ Status atualizado em tempo real!", 3000, Notification.Position.TOP_END)
                             .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
             });
         });
@@ -14769,6 +14769,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         Button btnVerArquivados = new Button("Ver Arquivados", VaadinIcon.FOLDER_OPEN.create());
         btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnVerArquivados.addClickListener(e -> abrirModalArquivados());
+
+        // Botão Atualizar Viagens Manual
+        Button btnAtualizarViagens = new Button("Atualizar Viagens", VaadinIcon.REFRESH.create());
+        btnAtualizarViagens.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        btnAtualizarViagens.addClickListener(e -> {
+            atualizarGridEIndicators();
+            Notification.show("Lista de viagens atualizada!", 2000, Notification.Position.BOTTOM_END);
+        });
 
         // Botão para ir para o Relatório de Paletes
         Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
@@ -15162,16 +15170,16 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-relatoriopaletesview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java`
 
 **File Info:**
-- **Size**: 12.54 KB
+- **Size**: 14.33 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-26 00:20:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-26 20:14:05 (America/Bahia / GMT-03:00)
-- **MD5**: `4df0b7bcf44e4a87f600e35256fa9e19`
-- **SHA256**: `b4c30396bcec77374d7ff726f79e896a24d21e18c72de068289bdc067fd24f8e`
-- **Encoding**: UTF-8
+- **Modified**: 2026-08-26 23:14:09 (America/Bahia / GMT-03:00)
+- **MD5**: `b2644a86772adaac47d5cf949c7a6b8c`
+- **SHA256**: `6eb11e22561887dd77397e8bd9e3878ac0f748c17f58013c9b329c0966b2d228`
+- **Encoding**: ASCII
 
 **File code content:**
 
@@ -15179,7 +15187,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 package br.com.ivanildo.tms.views;
 
 import br.com.ivanildo.tms.model.Carregamento;
+import br.com.ivanildo.tms.model.Entrega;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
+import br.com.ivanildo.tms.repository.EntregaRepository;
 import jakarta.annotation.security.PermitAll;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -15204,13 +15214,15 @@ import java.util.stream.Collectors;
 public class RelatorioPaletesView extends VerticalLayout {
 
     private final CarregamentoRepository repository;
+    private final EntregaRepository entregaRepository;
     private Grid<Carregamento> grid;
     private List<Carregamento> itensAtuais = new ArrayList<>();
     private final Map<Carregamento, Checkbox> mapaCheckboxes = new HashMap<>();
 
     @SuppressWarnings("null")
-    public RelatorioPaletesView(CarregamentoRepository repository) {
+    public RelatorioPaletesView(CarregamentoRepository repository, EntregaRepository entregaRepository) {
         this.repository = repository;
+        this.entregaRepository = entregaRepository;
         setSizeFull();
         setPadding(true);
 
@@ -15241,7 +15253,6 @@ public class RelatorioPaletesView extends VerticalLayout {
         masterCheckbox.setValue(true); // Começa marcado por padrão
         masterCheckbox.addValueChangeListener(event -> {
             boolean masterValue = event.getValue();
-            // Atualiza todos os checkboxes individuais com o mesmo valor do mestre
             for (Checkbox cb : mapaCheckboxes.values()) {
                 cb.setValue(masterValue);
             }
@@ -15292,15 +15303,19 @@ public class RelatorioPaletesView extends VerticalLayout {
         htmlBuilder.append("<style>");
         htmlBuilder.append("@page { size: A4; margin: 8mm; }");
         htmlBuilder.append("body { font-family: Arial, sans-serif; font-size: 10px; color: #000; margin: 0; background: #fff; }");
-        htmlBuilder.append(".via-container { border: 1px solid #000; margin-bottom: 12px; page-break-inside: avoid; background: #fff; }");
+        
+        // Garante que cada bloco de carregamento ocupe exatamente uma página e o espaço total da folha
+        htmlBuilder.append(".carregamento-pagina { page-break-after: always; break-after: page; height: 100vh; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }");
+        
+        htmlBuilder.append(".via-container { border: 1px solid #000; margin-bottom: 6px; background: #fff; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }");
         htmlBuilder.append(".header-bar { background: #333; color: #fff; padding: 4px 8mm; font-weight: bold; display: flex; justify-content: space-between; font-size: 11px; }");
         htmlBuilder.append("table { width: 100%; border-collapse: collapse; margin-top: 0; }");
         htmlBuilder.append("th, td { border: 1px solid #000; padding: 3px 5px; text-align: left; font-size: 10px; }");
         htmlBuilder.append("th { background: #f2f2f2; font-weight: bold; }");
         htmlBuilder.append(".center { text-align: center; }");
-        htmlBuilder.append(".obs-box { border: 1px solid #000; border-top: none; padding: 4px; min-height: 25px; font-size: 9px; }");
+        htmlBuilder.append(".obs-box { border: 1px solid #000; border-top: none; padding: 4px; min-height: 20px; font-size: 9px; }");
         htmlBuilder.append(".assinaturas { display: flex; border-top: 1px solid #000; }");
-        htmlBuilder.append(".assinatura-box { flex: 1; border-right: 1px solid #000; padding: 4px; height: 35px; position: relative; }");
+        htmlBuilder.append(".assinatura-box { flex: 1; border-right: 1px solid #000; padding: 4px; height: 30px; position: relative; }");
         htmlBuilder.append(".assinatura-box:last-child { border-right: none; }");
         htmlBuilder.append(".assinatura-label { font-weight: bold; font-size: 9px; }");
         htmlBuilder.append(".assinatura-linha { position: absolute; bottom: 4px; font-size: 8px; color: #555; }");
@@ -15311,12 +15326,30 @@ public class RelatorioPaletesView extends VerticalLayout {
         String dataEmissao = LocalDateTime.now().format(dtf);
 
         for (Carregamento c : selecionados) {
-            String nomeClienteFinal = c.getTransportadora() != null ? c.getTransportadora() : "-";
+            // Regra do Cliente: Se houver mais de 1 cliente distinto nas entregas -> "DIVERSOS", se houver 1 -> Nome do cliente, senão -> "-"
+            List<Entrega> entregas = entregaRepository.findByCarregamentoId(c.getId());
+            Set<String> clientesDistintos = entregas.stream()
+                    .map(e -> e.getCliente())
+                    .filter(cli -> cli != null && !cli.trim().isEmpty())
+                    .collect(Collectors.toSet());
+
+            String nomeClienteFinal;
+            if (clientesDistintos.size() > 1) {
+                nomeClienteFinal = "DIVERSOS";
+            } else if (clientesDistintos.size() == 1) {
+                nomeClienteFinal = clientesDistintos.iterator().next();
+            } else {
+                nomeClienteFinal = c.getTransportadora() != null ? c.getTransportadora() : "-";
+            }
+
             String strPedidos = c.getOrdemCarga() != null ? c.getOrdemCarga() : "-";
             String strDestino = "-"; 
             int qtdPaletes = c.getPaletes() != null ? c.getPaletes() : 0;
 
             String[] tiposVias = {"VIA GUARDA", "VIA MOTORISTA", "VIA EMERGÊNCIA"};
+
+            // Agrupa as 3 vias de um mesmo carregamento dentro de uma página dedicada
+            htmlBuilder.append("<div class='carregamento-pagina'>");
 
             for (String tipoVia : tiposVias) {
                 htmlBuilder.append("<div class='via-container'>");
@@ -15392,24 +15425,34 @@ public class RelatorioPaletesView extends VerticalLayout {
                 htmlBuilder.append("</div>");
                 htmlBuilder.append("</div>");
 
-                htmlBuilder.append("</div>"); 
+                htmlBuilder.append("</div>"); // fim via-container
             }
+
+            htmlBuilder.append("</div>"); // fim carregamento-pagina
         }
 
         htmlBuilder.append("<script>window.onload = function() { window.print(); }</script>");
         htmlBuilder.append("</body></html>");
 
+        // Solução robusta e limpa para abrir a nova aba e injetar o HTML sem falhar em branco
         UI.getCurrent().getPage().executeJs(
             "var win = window.open('', '_blank');" +
-            "win.document.write(" + jsEscape(htmlBuilder.toString()) + ");" +
-            "win.document.close();"
+            "if (win) {" +
+            "  win.document.open();" +
+            "  win.document.write(" + jsEscape(htmlBuilder.toString()) + ");" +
+            "  win.document.close();" +
+            "}"
         );
 
         Notification.show("Relatório gerado com sucesso!", 3000, Notification.Position.BOTTOM_END);
     }
 
     private String jsEscape(String content) {
-        return "'" + content.replace("\\", "\\\\").replace("'", "\\'").replace("\n", "").replace("\r", "") + "'";
+        return "'" + content
+                .replace("\\", "\\\\")
+                .replace("'", "\\'")
+                .replace("\n", "")
+                .replace("\r", "") + "'";
     }
 }
 ```
