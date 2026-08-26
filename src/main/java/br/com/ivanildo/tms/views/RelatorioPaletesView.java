@@ -160,7 +160,7 @@ public class RelatorioPaletesView extends VerticalLayout {
             String strDestino = "-"; 
             int qtdPaletes = c.getPaletes() != null ? c.getPaletes() : 0;
 
-            String[] tiposVias = {"VIA GUARDA", "VIA MOTORISTA", "VIA EMERGÊNCIA"};
+            String[] tiposVias = {"VIA GUARDA", "VIA MOTORISTA", "VIA EMERGENT"};
 
             // Agrupa as 3 vias de um mesmo carregamento dentro de uma página dedicada
             htmlBuilder.append("<div class='carregamento-pagina'>");

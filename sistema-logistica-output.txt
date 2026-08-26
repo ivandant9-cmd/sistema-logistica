@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-26 23:14:10 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-26 23:47:37 (America/Bahia / GMT-03:00)
 Total Files Processed: 284
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -15077,9 +15077,9 @@ Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-26 00:20:01 (America/Bahia / GMT-03:00)
-Modified: 2026-08-26 23:14:09 (America/Bahia / GMT-03:00)
-MD5: b2644a86772adaac47d5cf949c7a6b8c
-SHA256: 6eb11e22561887dd77397e8bd9e3878ac0f748c17f58013c9b329c0966b2d228
+Modified: 2026-08-26 23:47:35 (America/Bahia / GMT-03:00)
+MD5: ff8a07b1964360e7f0091539775969bb
+SHA256: 91c55495de2a1d8255d27df2990cadc837877e4f60aa3e4ca32144c3409f1074
 Encoding: ASCII
 
 FILE CONTENT:
@@ -15246,7 +15246,7 @@ public class RelatorioPaletesView extends VerticalLayout {
             String strDestino = "-"; 
             int qtdPaletes = c.getPaletes() != null ? c.getPaletes() : 0;
 
-            String[] tiposVias = {"VIA GUARDA", "VIA MOTORISTA", "VIA EMERGÊNCIA"};
+            String[] tiposVias = {"VIA GUARDA", "VIA MOTORISTA", "VIA EMERGENT"};
 
             // Agrupa as 3 vias de um mesmo carregamento dentro de uma página dedicada
             htmlBuilder.append("<div class='carregamento-pagina'>");
