@@ -10,6 +10,7 @@ import com.vaadin.flow.component.DetachEvent;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -37,8 +38,11 @@ import com.vaadin.flow.router.Route;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Route("")
 @PageTitle("Gestão Operacional de Carregamento | TMS")
@@ -57,6 +61,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final ExcelService excelService;
 
     private final Grid<Carregamento> grid = new Grid<>(Carregamento.class, false);
+    private final Map<Carregamento, Checkbox> mapaCheckboxesMain = new HashMap<>();
 
     private final Span txtTotal = new Span("0");
     private final Span txtApresentados = new Span("0");
@@ -204,6 +209,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             grid.setItems(filtrados);
         }
     }
+@SuppressWarnings("null")
 
     private HorizontalLayout criarBarraAcoes() {
         HorizontalLayout layout = new HorizontalLayout();
@@ -252,12 +258,54 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             Notification.show(expedidosAtivos.size() + " cargas expedidas foram arquivadas.", 3000, Notification.Position.BOTTOM_END);
         });
 
+        // Botão Excluir Selecionadas em Lote
+        Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
+        btnExcluirSelecionadas.addThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_SMALL);
+        btnExcluirSelecionadas.addClickListener(e -> {
+            List<Carregamento> selecionados = mapaCheckboxesMain.entrySet().stream()
+                    .filter(entry -> entry.getValue().getValue())
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.toList());
+
+            if (selecionados.isEmpty()) {
+                Notification.show("Nenhuma carga selecionada para exclusão.", 3000, Notification.Position.MIDDLE);
+                return;
+            }
+
+            repository.deleteAll(selecionados);
+            Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
+            atualizarGridEIndicators();
+        });
+
+        // Botão Limpar Checkin em Lote
+        Button btnLimparCheckin = new Button("Limpar Checkin", VaadinIcon.REFRESH.create());
+        btnLimparCheckin.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        btnLimparCheckin.getStyle().set("font-weight", "600");
+        btnLimparCheckin.addClickListener(e -> {
+            List<Carregamento> selecionados = mapaCheckboxesMain.entrySet().stream()
+                    .filter(entry -> entry.getValue().getValue())
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.toList());
+
+            if (selecionados.isEmpty()) {
+                Notification.show("Nenhuma carga selecionada para limpar o checkin.", 3000, Notification.Position.MIDDLE);
+                return;
+            }
+
+            for (Carregamento c : selecionados) {
+                c.setStatus("Pendente");
+            }
+            repository.saveAll(selecionados);
+            Notification.show("Checkin limpo para " + selecionados.size() + " carga(s)!", 3000, Notification.Position.BOTTOM_END);
+            atualizarGridEIndicators();
+        });
+
         // Botão para abrir o modal de histórico de arquivados
         Button btnVerArquivados = new Button("Ver Arquivados", VaadinIcon.FOLDER_OPEN.create());
         btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnVerArquivados.addClickListener(e -> abrirModalArquivados());
 
-        // Botão para ir para o Relatório de Paletes (integrado perfeitamente)
+        // Botão para ir para o Relatório de Paletes
         Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
         btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnRelatorioPaletes.getStyle()
@@ -266,7 +314,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 .set("font-weight", "600");
         btnRelatorioPaletes.addClickListener(e -> UI.getCurrent().navigate(RelatorioPaletesView.class));
 
-        grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnVerArquivados, btnRelatorioPaletes);
+        grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnExcluirSelecionadas, btnLimparCheckin, btnVerArquivados, btnRelatorioPaletes);
 
         MemoryBuffer buffer = new MemoryBuffer();
         Upload uploadExcel = new Upload(buffer);
@@ -369,6 +417,26 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             .set("background-color", "#0f172a")
             .set("border", "1px solid #1e293b")
             .set("border-radius", "8px");
+
+        mapaCheckboxesMain.clear();
+
+        // Checkbox Mestre no Cabeçalho
+        Checkbox masterCheckbox = new Checkbox();
+        masterCheckbox.setValue(false);
+        masterCheckbox.addValueChangeListener(event -> {
+            boolean masterValue = event.getValue();
+            for (Checkbox cb : mapaCheckboxesMain.values()) {
+                cb.setValue(masterValue);
+            }
+        });
+
+        // Coluna de Seleção com Checkbox Mestre
+        grid.addComponentColumn(carregamento -> {
+            Checkbox checkbox = new Checkbox();
+            checkbox.setValue(false);
+            mapaCheckboxesMain.put(carregamento, checkbox);
+            return checkbox;
+        }).setHeader(masterCheckbox).setWidth("90px").setFlexGrow(0);
 
         grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
@@ -549,6 +617,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void atualizarGridEIndicators() {
+        mapaCheckboxesMain.clear();
         List<Carregamento> listaAtivos = repository.findAll().stream()
             .filter(c -> c.getArquivado() == null || !c.getArquivado())
             .toList();
