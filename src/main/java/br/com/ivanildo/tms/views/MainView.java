@@ -259,10 +259,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         });
 
         // Botão Excluir Selecionadas em Lote
-        Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
+      Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
         btnExcluirSelecionadas.addThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_SMALL);
         btnExcluirSelecionadas.addClickListener(e -> {
-            // Coleta todas as entradas do mapa cujos checkboxes estão marcados
             List<Carregamento> selecionados = mapaCheckboxesMain.entrySet().stream()
                     .filter(entry -> entry.getValue() != null && entry.getValue().getValue())
                     .map(Map.Entry::getKey)
@@ -273,19 +272,16 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 return;
             }
 
-            // Exclui do repositório
-            repository.deleteAll(selecionados);
-            
-            // Limpa o mapa de checkboxes para resetar a seleção
-            mapaCheckboxesMain.clear();
-            
-            // Atualiza os indicadores e a grid imediatamente
-            atualizarGridEIndicators();
-            
-            Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
-        });
-
-        // Botão Limpar Checkin em Lote
+            try {
+                repository.deleteAll(selecionados);
+                mapaCheckboxesMain.clear();
+                atualizarGridEIndicators();
+                
+                Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
+            } catch (Exception ex) {
+                Notification.show("Erro ao excluir: Existem entregas vinculadas a estes carregamentos.", 5000, Notification.Position.MIDDLE);
+            }
+        });        // Botão Limpar Checkin em Lote
         Button btnLimparCheckin = new Button("Limpar Checkin", VaadinIcon.REFRESH.create());
         btnLimparCheckin.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnLimparCheckin.getStyle().set("font-weight", "600");

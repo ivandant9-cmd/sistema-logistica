@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-26 22:01:02 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-26 22:19:08 (America/Bahia / GMT-03:00)
 Total Files Processed: 284
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -213,7 +213,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   ├── 📄 MainView.java (32.15 KB)
+│       │                   │   ├── 📄 MainView.java (32.1 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (12.54 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
@@ -253,7 +253,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   ├── 📄 MainView.class (45.91 KB)
+│   │   │               │   ├── 📄 MainView.class (46.03 KB)
 │   │   │               │   └── 📄 RelatorioPaletesView.class (19.51 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
@@ -14324,15 +14324,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/MainView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 32.15 KB
+Size: 32.1 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/MainView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-Modified: 2026-08-26 22:01:01 (America/Bahia / GMT-03:00)
-MD5: 6f753606f644fbf64d34fc03d5a29654
-SHA256: 3aea46d8b4162ec97e8cdaf3348123f465ebedc180a7f46583e8ca02ab3a1195
+Modified: 2026-08-26 22:19:07 (America/Bahia / GMT-03:00)
+MD5: cd04933693da90f7226f165636955d77
+SHA256: 03f9687e7a55e5f499b4b8bdfb95f12081abf52b4969db404817905379ba6510
 Encoding: ASCII
 
 FILE CONTENT:
@@ -14598,10 +14598,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         });
 
         // Botão Excluir Selecionadas em Lote
-        Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
+      Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
         btnExcluirSelecionadas.addThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_SMALL);
         btnExcluirSelecionadas.addClickListener(e -> {
-            // Coleta todas as entradas do mapa cujos checkboxes estão marcados
             List<Carregamento> selecionados = mapaCheckboxesMain.entrySet().stream()
                     .filter(entry -> entry.getValue() != null && entry.getValue().getValue())
                     .map(Map.Entry::getKey)
@@ -14612,19 +14611,16 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 return;
             }
 
-            // Exclui do repositório
-            repository.deleteAll(selecionados);
-            
-            // Limpa o mapa de checkboxes para resetar a seleção
-            mapaCheckboxesMain.clear();
-            
-            // Atualiza os indicadores e a grid imediatamente
-            atualizarGridEIndicators();
-            
-            Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
-        });
-
-        // Botão Limpar Checkin em Lote
+            try {
+                repository.deleteAll(selecionados);
+                mapaCheckboxesMain.clear();
+                atualizarGridEIndicators();
+                
+                Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
+            } catch (Exception ex) {
+                Notification.show("Erro ao excluir: Existem entregas vinculadas a estes carregamentos.", 5000, Notification.Position.MIDDLE);
+            }
+        });        // Botão Limpar Checkin em Lote
         Button btnLimparCheckin = new Button("Limpar Checkin", VaadinIcon.REFRESH.create());
         btnLimparCheckin.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnLimparCheckin.getStyle().set("font-weight", "600");
