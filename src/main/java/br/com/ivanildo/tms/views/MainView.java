@@ -458,11 +458,17 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         // Coluna de Seleção com Checkbox Mestre
         grid.addComponentColumn(carregamento -> {
-            Checkbox checkbox = new Checkbox();
-            checkbox.setValue(false);
-            mapaCheckboxesMain.put(carregamento, checkbox);
-            return checkbox;
-        }).setHeader(masterCheckbox).setWidth("90px").setFlexGrow(0);
+    Checkbox checkbox = new Checkbox();
+    checkbox.setValue(false); // Mantém desmarcado por padrão
+    
+    // Deixa o checkbox bem visível na tela
+    checkbox.getStyle().set("border", "2px solid #3b82f6"); // Borda azul destacada
+    checkbox.getStyle().set("border-radius", "4px");
+    checkbox.getStyle().set("padding", "2px");
+    
+    mapaCheckboxesMain.put(carregamento, checkbox);
+    return checkbox;
+}).setHeader("✔").setWidth("70px").setFlexGrow(0);
 
         grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);

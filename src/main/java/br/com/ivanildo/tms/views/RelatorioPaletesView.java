@@ -97,6 +97,8 @@ public class RelatorioPaletesView extends VerticalLayout {
         itensAtuais = repository.findAll().stream()
                 .filter(c -> c.getPaletes() != null && c.getPaletes() > 0)
                 .filter(c -> c.getTipoVeiculo() == null || !c.getTipoVeiculo().trim().equalsIgnoreCase("HR"))
+                // Filtra para trazer APENAS cargas da programação (ignorando arquivadas)
+                .filter(c -> c.getArquivado() == null || !c.getArquivado()) // Ajuste para 'getArquivado' ou o nome do campo booleano de arquivamento na sua entidade Carregamento
                 .collect(Collectors.toList());
 
         grid.setItems(itensAtuais);

@@ -11,8 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.InputStream;
 import java.text.Normalizer;
+import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
+
+
 
 
 @Service
@@ -429,13 +431,20 @@ if (!valPaletes.isEmpty()) {
     }
 
     private String getValorCelula(Cell cell, DataFormatter formatter) {
-        if (cell == null) return "";
-        try {
-            return formatter.formatCellValue(cell).trim();
-        } catch (Exception e) {
-            return "";
+    if (cell == null) return "";
+    try {
+        // Se for célula de data do Excel, lê de forma exata evitando perda de fuso
+        if (cell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(cell)) {
+            LocalDateTime date = cell.getLocalDateTimeCellValue();
+            if (date != null) {
+                return date.format(java.time.format.DateTimeFormatter.ofPattern("M/d/yy"));
+            }
         }
+        return formatter.formatCellValue(cell).trim();
+    } catch (Exception e) {
+        return "";
     }
+}
 
     private String normalizarTexto(String texto) {
         if (texto == null) return "";

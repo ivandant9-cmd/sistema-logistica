@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-26 23:47:37 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-27 00:39:02 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 284
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -203,7 +203,7 @@
 │       │                   │   ├── 📄 EntregaRepository.java (921 B)
 │       │                   │   └── 📄 MotoristaRepository.java (309 B)
 │       │                   ├── 📁 service/
-│       │                   │   ├── 📄 ExcelService.java (21.22 KB)
+│       │                   │   ├── 📄 ExcelService.java (21.58 KB)
 │       │                   │   └── 📄 PdfService.java (4.24 KB)
 │       │                   ├── 📁 util/
 │       │                   │   └── 📄 UiBroadcaster.java (1010 B)
@@ -211,8 +211,8 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   ├── 📄 MainView.java (33.11 KB)
-│       │                   │   └── 📄 RelatorioPaletesView.java (14.33 KB)
+│       │                   │   ├── 📄 MainView.java (33.34 KB)
+│       │                   │   └── 📄 RelatorioPaletesView.java (14.6 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
 │       └── 📁 resources/
@@ -241,7 +241,7 @@
 │   │   │               │   ├── 📄 EntregaRepository.class (1.15 KB)
 │   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (18.44 KB)
+│   │   │               │   ├── 📄 ExcelService.class (18.96 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 util/
 │   │   │               │   ├── 📄 UiBroadcaster.class (3.84 KB)
@@ -251,8 +251,8 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   ├── 📄 MainView.class (46.79 KB)
-│   │   │               │   └── 📄 RelatorioPaletesView.class (21.17 KB)
+│   │   │               │   ├── 📄 MainView.class (46.81 KB)
+│   │   │               │   └── 📄 RelatorioPaletesView.class (21.37 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
 │   │   ├── 📁 templates/
@@ -12971,15 +12971,15 @@ public interface MotoristaRepository extends JpaRepository<Motorista, Long> {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-service-excelservice-java"></a>📄 `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 
 **File Info:**
-- **Size**: 21.22 KB
+- **Size**: 21.58 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/service/ExcelService.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/service`
 - **Created**: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-26 20:31:44 (America/Bahia / GMT-03:00)
-- **MD5**: `3a767b985c47bfae70d0250df4e1b05d`
-- **SHA256**: `4587c31833373ac43d3eb7e7e3e312f7751206550c0e3554da2568467850d831`
+- **Modified**: 2026-08-27 00:27:05 (America/Bahia / GMT-03:00)
+- **MD5**: `2ba969dd2f2ee70b394f033df559eb76`
+- **SHA256**: `5c6400b395fd36b40c5730ddef625b528d8dbc933d26ec562a6b4d08e21d8e97`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -12998,8 +12998,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.InputStream;
 import java.text.Normalizer;
+import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
+
+
 
 
 @Service
@@ -13416,13 +13418,20 @@ if (!valPaletes.isEmpty()) {
     }
 
     private String getValorCelula(Cell cell, DataFormatter formatter) {
-        if (cell == null) return "";
-        try {
-            return formatter.formatCellValue(cell).trim();
-        } catch (Exception e) {
-            return "";
+    if (cell == null) return "";
+    try {
+        // Se for célula de data do Excel, lê de forma exata evitando perda de fuso
+        if (cell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(cell)) {
+            LocalDateTime date = cell.getLocalDateTimeCellValue();
+            if (date != null) {
+                return date.format(java.time.format.DateTimeFormatter.ofPattern("M/d/yy"));
+            }
         }
+        return formatter.formatCellValue(cell).trim();
+    } catch (Exception e) {
+        return "";
     }
+}
 
     private String normalizarTexto(String texto) {
         if (texto == null) return "";
@@ -14431,15 +14440,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 33.11 KB
+- **Size**: 33.34 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-26 23:11:50 (America/Bahia / GMT-03:00)
-- **MD5**: `84a5280c8f2e7f7679cfbf3da0821b20`
-- **SHA256**: `f7c441c13c21388f6e068cae708b41f9d320b92d460063066870ea9a0b8b0690`
+- **Modified**: 2026-08-27 00:31:10 (America/Bahia / GMT-03:00)
+- **MD5**: `834500031f67ff5561c31999a120ed69`
+- **SHA256**: `f5747ef47ae6180622e2ce4aa64e431d99a4a3776d4e55681825929e10aa0883`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14905,11 +14914,17 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         // Coluna de Seleção com Checkbox Mestre
         grid.addComponentColumn(carregamento -> {
-            Checkbox checkbox = new Checkbox();
-            checkbox.setValue(false);
-            mapaCheckboxesMain.put(carregamento, checkbox);
-            return checkbox;
-        }).setHeader(masterCheckbox).setWidth("90px").setFlexGrow(0);
+    Checkbox checkbox = new Checkbox();
+    checkbox.setValue(false); // Mantém desmarcado por padrão
+    
+    // Deixa o checkbox bem visível na tela
+    checkbox.getStyle().set("border", "2px solid #3b82f6"); // Borda azul destacada
+    checkbox.getStyle().set("border-radius", "4px");
+    checkbox.getStyle().set("padding", "2px");
+    
+    mapaCheckboxesMain.put(carregamento, checkbox);
+    return checkbox;
+}).setHeader("✔").setWidth("70px").setFlexGrow(0);
 
         grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
@@ -15170,15 +15185,15 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-relatoriopaletesview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java`
 
 **File Info:**
-- **Size**: 14.33 KB
+- **Size**: 14.6 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-26 00:20:01 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-26 23:47:35 (America/Bahia / GMT-03:00)
-- **MD5**: `ff8a07b1964360e7f0091539775969bb`
-- **SHA256**: `91c55495de2a1d8255d27df2990cadc837877e4f60aa3e4ca32144c3409f1074`
+- **Modified**: 2026-08-27 00:39:01 (America/Bahia / GMT-03:00)
+- **MD5**: `a09fda0ffa96f40ef09521a8ce98da7e`
+- **SHA256**: `ed906c89f9d7e899281b607d4050b9bfa4ba7fdee2094bfb4dbf0852ad5533b7`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -15283,6 +15298,8 @@ public class RelatorioPaletesView extends VerticalLayout {
         itensAtuais = repository.findAll().stream()
                 .filter(c -> c.getPaletes() != null && c.getPaletes() > 0)
                 .filter(c -> c.getTipoVeiculo() == null || !c.getTipoVeiculo().trim().equalsIgnoreCase("HR"))
+                // Filtra para trazer APENAS cargas da programação (ignorando arquivadas)
+                .filter(c -> c.getArquivado() == null || !c.getArquivado()) // Ajuste para 'getArquivado' ou o nome do campo booleano de arquivamento na sua entidade Carregamento
                 .collect(Collectors.toList());
 
         grid.setItems(itensAtuais);
