@@ -331,6 +331,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             Notification.show("Lista de viagens atualizada!", 2000, Notification.Position.BOTTOM_END);
         });
 
+    Button btnAtualizar = new Button("Atualizar", e -> {
+    grid.setItems(repository.findAll()); // Recarrega diretamente do repositório
+    Notification.show("Lista atualizada com sucesso!", 2000, Notification.Position.BOTTOM_END);
+});
+btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+
+
+
         // Botão para ir para o Relatório de Paletes
         Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
         btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
@@ -448,27 +456,26 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         // Checkbox Mestre no Cabeçalho
         Checkbox masterCheckbox = new Checkbox();
-        masterCheckbox.setValue(false);
-        masterCheckbox.addValueChangeListener(event -> {
-            boolean masterValue = event.getValue();
-            for (Checkbox cb : mapaCheckboxesMain.values()) {
-                cb.setValue(masterValue);
-            }
-        });
+masterCheckbox.setValue(false); // Inicia desmarcado para respeitar a preferência
+masterCheckbox.getStyle().set("border", "2px solid #3b82f6");
+masterCheckbox.getStyle().set("border-radius", "4px");
+masterCheckbox.addValueChangeListener(event -> {
+    boolean masterValue = event.getValue();
+    for (Checkbox cb : mapaCheckboxesMain.values()) {
+        cb.setValue(masterValue);
+    }
+});
 
         // Coluna de Seleção com Checkbox Mestre
         grid.addComponentColumn(carregamento -> {
     Checkbox checkbox = new Checkbox();
-    checkbox.setValue(false); // Mantém desmarcado por padrão
-    
-    // Deixa o checkbox bem visível na tela
-    checkbox.getStyle().set("border", "2px solid #3b82f6"); // Borda azul destacada
+    checkbox.setValue(false); // Desmarcado por padrão, mas visível/aceso
+    checkbox.getStyle().set("border", "2px solid #3b82f6");
     checkbox.getStyle().set("border-radius", "4px");
     checkbox.getStyle().set("padding", "2px");
-    
     mapaCheckboxesMain.put(carregamento, checkbox);
     return checkbox;
-}).setHeader("✔").setWidth("70px").setFlexGrow(0);
+}).setHeader(masterCheckbox).setWidth("70px").setFlexGrow(0);
 
         grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);

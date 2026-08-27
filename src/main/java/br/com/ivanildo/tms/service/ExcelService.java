@@ -437,7 +437,7 @@ if (!valPaletes.isEmpty()) {
         if (cell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(cell)) {
             LocalDateTime date = cell.getLocalDateTimeCellValue();
             if (date != null) {
-                return date.format(java.time.format.DateTimeFormatter.ofPattern("M/d/yy"));
+                return date.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             }
         }
         return formatter.formatCellValue(cell).trim();

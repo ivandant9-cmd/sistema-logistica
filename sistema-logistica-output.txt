@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-08-27 00:39:02 (America/Bahia / GMT-03:00)
+Generated On: 2026-08-27 01:07:39 (America/Bahia / GMT-03:00)
 Total Files Processed: 284
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -213,7 +213,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   ├── 📄 MainView.java (33.34 KB)
+│       │                   │   ├── 📄 MainView.java (33.69 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (14.6 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
@@ -243,7 +243,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 EntregaRepository.class (1.15 KB)
 │   │   │               │   └── 📄 MotoristaRepository.class (551 B)
 │   │   │               ├── 📁 service/
-│   │   │               │   ├── 📄 ExcelService.class (18.96 KB)
+│   │   │               │   ├── 📄 ExcelService.class (18.97 KB)
 │   │   │               │   └── 📄 PdfService.class (6.04 KB)
 │   │   │               ├── 📁 util/
 │   │   │               │   ├── 📄 UiBroadcaster.class (3.84 KB)
@@ -253,7 +253,7 @@ PROJECT STRUCTURE
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   ├── 📄 MainView.class (46.81 KB)
+│   │   │               │   ├── 📄 MainView.class (47.33 KB)
 │   │   │               │   └── 📄 RelatorioPaletesView.class (21.37 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
@@ -12871,9 +12871,9 @@ Language: java
 Location: src/main/java/br/com/ivanildo/tms/service/ExcelService.java
 Relative Path: src/main/java/br/com/ivanildo/tms/service
 Created: 2026-08-18 17:13:52 (America/Bahia / GMT-03:00)
-Modified: 2026-08-27 00:27:05 (America/Bahia / GMT-03:00)
-MD5: 2ba969dd2f2ee70b394f033df559eb76
-SHA256: 5c6400b395fd36b40c5730ddef625b528d8dbc933d26ec562a6b4d08e21d8e97
+Modified: 2026-08-27 01:07:38 (America/Bahia / GMT-03:00)
+MD5: 83d42b73d3ba319f1e6a102972dc468b
+SHA256: 4a3f62512791e717bee694a6a6010db63f5fa15f72a6493c948eb959a31c3a80
 Encoding: ASCII
 
 FILE CONTENT:
@@ -13317,7 +13317,7 @@ if (!valPaletes.isEmpty()) {
         if (cell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(cell)) {
             LocalDateTime date = cell.getLocalDateTimeCellValue();
             if (date != null) {
-                return date.format(java.time.format.DateTimeFormatter.ofPattern("M/d/yy"));
+                return date.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             }
         }
         return formatter.formatCellValue(cell).trim();
@@ -14340,15 +14340,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/MainView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 33.34 KB
+Size: 33.69 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/MainView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-Modified: 2026-08-27 00:31:10 (America/Bahia / GMT-03:00)
-MD5: 834500031f67ff5561c31999a120ed69
-SHA256: f5747ef47ae6180622e2ce4aa64e431d99a4a3776d4e55681825929e10aa0883
+Modified: 2026-08-27 01:05:39 (America/Bahia / GMT-03:00)
+MD5: e99d8af35f5f3efc6f790d59f7f003c6
+SHA256: b38527a32b4bb3d63da9800b9d8495a77cfbd7f7c699389668dc71866d02c620
 Encoding: ASCII
 
 FILE CONTENT:
@@ -14686,6 +14686,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             Notification.show("Lista de viagens atualizada!", 2000, Notification.Position.BOTTOM_END);
         });
 
+    Button btnAtualizar = new Button("Atualizar", e -> {
+    grid.setItems(repository.findAll()); // Recarrega diretamente do repositório
+    Notification.show("Lista atualizada com sucesso!", 2000, Notification.Position.BOTTOM_END);
+});
+btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+
+
+
         // Botão para ir para o Relatório de Paletes
         Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
         btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
@@ -14803,27 +14811,26 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         // Checkbox Mestre no Cabeçalho
         Checkbox masterCheckbox = new Checkbox();
-        masterCheckbox.setValue(false);
-        masterCheckbox.addValueChangeListener(event -> {
-            boolean masterValue = event.getValue();
-            for (Checkbox cb : mapaCheckboxesMain.values()) {
-                cb.setValue(masterValue);
-            }
-        });
+masterCheckbox.setValue(false); // Inicia desmarcado para respeitar a preferência
+masterCheckbox.getStyle().set("border", "2px solid #3b82f6");
+masterCheckbox.getStyle().set("border-radius", "4px");
+masterCheckbox.addValueChangeListener(event -> {
+    boolean masterValue = event.getValue();
+    for (Checkbox cb : mapaCheckboxesMain.values()) {
+        cb.setValue(masterValue);
+    }
+});
 
         // Coluna de Seleção com Checkbox Mestre
         grid.addComponentColumn(carregamento -> {
     Checkbox checkbox = new Checkbox();
-    checkbox.setValue(false); // Mantém desmarcado por padrão
-    
-    // Deixa o checkbox bem visível na tela
-    checkbox.getStyle().set("border", "2px solid #3b82f6"); // Borda azul destacada
+    checkbox.setValue(false); // Desmarcado por padrão, mas visível/aceso
+    checkbox.getStyle().set("border", "2px solid #3b82f6");
     checkbox.getStyle().set("border-radius", "4px");
     checkbox.getStyle().set("padding", "2px");
-    
     mapaCheckboxesMain.put(carregamento, checkbox);
     return checkbox;
-}).setHeader("✔").setWidth("70px").setFlexGrow(0);
+}).setHeader(masterCheckbox).setWidth("70px").setFlexGrow(0);
 
         grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
