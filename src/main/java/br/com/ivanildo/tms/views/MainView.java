@@ -27,7 +27,6 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
@@ -48,7 +47,6 @@ import java.util.stream.Collectors;
 
 @Route("")
 @PageTitle("Gestão Operacional de Carregamento | TMS")
-@Push
 @CssImport("./styles/dashboard-styles.css")
 @PermitAll
 @CssImport(value = "./styles/vaadin-grid-custom.css", themeFor = "vaadin-grid")

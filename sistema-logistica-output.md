@@ -3,8 +3,8 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-27 01:35:43 (America/Bahia / GMT-03:00)
-- **Total Files Processed**: 284
+- **Generated On**: 2026-08-27 01:44:13 (America/Bahia / GMT-03:00)
+- **Total Files Processed**: 286
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
 
@@ -211,9 +211,10 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   ├── 📄 MainView.java (33.84 KB)
+│       │                   │   ├── 📄 MainView.java (33.79 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (14.6 KB)
 │       │                   ├── 📄 Application.java (850 B)
+│       │                   ├── 📄 AppShell.java (309 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
 │       └── 📁 resources/
 │           ├── 📁 templates/
@@ -251,9 +252,10 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   ├── 📄 MainView.class (47.77 KB)
+│   │   │               │   ├── 📄 MainView.class (47.73 KB)
 │   │   │               │   └── 📄 RelatorioPaletesView.class (21.37 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
+│   │   │               ├── 📄 AppShell.class (483 B)
 │   │   │               └── 📄 DataInitializer.class (650 B)
 │   │   ├── 📁 templates/
 │   │   │   └── 📄 entregas.html (7.96 KB)
@@ -534,6 +536,7 @@
 - [📄 src/main/java/br/com/ivanildo/tms/views/MainView.java](#📄-src-main-java-br-com-ivanildo-tms-views-mainview-java)
 - [📄 src/main/java/br/com/ivanildo/tms/views/RelatorioPaletesView.java](#📄-src-main-java-br-com-ivanildo-tms-views-relatoriopaletesview-java)
 - [📄 src/main/java/br/com/ivanildo/tms/Application.java](#📄-src-main-java-br-com-ivanildo-tms-application-java)
+- [📄 src/main/java/br/com/ivanildo/tms/AppShell.java](#📄-src-main-java-br-com-ivanildo-tms-appshell-java)
 - [📄 src/main/java/br/com/ivanildo/tms/DataInitializer.java](#📄-src-main-java-br-com-ivanildo-tms-datainitializer-java)
 - [📄 src/main/resources/templates/entregas.html](#📄-src-main-resources-templates-entregas-html)
 - [📄 src/main/resources/application.properties](#📄-src-main-resources-application-properties)
@@ -635,10 +638,10 @@
 
 | Metric | Count |
 |--------|-------|
-| Total Files | 284 |
+| Total Files | 286 |
 | Total Directories | 67 |
-| Text Files | 251 |
-| Binary Files | 33 |
+| Text Files | 252 |
+| Binary Files | 34 |
 | Total Size | 95.32 MB |
 
 ### 📄 File Types Distribution
@@ -647,8 +650,8 @@
 |-----------|-------|
 | `.js` | 153 |
 | `.ts` | 50 |
-| `.class` | 23 |
-| `.java` | 21 |
+| `.class` | 24 |
+| `.java` | 22 |
 | `.json` | 11 |
 | `.css` | 5 |
 | `.html` | 4 |
@@ -14440,15 +14443,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 33.84 KB
+- **Size**: 33.79 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-27 01:35:42 (America/Bahia / GMT-03:00)
-- **MD5**: `76ebb2ba4000df1a6a8642164f5ac05d`
-- **SHA256**: `03dba42ba65f858290b97cc64831a408f6144fde54b07b02c95c2078a36760bb`
+- **Modified**: 2026-08-27 01:42:25 (America/Bahia / GMT-03:00)
+- **MD5**: `a22f2e6d73c19c779d8b573b9c47275a`
+- **SHA256**: `dbc91eabc424ef3664e3898157e47be7647af66ae4fc7a05f30c032b6150eea7`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14483,7 +14486,6 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
@@ -14504,7 +14506,6 @@ import java.util.stream.Collectors;
 
 @Route("")
 @PageTitle("Gestão Operacional de Carregamento | TMS")
-@Push
 @CssImport("./styles/dashboard-styles.css")
 @PermitAll
 @CssImport(value = "./styles/vaadin-grid-custom.css", themeFor = "vaadin-grid")
@@ -15533,6 +15534,37 @@ public class Application implements AppShellConfigurator {
 
 ---
 
+### <a id="📄-src-main-java-br-com-ivanildo-tms-appshell-java"></a>📄 `src/main/java/br/com/ivanildo/tms/AppShell.java`
+
+**File Info:**
+- **Size**: 309 B
+- **Extension**: `.java`
+- **Language**: `java`
+- **Location**: `src/main/java/br/com/ivanildo/tms/AppShell.java`
+- **Relative Path**: `src/main/java/br/com/ivanildo/tms`
+- **Created**: 2026-08-27 01:42:57 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-27 01:44:12 (America/Bahia / GMT-03:00)
+- **MD5**: `00dc06b9197b9033382ed21bc32fe21c`
+- **SHA256**: `77996eb6e48fdc064e4107b8653be4afb8508b4bba361312885fd2355b3c73fe`
+- **Encoding**: UTF-8
+
+**File code content:**
+
+```java
+package br.com.ivanildo.tms;
+
+import com.vaadin.flow.component.page.AppShellConfigurator;
+import com.vaadin.flow.component.page.Push;
+import com.vaadin.flow.theme.Theme;
+
+@Push
+@Theme("tms") // <-- Correção: passe o nome direto sem "name ="
+public class AppShell implements AppShellConfigurator {
+}
+```
+
+---
+
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-datainitializer-java"></a>📄 `src/main/java/br/com/ivanildo/tms/DataInitializer.java`
 
 **File Info:**
@@ -15863,6 +15895,7 @@ The following files were not included in the text content:
 The following files were not included in the text content:
 
 - `target/classes/br/com/ivanildo/tms/Application.class`
+- `target/classes/br/com/ivanildo/tms/AppShell.class`
 - `target/classes/br/com/ivanildo/tms/DataInitializer.class`
 
 ### <a id="📄-target-classes-templates-entregas-html"></a>📄 `target/classes/templates/entregas.html`
