@@ -27,6 +27,7 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
@@ -47,6 +48,7 @@ import java.util.stream.Collectors;
 
 @Route("")
 @PageTitle("Gestão Operacional de Carregamento | TMS")
+@Push
 @CssImport("./styles/dashboard-styles.css")
 @PermitAll
 @CssImport(value = "./styles/vaadin-grid-custom.css", themeFor = "vaadin-grid")
@@ -656,43 +658,45 @@ masterCheckbox.addValueChangeListener(event -> {
     }
 
     private void atualizarGridEIndicators() {
-        mapaCheckboxesMain.clear();
-        List<Carregamento> listaAtivos = repository.findAll().stream()
-            .filter(c -> c.getArquivado() == null || !c.getArquivado())
-            .toList();
+    mapaCheckboxesMain.clear();
+    
+    // Busca ordenado por ID decrescente diretamente do banco para travar a posição das linhas
+    List<Carregamento> listaAtivos = repository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.DESC, "id"))
+        .stream()
+        .filter(c -> c.getArquivado() == null || !c.getArquivado())
+        .toList();
 
-        grid.setItems(listaAtivos);
+    grid.setItems(listaAtivos);
 
-        long total = listaAtivos.size();
+    long total = listaAtivos.size();
 
-        long apresentados = listaAtivos.stream()
-            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Apresentado"))
-            .count();
+    long apresentados = listaAtivos.stream()
+        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Apresentado"))
+        .count();
 
-        long carregando = listaAtivos.stream()
-            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Carregando"))
-            .count();
+    long carregando = listaAtivos.stream()
+        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Carregando"))
+        .count();
 
-        long expedidos = listaAtivos.stream()
-            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
-            .count();
+    long expedidos = listaAtivos.stream()
+        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
+        .count();
 
-        long pendentes = total - (apresentados + carregando + expedidos);
+    long pendentes = total - (apresentados + carregando + expedidos);
 
-        double pesoTotal = listaAtivos.stream()
-            .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
-            .sum();
+    double pesoTotal = listaAtivos.stream()
+        .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
+        .sum();
 
-        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
+    DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
 
-        txtTotal.setText(String.valueOf(total));
-        txtPendentes.setText(String.valueOf(pendentes));
-        txtApresentados.setText(String.valueOf(apresentados));
-        txtCarregando.setText(String.valueOf(carregando));
-        txtExpedidos.setText(String.valueOf(expedidos));
-        txtPeso.setText(df.format(pesoTotal) + " kg");
-    }
-
+    txtTotal.setText(String.valueOf(total));
+    txtPendentes.setText(String.valueOf(pendentes));
+    txtApresentados.setText(String.valueOf(apresentados));
+    txtCarregando.setText(String.valueOf(carregando));
+    txtExpedidos.setText(String.valueOf(expedidos));
+    txtPeso.setText(df.format(pesoTotal) + " kg");
+}
     private double converterPesoParaDouble(String pesoStr) {
         if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
         try {

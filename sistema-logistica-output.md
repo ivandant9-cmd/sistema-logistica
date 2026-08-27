@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-27 01:07:39 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-27 01:35:43 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 284
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -211,7 +211,7 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-│       │                   │   ├── 📄 MainView.java (33.69 KB)
+│       │                   │   ├── 📄 MainView.java (33.84 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (14.6 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   └── 📄 DataInitializer.java (374 B)
@@ -251,7 +251,7 @@
 │   │   │               │   ├── 📄 EntregasView.class (27.09 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-│   │   │               │   ├── 📄 MainView.class (47.33 KB)
+│   │   │               │   ├── 📄 MainView.class (47.77 KB)
 │   │   │               │   └── 📄 RelatorioPaletesView.class (21.37 KB)
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               └── 📄 DataInitializer.class (650 B)
@@ -14440,15 +14440,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 33.69 KB
+- **Size**: 33.84 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-27 01:05:39 (America/Bahia / GMT-03:00)
-- **MD5**: `e99d8af35f5f3efc6f790d59f7f003c6`
-- **SHA256**: `b38527a32b4bb3d63da9800b9d8495a77cfbd7f7c699389668dc71866d02c620`
+- **Modified**: 2026-08-27 01:35:42 (America/Bahia / GMT-03:00)
+- **MD5**: `76ebb2ba4000df1a6a8642164f5ac05d`
+- **SHA256**: `03dba42ba65f858290b97cc64831a408f6144fde54b07b02c95c2078a36760bb`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -14483,6 +14483,7 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
@@ -14503,6 +14504,7 @@ import java.util.stream.Collectors;
 
 @Route("")
 @PageTitle("Gestão Operacional de Carregamento | TMS")
+@Push
 @CssImport("./styles/dashboard-styles.css")
 @PermitAll
 @CssImport(value = "./styles/vaadin-grid-custom.css", themeFor = "vaadin-grid")
@@ -15112,43 +15114,45 @@ masterCheckbox.addValueChangeListener(event -> {
     }
 
     private void atualizarGridEIndicators() {
-        mapaCheckboxesMain.clear();
-        List<Carregamento> listaAtivos = repository.findAll().stream()
-            .filter(c -> c.getArquivado() == null || !c.getArquivado())
-            .toList();
+    mapaCheckboxesMain.clear();
+    
+    // Busca ordenado por ID decrescente diretamente do banco para travar a posição das linhas
+    List<Carregamento> listaAtivos = repository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.DESC, "id"))
+        .stream()
+        .filter(c -> c.getArquivado() == null || !c.getArquivado())
+        .toList();
 
-        grid.setItems(listaAtivos);
+    grid.setItems(listaAtivos);
 
-        long total = listaAtivos.size();
+    long total = listaAtivos.size();
 
-        long apresentados = listaAtivos.stream()
-            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Apresentado"))
-            .count();
+    long apresentados = listaAtivos.stream()
+        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Apresentado"))
+        .count();
 
-        long carregando = listaAtivos.stream()
-            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Carregando"))
-            .count();
+    long carregando = listaAtivos.stream()
+        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Carregando"))
+        .count();
 
-        long expedidos = listaAtivos.stream()
-            .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
-            .count();
+    long expedidos = listaAtivos.stream()
+        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
+        .count();
 
-        long pendentes = total - (apresentados + carregando + expedidos);
+    long pendentes = total - (apresentados + carregando + expedidos);
 
-        double pesoTotal = listaAtivos.stream()
-            .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
-            .sum();
+    double pesoTotal = listaAtivos.stream()
+        .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
+        .sum();
 
-        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
+    DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
 
-        txtTotal.setText(String.valueOf(total));
-        txtPendentes.setText(String.valueOf(pendentes));
-        txtApresentados.setText(String.valueOf(apresentados));
-        txtCarregando.setText(String.valueOf(carregando));
-        txtExpedidos.setText(String.valueOf(expedidos));
-        txtPeso.setText(df.format(pesoTotal) + " kg");
-    }
-
+    txtTotal.setText(String.valueOf(total));
+    txtPendentes.setText(String.valueOf(pendentes));
+    txtApresentados.setText(String.valueOf(apresentados));
+    txtCarregando.setText(String.valueOf(carregando));
+    txtExpedidos.setText(String.valueOf(expedidos));
+    txtPeso.setText(df.format(pesoTotal) + " kg");
+}
     private double converterPesoParaDouble(String pesoStr) {
         if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
         try {
