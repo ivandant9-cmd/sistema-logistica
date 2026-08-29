@@ -9,13 +9,14 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 # 2. Copia todo o código-fonte
 COPY . .
 
-# 3. Cria e garante a pasta styles/ esperada pelo Vaadin no build
-RUN mkdir -p /app/frontend/styles && \
+# 3. Garante que a estrutura de frontend da raiz esteja limpa e com os temas corretos
+RUN rm -rf src/main/frontend && \
+    mkdir -p /app/frontend/themes/tms && \
     if [ -d "frontend/themes/tms" ]; then \
-        cp -r frontend/themes/tms/*.css /app/frontend/styles/ 2>/dev/null || true; \
+        cp -r frontend/themes/tms/* /app/frontend/themes/tms/; \
     fi
 
-# 4. Prepara os recursos e temas do Vaadin (extrai o Lumo e dependências para o Vite)
+# 4. Prepara os recursos e temas do Vaadin (extrai o Lumo corretamente)
 RUN --mount=type=cache,target=/root/.m2 mvn vaadin:prepare-frontend -Pproduction
 
 # 5. Executa o empacotamento de produção do Maven
