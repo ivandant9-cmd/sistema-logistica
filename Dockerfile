@@ -6,15 +6,15 @@ WORKDIR /app
 COPY pom.xml .
 RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 
-# 2. Copia todo o código-fonte
+# 2. Copia todo o código-fonte do projeto
 COPY . .
 
-# 3. Garante que os diretórios de temas existam tanto na raiz quanto em src/main para satisfazer o Vaadin
-RUN mkdir -p /app/frontend/themes/tms /app/src/main/frontend/themes/tms /app/frontend/styles && \
-    if [ -d "./src/main/frontend/themes/tms" ]; then \
-        cp -r ./src/main/frontend/themes/tms/* /app/frontend/themes/tms/; \
-        cp -r ./src/main/frontend/themes/tms/* /app/src/main/frontend/themes/tms/; \
-        cp -r ./src/main/frontend/themes/tms/* /app/frontend/styles/; \
+# 3. Mapeia os arquivos de tema para a estrutura exigida pelo Vaadin no build (sem alterar o repositório)
+RUN mkdir -p src/main/frontend/themes/tms frontend/themes/tms && \
+    if [ -d "frontend/themes/tms" ]; then \
+        cp -r frontend/themes/tms/* src/main/frontend/themes/tms/; \
+    elif [ -d "src/main/frontend/themes/tms" ]; then \
+        cp -r src/main/frontend/themes/tms/* frontend/themes/tms/; \
     fi
 
 # 4. Executa o build de produção do Maven
