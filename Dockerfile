@@ -9,12 +9,12 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 # 2. Copia todo o código-fonte
 COPY . .
 
-# 3. Cria a estrutura exata exigida pelas referências CSS do projeto na raiz /app/frontend
-RUN mkdir -p /app/frontend/styles && \
+# 3. Garante que os diretórios de temas existam tanto na raiz quanto em src/main para satisfazer o Vaadin
+RUN mkdir -p /app/frontend/themes/tms /app/src/main/frontend/themes/tms /app/frontend/styles && \
     if [ -d "./src/main/frontend/themes/tms" ]; then \
+        cp -r ./src/main/frontend/themes/tms/* /app/frontend/themes/tms/; \
+        cp -r ./src/main/frontend/themes/tms/* /app/src/main/frontend/themes/tms/; \
         cp -r ./src/main/frontend/themes/tms/* /app/frontend/styles/; \
-    elif [ -d "./src/main/frontend" ]; then \
-        cp -r ./src/main/frontend/* /app/frontend/; \
     fi
 
 # 4. Executa o build de produção do Maven
