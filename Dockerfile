@@ -9,14 +9,16 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 # 2. Copia todo o código-fonte do projeto
 COPY . .
 
-# 3. Garante que as pastas de temas E de estilos globais/customizados existam e contenham os arquivos
-RUN mkdir -p /app/frontend/themes/tms /app/frontend/styles && \
+# 3. Garante o espelhamento completo de temas e estilos em todas as árvores buscadas pelo Vaadin
+RUN mkdir -p /app/frontend/themes/tms /app/frontend/styles /app/src/main/frontend/themes/tms /app/src/main/frontend/styles && \
     if [ -d "src/main/frontend/themes/tms" ]; then \
-        cp -r src/main/frontend/themes/tms/* /app/frontend/themes/tms/; \
-        cp -r src/main/frontend/themes/tms/* /app/frontend/styles/; \
+        cp -r src/main/frontend/themes/tms/* /app/frontend/themes/tms/ 2>/dev/null || true; \
+        cp -r src/main/frontend/themes/tms/* /app/frontend/styles/ 2>/dev/null || true; \
+        cp -r src/main/frontend/themes/tms/* /app/src/main/frontend/themes/tms/ 2>/dev/null || true; \
     elif [ -d "frontend/themes/tms" ]; then \
-        cp -r frontend/themes/tms/* /app/frontend/themes/tms/; \
-        cp -r frontend/themes/tms/* /app/frontend/styles/; \
+        cp -r frontend/themes/tms/* /app/frontend/themes/tms/ 2>/dev/null || true; \
+        cp -r frontend/themes/tms/* /app/frontend/styles/ 2>/dev/null || true; \
+        cp -r frontend/themes/tms/* /app/src/main/frontend/themes/tms/ 2>/dev/null || true; \
     fi
 
 # 4. Executa o build de produção do Maven
