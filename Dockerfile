@@ -9,11 +9,9 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
 # 2. Copia todo o código-fonte
 COPY src ./src
 
-# 3. Diagnóstico e cópia: mostra o que existe na árvore e copia para o local do Vaadin
-RUN echo "=== Conteudo de src/main ===" && ls -la ./src/main && \
-    mkdir -p /app/frontend && \
-    if [ -d "./src/main/frontend" ]; then cp -r ./src/main/frontend/* /app/frontend/; fi && \
-    echo "=== Conteudo de /app/frontend ===" && ls -la /app/frontend
+# 3. Preserva a estrutura completa da pasta frontend na raiz do app para o Vaadin
+RUN mkdir -p /app/frontend && \
+    if [ -d "./src/main/frontend" ]; then cp -r ./src/main/frontend/. /app/frontend/; fi
 
 # 4. Compila a aplicação e empacota para produção
 RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
