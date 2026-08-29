@@ -15,8 +15,8 @@ RUN mkdir -p /app/frontend/styles && \
         cp -r frontend/themes/tms/*.css /app/frontend/styles/ 2>/dev/null || true; \
     fi
 
-# 4. Executa o build de produção do Maven
-RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
+# 4. Executa o build de produção do Maven sem o clean para preservar o contexto do Vite
+RUN --mount=type=cache,target=/root/.m2 mvn package -Pproduction -DskipTests
 
 # Estágio de Execução
 FROM eclipse-temurin:17-jre
