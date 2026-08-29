@@ -2,28 +2,21 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# 1. Copia o pom.xml e baixa as dependências (com cache)
+# 1. Copia arquivos de dependência primeiro para aproveitar o cache do Docker
 COPY pom.xml .
-RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
+RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 
-# 2. Copia todo o código-fonte do projeto
+# 2. Copia todo o código-fonte restante do projeto
 COPY . .
 
-# 3. Mapeia e espelha os arquivos de estilo e temas para os locais exigidos pelo Vaadin
-RUN mkdir -p /app/frontend/styles /app/frontend/themes/tms && \
-    if [ -d "./src/main/frontend/themes/tms" ]; then \
-        cp -r ./src/main/frontend/themes/tms/* /app/frontend/styles/; \
-        cp -r ./src/main/frontend/themes/tms/* /app/frontend/themes/tms/; \
-    fi
-
-# 4. Executa o build de produção do Maven gerando o pacote final completo
+# 3. Executa o empacotamento completo de produção (o Vaadin gera o frontend automaticamente)
 RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
 
 # Estágio de Execução
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-# Copia apenas o JAR gerado no estágio anterior
+# Copia apenas o arquivo JAR gerado no build
 COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 10000
