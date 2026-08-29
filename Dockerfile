@@ -9,11 +9,10 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
 # 2. Copia todo o código-fonte do projeto
 COPY . .
 
-# 3. Garante a estrutura completa de diretórios frontend exigida pelo plugin do Vaadin
-RUN mkdir -p /app/src/main/frontend/themes/tms && \
-    mkdir -p /app/frontend/themes/tms && \
+# 3. Mapeia e espelha os arquivos de estilo e temas para os locais exigidos pelo Vaadin
+RUN mkdir -p /app/frontend/styles /app/frontend/themes/tms && \
     if [ -d "./src/main/frontend/themes/tms" ]; then \
-        cp -r ./src/main/frontend/themes/tms/* /app/src/main/frontend/themes/tms/; \
+        cp -r ./src/main/frontend/themes/tms/* /app/frontend/styles/; \
         cp -r ./src/main/frontend/themes/tms/* /app/frontend/themes/tms/; \
     fi
 
