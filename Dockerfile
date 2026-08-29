@@ -9,15 +9,22 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
 # 2. Copia todo o código-fonte
 COPY src ./src
 
-# 3. Cria tanto a pasta de temas quanto a pasta styles na raiz exigida pelo Vaadin
-RUN mkdir -p /app/frontend/themes/tms /app/frontend/styles && \
-    if [ -d "./src/main/frontend/themes/tms" ]; then \
-        cp -r ./src/main/frontend/themes/tms/* /app/frontend/themes/tms/; \
-        cp -r ./src/main/frontend/themes/tms/* /app/frontend/styles/; \
+# 3. Garante que a árvore de diretórios do frontend exista no local padrão do Maven
+RUN mkdir -p /app/src/main/frontend/themes/tms && \
+    mkdir -p /app/frontend/themes/tms /app/frontend/styles && \
+    if [ -d "./src/main/frontend" ]; then \
+        cp -r ./src/main/frontend/* /app/frontend/; \
+        if [ -d "./src/main/frontend/themes/tms" ]; then \
+            cp -r ./src/main/frontend/themes/tms/* /app/frontend/themes/tms/; \
+            cp -r ./src/main/frontend/themes/tms/* /app/frontend/styles/; \
+        fi \
     fi
 
-# 4. Compila a aplicação e empacota para produção
-RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
+# 4. Executa a preparação do frontend do Vaadin explicitamente antes do empacotamento
+RUN --mount=type=cache,target=/root/.m2 mvn vaadin:prepare-frontend -Pproduction
+
+# 5. Compila a aplicação e empacota para produção
+RUN --mount=type=cache,target=/root/.m2 mvn package -Pproduction -DskipTests
 
 # Estágio de Execução
 FROM eclipse-temurin:17-jre
