@@ -107,7 +107,7 @@
                         <artifactId>vaadin-maven-plugin</artifactId>
                         <version>${vaadin.version}</version>
                         <configuration>
-                            <frontendFolder>${project.basedir}/frontend</frontendFolder>
+                            <frontendFolder>${project.basedir}/src/main/frontend</frontendFolder>
                         </configuration>
                         <executions>
                             <execution>
