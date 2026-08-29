@@ -9,20 +9,21 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 # 2. Copia todo o código-fonte do projeto
 COPY . .
 
-# 3. Garante o espelhamento completo de temas e estilos em todas as árvores buscadas pelo Vaadin
-RUN mkdir -p /app/frontend/themes/tms /app/frontend/styles /app/src/main/frontend/themes/tms /app/src/main/frontend/styles && \
+# 3. Garante a estrutura correta de diretórios do tema 'tms'
+RUN mkdir -p /app/frontend/themes/tms /app/src/main/frontend/themes/tms && \
     if [ -d "src/main/frontend/themes/tms" ]; then \
         cp -r src/main/frontend/themes/tms/* /app/frontend/themes/tms/ 2>/dev/null || true; \
-        cp -r src/main/frontend/themes/tms/* /app/frontend/styles/ 2>/dev/null || true; \
         cp -r src/main/frontend/themes/tms/* /app/src/main/frontend/themes/tms/ 2>/dev/null || true; \
     elif [ -d "frontend/themes/tms" ]; then \
         cp -r frontend/themes/tms/* /app/frontend/themes/tms/ 2>/dev/null || true; \
-        cp -r frontend/themes/tms/* /app/frontend/styles/ 2>/dev/null || true; \
         cp -r frontend/themes/tms/* /app/src/main/frontend/themes/tms/ 2>/dev/null || true; \
     fi
 
-# 4. Executa o build de produção do Maven
-RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
+# 4. Executa a preparação do frontend separadamente para resolver o Lumo e o Node
+RUN --mount=type=cache,target=/root/.m2 mvn vaadin:prepare-frontend -Pproduction
+
+# 5. Executa o empacotamento completo de produção final
+RUN --mount=type=cache,target=/root/.m2 mvn package -Pproduction -DskipTests
 
 # Estágio de Execução
 FROM eclipse-temurin:17-jre
