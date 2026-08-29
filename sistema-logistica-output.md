@@ -3,8 +3,8 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-29 19:59:16 (America/Bahia / GMT-03:00)
-- **Total Files Processed**: 288
+- **Generated On**: 2026-08-29 21:04:00 (America/Bahia / GMT-03:00)
+- **Total Files Processed**: 294
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
 
@@ -167,6 +167,15 @@
 │   │   ├── 📄 vaadin-featureflags.js (395 B)
 │   │   ├── 📄 vaadin.ts (140 B)
 │   │   └── 📄 vite-devmode.ts (922 B)
+│   ├── 📁 styles/
+│   │   ├── 📄 dashboard-styles.css (2.4 KB)
+│   │   ├── 📄 styles.css (5.8 KB)
+│   │   ├── 📄 vaadin-dialog-custom.css (258 B)
+│   │   ├── 📄 vaadin-form-fields-custom.css (1.3 KB)
+│   │   └── 📄 vaadin-grid-custom.css (415 B)
+│   ├── 📁 themes/
+│   │   └── 📁 tms/
+│   │       └── 📄 theme.json (24 B)
 │   └── 📄 index.html (497 B)
 ├── 📁 src/
 │   └── 📁 main/
@@ -175,7 +184,6 @@
 │       │   ├── 📄 prod.bundle (575.26 KB)
 │       │   └── 📄 README.md (1.36 KB)
 │       ├── 📁 frontend/
-│       │   ├── 📁 styles/
 │       │   └── 📁 themes/
 │       │       └── 📁 tms/
 │       │           ├── 📄 dashboard-styles.css (2.4 KB)
@@ -365,7 +373,7 @@
 │   ├── 📄 tms-web-1.0.0.jar (90.72 MB)
 │   ├── 📄 tms-web-1.0.0.jar.original (661.47 KB)
 │   └── 📄 vaadin-dev-server-settings.json (1.07 KB)
-├── 📄 Dockerfile (1.06 KB)
+├── 📄 Dockerfile (908 B)
 ├── 📄 package-lock.json (594.16 KB)
 ├── 📄 package.json (9.66 KB)
 ├── 📄 pom.xml (4.18 KB)
@@ -512,6 +520,12 @@
 - [📄 frontend/generated/vaadin-featureflags.js](#📄-frontend-generated-vaadin-featureflags-js)
 - [📄 frontend/generated/vaadin.ts](#📄-frontend-generated-vaadin-ts)
 - [📄 frontend/generated/vite-devmode.ts](#📄-frontend-generated-vite-devmode-ts)
+- [📄 frontend/styles/dashboard-styles.css](#📄-frontend-styles-dashboard-styles-css)
+- [📄 frontend/styles/styles.css](#📄-frontend-styles-styles-css)
+- [📄 frontend/styles/vaadin-dialog-custom.css](#📄-frontend-styles-vaadin-dialog-custom-css)
+- [📄 frontend/styles/vaadin-form-fields-custom.css](#📄-frontend-styles-vaadin-form-fields-custom-css)
+- [📄 frontend/styles/vaadin-grid-custom.css](#📄-frontend-styles-vaadin-grid-custom-css)
+- [📄 frontend/themes/tms/theme.json](#📄-frontend-themes-tms-theme-json)
 - [📄 frontend/index.html](#📄-frontend-index-html)
 - [📄 src/main/bundles/README.md](#📄-src-main-bundles-readme-md)
 - [📄 src/main/frontend/themes/tms/dashboard-styles.css](#📄-src-main-frontend-themes-tms-dashboard-styles-css)
@@ -637,11 +651,11 @@
 
 | Metric | Count |
 |--------|-------|
-| Total Files | 288 |
-| Total Directories | 68 |
-| Text Files | 248 |
+| Total Files | 294 |
+| Total Directories | 70 |
+| Text Files | 254 |
 | Binary Files | 40 |
-| Total Size | 98.2 MB |
+| Total Size | 98.21 MB |
 
 ### 📄 File Types Distribution
 
@@ -651,10 +665,10 @@
 | `.ts` | 50 |
 | `.class` | 24 |
 | `.java` | 22 |
-| `.json` | 8 |
+| `.css` | 10 |
+| `.json` | 9 |
 | `.html` | 6 |
 | `.properties` | 6 |
-| `.css` | 5 |
 | `.br` | 5 |
 | `.map` | 2 |
 | `.bundle` | 2 |
@@ -11631,6 +11645,484 @@ if (import.meta.hot) {
   });
 }
 
+```
+
+---
+
+### <a id="📄-frontend-styles-dashboard-styles-css"></a>📄 `frontend/styles/dashboard-styles.css`
+
+**File Info:**
+- **Size**: 2.4 KB
+- **Extension**: `.css`
+- **Language**: `css`
+- **Location**: `frontend/styles/dashboard-styles.css`
+- **Relative Path**: `frontend/styles`
+- **Created**: 2026-08-29 20:31:28 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **MD5**: `59063253d707fde4c0636d51c4a18989`
+- **SHA256**: `cfe81137729ec1f8756c2f154fa0d3dd581077a622ee59385451c9667ec4e21b`
+- **Encoding**: UTF-8
+
+**File code content:**
+
+```css
+/* Container dos Cards */
+.kpi-container {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Estrutura Base do Card */
+.kpi-card {
+    flex: 1;
+    min-width: 180px;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.kpi-card:hover {
+    border-color: #475569;
+}
+
+/* Variações de Cor no Topo */
+.kpi-card.total { border-top: 4px solid #64748b; }
+.kpi-card.pendentes { border-top: 4px solid #f59e0b !important; }
+.kpi-card.apresentados { border-top: 4px solid #2563eb; }
+.kpi-card.carregando { border-top: 4px solid #d97706; }
+.kpi-card.expedidos { border-top: 4px solid #16a34a; }
+.kpi-card.peso { border-top: 4px solid #9333ea; }
+
+/* Cabeçalho do Card (Título + Ícone) */
+.kpi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.kpi-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.05em;
+}
+
+/* Cores dos Ícones */
+.kpi-icon-total { color: #64748b; width: 16px; height: 16px; }
+.kpi-icon-pendentes { color: #f59e0b !important; width: 16px; height: 16px; }
+.kpi-icon-apresentados { color: #2563eb; width: 16px; height: 16px; }
+.kpi-icon-carregando { color: #d97706; width: 16px; height: 16px; }
+.kpi-icon-expedidos { color: #16a34a; width: 16px; height: 16px; }
+.kpi-icon-peso { color: #9333ea; width: 16px; height: 16px; }
+
+/* Valor Numérico do Card */
+.kpi-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+
+    /* Corrigi a visibilidade do texto digitado (<input> nativo dentro da Shadow DOM) */
+vaadin-text-field input,
+vaadin-password-field input,
+vaadin-date-picker input,
+vaadin-combo-box input,
+vaadin-text-area textarea,
+vaadin-number-field input,
+vaadin-integer-field input {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* Modal e Diálogos Globais */
+vaadin-dialog-overlay::part(overlay) {
+    background-color: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 12px !important;
+}
+
+vaadin-dialog-overlay::part(title) {
+    color: #f8fafc !important;
+}
+}
+```
+
+---
+
+### <a id="📄-frontend-styles-styles-css"></a>📄 `frontend/styles/styles.css`
+
+**File Info:**
+- **Size**: 5.8 KB
+- **Extension**: `.css`
+- **Language**: `css`
+- **Location**: `frontend/styles/styles.css`
+- **Relative Path**: `frontend/styles`
+- **Created**: 2026-08-29 20:31:28 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **MD5**: `bce384485cfcbed5715e253adbc68638`
+- **SHA256**: `f99263d7db8ca59528c421ef107a27e6b2fa4367f81ca1982ab505b8ae565f4f`
+- **Encoding**: UTF-8
+
+**File code content:**
+
+```css
+/* Login */
+vaadin-login-form-wrapper { 
+    background-color: transparent !important; 
+    padding: 0 !important; 
+} 
+
+vaadin-login-form { 
+    background-color: transparent !important; 
+} 
+
+/* Inputs Globais - Fundo Escuro, Borda e Texto Interno em Branco */
+vaadin-text-field::part(input-field), 
+vaadin-password-field::part(input-field),
+vaadin-date-picker::part(input-field),
+vaadin-select::part(input-field),
+vaadin-combo-box::part(input-field),
+vaadin-text-area::part(input-field),
+vaadin-number-field::part(input-field),
+vaadin-integer-field::part(input-field) { 
+    background-color: #1a2332 !important; 
+    border: 1px solid #3b82f6 !important; 
+    border-radius: 8px !important; 
+    color: #ffffff !important;
+} 
+
+/* FIX DE VISIBILIDADE DO VALOR: Força o texto digitado nativo (<input>) a ficar branco e 100% visível */
+vaadin-text-field input,
+vaadin-password-field input,
+vaadin-date-picker input,
+vaadin-combo-box input,
+vaadin-text-area textarea,
+vaadin-number-field input,
+vaadin-integer-field input,
+vaadin-select vaadin-select-value-button {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important; /* Evita que temas do navegador alterem a cor */
+    font-weight: 500 !important;
+    opacity: 1 !important;
+}
+
+/* FIX DE CAMPOS READONLY E DISABLED (Impede o efeito ofuscado ao recarregar/navegar) */
+vaadin-text-field[readonly],
+vaadin-text-field[disabled],
+vaadin-password-field[readonly],
+vaadin-password-field[disabled],
+vaadin-date-picker[readonly],
+vaadin-date-picker[disabled],
+vaadin-combo-box[readonly],
+vaadin-combo-box[disabled],
+vaadin-text-area[readonly],
+vaadin-text-area[disabled],
+vaadin-number-field[readonly],
+vaadin-number-field[disabled],
+vaadin-integer-field[readonly],
+vaadin-integer-field[disabled] {
+    opacity: 1 !important;
+}
+
+vaadin-text-field[readonly] input,
+vaadin-text-field[disabled] input,
+vaadin-password-field[readonly] input,
+vaadin-password-field[disabled] input,
+vaadin-date-picker[readonly] input,
+vaadin-date-picker[disabled] input,
+vaadin-combo-box[readonly] input,
+vaadin-combo-box[disabled] input,
+vaadin-text-area[readonly] textarea,
+vaadin-text-area[disabled] textarea,
+vaadin-number-field[readonly] input,
+vaadin-number-field[disabled] input,
+vaadin-integer-field[readonly] input,
+vaadin-integer-field[disabled] input {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* FIX DO MODAL/FORMULÁRIO: Garante legibilidade total dos Labels no Tema Escuro */
+vaadin-text-field::part(label), 
+vaadin-password-field::part(label),
+vaadin-date-picker::part(label), 
+vaadin-select::part(label), 
+vaadin-combo-box::part(label),
+vaadin-text-area::part(label),
+vaadin-number-field::part(label),
+vaadin-integer-field::part(label),
+vaadin-form-item label,
+label {
+    color: #e0e6ed !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    opacity: 1 !important;
+}
+
+/* FIX DO MODAL: Fundo do Diálogo e Título */
+vaadin-dialog-overlay::part(overlay) {
+    background-color: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 12px !important;
+}
+
+vaadin-dialog-overlay::part(header) {
+    background-color: #0f172a !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+vaadin-dialog-overlay::part(title),
+vaadin-dialog-overlay h2 {
+    color: #f8fafc !important;
+}
+
+/* Botões */
+vaadin-button[theme~="primary"] { 
+    background-color: #2563eb !important; 
+    border-radius: 8px !important; 
+    font-weight: 600 !important; 
+    margin-top: 16px !important; 
+} 
+
+vaadin-button[theme~="tertiary"] { 
+    color: #94a3b8 !important; 
+}
+
+/* FIX DO GRID: Ajuste fluido de altura sem quebrar o alinhamento dos botões */
+vaadin-grid {
+    --lumo-size-m: 34px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5) !important;
+}
+
+vaadin-grid::part(cell) {
+    min-height: 34px !important;
+    height: 34px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+vaadin-grid-cell-content {
+    padding: 0 8px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Estilização Premium do Cabeçalho do Grid */
+vaadin-grid::part(header-cell) {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+    border-bottom: 2px solid #3b82f6 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+/* Tipografia e cor dos títulos do Grid */
+vaadin-grid-cell-content::slotted(vaadin-grid-sorter),
+vaadin-grid::part(header-cell) {
+    color: #38bdf8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+
+    /* Força visibilidade e contraste máximo para todos os campos do Vaadin */
+vaadin-text-field,
+vaadin-date-picker,
+vaadin-select,
+vaadin-text-area,
+vaadin-combo-box,
+vaadin-input-container {
+    opacity: 1 !important;
+    --vaadin-input-field-readonly-line-color: transparent !important;
+}
+
+/* Força a cor e opacidade dos rótulos (labels) e valores digitados */
+vaadin-text-field::part(label),
+vaadin-date-picker::part(label),
+vaadin-select::part(label),
+vaadin-text-area::part(label),
+vaadin-text-field::part(value),
+vaadin-date-picker::part(value),
+vaadin-select::part(value),
+vaadin-text-area::part(value),
+vaadin-input-container [part="value"] {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Garante fundo visível nos inputs */
+vaadin-text-field::part(input-field),
+vaadin-date-picker::part(input-field),
+vaadin-select::part(input-field),
+vaadin-text-area::part(input-field) {
+    background-color: #1a2332 !important;
+    border: 1px solid #2b3b54 !important;
+}
+}
+```
+
+---
+
+### <a id="📄-frontend-styles-vaadin-dialog-custom-css"></a>📄 `frontend/styles/vaadin-dialog-custom.css`
+
+**File Info:**
+- **Size**: 258 B
+- **Extension**: `.css`
+- **Language**: `css`
+- **Location**: `frontend/styles/vaadin-dialog-custom.css`
+- **Relative Path**: `frontend/styles`
+- **Created**: 2026-08-29 20:31:28 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **MD5**: `b5f126a4abea0b51e71316c86c547719`
+- **SHA256**: `b07a4a67e336492b6e9f02055a4fffe2ec772b537b905d557bce7f09e6831579`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```css
+:host [part~='overlay'] {
+    background-color: #020617 !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 12px !important;
+}
+
+:host [part~='content'] {
+    background-color: #020617 !important;
+    color: #f8fafc !important;
+}
+```
+
+---
+
+### <a id="📄-frontend-styles-vaadin-form-fields-custom-css"></a>📄 `frontend/styles/vaadin-form-fields-custom.css`
+
+**File Info:**
+- **Size**: 1.3 KB
+- **Extension**: `.css`
+- **Language**: `css`
+- **Location**: `frontend/styles/vaadin-form-fields-custom.css`
+- **Relative Path**: `frontend/styles`
+- **Created**: 2026-08-29 20:31:28 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **MD5**: `0d096ccbdb4c868e23b5302df320ed59`
+- **SHA256**: `6284c80a9976208bfa4f796799f9f4fd6b7580f7ef130618ae401bf1bfccf8f6`
+- **Encoding**: UTF-8
+
+**File code content:**
+
+```css
+/* Sobrescreve as variáveis globais de cor de texto secundário (Labels) no Shadow DOM */
+:host {
+    --lumo-secondary-text-color: #cbd5e1 !important;
+    --lumo-body-text-color: #f8fafc !important;
+    --lumo-primary-text-color: #f8fafc !important;
+    --lumo-contrast-70pct: #cbd5e1 !important;
+    --lumo-contrast-60pct: #cbd5e1 !important;
+    --lumo-contrast-50pct: #94a3b8 !important;
+}
+
+/* Força a cor clara e legível diretamente no elemento do Label */
+:host [part~='label'] {
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    opacity: 1 !important;
+}
+
+/* Garante o fundo escuro e bordas nítidas no campo */
+:host [part~='input-field'] {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    border-radius: 6px !important;
+}
+
+/* Cor do texto digitado / selecionado */
+:host [part~='value'] {
+    color: #f8fafc !important;
+
+    /* Rótulos (Labels) internos dos campos */
+[part="label"] {
+    color: #f1f5f9 !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    opacity: 1 !important;
+}
+
+/* Área interna do input */
+[part="input-field"] {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+}
+}
+```
+
+---
+
+### <a id="📄-frontend-styles-vaadin-grid-custom-css"></a>📄 `frontend/styles/vaadin-grid-custom.css`
+
+**File Info:**
+- **Size**: 415 B
+- **Extension**: `.css`
+- **Language**: `css`
+- **Location**: `frontend/styles/vaadin-grid-custom.css`
+- **Relative Path**: `frontend/styles`
+- **Created**: 2026-08-29 20:31:28 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **MD5**: `93880e0e03fe483fdc0c82a9a55b2e37`
+- **SHA256**: `59962b088c37b5eef0f0bda75ce2561cb95c3fbdf591c761bd70824848e76498`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```css
+:host [part~='header-cell'] {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+    border-bottom: 2px solid #3b82f6 !important;
+}
+
+:host [part~='header-cell'] ::slotted(vaadin-grid-cell-content) {
+    color: #38bdf8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+```
+
+---
+
+### <a id="📄-frontend-themes-tms-theme-json"></a>📄 `frontend/themes/tms/theme.json`
+
+**File Info:**
+- **Size**: 24 B
+- **Extension**: `.json`
+- **Language**: `json`
+- **Location**: `frontend/themes/tms/theme.json`
+- **Relative Path**: `frontend/themes/tms`
+- **Created**: 2026-08-29 20:31:28 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **MD5**: `f5f27d9077392c0c52ba0ea73982c3cc`
+- **SHA256**: `e0ee2617e5e11a2391135c1cd52c0555c645cf8dd12fb6d3aada20050405e7bb`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```json
+{
+  "parent": "lumo"
+}
 ```
 
 ---

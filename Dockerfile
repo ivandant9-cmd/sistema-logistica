@@ -6,13 +6,13 @@ WORKDIR /app
 COPY pom.xml .
 RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 
-# 2. Copia todo o código-fonte
+# 2. Copia todo o código-fonte (agora já incluindo a pasta frontend/styles)
 COPY . .
 
-# 3. Remove a pasta legada desnecessária
+# 3. Remove pastas legadas desnecessárias no container
 RUN rm -rf src/main/frontend
 
-# 4. Prepara os recursos e temas do Vaadin (extrai o Lumo corretamente)
+# 4. Prepara os recursos e temas do Vaadin
 RUN --mount=type=cache,target=/root/.m2 mvn vaadin:prepare-frontend -Pproduction
 
 # 5. Executa o empacotamento de produção do Maven
