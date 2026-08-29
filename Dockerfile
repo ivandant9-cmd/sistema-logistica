@@ -6,10 +6,20 @@ WORKDIR /app
 COPY pom.xml .
 RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
 
-# 2. Copia todo o código-fonte e estrutura de recursos (incluindo o frontend do Vaadin)
+# 2. Copia todo o código-fonte
 COPY src ./src
 
-# 3. Compila a aplicação e empacota para produção
+# 3. Garante que a pasta frontend esperada pelo Vaadin exista na raiz do container,
+# copiando os estilos de dentro de src/main/resources ou src/main/frontend se existirem,
+# ou criando um vinculo para que o build encontre os arquivos.
+# Vamos copiar a pasta de recursos inteira para garantir.
+COPY src/main/resources ./src/main/resources
+
+# Cria a pasta frontend na raiz exigida pelo plugin e copia os estilos se necessário
+RUN mkdir -p /app/frontend && \
+    if [ -d "./src/main/frontend" ]; then cp -r ./src/main/frontend/* /app/frontend/; fi
+
+# 4. Compila a aplicação e empacota para produção
 RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
 
 # Estágio de Execução
