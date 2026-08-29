@@ -9,7 +9,7 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 # 2. Copia todo o código-fonte do projeto
 COPY . .
 
-# 3. Garante a estrutura correta de diretórios do tema 'tms'
+# 3. Garante a estrutura inicial de temas
 RUN mkdir -p /app/frontend/themes/tms /app/src/main/frontend/themes/tms && \
     if [ -d "src/main/frontend/themes/tms" ]; then \
         cp -r src/main/frontend/themes/tms/* /app/frontend/themes/tms/ 2>/dev/null || true; \
@@ -19,10 +19,18 @@ RUN mkdir -p /app/frontend/themes/tms /app/src/main/frontend/themes/tms && \
         cp -r frontend/themes/tms/* /app/src/main/frontend/themes/tms/ 2>/dev/null || true; \
     fi
 
-# 4. Executa a preparação do frontend separadamente para resolver o Lumo e o Node
+# 4. Prepara o frontend (gera dependências do Node e do Lumo)
 RUN --mount=type=cache,target=/root/.m2 mvn vaadin:prepare-frontend -Pproduction
 
-# 5. Executa o empacotamento completo de produção final
+# 5. Injeta os arquivos CSS diretamente na pasta styles exigida pelas anotações logo após o prepare
+RUN mkdir -p /app/frontend/styles && \
+    if [ -d "src/main/frontend/themes/tms" ]; then \
+        cp -r src/main/frontend/themes/tms/* /app/frontend/styles/ 2>/dev/null || true; \
+    elif [ -d "frontend/themes/tms" ]; then \
+        cp -r frontend/themes/tms/* /app/frontend/styles/ 2>/dev/null || true; \
+    fi
+
+# 6. Executa o empacotamento completo de produção final
 RUN --mount=type=cache,target=/root/.m2 mvn package -Pproduction -DskipTests
 
 # Estágio de Execução
