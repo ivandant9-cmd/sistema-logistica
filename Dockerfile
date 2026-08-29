@@ -9,7 +9,7 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
 # 2. Copia todo o código-fonte
 COPY src ./src
 
-# 3. Copia/mapeia o conteúdo de src/main/frontend diretamente para a raiz /app/frontend esperada pelo Vaadin
+# 3. Garante que a pasta frontend esperada pelo plugin do Vaadin exista na raiz
 RUN mkdir -p /app/frontend && \
     if [ -d "./src/main/frontend" ]; then cp -r ./src/main/frontend/* /app/frontend/; fi
 
