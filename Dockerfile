@@ -9,13 +9,9 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 # 2. Copia todo o código-fonte do projeto
 COPY . .
 
-# 3. Garante o mapeamento de temas de forma segura apenas se os arquivos existirem
-RUN mkdir -p src/main/frontend/themes/tms frontend/themes/tms && \
-    if [ "$(ls -A src/main/frontend/themes/tms 2>/dev/null)" ]; then \
-        cp -r src/main/frontend/themes/tms/* frontend/themes/tms/; \
-    elif [ "$(ls -A frontend/themes/tms 2>/dev/null)" ]; then \
-        cp -r frontend/themes/tms/* src/main/frontend/themes/tms/; \
-    fi
+# 3. Copia os arquivos CSS do tema para a pasta /app/frontend/styles exigida pelas anotações
+RUN mkdir -p /app/frontend/styles && \
+    find . -path "*/frontend/themes/tms/*.css" -exec cp {} /app/frontend/styles/ \;
 
 # 4. Executa o build de produção do Maven
 RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
