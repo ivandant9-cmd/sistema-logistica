@@ -9,12 +9,14 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 # 2. Copia todo o código-fonte do projeto
 COPY . .
 
-# 3. Garante a criação exata da árvore de temas do Vaadin na raiz do container
-RUN mkdir -p /app/frontend/themes/tms && \
+# 3. Garante que as pastas de temas E de estilos globais/customizados existam e contenham os arquivos
+RUN mkdir -p /app/frontend/themes/tms /app/frontend/styles && \
     if [ -d "src/main/frontend/themes/tms" ]; then \
         cp -r src/main/frontend/themes/tms/* /app/frontend/themes/tms/; \
+        cp -r src/main/frontend/themes/tms/* /app/frontend/styles/; \
     elif [ -d "frontend/themes/tms" ]; then \
         cp -r frontend/themes/tms/* /app/frontend/themes/tms/; \
+        cp -r frontend/themes/tms/* /app/frontend/styles/; \
     fi
 
 # 4. Executa o build de produção do Maven
