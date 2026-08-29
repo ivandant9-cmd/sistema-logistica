@@ -9,10 +9,15 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 # 2. Copia todo o código-fonte do projeto
 COPY . .
 
-# 3. Se os arquivos estiverem em uma pasta 'frontend' na raiz, garante que vão para 'src/main/frontend'
-RUN mkdir -p src/main/frontend && \
-    if [ -d "frontend" ] && [ ! "$(ls -A src/main/frontend)" ]; then \
-        cp -r frontend/* src/main/frontend/; \
+# 3. Garante que a estrutura src/main/frontend exija os arquivos que o pom.xml aponta
+RUN mkdir -p src/main/frontend/styles && \
+    if [ -d "frontend/styles" ]; then \
+        cp -r frontend/styles/* src/main/frontend/styles/; \
+    elif [ -d "styles" ]; then \
+        cp -r styles/* src/main/frontend/styles/; \
+    fi && \
+    if [ -d "frontend/themes" ]; then \
+        cp -r frontend/themes src/main/frontend/; \
     fi
 
 # 4. Executa o build de produção do Maven de forma limpa
