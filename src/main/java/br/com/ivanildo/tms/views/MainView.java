@@ -398,6 +398,32 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         gridArquivados.setSizeFull();
         gridArquivados.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COMPACT);
 
+        // Mapa para controlar os checkboxes dos arquivados
+        Map<Carregamento, Checkbox> mapaCheckboxesArquivados = new HashMap<>();
+
+        // Checkbox Mestre do Modal de Arquivados
+        Checkbox masterCheckboxArquivados = new Checkbox();
+        masterCheckboxArquivados.setValue(false);
+        masterCheckboxArquivados.getStyle().set("border", "2px solid #3b82f6");
+        masterCheckboxArquivados.getStyle().set("border-radius", "4px");
+        masterCheckboxArquivados.addValueChangeListener(event -> {
+            boolean masterValue = event.getValue();
+            for (Checkbox cb : mapaCheckboxesArquivados.values()) {
+                cb.setValue(masterValue);
+            }
+        });
+
+        // Coluna de Checkbox na Grid de Arquivados
+        gridArquivados.addComponentColumn(carregamento -> {
+            Checkbox checkbox = new Checkbox();
+            checkbox.setValue(false);
+            checkbox.getStyle().set("border", "2px solid #3b82f6");
+            checkbox.getStyle().set("border-radius", "4px");
+            checkbox.getStyle().set("padding", "2px");
+            mapaCheckboxesArquivados.put(carregamento, checkbox);
+            return checkbox;
+        }).setHeader(masterCheckboxArquivados).setWidth("70px").setFlexGrow(0);
+
         gridArquivados.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true);
         gridArquivados.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
         gridArquivados.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
@@ -412,6 +438,7 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
                 carregamento.setArquivado(false);
                 repository.save(carregamento);
                 
+                mapaCheckboxesArquivados.clear();
                 List<Carregamento> listaArquivados = repository.findAll().stream()
                     .filter(c -> c.getArquivado() != null && c.getArquivado())
                     .toList();
@@ -428,14 +455,46 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
             .toList();
         gridArquivados.setItems(listaArquivados);
 
+        // Botão para Desarquivar em Lote os selecionados
+        Button btnDesarquivarSelecionados = new Button("Desarquivar Selecionadas", VaadinIcon.UPLOAD_ALT.create());
+        btnDesarquivarSelecionados.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SUCCESS);
+        btnDesarquivarSelecionados.addClickListener(e -> {
+            List<Carregamento> selecionadas = mapaCheckboxesArquivados.entrySet().stream()
+                .filter(entry -> entry.getValue() != null && entry.getValue().getValue())
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+            if (selecionadas.isEmpty()) {
+                Notification.show("Nenhuma carga selecionada para desarquivar.", 3000, Notification.Position.MIDDLE);
+                return;
+            }
+
+            for (Carregamento c : selecionadas) {
+                c.setArquivado(false);
+                repository.save(c);
+            }
+
+            mapaCheckboxesArquivados.clear();
+            List<Carregamento> novaListaArquivados = repository.findAll().stream()
+                .filter(c -> c.getArquivado() != null && c.getArquivado())
+                .toList();
+            gridArquivados.setItems(novaListaArquivados);
+
+            atualizarGridEIndicators();
+            Notification.show(selecionadas.size() + " carga(s) desarquivada(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
+        });
+
         Button btnFechar = new Button("Fechar", e -> modalArquivados.close());
         btnFechar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
-        modalArquivados.getFooter().add(btnFechar);
+        HorizontalLayout footerLayout = new HorizontalLayout(btnDesarquivarSelecionados, btnFechar);
+        footerLayout.setJustifyContentMode(JustifyContentMode.BETWEEN);
+        footerLayout.setWidthFull();
+
+        modalArquivados.getFooter().add(footerLayout);
         modalArquivados.add(gridArquivados);
         modalArquivados.open();
     }
-
     @SuppressWarnings("null")
     private void configurarGrid() {
         grid.setSizeFull();
