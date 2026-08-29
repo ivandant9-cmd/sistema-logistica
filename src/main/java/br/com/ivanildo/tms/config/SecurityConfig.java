@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.filter.ForwardedHeaderFilter;
 
 @EnableWebSecurity
 @Configuration
@@ -19,18 +18,18 @@ public class SecurityConfig extends VaadinWebSecurity {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // 1. Libera recursos estáticos, assets do Vaadin e a rota pública de check-in
+        // 1. Libera os recursos estáticos e rotas públicas ANTES de chamar o super.configure
         http.authorizeHttpRequests(auth -> 
             auth.requestMatchers(
                 new AntPathRequestMatcher("/images/**"),
                 new AntPathRequestMatcher("/icons/**"),
                 new AntPathRequestMatcher("/VAADIN/**"),
                 new AntPathRequestMatcher("/line-awesome/**"),
-                new AntPathRequestMatcher("/checkin/**") // Libera a rota para o motorista
+                new AntPathRequestMatcher("/checkin/**")
             ).permitAll()
         );
 
-        // 2. Aplica as configurações padrão de rotas do Vaadin
+        // 2. Aplica as configurações padrão de segurança do Vaadin (precisa vir depois das regras específicas)
         super.configure(http);
 
         // 3. Define a View de Login
@@ -48,9 +47,5 @@ public class SecurityConfig extends VaadinWebSecurity {
         return new InMemoryUserDetailsManager(admin);
     }
 
-    // Essencial para o Render reconhecer os cabeçalhos HTTPS/Proxy do SSL
-    @Bean
-    public ForwardedHeaderFilter forwardedHeaderFilter() {
-        return new ForwardedHeaderFilter();
-    }
+ 
 }
