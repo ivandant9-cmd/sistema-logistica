@@ -6,10 +6,16 @@ WORKDIR /app
 COPY pom.xml .
 RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
 
-# 2. Copia todo o contexto do projeto de uma vez (garantindo src e configurações)
+# 2. Copia todo o contexto do projeto
 COPY . .
 
-# 3. Executa o build de produção do Maven/Vaadin gerando o pacote final
+# 3. Garante que a pasta styles exigida pelo build do Vaadin exista na raiz espelhando o tema tms
+RUN mkdir -p /app/frontend/styles && \
+    if [ -d "./src/main/frontend/themes/tms" ]; then \
+        cp -r ./src/main/frontend/themes/tms/* /app/frontend/styles/; \
+    fi
+
+# 4. Executa o build de produção do Maven/Vaadin gerando o pacote final
 RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
 
 # Estágio de Execução
