@@ -6,13 +6,10 @@ WORKDIR /app
 COPY pom.xml .
 RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
 
-# 2. Copia o código-fonte
+# 2. Copia todo o código-fonte e estrutura de recursos (incluindo o frontend do Vaadin)
 COPY src ./src
 
-# 3. Copia a pasta frontend caso ela exista na raiz do projeto
-COPY frontend ./frontend
-
-# 4. Compila a aplicação e empacota para produção
+# 3. Compila a aplicação e empacota para produção
 RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
 
 # Estágio de Execução
