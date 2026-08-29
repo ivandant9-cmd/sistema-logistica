@@ -3,13 +3,8 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-<<<<<<< HEAD
-- **Generated On**: 2026-08-27 12:12:16 (America/Bahia / GMT-03:00)
-- **Total Files Processed**: 287
-=======
-- **Generated On**: 2026-08-29 16:23:09 (America/Bahia / GMT-03:00)
-- **Total Files Processed**: 285
->>>>>>> feature/desarquivar-lote-arquivados
+- **Generated On**: 2026-08-29 19:59:16 (America/Bahia / GMT-03:00)
+- **Total Files Processed**: 288
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
 
@@ -172,15 +167,6 @@
 │   │   ├── 📄 vaadin-featureflags.js (395 B)
 │   │   ├── 📄 vaadin.ts (140 B)
 │   │   └── 📄 vite-devmode.ts (922 B)
-<<<<<<< HEAD
-=======
-│   ├── 📁 styles/
-│   │   ├── 📄 dashboard-styles.css (2.4 KB)
-│   │   ├── 📄 styles.css (5.8 KB)
-│   │   ├── 📄 vaadin-dialog-custom.css (258 B)
-│   │   ├── 📄 vaadin-form-fields-custom.css (1.3 KB)
-│   │   └── 📄 vaadin-grid-custom.css (415 B)
->>>>>>> feature/desarquivar-lote-arquivados
 │   └── 📄 index.html (497 B)
 ├── 📁 src/
 │   └── 📁 main/
@@ -189,7 +175,6 @@
 │       │   ├── 📄 prod.bundle (575.26 KB)
 │       │   └── 📄 README.md (1.36 KB)
 │       ├── 📁 frontend/
-<<<<<<< HEAD
 │       │   ├── 📁 styles/
 │       │   └── 📁 themes/
 │       │       └── 📁 tms/
@@ -199,9 +184,6 @@
 │       │           ├── 📄 vaadin-dialog-custom.css (258 B)
 │       │           ├── 📄 vaadin-form-fields-custom.css (1.3 KB)
 │       │           └── 📄 vaadin-grid-custom.css (415 B)
-=======
-│       │   └── 📁 styles/
->>>>>>> feature/desarquivar-lote-arquivados
 │       ├── 📁 java/
 │       │   └── 📁 br/
 │       │       └── 📁 com/
@@ -231,11 +213,7 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.38 KB)
-<<<<<<< HEAD
-│       │                   │   ├── 📄 MainView.java (33.79 KB)
-=======
-│       │                   │   ├── 📄 MainView.java (36.64 KB)
->>>>>>> feature/desarquivar-lote-arquivados
+│       │                   │   ├── 📄 MainView.java (36.74 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (14.6 KB)
 │       │                   ├── 📄 Application.java (850 B)
 │       │                   ├── 📄 AppShell.java (309 B)
@@ -252,10 +230,10 @@
 │   │   │       └── 📁 ivanildo/
 │   │   │           └── 📁 tms/
 │   │   │               ├── 📁 config/
-│   │   │               │   └── 📄 SecurityConfig.class (4.37 KB)
+│   │   │               │   └── 📄 SecurityConfig.class (4.64 KB)
 │   │   │               ├── 📁 controller/
 │   │   │               │   ├── 📄 CarregamentoController.class (1.03 KB)
-│   │   │               │   ├── 📄 CheckinController.class (4.95 KB)
+│   │   │               │   ├── 📄 CheckinController.class (4.94 KB)
 │   │   │               │   ├── 📄 CheckinDTO.class (971 B)
 │   │   │               │   └── 📄 PdfController.class (4.59 KB)
 │   │   │               ├── 📁 model/
@@ -277,13 +255,8 @@
 │   │   │               │   ├── 📄 EntregasView.class (26.99 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.46 KB)
-<<<<<<< HEAD
-│   │   │               │   ├── 📄 MainView.class (47.73 KB)
-│   │   │               │   └── 📄 RelatorioPaletesView.class (21.37 KB)
-=======
-│   │   │               │   ├── 📄 MainView.class (50.17 KB)
+│   │   │               │   ├── 📄 MainView.class (50.58 KB)
 │   │   │               │   └── 📄 RelatorioPaletesView.class (21.18 KB)
->>>>>>> feature/desarquivar-lote-arquivados
 │   │   │               ├── 📄 Application.class (1.35 KB)
 │   │   │               ├── 📄 AppShell.class (483 B)
 │   │   │               └── 📄 DataInitializer.class (650 B)
@@ -392,16 +365,16 @@
 │   ├── 📄 tms-web-1.0.0.jar (90.72 MB)
 │   ├── 📄 tms-web-1.0.0.jar.original (661.47 KB)
 │   └── 📄 vaadin-dev-server-settings.json (1.07 KB)
-├── 📄 Dockerfile (826 B)
+├── 📄 Dockerfile (1.06 KB)
 ├── 📄 package-lock.json (594.16 KB)
 ├── 📄 package.json (9.66 KB)
-├── 📄 pom.xml (4.17 KB)
+├── 📄 pom.xml (4.18 KB)
 ├── 📄 system.properties (23 B)
-├── 📄 tsconfig.json (1.26 KB)
+├── 📄 tsconfig.json (1.3 KB)
 ├── 📄 types.d.ts (494 B)
 ├── 📄 vite.config.ts (275 B)
 ├── 📄 vite.config.ts.timestamp-1787691770682-fccb386178692.mjs (186.6 KB)
-├── 📄 vite.config.ts.timestamp-1787850900367-d928d2ad1180d.mjs (186.6 KB)
+├── 📄 vite.config.ts.timestamp-1787850900367-d928d2ad1180d.mjs (187.85 KB)
 └── 📄 vite.generated.ts (29.61 KB)
 ```
 
@@ -664,19 +637,11 @@
 
 | Metric | Count |
 |--------|-------|
-<<<<<<< HEAD
-| Total Files | 287 |
+| Total Files | 288 |
 | Total Directories | 68 |
-| Text Files | 253 |
-| Binary Files | 34 |
-| Total Size | 95.32 MB |
-=======
-| Total Files | 285 |
-| Total Directories | 67 |
-| Text Files | 246 |
-| Binary Files | 39 |
+| Text Files | 248 |
+| Binary Files | 40 |
 | Total Size | 98.2 MB |
->>>>>>> feature/desarquivar-lote-arquivados
 
 ### 📄 File Types Distribution
 
@@ -684,17 +649,11 @@
 |-----------|-------|
 | `.js` | 148 |
 | `.ts` | 50 |
-<<<<<<< HEAD
 | `.class` | 24 |
 | `.java` | 22 |
-| `.json` | 12 |
-=======
-| `.class` | 23 |
-| `.java` | 21 |
-| `.json` | 7 |
+| `.json` | 8 |
 | `.html` | 6 |
 | `.properties` | 6 |
->>>>>>> feature/desarquivar-lote-arquivados
 | `.css` | 5 |
 | `.br` | 5 |
 | `.map` | 2 |
@@ -11787,17 +11746,10 @@ The following files were not included in the text content:
 - **Size**: 2.4 KB
 - **Extension**: `.css`
 - **Language**: `css`
-<<<<<<< HEAD
 - **Location**: `src/main/frontend/themes/tms/dashboard-styles.css`
 - **Relative Path**: `src/main/frontend/themes/tms`
-- **Created**: 2026-08-18 13:29:22 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-24 14:09:11 (America/Bahia / GMT-03:00)
-=======
-- **Location**: `frontend/styles/dashboard-styles.css`
-- **Relative Path**: `frontend/styles`
-- **Created**: 2026-08-27 17:00:30 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-27 17:00:30 (America/Bahia / GMT-03:00)
->>>>>>> feature/desarquivar-lote-arquivados
+- **Created**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
 - **MD5**: `59063253d707fde4c0636d51c4a18989`
 - **SHA256**: `cfe81137729ec1f8756c2f154fa0d3dd581077a622ee59385451c9667ec4e21b`
 - **Encoding**: UTF-8
@@ -11904,17 +11856,10 @@ vaadin-dialog-overlay::part(title) {
 - **Size**: 5.8 KB
 - **Extension**: `.css`
 - **Language**: `css`
-<<<<<<< HEAD
 - **Location**: `src/main/frontend/themes/tms/styles.css`
 - **Relative Path**: `src/main/frontend/themes/tms`
-- **Created**: 2026-08-21 20:21:52 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-25 00:34:14 (America/Bahia / GMT-03:00)
-=======
-- **Location**: `frontend/styles/styles.css`
-- **Relative Path**: `frontend/styles`
-- **Created**: 2026-08-27 17:00:30 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-27 17:00:30 (America/Bahia / GMT-03:00)
->>>>>>> feature/desarquivar-lote-arquivados
+- **Created**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
 - **MD5**: `bce384485cfcbed5715e253adbc68638`
 - **SHA256**: `f99263d7db8ca59528c421ef107a27e6b2fa4367f81ca1982ab505b8ae565f4f`
 - **Encoding**: UTF-8
@@ -12128,8 +12073,8 @@ vaadin-text-area::part(input-field) {
 - **Language**: `json`
 - **Location**: `src/main/frontend/themes/tms/theme.json`
 - **Relative Path**: `src/main/frontend/themes/tms`
-- **Created**: 2026-08-27 12:10:42 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-27 12:12:15 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
 - **MD5**: `f5f27d9077392c0c52ba0ea73982c3cc`
 - **SHA256**: `e0ee2617e5e11a2391135c1cd52c0555c645cf8dd12fb6d3aada20050405e7bb`
 - **Encoding**: ASCII
@@ -12150,17 +12095,10 @@ vaadin-text-area::part(input-field) {
 - **Size**: 258 B
 - **Extension**: `.css`
 - **Language**: `css`
-<<<<<<< HEAD
 - **Location**: `src/main/frontend/themes/tms/vaadin-dialog-custom.css`
 - **Relative Path**: `src/main/frontend/themes/tms`
-- **Created**: 2026-08-23 18:44:39 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 18:44:53 (America/Bahia / GMT-03:00)
-=======
-- **Location**: `frontend/styles/vaadin-dialog-custom.css`
-- **Relative Path**: `frontend/styles`
-- **Created**: 2026-08-27 17:00:30 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-27 17:00:30 (America/Bahia / GMT-03:00)
->>>>>>> feature/desarquivar-lote-arquivados
+- **Created**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
 - **MD5**: `b5f126a4abea0b51e71316c86c547719`
 - **SHA256**: `b07a4a67e336492b6e9f02055a4fffe2ec772b537b905d557bce7f09e6831579`
 - **Encoding**: ASCII
@@ -12188,17 +12126,10 @@ vaadin-text-area::part(input-field) {
 - **Size**: 1.3 KB
 - **Extension**: `.css`
 - **Language**: `css`
-<<<<<<< HEAD
 - **Location**: `src/main/frontend/themes/tms/vaadin-form-fields-custom.css`
 - **Relative Path**: `src/main/frontend/themes/tms`
-- **Created**: 2026-08-23 18:09:27 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-24 14:11:02 (America/Bahia / GMT-03:00)
-=======
-- **Location**: `frontend/styles/vaadin-form-fields-custom.css`
-- **Relative Path**: `frontend/styles`
-- **Created**: 2026-08-27 17:00:30 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-27 17:00:30 (America/Bahia / GMT-03:00)
->>>>>>> feature/desarquivar-lote-arquivados
+- **Created**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
 - **MD5**: `0d096ccbdb4c868e23b5302df320ed59`
 - **SHA256**: `6284c80a9976208bfa4f796799f9f4fd6b7580f7ef130618ae401bf1bfccf8f6`
 - **Encoding**: UTF-8
@@ -12260,17 +12191,10 @@ vaadin-text-area::part(input-field) {
 - **Size**: 415 B
 - **Extension**: `.css`
 - **Language**: `css`
-<<<<<<< HEAD
 - **Location**: `src/main/frontend/themes/tms/vaadin-grid-custom.css`
 - **Relative Path**: `src/main/frontend/themes/tms`
-- **Created**: 2026-08-23 18:01:23 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 18:01:36 (America/Bahia / GMT-03:00)
-=======
-- **Location**: `frontend/styles/vaadin-grid-custom.css`
-- **Relative Path**: `frontend/styles`
-- **Created**: 2026-08-27 17:00:30 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-27 17:00:30 (America/Bahia / GMT-03:00)
->>>>>>> feature/desarquivar-lote-arquivados
+- **Created**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
 - **MD5**: `93880e0e03fe483fdc0c82a9a55b2e37`
 - **SHA256**: `59962b088c37b5eef0f0bda75ce2561cb95c3fbdf591c761bd70824848e76498`
 - **Encoding**: ASCII
@@ -12303,7 +12227,7 @@ vaadin-text-area::part(input-field) {
 - **Location**: `src/main/java/br/com/ivanildo/tms/config/SecurityConfig.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/config`
 - **Created**: 2026-08-18 16:18:31 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-28 01:00:48 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:55 (America/Bahia / GMT-03:00)
 - **MD5**: `85f9e27b20bc8cc4c73f56f4b9f74983`
 - **SHA256**: `ce06d1e22b215359256fdc7b03ba48e3a7ad45459b256d06604c7503b2a523a4`
 - **Encoding**: UTF-8
@@ -12418,9 +12342,9 @@ public class CarregamentoController {
 - **Location**: `src/main/java/br/com/ivanildo/tms/controller/CheckinController.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/controller`
 - **Created**: 2026-08-23 22:38:26 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-23 22:38:26 (America/Bahia / GMT-03:00)
-- **MD5**: `8077426dabde57c1ccce61c3a0826623`
-- **SHA256**: `0f2a7c7735090cfb710cde6a513f488549979c080564367e8b1a32bccf355d02`
+- **Modified**: 2026-08-29 19:48:35 (America/Bahia / GMT-03:00)
+- **MD5**: `dc7129b1ba4982a86779722254f400d2`
+- **SHA256**: `13c3ddb4464ef027277e350ffb5f971e61925c51713687d581e233cd0cd93f91`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -12440,8 +12364,10 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api")
+
 public class CheckinController {
 
     @Autowired
@@ -14538,25 +14464,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-<<<<<<< HEAD
-- **Size**: 33.79 KB
-=======
-- **Size**: 36.64 KB
->>>>>>> feature/desarquivar-lote-arquivados
+- **Size**: 36.74 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-<<<<<<< HEAD
-- **Modified**: 2026-08-27 01:42:25 (America/Bahia / GMT-03:00)
-- **MD5**: `a22f2e6d73c19c779d8b573b9c47275a`
-- **SHA256**: `dbc91eabc424ef3664e3898157e47be7647af66ae4fc7a05f30c032b6150eea7`
-=======
-- **Modified**: 2026-08-28 01:24:50 (America/Bahia / GMT-03:00)
-- **MD5**: `8743798016db720c4eec39abffa090b4`
-- **SHA256**: `7b4dfc3d420fa5b24ac568352ed8d820fc48a3f51855748096fb917ecdbbd41b`
->>>>>>> feature/desarquivar-lote-arquivados
+- **Modified**: 2026-08-29 17:08:55 (America/Bahia / GMT-03:00)
+- **MD5**: `c27fc5b2c2dc13d382ac7fe6e1660db4`
+- **SHA256**: `beeb7761e778669fc5bb549c390edf4c7ccf38066c4e2e15168c9557c25a0dec`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -15706,8 +15622,8 @@ public class Application implements AppShellConfigurator {
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/AppShell.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms`
-- **Created**: 2026-08-27 01:42:57 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-27 01:44:12 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:10 (America/Bahia / GMT-03:00)
 - **MD5**: `00dc06b9197b9033382ed21bc32fe21c`
 - **SHA256**: `77996eb6e48fdc064e4107b8653be4afb8508b4bba361312885fd2355b3c73fe`
 - **Encoding**: UTF-8
@@ -15958,8 +15874,8 @@ public class DataInitializer implements CommandLineRunner {
 - **Language**: `text`
 - **Location**: `src/main/resources/application-local.properties`
 - **Relative Path**: `src/main/resources`
-- **Created**: 2026-08-27 13:08:03 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-27 17:06:40 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-29 17:08:55 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:55 (America/Bahia / GMT-03:00)
 - **MD5**: `8ab92d09d81c7ad50a9b1a82d1b156ff`
 - **SHA256**: `4e4fb5312dbcb5efd8101721ff367fa9183cc518224d106a52dedec534f92205`
 - **Encoding**: UTF-8
@@ -15996,7 +15912,7 @@ spring.main.allow-bean-definition-overriding=true
 - **Location**: `src/main/resources/application.properties`
 - **Relative Path**: `src/main/resources`
 - **Created**: 2026-08-16 19:20:26 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-29 15:52:43 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:55 (America/Bahia / GMT-03:00)
 - **MD5**: `cfdfa8371a8a2bdda0ed9b17f4d09d14`
 - **SHA256**: `1bdce7ee033c4521ff1e58c363ee8359a3bf77255739fae710d1f1ff150420b9`
 - **Encoding**: UTF-8
@@ -29025,8 +28941,8 @@ The following files were not included in the text content:
 - **Language**: `text`
 - **Location**: `target/classes/application-local.properties`
 - **Relative Path**: `target/classes`
-- **Created**: 2026-08-29 08:33:55 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-29 08:33:55 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-29 17:08:59 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:59 (America/Bahia / GMT-03:00)
 - **MD5**: `8ab92d09d81c7ad50a9b1a82d1b156ff`
 - **SHA256**: `4e4fb5312dbcb5efd8101721ff367fa9183cc518224d106a52dedec534f92205`
 - **Encoding**: UTF-8
@@ -29063,7 +28979,7 @@ spring.main.allow-bean-definition-overriding=true
 - **Location**: `target/classes/application.properties`
 - **Relative Path**: `target/classes`
 - **Created**: 2026-08-29 08:33:55 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-29 15:52:47 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-29 17:08:59 (America/Bahia / GMT-03:00)
 - **MD5**: `cfdfa8371a8a2bdda0ed9b17f4d09d14`
 - **SHA256**: `1bdce7ee033c4521ff1e58c363ee8359a3bf77255739fae710d1f1ff150420b9`
 - **Encoding**: UTF-8
@@ -63641,15 +63557,15 @@ The following files were not included in the text content:
 ### <a id="📄-pom-xml"></a>📄 `pom.xml`
 
 **File Info:**
-- **Size**: 4.17 KB
+- **Size**: 4.18 KB
 - **Extension**: `.xml`
 - **Language**: `xml`
 - **Location**: `pom.xml`
 - **Relative Path**: `root`
 - **Created**: 2026-08-16 18:53:38 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-29 08:25:47 (America/Bahia / GMT-03:00)
-- **MD5**: `803f1376684db53eb1e8989f6afa384a`
-- **SHA256**: `206bf359bd568e81235e212bfb0a4c5008235a61d52d82a473af3affc741057c`
+- **Modified**: 2026-08-29 19:47:42 (America/Bahia / GMT-03:00)
+- **MD5**: `a45b156e99fac24f6ed4eede12a489ba`
+- **SHA256**: `9d349132dcb87e6ce07a57bffd4f3e4aef0a2094625678dafb562e7c12bc21cb`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -63764,7 +63680,7 @@ The following files were not included in the text content:
                         <artifactId>vaadin-maven-plugin</artifactId>
                         <version>${vaadin.version}</version>
                         <configuration>
-                            <frontendFolder>${project.basedir}/frontend</frontendFolder>
+                            <frontendFolder>${project.basedir}/src/main/frontend</frontendFolder>
                         </configuration>
                         <executions>
                             <execution>
@@ -63809,15 +63725,15 @@ java.runtime.version=17
 ### <a id="📄-tsconfig-json"></a>📄 `tsconfig.json`
 
 **File Info:**
-- **Size**: 1.26 KB
+- **Size**: 1.3 KB
 - **Extension**: `.json`
 - **Language**: `json`
 - **Location**: `tsconfig.json`
 - **Relative Path**: `root`
 - **Created**: 2026-08-17 21:26:13 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-28 01:06:29 (America/Bahia / GMT-03:00)
-- **MD5**: `836d63c44324e15900822bb180b664d6`
-- **SHA256**: `911b59f0c6f857a4815dbd94db1442120a3f2fe3261bd5ce86e0c3f62b9f6510`
+- **Modified**: 2026-08-29 17:08:55 (America/Bahia / GMT-03:00)
+- **MD5**: `74a2188ba788d5f4ce7bc0beed8a3f7e`
+- **SHA256**: `e795835f955e0438dff7f0642a1a9abe3c2b82da593763fa8530a0fa59186b42`
 - **Encoding**: ASCII
 
 **File code content:**

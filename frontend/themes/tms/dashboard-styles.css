@@ -1,0 +1,89 @@
+/* Container dos Cards */
+.kpi-container {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Estrutura Base do Card */
+.kpi-card {
+    flex: 1;
+    min-width: 180px;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.kpi-card:hover {
+    border-color: #475569;
+}
+
+/* Variações de Cor no Topo */
+.kpi-card.total { border-top: 4px solid #64748b; }
+.kpi-card.pendentes { border-top: 4px solid #f59e0b !important; }
+.kpi-card.apresentados { border-top: 4px solid #2563eb; }
+.kpi-card.carregando { border-top: 4px solid #d97706; }
+.kpi-card.expedidos { border-top: 4px solid #16a34a; }
+.kpi-card.peso { border-top: 4px solid #9333ea; }
+
+/* Cabeçalho do Card (Título + Ícone) */
+.kpi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.kpi-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.05em;
+}
+
+/* Cores dos Ícones */
+.kpi-icon-total { color: #64748b; width: 16px; height: 16px; }
+.kpi-icon-pendentes { color: #f59e0b !important; width: 16px; height: 16px; }
+.kpi-icon-apresentados { color: #2563eb; width: 16px; height: 16px; }
+.kpi-icon-carregando { color: #d97706; width: 16px; height: 16px; }
+.kpi-icon-expedidos { color: #16a34a; width: 16px; height: 16px; }
+.kpi-icon-peso { color: #9333ea; width: 16px; height: 16px; }
+
+/* Valor Numérico do Card */
+.kpi-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+
+    /* Corrigi a visibilidade do texto digitado (<input> nativo dentro da Shadow DOM) */
+vaadin-text-field input,
+vaadin-password-field input,
+vaadin-date-picker input,
+vaadin-combo-box input,
+vaadin-text-area textarea,
+vaadin-number-field input,
+vaadin-integer-field input {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* Modal e Diálogos Globais */
+vaadin-dialog-overlay::part(overlay) {
+    background-color: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 12px !important;
+}
+
+vaadin-dialog-overlay::part(title) {
+    color: #f8fafc !important;
+}
+}

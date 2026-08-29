@@ -1,0 +1,194 @@
+/* Login */
+vaadin-login-form-wrapper { 
+    background-color: transparent !important; 
+    padding: 0 !important; 
+} 
+
+vaadin-login-form { 
+    background-color: transparent !important; 
+} 
+
+/* Inputs Globais - Fundo Escuro, Borda e Texto Interno em Branco */
+vaadin-text-field::part(input-field), 
+vaadin-password-field::part(input-field),
+vaadin-date-picker::part(input-field),
+vaadin-select::part(input-field),
+vaadin-combo-box::part(input-field),
+vaadin-text-area::part(input-field),
+vaadin-number-field::part(input-field),
+vaadin-integer-field::part(input-field) { 
+    background-color: #1a2332 !important; 
+    border: 1px solid #3b82f6 !important; 
+    border-radius: 8px !important; 
+    color: #ffffff !important;
+} 
+
+/* FIX DE VISIBILIDADE DO VALOR: Força o texto digitado nativo (<input>) a ficar branco e 100% visível */
+vaadin-text-field input,
+vaadin-password-field input,
+vaadin-date-picker input,
+vaadin-combo-box input,
+vaadin-text-area textarea,
+vaadin-number-field input,
+vaadin-integer-field input,
+vaadin-select vaadin-select-value-button {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important; /* Evita que temas do navegador alterem a cor */
+    font-weight: 500 !important;
+    opacity: 1 !important;
+}
+
+/* FIX DE CAMPOS READONLY E DISABLED (Impede o efeito ofuscado ao recarregar/navegar) */
+vaadin-text-field[readonly],
+vaadin-text-field[disabled],
+vaadin-password-field[readonly],
+vaadin-password-field[disabled],
+vaadin-date-picker[readonly],
+vaadin-date-picker[disabled],
+vaadin-combo-box[readonly],
+vaadin-combo-box[disabled],
+vaadin-text-area[readonly],
+vaadin-text-area[disabled],
+vaadin-number-field[readonly],
+vaadin-number-field[disabled],
+vaadin-integer-field[readonly],
+vaadin-integer-field[disabled] {
+    opacity: 1 !important;
+}
+
+vaadin-text-field[readonly] input,
+vaadin-text-field[disabled] input,
+vaadin-password-field[readonly] input,
+vaadin-password-field[disabled] input,
+vaadin-date-picker[readonly] input,
+vaadin-date-picker[disabled] input,
+vaadin-combo-box[readonly] input,
+vaadin-combo-box[disabled] input,
+vaadin-text-area[readonly] textarea,
+vaadin-text-area[disabled] textarea,
+vaadin-number-field[readonly] input,
+vaadin-number-field[disabled] input,
+vaadin-integer-field[readonly] input,
+vaadin-integer-field[disabled] input {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* FIX DO MODAL/FORMULÁRIO: Garante legibilidade total dos Labels no Tema Escuro */
+vaadin-text-field::part(label), 
+vaadin-password-field::part(label),
+vaadin-date-picker::part(label), 
+vaadin-select::part(label), 
+vaadin-combo-box::part(label),
+vaadin-text-area::part(label),
+vaadin-number-field::part(label),
+vaadin-integer-field::part(label),
+vaadin-form-item label,
+label {
+    color: #e0e6ed !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    opacity: 1 !important;
+}
+
+/* FIX DO MODAL: Fundo do Diálogo e Título */
+vaadin-dialog-overlay::part(overlay) {
+    background-color: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 12px !important;
+}
+
+vaadin-dialog-overlay::part(header) {
+    background-color: #0f172a !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+vaadin-dialog-overlay::part(title),
+vaadin-dialog-overlay h2 {
+    color: #f8fafc !important;
+}
+
+/* Botões */
+vaadin-button[theme~="primary"] { 
+    background-color: #2563eb !important; 
+    border-radius: 8px !important; 
+    font-weight: 600 !important; 
+    margin-top: 16px !important; 
+} 
+
+vaadin-button[theme~="tertiary"] { 
+    color: #94a3b8 !important; 
+}
+
+/* FIX DO GRID: Ajuste fluido de altura sem quebrar o alinhamento dos botões */
+vaadin-grid {
+    --lumo-size-m: 34px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5) !important;
+}
+
+vaadin-grid::part(cell) {
+    min-height: 34px !important;
+    height: 34px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+vaadin-grid-cell-content {
+    padding: 0 8px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Estilização Premium do Cabeçalho do Grid */
+vaadin-grid::part(header-cell) {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+    border-bottom: 2px solid #3b82f6 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+/* Tipografia e cor dos títulos do Grid */
+vaadin-grid-cell-content::slotted(vaadin-grid-sorter),
+vaadin-grid::part(header-cell) {
+    color: #38bdf8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+
+    /* Força visibilidade e contraste máximo para todos os campos do Vaadin */
+vaadin-text-field,
+vaadin-date-picker,
+vaadin-select,
+vaadin-text-area,
+vaadin-combo-box,
+vaadin-input-container {
+    opacity: 1 !important;
+    --vaadin-input-field-readonly-line-color: transparent !important;
+}
+
+/* Força a cor e opacidade dos rótulos (labels) e valores digitados */
+vaadin-text-field::part(label),
+vaadin-date-picker::part(label),
+vaadin-select::part(label),
+vaadin-text-area::part(label),
+vaadin-text-field::part(value),
+vaadin-date-picker::part(value),
+vaadin-select::part(value),
+vaadin-text-area::part(value),
+vaadin-input-container [part="value"] {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Garante fundo visível nos inputs */
+vaadin-text-field::part(input-field),
+vaadin-date-picker::part(input-field),
+vaadin-select::part(input-field),
+vaadin-text-area::part(input-field) {
+    background-color: #1a2332 !important;
+    border: 1px solid #2b3b54 !important;
+}
+}
