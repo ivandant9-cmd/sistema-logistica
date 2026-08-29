@@ -6,11 +6,14 @@ WORKDIR /app
 COPY pom.xml .
 RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 
-# 2. Copia todo o código-fonte (agora já incluindo a pasta frontend/styles)
+# 2. Copia todo o código-fonte
 COPY . .
 
-# 3. Remove pastas legadas desnecessárias no container
-RUN rm -rf src/main/frontend
+# 3. Garante que a estrutura de diretórios do frontend e do tema 'tms' esteja perfeita para o Vite
+RUN mkdir -p frontend/themes/tms && \
+    if [ -d "src/main/frontend/themes/tms" ]; then \
+        cp -r src/main/frontend/themes/tms/* frontend/themes/tms/ 2>/dev/null || true; \
+    fi
 
 # 4. Prepara os recursos e temas do Vaadin
 RUN --mount=type=cache,target=/root/.m2 mvn vaadin:prepare-frontend -Pproduction
