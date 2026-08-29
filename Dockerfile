@@ -9,9 +9,10 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
 # 2. Copia todo o código-fonte
 COPY src ./src
 
-# 3. Posiciona a pasta frontend na raiz do container mantendo a estrutura exigida pelo @Theme
-RUN mkdir -p /app/frontend && \
-    if [ -d "./src/main/frontend" ]; then cp -r ./src/main/frontend/* /app/frontend/; fi
+# 3. Garante que o Vaadin encontre tanto o tema quanto a pasta styles na raiz
+RUN mkdir -p /app/frontend/styles && \
+    if [ -d "./src/main/frontend" ]; then cp -r ./src/main/frontend/* /app/frontend/; fi && \
+    if [ -d "./src/main/frontend/themes/tms" ]; then cp -r ./src/main/frontend/themes/tms/* /app/frontend/styles/; fi
 
 # 4. Compila a aplicação e empacota para produção
 RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
