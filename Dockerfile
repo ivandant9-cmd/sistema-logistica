@@ -9,18 +9,15 @@ RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
 # 2. Copia todo o código-fonte do projeto
 COPY . .
 
-# 3. Garante que a estrutura src/main/frontend exija os arquivos que o pom.xml aponta
-RUN mkdir -p src/main/frontend/styles && \
-    if [ -d "frontend/styles" ]; then \
-        cp -r frontend/styles/* src/main/frontend/styles/; \
-    elif [ -d "styles" ]; then \
-        cp -r styles/* src/main/frontend/styles/; \
-    fi && \
-    if [ -d "frontend/themes" ]; then \
-        cp -r frontend/themes src/main/frontend/; \
+# 3. Mapeia os arquivos de tema para a estrutura exigida pelo Vaadin no build (sem alterar o repositório)
+RUN mkdir -p src/main/frontend/themes/tms frontend/themes/tms && \
+    if [ -d "frontend/themes/tms" ]; then \
+        cp -r frontend/themes/tms/* src/main/frontend/themes/tms/; \
+    elif [ -d "src/main/frontend/themes/tms" ]; then \
+        cp -r src/main/frontend/themes/tms/* frontend/themes/tms/; \
     fi
 
-# 4. Executa o build de produção do Maven de forma limpa
+# 4. Executa o build de produção do Maven
 RUN --mount=type=cache,target=/root/.m2 mvn clean package -Pproduction -DskipTests
 
 # Estágio de Execução
