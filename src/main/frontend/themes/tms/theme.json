@@ -1,3 +1,10 @@
 {
-  "parent": "lumo"
+  "parent": "lumo",
+  "files": [
+    "styles.css",
+    "dashboard-styles.css",
+    "vaadin-dialog-custom.css",
+    "vaadin-form-fields-custom.css",
+    "vaadin-grid-custom.css"
+  ]
 }

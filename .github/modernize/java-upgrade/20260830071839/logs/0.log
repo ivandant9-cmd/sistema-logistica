@@ -1,0 +1,733 @@
+2026-08-30T07:18:39.450Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-30T07:18:39.451Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "precheckCompleted",
+  "phase": "precheck",
+  "status": "succeeded",
+  "details": {
+    "components": [
+      {
+        "name": "jdk",
+        "baseVersion": "17",
+        "targetVersion": "25"
+      }
+    ]
+  }
+}}).
+2026-08-30T07:18:39.451Z [INFO] [Tool.invoke] do invoke.
+2026-08-30T07:18:39.455Z [INFO] Project c:\Projeto Logístico - G3\sistema-logistica is a maven project, try to get java version from pom.xml
+2026-08-30T07:18:39.456Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'precheckCompleted' reported!\nSession ID: 20260830071839,\nSession Dir: c:\\Projeto Logístico - G3\\sistema-logistica\\.github\\modernize\\java-upgrade\\20260830071839"
+}}).
+2026-08-30T07:18:39.457Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-30T07:18:39.459Z [INFO] Project java version: 17
+2026-08-30T07:18:39.460Z [INFO] Maven project detected.
+2026-08-30T07:18:39.460Z [INFO] Build tool type: mvn
+2026-08-30T07:18:39.781Z [INFO] JDK: undefined
+2026-08-30T07:18:39.781Z [ERROR] Failed to detect or resolve JDK for the project at c:\Projeto Logístico - G3\sistema-logistica.
+2026-08-30T07:18:39.782Z [WARN] [ReportEventTool] Full project info unavailable, attempting lightweight fallback: UserError: Failed to detect or resolve JDK for the project at c:\Projeto Logístico - G3\sistema-logistica. Please ensure JDK 17 is installed and properly configured on the machine.
+2026-08-30T07:18:39.785Z [INFO] Maven project detected.
+2026-08-30T07:18:39.785Z [INFO] Project c:\Projeto Logístico - G3\sistema-logistica is a maven project, try to get java version from pom.xml
+2026-08-30T07:18:47.763Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-30T07:18:47.764Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "planGenerationStarted",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-08-30T07:18:47.772Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-30T07:18:47.784Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-30T07:18:47.785Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-08-30T07:18:48.810Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-30T07:18:48.813Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "planGenerationStarted",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-08-30T07:18:48.818Z [INFO] [Tool.invoke] do invoke.
+2026-08-30T07:18:48.827Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planGenerationStarted' reported!\nSession ID: 20260830071839,\nSession Dir: c:\\Projeto Logístico - G3\\sistema-logistica\\.github\\modernize\\java-upgrade\\20260830071839"
+}}).
+2026-08-30T07:18:48.829Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-30T07:18:51.677Z [INFO] ---------------------prepare appmod-list-jdks----------------------
+2026-08-30T07:18:51.683Z [INFO] [Tool.prepareInvocation]({name: appmod-list-jdks, input: {
+  "sessionId": "20260830071839"
+}}).
+2026-08-30T07:18:51.684Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-30T07:18:51.687Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "List jdks"
+}}).
+2026-08-30T07:18:51.688Z [INFO] ----------------------prepared appmod-list-jdks----------------------
+2026-08-30T07:18:53.077Z [INFO] ----------------------invoke appmod-list-jdks----------------------
+2026-08-30T07:18:53.078Z [INFO] [Tool.invoke]({name: appmod-list-jdks, modelId: auto, input: {
+  "sessionId": "20260830071839"
+}}).
+2026-08-30T07:18:53.078Z [INFO] [Tool.invoke] do invoke.
+2026-08-30T07:18:53.392Z [INFO] [Tool.invoke]({result: {
+  "message": "We found following jdks in your system:\n\n1. Java 11.0.18\n   📁 Path: C:\\Program Files\\Java\\jdk-11\\bin\n   🏷️ Source: others\n\n2. Java 21.0.11\n   📁 Path: C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.11.10-hotspot\\bin\n   🏷️ Source: PATH,JAVA_HOME\n\n3. Java 25.0.2\n   📁 Path: C:\\Users\\ivand\\AppData\\Local\\jdks\\jdk-25.0.2\\bin\n   🏷️ Source: install\n\nTotal: 3 JDK installation(s) found"
+}}).
+2026-08-30T07:18:53.393Z [INFO] ----------------------invoked appmod-list-jdks----------------------
+2026-08-30T07:18:53.437Z [INFO] ---------------------prepare appmod-list-mavens----------------------
+2026-08-30T07:18:53.439Z [INFO] [Tool.prepareInvocation]({name: appmod-list-mavens, input: {
+  "sessionId": "20260830071839"
+}}).
+2026-08-30T07:18:53.440Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-30T07:18:53.441Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "List mavens"
+}}).
+2026-08-30T07:18:53.442Z [INFO] ----------------------prepared appmod-list-mavens----------------------
+2026-08-30T07:18:54.149Z [INFO] ----------------------invoke appmod-list-mavens----------------------
+2026-08-30T07:18:54.153Z [INFO] [Tool.invoke]({name: appmod-list-mavens, modelId: auto, input: {
+  "sessionId": "20260830071839"
+}}).
+2026-08-30T07:18:54.154Z [INFO] [Tool.invoke] do invoke.
+2026-08-30T07:18:54.198Z [INFO] [Tool.invoke]({result: {
+  "message": "We found following maven installations in your system:\n\n1. 📁 Path: C:\\Apache\\Maven\\apache-maven-3.9.16\\bin\n   🏷️ Source: MAVEN_HOME,PATH\n\nTotal: 1 Maven installation(s) found"
+}}).
+2026-08-30T07:18:54.201Z [INFO] ----------------------invoked appmod-list-mavens----------------------
+2026-08-30T07:19:33.719Z [INFO] ---------------------prepare appmod-confirm-upgrade-plan----------------------
+2026-08-30T07:19:33.719Z [INFO] [Tool.prepareInvocation]({name: appmod-confirm-upgrade-plan, input: {
+  "sessionId": "20260830071839",
+  "autoExecute": true
+}}).
+2026-08-30T07:19:33.720Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-30T07:19:33.721Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Auto-executing [upgrade plan](file:///c:/Projeto Logístico - G3/sistema-logistica/.github/modernize/java-upgrade/20260830071839/plan.md)"
+}}).
+2026-08-30T07:19:33.722Z [INFO] ----------------------prepared appmod-confirm-upgrade-plan----------------------
+2026-08-30T07:19:33.906Z [INFO] ----------------------invoke appmod-confirm-upgrade-plan----------------------
+2026-08-30T07:19:33.906Z [INFO] [Tool.invoke]({name: appmod-confirm-upgrade-plan, modelId: auto, input: {
+  "sessionId": "20260830071839",
+  "autoExecute": true
+}}).
+2026-08-30T07:19:33.906Z [INFO] [Tool.invoke] do invoke.
+2026-08-30T07:19:33.907Z [INFO] Upgrade plan confirmed successfully.
+2026-08-30T07:19:33.907Z [INFO] [Tool.invoke]({result: {
+  "message": "Generated plan is reviewed and confirmed by the user! the upgrade process will start now."
+}}).
+2026-08-30T07:19:33.907Z [INFO] ----------------------invoked appmod-confirm-upgrade-plan----------------------
+2026-08-30T07:19:58.646Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-30T07:19:58.648Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "planExecutionStarted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-08-30T07:19:58.648Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-30T07:19:58.649Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-30T07:19:58.650Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-08-30T07:19:58.970Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-30T07:19:58.971Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "planExecutionStarted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-08-30T07:19:58.971Z [INFO] [Tool.invoke] do invoke.
+2026-08-30T07:19:59.091Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planExecutionStarted' reported!\nSession ID: 20260830071839,\nSession Dir: c:\\Projeto Logístico - G3\\sistema-logistica\\.github\\modernize\\java-upgrade\\20260830071839"
+}}).
+2026-08-30T07:19:59.091Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-30T07:21:33.032Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-30T07:21:33.032Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "environmentSetup",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "jdkPath": "C:\\Users\\ivand\\AppData\\Local\\jdks\\jdk-25.0.2",
+    "buildToolPath": "C:\\Apache\\Maven\\apache-maven-3.9.16\\bin\\mvn.cmd"
+  }
+}}).
+2026-08-30T07:21:33.033Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-30T07:21:33.034Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-30T07:21:33.034Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-08-30T07:21:33.196Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-30T07:21:33.197Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "environmentSetup",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "jdkPath": "C:\\Users\\ivand\\AppData\\Local\\jdks\\jdk-25.0.2",
+    "buildToolPath": "C:\\Apache\\Maven\\apache-maven-3.9.16\\bin\\mvn.cmd"
+  }
+}}).
+2026-08-30T07:21:33.197Z [INFO] [Tool.invoke] do invoke.
+2026-08-30T07:21:33.200Z [INFO] Project c:\Projeto Logístico - G3\sistema-logistica is a maven project, try to get java version from pom.xml
+2026-08-30T07:21:33.202Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'environmentSetup' reported!\nSession ID: 20260830071839,\nSession Dir: c:\\Projeto Logístico - G3\\sistema-logistica\\.github\\modernize\\java-upgrade\\20260830071839"
+}}).
+2026-08-30T07:21:33.202Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-30T07:21:33.204Z [INFO] Project java version: 25
+2026-08-30T07:21:33.205Z [INFO] Maven project detected.
+2026-08-30T07:21:33.206Z [INFO] Build tool type: mvn
+2026-08-30T07:21:33.206Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Users\\ivand\\AppData\\Local\\jdks\\jdk-25.0.2\\bin",
+  "version": "25"
+}
+2026-08-30T07:21:33.206Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\Apache\\Maven\\apache-maven-3.9.16\\bin\\mvn.cmd\\bin",
+  "version": ""
+}
+2026-08-30T07:21:33.207Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\Apache\\Maven\\apache-maven-3.9.16\\bin\\mvn.cmd\\bin",
+    "name": "mvn",
+    "version": ""
+  },
+  "jdk": {
+    "path": "C:\\Users\\ivand\\AppData\\Local\\jdks\\jdk-25.0.2\\bin",
+    "name": "java",
+    "version": "25"
+  },
+  "name": "sistema-logistica",
+  "dir": "c:\\Projeto Logístico - G3\\sistema-logistica"
+}
+2026-08-30T07:21:35.772Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-30T07:21:35.773Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "baselineSetup",
+  "phase": "execute",
+  "status": "failed",
+  "message": "Baseline compile failed under Java 11 because the project is configured for Java 17 and the environment is Java 11; this confirmed the runtime mismatch before the upgrade."
+}}).
+2026-08-30T07:21:35.774Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-30T07:21:35.775Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-30T07:21:35.776Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-08-30T07:21:36.183Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-30T07:21:36.184Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "baselineSetup",
+  "phase": "execute",
+  "status": "failed",
+  "message": "Baseline compile failed under Java 11 because the project is configured for Java 17 and the environment is Java 11; this confirmed the runtime mismatch before the upgrade."
+}}).
+2026-08-30T07:21:36.185Z [INFO] [Tool.invoke] do invoke.
+2026-08-30T07:21:36.187Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'baselineSetup' reported!\nSession ID: 20260830071839,\nSession Dir: c:\\Projeto Logístico - G3\\sistema-logistica\\.github\\modernize\\java-upgrade\\20260830071839"
+}}).
+2026-08-30T07:21:36.187Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-30T07:23:21.625Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-30T07:23:21.625Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "upgradeStepCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Upgrade Java Runtime and Spring Boot Compatibility",
+    "commitId": "N/A"
+  }
+}}).
+2026-08-30T07:23:21.626Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-30T07:23:21.626Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-30T07:23:21.626Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-08-30T07:23:21.744Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-30T07:23:21.745Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "upgradeStepCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Upgrade Java Runtime and Spring Boot Compatibility",
+    "commitId": "N/A"
+  }
+}}).
+2026-08-30T07:23:21.745Z [INFO] [Tool.invoke] do invoke.
+2026-08-30T07:23:21.747Z [INFO] Project c:\Projeto Logístico - G3\sistema-logistica is a maven project, try to get java version from pom.xml
+2026-08-30T07:23:21.749Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradeStepCompleted' reported!\nSession ID: 20260830071839,\nSession Dir: c:\\Projeto Logístico - G3\\sistema-logistica\\.github\\modernize\\java-upgrade\\20260830071839"
+}}).
+2026-08-30T07:23:21.749Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-30T07:23:21.751Z [INFO] Project java version: 25
+2026-08-30T07:23:21.751Z [INFO] Maven project detected.
+2026-08-30T07:23:21.751Z [INFO] Build tool type: mvn
+2026-08-30T07:23:21.987Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Users\\ivand\\AppData\\Local\\jdks\\jdk-25.0.2\\bin",
+  "version": "25"
+}
+2026-08-30T07:23:21.992Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\Apache\\Maven\\apache-maven-3.9.16\\bin",
+  "version": "",
+  "source": "MAVEN_HOME,PATH"
+}
+2026-08-30T07:23:21.992Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\Apache\\Maven\\apache-maven-3.9.16\\bin",
+    "name": "mvn",
+    "version": "",
+    "source": "MAVEN_HOME,PATH"
+  },
+  "jdk": {
+    "path": "C:\\Users\\ivand\\AppData\\Local\\jdks\\jdk-25.0.2\\bin",
+    "name": "java",
+    "version": "25"
+  },
+  "name": "sistema-logistica",
+  "dir": "c:\\Projeto Logístico - G3\\sistema-logistica"
+}
+2026-08-30T07:23:21.993Z [INFO] [MavenBuildTool] Getting Java version of c:\Projeto Logístico - G3\sistema-logistica from pom.xml
+2026-08-30T07:23:21.993Z [INFO] [MavenBuildTool] Searching for pom.xml files in c:\Projeto Logístico - G3\sistema-logistica
+2026-08-30T07:23:21.994Z [INFO] [MavenBuildTool] Getting all module coordinates of c:\Projeto Logístico - G3\sistema-logistica
+2026-08-30T07:23:21.994Z [INFO] [MavenBuildTool] Getting effective POMs of c:\Projeto Logístico - G3\sistema-logistica
+2026-08-30T07:23:21.998Z [INFO] [Environment] Running command (Java undefined): mvn help:effective-pom -Doutput=effective-pom-8422d054-11e3-41ea-a321-08c563103ac5.log
+2026-08-30T07:23:22.015Z [INFO] [Environment] Running command (Java undefined): mvn dependency:tree -B
+2026-08-30T07:23:24.209Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-30T07:23:24.210Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "upgradeValidationCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 5,
+    "stepTitle": "Final Validation",
+    "commitId": "N/A"
+  }
+}}).
+2026-08-30T07:23:24.212Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-30T07:23:24.215Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-30T07:23:24.216Z [INFO] ----------------------prepared appmod-report-event----------------------
+[INFO] Scanning for projects...
+[INFO] Scanning for projects...
+2026-08-30T07:23:24.550Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-30T07:23:24.551Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "upgradeValidationCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 5,
+    "stepTitle": "Final Validation",
+    "commitId": "N/A"
+  }
+}}).
+2026-08-30T07:23:24.552Z [INFO] [Tool.invoke] do invoke.
+2026-08-30T07:23:24.554Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradeValidationCompleted' reported!\nSession ID: 20260830071839,\nSession Dir: c:\\Projeto Logístico - G3\\sistema-logistica\\.github\\modernize\\java-upgrade\\20260830071839"
+}}).
+2026-08-30T07:23:24.555Z [INFO] ----------------------invoked appmod-report-event----------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/3.8.1/maven-dependency-plugin-3.8.1.pom
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.1/build-helper-maven-plugin-3.6.1.pom
+Progress (1): 1.0 kBProgress (1): 2.7 kBProgress (1): 6.0 kBProgress (1): 8.1 kB[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/3.8.1/maven-dependency-plugin-3.8.1.pom (18 kB at 29 kB/s)
+                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.1/build-helper-maven-plugin-3.6.1.pom (8.1 kB at 13 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/mojo-parent/91/mojo-parent-91.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/3.8.1/maven-dependency-plugin-3.8.1.jar
+Progress (1): 715 BProgress (1): 1.6 kBProgress (1): 5.2 kBProgress (1): 7.2 kBProgress (1): 8.9 kBProgress (1): 11 kB Progress (1): 14 kBProgress (1): 17 kBProgress (1): 23 kBProgress (1): 27 kBProgress (1): 28 kBProgress (1): 31 kBProgress (1): 35 kBProgress (1): 38 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/mojo-parent/91/mojo-parent-91.pom (38 kB at 331 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.0/junit-bom-5.13.0.pom
+Progress (1): 908 BProgress (1): 2.3 kBProgress (1): 5.6 kB[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/3.8.1/maven-dependency-plugin-3.8.1.jar (208 kB at 972 kB/s)
+                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.13.0/junit-bom-5.13.0.pom (5.6 kB at 62 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.1/build-helper-maven-plugin-3.6.1.jar
+[INFO] 
+[INFO] ----------------------< br.com.ivanildo:tms-web >-----------------------
+[INFO] Building Gest�o Operacional de Carregamento 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+Progress (1): 0.9/72 kBProgress (1): 2.3/72 kBProgress (1): 3.6/72 kBProgress (1): 5.0/72 kBProgress (1): 6.4/72 kBProgress (1): 7.7/72 kBProgress (1): 9.1/72 kBProgress (1): 10/72 kB Progress (1): 11/72 kBProgress (1): 13/72 kBProgress (1): 14/72 kBProgress (1): 15/72 kBProgress (1): 17/72 kBProgress (1): 18/72 kBProgress (1): 20/72 kBProgress (1): 21/72 kBProgress (1): 22/72 kBProgress (1): 24/72 kBProgress (1): 25/72 kBProgress (1): 26/72 kBProgress (1): 28/72 kBProgress (1): 29/72 kBProgress (1): 31/72 kBProgress (1): 32/72 kBProgress (1): 33/72 kBProgress (1): 35/72 kBProgress (1): 36/72 kBProgress (1): 37/72 kBProgress (1): 39/72 kBProgress (1): 43/72 kBProgress (1): 47/72 kBProgress (1): 51/72 kBProgress (1): 56/72 kBProgress (1): 60/72 kBProgress (1): 61/72 kBProgress (1): 65/72 kBProgress (1): 69/72 kBProgress (1): 72 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.1/build-helper-maven-plugin-3.6.1.jar (72 kB at 462 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/3.5.1/maven-help-plugin-3.5.1.pom
+Progress (1): 780 BProgress (1): 2.0 kBProgress (1): 5.0 kBProgress (1): 9.1 kBProgress (1): 10 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/3.5.1/maven-help-plugin-3.5.1.pom (10 kB at 91 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/3.5.1/maven-help-plugin-3.5.1.jar
+Progress (1): 3.8/65 kBProgress (1): 8.0/65 kBProgress (1): 12/65 kB Progress (1): 16/65 kBProgress (1): 21/65 kBProgress (1): 25/65 kBProgress (1): 29/65 kBProgress (1): 33/65 kBProgress (1): 38/65 kBProgress (1): 42/65 kBProgress (1): 46/65 kBProgress (1): 50/65 kBProgress (1): 54/65 kBProgress (1): 59/65 kBProgress (1): 63/65 kBProgress (1): 65 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/3.5.1/maven-help-plugin-3.5.1.jar (65 kB at 558 kB/s)
+[INFO] 
+[INFO] ----------------------< br.com.ivanildo:tms-web >-----------------------
+[INFO] Building Gest�o Operacional de Carregamento 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- help:3.5.1:effective-pom (default-cli) @ tms-web ---
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.13.1/maven-plugin-tools-generators-3.13.1.pom
+Progress (1): 841 BProgress (1): 3.6 kBProgress (1): 4.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.13.1/maven-plugin-tools-generators-3.13.1.pom (4.1 kB at 41 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools/3.13.1/maven-plugin-tools-3.13.1.pom
+Progress (1): 803 BProgress (1): 2.3 kBProgress (1): 4.1 kBProgress (1): 9.1 kBProgress (1): 13 kB Progress (1): 17 kBProgress (1): 18 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools/3.13.1/maven-plugin-tools-3.13.1.pom (18 kB at 145 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M3/org.eclipse.sisu.plexus-0.9.0.M3.pom
+Progress (1): 820 BProgress (1): 3.4 kBProgress (1): 10 kB Progress (1): 17 kBProgress (1): 17 kB2026-08-30T07:23:27.542Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-30T07:23:27.543Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "planExecutionCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-08-30T07:23:27.543Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-30T07:23:27.544Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-30T07:23:27.544Z [INFO] ----------------------prepared appmod-report-event----------------------
+                   Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M3/org.eclipse.sisu.plexus-0.9.0.M3.pom (17 kB at 156 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/0.9.0.M3/sisu-inject-0.9.0.M3.pom
+Progress (1): 777 BProgress (1): 2.7 kBProgress (1): 4.7 kBProgress (1): 8.0 kBProgress (1): 11 kB Progress (1): 15 kBProgress (1): 19 kBProgress (1): 19 kBProgress (1): 23 kBProgress (1): 24 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/0.9.0.M3/sisu-inject-0.9.0.M3.pom (24 kB at 187 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M3/org.eclipse.sisu.inject-0.9.0.M3.pom
+Progress (1): 804 BProgress (1): 3.7 kBProgress (1): 11 kB Progress (1): 18 kBProgress (1): 20 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M3/org.eclipse.sisu.inject-0.9.0.M3.pom (20 kB at 152 kB/s)
+2026-08-30T07:23:28.037Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-30T07:23:28.038Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260830071839",
+  "projectPath": "c:\\Projeto Logístico - G3\\sistema-logistica",
+  "event": "planExecutionCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-08-30T07:23:28.038Z [INFO] [Tool.invoke] do invoke.
+2026-08-30T07:23:28.046Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planExecutionCompleted' reported!\nSession ID: 20260830071839,\nSession Dir: c:\\Projeto Logístico - G3\\sistema-logistica\\.github\\modernize\\java-upgrade\\20260830071839"
+}}).
+2026-08-30T07:23:28.046Z [INFO] ----------------------invoked appmod-report-event----------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.3/plexus-interactivity-api-1.3.pom
+Progress (1): 1.6 kBProgress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.3/plexus-interactivity-api-1.3.pom (1.7 kB at 15 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity/1.3/plexus-interactivity-1.3.pom
+[INFO] 
+[INFO] --- dependency:3.8.1:tree (default-cli) @ tms-web ---
+Progress (1): 1.3 kBProgress (1): 1.9 kB[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/2.0.0/doxia-sink-api-2.0.0.pom
+                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity/1.3/plexus-interactivity-1.3.pom (1.9 kB at 16 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/2.0.0/doxia-sink-api-2.0.0.pom (1.4 kB at 11 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/2.0.0/doxia-2.0.0.pom
+Downloading from central: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream/1.4.20/xstream-1.4.20.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/2.0.0/doxia-2.0.0.pom (17 kB at 169 kB/s)
+Progress (1): 945 BProgress (1): 4.0 kBProgress (1): 7.1 kBProgress (1): 9.9 kBProgress (1): 14 kB Progress (1): 22 kBProgress (1): 25 kB[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.1/junit-bom-5.11.1.pom
+                   Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream/1.4.20/xstream-1.4.20.pom (25 kB at 204 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream-parent/1.4.20/xstream-parent-1.4.20.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.1/junit-bom-5.11.1.pom (5.6 kB at 61 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/4.0.0/maven-reporting-impl-4.0.0.pom
+Progress (1): 797 BProgress (1): 3.2 kBProgress (1): 5.9 kBProgress (1): 11 kB Progress (1): 14 kBProgress (1): 19 kBProgress (1): 25 kBProgress (1): 29 kBProgress (1): 34 kBProgress (1): 38 kBProgress (1): 41 kBProgress (1): 43 kBProgress (1): 44 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream-parent/1.4.20/xstream-parent-1.4.20.pom (44 kB at 389 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/4.0.0/maven-reporting-impl-4.0.0.pom (8.8 kB at 91 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-model/2.0.0/doxia-site-model-2.0.0.pom
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.13.1/maven-plugin-tools-generators-3.13.1.jar
+Progress (1): 7.7/44 kBProgress (1): 16/44 kB Progress (1): 25/44 kBProgress (1): 41/44 kBProgress (1): 44 kB   [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-model/2.0.0/doxia-site-model-2.0.0.pom (5.8 kB at 61 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sitetools/2.0.0/doxia-sitetools-2.0.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sitetools/2.0.0/doxia-sitetools-2.0.0.pom (12 kB at 125 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.6.0/plexus-classworlds-2.6.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.6.0/plexus-classworlds-2.6.0.pom (7.9 kB at 94 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/2.0.0/doxia-core-2.0.0.pom
+                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.13.1/maven-plugin-tools-generators-3.13.1.jar (44 kB at 85 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M3/org.eclipse.sisu.plexus-0.9.0.M3.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M3/org.eclipse.sisu.inject-0.9.0.M3.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.3/plexus-interactivity-api-1.3.jar
+Downloading from central: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream/1.4.20/xstream-1.4.20.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/2.0.0/doxia-core-2.0.0.pom (3.9 kB at 50 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.17.0/commons-io-2.17.0.pom
+Progress (1): 3.2/434 kBProgress (1): 20/434 kB Progress (1): 36/434 kBProgress (1): 52/434 kBProgress (1): 61/434 kBProgress (1): 77/434 kBProgress (1): 93/434 kBProgress (1): 110/434 kBProgress (1): 126/434 kBProgress (1): 134/434 kBProgress (1): 142/434 kBProgress (1): 151/434 kBProgress (1): 159/434 kBProgress (1): 175/434 kBProgress (1): 192/434 kBProgress (1): 200/434 kBProgress (1): 216/434 kBProgress (1): 233/434 kBProgress (1): 249/434 kBProgress (1): 265/434 kBProgress (1): 282/434 kBProgress (1): 298/434 kBProgress (1): 314/434 kBProgress (1): 331/434 kBProgress (1): 347/434 kBProgress (1): 364/434 kBProgress (1): 380/434 kBProgress (1): 396/434 kBProgress (1): 413/434 kBProgress (1): 429/434 kBProgress (1): 434 kB    [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.17.0/commons-io-2.17.0.pom (20 kB at 176 kB/s)
+Progress (2): 434 kB | 0.9/645 kBProgress (2): 434 kB | 2.3/645 kBProgress (2): 434 kB | 3.6/645 kBProgress (2): 434 kB | 5.0/645 kBProgress (2): 434 kB | 6.4/645 kBProgress (2): 434 kB | 7.7/645 kBProgress (2): 434 kB | 9.1/645 kBProgress (2): 434 kB | 10/645 kB Progress (2): 434 kB | 11/645 kBProgress (2): 434 kB | 13/645 kBProgress (2): 434 kB | 14/645 kBProgress (2): 434 kB | 15/645 kBProgress (2): 434 kB | 17/645 kBProgress (2): 434 kB | 18/645 kBProgress (2): 434 kB | 20/645 kBProgress (2): 434 kB | 21/645 kBProgress (2): 434 kB | 22/645 kBProgress (2): 434 kB | 24/645 kBProgress (2): 434 kB | 25/645 kBProgress (2): 434 kB | 26/645 kBProgress (2): 434 kB | 28/645 kBProgress (2): 434 kB | 29/645 kBProgress (2): 434 kB | 31/645 kBProgress (2): 434 kB | 32/645 kBProgress (2): 434 kB | 33/645 kBProgress (2): 434 kB | 35/645 kBProgress (2): 434 kB | 36/645 kBProgress (2): 434 kB | 37/645 kBProgress (2): 434 kB | 39/645 kBProgress (3): 434 kB | 39/645 kB | 0.9/10 kBProgress (4): 434 kB | 39/645 kB | 0.9/10 kB | 0.9/216 kBProgress (4): 434 kB | 40/645 kB | 0.9/10 kB | 0.9/216 kBProgress (4): 434 kB | 41/645 kB | 0.9/10 kB | 0.9/216 kBProgress (4): 434 kB | 43/645 kB | 0.9/10 kB | 0.9/216 kBProgress (4): 434 kB | 43/645 kB | 0.9/10 kB | 2.3/216 kBProgress (4): 434 kB | 44/645 kB | 0.9/10 kB | 2.3/216 kBProgress (4): 434 kB | 44/645 kB | 2.3/10 kB | 2.3/216 kBProgress (4): 434 kB | 44/645 kB | 2.3/10 kB | 3.6/216 kBProgress (4): 434 kB | 46/645 kB | 2.3/10 kB | 3.6/216 kBProgress (4): 434 kB | 46/645 kB | 3.6/10 kB | 3.6/216 kBProgress (4): 434 kB | 46/645 kB | 4.1/10 kB | 3.6/216 kBProgress (4): 434 kB | 47/645 kB | 4.1/10 kB | 3.6/216 kBProgress (4): 434 kB | 47/645 kB | 4.1/10 kB | 5.0/216 kBProgress (4): 434 kB | 48/645 kB | 4.1/10 kB | 5.0/216 kBProgress (4): 434 kB | 48/645 kB | 5.5/10 kB | 5.0/216 kBProgress (4): 434 kB | 48/645 kB | 5.5/10 kB | 6.4/216 kBProgress (4): 434 kB | 50/645 kB | 5.5/10 kB | 6.4/216 kBProgress (4): 434 kB | 50/645 kB | 6.8/10 kB | 6.4/216 kBProgress (4): 434 kB | 50/645 kB | 6.8/10 kB | 7.7/216 kBProgress (4): 434 kB | 51/645 kB | 6.8/10 kB | 7.7/216 kBProgress (4): 434 kB | 51/645 kB | 8.2/10 kB | 7.7/216 kBProgress (4): 434 kB | 51/645 kB | 8.2/10 kB | 9.1/216 kBProgress (4): 434 kB | 52/645 kB | 8.2/10 kB | 9.1/216 kBProgress (4): 434 kB | 52/645 kB | 9.6/10 kB | 9.1/216 kBProgress (4): 434 kB | 52/645 kB | 9.6/10 kB | 10/216 kB Progress (4): 434 kB | 54/645 kB | 9.6/10 kB | 10/216 kBProgress (4): 434 kB | 54/645 kB | 10 kB | 10/216 kB    Progress (4): 434 kB | 54/645 kB | 10 kB | 12/216 kBProgress (4): 434 kB | 55/645 kB | 10 kB | 12/216 kBProgress (4): 434 kB | 55/645 kB | 10 kB | 13/216 kBProgress (4): 434 kB | 55/645 kB | 10 kB | 15/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 15/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 16/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 17/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 19/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 20/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 21/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 23/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 24/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 26/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 27/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 28/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 30/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 31/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 32/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 34/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 35/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 36/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 38/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 39/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 41/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 42/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 43/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 45/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 46/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 47/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 49/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 50/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 52/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 53/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 54/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 56/216 kBProgress (4): 434 kB | 59/645 kB | 10 kB | 60/216 kBProgress (4): 434 kB | 64/645 kB | 10 kB | 60/216 kBProgress (4): 434 kB | 68/645 kB | 10 kB | 60/216 kBProgress (4): 434 kB | 72/645 kB | 10 kB | 60/216 kBProgress (4): 434 kB | 76/645 kB | 10 kB | 60/216 kBProgress (4): 434 kB | 81/645 kB | 10 kB | 60/216 kBProgress (4): 434 kB | 85/645 kB | 10 kB | 60/216 kB[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/74/commons-parent-74.pom
+Progress (4): 434 kB | 89/645 kB | 10 kB | 60/216 kBProgress (4): 434 kB | 89/645 kB | 10 kB | 64/216 kBProgress (4): 434 kB | 93/645 kB | 10 kB | 64/216 kBProgress (4): 434 kB | 93/645 kB | 10 kB | 68/216 kBProgress (4): 434 kB | 97/645 kB | 10 kB | 68/216 kBProgress (4): 434 kB | 97/645 kB | 10 kB | 73/216 kBProgress (4): 434 kB | 102/645 kB | 10 kB | 73/216 kBProgress (4): 434 kB | 102/645 kB | 10 kB | 77/216 kBProgress (4): 434 kB | 106/645 kB | 10 kB | 77/216 kBProgress (4): 434 kB | 106/645 kB | 10 kB | 81/216 kBProgress (4): 434 kB | 110/645 kB | 10 kB | 81/216 kBProgress (4): 434 kB | 110/645 kB | 10 kB | 85/216 kBProgress (4): 434 kB | 114/645 kB | 10 kB | 85/216 kBProgress (4): 434 kB | 114/645 kB | 10 kB | 89/216 kBProgress (4): 434 kB | 114/645 kB | 10 kB | 94/216 kBProgress (4): 434 kB | 119/645 kB | 10 kB | 94/216 kBProgress (4): 434 kB | 119/645 kB | 10 kB | 98/216 kBProgress (4): 434 kB | 123/645 kB | 10 kB | 98/216 kBProgress (4): 434 kB | 123/645 kB | 10 kB | 102/216 kBProgress (4): 434 kB | 126/645 kB | 10 kB | 102/216 kBProgress (4): 434 kB | 126/645 kB | 10 kB | 106/216 kBProgress (4): 434 kB | 130/645 kB | 10 kB | 106/216 kBProgress (4): 434 kB | 130/645 kB | 10 kB | 111/216 kBProgress (4): 434 kB | 135/645 kB | 10 kB | 111/216 kBProgress (4): 434 kB | 135/645 kB | 10 kB | 115/216 kBProgress (4): 434 kB | 139/645 kB | 10 kB | 115/216 kBProgress (4): 434 kB | 139/645 kB | 10 kB | 119/216 kBProgress (4): 434 kB | 143/645 kB | 10 kB | 119/216 kBProgress (4): 434 kB | 147/645 kB | 10 kB | 119/216 kBProgress (4): 434 kB | 151/645 kB | 10 kB | 119/216 kBProgress (4): 434 kB | 151/645 kB | 10 kB | 122/216 kBProgress (4): 434 kB | 156/645 kB | 10 kB | 122/216 kBProgress (4): 434 kB | 156/645 kB | 10 kB | 127/216 kBProgress (4): 434 kB | 160/645 kB | 10 kB | 127/216 kBProgress (4): 434 kB | 164/645 kB | 10 kB | 127/216 kBProgress (4): 434 kB | 168/645 kB | 10 kB | 127/216 kBProgress (4): 434 kB | 173/645 kB | 10 kB | 127/216 kBProgress (4): 434 kB | 177/645 kB | 10 kB | 127/216 kBProgress (4): 434 kB | 181/645 kB | 10 kB | 127/216 kBProgress (4): 434 kB | 185/645 kB | 10 kB | 127/216 kB                                                      Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M3/org.eclipse.sisu.inject-0.9.0.M3.jar (434 kB at 2.2 MB/s)
+Progress (3): 189/645 kB | 10 kB | 127/216 kBProgress (3): 194/645 kB | 10 kB | 127/216 kBProgress (3): 198/645 kB | 10 kB | 127/216 kBProgress (3): 202/645 kB | 10 kB | 127/216 kBProgress (3): 206/645 kB | 10 kB | 127/216 kBProgress (3): 211/645 kB | 10 kB | 127/216 kBProgress (3): 215/645 kB | 10 kB | 127/216 kBProgress (3): 219/645 kB | 10 kB | 127/216 kBProgress (3): 223/645 kB | 10 kB | 127/216 kBProgress (3): 240/645 kB | 10 kB | 127/216 kBProgress (3): 240/645 kB | 10 kB | 131/216 kBProgress (3): 256/645 kB | 10 kB | 131/216 kBProgress (3): 256/645 kB | 10 kB | 135/216 kBProgress (3): 257/645 kB | 10 kB | 135/216 kBProgress (3): 257/645 kB | 10 kB | 139/216 kBProgress (3): 257/645 kB | 10 kB | 144/216 kBProgress (3): 257/645 kB | 10 kB | 148/216 kBProgress (3): 257/645 kB | 10 kB | 152/216 kBProgress (3): 274/645 kB | 10 kB | 152/216 kBProgress (3): 274/645 kB | 10 kB | 156/216 kBProgress (3): 274/645 kB | 10 kB | 160/216 kBProgress (3): 274/645 kB | 10 kB | 165/216 kBProgress (3): 290/645 kB | 10 kB | 165/216 kBProgress (3): 290/645 kB | 10 kB | 169/216 kBProgress (3): 290/645 kB | 10 kB | 173/216 kBProgress (3): 290/645 kB | 10 kB | 177/216 kBProgress (3): 290/645 kB | 10 kB | 182/216 kBProgress (3): 290/645 kB | 10 kB | 186/216 kBProgress (3): 306/645 kB | 10 kB | 186/216 kBProgress (3): 306/645 kB | 10 kB | 190/216 kBProgress (3): 306/645 kB | 10 kB | 194/216 kBProgress (3): 306/645 kB | 10 kB | 199/216 kBProgress (3): 323/645 kB | 10 kB | 199/216 kBProgress (3): 323/645 kB | 10 kB | 203/216 kBProgress (3): 323/645 kB | 10 kB | 207/216 kBProgress (3): 339/645 kB | 10 kB | 207/216 kBProgress (3): 339/645 kB | 10 kB | 211/216 kBProgress (3): 339/645 kB | 10 kB | 215/216 kBProgress (3): 339/645 kB | 10 kB | 216 kB    Progress (3): 355/645 kB | 10 kB | 216 kBProgress (3): 372/645 kB | 10 kB | 216 kBProgress (3): 388/645 kB | 10 kB | 216 kBProgress (3): 405/645 kB | 10 kB | 216 kBProgress (3): 421/645 kB | 10 kB | 216 kBProgress (3): 437/645 kB | 10 kB | 216 kBProgress (3): 454/645 kB | 10 kB | 216 kBProgress (3): 470/645 kB | 10 kB | 216 kBProgress (3): 487/645 kB | 10 kB | 216 kBProgress (3): 503/645 kB | 10 kB | 216 kBProgress (3): 519/645 kB | 10 kB | 216 kBProgress (3): 536/645 kB | 10 kB | 216 kBProgress (3): 552/645 kB | 10 kB | 216 kBProgress (3): 568/645 kB | 10 kB | 216 kBProgress (3): 585/645 kB | 10 kB | 216 kBProgress (3): 601/645 kB | 10 kB | 216 kBProgress (3): 618/645 kB | 10 kB | 216 kBProgress (3): 634/645 kB | 10 kB | 216 kBProgress (3): 645 kB | 10 kB | 216 kB                                         Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M3/org.eclipse.sisu.plexus-0.9.0.M3.jar (216 kB at 714 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/74/commons-parent-74.pom (78 kB at 654 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream/1.4.20/xstream-1.4.20.jar (645 kB at 1.9 MB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.3/plexus-interactivity-api-1.3.jar (10 kB at 26 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-integration-tools/2.0.0/doxia-integration-tools-2.0.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-integration-tools/2.0.0/doxia-integration-tools-2.0.0.pom (7.8 kB at 95 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/2.0.0/doxia-site-renderer-2.0.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/2.0.0/doxia-site-renderer-2.0.0.pom (7.4 kB at 93 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-skin-model/2.0.0/doxia-skin-model-2.0.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-skin-model/2.0.0/doxia-skin-model-2.0.0.pom (3.0 kB at 38 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml5/2.0.0/doxia-module-xhtml5-2.0.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml5/2.0.0/doxia-module-xhtml5-2.0.0.pom (2.9 kB at 36 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-modules/2.0.0/doxia-modules-2.0.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-modules/2.0.0/doxia-modules-2.0.0.pom (2.5 kB at 32 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/2.2.0/plexus-velocity-2.2.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/2.2.0/plexus-velocity-2.2.0.pom (4.1 kB at 47 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/19/plexus-19.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/19/plexus-19.pom (25 kB at 259 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-engine-core/2.4/velocity-engine-core-2.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-engine-core/2.4/velocity-engine-core-2.4.pom (12 kB at 91 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-engine-parent/2.4/velocity-engine-parent-2.4.pom
+[INFO] Effective-POM written to: c:\Projeto Log�stico - G3\sistema-logistica\effective-pom-8422d054-11e3-41ea-a321-08c563103ac5.log
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.491 s
+[INFO] Finished at: 2026-08-30T04:23:30-03:00
+[INFO] ------------------------------------------------------------------------
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-engine-parent/2.4/velocity-engine-parent-2.4.pom (9.5 kB at 85 kB/s)
+2026-08-30T07:23:31.118Z [INFO] [MavenBuildTool] Found pom.xml files: c:\Projeto Logístico - G3\sistema-logistica\pom.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/velocity/tools/velocity-tools-generic/3.1/velocity-tools-generic-3.1.pom
+2026-08-30T07:23:31.136Z [INFO] [MavenBuildTool] Java version found in c:\Projeto Logístico - G3\sistema-logistica\pom.xml: 25
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/velocity/tools/velocity-tools-generic/3.1/velocity-tools-generic-3.1.pom (2.6 kB at 32 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/velocity/tools/velocity-tools-parent/3.1/velocity-tools-parent-3.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/velocity/tools/velocity-tools-parent/3.1/velocity-tools-parent-3.1.pom (8.0 kB at 94 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-master/4/velocity-master-4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-master/4/velocity-master-4.pom (7.8 kB at 75 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-engine-core/2.3/velocity-engine-core-2.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-engine-core/2.3/velocity-engine-core-2.3.pom (10 kB at 122 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-engine-parent/2.3/velocity-engine-parent-2.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-engine-parent/2.3/velocity-engine-parent-2.3.pom (14 kB at 154 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.pom (30 kB at 330 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/51/commons-parent-51.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/51/commons-parent-51.pom (78 kB at 866 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom (3.8 kB at 50 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.30/slf4j-parent-1.7.30.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.30/slf4j-parent-1.7.30.pom (14 kB at 159 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.pom (18 kB at 200 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-digester3/3.2/commons-digester3-3.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-digester3/3.2/commons-digester3-3.2.pom (18 kB at 172 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/22/commons-parent-22.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/22/commons-parent-22.pom (42 kB at 451 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/9/apache-9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/9/apache-9.pom (15 kB at 167 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.pom (11 kB at 129 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/14/commons-parent-14.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/14/commons-parent-14.pom (31 kB at 330 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.pom (18 kB at 214 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/5/commons-parent-5.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/5/commons-parent-5.pom (16 kB at 193 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.10/commons-lang3-3.10.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.10/commons-lang3-3.10.pom (31 kB at 364 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/50/commons-parent-50.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/50/commons-parent-50.pom (76 kB at 879 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/cliftonlabs/json-simple/3.0.2/json-simple-3.0.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/cliftonlabs/json-simple/3.0.2/json-simple-3.0.2.pom (7.5 kB at 93 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-apt/2.0.0/doxia-module-apt-2.0.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-apt/2.0.0/doxia-module-apt-2.0.0.pom (2.9 kB at 38 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xdoc/2.0.0/doxia-module-xdoc-2.0.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xdoc/2.0.0/doxia-module-xdoc-2.0.0.pom (5.4 kB at 69 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.2/maven-archiver-3.6.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.2/maven-archiver-3.6.2.pom (4.4 kB at 59 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-analyzer/1.15.0/maven-dependency-analyzer-1.15.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-analyzer/1.15.0/maven-dependency-analyzer-1.15.0.pom (32 kB at 382 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/2.0.0/doxia-sink-api-2.0.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/2.0.0/doxia-sink-api-2.0.0.jar (11 kB at 53 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/4.0.0/maven-reporting-impl-4.0.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-model/2.0.0/doxia-site-model-2.0.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/2.0.0/doxia-core-2.0.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-integration-tools/2.0.0/doxia-integration-tools-2.0.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/2.0.0/doxia-site-renderer-2.0.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-model/2.0.0/doxia-site-model-2.0.0.jar (86 kB at 767 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-skin-model/2.0.0/doxia-skin-model-2.0.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-integration-tools/2.0.0/doxia-integration-tools-2.0.0.jar (50 kB at 284 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml5/2.0.0/doxia-module-xhtml5-2.0.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/2.0.0/doxia-core-2.0.0.jar (168 kB at 672 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/2.2.0/plexus-velocity-2.2.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-skin-model/2.0.0/doxia-skin-model-2.0.0.jar (16 kB at 47 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-engine-core/2.4/velocity-engine-core-2.4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/2.2.0/plexus-velocity-2.2.0.jar (5.7 kB at 15 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/velocity/tools/velocity-tools-generic/3.1/velocity-tools-generic-3.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/4.0.0/maven-reporting-impl-4.0.0.jar (21 kB at 56 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml5/2.0.0/doxia-module-xhtml5-2.0.0.jar (17 kB at 36 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-digester3/3.2/commons-digester3-3.2.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar (247 kB at 512 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/cliftonlabs/json-simple/3.0.2/json-simple-3.0.2.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/velocity/tools/velocity-tools-generic/3.1/velocity-tools-generic-3.1.jar (217 kB at 441 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-apt/2.0.0/doxia-module-apt-2.0.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-digester3/3.2/commons-digester3-3.2.jar (242 kB at 422 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xdoc/2.0.0/doxia-module-xdoc-2.0.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-apt/2.0.0/doxia-module-apt-2.0.0.jar (54 kB at 93 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.2/maven-archiver-3.6.2.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity-engine-core/2.4/velocity-engine-core-2.4.jar (510 kB at 874 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.6.0/plexus-classworlds-2.6.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/2.0.0/doxia-site-renderer-2.0.0.jar (44 kB at 71 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.10.0/plexus-archiver-4.10.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.6.0/plexus-classworlds-2.6.0.jar (53 kB at 80 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.6-3/zstd-jni-1.5.6-3.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.10.0/plexus-archiver-4.10.0.jar (225 kB at 301 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-analyzer/1.15.0/maven-dependency-analyzer-1.15.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/cliftonlabs/json-simple/3.0.2/json-simple-3.0.2.jar (35 kB at 39 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.2/maven-archiver-3.6.2.jar (27 kB at 29 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xdoc/2.0.0/doxia-module-xdoc-2.0.0.jar (35 kB at 34 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.6-3/zstd-jni-1.5.6-3.jar (6.7 MB at 6.0 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-analyzer/1.15.0/maven-dependency-analyzer-1.15.0.jar (45 kB at 35 kB/s)
+[INFO] br.com.ivanildo:tms-web:jar:1.0.0
+[INFO] +- com.vaadin:vaadin-spring-boot-starter:jar:24.3.5:compile
+[INFO] |  +- com.vaadin:vaadin-spring:jar:24.3.5:compile
+[INFO] |  |  +- com.vaadin:flow-server:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin.servletdetector:throw-if-servlet3:jar:1.0.2:compile
+[INFO] |  |  |  +- com.vaadin.external.gwt:gwt-elemental:jar:2.8.2.vaadin2:compile
+[INFO] |  |  |  +- org.apache.commons:commons-fileupload2-jakarta:jar:2.0.0-M1:compile
+[INFO] |  |  |  |  \- org.apache.commons:commons-fileupload2-core:jar:2.0.0-M1:compile
+[INFO] |  |  |  +- com.fasterxml.jackson.core:jackson-core:jar:2.19.2:compile
+[INFO] |  |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.19.2:compile
+[INFO] |  |  |  |  \- com.fasterxml.jackson.core:jackson-annotations:jar:2.19.2:compile
+[INFO] |  |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.19.2:compile
+[INFO] |  |  |  +- org.jsoup:jsoup:jar:1.17.2:compile
+[INFO] |  |  |  +- com.helger:ph-css:jar:7.0.1:compile
+[INFO] |  |  |  |  \- com.helger.commons:ph-commons:jar:11.1.0:compile
+[INFO] |  |  |  +- org.ow2.asm:asm:jar:9.6:compile
+[INFO] |  |  |  \- com.vaadin.external:gentyref:jar:1.2.0.vaadin1:compile
+[INFO] |  |  +- com.vaadin:flow-push:jar:24.3.5:compile
+[INFO] |  |  |  \- com.vaadin.external.atmosphere:atmosphere-runtime:jar:3.0.3.slf4jvaadin2:compile
+[INFO] |  |  +- com.vaadin:flow-client:jar:24.3.5:compile
+[INFO] |  |  +- org.springframework:spring-webmvc:jar:6.2.10:compile
+[INFO] |  |  +- org.springframework:spring-websocket:jar:6.2.10:compile
+[INFO] |  |  +- org.hibernate.validator:hibernate-validator:jar:8.0.3.Final:compile
+[INFO] |  |  |  \- jakarta.validation:jakarta.validation-api:jar:3.0.2:compile
+[INFO] |  |  \- org.reflections:reflections:jar:0.10.2:compile
+[INFO] |  |     \- org.javassist:javassist:jar:3.28.0-GA:compile
+[INFO] |  +- com.vaadin:vaadin-core:jar:24.3.5:compile
+[INFO] |  |  +- com.vaadin:vaadin-core-internal:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:flow-lit-template:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:flow-html-components:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:flow-data:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:flow-dnd:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-lumo-theme:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-material-theme:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-accordion-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-avatar-flow:jar:24.3.5:compile
+[INFO] |  |  |  |  \- com.vaadin:vaadin-flow-components-base:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-button-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-checkbox-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-combo-box-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-confirm-dialog-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-custom-field-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-date-picker-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-date-time-picker-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-details-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-time-picker-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-select-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-side-nav-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-dialog-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-form-layout-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-field-highlighter-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-grid-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-icons-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-virtual-list-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-list-box-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-login-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-messages-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-ordered-layout-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-progress-bar-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-radio-button-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-renderer-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-split-layout-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-tabs-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-text-field-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-upload-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-notification-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-app-layout-flow:jar:24.3.5:compile
+[INFO] |  |  |  +- com.vaadin:vaadin-context-menu-flow:jar:24.3.5:compile
+[INFO] |  |  |  \- com.vaadin:vaadin-menu-bar-flow:jar:24.3.5:compile
+[INFO] |  |  \- com.vaadin:vaadin-dev:jar:24.3.5:compile
+[INFO] |  |     +- com.vaadin:vaadin-dev-server:jar:24.3.5:compile
+[INFO] |  |     |  +- com.vaadin:license-checker:jar:1.12.7:compile
+[INFO] |  |     |  |  +- com.github.oshi:oshi-core:jar:6.4.10:compile
+[INFO] |  |     |  |  |  +- net.java.dev.jna:jna:jar:5.14.0:compile
+[INFO] |  |     |  |  |  \- net.java.dev.jna:jna-platform:jar:5.14.0:compile
+[INFO] |  |     |  |  +- com.nimbusds:nimbus-jose-jwt:jar:9.31:compile
+[INFO] |  |     |  |  \- org.lucee:jcip-annotations:jar:1.0.0:compile
+[INFO] |  |     |  +- com.vaadin:open:jar:8.5.0:compile
+[INFO] |  |     |  +- com.github.javaparser:javaparser-core:jar:3.25.6:compile
+[INFO] |  |     |  \- io.methvin:directory-watcher:jar:0.18.0:compile
+[INFO] |  |     \- com.vaadin:vaadin-dev-bundle:jar:24.3.5:compile
+[INFO] |  \- org.springframework.boot:spring-boot-starter-web:jar:3.5.5:compile
+[INFO] |     +- org.springframework.boot:spring-boot-starter-json:jar:3.5.5:compile
+[INFO] |     |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.19.2:compile
+[INFO] |     |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.19.2:compile
+[INFO] |     +- org.springframework.boot:spring-boot-starter-tomcat:jar:3.5.5:compile
+[INFO] |     |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:10.1.44:compile
+[INFO] |     |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:10.1.44:compile
+[INFO] |     |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:10.1.44:compile
+[INFO] |     \- org.springframework:spring-web:jar:6.2.10:compile
+[INFO] |        \- io.micrometer:micrometer-observation:jar:1.15.3:compile
+[INFO] |           \- io.micrometer:micrometer-commons:jar:1.15.3:compile
+[INFO] +- org.postgresql:postgresql:jar:42.7.7:runtime
+[INFO] |  \- org.checkerframework:checker-qual:jar:3.49.3:runtime
+[INFO] +- commons-io:commons-io:jar:2.16.1:compile
+[INFO] +- com.github.pjfanning:excel-streaming-reader:jar:4.0.5:compile
+[INFO] |  +- org.apache.poi:poi:jar:5.2.3:compile
+[INFO] |  |  +- commons-codec:commons-codec:jar:1.18.0:compile
+[INFO] |  |  +- org.apache.commons:commons-math3:jar:3.6.1:compile
+[INFO] |  |  \- com.zaxxer:SparseBitSet:jar:1.2:compile
+[INFO] |  +- com.github.pjfanning:poi-shared-strings:jar:2.5.6:runtime
+[INFO] |  |  +- com.h2database:h2:jar:2.3.232:runtime
+[INFO] |  |  \- org.apache.commons:commons-text:jar:1.10.0:runtime
+[INFO] |  |     \- org.apache.commons:commons-lang3:jar:3.17.0:compile
+[INFO] |  \- org.slf4j:slf4j-api:jar:2.0.17:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-security:jar:3.5.5:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:3.5.5:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot:jar:3.5.5:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-autoconfigure:jar:3.5.5:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:3.5.5:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.5.18:compile
+[INFO] |  |  |  |  \- ch.qos.logback:logback-core:jar:1.5.18:compile
+[INFO] |  |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.24.3:compile
+[INFO] |  |  |  \- org.slf4j:jul-to-slf4j:jar:2.0.17:compile
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:2.1.1:compile
+[INFO] |  |  +- org.springframework:spring-core:jar:6.2.10:compile
+[INFO] |  |  |  \- org.springframework:spring-jcl:jar:6.2.10:compile
+[INFO] |  |  \- org.yaml:snakeyaml:jar:2.4:compile
+[INFO] |  +- org.springframework:spring-aop:jar:6.2.10:compile
+[INFO] |  |  \- org.springframework:spring-beans:jar:6.2.10:compile
+[INFO] |  +- org.springframework.security:spring-security-config:jar:6.5.3:compile
+[INFO] |  |  +- org.springframework.security:spring-security-core:jar:6.5.3:compile
+[INFO] |  |  |  \- org.springframework.security:spring-security-crypto:jar:6.5.3:compile
+[INFO] |  |  \- org.springframework:spring-context:jar:6.2.10:compile
+[INFO] |  \- org.springframework.security:spring-security-web:jar:6.5.3:compile
+[INFO] |     \- org.springframework:spring-expression:jar:6.2.10:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-data-jpa:jar:3.5.5:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-jdbc:jar:3.5.5:compile
+[INFO] |  |  +- com.zaxxer:HikariCP:jar:6.3.2:compile
+[INFO] |  |  \- org.springframework:spring-jdbc:jar:6.2.10:compile
+[INFO] |  +- org.hibernate.orm:hibernate-core:jar:6.6.26.Final:compile
+[INFO] |  |  +- jakarta.persistence:jakarta.persistence-api:jar:3.1.0:compile
+[INFO] |  |  +- jakarta.transaction:jakarta.transaction-api:jar:2.0.1:compile
+[INFO] |  |  +- org.jboss.logging:jboss-logging:jar:3.6.1.Final:compile
+[INFO] |  |  +- org.hibernate.common:hibernate-commons-annotations:jar:7.0.3.Final:runtime
+[INFO] |  |  +- io.smallrye:jandex:jar:3.2.0:runtime
+[INFO] |  |  +- com.fasterxml:classmate:jar:1.7.0:compile
+[INFO] |  |  +- net.bytebuddy:byte-buddy:jar:1.17.7:runtime
+[INFO] |  |  +- jakarta.xml.bind:jakarta.xml.bind-api:jar:4.0.2:runtime
+[INFO] |  |  |  \- jakarta.activation:jakarta.activation-api:jar:2.1.3:runtime
+[INFO] |  |  +- org.glassfish.jaxb:jaxb-runtime:jar:4.0.5:runtime
+[INFO] |  |  |  \- org.glassfish.jaxb:jaxb-core:jar:4.0.5:runtime
+[INFO] |  |  |     +- org.eclipse.angus:angus-activation:jar:2.0.2:runtime
+[INFO] |  |  |     +- org.glassfish.jaxb:txw2:jar:4.0.5:runtime
+[INFO] |  |  |     \- com.sun.istack:istack-commons-runtime:jar:4.1.2:runtime
+[INFO] |  |  +- jakarta.inject:jakarta.inject-api:jar:2.0.1:runtime
+[INFO] |  |  \- org.antlr:antlr4-runtime:jar:4.13.0:compile
+[INFO] |  +- org.springframework.data:spring-data-jpa:jar:3.5.3:compile
+[INFO] |  |  +- org.springframework.data:spring-data-commons:jar:3.5.3:compile
+[INFO] |  |  +- org.springframework:spring-orm:jar:6.2.10:compile
+[INFO] |  |  \- org.springframework:spring-tx:jar:6.2.10:compile
+[INFO] |  \- org.springframework:spring-aspects:jar:6.2.10:compile
+[INFO] |     \- org.aspectj:aspectjweaver:jar:1.9.24:compile
+[INFO] +- com.github.librepdf:openpdf:jar:1.3.30:compile
+[INFO] |  \- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO] \- org.apache.poi:poi-ooxml:jar:5.2.5:compile
+[INFO]    +- org.apache.poi:poi-ooxml-lite:jar:5.2.5:compile
+[INFO]    +- org.apache.xmlbeans:xmlbeans:jar:5.2.0:compile
+[INFO]    +- org.apache.commons:commons-compress:jar:1.25.0:compile
+[INFO]    +- com.github.virtuald:curvesapi:jar:1.08:compile
+[INFO]    +- org.apache.logging.log4j:log4j-api:jar:2.24.3:compile
+[INFO]    \- org.apache.commons:commons-collections4:jar:4.4:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.563 s
+[INFO] Finished at: 2026-08-30T04:23:39-03:00
+[INFO] ------------------------------------------------------------------------
+2026-08-30T07:23:39.087Z [INFO] [MavenBuildTool] Successfully got dependency tree of c:\Projeto Logístico - G3\sistema-logistica
+2026-08-30T07:23:39.090Z [INFO] [MavenBuildTool] Getting Java version of c:\Projeto Logístico - G3\sistema-logistica from pom.xml
+2026-08-30T07:23:39.091Z [INFO] [MavenBuildTool] Searching for pom.xml files in c:\Projeto Logístico - G3\sistema-logistica
+2026-08-30T07:23:39.092Z [INFO] [MavenBuildTool] Found pom.xml files: c:\Projeto Logístico - G3\sistema-logistica\pom.xml
+2026-08-30T07:23:39.094Z [INFO] [MavenBuildTool] Java version found in c:\Projeto Logístico - G3\sistema-logistica\pom.xml: 25
