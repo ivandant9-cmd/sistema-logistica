@@ -13,7 +13,6 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
@@ -47,15 +46,7 @@ import java.util.stream.Collectors;
 
 @Route("")
 @PageTitle("Gestão Operacional de Carregamento | TMS")
-@CssImport("./styles/dashboard-styles.css")
 @PermitAll
-@CssImport(value = "./styles/vaadin-grid-custom.css", themeFor = "vaadin-grid")
-@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-text-field")
-@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-date-picker")
-@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-select")
-@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-combo-box")
-@CssImport(value = "./styles/vaadin-form-fields-custom.css", themeFor = "vaadin-text-area")
-@CssImport(value = "./styles/vaadin-dialog-custom.css", themeFor = "vaadin-dialog-overlay")
 public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
     private final CarregamentoRepository repository;

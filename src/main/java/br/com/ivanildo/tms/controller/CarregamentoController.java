@@ -14,7 +14,6 @@ public class CarregamentoController {
     @Autowired
     private CarregamentoRepository carregamentoRepository;
 
-    // Retorna todos os carregamentos cadastrados
     @GetMapping
     public List<Carregamento> listarTodos() {
         return carregamentoRepository.findAll();
