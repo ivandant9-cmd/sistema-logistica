@@ -1,5 +1,5 @@
 # Estágio de Build
-FROM maven:3.9.16-eclipse-temurin-25 AS build
+FROM maven:3.9.9-eclipse-temurin-21 AS build
 WORKDIR /app
 
 # 1. Copia o pom.xml e baixa as dependências
@@ -22,7 +22,7 @@ RUN --mount=type=cache,target=/root/.m2 mvn vaadin:prepare-frontend -Pproduction
 RUN --mount=type=cache,target=/root/.m2 mvn package -Pproduction -DskipTests
 
 # Estágio de Execução
-FROM eclipse-temurin:25-jre
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
