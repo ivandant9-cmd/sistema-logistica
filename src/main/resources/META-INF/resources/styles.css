@@ -1,0 +1,26 @@
+@keyframes piscarAzul {
+    0% { opacity: 1; color: #3b82f6; }
+    50% { opacity: 0.3; color: #93c5fd; }
+    100% { opacity: 1; color: #3b82f6; }
+}
+
+@keyframes piscarAmarelo {
+    0% { opacity: 1; color: #eab308; }
+    50% { opacity: 0.3; color: #fde047; }
+    100% { opacity: 1; color: #eab308; }
+}
+
+.piscar-azul {
+    font-weight: bold;
+    animation: piscarAzul 1.2s infinite ease-in-out;
+}
+
+.piscar-amarelo {
+    font-weight: bold;
+    animation: piscarAmarelo 1.2s infinite ease-in-out;
+}
+
+.status-verde {
+    font-weight: bold;
+    color: #22c55e;
+}

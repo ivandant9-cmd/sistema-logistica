@@ -24,6 +24,7 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -34,6 +35,7 @@ import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.component.Component;
 
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -52,6 +54,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final CarregamentoRepository repository;
     private final EntregaRepository entregaRepository;
     private final ExcelService excelService;
+    private CarregamentoRepository carregamentoRepository;
 
     private final Grid<Carregamento> grid = new Grid<>(Carregamento.class, false);
     private final Map<Carregamento, Checkbox> mapaCheckboxesMain = new HashMap<>();
@@ -545,9 +548,9 @@ masterCheckbox.addValueChangeListener(event -> {
         grid.addColumn(Carregamento::getPeso).setHeader("PESO").setAutoWidth(true);
         grid.addColumn(Carregamento::getEncaixe).setHeader("ENCAIXE").setAutoWidth(true);
 
-        grid.addColumn(new ComponentRenderer<>(this::criarBadgeStatus))
-            .setHeader("STATUS")
-            .setAutoWidth(true);
+       grid.addComponentColumn(carregamento -> criarBotoesStatus(carregamento))
+       .setHeader("STATUS")
+       .setAutoWidth(true);
 
         grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
 
@@ -587,36 +590,66 @@ masterCheckbox.addValueChangeListener(event -> {
         })).setHeader("AÇÕES").setAutoWidth(true);
     }
 
-    private Span criarBadgeStatus(Carregamento c) {
-        String statusTxt = c.getStatus() != null && !c.getStatus().isEmpty() ? c.getStatus() : "Pendente";
-        Span badge = new Span(statusTxt);
+    private Component criarBotoesStatus(Carregamento carregamento) {
+    HorizontalLayout layout = new HorizontalLayout();
+    layout.setSpacing(true);
+    layout.setPadding(false);
+    layout.setAlignItems(FlexComponent.Alignment.CENTER);
 
-        badge.getStyle()
-            .set("padding", "0.3rem 0.75rem")
-            .set("border-radius", "20px")
-            .set("font-size", "0.75rem")
-            .set("font-weight", "700")
-            .set("display", "inline-block")
-            .set("text-align", "center");
+    String statusAtual = carregamento.getStatus() != null ? carregamento.getStatus().toUpperCase() : "";
 
-        String status = statusTxt.toUpperCase();
-        switch (status) {
-            case "APRESENTADO":
-                badge.getStyle().set("background-color", "rgba(30, 58, 138, 0.6)").set("color", "#93c5fd").set("border", "1px solid #1e40af");
-                break;
-            case "CARREGANDO":
-                badge.getStyle().set("background-color", "rgba(120, 53, 15, 0.6)").set("color", "#fde047").set("border", "1px solid #854d0e");
-                break;
-            case "EXPEDIDO":
-                badge.getStyle().set("background-color", "rgba(6, 95, 70, 0.6)").set("color", "#6ee7b7").set("border", "1px solid #065f46");
-                break;
-            default:
-                badge.getStyle().set("background-color", "rgba(51, 65, 85, 0.6)").set("color", "#cbd5e1").set("border", "1px solid #475569");
-                break;
-        }
+    Button btnApresentado = new Button("Apresentado");
+    Button btnCarregando = new Button("Carregando");
+    Button btnExpedido = new Button("Expedido");
 
-        return badge;
-    }
+    String baseStyle = "font-size: 0.70rem; height: 26px; padding: 0 8px; border-radius: 4px; cursor: pointer;";
+
+    // Cores dinâmicas baseadas no status atual
+    btnApresentado.getElement().setAttribute("style", baseStyle + ("APRESENTADO".equals(statusAtual) 
+        ? " background-color: #3b82f6; color: white; font-weight: bold; box-shadow: 0 0 8px #3b82f6;" 
+        : " background-color: #1f2937; color: #9ca3af; opacity: 0.5;"));
+
+    btnCarregando.getElement().setAttribute("style", baseStyle + ("CARREGANDO".equals(statusAtual) 
+        ? " background-color: #f59e0b; color: white; font-weight: bold; box-shadow: 0 0 8px #f59e0b;" 
+        : " background-color: #1f2937; color: #9ca3af; opacity: 0.5;"));
+
+    btnExpedido.getElement().setAttribute("style", baseStyle + ("EXPEDIDO".equals(statusAtual) 
+        ? " background-color: #10b981; color: white; font-weight: bold; box-shadow: 0 0 8px #10b981;" 
+        : " background-color: #1f2937; color: #9ca3af; opacity: 0.5;"));
+
+    // Ações de clique atualizadas
+    btnApresentado.addClickListener(e -> {
+        carregamento.setStatus("APRESENTADO");
+        carregamentoRepository.save(carregamento);
+        grid.getDataProvider().refreshItem(carregamento);
+    });
+
+    btnCarregando.addClickListener(e -> {
+        carregamento.setStatus("CARREGANDO");
+        carregamentoRepository.save(carregamento);
+        grid.getDataProvider().refreshItem(carregamento);
+    });
+
+    btnExpedido.addClickListener(e -> {
+        carregamento.setStatus("EXPEDIDO");
+        carregamentoRepository.save(carregamento);
+        grid.getDataProvider().refreshItem(carregamento);
+    });
+
+    layout.add(btnApresentado, btnCarregando, btnExpedido);
+    return layout;
+}
+
+// Método auxiliar para salvar e atualizar a grid (ajuste o nome do repository/service se necessário)
+private void alterarStatusEAtualizar(Carregamento carregamento, String novoStatus) {
+    // 1. Atualiza no banco de dados
+    carregamento.setStatus(novoStatus);
+    carregamentoRepository.save(carregamento);
+    
+    // 2. Atualiza o item específico na grid e redesenha a tabela inteira
+    grid.getDataProvider().refreshItem(carregamento);
+    grid.getDataProvider().refreshAll();
+}
 
     private void abrirFormularioModal(Carregamento carregamento) {
         Dialog dialog = new Dialog();

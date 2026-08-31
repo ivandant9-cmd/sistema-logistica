@@ -21,6 +21,10 @@ public class Entrega {
     @Column(name = "origem_sheet")
     private String origemSheet;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private StatusCarga status = StatusCarga.PENDENTE;
+
     @ManyToOne
     @JoinColumn(name = "carregamento_id")
     private Carregamento carregamento;
@@ -99,6 +103,14 @@ public class Entrega {
 
     public void setOrigemSheet(String origemSheet) {
         this.origemSheet = origemSheet;
+    }
+
+    public StatusCarga getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusCarga status) {
+        this.status = status;
     }
 
     public Carregamento getCarregamento() {
