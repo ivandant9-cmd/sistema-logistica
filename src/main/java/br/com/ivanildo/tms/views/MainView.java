@@ -36,6 +36,7 @@ import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.component.Component;
+import java.time.LocalDateTime;
 
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -99,8 +100,8 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         add(titulo, containerKPI, barraAcoes, grid);
         atualizarGridEIndicators();
     }
-
-    @Override
+    
+        @Override
     public void beforeEnter(BeforeEnterEvent event) {
         atualizarGridEIndicators();
     }
@@ -231,6 +232,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 .set("color", "#ffffff")
                 .set("font-weight", "600");
 
+     
         btnArquivarExpedidas.addClickListener(e -> {
             List<Carregamento> expedidosAtivos = repository.findAll().stream()
                 .filter(c -> (c.getArquivado() == null || !c.getArquivado()) && 
@@ -309,6 +311,14 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnVerArquivados.addClickListener(e -> abrirModalArquivados());
 
+        Button btnVerFila = new Button("Ver Fila", VaadinIcon.LIST.create());
+        btnVerFila.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
+        btnVerFila.getStyle()
+                .set("background", "linear-gradient(135deg, #3b82f6, #1d4ed8)")
+                .set("color", "#ffffff")
+                .set("font-weight", "600");
+        btnVerFila.addClickListener(e -> abrirModalFila());
+
         Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
         btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnRelatorioPaletes.getStyle()
@@ -317,8 +327,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 .set("font-weight", "600");
         btnRelatorioPaletes.addClickListener(e -> UI.getCurrent().navigate(RelatorioPaletesView.class));
 
-        grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnExcluirSelecionadas, btnLimparCheckin, btnVerArquivados, btnRelatorioPaletes);
-
+        grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnExcluirSelecionadas, btnLimparCheckin, btnVerArquivados, btnVerFila, btnRelatorioPaletes);
         MemoryBuffer buffer = new MemoryBuffer();
         Upload uploadExcel = new Upload(buffer);
         uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
@@ -379,7 +388,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 cb.setValue(masterValue);
             }
         });
-
+                
         gridArquivados.addComponentColumn(carregamento -> {
             Checkbox checkbox = new Checkbox();
             checkbox.setValue(false);
@@ -460,6 +469,70 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         modalArquivados.add(gridArquivados);
         modalArquivados.open();
     }
+
+    @SuppressWarnings("null")
+private void abrirModalFila() {
+    Dialog modalFila = new Dialog();
+    modalFila.setWidth("85vw");
+    modalFila.setHeight("80vh");
+    modalFila.setHeaderTitle("🕒 Fila de Espera para Carregamento (Ordem de Chegada)");
+
+    modalFila.getElement().getStyle()
+        .set("background-color", "#0f172a")
+        .set("color", "#ffffff")
+        .set("--lumo-base-color", "#0f172a")
+        .set("--lumo-body-text-color", "#ffffff");
+
+    Grid<Carregamento> gridFila = new Grid<>(Carregamento.class, false);
+    gridFila.setSizeFull();
+    gridFila.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COMPACT);
+
+    gridFila.getStyle()
+        .set("background-color", "#0f172a")
+        .set("border", "1px solid #1e293b")
+        .set("border-radius", "8px");
+
+    gridFila.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true);
+    gridFila.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
+    gridFila.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
+    gridFila.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
+    gridFila.addColumn(Carregamento::getTipoVeiculo).setHeader("TIPO VEÍCULO").setAutoWidth(true);
+    gridFila.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
+    
+    gridFila.addColumn(c -> {
+        if (c.getHoraChegada() != null) {
+            return c.getHoraChegada().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+        }
+        return "-";
+    }).setHeader("HORA CHEGADA").setAutoWidth(true);
+
+    gridFila.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
+
+    List<Carregamento> listaFila = repository.findAll().stream()
+        .filter(c -> (c.getArquivado() == null || !c.getArquivado()) &&
+                     c.getStatus() != null && 
+                     c.getStatus().trim().equalsIgnoreCase("Apresentado"))
+        .sorted((c1, c2) -> {
+            if (c1.getHoraChegada() == null) return 1;
+            if (c2.getHoraChegada() == null) return -1;
+            return c1.getHoraChegada().compareTo(c2.getHoraChegada());
+        })
+        .toList();
+
+    gridFila.setItems(listaFila);
+
+    Button btnFechar = new Button("Fechar", e -> modalFila.close());
+    btnFechar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+
+    HorizontalLayout footerLayout = new HorizontalLayout(new Span("Total na fila: " + listaFila.size() + " veículo(s)"), btnFechar);
+    footerLayout.setJustifyContentMode(JustifyContentMode.BETWEEN);
+    footerLayout.setWidthFull();
+    footerLayout.setAlignItems(FlexComponent.Alignment.CENTER);
+
+    modalFila.getFooter().add(footerLayout);
+    modalFila.add(gridFila);
+    modalFila.open();
+}
 
     @SuppressWarnings("null")
     private void configurarGrid() {
@@ -582,6 +655,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         btnApresentado.addClickListener(e -> {
             carregamento.setStatus("Apresentado");
+            if (carregamento.getHoraChegada() == null) {
+                carregamento.setHoraChegada(LocalDateTime.now());
+            }
             repository.save(carregamento);
             atualizarGridEIndicators();
             UiBroadcaster.broadcast("STATUS_ATUALIZADO");
@@ -589,6 +665,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         btnCarregando.addClickListener(e -> {
             carregamento.setStatus("Carregando");
+            carregamento.setHoraInicioCarregamento(LocalDateTime.now());
             repository.save(carregamento);
             atualizarGridEIndicators();
             UiBroadcaster.broadcast("STATUS_ATUALIZADO");
@@ -596,6 +673,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         btnExpedido.addClickListener(e -> {
             carregamento.setStatus("Expedido");
+            carregamento.setHoraFimCarregamento(LocalDateTime.now());
             repository.save(carregamento);
             atualizarGridEIndicators();
             UiBroadcaster.broadcast("STATUS_ATUALIZADO");

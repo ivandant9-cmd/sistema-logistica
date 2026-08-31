@@ -26,6 +26,11 @@ public class Carregamento {
     private String notasFiscais;
     @Column(length = 1000)
     private String observacao;
+    private LocalDateTime horaChegada;
+private LocalDateTime horaInicioCarregamento;
+private LocalDateTime horaFimCarregamento;
+
+
 
     // --- NOVOS CAMPOS PARA O CHECK-IN SELF-SERVICE ---
     @ManyToOne
@@ -92,6 +97,31 @@ public class Carregamento {
     // Getters e Setters do Arquivamento
     public Boolean getArquivado() { return arquivado != null ? arquivado : false; }
     public void setArquivado(Boolean arquivado) { this.arquivado = arquivado; }
+
+    public LocalDateTime getHoraChegada() {
+    return horaChegada;
+}
+
+public void setHoraChegada(LocalDateTime horaChegada) {
+    this.horaChegada = horaChegada;
+}
+
+public LocalDateTime getHoraInicioCarregamento() {
+    return horaInicioCarregamento;
+}
+
+public void setHoraInicioCarregamento(LocalDateTime horaInicioCarregamento) {
+    this.horaInicioCarregamento = horaInicioCarregamento;
+}
+
+public LocalDateTime getHoraFimCarregamento() {
+    return horaFimCarregamento;
+}
+
+public void setHoraFimCarregamento(LocalDateTime horaFimCarregamento) {
+    this.horaFimCarregamento = horaFimCarregamento;
+}
+
 
     // Novo campo para quantidade de paletes
     private Integer paletes;
