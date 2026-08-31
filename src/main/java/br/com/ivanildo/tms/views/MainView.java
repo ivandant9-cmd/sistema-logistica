@@ -37,7 +37,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.component.Component;
 import java.time.LocalDateTime;
-
+import java.time.format.DateTimeFormatter;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -406,6 +406,21 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         gridArquivados.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
         gridArquivados.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+    gridArquivados.addColumn(c -> c.getHoraChegada() != null ? c.getHoraChegada().format(formatter) : "-")
+        .setHeader("CHEGADA").setAutoWidth(true);
+
+    gridArquivados.addColumn(c -> c.getHoraInicioCarregamento() != null ? c.getHoraInicioCarregamento().format(formatter) : "-")
+        .setHeader("INÍCIO CARGA").setAutoWidth(true);
+
+    gridArquivados.addColumn(c -> c.getHoraFimCarregamento() != null ? c.getHoraFimCarregamento().format(formatter) : "-")
+        .setHeader("FIM CARGA").setAutoWidth(true);
+
+        gridArquivados.addColumn(Carregamento::getTempoEsperaFilaFormatado).setHeader("ESPERA FILA").setAutoWidth(true);
+    gridArquivados.addColumn(Carregamento::getTempoCarregamentoFormatado).setHeader("TEMPO CARGA").setAutoWidth(true);
+    gridArquivados.addColumn(Carregamento::getLeadTimeTotalFormatado).setHeader("LEAD TIME TOTAL").setAutoWidth(true);
+
         gridArquivados.addColumn(new ComponentRenderer<>(carregamento -> {
             Button btnDesarquivar = new Button("Desarquivar", VaadinIcon.UPLOAD_ALT.create());
             btnDesarquivar.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_SUCCESS);
@@ -413,6 +428,10 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 carregamento.setArquivado(false);
                 repository.save(carregamento);
                 
+
+                // Adicione estas colunas no gridArquivados dentro do seu método abrirModalArquivados()
+    
+                   
                 mapaCheckboxesArquivados.clear();
                 List<Carregamento> listaArquivados = repository.findAll().stream()
                     .filter(c -> c.getArquivado() != null && c.getArquivado())

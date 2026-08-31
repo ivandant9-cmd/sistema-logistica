@@ -122,6 +122,39 @@ public void setHoraFimCarregamento(LocalDateTime horaFimCarregamento) {
     this.horaFimCarregamento = horaFimCarregamento;
 }
 
+// Retorna o tempo de espera na fila (da Chegada até o Início do Carregamento)
+    public String getTempoEsperaFilaFormatado() {
+        if (horaChegada != null && horaInicioCarregamento != null) {
+            java.time.Duration duracao = java.time.Duration.between(horaChegada, horaInicioCarregamento);
+            long horas = duracao.toHours();
+            long minutos = duracao.toMinutesPart();
+            return horas + "h " + minutos + "m";
+        }
+        return "-";
+    }
+
+    // Retorna o tempo de execução do carregamento (do Início até o Fim)
+    public String getTempoCarregamentoFormatado() {
+        if (horaInicioCarregamento != null && horaFimCarregamento != null) {
+            java.time.Duration duracao = java.time.Duration.between(horaInicioCarregamento, horaFimCarregamento);
+            long horas = duracao.toHours();
+            long minutos = duracao.toMinutesPart();
+            return horas + "h " + minutos + "m";
+        }
+        return "-";
+    }
+
+    // Retorna o Lead Time Total (da Chegada até a Expedição/Fim)
+    public String getLeadTimeTotalFormatado() {
+        if (horaChegada != null && horaFimCarregamento != null) {
+            java.time.Duration duracao = java.time.Duration.between(horaChegada, horaFimCarregamento);
+            long horas = duracao.toHours();
+            long minutos = duracao.toMinutesPart();
+            return horas + "h " + minutos + "m";
+        }
+        return "-";
+    }
+
 
     // Novo campo para quantidade de paletes
     private Integer paletes;
