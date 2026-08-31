@@ -54,7 +54,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final CarregamentoRepository repository;
     private final EntregaRepository entregaRepository;
     private final ExcelService excelService;
-    private CarregamentoRepository carregamentoRepository;
 
     private final Grid<Carregamento> grid = new Grid<>(Carregamento.class, false);
     private final Map<Carregamento, Checkbox> mapaCheckboxesMain = new HashMap<>();
@@ -69,9 +68,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private UiBroadcaster.Registration broadcasterRegistration;
 
     public MainView(CarregamentoRepository repository, EntregaRepository entregaRepository, ExcelService excelService) {
-    this.repository = repository;
-    this.entregaRepository = entregaRepository; // Agora a atribuição funciona e inicializa o campo final
-    this.excelService = excelService;
+        this.repository = repository;
+        this.entregaRepository = entregaRepository;
+        this.excelService = excelService;
 
         setSizeFull();
         setPadding(true);
@@ -107,15 +106,13 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     @Override
-        protected void onAttach(AttachEvent attachEvent) {
+    protected void onAttach(AttachEvent attachEvent) {
         super.onAttach(attachEvent);
         UI ui = attachEvent.getUI();
 
         broadcasterRegistration = UiBroadcaster.register(message -> {
             ui.access(() -> {
-                atualizarGridEIndicators(); // Atualiza a grid e os indicadores automaticamente na tela!
-                Notification.show("⚡ Status atualizado em tempo real!", 3000, Notification.Position.TOP_END)
-                            .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+                atualizarGridEIndicators();
             });
         });
     }
@@ -206,8 +203,8 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             grid.setItems(filtrados);
         }
     }
-@SuppressWarnings("null")
 
+    @SuppressWarnings("null")
     private HorizontalLayout criarBarraAcoes() {
         HorizontalLayout layout = new HorizontalLayout();
         layout.setWidthFull();
@@ -227,7 +224,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
         btnNovo.setVisible(false);
 
-        // Botão para arquivar todas as cargas expedidas ativas
         Button btnArquivarExpedidas = new Button("Arquivar Expedidas", VaadinIcon.ARCHIVE.create());
         btnArquivarExpedidas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnArquivarExpedidas.getStyle()
@@ -255,8 +251,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             Notification.show(expedidosAtivos.size() + " cargas expedidas foram arquivadas.", 3000, Notification.Position.BOTTOM_END);
         });
 
-        // Botão Excluir Selecionadas em Lote
-      Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
+        Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
         btnExcluirSelecionadas.addThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_SMALL);
         btnExcluirSelecionadas.addClickListener(e -> {
             List<Carregamento> selecionados = mapaCheckboxesMain.entrySet().stream()
@@ -270,9 +265,8 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             }
 
             try {
-                // Remove as entregas vinculadas de cada carregamento antes de exclui-lo
                 for (Carregamento c : selecionados) {
-                    entregaRepository.deleteByCarregamentoId(c.getId()); // Certifique-se de ter este método ou equivalente no EntregaRepository
+                    entregaRepository.deleteByCarregamentoId(c.getId());
                 }
 
                 repository.deleteAll(selecionados);
@@ -285,7 +279,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             }
         }); 
         
-        // Botão Limpar Checkin em Lote
         Button btnLimparCheckin = new Button("Limpar Checkin", VaadinIcon.REFRESH.create());
         btnLimparCheckin.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnLimparCheckin.getStyle().set("font-weight", "600");
@@ -302,8 +295,8 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
             for (Carregamento c : selecionados) {
                 c.setStatus("Pendente");
-                c.setMotorista(null);          // Limpa o nome do motorista (texto)
-                c.setMotoristaEntidade(null);   // Limpa o vínculo com a entidade de motorista, se houver
+                c.setMotorista(null);
+                c.setMotoristaEntidade(null);
             }
             repository.saveAll(selecionados);
             mapaCheckboxesMain.clear();
@@ -312,28 +305,10 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             Notification.show("Checkin e motorista limpos para " + selecionados.size() + " carga(s)!", 3000, Notification.Position.BOTTOM_END);
         });
 
-        // Botão para abrir o modal de histórico de arquivados
         Button btnVerArquivados = new Button("Ver Arquivados", VaadinIcon.FOLDER_OPEN.create());
         btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnVerArquivados.addClickListener(e -> abrirModalArquivados());
 
-        // Botão Atualizar Viagens Manual
-        Button btnAtualizarViagens = new Button("Atualizar Viagens", VaadinIcon.REFRESH.create());
-        btnAtualizarViagens.addThemeVariants(ButtonVariant.LUMO_SMALL);
-        btnAtualizarViagens.addClickListener(e -> {
-            atualizarGridEIndicators();
-            Notification.show("Lista de viagens atualizada!", 2000, Notification.Position.BOTTOM_END);
-        });
-
-    Button btnAtualizar = new Button("Atualizar", e -> {
-    grid.setItems(repository.findAll()); // Recarrega diretamente do repositório
-    Notification.show("Lista atualizada com sucesso!", 2000, Notification.Position.BOTTOM_END);
-});
-btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
-
-
-
-        // Botão para ir para o Relatório de Paletes
         Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
         btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnRelatorioPaletes.getStyle()
@@ -392,10 +367,8 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         gridArquivados.setSizeFull();
         gridArquivados.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COMPACT);
 
-        // Mapa para controlar os checkboxes dos arquivados
         Map<Carregamento, Checkbox> mapaCheckboxesArquivados = new HashMap<>();
 
-        // Checkbox Mestre do Modal de Arquivados
         Checkbox masterCheckboxArquivados = new Checkbox();
         masterCheckboxArquivados.setValue(false);
         masterCheckboxArquivados.getStyle().set("border", "2px solid #3b82f6");
@@ -407,7 +380,6 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
             }
         });
 
-        // Coluna de Checkbox na Grid de Arquivados
         gridArquivados.addComponentColumn(carregamento -> {
             Checkbox checkbox = new Checkbox();
             checkbox.setValue(false);
@@ -449,7 +421,6 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
             .toList();
         gridArquivados.setItems(listaArquivados);
 
-        // Botão para Desarquivar em Lote os selecionados
         Button btnDesarquivarSelecionados = new Button("Desarquivar Selecionadas", VaadinIcon.UPLOAD_ALT.create());
         btnDesarquivarSelecionados.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SUCCESS);
         btnDesarquivarSelecionados.addClickListener(e -> {
@@ -489,6 +460,7 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         modalArquivados.add(gridArquivados);
         modalArquivados.open();
     }
+
     @SuppressWarnings("null")
     private void configurarGrid() {
         grid.setSizeFull();
@@ -507,28 +479,26 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
         mapaCheckboxesMain.clear();
 
-        // Checkbox Mestre no Cabeçalho
         Checkbox masterCheckbox = new Checkbox();
-masterCheckbox.setValue(false); // Inicia desmarcado para respeitar a preferência
-masterCheckbox.getStyle().set("border", "2px solid #3b82f6");
-masterCheckbox.getStyle().set("border-radius", "4px");
-masterCheckbox.addValueChangeListener(event -> {
-    boolean masterValue = event.getValue();
-    for (Checkbox cb : mapaCheckboxesMain.values()) {
-        cb.setValue(masterValue);
-    }
-});
+        masterCheckbox.setValue(false);
+        masterCheckbox.getStyle().set("border", "2px solid #3b82f6");
+        masterCheckbox.getStyle().set("border-radius", "4px");
+        masterCheckbox.addValueChangeListener(event -> {
+            boolean masterValue = event.getValue();
+            for (Checkbox cb : mapaCheckboxesMain.values()) {
+                cb.setValue(masterValue);
+            }
+        });
 
-        // Coluna de Seleção com Checkbox Mestre
         grid.addComponentColumn(carregamento -> {
-    Checkbox checkbox = new Checkbox();
-    checkbox.setValue(false); // Desmarcado por padrão, mas visível/aceso
-    checkbox.getStyle().set("border", "2px solid #3b82f6");
-    checkbox.getStyle().set("border-radius", "4px");
-    checkbox.getStyle().set("padding", "2px");
-    mapaCheckboxesMain.put(carregamento, checkbox);
-    return checkbox;
-}).setHeader(masterCheckbox).setWidth("70px").setFlexGrow(0);
+            Checkbox checkbox = new Checkbox();
+            checkbox.setValue(false);
+            checkbox.getStyle().set("border", "2px solid #3b82f6");
+            checkbox.getStyle().set("border-radius", "4px");
+            checkbox.getStyle().set("padding", "2px");
+            mapaCheckboxesMain.put(carregamento, checkbox);
+            return checkbox;
+        }).setHeader(masterCheckbox).setWidth("70px").setFlexGrow(0);
 
         grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
@@ -548,9 +518,9 @@ masterCheckbox.addValueChangeListener(event -> {
         grid.addColumn(Carregamento::getPeso).setHeader("PESO").setAutoWidth(true);
         grid.addColumn(Carregamento::getEncaixe).setHeader("ENCAIXE").setAutoWidth(true);
 
-       grid.addComponentColumn(carregamento -> criarBotoesStatus(carregamento))
-       .setHeader("STATUS")
-       .setAutoWidth(true);
+        grid.addComponentColumn(carregamento -> criarBotoesStatus(carregamento))
+            .setHeader("STATUS")
+            .setAutoWidth(true);
 
         grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
 
@@ -591,65 +561,67 @@ masterCheckbox.addValueChangeListener(event -> {
     }
 
     private Component criarBotoesStatus(Carregamento carregamento) {
-    HorizontalLayout layout = new HorizontalLayout();
-    layout.setSpacing(true);
-    layout.setPadding(false);
-    layout.setAlignItems(FlexComponent.Alignment.CENTER);
+        HorizontalLayout layout = new HorizontalLayout();
+        layout.setSpacing(true);
+        layout.setPadding(false);
+        layout.setAlignItems(FlexComponent.Alignment.CENTER);
 
-    String statusAtual = carregamento.getStatus() != null ? carregamento.getStatus().toUpperCase() : "";
+        String statusAtual = carregamento.getStatus() != null ? carregamento.getStatus().trim() : "";
 
-    Button btnApresentado = new Button("Apresentado");
-    Button btnCarregando = new Button("Carregando");
-    Button btnExpedido = new Button("Expedido");
+        Button btnApresentado = new Button("Apresentado");
+        Button btnCarregando = new Button("Carregando");
+        Button btnExpedido = new Button("Expedido");
 
-    String baseStyle = "font-size: 0.70rem; height: 26px; padding: 0 8px; border-radius: 4px; cursor: pointer;";
+        boolean isApresentado = "Apresentado".equalsIgnoreCase(statusAtual);
+        boolean isCarregando = "Carregando".equalsIgnoreCase(statusAtual);
+        boolean isExpedido = "Expedido".equalsIgnoreCase(statusAtual);
 
-    // Cores dinâmicas baseadas no status atual
-    btnApresentado.getElement().setAttribute("style", baseStyle + ("APRESENTADO".equals(statusAtual) 
-        ? " background-color: #3b82f6; color: white; font-weight: bold; box-shadow: 0 0 8px #3b82f6;" 
-        : " background-color: #1f2937; color: #9ca3af; opacity: 0.5;"));
+        aplicarEstiloBotao(btnApresentado, isApresentado, "#3b82f6");
+        aplicarEstiloBotao(btnCarregando, isCarregando, "#f59e0b");
+        aplicarEstiloBotao(btnExpedido, isExpedido, "#10b981");
 
-    btnCarregando.getElement().setAttribute("style", baseStyle + ("CARREGANDO".equals(statusAtual) 
-        ? " background-color: #f59e0b; color: white; font-weight: bold; box-shadow: 0 0 8px #f59e0b;" 
-        : " background-color: #1f2937; color: #9ca3af; opacity: 0.5;"));
+        btnApresentado.addClickListener(e -> {
+            carregamento.setStatus("Apresentado");
+            repository.save(carregamento);
+            atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+        });
 
-    btnExpedido.getElement().setAttribute("style", baseStyle + ("EXPEDIDO".equals(statusAtual) 
-        ? " background-color: #10b981; color: white; font-weight: bold; box-shadow: 0 0 8px #10b981;" 
-        : " background-color: #1f2937; color: #9ca3af; opacity: 0.5;"));
+        btnCarregando.addClickListener(e -> {
+            carregamento.setStatus("Carregando");
+            repository.save(carregamento);
+            atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+        });
 
-    // Ações de clique atualizadas
-    btnApresentado.addClickListener(e -> {
-        carregamento.setStatus("APRESENTADO");
-        carregamentoRepository.save(carregamento);
-        grid.getDataProvider().refreshItem(carregamento);
-    });
+        btnExpedido.addClickListener(e -> {
+            carregamento.setStatus("Expedido");
+            repository.save(carregamento);
+            atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+        });
 
-    btnCarregando.addClickListener(e -> {
-        carregamento.setStatus("CARREGANDO");
-        carregamentoRepository.save(carregamento);
-        grid.getDataProvider().refreshItem(carregamento);
-    });
+        layout.add(btnApresentado, btnCarregando, btnExpedido);
+        return layout;
+    }
 
-    btnExpedido.addClickListener(e -> {
-        carregamento.setStatus("EXPEDIDO");
-        carregamentoRepository.save(carregamento);
-        grid.getDataProvider().refreshItem(carregamento);
-    });
-
-    layout.add(btnApresentado, btnCarregando, btnExpedido);
-    return layout;
-}
-
-// Método auxiliar para salvar e atualizar a grid (ajuste o nome do repository/service se necessário)
-private void alterarStatusEAtualizar(Carregamento carregamento, String novoStatus) {
-    // 1. Atualiza no banco de dados
-    carregamento.setStatus(novoStatus);
-    carregamentoRepository.save(carregamento);
-    
-    // 2. Atualiza o item específico na grid e redesenha a tabela inteira
-    grid.getDataProvider().refreshItem(carregamento);
-    grid.getDataProvider().refreshAll();
-}
+    private void aplicarEstiloBotao(Button botao, boolean ativo, String corAtivaHex) {
+        botao.getStyle().set("font-size", "0.70rem");
+        botao.getStyle().set("height", "26px");
+        botao.getStyle().set("padding", "0 8px");
+        botao.getStyle().set("border-radius", "4px");
+        
+        if (ativo) {
+            botao.getStyle().set("background-color", corAtivaHex);
+            botao.getStyle().set("color", "white");
+            botao.getStyle().set("font-weight", "bold");
+            botao.getStyle().set("opacity", "1.0");
+        } else {
+            botao.getStyle().set("background-color", "#1f2937");
+            botao.getStyle().set("color", "#9ca3af");
+            botao.getStyle().set("opacity", "0.5");
+        }
+    }
 
     private void abrirFormularioModal(Carregamento carregamento) {
         Dialog dialog = new Dialog();
@@ -739,45 +711,45 @@ private void alterarStatusEAtualizar(Carregamento carregamento, String novoStatu
     }
 
     private void atualizarGridEIndicators() {
-    mapaCheckboxesMain.clear();
-    
-    // Busca ordenado por ID decrescente diretamente do banco para travar a posição das linhas
-    List<Carregamento> listaAtivos = repository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.DESC, "id"))
-        .stream()
-        .filter(c -> c.getArquivado() == null || !c.getArquivado())
-        .toList();
+        mapaCheckboxesMain.clear();
+        
+        List<Carregamento> listaAtivos = repository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.DESC, "id"))
+            .stream()
+            .filter(c -> c.getArquivado() == null || !c.getArquivado())
+            .toList();
 
-    grid.setItems(listaAtivos);
+        grid.setItems(listaAtivos);
 
-    long total = listaAtivos.size();
+        long total = listaAtivos.size();
 
-    long apresentados = listaAtivos.stream()
-        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Apresentado"))
-        .count();
+        long apresentados = listaAtivos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Apresentado"))
+            .count();
 
-    long carregando = listaAtivos.stream()
-        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Carregando"))
-        .count();
+        long carregando = listaAtivos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Carregando"))
+            .count();
 
-    long expedidos = listaAtivos.stream()
-        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
-        .count();
+        long expedidos = listaAtivos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Expedido"))
+            .count();
 
-    long pendentes = total - (apresentados + carregando + expedidos);
+        long pendentes = total - (apresentados + carregando + expedidos);
 
-    double pesoTotal = listaAtivos.stream()
-        .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
-        .sum();
+        double pesoTotal = listaAtivos.stream()
+            .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
+            .sum();
 
-    DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
+        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
 
-    txtTotal.setText(String.valueOf(total));
-    txtPendentes.setText(String.valueOf(pendentes));
-    txtApresentados.setText(String.valueOf(apresentados));
-    txtCarregando.setText(String.valueOf(carregando));
-    txtExpedidos.setText(String.valueOf(expedidos));
-    txtPeso.setText(df.format(pesoTotal) + " kg");
-}
+        txtTotal.setText(String.valueOf(total));
+        txtPendentes.setText(String.valueOf(pendentes));
+        txtApresentados.setText(String.valueOf(apresentados));
+        txtCarregando.setText(String.valueOf(carregando));
+        txtExpedidos.setText(String.valueOf(expedidos));
+        txtPeso.setText(df.format(pesoTotal) + " kg");
+    }
+
     private double converterPesoParaDouble(String pesoStr) {
         if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
         try {
@@ -813,4 +785,5 @@ private void alterarStatusEAtualizar(Carregamento carregamento, String novoStatu
             .set("--lumo-contrast-60pct", "#90caf9")
             .set("--lumo-contrast-70pct", "#90caf9");
     }
+
 }

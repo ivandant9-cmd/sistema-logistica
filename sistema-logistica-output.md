@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-08-31 12:47:25 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-08-31 14:18:51 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 826
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -228,7 +228,7 @@
 │       │                   │   ├── 📄 CheckInView.java (6.46 KB)
 │       │                   │   ├── 📄 EntregasView.java (21.86 KB)
 │       │                   │   ├── 📄 LoginView.java (3.35 KB)
-│       │                   │   ├── 📄 MainView.java (37.53 KB)
+│       │                   │   ├── 📄 MainView.java (35.54 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (14.6 KB)
 │       │                   ├── 📄 Application.java (633 B)
 │       │                   ├── 📄 AppShell.java (153 B)
@@ -591,8 +591,8 @@
 │   │   │               │   ├── 📄 EntregasView.class (26.99 KB)
 │   │   │               │   ├── 📄 EntregasView$ItemGridEntrega.class (1.88 KB)
 │   │   │               │   ├── 📄 LoginView.class (5.38 KB)
-│   │   │               │   ├── 📄 MainView.class (51.88 KB)
-│   │   │               │   └── 📄 RelatorioPaletesView.class (21.37 KB)
+│   │   │               │   ├── 📄 MainView.class (50.26 KB)
+│   │   │               │   └── 📄 RelatorioPaletesView.class (21.18 KB)
 │   │   │               ├── 📄 Application.class (1.29 KB)
 │   │   │               ├── 📄 AppShell.class (348 B)
 │   │   │               └── 📄 DataInitializer.class (650 B)
@@ -983,7 +983,7 @@
 │   │               ├── 📄 createdFiles.lst (1.17 KB)
 │   │               └── 📄 inputFiles.lst (2.38 KB)
 │   ├── 📄 tms-web-1.0.0.jar (98.16 MB)
-│   ├── 📄 tms-web-1.0.0.jar.original (494.76 KB)
+│   ├── 📄 tms-web-1.0.0.jar.original (495.19 KB)
 │   └── 📄 vaadin-dev-server-settings.json (1.1 KB)
 ├── 📄 Dockerfile (1.04 KB)
 ├── 📄 package-lock.json (575.75 KB)
@@ -1795,7 +1795,7 @@
 | Total Directories | 151 |
 | Text Files | 781 |
 | Binary Files | 45 |
-| Total Size | 106.24 MB |
+| Total Size | 106.23 MB |
 
 ### 📄 File Types Distribution
 
@@ -15360,15 +15360,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 37.53 KB
+- **Size**: 35.54 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-31 12:47:22 (America/Bahia / GMT-03:00)
-- **MD5**: `9e28cc56f72c951c17cad8f774980a0c`
-- **SHA256**: `c232dd0ded26625ab85faa0e8a400161cae56b411c618ac73cea50a497bf0aaa`
+- **Modified**: 2026-08-31 14:18:49 (America/Bahia / GMT-03:00)
+- **MD5**: `eb3d8a37ef0fb6ba53191f717a17918b`
+- **SHA256**: `992d7eb00f7020cb7828c8067dd9fa249d7c14346f104f46c6bf9391f0154e85`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -15430,7 +15430,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final CarregamentoRepository repository;
     private final EntregaRepository entregaRepository;
     private final ExcelService excelService;
-    private CarregamentoRepository carregamentoRepository;
 
     private final Grid<Carregamento> grid = new Grid<>(Carregamento.class, false);
     private final Map<Carregamento, Checkbox> mapaCheckboxesMain = new HashMap<>();
@@ -15445,9 +15444,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private UiBroadcaster.Registration broadcasterRegistration;
 
     public MainView(CarregamentoRepository repository, EntregaRepository entregaRepository, ExcelService excelService) {
-    this.repository = repository;
-    this.entregaRepository = entregaRepository; // Agora a atribuição funciona e inicializa o campo final
-    this.excelService = excelService;
+        this.repository = repository;
+        this.entregaRepository = entregaRepository;
+        this.excelService = excelService;
 
         setSizeFull();
         setPadding(true);
@@ -15483,15 +15482,13 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     @Override
-        protected void onAttach(AttachEvent attachEvent) {
+    protected void onAttach(AttachEvent attachEvent) {
         super.onAttach(attachEvent);
         UI ui = attachEvent.getUI();
 
         broadcasterRegistration = UiBroadcaster.register(message -> {
             ui.access(() -> {
-                atualizarGridEIndicators(); // Atualiza a grid e os indicadores automaticamente na tela!
-                Notification.show("⚡ Status atualizado em tempo real!", 3000, Notification.Position.TOP_END)
-                            .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+                atualizarGridEIndicators();
             });
         });
     }
@@ -15582,8 +15579,8 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             grid.setItems(filtrados);
         }
     }
-@SuppressWarnings("null")
 
+    @SuppressWarnings("null")
     private HorizontalLayout criarBarraAcoes() {
         HorizontalLayout layout = new HorizontalLayout();
         layout.setWidthFull();
@@ -15603,7 +15600,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
         btnNovo.setVisible(false);
 
-        // Botão para arquivar todas as cargas expedidas ativas
         Button btnArquivarExpedidas = new Button("Arquivar Expedidas", VaadinIcon.ARCHIVE.create());
         btnArquivarExpedidas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnArquivarExpedidas.getStyle()
@@ -15631,8 +15627,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             Notification.show(expedidosAtivos.size() + " cargas expedidas foram arquivadas.", 3000, Notification.Position.BOTTOM_END);
         });
 
-        // Botão Excluir Selecionadas em Lote
-      Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
+        Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
         btnExcluirSelecionadas.addThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_SMALL);
         btnExcluirSelecionadas.addClickListener(e -> {
             List<Carregamento> selecionados = mapaCheckboxesMain.entrySet().stream()
@@ -15646,9 +15641,8 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             }
 
             try {
-                // Remove as entregas vinculadas de cada carregamento antes de exclui-lo
                 for (Carregamento c : selecionados) {
-                    entregaRepository.deleteByCarregamentoId(c.getId()); // Certifique-se de ter este método ou equivalente no EntregaRepository
+                    entregaRepository.deleteByCarregamentoId(c.getId());
                 }
 
                 repository.deleteAll(selecionados);
@@ -15661,7 +15655,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             }
         }); 
         
-        // Botão Limpar Checkin em Lote
         Button btnLimparCheckin = new Button("Limpar Checkin", VaadinIcon.REFRESH.create());
         btnLimparCheckin.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnLimparCheckin.getStyle().set("font-weight", "600");
@@ -15678,8 +15671,8 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
             for (Carregamento c : selecionados) {
                 c.setStatus("Pendente");
-                c.setMotorista(null);          // Limpa o nome do motorista (texto)
-                c.setMotoristaEntidade(null);   // Limpa o vínculo com a entidade de motorista, se houver
+                c.setMotorista(null);
+                c.setMotoristaEntidade(null);
             }
             repository.saveAll(selecionados);
             mapaCheckboxesMain.clear();
@@ -15688,28 +15681,10 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             Notification.show("Checkin e motorista limpos para " + selecionados.size() + " carga(s)!", 3000, Notification.Position.BOTTOM_END);
         });
 
-        // Botão para abrir o modal de histórico de arquivados
         Button btnVerArquivados = new Button("Ver Arquivados", VaadinIcon.FOLDER_OPEN.create());
         btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnVerArquivados.addClickListener(e -> abrirModalArquivados());
 
-        // Botão Atualizar Viagens Manual
-        Button btnAtualizarViagens = new Button("Atualizar Viagens", VaadinIcon.REFRESH.create());
-        btnAtualizarViagens.addThemeVariants(ButtonVariant.LUMO_SMALL);
-        btnAtualizarViagens.addClickListener(e -> {
-            atualizarGridEIndicators();
-            Notification.show("Lista de viagens atualizada!", 2000, Notification.Position.BOTTOM_END);
-        });
-
-    Button btnAtualizar = new Button("Atualizar", e -> {
-    grid.setItems(repository.findAll()); // Recarrega diretamente do repositório
-    Notification.show("Lista atualizada com sucesso!", 2000, Notification.Position.BOTTOM_END);
-});
-btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
-
-
-
-        // Botão para ir para o Relatório de Paletes
         Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
         btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnRelatorioPaletes.getStyle()
@@ -15768,10 +15743,8 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         gridArquivados.setSizeFull();
         gridArquivados.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COMPACT);
 
-        // Mapa para controlar os checkboxes dos arquivados
         Map<Carregamento, Checkbox> mapaCheckboxesArquivados = new HashMap<>();
 
-        // Checkbox Mestre do Modal de Arquivados
         Checkbox masterCheckboxArquivados = new Checkbox();
         masterCheckboxArquivados.setValue(false);
         masterCheckboxArquivados.getStyle().set("border", "2px solid #3b82f6");
@@ -15783,7 +15756,6 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
             }
         });
 
-        // Coluna de Checkbox na Grid de Arquivados
         gridArquivados.addComponentColumn(carregamento -> {
             Checkbox checkbox = new Checkbox();
             checkbox.setValue(false);
@@ -15825,7 +15797,6 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
             .toList();
         gridArquivados.setItems(listaArquivados);
 
-        // Botão para Desarquivar em Lote os selecionados
         Button btnDesarquivarSelecionados = new Button("Desarquivar Selecionadas", VaadinIcon.UPLOAD_ALT.create());
         btnDesarquivarSelecionados.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SUCCESS);
         btnDesarquivarSelecionados.addClickListener(e -> {
@@ -15865,6 +15836,7 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         modalArquivados.add(gridArquivados);
         modalArquivados.open();
     }
+
     @SuppressWarnings("null")
     private void configurarGrid() {
         grid.setSizeFull();
@@ -15883,28 +15855,26 @@ btnAtualizar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
         mapaCheckboxesMain.clear();
 
-        // Checkbox Mestre no Cabeçalho
         Checkbox masterCheckbox = new Checkbox();
-masterCheckbox.setValue(false); // Inicia desmarcado para respeitar a preferência
-masterCheckbox.getStyle().set("border", "2px solid #3b82f6");
-masterCheckbox.getStyle().set("border-radius", "4px");
-masterCheckbox.addValueChangeListener(event -> {
-    boolean masterValue = event.getValue();
-    for (Checkbox cb : mapaCheckboxesMain.values()) {
-        cb.setValue(masterValue);
-    }
-});
+        masterCheckbox.setValue(false);
+        masterCheckbox.getStyle().set("border", "2px solid #3b82f6");
+        masterCheckbox.getStyle().set("border-radius", "4px");
+        masterCheckbox.addValueChangeListener(event -> {
+            boolean masterValue = event.getValue();
+            for (Checkbox cb : mapaCheckboxesMain.values()) {
+                cb.setValue(masterValue);
+            }
+        });
 
-        // Coluna de Seleção com Checkbox Mestre
         grid.addComponentColumn(carregamento -> {
-    Checkbox checkbox = new Checkbox();
-    checkbox.setValue(false); // Desmarcado por padrão, mas visível/aceso
-    checkbox.getStyle().set("border", "2px solid #3b82f6");
-    checkbox.getStyle().set("border-radius", "4px");
-    checkbox.getStyle().set("padding", "2px");
-    mapaCheckboxesMain.put(carregamento, checkbox);
-    return checkbox;
-}).setHeader(masterCheckbox).setWidth("70px").setFlexGrow(0);
+            Checkbox checkbox = new Checkbox();
+            checkbox.setValue(false);
+            checkbox.getStyle().set("border", "2px solid #3b82f6");
+            checkbox.getStyle().set("border-radius", "4px");
+            checkbox.getStyle().set("padding", "2px");
+            mapaCheckboxesMain.put(carregamento, checkbox);
+            return checkbox;
+        }).setHeader(masterCheckbox).setWidth("70px").setFlexGrow(0);
 
         grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
@@ -15924,9 +15894,9 @@ masterCheckbox.addValueChangeListener(event -> {
         grid.addColumn(Carregamento::getPeso).setHeader("PESO").setAutoWidth(true);
         grid.addColumn(Carregamento::getEncaixe).setHeader("ENCAIXE").setAutoWidth(true);
 
-       grid.addComponentColumn(carregamento -> criarBotoesStatus(carregamento))
-       .setHeader("STATUS")
-       .setAutoWidth(true);
+        grid.addComponentColumn(carregamento -> criarBotoesStatus(carregamento))
+            .setHeader("STATUS")
+            .setAutoWidth(true);
 
         grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
 
@@ -15967,65 +15937,67 @@ masterCheckbox.addValueChangeListener(event -> {
     }
 
     private Component criarBotoesStatus(Carregamento carregamento) {
-    HorizontalLayout layout = new HorizontalLayout();
-    layout.setSpacing(true);
-    layout.setPadding(false);
-    layout.setAlignItems(FlexComponent.Alignment.CENTER);
+        HorizontalLayout layout = new HorizontalLayout();
+        layout.setSpacing(true);
+        layout.setPadding(false);
+        layout.setAlignItems(FlexComponent.Alignment.CENTER);
 
-    String statusAtual = carregamento.getStatus() != null ? carregamento.getStatus().toUpperCase() : "";
+        String statusAtual = carregamento.getStatus() != null ? carregamento.getStatus().trim() : "";
 
-    Button btnApresentado = new Button("Apresentado");
-    Button btnCarregando = new Button("Carregando");
-    Button btnExpedido = new Button("Expedido");
+        Button btnApresentado = new Button("Apresentado");
+        Button btnCarregando = new Button("Carregando");
+        Button btnExpedido = new Button("Expedido");
 
-    String baseStyle = "font-size: 0.70rem; height: 26px; padding: 0 8px; border-radius: 4px; cursor: pointer;";
+        boolean isApresentado = "Apresentado".equalsIgnoreCase(statusAtual);
+        boolean isCarregando = "Carregando".equalsIgnoreCase(statusAtual);
+        boolean isExpedido = "Expedido".equalsIgnoreCase(statusAtual);
 
-    // Cores dinâmicas baseadas no status atual
-    btnApresentado.getElement().setAttribute("style", baseStyle + ("APRESENTADO".equals(statusAtual) 
-        ? " background-color: #3b82f6; color: white; font-weight: bold; box-shadow: 0 0 8px #3b82f6;" 
-        : " background-color: #1f2937; color: #9ca3af; opacity: 0.5;"));
+        aplicarEstiloBotao(btnApresentado, isApresentado, "#3b82f6");
+        aplicarEstiloBotao(btnCarregando, isCarregando, "#f59e0b");
+        aplicarEstiloBotao(btnExpedido, isExpedido, "#10b981");
 
-    btnCarregando.getElement().setAttribute("style", baseStyle + ("CARREGANDO".equals(statusAtual) 
-        ? " background-color: #f59e0b; color: white; font-weight: bold; box-shadow: 0 0 8px #f59e0b;" 
-        : " background-color: #1f2937; color: #9ca3af; opacity: 0.5;"));
+        btnApresentado.addClickListener(e -> {
+            carregamento.setStatus("Apresentado");
+            repository.save(carregamento);
+            atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+        });
 
-    btnExpedido.getElement().setAttribute("style", baseStyle + ("EXPEDIDO".equals(statusAtual) 
-        ? " background-color: #10b981; color: white; font-weight: bold; box-shadow: 0 0 8px #10b981;" 
-        : " background-color: #1f2937; color: #9ca3af; opacity: 0.5;"));
+        btnCarregando.addClickListener(e -> {
+            carregamento.setStatus("Carregando");
+            repository.save(carregamento);
+            atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+        });
 
-    // Ações de clique atualizadas
-    btnApresentado.addClickListener(e -> {
-        carregamento.setStatus("APRESENTADO");
-        carregamentoRepository.save(carregamento);
-        grid.getDataProvider().refreshItem(carregamento);
-    });
+        btnExpedido.addClickListener(e -> {
+            carregamento.setStatus("Expedido");
+            repository.save(carregamento);
+            atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+        });
 
-    btnCarregando.addClickListener(e -> {
-        carregamento.setStatus("CARREGANDO");
-        carregamentoRepository.save(carregamento);
-        grid.getDataProvider().refreshItem(carregamento);
-    });
+        layout.add(btnApresentado, btnCarregando, btnExpedido);
+        return layout;
+    }
 
-    btnExpedido.addClickListener(e -> {
-        carregamento.setStatus("EXPEDIDO");
-        carregamentoRepository.save(carregamento);
-        grid.getDataProvider().refreshItem(carregamento);
-    });
-
-    layout.add(btnApresentado, btnCarregando, btnExpedido);
-    return layout;
-}
-
-// Método auxiliar para salvar e atualizar a grid (ajuste o nome do repository/service se necessário)
-private void alterarStatusEAtualizar(Carregamento carregamento, String novoStatus) {
-    // 1. Atualiza no banco de dados
-    carregamento.setStatus(novoStatus);
-    carregamentoRepository.save(carregamento);
-    
-    // 2. Atualiza o item específico na grid e redesenha a tabela inteira
-    grid.getDataProvider().refreshItem(carregamento);
-    grid.getDataProvider().refreshAll();
-}
+    private void aplicarEstiloBotao(Button botao, boolean ativo, String corAtivaHex) {
+        botao.getStyle().set("font-size", "0.70rem");
+        botao.getStyle().set("height", "26px");
+        botao.getStyle().set("padding", "0 8px");
+        botao.getStyle().set("border-radius", "4px");
+        
+        if (ativo) {
+            botao.getStyle().set("background-color", corAtivaHex);
+            botao.getStyle().set("color", "white");
+            botao.getStyle().set("font-weight", "bold");
+            botao.getStyle().set("opacity", "1.0");
+        } else {
+            botao.getStyle().set("background-color", "#1f2937");
+            botao.getStyle().set("color", "#9ca3af");
+            botao.getStyle().set("opacity", "0.5");
+        }
+    }
 
     private void abrirFormularioModal(Carregamento carregamento) {
         Dialog dialog = new Dialog();
@@ -16115,45 +16087,45 @@ private void alterarStatusEAtualizar(Carregamento carregamento, String novoStatu
     }
 
     private void atualizarGridEIndicators() {
-    mapaCheckboxesMain.clear();
-    
-    // Busca ordenado por ID decrescente diretamente do banco para travar a posição das linhas
-    List<Carregamento> listaAtivos = repository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.DESC, "id"))
-        .stream()
-        .filter(c -> c.getArquivado() == null || !c.getArquivado())
-        .toList();
+        mapaCheckboxesMain.clear();
+        
+        List<Carregamento> listaAtivos = repository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.DESC, "id"))
+            .stream()
+            .filter(c -> c.getArquivado() == null || !c.getArquivado())
+            .toList();
 
-    grid.setItems(listaAtivos);
+        grid.setItems(listaAtivos);
 
-    long total = listaAtivos.size();
+        long total = listaAtivos.size();
 
-    long apresentados = listaAtivos.stream()
-        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Apresentado"))
-        .count();
+        long apresentados = listaAtivos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Apresentado"))
+            .count();
 
-    long carregando = listaAtivos.stream()
-        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Carregando"))
-        .count();
+        long carregando = listaAtivos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Carregando"))
+            .count();
 
-    long expedidos = listaAtivos.stream()
-        .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
-        .count();
+        long expedidos = listaAtivos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Expedido"))
+            .count();
 
-    long pendentes = total - (apresentados + carregando + expedidos);
+        long pendentes = total - (apresentados + carregando + expedidos);
 
-    double pesoTotal = listaAtivos.stream()
-        .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
-        .sum();
+        double pesoTotal = listaAtivos.stream()
+            .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
+            .sum();
 
-    DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
+        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
 
-    txtTotal.setText(String.valueOf(total));
-    txtPendentes.setText(String.valueOf(pendentes));
-    txtApresentados.setText(String.valueOf(apresentados));
-    txtCarregando.setText(String.valueOf(carregando));
-    txtExpedidos.setText(String.valueOf(expedidos));
-    txtPeso.setText(df.format(pesoTotal) + " kg");
-}
+        txtTotal.setText(String.valueOf(total));
+        txtPendentes.setText(String.valueOf(pendentes));
+        txtApresentados.setText(String.valueOf(apresentados));
+        txtCarregando.setText(String.valueOf(carregando));
+        txtExpedidos.setText(String.valueOf(expedidos));
+        txtPeso.setText(df.format(pesoTotal) + " kg");
+    }
+
     private double converterPesoParaDouble(String pesoStr) {
         if (pesoStr == null || pesoStr.trim().isEmpty()) return 0.0;
         try {
@@ -16189,6 +16161,7 @@ private void alterarStatusEAtualizar(Carregamento carregamento, String novoStatu
             .set("--lumo-contrast-60pct", "#90caf9")
             .set("--lumo-contrast-70pct", "#90caf9");
     }
+
 }
 ```
 
@@ -39058,7 +39031,7 @@ The following files were not included in the text content:
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/flow/generated-flow-imports.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/flow`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `da5d39a83fcf0a8c0bacfbd8cec3bc9b`
 - **SHA256**: `f4c5cf9bb78e85f15dc27180260637cf24b2a24bc39e0788783a3accc4dde614`
@@ -39080,7 +39053,7 @@ export {}
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/flow/generated-flow-imports.js`
 - **Relative Path**: `target/classes/frontend/generated/flow`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `04bba1e21fbe471545a922485db1fbad`
 - **SHA256**: `df88f1da8ff26bdd3a3a839d99922dd08b55172c8b47191c4b860b8d9689252e`
@@ -39194,7 +39167,7 @@ window.Vaadin.Flow.resetFocus = () => {
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-accordion-eed3b794.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `5fb3f0a927bb634d40f6227a0730d29e`
 - **SHA256**: `a6738f5a115fa6bed6073fdb60a4208880f5b573ef3c15b9e1b94ffd98e0437b`
@@ -39217,7 +39190,7 @@ import{t as a,s as o,i}from"../vaadin-dev-tools.js";import"construct-style-sheet
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-accordion-heading-c0acdd6d.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `dd580bb5bf1cff2db79ee03dc890d563`
 - **SHA256**: `a6e6900eaad72e06e8f25479a5e71bd814fbf5a2cd826af5f6e7e3e0b5d0eac3`
@@ -39242,7 +39215,7 @@ import{html as e}from"lit";import{t as o,s as a,i}from"../vaadin-dev-tools.js";i
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-accordion-panel-616e55d6.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `66d83493c8ee5afbd844f8014a5ace21`
 - **SHA256**: `8d4b496b9d25f4b6705e8b8d24ad37f317436048059d0ed3d74c0314608a9050`
@@ -39267,7 +39240,7 @@ import{s as o}from"../vaadin-dev-tools.js";import{html as e}from"lit";import"con
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-app-layout-e56de2e9.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `d23ec3cde49ccc613bb16275cd5fc08e`
 - **SHA256**: `f590dd67fdee9c94367e7f4b562f143963f6ab2111825b798eefe52268094b1f`
@@ -39290,7 +39263,7 @@ import{s as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-avatar-7599297d.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `b904ebb4c5ea1d8aea856211bd41a3d7`
 - **SHA256**: `e43fca40024c6b63dcb694db50c26fbffef53cecc2b7b71c7ba94e434b945be1`
@@ -39313,7 +39286,7 @@ import{s as a,E as r,p as t,t as e}from"../vaadin-dev-tools.js";import"construct
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-big-decimal-field-e51def24.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `dfc92f5a9c837e15bb328a3f9cb48717`
 - **SHA256**: `fc90c6a1ad56f815c1b6d0db9699ab0c78a28909ed85d39cf7801ebbbb5f0ea1`
@@ -39336,7 +39309,7 @@ import{inputFieldProperties as e,labelProperties as i,helperTextProperties as r,
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-board-828ebdea.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `5d87bcfee419b704f140897a58473560`
 - **SHA256**: `0528289680520f73800eb3cd24aefc29d30861d57e2fa9a3de7f130cdcfe1976`
@@ -39359,7 +39332,7 @@ import{s as r}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-board-row-c70d0c55.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `ca8770007cb02e057695cfc4f4882ef6`
 - **SHA256**: `654f36c613d2d47d48b05077f7411d7bd7eac2dc5daa09dba256c1e0c2353a38`
@@ -39384,7 +39357,7 @@ import{s as o}from"../vaadin-dev-tools.js";import{html as r}from"lit";import"con
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-button-2511ad84.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `924aee5ba5a4d7fa0bcc477961600470`
 - **SHA256**: `a4bfa7c5a46277096b69464d88216e421cfb5bdc150b02a7db080d13ad463583`
@@ -39407,7 +39380,7 @@ import{c as t,s as e,E as r,p as o,f as a}from"../vaadin-dev-tools.js";import"co
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-chart-5192dc15.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `9b6d7b28a3022b145d43967532478660`
 - **SHA256**: `8f5e038b6fc661bab0ac0a29c1ab18b7bede2e1ff20689e0cfa7dedbe7e51788`
@@ -39430,7 +39403,7 @@ import{a as r,E as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-checkbox-4e68df64.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `4747e18927d796f0830f3da7de41e27f`
 - **SHA256**: `5438e727a604508f84e71601079a523e9efa6add250108d27873ecf957ca1e51`
@@ -39453,7 +39426,7 @@ import{E as r,p as t,s as e,i as a,t as o}from"../vaadin-dev-tools.js";import"co
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-checkbox-group-a7c65bf2.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `2daea181feb525807995a061c4383930`
 - **SHA256**: `d088a44c24a8371c4b511674271966a232e2b247b2dc2e177b8ac449b83ded75`
@@ -39476,7 +39449,7 @@ import{s as e}from"../vaadin-dev-tools.js";import{labelProperties as i,helperTex
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-combo-box-96451ddd.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `e541fff3202cddfd67c798363bcc53b9`
 - **SHA256**: `0d7f9ed048a92a4b123ba005038e6379cd8fcb443b27613cfca34622f4f9e507`
@@ -39499,7 +39472,7 @@ import{inputFieldProperties as s,labelProperties as l,helperTextProperties as p,
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-confirm-dialog-4d718829.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `2b5842a0aea4963dbf6f7af78cfda207`
 - **SHA256**: `bdd848c0f0f51ed32d2db8b5f761e41cf13cd124520aa0fffd071c5035df6744`
@@ -39522,7 +39495,7 @@ import{a,c as e}from"../vaadin-dev-tools.js";import{standardButtonProperties as 
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-cookie-consent-46c09f8b.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `859e09d836deba3f5175a1b6644aa02f`
 - **SHA256**: `a7136c30b71d0c7a0a80c147af3b771e5c69a67ed46e9e04461f7ae4d71a8b1c`
@@ -39545,7 +39518,7 @@ import{a as e,c as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-crud-8d161a22.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `4668c92cf6968e2cb1d147bf568b5d29`
 - **SHA256**: `04078abcba1342683fc9a1d63e5438cda024139a7fdcd5e3bb341f3c04fb3f3b`
@@ -39568,7 +39541,7 @@ import{s as r,i as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-custom-field-42c85b9e.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `3e73ea8572e7db8596095dcb4bedb63c`
 - **SHA256**: `4035c2324b5ab2359422003b1e9c0baa7b5f3cdb1e67bb288b43991c036979c5`
@@ -39591,7 +39564,7 @@ import{labelProperties as e,helperTextProperties as r,errorMessageProperties as 
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-date-picker-f2001167.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `85bf9a08f8943f9cf9039836896dc288`
 - **SHA256**: `a90d0d23f9c2d17e608d9ba305ead1a5d6ffef928017747ac6abcfff33fd5e04`
@@ -39614,7 +39587,7 @@ import{inputFieldProperties as i,labelProperties as p,helperTextProperties as l,
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-date-time-picker-c8c047a7.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `67d43e61bc56546ceb1d84219ab1cefe`
 - **SHA256**: `4574a42ea6d301d64837ebff1ee510ffa0309cea281e80835a5bacacdcadfcd9`
@@ -39637,7 +39610,7 @@ import{labelProperties as e,helperTextProperties as r,errorMessageProperties as 
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-details-bf336660.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `7498b394db346dece15b458d6f0f62b7`
 - **SHA256**: `7ea1099cedec8cc1c172edf7f05123970984c17add7d946cc9bee7920898b608`
@@ -39660,7 +39633,7 @@ import{a}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfill";im
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-details-summary-351a1448.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `b943e1acbd96938386127bb3c4a411ad`
 - **SHA256**: `aceeca37b818aa7fe477c2e405c5fdc9ea153326c8aec2e6e3ce43090a9f05cc`
@@ -39683,7 +39656,7 @@ import{t as a,s as t,i as e}from"../vaadin-dev-tools.js";import"construct-style-
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-dialog-53253a08.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `f521ad82c00196f5ea1b91b5d0ae57b4`
 - **SHA256**: `87499da3e8cdbb55643da695f4db9453e0a4059afdd59a96feeac17480b9b4bc`
@@ -39706,7 +39679,7 @@ import{a,c as e}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyf
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-email-field-d7a35f04.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `d1c2c3827eb73f56dac19548e98ab370`
 - **SHA256**: `a211dba196b351ed6b659a49c16547c183d63718f40ba1948c4e42545869a4ad`
@@ -39729,7 +39702,7 @@ import{inputFieldProperties as e,labelProperties as r,helperTextProperties as a,
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-form-layout-47744b1d.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `c6b3f79c588fbbce5e887a895b192250`
 - **SHA256**: `1ecb86c41ef9e7e342dc021b3021c8a5e71a33d613f2858e0390098a05dca2a1`
@@ -39752,7 +39725,7 @@ import{s as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-grid-0a4791c2.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `72e87b33e7efa4a7dc04b34e7e7209db`
 - **SHA256**: `111a9506876cd5443c86de882dfb4ed36981d595e03697fdb3d5bf8dae272431`
@@ -39775,7 +39748,7 @@ import{s as o,t as e,i}from"../vaadin-dev-tools.js";import{checkboxElement as t,
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-grid-pro-ff415555.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `3a5ec18508e7987703074c50fb75d92d`
 - **SHA256**: `81fd09d262506ce5ba5aad3fdba837edbbc5126b30d69a4d91637e698a71b19a`
@@ -39798,7 +39771,7 @@ import{s as r,t as o,i as a,E as t,p}from"../vaadin-dev-tools.js";import{checkbo
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-horizontal-layout-3193943f.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `2dcf3e04d299a4a123f17097fac1edb9`
 - **SHA256**: `3a0fd0b6acbf90b650c2e250f4a19d567001f30c7010186a2dcd7bf82f6cb558`
@@ -39821,7 +39794,7 @@ import{s as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-icon-601f36ed.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `7023ccd088417956ac5101028a294c6c`
 - **SHA256**: `6c74e52b62859098ef361638b578738302632a6ce692d9da5c42d28b6f2ba2d3`
@@ -39844,7 +39817,7 @@ import{i as r,s as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-integer-field-85078932.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `70b737ea14956cd6ad4b17cca06d03c5`
 - **SHA256**: `5cac189de70a8f5299c26d4b594ec1cf066abbfcaadbeb7a7f7cb9e23f31814b`
@@ -39867,7 +39840,7 @@ import{inputFieldProperties as t,labelProperties as i,helperTextProperties as a,
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-list-box-d7a8433b.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `4250e67d801a4576237e2c3ef8c63c52`
 - **SHA256**: `1cff839fa84520fe07bad4a7ca184c0d26dc7f9171b2e95f664bad29ba0d8e06`
@@ -39890,7 +39863,7 @@ import{s as o,f as r}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-login-form-638996c6.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `d137c2ed3d526a3e975828bf12780db6`
 - **SHA256**: `85cbff83b038f4dffb7b7020794da1558e9a67cdba417e310191d49e478363ab`
@@ -39913,7 +39886,7 @@ import{a as e,c as r,d as a}from"../vaadin-dev-tools.js";import{inputFieldProper
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-login-overlay-f8a5db8a.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `c9eede6c6921030e023a967594eb7e18`
 - **SHA256**: `4a9f6c5db2e04ec87e5044e6aef90c75f057debe16aacc0937e712011eca583b`
@@ -39936,7 +39909,7 @@ import{s as o,a,c as r,d as i}from"../vaadin-dev-tools.js";import{inputFieldProp
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-map-d40a0116.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `f31069f0e4219384dc0f2e29d4e0b235`
 - **SHA256**: `a5069d7db344dccea518eb6d728628ec3d1101a9f4f4a248bc130a42d3c9c1db`
@@ -39959,7 +39932,7 @@ import{s as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-menu-bar-3f5ab096.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `5de58590f87bdcaf4e070cb8a534256d`
 - **SHA256**: `041bc4e5a004aae826350145ec62bc963025ca7561956109d6780d76421f0020`
@@ -39982,7 +39955,7 @@ import{s as o,E as a,p as i,f as s,t as n,e as d}from"../vaadin-dev-tools.js";im
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-message-input-996ac37c.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `10446ca226da567fb7c60eaa22c950fd`
 - **SHA256**: `ac9358e6020fdc7854cf0dd906b81e05221ce54584b0278035fe1274fc15811b`
@@ -40005,7 +39978,7 @@ import{s as e,E as a,p as r,f as t}from"../vaadin-dev-tools.js";import{inputFiel
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-message-list-70a435ba.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `8a3b588d62c767c032457f03a9949716`
 - **SHA256**: `500fe60e087abceebeab9ebe41331e10cb4ce41d2901979f626afae0dc253b20`
@@ -40028,7 +40001,7 @@ import{s as e,t as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-multi-select-combo-box-a3373557.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `28aa8dc025bc770dbf8c3431c20f1960`
 - **SHA256**: `e4d2080225e6ac73a7bcdf26ab4fc994bcc795326636615434942f4dcd1be1dd`
@@ -40051,7 +40024,7 @@ import{inputFieldProperties as i,labelProperties as l,helperTextProperties as s,
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-notification-bd6eb776.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `ba07821b6f5fb72cdbb30cb78b56876a`
 - **SHA256**: `71f0f69141be3cef53533ae2ae36523d01ff113fd881a8069f797b04143f6a69`
@@ -40074,7 +40047,7 @@ import{a,c as t}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyf
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-number-field-cb3ee8b2.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `a8854d4afe1af5add6dd9c8a3c2680a1`
 - **SHA256**: `8f5582709457e244d23a020405e324c62776e41b3bb9dfbdda83b091ed2a1dc0`
@@ -40097,7 +40070,7 @@ import{inputFieldProperties as t,labelProperties as i,helperTextProperties as a,
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-password-field-d289cb18.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `b5f942b3e8febc56bcd411333939671e`
 - **SHA256**: `e21eb8d9a8a05dd4a063239fd3c7b587cfd3325b0f8aefe9d7ff5e2ee49b9029`
@@ -40120,7 +40093,7 @@ import{inputFieldProperties as r,labelProperties as a,helperTextProperties as t,
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-progress-bar-309ecf1f.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `59da80b4c02d0fd94c3893d11b9e0bd6`
 - **SHA256**: `e7f8a73ee3d103c2e3c20364a7137e06ac7414e5b8471e424fdc8a487d0f9223`
@@ -40143,7 +40116,7 @@ import{s as r}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-radio-group-88b5afd8.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `409c22ebc9f8bfe77ac5bb1fe7be9aaa`
 - **SHA256**: `ad1b4b23429906fc3ce4696dcdd694c2312323a29fb9afb2de1d2e0690e51cdf`
@@ -40166,7 +40139,7 @@ import{s as e,E as i,p as d,i as p,t as r}from"../vaadin-dev-tools.js";import{la
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-rich-text-editor-8cd892f2.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `2a742ac0a4951890bab0896444e107b0`
 - **SHA256**: `dff43cea58534154bfd992e7daacf28e4f6fd608162e878a57a945fa0e1113e9`
@@ -40189,7 +40162,7 @@ import{s as r,t as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-scroller-35e68818.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `21ceb7deb6c59484e0978a0dea2eaef5`
 - **SHA256**: `f9c16c008d76fd750937e57402a1e869c8098247859b6ee9a91d49764c4b7cde`
@@ -40212,7 +40185,7 @@ import{s as r}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-select-df6e9947.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `5a39e63a8ea0b06fc6e6a3d61b4e3399`
 - **SHA256**: `00d0a7b698f67d7d3220c0c0e5ed25fc79a07d07d5e0f86bce91a5eb243184c7`
@@ -40235,7 +40208,7 @@ import{s as e,f as i,t as a,i as o,b as l,h as s}from"../vaadin-dev-tools.js";im
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-side-nav-ba80d91d.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `4a38ab4f92ae5a0c2e2bd81a2ac3de94`
 - **SHA256**: `82538e9402a26e3726ee42f908afa52d00a29391b83e739cf04c856d6e847e32`
@@ -40258,7 +40231,7 @@ import{s as e,t as i,i as a}from"../vaadin-dev-tools.js";import"construct-style-
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-side-nav-item-34918f92.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `bf2088e3b86ce67c1e3f11f332582f5e`
 - **SHA256**: `870579cd8f7e86c3f3ddbfcf89ac1bb65aac203476e3785a611bf06e45c0219d`
@@ -40283,7 +40256,7 @@ import{i,s as e,t as o}from"../vaadin-dev-tools.js";import{html as t}from"lit";i
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-split-layout-80c92131.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `6df18475f83d9388fb8ef481b6125c0d`
 - **SHA256**: `1ff97881993dfd419780674c53331fd948dcd309423f4287883e80dc87487a19`
@@ -40306,7 +40279,7 @@ import{s as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-spreadsheet-59d8c5ef.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `17773716819133130ffea6af7355a0ae`
 - **SHA256**: `64591b9072b0c1e40ca72af1c28b7715745502e99681bc5ec6e9730b652489e4`
@@ -40329,7 +40302,7 @@ import{s as e}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-tab-aaf32809.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `2f3f984da3642bb8e040e20c917c166c`
 - **SHA256**: `8741ee9ceeead5225b0ac30a203fa502625cc2828de7be7d0201c77c23002a85`
@@ -40353,7 +40326,7 @@ import{t as e,s as t}from"../vaadin-dev-tools.js";import{html as a}from"lit";imp
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-tabs-d9a5e24e.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `b4cf8842e08fcc2416dda757939a6af5`
 - **SHA256**: `d0a5ebfe77b835a51742595a1a8480e9dca21e8ea3483847fa1a39068bad0801`
@@ -40376,7 +40349,7 @@ import{s as a,t as e,i as t}from"../vaadin-dev-tools.js";import"construct-style-
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-tabsheet-dd99ed9a.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `9f56c7d54ac76977459443e180432d45`
 - **SHA256**: `904f815c97db3df50c34053d34f0246f9b700516487ec813a114836efa53c44a`
@@ -40399,7 +40372,7 @@ import{s as e}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-text-area-83627ebc.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `01b3cdf03ce7a72da81f6ef044e312e7`
 - **SHA256**: `3f3c3d1b2929b07e84db5542a19f95c30ac6c0dc04b79be92aab88be6ad29f85`
@@ -40422,7 +40395,7 @@ import{inputFieldProperties as e,labelProperties as r,helperTextProperties as t,
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-text-field-0b3db014.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `6af3c06fd0e7c9dc5c70ca101af45961`
 - **SHA256**: `d9fa19f6eabf53dba002e0fe6ddceb30866b038e5ff4f09b183755620a20fd15`
@@ -40445,7 +40418,7 @@ import{d as o,s as t,f as r,t as e}from"../vaadin-dev-tools.js";import"construct
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-time-picker-715ec415.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `360d2b8dd68e2059d22871ec9dab668b`
 - **SHA256**: `64438d54eb45f4fc30d210d93cc9ca0376f80b976cdf307f3998cb3e52d9db78`
@@ -40468,7 +40441,7 @@ import{inputFieldProperties as o,labelProperties as p,helperTextProperties as s,
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-upload-d3c162ed.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `310c59b293bcdae670fd3ec3da5c1284`
 - **SHA256**: `3ff6cc28b404631928e9feb90d3073b6c48d46bfefa673748dd9a2f7dfa90e00`
@@ -40491,7 +40464,7 @@ import{standardButtonProperties as e}from"./vaadin-button-2511ad84.js";import{t 
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-vertical-layout-ad4174c4.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `ba353252428a9fd86a8408cfadf4346b`
 - **SHA256**: `e4868ce46daeb29c2ef395cf0bd66fe64dbe6066e8965072699ca8d734c32e27`
@@ -40514,7 +40487,7 @@ import{s as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-virtual-list-96896203.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `b0e1124ae3b8ac2b8ff4bc4baab83454`
 - **SHA256**: `8de4ceb42210550cac1d04c7db0c4580ae11f0189c55195d61618f810cad3018`
@@ -40537,7 +40510,7 @@ import{s as r}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/base-property-editor.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `02e2913710514e243e57753d97975a9b`
 - **SHA256**: `a7b495e5d4262d8485f69ac301ed0eee941993d2a82730f202cbcbf802f29e81`
@@ -40608,7 +40581,7 @@ export declare class TextInput extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/checkbox-property-editor.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `d36a8dc5d485b100c72e5b5020e4fade`
 - **SHA256**: `d6ef1c83c9bc6e78ce3a937c435ad931953d442ff9f5dd2bcef956e339fd2587`
@@ -40637,7 +40610,7 @@ export declare class CheckboxPropertyEditor extends BasePropertyEditor {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/color-picker.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `dceabcec7e0d652104e58a9897fe4dfc`
 - **SHA256**: `f8dc977a8fede165f9003b62d8b4ab7bc89bb8f14c2ea33668f1a1ad773c2ea5`
@@ -40690,7 +40663,7 @@ export declare class ColorPickerOverlayContent extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/color-property-editor.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `e5880b206704f1ea3f99ee7d1504fccf`
 - **SHA256**: `028843e1477f4069436e5e97b62147a43beca10c690ca85eae063a2f0cb1db77`
@@ -40727,7 +40700,7 @@ export declare class ColorPropertyEditor extends BasePropertyEditor {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/range-property-editor.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `df6d46ffcc86ea13691ec6ab1843a4bc`
 - **SHA256**: `56a9ad6d7f8fc878fc01adb5657f44bfa0ba6135bbf36b2d0ccd02afd7190286`
@@ -40764,7 +40737,7 @@ export declare class RangePropertyEditor extends BasePropertyEditor {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/text-property-editor.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `1e0ac8382f87de35d6f679a68b1eaa01`
 - **SHA256**: `bc4c40b98350860ad0c89f26e3b452ec222214ac66152b1f01f923ffdf2cb8cd`
@@ -40792,7 +40765,7 @@ export declare class TextPropertyEditor extends BasePropertyEditor {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/class-name-editor.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `9f1e463f0453e3e50cdb79f53d3fcd0d`
 - **SHA256**: `85ce2fd1e3b29e0b247bd05a0b73db483c6c01b68705cc624ad5dd9b6fc319b9`
@@ -40830,7 +40803,7 @@ export declare class ClassNameEditor extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/component-overlay-manager.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `d6f89b9002637ac3621e24add056c063`
 - **SHA256**: `5830046011b0b30b18d5fd181fa2b8f4c95e2878da43be87ac48d53bffb482b0`
@@ -40879,7 +40852,7 @@ export declare const createDocumentClickEvent: (element: HTMLElement, overlayMix
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/component-resolver.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `65b953269d20041aa082d19ce35c548e`
 - **SHA256**: `11d2805603abdd107c55fb5f0b67fa30dd26922fa50a238b413e1075744200b9`
@@ -40921,7 +40894,7 @@ export {};
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/property-list.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `cbfd29043c6960268e42ed89f72986f6`
 - **SHA256**: `4b9c204d3c547e97d2900cf7f8629756a4cc4c8344f2437b099b4edcae0a9e91`
@@ -40964,7 +40937,7 @@ export declare class PropertyList extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/scope-selector.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `4d0571fb7902a544e7b5ca033eee5e0c`
 - **SHA256**: `7dfaa51895698131d40c3bdeb4dc5796b8d7566bd52b3099bd3137c686e59d6f`
@@ -41004,7 +40977,7 @@ export declare class ScopeSelector extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components/defaults.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `3666e86632f683a0e9f748fda35d4d26`
 - **SHA256**: `0d25ee6af14773087e6f56216a89f51a29909ce09053bac63675412dc3c7e4e3`
@@ -41128,7 +41101,7 @@ export declare const standardIconProperties: CssPropertyMetadata[];
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components/generic.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `92278e2d7422e576434d80f003aeebd7`
 - **SHA256**: `7817967053edd2fff4cf2214d40aed7686a05c23647dec4fbfaf0d7ee51b98be`
@@ -41152,7 +41125,7 @@ export declare function createGenericMetadata(tagName: string): ComponentMetadat
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components/presets.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `ddc38712a6046af40701759f15ce0afc`
 - **SHA256**: `2674937fd65c3a5f5f827262acc1b694b9f83c66958c2fe8e7c08058e6ee9461`
@@ -41182,7 +41155,7 @@ export declare const presets: {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/model.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `b28ebb2f4ba5bc9527281390f713f7ca`
 - **SHA256**: `c4aa943bca79cae4d477bf5e952d535fe2810957adabc1248841a313ebc4c42b`
@@ -41241,7 +41214,7 @@ export interface ComponentMetadata {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/registry.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `44e6bcd56f33b4a50e0b56082e53603a`
 - **SHA256**: `a316c379c7d984ca99ebfc47ff9f1916ba763b87b3f873a82fb12c87ed602a82`
@@ -41274,7 +41247,7 @@ export {};
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/api.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `052c5bb3e1a6565295949419f316ee0b`
 - **SHA256**: `a9c25489fddb2e7a4ab5059450127a87e339edc782719bfddb8015c67c39f4be`
@@ -41351,7 +41324,7 @@ export declare class ThemeEditorApi {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/detector.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `79a7439488b9f71fa988abd3c18b637a`
 - **SHA256**: `1fbee68885b01035cf0929a3d57b25a128068684eb6f185dad4637f76b7446f0`
@@ -41378,7 +41351,7 @@ export declare function detectElementDisplayName(component: ComponentReference):
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/editor.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `22d9cfe61ee865de06a3a670fe07504e`
 - **SHA256**: `08fe1e5bf6ff15f7a62d8bed6805182775c34414498a7deee48bf2e1a4af3938`
@@ -41459,7 +41432,7 @@ export declare class ThemeEditor extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/history.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `974472c35a6440217f6482150c4270d8`
 - **SHA256**: `69d67165a0e7f112de9dc28e119c5f7eb2d56a2bd59bb647455a63f56c23fb54`
@@ -41504,7 +41477,7 @@ export {};
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/icons.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `ba3ba1e8b90fe45a3bcd5fb437e52660`
 - **SHA256**: `ab49e6d29af2965558dfe0e5f9f2f3cd17f09df598a578865b06c6216968c42f`
@@ -41534,7 +41507,7 @@ export declare const icons: {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/model.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `33593a9432d2769b9596bf6cb5eb5499`
 - **SHA256**: `6c20fe1f065c8946e0a446f1f080da590c50937b24c00c0f412c0a3f4d10307d`
@@ -41602,7 +41575,7 @@ export declare function generateThemeRuleCss(rule: ServerCssRule): string;
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/preview.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `96dcebeef0816343bae0b24d045f0355`
 - **SHA256**: `af5db8c37497445c6bcf4ebc2b9c7ff2910cb133732a1d612d8fda37b98ebc4c`
@@ -41635,7 +41608,7 @@ export {};
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/styles.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `5822d66c659e7cc2c43aa7d933482b2c`
 - **SHA256**: `70fc3bfa3db5648f35b597c22bd9e739e4cf99fcc22161d7c9c9071e6bcfdbcc`
@@ -41660,7 +41633,7 @@ export declare const editorRowStyles: CSSResult;
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/component-picker.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `3966162d4bab4779037297d21491f7d8`
 - **SHA256**: `b3bbb887229b5fab8db748384140d693d66e0a368880ffd30a39ff043c68ecc0`
@@ -41717,7 +41690,7 @@ export declare class ComponentPicker extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/component-util.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `86c6ef9fd7468ec42c3b20af1a44ee6e`
 - **SHA256**: `36863f915859d9138429577f057a0bf51e7c6653ec0a2bfca2eef63343fceaec`
@@ -41748,7 +41721,7 @@ export declare function deepContains(container: HTMLElement, node: Node): boolea
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/connection.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `459b418327b8966c128ad63bdb66e35c`
 - **SHA256**: `0330bf3a797b570ad8ae9e1ac0877a94ff9d0907950168d3bc91a2ef2646c295`
@@ -41785,7 +41758,7 @@ export declare abstract class Connection {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/License.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `3dd6602d3d05cee61d6647ac6997dc17`
 - **SHA256**: `8a5c3dce00cf811e86a784a6fe503f33e81443d792f6e754cdd1dd87101fb60a`
@@ -41823,7 +41796,7 @@ export declare const licenseInit: () => void;
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/live-reload-connection.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `0d6161b4de4dedaa498f0117e5016a4a`
 - **SHA256**: `a69c284aee4f389cf4458b48511ea6a625fa57ba00d31d704d156619eeb9d056`
@@ -41853,7 +41826,7 @@ export declare class LiveReloadConnection extends Connection {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/shim.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `5fd4ebf1e00238c0e6c805ba081b58e1`
 - **SHA256**: `49ffe17b97c39c7a86c38513de6f1d7a130309e1bd850ebbe8214a2604b2d221`
@@ -41895,7 +41868,7 @@ export declare class Shim extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/styles.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `752cb40d91b7305988b93d2749dcc6a3`
 - **SHA256**: `98cc52325c3e888eacc6b57b18a9f0bc3c5e8b85da69360a14635437e378cd85`
@@ -41918,7 +41891,7 @@ export declare const popupStyles: import("lit").CSSResult;
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/vaadin-dev-tools-info.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `3ca801b782e0cb6a8a9475514a8ab689`
 - **SHA256**: `e676f3b26ac606c37d6571ca91cc669965de6f48b61634f83e1b472f1b7de2e8`
@@ -41949,7 +41922,7 @@ export declare class InfoTab extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/vaadin-dev-tools-log.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `6693d2d94e350a91c6bf915a63e05e6e`
 - **SHA256**: `a92c61c453950401abe4e9718b7a9ee0166856a915a24d4860b5c826473fa93f`
@@ -41979,7 +41952,7 @@ export declare class VaadinDevToolsLog extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/vaadin-dev-tools.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `380e7c3c0a0a4c4e6790d8e037ffbc04`
 - **SHA256**: `f170841a51c0330dec8d3b316c9a1e15af46fafb5de6ed06bce5c02527f564f8`
@@ -42154,7 +42127,7 @@ export {};
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/vaadin-dev-tools.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `80521f8a2cdc03ac75f9324e90dc1579`
 - **SHA256**: `39c543413db794d944d8df9b06775dfd2970e1668d703da93f43feaaa0280418`
@@ -43853,7 +43826,7 @@ import"construct-style-sheets-polyfill";import{css as y,svg as B,LitElement as T
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/vaadin-dev-tools.test.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `b2a977077cec528bdfc4d45c9635361a`
 - **SHA256**: `570922a1db1e667e225cdeb28c5f87f5ee16c9b3ffa555384d1f9274b6dc22a5`
@@ -43876,7 +43849,7 @@ import './vaadin-dev-tools';
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools/websocket-connection.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `852089d2813bd25445eafc57f93db0b2`
 - **SHA256**: `f708e4bc0a0b17350f3cf4be24a246c3f7f4a13008f4d4ec4aa0f294a9158ee4`
@@ -43910,7 +43883,7 @@ export declare class WebSocketConnection extends Connection {
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-time-picker/helpers.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-time-picker`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `301250cfa7f54455437d36b7ccd3ed96`
 - **SHA256**: `7089a06daa03b99fec0e02bae7300dc1b315fb37cf3dbe0c4367bea60e0e5f8b`
@@ -44115,7 +44088,7 @@ export function formatMilliseconds(timeString, milliseconds, amString, pmString)
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-time-picker/timepickerConnector.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources/vaadin-time-picker`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `80e51cb1c1d335a83e9d495a01eeb7ba`
 - **SHA256**: `b919e91e383ddaf62f1b36d4cf530eb756e70b31f05434411346e06a39f70932`
@@ -44315,7 +44288,7 @@ import {
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/buttonFunctions.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `47d01ff06177aa75efeb068e775eb3cc`
 - **SHA256**: `8a7b2110b22463f8ee1a7998b58eb7caf0d1b9e9a706f239041ce8cdbd4a2c80`
@@ -44349,7 +44322,7 @@ window.Vaadin.Flow.button = {
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/comboBoxConnector.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `6ea39d634329958e1d98eb420ade7396`
 - **SHA256**: `d7db82b6fcf7cca4110e312483226d196e6ab3a5376ee818ef63a9d4676a57cf`
@@ -44655,7 +44628,7 @@ window.Vaadin.ComboBoxPlaceholder = ComboBoxPlaceholder;
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/contextMenuConnector.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `cd7a4a0f0ef5e20d4a7daabeb400ff72`
 - **SHA256**: `2e6d58c67fda19afe3f9dc732631fbff2b224b0083ef60a8d60719316c04dd82`
@@ -44819,7 +44792,7 @@ window.Vaadin.ComboBoxPlaceholder = ComboBoxPlaceholder;
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/contextMenuTargetConnector.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `bd7219f6372ac795d8899200b0b8d9ad`
 - **SHA256**: `f52579a79c35601f4167ee00db00f73db2946ab13e88e72330f8d4035e4397ac`
@@ -44915,7 +44888,7 @@ import * as Gestures from '@vaadin/component-base/src/gestures.js';
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/datepickerConnector.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `c9064e0f7767a72f0c8ee4e3c12c6945`
 - **SHA256**: `9df927550739e8ee1e0fda764fb301e769871c7dcc54195dcd597263f9b4ccb8`
@@ -45117,7 +45090,7 @@ import { extractDateParts, parseDate as _parseDate } from '@vaadin/date-picker/s
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/dndConnector.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `6681403df4ee3074d3a705f5b278c546`
 - **SHA256**: `6d56dc0aab0a3378adc3b0c2b20d61671e32d5212f512c1671dd431d9b744c72`
@@ -45249,7 +45222,7 @@ window.Vaadin.Flow.dndConnector = {
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/flow-component-directive.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `d7260481cae8a07ec1264078cb883308`
 - **SHA256**: `9e47dc031e4c2e1ada32ec5579c713e8c80961667cb3ddf0e30990db2dcba8aa`
@@ -45338,7 +45311,7 @@ export const flowComponentDirective = directive(FlowComponentDirective);
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/flow-component-renderer.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `9cc504d873728f21daa8c054b02cfec5`
 - **SHA256**: `e86c52268097336c0d0bcfe82caad3b6ed479c02ecb2d41b0391eb948f9100d2`
@@ -45568,7 +45541,7 @@ window.customElements.define(FlowComponentRenderer.is, FlowComponentRenderer);
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/Flow.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `6eec62e7bed0c64563a5b85e9372f128`
 - **SHA256**: `08cd7499866338981aaca66efc7991db01940ea4222fc04dd9751274d7b1b961`
@@ -45665,7 +45638,7 @@ export {};
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/Flow.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `788649d912ffb1fc5ebf92df62486496`
 - **SHA256**: `c73dec27309e57e6bb9bac87d285afdc94bdc893955e4ed8b1030b13d57f11c1`
@@ -46042,7 +46015,7 @@ export class Flow {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/FlowBootstrap.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `6e088ed9a496c8f241aef8909b7d2f3f`
 - **SHA256**: `576fa84e49e12ecf54ea30c85b2c59bc7678a29d8f829900d789c492f22fe3b4`
@@ -46065,7 +46038,7 @@ export const init: (appInitResponse: any) => void;
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/FlowBootstrap.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `79d54e64e8f230c0be25ca604ffc77ce`
 - **SHA256**: `aa9f2d7b4710b13367e301a623548d72079efd5cada966cbc008824192555eab`
@@ -46349,7 +46322,7 @@ export { init };
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/FlowClient.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `f9d4bae2e12da81dcbca62099800f860`
 - **SHA256**: `78d68a287e8b3b5f5773083b29640080c242b11ddd2e39dae93dac837f9b3a94`
@@ -46372,7 +46345,7 @@ export const init: () => void;
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/FlowClient.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `a4ca955f185a20c48f45023db96ed90e`
 - **SHA256**: `315a492f785d3c7be08d5cbded5534e996690a087727bc983f7955e1d724adae`
@@ -47446,7 +47419,7 @@ var RG='object',SG='[object Array]',TG='function',UG='java.lang',VG='com.google.
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/gridConnector.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `84dc828b0ef18610dd2cf585a256601a`
 - **SHA256**: `c47ec2b6ca8db98f153ddf7223b128e0e55a96fe9061e94b3704cf345cdf640d`
@@ -48669,7 +48642,7 @@ import { GridFlowSelectionColumn } from "./vaadin-grid-flow-selection-column.js"
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/index.d.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `204841aa320936e471ac1ca4810cba43`
 - **SHA256**: `b96059be2ddb60ed1ab950a692a9d5eddbca2d67d5a5e689e7e9ea7553ffe037`
@@ -48692,7 +48665,7 @@ export * from './Flow';
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/index.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `dd5d81d67c192c83327c548258a26d7b`
 - **SHA256**: `76b3b58d60dd8a649d9d81ccc7fd71a33d6c320abeaa8e3561b3a995874358ee`
@@ -48715,7 +48688,7 @@ export * from './Flow';
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/lit-renderer.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `73fa478c2113e4110047e26370182327`
 - **SHA256**: `87d8e225d0bb963ffd9a30bf3cc353d53ba4d9bb0ad72a18c0dfb0aa927594a3`
@@ -48847,7 +48820,7 @@ _window.Vaadin.unsetLitRenderer = (component: Component, rendererName: string, r
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/menubarConnector.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `e39b51f46d4140a131a5b4bad023f54c`
 - **SHA256**: `7132f543edf4e18442ff8480511fbd5e38e4597b9f731999b679576c4b8bf7ef`
@@ -48989,7 +48962,7 @@ import './contextMenuConnector.js';
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/messageListConnector.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `83dc346c0db3241ec0ab4304c3257960`
 - **SHA256**: `10aaed9a6f4ebd83c635f1a6d8ca9827e008d8946fcd211b6f940a8e09565eb3`
@@ -49052,7 +49025,7 @@ import './contextMenuConnector.js';
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/selectConnector.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `e69c0890c02a4c8aa47ae2440972a033`
 - **SHA256**: `2e95ab2290f74c3321b44d47e776f6e64db81ed349b9bef8746497f98919815e`
@@ -49110,7 +49083,7 @@ import './contextMenuConnector.js';
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/theme-util.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `85ab7113075eb368c6d60af391fb5765`
 - **SHA256**: `62f00dacc6f41efd163e8aecce24c4e22f792ec95a67154c6e5c77ef96435a8c`
@@ -49282,7 +49255,7 @@ function getHash(input) {
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/jar-resources/tooltip.ts`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `a6552e3fb93c4463840752e3946a4382`
 - **SHA256**: `5da30452a80ddcbdc7e748dd351c0208fb8b6144a47ed1abf0a1ad8eff471666`
@@ -49327,7 +49300,7 @@ if (defaultHoverDelay) {
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-big-decimal-field.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `f34f99830ab1532dd6a254553251d4d1`
 - **SHA256**: `339cd75c734149ba5ab89745dc8871c101c5ab2770a8f66eaa8bd9e3daeae159`
@@ -49420,7 +49393,7 @@ if (defaultHoverDelay) {
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/vaadin-grid-flow-selection-column.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `a668f5c1f07e5f107c72e6581bea3241`
 - **SHA256**: `574378fa5784192cdd7a1bd91b7abc6bafc3ed39fd5034e1ce09342859879576`
@@ -49539,7 +49512,7 @@ customElements.define(GridFlowSelectionColumn.is, GridFlowSelectionColumn);
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/jar-resources/virtualListConnector.js`
 - **Relative Path**: `target/classes/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `3e9d6c84a2149cf7b63366b270af0136`
 - **SHA256**: `a97342f530ad425643a411d2dcc583504e645864d58b7b3fb2c08ffef912d6e3`
@@ -49718,7 +49691,7 @@ The following files were not included in the text content:
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/index.ts`
 - **Relative Path**: `target/classes/frontend/generated`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `ca48ead1cab93932ea95e24485e19143`
 - **SHA256**: `0f928ed40987b36e35b52e007530c0a9039d5a91ed4a1d3829598df27b12f035`
@@ -49772,7 +49745,7 @@ router.setRoutes(routes);
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/theme.d.ts`
 - **Relative Path**: `target/classes/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `dcc04cc93e2afada639e1541f97edf3d`
 - **SHA256**: `6e32f0b950a9e514b04699980119bfe7a5134ee20b9e847d7fcf33703a124ab2`
@@ -49794,7 +49767,7 @@ export declare const applyTheme: (target: Node) => void;
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/theme.js`
 - **Relative Path**: `target/classes/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `4e716712f70f276dc6bba57027650967`
 - **SHA256**: `237a20280c150d97ab3d5f85b34d675076c6ada84f7ab272a50d51e4a00ff4ac`
@@ -49818,7 +49791,7 @@ export const applyTheme = _applyTheme;
 - **Language**: `javascript`
 - **Location**: `target/classes/frontend/generated/vaadin-featureflags.js`
 - **Relative Path**: `target/classes/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `8f569894e84ded335f151756a8887321`
 - **SHA256**: `52b3b05d61ae631ce70715422a4b9cb4f62f179257b7170ebe514c9fa2ee0aac`
@@ -49848,7 +49821,7 @@ export {};
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/vaadin.ts`
 - **Relative Path**: `target/classes/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `3e3e7b7fa9ae57bc8d743a77c9e2d2ee`
 - **SHA256**: `a8b7dca506dd534834f4e1f53c3cc8903515a5d55aa69b8a8fa7e7450da496d3`
@@ -49879,7 +49852,7 @@ applyTheme(document);
 - **Language**: `typescript`
 - **Location**: `target/classes/frontend/generated/vite-devmode.ts`
 - **Relative Path**: `target/classes/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `9d241cc3d4388ab3cd9cd8d3d028b7a8`
 - **SHA256**: `fa65d0e3c0050427af4712dce64d7ba7f000880caa869aa400c56ee1c4bed55c`
@@ -49932,7 +49905,7 @@ if (import.meta.hot) {
 - **Language**: `html`
 - **Location**: `target/classes/frontend/index.html`
 - **Relative Path**: `target/classes/frontend`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `ec70e6eb521f5fe359b84581631f95b7`
 - **SHA256**: `6f5cd5e7d9ace45f05ed8fb204ddee068f5d998f765c622347d2582b84e93562`
@@ -49977,7 +49950,7 @@ This file is auto-generated by Vaadin.
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/flow/generated-flow-imports.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/flow`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `da5d39a83fcf0a8c0bacfbd8cec3bc9b`
 - **SHA256**: `f4c5cf9bb78e85f15dc27180260637cf24b2a24bc39e0788783a3accc4dde614`
@@ -49999,7 +49972,7 @@ export {}
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/flow/generated-flow-imports.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/flow`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:37 (America/Bahia / GMT-03:00)
 - **MD5**: `3ff44f75e07609196edc2b3b8bf8f346`
 - **SHA256**: `44f165878ff62a8bb6b2f8f0e80b60ec095bbcca82b3414378a91ec41a836d40`
@@ -50113,7 +50086,7 @@ window.Vaadin.Flow.resetFocus = () => {
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-accordion-eed3b794.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `005faa3cf4c6fb27d5762f64be798db8`
 - **SHA256**: `ece4301d113706b1c3252fc4f80e108a5b915092c9b94cd7a38d36887abe2fa4`
@@ -50136,7 +50109,7 @@ import{t as a,s as o,i}from"../vaadin-dev-tools.js";import"construct-style-sheet
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-accordion-heading-c0acdd6d.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `4965090d0f4e5b49f339c69867b5815f`
 - **SHA256**: `f9843561202323c5259d420a5d4b60a0340b729ffcbfb7365136d25328dd8da6`
@@ -50161,7 +50134,7 @@ import{html as e}from"lit";import{t as o,s as a,i}from"../vaadin-dev-tools.js";i
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-accordion-panel-616e55d6.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `f48a54e0b121572131136fb0831b17ac`
 - **SHA256**: `81e236092b48e617534f5f5bb0d9071f572df60460d3f1913280b59fde6413c5`
@@ -50186,7 +50159,7 @@ import{s as o}from"../vaadin-dev-tools.js";import{html as e}from"lit";import"con
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-app-layout-e56de2e9.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `556001b1998a7923998bf9bf286a5ef4`
 - **SHA256**: `0a2d3c1bc19129e098e04a82073e3f7a61ab7a9bfcb574c8ff8aa3e1a1af20ab`
@@ -50209,7 +50182,7 @@ import{s as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-avatar-7599297d.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `afe294e8aa769637755a1f4980db6827`
 - **SHA256**: `082ff3a3cb3f365283398467fec982874b2c07641fab0d19ac3c51991cb71280`
@@ -50232,7 +50205,7 @@ import{s as a,E as r,p as t,t as e}from"../vaadin-dev-tools.js";import"construct
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-big-decimal-field-e51def24.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `1b914162ac07bd12996af38bb333c703`
 - **SHA256**: `9cf1cb21f8abbebf674727dd200e09a1724087de95d69ae99d928956f7e88f5f`
@@ -50255,7 +50228,7 @@ import{inputFieldProperties as e,labelProperties as i,helperTextProperties as r,
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-board-828ebdea.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `780741d53450c132e7c5e01e92aa7c52`
 - **SHA256**: `5c345e590aa3a740771e00140650eca64b00ed8d553db01694c3d33854490862`
@@ -50278,7 +50251,7 @@ import{s as r}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-board-row-c70d0c55.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `d5bdb1574d17e0e662fd9911eea52460`
 - **SHA256**: `48a3c7bda7a141d8ddb85cf4324e10e17b094c35aaf5aaff8f7c2582c5608e80`
@@ -50303,7 +50276,7 @@ import{s as o}from"../vaadin-dev-tools.js";import{html as r}from"lit";import"con
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-button-2511ad84.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `89c830ef483e0e32deedb50b93f7ac09`
 - **SHA256**: `2790cba8a55be83eebd4d82986be2bf0f51be85f6c0f97aaba9f6af88aa69978`
@@ -50326,7 +50299,7 @@ import{c as t,s as e,E as r,p as o,f as a}from"../vaadin-dev-tools.js";import"co
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-chart-5192dc15.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `ab6bd5e6ea53e762b7f2376091c1cd63`
 - **SHA256**: `8a0567ba103e805c5e3e7b1774c7865900f06dfa1b1c7ec775e22807c961bebe`
@@ -50349,7 +50322,7 @@ import{a as r,E as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-checkbox-4e68df64.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `4a7aac66be9fa4c2f700070b6668e5ec`
 - **SHA256**: `8fb87e57372ecd7e20ee62bacbe9661c97afcffed9eab6e9a6100b22464456be`
@@ -50372,7 +50345,7 @@ import{E as r,p as t,s as e,i as a,t as o}from"../vaadin-dev-tools.js";import"co
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-checkbox-group-a7c65bf2.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `e72fd1f69eec965969bde9370b4ebbeb`
 - **SHA256**: `02a32968127f5ac2828b474b17ce3d4e86c90187def9761b838eeffa68680543`
@@ -50395,7 +50368,7 @@ import{s as e}from"../vaadin-dev-tools.js";import{labelProperties as i,helperTex
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-combo-box-96451ddd.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `2febeb2e127d988072714003e1fcf17a`
 - **SHA256**: `f4fdfecd4b08496a051da6bd8c9bdfa4899146d2ef6f3b243c2504497b921abe`
@@ -50418,7 +50391,7 @@ import{inputFieldProperties as s,labelProperties as l,helperTextProperties as p,
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-confirm-dialog-4d718829.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `145530b25fdabe63afb107bf4a12062a`
 - **SHA256**: `5d9c0780e0c74dd29fc619841fd40ae46d41313720491683db3c00724fa67a0e`
@@ -50441,7 +50414,7 @@ import{a,c as e}from"../vaadin-dev-tools.js";import{standardButtonProperties as 
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-cookie-consent-46c09f8b.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `2150bf4656537471d77632ca31653207`
 - **SHA256**: `1441b212d1e133c9e162d25b61f0bd0c99faa93a365d1d9f569990d1733bad83`
@@ -50464,7 +50437,7 @@ import{a as e,c as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-crud-8d161a22.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `55e0972c42cce33ec7df4bb33388f576`
 - **SHA256**: `d2858b6e25c90aaaf13910d4d4fe6eea7270f9abedda03002b95bef580127c40`
@@ -50487,7 +50460,7 @@ import{s as r,i as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-custom-field-42c85b9e.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `5cfa86a1749c3c9be87d069528abbfbb`
 - **SHA256**: `f1a3f021ab33fdceb12dff133e60af9a5e1af4c409265ac2cf51cc299b105e8c`
@@ -50510,7 +50483,7 @@ import{labelProperties as e,helperTextProperties as r,errorMessageProperties as 
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-date-picker-f2001167.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `f8ebc907311226bb3b1335b2fffdc8b5`
 - **SHA256**: `b1aaf27d55d8554a3f1e937e90a28dc71f0c58a7d06ce38b22ba0cd1a3117dce`
@@ -50533,7 +50506,7 @@ import{inputFieldProperties as i,labelProperties as p,helperTextProperties as l,
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-date-time-picker-c8c047a7.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `6f37bea90e5535a6eaae7c8c70533bf9`
 - **SHA256**: `70bac6cc9c5813eb535734093f130f62725321b83f91e995f559daa0d27cd97c`
@@ -50556,7 +50529,7 @@ import{labelProperties as e,helperTextProperties as r,errorMessageProperties as 
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-details-bf336660.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `6882997ee182db90b1f9a41ad78e98ec`
 - **SHA256**: `718ed90454e77ad4b2ac1c82511556885fe6c6647c443722560c788895bb10cd`
@@ -50579,7 +50552,7 @@ import{a}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfill";im
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-details-summary-351a1448.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `36a554cf69d2eb6f9ca0ec2d235317fa`
 - **SHA256**: `cb74b91f6e4c0e19cf3eefb93a7d076986cfebbe0b14483cce1036a63f13a1c4`
@@ -50602,7 +50575,7 @@ import{t as a,s as t,i as e}from"../vaadin-dev-tools.js";import"construct-style-
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-dialog-53253a08.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `a5936f63ed3f0150eb2fa15ff86f2400`
 - **SHA256**: `cf701523013b7a549406b956b84b97950b12a1da4344e0150279ac070fca55f1`
@@ -50625,7 +50598,7 @@ import{a,c as e}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyf
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-email-field-d7a35f04.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `d933008c75a10e1b8be9aa00ce48b9b7`
 - **SHA256**: `82570ca5d91a50944e1b960037e757ed7d14cdbaf562903707178597d72b3ef8`
@@ -50648,7 +50621,7 @@ import{inputFieldProperties as e,labelProperties as r,helperTextProperties as a,
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-form-layout-47744b1d.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `59176cf8423601779a3aac1ac6db80d2`
 - **SHA256**: `ea66fee955cb5c9a2642a9ef1c53fd69275a9686ffc59be8071b1fe944669c8d`
@@ -50671,7 +50644,7 @@ import{s as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-grid-0a4791c2.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `c16e6801a97e0b9b3db43c73c8499acc`
 - **SHA256**: `0b1d2b8c605cb7a00803929c4a82cfec6e2fdc9292dd557ce69dde6492ccf88c`
@@ -50694,7 +50667,7 @@ import{s as o,t as e,i}from"../vaadin-dev-tools.js";import{checkboxElement as t,
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-grid-pro-ff415555.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `6ae49fd27812b017d9b22be44ac03bfa`
 - **SHA256**: `753215249a89893df5258126e72e62cc6b1c9a6d2c60312ef3219f2ec5622f28`
@@ -50717,7 +50690,7 @@ import{s as r,t as o,i as a,E as t,p}from"../vaadin-dev-tools.js";import{checkbo
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-horizontal-layout-3193943f.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `2f7a4759f623e9043589b07dcce36988`
 - **SHA256**: `d27f9f1a45920308bd0461bea71beb7bf0542437225eeca289e5baa930b0775b`
@@ -50740,7 +50713,7 @@ import{s as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-icon-601f36ed.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `c8f2ce23187387b886cd5032a3d703d2`
 - **SHA256**: `1d802c0e3f05e57b60c4e3488cdda66a97d7773e72af463a00fef5487467fe49`
@@ -50763,7 +50736,7 @@ import{i as r,s as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-integer-field-85078932.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `a7de7d0a965792fc25b9157fe70bd92b`
 - **SHA256**: `967cda3c70a5a7c110789d5b341dc2e639b903c93fea98a6bf1b349496ce7a29`
@@ -50786,7 +50759,7 @@ import{inputFieldProperties as t,labelProperties as i,helperTextProperties as a,
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-list-box-d7a8433b.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `dd44cce4c45e2b71a81bef1e3f6c4816`
 - **SHA256**: `a2b89ce56b67b59ec94bdbc33e750794fbdf9a86dc398a7159f9b9b185f7d269`
@@ -50809,7 +50782,7 @@ import{s as o,f as r}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-login-form-638996c6.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `67eca774df93d1b945b6c20fdcac66b1`
 - **SHA256**: `72b7f264d72821bed18be559d66209b8249cb2a32db26e8c8ca80dc1489a5013`
@@ -50832,7 +50805,7 @@ import{a as e,c as r,d as a}from"../vaadin-dev-tools.js";import{inputFieldProper
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-login-overlay-f8a5db8a.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `f6c2977bbf04e5f120edd6c2151642f8`
 - **SHA256**: `a6d38b11fd4720b21143a3e48b44c34e1dea0cfcf5eda3f439feb051eb7d9dc2`
@@ -50855,7 +50828,7 @@ import{s as o,a,c as r,d as i}from"../vaadin-dev-tools.js";import{inputFieldProp
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-map-d40a0116.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `78299af038cab00392c2f8afb53c5aa1`
 - **SHA256**: `0c2e90d45c496976c261af5854fe3a54d9e66ee5720b78a12dfa595f5680c395`
@@ -50878,7 +50851,7 @@ import{s as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-menu-bar-3f5ab096.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `6363989e7b7583fd5b9d851e22ed13e9`
 - **SHA256**: `2ef96ebdd64994c428065644ea668f948ff114c78eae8cccd14886cd0ed4f856`
@@ -50901,7 +50874,7 @@ import{s as o,E as a,p as i,f as s,t as n,e as d}from"../vaadin-dev-tools.js";im
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-message-input-996ac37c.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `04ad04499d7ac3d37c71568ab33b409b`
 - **SHA256**: `691ee8700f3a55cc0af6d52a2f161b0f5096ce997a0a9c4abb0f0665d87431f4`
@@ -50924,7 +50897,7 @@ import{s as e,E as a,p as r,f as t}from"../vaadin-dev-tools.js";import{inputFiel
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-message-list-70a435ba.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `0c4deb292ce5a85e4dc461689aec583f`
 - **SHA256**: `60404b3fbcefabcdbeb93fa81f81fe092eb9b75e09a1cd3f516dab6fe2b1e828`
@@ -50947,7 +50920,7 @@ import{s as e,t as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-multi-select-combo-box-a3373557.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `c54c4c5a4cd76ec0d55a477b22c5eb4b`
 - **SHA256**: `d9dbd6892618f75d266a7132ae1fcd5e748015a47278775a7cd3feb530694d26`
@@ -50970,7 +50943,7 @@ import{inputFieldProperties as i,labelProperties as l,helperTextProperties as s,
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-notification-bd6eb776.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `8d216188aff6f7b29db1eacfa17a75cf`
 - **SHA256**: `d66869a4e4e853a1e0a960ad6c800aebaa44625c27d648208a60f5b9648506a6`
@@ -50993,7 +50966,7 @@ import{a,c as t}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyf
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-number-field-cb3ee8b2.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `0c632b48afaa4a087137c52265ecb745`
 - **SHA256**: `ead83b916ed613d483fc5dfbcaa9d65063601bf85b1d2a443f31df4d90a21401`
@@ -51016,7 +50989,7 @@ import{inputFieldProperties as t,labelProperties as i,helperTextProperties as a,
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-password-field-d289cb18.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `f5c9cc495de152ac5389e4e10b940e7e`
 - **SHA256**: `8d5f07b851718f7ece29fe423514b1e53d3c688a1c033a4d3921e4ddee19d474`
@@ -51039,7 +51012,7 @@ import{inputFieldProperties as r,labelProperties as a,helperTextProperties as t,
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-progress-bar-309ecf1f.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `68e906e6072ed77573ae5486a5646d31`
 - **SHA256**: `bed574a0ef38a7f8e15df078711ca80499ad0c25a18d59ee8e76f77a89e44690`
@@ -51062,7 +51035,7 @@ import{s as r}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-radio-group-88b5afd8.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `7e3178632f62480b95d6068a1bb0ab87`
 - **SHA256**: `77e0cd5b1618185f45ca9566d5348e6e96e7228fe3067ccd847fe1aac0044ed1`
@@ -51085,7 +51058,7 @@ import{s as e,E as i,p as d,i as p,t as r}from"../vaadin-dev-tools.js";import{la
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-rich-text-editor-8cd892f2.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `89696543a045bdf6f2f1d152cf73e99e`
 - **SHA256**: `ed760fd13dfd46e353ba50e6a132e601a574a6996055e480a5e8174eb0434d15`
@@ -51108,7 +51081,7 @@ import{s as r,t as o}from"../vaadin-dev-tools.js";import"construct-style-sheets-
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-scroller-35e68818.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `560a2b91d6b84f8a1f2057828ad1dab4`
 - **SHA256**: `0dbefd6da95e324cfbb2f8754d65666c83b9ab7726bb0fd7949e4d83c532e421`
@@ -51131,7 +51104,7 @@ import{s as r}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-select-df6e9947.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `50a2529031ddf9c157d7a6a5368e882e`
 - **SHA256**: `acff0068873ebafe7f3b72ee6d556f5cf07c5103771c3acfff9e7b8cbca96ad9`
@@ -51154,7 +51127,7 @@ import{s as e,f as i,t as a,i as o,b as l,h as s}from"../vaadin-dev-tools.js";im
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-side-nav-ba80d91d.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `16b2277e111f492e495a85db506c22f6`
 - **SHA256**: `68534b67b2a7cc136a89aef81bb3c47faf6a39b087c750834c5b3bf3cf27201d`
@@ -51177,7 +51150,7 @@ import{s as e,t as i,i as a}from"../vaadin-dev-tools.js";import"construct-style-
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-side-nav-item-34918f92.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `40c9d28b3787db996344e90b4f01f5a5`
 - **SHA256**: `15befdf107db4b5c0257d2556874da5b86ffd57db156217dbfc34c51406ce01d`
@@ -51202,7 +51175,7 @@ import{i,s as e,t as o}from"../vaadin-dev-tools.js";import{html as t}from"lit";i
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-split-layout-80c92131.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `e5a3cd390cea6a9e16849bac4fbba90f`
 - **SHA256**: `9c7a257a835bb933a1876d6f0e745dcb85eea8d046e55dacfc9916eedfd3aa2e`
@@ -51225,7 +51198,7 @@ import{s as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-spreadsheet-59d8c5ef.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `6114d015b2888a2cbdfe1d79ad84721e`
 - **SHA256**: `bdda0e2afc324bcb42136f93d625ee58dacbc55b9ca75cdd17011eb7639f293e`
@@ -51248,7 +51221,7 @@ import{s as e}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-tab-aaf32809.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `36908a45ddedee88b67d0787c3ef99f0`
 - **SHA256**: `82cc9ad84b06f93f6e5569607bf81cfbbc1b788d4601f72b1b226f26f78af58e`
@@ -51272,7 +51245,7 @@ import{t as e,s as t}from"../vaadin-dev-tools.js";import{html as a}from"lit";imp
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-tabs-d9a5e24e.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `c540fc3b8d36e43c57d99141404fdfaf`
 - **SHA256**: `be60b492e7ce8e5f6cd7854c61d11fcce3bcb60ed9ee1a29fd4a92dfbf3fa6ff`
@@ -51295,7 +51268,7 @@ import{s as a,t as e,i as t}from"../vaadin-dev-tools.js";import"construct-style-
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-tabsheet-dd99ed9a.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `6be8c3085a638275237452e4b265ec8a`
 - **SHA256**: `aa8128dd4bc38329230800408f74be854daf0b75671b968868f2f3024359909d`
@@ -51318,7 +51291,7 @@ import{s as e}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-text-area-83627ebc.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `ec3dcf6e0380d79cc36e11f636ba7717`
 - **SHA256**: `1860a61dc16fc070821e87d11b229e8fdbad13fe3ad4bed151cafe56523c604a`
@@ -51341,7 +51314,7 @@ import{inputFieldProperties as e,labelProperties as r,helperTextProperties as t,
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-text-field-0b3db014.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `5ae4597416844c06519b4a6dba476993`
 - **SHA256**: `1f8fb7362a5cbd4ba7b67c59deb026e56288285b2b977892ecb7cef280ce59a0`
@@ -51364,7 +51337,7 @@ import{d as o,s as t,f as r,t as e}from"../vaadin-dev-tools.js";import"construct
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-time-picker-715ec415.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `528609843332aa9d52907e08325b5b59`
 - **SHA256**: `385538becf2d79bc2c8dcd68fd62f00efec3bca876d6f3aa7649c38a374f72b0`
@@ -51387,7 +51360,7 @@ import{inputFieldProperties as o,labelProperties as p,helperTextProperties as s,
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-upload-d3c162ed.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `91d33f41a2c29ca71adffcff0c815578`
 - **SHA256**: `5fe7e408745a7a8224ad935a448bf26eafe218ec2807fcbbe0c259ad3bcc00d9`
@@ -51410,7 +51383,7 @@ import{standardButtonProperties as e}from"./vaadin-button-2511ad84.js";import{t 
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-vertical-layout-ad4174c4.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `5a40798a00ec5c4758f6782a35483c9f`
 - **SHA256**: `4910d6db7557304da31b2939381ecae1b62a419e46ad28c19895468b8ef81b1e`
@@ -51433,7 +51406,7 @@ import{s as a}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets/vaadin-virtual-list-96896203.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/assets`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `6f3c78ace507189f151807467f793fd0`
 - **SHA256**: `fb522a6556b50401b3df9450a8c13c0ebc2dcb5a8620c64eb8d40321a01805f8`
@@ -51456,7 +51429,7 @@ import{s as r}from"../vaadin-dev-tools.js";import"construct-style-sheets-polyfil
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/base-property-editor.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `c91a1bf6a7dd9c3e01515e03eb3a18a9`
 - **SHA256**: `4c987ef794d39adb231708054ebe2a9c281acf4b57641a59246263a9a03b8c01`
@@ -51527,7 +51500,7 @@ export declare class TextInput extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/checkbox-property-editor.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `dee56fe39be9fcfc97199eed4b60315e`
 - **SHA256**: `a3454cf0a0c762693e509779dfeac1f62e87193f8ba122ab35600c56fb6b946f`
@@ -51556,7 +51529,7 @@ export declare class CheckboxPropertyEditor extends BasePropertyEditor {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/color-picker.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `9e7f8c484b131f57ab3ddc1bd00fcd43`
 - **SHA256**: `b594d0878558c1c2ef170768fb4db9f798aae5001d430bec8f30995ede8d0758`
@@ -51609,7 +51582,7 @@ export declare class ColorPickerOverlayContent extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/color-property-editor.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `20ab6d9b394935af6e0d06d6880393ba`
 - **SHA256**: `e2803641a4198330dd69b0d05a9e5fa55c7170a2273232ac06999d01b9f929f6`
@@ -51646,7 +51619,7 @@ export declare class ColorPropertyEditor extends BasePropertyEditor {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/range-property-editor.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `f109be216cf2768647cf24dca8002472`
 - **SHA256**: `6e8476227b949ac2cfecea847d57ba70bd46a0f3e397df6e0858a071fa97638d`
@@ -51683,7 +51656,7 @@ export declare class RangePropertyEditor extends BasePropertyEditor {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors/text-property-editor.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/editors`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `c5f47c32d40dc183b7f7b2c9046b51c7`
 - **SHA256**: `0cf7d52b726028395b8a781ecb38e9a2a4d840bbdcf70b0216eef32e661bb928`
@@ -51711,7 +51684,7 @@ export declare class TextPropertyEditor extends BasePropertyEditor {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/class-name-editor.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `a2670d9ca8ff8382e4537bd6c49dd3a8`
 - **SHA256**: `cf03878c9aef3ad74c25b0e6c252a3004f98537641c522f373283f457b1c4243`
@@ -51749,7 +51722,7 @@ export declare class ClassNameEditor extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/component-overlay-manager.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `ae31c9c1371c19f8750614d3443c9550`
 - **SHA256**: `41633a6cc5d2c7ac2618553c2c3e9dde4f76fcd43cde8096c9b9f0af04763039`
@@ -51798,7 +51771,7 @@ export declare const createDocumentClickEvent: (element: HTMLElement, overlayMix
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/component-resolver.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `5ff560da308ee0b2af2968015587f669`
 - **SHA256**: `6fb5cbf23135e2865f7b4efa5b3d6deae0b86304c5f4891008629a72e5332db3`
@@ -51840,7 +51813,7 @@ export {};
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/property-list.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `2bf98065ca087157847c2355d14159ad`
 - **SHA256**: `58387eeec558186e61815fdb085a1cb21bae0ecb79cfa503955a6b141fa73009`
@@ -51883,7 +51856,7 @@ export declare class PropertyList extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components/scope-selector.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `ee9915888172227f8363f95a683463ef`
 - **SHA256**: `db56adcc0c94212a286da546f7369e87cf31d8f5d2250c729f8bc8d81cbb9370`
@@ -51923,7 +51896,7 @@ export declare class ScopeSelector extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components/defaults.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `bdab9ab659ef6bbafbfa51b4aac7c099`
 - **SHA256**: `b1dd0da099e68d67c86744010aba72c739b63f48a6f6cc8f5e3d66df47899e5f`
@@ -52047,7 +52020,7 @@ export declare const standardIconProperties: CssPropertyMetadata[];
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components/generic.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `71ee4e5b29cfead9dc55a9baadcfbf91`
 - **SHA256**: `ae2aa6761c2e7f3d6de611f2365542bd9e540cd1b636e268dd2cf40af6ccacc2`
@@ -52071,7 +52044,7 @@ export declare function createGenericMetadata(tagName: string): ComponentMetadat
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components/presets.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/components`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `8fd1866bc39b39130519b7bd9e90fb09`
 - **SHA256**: `b56c82e7fa3480e3eb07609042fecb1c10ded6abb98a0a0e0dda4140e1818e63`
@@ -52101,7 +52074,7 @@ export declare const presets: {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/model.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `25902f7f71c9c2aa175ce8db48cd00e0`
 - **SHA256**: `c1519cde6a65e6bc19deb6a9d2440defc486db3dc0bc604db83970e41f5a967d`
@@ -52160,7 +52133,7 @@ export interface ComponentMetadata {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata/registry.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/metadata`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `0fa59bed8ad8c32eee1c23d812310068`
 - **SHA256**: `da9ad42a7b639d0b71a5c9e492547f7a75742fc7a876367cc73ac2f4a7fd5cb9`
@@ -52193,7 +52166,7 @@ export {};
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/api.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `c7417cb793dc6f4147da2335972c7510`
 - **SHA256**: `231a1e02919c4a5fb3747b9ad56629a3469814a9a8010fa070d99a565d77cc3f`
@@ -52270,7 +52243,7 @@ export declare class ThemeEditorApi {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/detector.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `d379ce93b2f27a5162576431be3eb4df`
 - **SHA256**: `51402a74d87deba4f4e88444bac308da688ad15132ba3ef1ae68ec74e15d97b8`
@@ -52297,7 +52270,7 @@ export declare function detectElementDisplayName(component: ComponentReference):
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/editor.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `27ec05d72451037a62c40ecefaa63a2e`
 - **SHA256**: `68673bc8cbed8ae72e243104ed4cac0d984bdb785074aefe243efd7157aff2d9`
@@ -52378,7 +52351,7 @@ export declare class ThemeEditor extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/history.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `bb18f32546486ec00f6b1724b78ae7fe`
 - **SHA256**: `8c093266c9d2013d607adc616a26414b698707cf8e1027a20e611e7139addb27`
@@ -52423,7 +52396,7 @@ export {};
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/icons.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `efb0bb3e2d96d8536c0061f245c7166e`
 - **SHA256**: `0fa943ce6280bd33d688931e202a97f66b48ba5848461e42d74662e24148520b`
@@ -52453,7 +52426,7 @@ export declare const icons: {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/model.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `ceb73c6798bc293d163e46a9d959c444`
 - **SHA256**: `c2e75515619834ae240b3f988be3340ab3525aeaec310fe3675d559fde660085`
@@ -52521,7 +52494,7 @@ export declare function generateThemeRuleCss(rule: ServerCssRule): string;
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/preview.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `e2a519ff6ec32b436fcb517999b54b14`
 - **SHA256**: `5dabcb9cb6179da3ac1ca1c886e9423f57c0f431d53c70dab4f9971ab2a4224f`
@@ -52554,7 +52527,7 @@ export {};
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor/styles.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/theme-editor`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `b72a5915c52f1388bff1bd30fa8e9dda`
 - **SHA256**: `88a7fd309739dc34382473aa32d6607b7c3f22b95589c20554681787ca02e764`
@@ -52579,7 +52552,7 @@ export declare const editorRowStyles: CSSResult;
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/component-picker.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `bf25fca6120beb5df19c7804ed26c343`
 - **SHA256**: `9479bb2affe06affb470be52ae640605259517573874aa64b102fbab3ff13ea7`
@@ -52636,7 +52609,7 @@ export declare class ComponentPicker extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/component-util.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `1d9b9b77795de78acfe66c971d7eb0a0`
 - **SHA256**: `a5e0a0640ef7532b4c6409889d2b43d6c6a278f1dba7cc2974df8019c0b02a02`
@@ -52667,7 +52640,7 @@ export declare function deepContains(container: HTMLElement, node: Node): boolea
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/connection.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `a80968b8a94c5838755fe690391bed34`
 - **SHA256**: `39b78668d36fe216670b72bd040928ce76da2a48661555e5ebef2024c159d12a`
@@ -52704,7 +52677,7 @@ export declare abstract class Connection {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/License.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `10fddcfae9bfb8a9cad482ae6b8b5f20`
 - **SHA256**: `2691d9692fb6e13e373c8291b9e0d5833f3fa8ee3d06dd984b0a5189607fe3e0`
@@ -52742,7 +52715,7 @@ export declare const licenseInit: () => void;
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/live-reload-connection.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `650b42232733f4133ac94dcd38dab754`
 - **SHA256**: `feaebf9c025372af0184549717e9cf816ed1fbc250ecc7d20bc7805b43c9b7d6`
@@ -52772,7 +52745,7 @@ export declare class LiveReloadConnection extends Connection {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/shim.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `7f5b1e4df12296ee2029424ee96a86cc`
 - **SHA256**: `2c391d3248f0e83b56ecfab85babecbeb1e20bd7dd952d30033c6aa1b6da895e`
@@ -52814,7 +52787,7 @@ export declare class Shim extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/styles.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `f1c8de88bd62b10a01b6d9e92336efb0`
 - **SHA256**: `af05e4e1d87b4dbf73972e87b6f1092eb3827e0f421ab66cee6b2174312bd174`
@@ -52837,7 +52810,7 @@ export declare const popupStyles: import("lit").CSSResult;
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/vaadin-dev-tools-info.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `1be4400e2c8b236ec117a0f8c1b9a8df`
 - **SHA256**: `ab894f3d0dc4e6a7b0ae4891fd9335b63c449dd6511e7f1300ee1f67af7acae4`
@@ -52868,7 +52841,7 @@ export declare class InfoTab extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/vaadin-dev-tools-log.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `d76eec46fa26a526020a2b0624a57cf1`
 - **SHA256**: `ad46dfd828bac6ece518147c67d28c1c3c8a185de0bb598f9f6a1782648dfc12`
@@ -52898,7 +52871,7 @@ export declare class VaadinDevToolsLog extends LitElement {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/vaadin-dev-tools.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `01ec34e2c06a49040baac0ffbb56d1b6`
 - **SHA256**: `622791775069ae978e5e90d316cba542c718441920088f67ab4e03173e692296`
@@ -53073,7 +53046,7 @@ export {};
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/vaadin-dev-tools.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `3b0cd5f385b56ac413c71d7a7dd88519`
 - **SHA256**: `6c2ef0501dc3fe38da4220cfaada5378fb1fb8e3d612d525456b4a1e7fe9a0b6`
@@ -54772,7 +54745,7 @@ import"construct-style-sheets-polyfill";import{css as y,svg as B,LitElement as T
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/vaadin-dev-tools.test.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `fb7c61498e4192cb2165d7eb2c15593c`
 - **SHA256**: `54fcb4ad37155aa7f420ae8dd55eedd85a685eeeb108cd271af0f2847d31f086`
@@ -54795,7 +54768,7 @@ import './vaadin-dev-tools';
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools/websocket-connection.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-dev-tools`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `9f892e1066ebc349be0eadf67967354e`
 - **SHA256**: `ff57c77f5f4f841b783957cab23d09e1c200e38d5ea46cc63de4094f3049d919`
@@ -54829,7 +54802,7 @@ export declare class WebSocketConnection extends Connection {
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-time-picker/helpers.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-time-picker`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `fc763e693bc32f04d26bfd8f9d729fdc`
 - **SHA256**: `d7300a849011cfe88e29aafae3b655d69fc358fc07f40abc5530954b91023e78`
@@ -55034,7 +55007,7 @@ export function formatMilliseconds(timeString, milliseconds, amString, pmString)
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-time-picker/timepickerConnector.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-time-picker`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `64c0d7b04021d22596fe816d1aa1bbff`
 - **SHA256**: `68889ce9748478f71bf1620d488abbbd588f8047618ac558315d9b0b689e75e8`
@@ -55234,7 +55207,7 @@ import {
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/buttonFunctions.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `952c74af33ac93ff5d1e456ba218e9c7`
 - **SHA256**: `c852123f9b2c44eb75e555119d3e05a7dbe78b91d0ab616feb9df1654474707d`
@@ -55268,7 +55241,7 @@ window.Vaadin.Flow.button = {
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/comboBoxConnector.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `6e2763f9c1496bb1e95be6d7036063e1`
 - **SHA256**: `1d004c3dae9c76f8bcc68678abe1b8f7bdc8b456f5c9c4c7f190df8ed25d66cd`
@@ -55574,7 +55547,7 @@ window.Vaadin.ComboBoxPlaceholder = ComboBoxPlaceholder;
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/contextMenuConnector.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `a3551c6d27bc142c3f9fa662b0de7068`
 - **SHA256**: `b3e8b1b38de09aa65321338d3c149e18b4c5b53959ba134afe3be2d14942d86d`
@@ -55738,7 +55711,7 @@ window.Vaadin.ComboBoxPlaceholder = ComboBoxPlaceholder;
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/contextMenuTargetConnector.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `3a7990c3f7eb2d01334fdb702640f068`
 - **SHA256**: `585a230132037e0df9c35ca80a0fecd1d774ecaae32261b5a6b3ef4b93bbc13e`
@@ -55834,7 +55807,7 @@ import * as Gestures from '@vaadin/component-base/src/gestures.js';
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/datepickerConnector.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `b2231719c020254d98fbf713bf14bb66`
 - **SHA256**: `e3dd25341ae223db262632b6c4982349bcfda567a3874dae9ef121944a745f56`
@@ -56036,7 +56009,7 @@ import { extractDateParts, parseDate as _parseDate } from '@vaadin/date-picker/s
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/dndConnector.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `e64599ec5eec7d80b8aca92d62b8e946`
 - **SHA256**: `2b3bad984a3f93b921e769777c767acc86c823423201b061553ef85903f2e41e`
@@ -56168,7 +56141,7 @@ window.Vaadin.Flow.dndConnector = {
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/flow-component-directive.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `c4e6abc84aaee504e491154b58bd8a3e`
 - **SHA256**: `9a4c86ee4018d2f7fe911e9d11c1b88c52653e3fca10f08f1c784fecf2c9b810`
@@ -56257,7 +56230,7 @@ export const flowComponentDirective = directive(FlowComponentDirective);
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/flow-component-renderer.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `d8ae2e7ab8a3e528d2931c2b138dd666`
 - **SHA256**: `bcdda255ee14db4058a99c3def3ba165123d69243fc0dd857a271495efbe675d`
@@ -56487,7 +56460,7 @@ window.customElements.define(FlowComponentRenderer.is, FlowComponentRenderer);
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/Flow.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `ed92cb011d03880749bb823ad9345e9e`
 - **SHA256**: `96312811e8cc663303ea08aa643526973055d00c352371995c08f0e5a418a988`
@@ -56584,7 +56557,7 @@ export {};
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/Flow.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `4cdc2e3e67fe8442a130d6270ba0350d`
 - **SHA256**: `c329656ce15a2afdb6d684390741ee15d847e112d34566e3eacf006ff8ca7df1`
@@ -56961,7 +56934,7 @@ export class Flow {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/FlowBootstrap.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `dbc6714a3f4e82d0aa1171fdd4e47b2b`
 - **SHA256**: `6d5fc0b0569b64cad954278f52da2bbbdb0dc52b3004087d3cd1e7fe99693670`
@@ -56984,7 +56957,7 @@ export const init: (appInitResponse: any) => void;
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/FlowBootstrap.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `faad78f9d6715db7d36ad939717ec887`
 - **SHA256**: `c32af554028fed8468cf2c910d5f6a4d62ddb1962ccfb273e9bf6c34a5a3ef0f`
@@ -57268,7 +57241,7 @@ export { init };
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/FlowClient.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `91a927ace8fad6ff10e8d7dea9f08f60`
 - **SHA256**: `d23891e7febc9e7b004d511afc78e6665541dff5ec292ae34be6332dddf3aeda`
@@ -57291,7 +57264,7 @@ export const init: () => void;
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/FlowClient.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `e9faebbb69b6a934aabad84cfbed53c0`
 - **SHA256**: `467b2290b744cb9875ddf3491ea596e32888b574b1540178d40e8224d42d9a70`
@@ -58365,7 +58338,7 @@ var RG='object',SG='[object Array]',TG='function',UG='java.lang',VG='com.google.
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/gridConnector.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `50d8dae9865938dad28ade68e1616790`
 - **SHA256**: `c8f98a0a8e0f8db58ce64157f5abeb444049075e7addc662de622c6e2eda770f`
@@ -59588,7 +59561,7 @@ import { GridFlowSelectionColumn } from "./vaadin-grid-flow-selection-column.js"
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/index.d.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `c89485f142c793ec7c0275f45ff889a0`
 - **SHA256**: `216e195b67a24c780916788d27643df68986f04b8bb263687ed30781b3a2e320`
@@ -59611,7 +59584,7 @@ export * from './Flow';
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/index.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `35d3b8893c0c982908dc47e5779310ed`
 - **SHA256**: `8548d42bdaa802bee4fecfa27565caf4cec841eb8bea613f25d1ff4fdc59cec5`
@@ -59634,7 +59607,7 @@ export * from './Flow';
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/lit-renderer.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `fbd6b722d035b9b2230cf258f18a3424`
 - **SHA256**: `afefa9f5fcb38260a0ff08bc044a5f591f242689ca3c7905130ad32df0476e7c`
@@ -59766,7 +59739,7 @@ _window.Vaadin.unsetLitRenderer = (component: Component, rendererName: string, r
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/menubarConnector.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `c1ff087135b59989bb5fb8bdfb16b013`
 - **SHA256**: `a0c74040b01388a9b6e9298d442eb329ee9e6681fe47e5d5a005f310aeb3cc81`
@@ -59908,7 +59881,7 @@ import './contextMenuConnector.js';
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/messageListConnector.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `779d7069f153d24752e8161d998e336e`
 - **SHA256**: `480d7092b9fe42aab45756eb4287b2c4b0d6e5d38514e967543bc5c317948c18`
@@ -59971,7 +59944,7 @@ import './contextMenuConnector.js';
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/selectConnector.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `5b11a5e756f052ddd63d99e95d2ed68b`
 - **SHA256**: `bd4277e735d390853603351ddd963233349b702789ddf8ce000df5179bb30523`
@@ -60029,7 +60002,7 @@ import './contextMenuConnector.js';
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/theme-util.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `0ff605b8bf9ea22e4d1384e92dd637ac`
 - **SHA256**: `828ba8154b5d2d762ade6ed6f0614691c68db929b69c3c54250858a077960ba3`
@@ -60201,7 +60174,7 @@ function getHash(input) {
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/tooltip.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `91cbc022f52c6816f5ffcbde7a7a1c9b`
 - **SHA256**: `c20956128c63a17782338c4647335c199ad143646b334d95d09b27ec3eddd141`
@@ -60246,7 +60219,7 @@ if (defaultHoverDelay) {
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-big-decimal-field.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `96bde24cc4c4419299fd75255798955b`
 - **SHA256**: `0e0f4e3bb8928c708d02e77d07ede09525102440511942e3b24721702352f140`
@@ -60339,7 +60312,7 @@ if (defaultHoverDelay) {
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/vaadin-grid-flow-selection-column.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `11c790f2895bd5d12b136fb5491c81d7`
 - **SHA256**: `2187c3e2904d08b3e6be513339fb5b0ae950e5b9e9dd6ff6027a6dac65bc0e15`
@@ -60458,7 +60431,7 @@ customElements.define(GridFlowSelectionColumn.is, GridFlowSelectionColumn);
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/jar-resources/virtualListConnector.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated/jar-resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:25 (America/Bahia / GMT-03:00)
 - **MD5**: `cb9bb6c11ee898a6ed27d10bcb6b652c`
 - **SHA256**: `e89f6bc6f5cd4765c863ae12721371ebff9079d163679e3989368fb7f74e5e61`
@@ -60637,7 +60610,7 @@ The following files were not included in the text content:
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/index.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `ca48ead1cab93932ea95e24485e19143`
 - **SHA256**: `0f928ed40987b36e35b52e007530c0a9039d5a91ed4a1d3829598df27b12f035`
@@ -60691,7 +60664,7 @@ router.setRoutes(routes);
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/theme-tms-custom.components.generated.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `43fd75c338dd6498645709be7c566cc8`
 - **SHA256**: `8d904b591b9a4a4bc473d03203fbe0dab07b97374d8c7466112f77d02acf0483`
@@ -60727,7 +60700,7 @@ if (import.meta.hot) {
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/theme-tms-custom.generated.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `3675cc5c51e67b8555117733c84a4b62`
 - **SHA256**: `b21aafc3077cef48ffd5cbe9efdee6505443e088bf27307efadfae6540b1a095`
@@ -60804,7 +60777,7 @@ if (import.meta.hot) {
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/theme-tms-custom.global.generated.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `b0bf508e03c5a904de9ff714bd3d1dd8`
 - **SHA256**: `547ee11106855bbb9000aa0b530cbb467fc400c6cda863ba0d4faafe670d2bd6`
@@ -60831,7 +60804,7 @@ import 'themes/tms-custom/styles.css';
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/theme-tms.components.generated.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `49c07b72e15424c456729c1ce132b93d`
 - **SHA256**: `e98d5009de78f6c08df1d938dca690d92ffae80346d9d2a9dad5dd358bca802a`
@@ -60867,7 +60840,7 @@ if (import.meta.hot) {
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/theme-tms.generated.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `ce73f00ea325890c9067a8e6138a5480`
 - **SHA256**: `2d470a3c56e64279c05c586f2f44310976f4311b82ee02e067182d45237fc408`
@@ -60944,7 +60917,7 @@ if (import.meta.hot) {
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/theme-tms.global.generated.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `61bfce338a7adf12097a9549859ba633`
 - **SHA256**: `757b805d040ced158cb237e9de524331e7a2f763e198c1bc06363dbd3c4a05ce`
@@ -60971,7 +60944,7 @@ import 'themes/tms/styles.css';
 - **Language**: `javascript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/vaadin-featureflags.js`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `8f569894e84ded335f151756a8887321`
 - **SHA256**: `52b3b05d61ae631ce70715422a4b9cb4f62f179257b7170ebe514c9fa2ee0aac`
@@ -61001,7 +60974,7 @@ export {};
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/vaadin.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:47:33 (America/Bahia / GMT-03:00)
 - **MD5**: `f24297fecb791cf3575c4a33ecc2d6f4`
 - **SHA256**: `d8556b76fc98d3cbfad66aa8dc2521accce47ccd40704de85fa881251c9f646c`
@@ -61028,7 +61001,7 @@ import 'Frontend/generated/jar-resources/vaadin-dev-tools/vaadin-dev-tools.js';
 - **Language**: `typescript`
 - **Location**: `target/classes/META-INF/resources/frontend/generated/vite-devmode.ts`
 - **Relative Path**: `target/classes/META-INF/resources/frontend/generated`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `9d241cc3d4388ab3cd9cd8d3d028b7a8`
 - **SHA256**: `fa65d0e3c0050427af4712dce64d7ba7f000880caa869aa400c56ee1c4bed55c`
@@ -61081,7 +61054,7 @@ if (import.meta.hot) {
 - **Language**: `html`
 - **Location**: `target/classes/META-INF/resources/frontend/index.html`
 - **Relative Path**: `target/classes/META-INF/resources/frontend`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 17:20:59 (America/Bahia / GMT-03:00)
 - **MD5**: `ec70e6eb521f5fe359b84581631f95b7`
 - **SHA256**: `6f5cd5e7d9ace45f05ed8fb204ddee068f5d998f765c622347d2582b84e93562`
@@ -61126,7 +61099,7 @@ This file is auto-generated by Vaadin.
 - **Language**: `css`
 - **Location**: `target/classes/META-INF/resources/styles.css`
 - **Relative Path**: `target/classes/META-INF/resources`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-30 18:32:02 (America/Bahia / GMT-03:00)
 - **MD5**: `41aca484a8bcbb8b42092ef15b7cc5c6`
 - **SHA256**: `003cc97bc35f383da7f7779260d95911c34c421bece50c186fd8354fee1cb9a6`
@@ -61173,8 +61146,8 @@ This file is auto-generated by Vaadin.
 - **Language**: `json`
 - **Location**: `target/classes/META-INF/VAADIN/config/flow-build-info.json`
 - **Relative Path**: `target/classes/META-INF/VAADIN/config`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:55 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:58:55 (America/Bahia / GMT-03:00)
 - **MD5**: `e2769776ad7d1ca6b97b849c6a5d02b2`
 - **SHA256**: `f03720208b8c4444cedaaf85c574cc737d21c64ae9a87c0e864c641d94e8b433`
 - **Encoding**: UTF-8
@@ -61212,7 +61185,7 @@ This file is auto-generated by Vaadin.
 - **Language**: `html`
 - **Location**: `target/classes/templates/entregas.html`
 - **Relative Path**: `target/classes/templates`
-- **Created**: 2026-08-30 20:21:54 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **Modified**: 2026-08-19 15:06:12 (America/Bahia / GMT-03:00)
 - **MD5**: `6665e1d9621fc3667a9be7f173454777`
 - **SHA256**: `77437b52d27dd1614bc900dd80be3294e1525376f270d0beb8a236f53cffc078`
@@ -61399,8 +61372,8 @@ This file is auto-generated by Vaadin.
 - **Language**: `text`
 - **Location**: `target/classes/application-local.properties`
 - **Relative Path**: `target/classes`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **MD5**: `e2d789143de9e36a0aae044206764499`
 - **SHA256**: `0618cfd9a426ca8c40890906a722502a9d7578869ea984fdd46e346687ba9f38`
 - **Encoding**: UTF-8
@@ -61439,8 +61412,8 @@ vaadin.productionMode=false
 - **Language**: `text`
 - **Location**: `target/classes/application.properties`
 - **Relative Path**: `target/classes`
-- **Created**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:21:53 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:58:54 (America/Bahia / GMT-03:00)
 - **MD5**: `cfdfa8371a8a2bdda0ed9b17f4d09d14`
 - **SHA256**: `1bdce7ee033c4521ff1e58c363ee8359a3bf77255739fae710d1f1ff150420b9`
 - **Encoding**: UTF-8
@@ -61491,8 +61464,8 @@ spring.main.allow-bean-definition-overriding=true
 - **Language**: `json`
 - **Location**: `target/dev-bundle/config/stats.json`
 - **Relative Path**: `target/dev-bundle/config`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `63d66be320f02bbac001583c676e137e`
 - **SHA256**: `e79185fcecfbc2803f6ab4ecaf391dcd2daec233a4211b07305927e72fa0038e`
 - **Encoding**: ASCII
@@ -61783,8 +61756,8 @@ spring.main.allow-bean-definition-overriding=true
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/FlowBootstrap-CHUuW4WK.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `86c7b60228bd60b898bd22f12bb25dd6`
 - **SHA256**: `0ac22f6cb8eb2c1d41ed286f9eec90709698126fdb50db16582e64eafe9e063c`
 - **Encoding**: ASCII
@@ -61808,8 +61781,8 @@ Please submit an issue to https://github.com/vaadin/flow-components/issues/new/c
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/FlowClient-BZ2ixoyw.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `0edf40db2b012272c780faeab1a30432`
 - **SHA256**: `fd1aeef752290c1dac7a285bc5c90c3534d0800c1a7f8f5cdbd197f498a67411`
 - **Encoding**: ASCII
@@ -61833,8 +61806,8 @@ function init(){function client(){var Jb="",Kb=0,Lb="gwt.codesvr=",Mb="gwt.hoste
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/indexhtml-BEIWperO.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `aac6168a01ac653c44a0854711670c6c`
 - **SHA256**: `c9f6a85a7b3e747455bb3b930cd03d8640aa8ea02cef7eae4ce0ff32de349cf9`
 - **Encoding**: ASCII
@@ -63768,8 +63741,8 @@ function __vite__mapDeps(indexes) {
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-eed3b794-C051h3dv.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `b82b6df944213361cecf8af89b9d3a03`
 - **SHA256**: `98b8a8f08cd88db72621bfaf4656587300c6b420063594f588a6f78a24ead1a6`
 - **Encoding**: ASCII
@@ -63791,8 +63764,8 @@ import{O as o,I as a,_ as e}from"./indexhtml-BEIWperO.js";const d={tagName:"vaad
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-heading-c0acdd6d-DSdEI4P-.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `b782948e05e7ff8813319381251b273b`
 - **SHA256**: `39478c6eaf0025ec9cddde052c75be2fff4507f800f7fd2f4f293fce3f67f18f`
 - **Encoding**: ASCII
@@ -63816,8 +63789,8 @@ import{h as e,O as o,I as i,_ as a}from"./indexhtml-BEIWperO.js";const d={tagNam
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-accordion-panel-616e55d6-9A6HymWG.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `1fcd493632cf50cf5ca462d01bc5182d`
 - **SHA256**: `c1bcccccac57ab12b63c163dbfaab6c10e53b277503ca2bd8cc68ed94590b9ab`
 - **Encoding**: ASCII
@@ -63841,8 +63814,8 @@ import{h as o,I as e}from"./indexhtml-BEIWperO.js";const i={tagName:"vaadin-acco
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-app-layout-e56de2e9-B0a8ufq8.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `e2b909020d791f7d1cd9b1c9c4e80247`
 - **SHA256**: `8b95eb59e6f886eaec6ef22150e4c3ffb833a015dcfbb6bc30dcffdcef5244c4`
 - **Encoding**: ASCII
@@ -63864,8 +63837,8 @@ import{I as a}from"./indexhtml-BEIWperO.js";const r={tagName:"vaadin-app-layout"
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-avatar-7599297d-DfMZT3sP.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `bae7d29c6fd226ef73df2def7d5dff14`
 - **SHA256**: `113e351872cfed16e8657dc6c48bb21fc5c128921ea30f6520b5a1c74bc6644c`
 - **Encoding**: ASCII
@@ -63887,8 +63860,8 @@ import{I as a,b as r,N as t,O as e}from"./indexhtml-BEIWperO.js";const i={tagNam
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-big-decimal-field-e51def24-CEFh3A42.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `a3433949612d393bd935c97771ac320b`
 - **SHA256**: `e9393a8a9db4fcff8fbb1050f2e0508d391bcc912e6da704f2d858e900e2abcc`
 - **Encoding**: ASCII
@@ -63910,8 +63883,8 @@ import{inputFieldProperties as e,labelProperties as a,helperTextProperties as i,
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-board-828ebdea-DHEikmGR.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `09ee689f566587c6b490eb90503f172f`
 - **SHA256**: `cf1907e8b9a939c6d6377a1e54fa71318cbe263b1fbd6cf2a1de6968769a3aa5`
 - **Encoding**: ASCII
@@ -63933,8 +63906,8 @@ import{I as r}from"./indexhtml-BEIWperO.js";const a={tagName:"vaadin-board",disp
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-board-row-c70d0c55-8ECDFFsF.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `4a7cb71b0bd9fb7daee73692239007cf`
 - **SHA256**: `4fba2c29edf2aae99d86026da5bfe80390f75fb785d5a1adeadcad7015d37125`
 - **Encoding**: ASCII
@@ -63958,8 +63931,8 @@ import{h as e,I as o}from"./indexhtml-BEIWperO.js";const r={tagName:"vaadin-boar
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-button-2511ad84-DBdSw3Ov.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `9d4457ad420b6dbf43e030f6a1c28cb6`
 - **SHA256**: `2cb49bee23f557472d36eea181e9a98648a1bfb491dd97961068a96689247dad`
 - **Encoding**: ASCII
@@ -63981,8 +63954,8 @@ import{I as e,b as t,N as a,f as o,T as r}from"./indexhtml-BEIWperO.js";const s=
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-chart-5192dc15-B50x3V2q.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `61ecd40901849bb9f2b01ca968f58a85`
 - **SHA256**: `a0d52db3e3e9d7cc9766f3caa357d2555637daae4cf8053c2d134a691f04c1ba`
 - **Encoding**: ASCII
@@ -64004,8 +63977,8 @@ import{S as r,b as o}from"./indexhtml-BEIWperO.js";const e={tagName:"vaadin-char
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-4e68df64-BKUcYEw0.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `3a2938ba21dda23bad6caaa58206d1c8`
 - **SHA256**: `f10c9722a13009cd47dd3eb39af712635e8c4e93a22b92e3bb61286ebe8019ed`
 - **Encoding**: ASCII
@@ -64027,8 +64000,8 @@ import{b as a,N as r,I as e,_ as c,O as o}from"./indexhtml-BEIWperO.js";const t=
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-group-a7c65bf2-DDBrBVS4.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `95d40dd3546e1a1643864ce65bbaa796`
 - **SHA256**: `f3886efbe6020299c4507e4db6e49583a43d72d958020d669ca060f025822431`
 - **Encoding**: ASCII
@@ -64050,8 +64023,8 @@ import{I as e}from"./indexhtml-BEIWperO.js";import{labelProperties as d,helperTe
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-combo-box-96451ddd-hqp33v2P.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `244207eba57904a98aaaefc0b0d348bb`
 - **SHA256**: `87619d86f724c40fdf5073d60dfa4f3abc05e1f3b4ab95582a6c659220d326b6`
 - **Encoding**: ASCII
@@ -64073,8 +64046,8 @@ import{inputFieldProperties as s,labelProperties as l,helperTextProperties as p,
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-confirm-dialog-4d718829-CRmWHCcM.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `f54212789a6ece8fa676fee75cd3b9e9`
 - **SHA256**: `1492cb0342a3ea7a8a5018d37b3b4fcf3d3d3949eca8b5269622566792e93014`
 - **Encoding**: ASCII
@@ -64096,8 +64069,8 @@ import{S as a,T as e}from"./indexhtml-BEIWperO.js";import{standardButtonProperti
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-cookie-consent-46c09f8b-Dna8LUPy.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `e2307cfa607f5c5dfed230c413ffdd01`
 - **SHA256**: `bcc1deba102185518850c817a70e4eac643cb92597ca689c3a449daa98560cc4`
 - **Encoding**: ASCII
@@ -64119,8 +64092,8 @@ import{S as e,T as a}from"./indexhtml-BEIWperO.js";const t={tagName:"vaadin-cook
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-crud-8d161a22-Bn0KDQrL.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `6496a577f3f9702eab978fde693a9c56`
 - **SHA256**: `acf589ad27e75f1e37e8bf0748bf5c49293b58ec6545aba36e15a0061985d589`
 - **Encoding**: ASCII
@@ -64142,8 +64115,8 @@ import{I as r,_ as o}from"./indexhtml-BEIWperO.js";const d={tagName:"vaadin-crud
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-custom-field-42c85b9e-CF9rbcjc.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `41d6e68273343d0dadcf5c1095302c7e`
 - **SHA256**: `4a32805adc0f4665c952da62d14639794ace1fd052655b1c92b35d47d03ac013`
 - **Encoding**: ASCII
@@ -64165,8 +64138,8 @@ import{labelProperties as e,helperTextProperties as r,errorMessageProperties as 
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-date-picker-f2001167-Cis9gneF.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `434237eb9936e6dc1f24eacaa4bdf5b8`
 - **SHA256**: `edbecc2ab22809c4da17a85224bb20e8e3fe542f266d863519bba038e36fe372`
 - **Encoding**: ASCII
@@ -64188,8 +64161,8 @@ import{inputFieldProperties as i,labelProperties as p,helperTextProperties as d,
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-date-time-picker-c8c047a7-CPB8d6BX.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `6e2855ba961d4680c8c9fa7621f692fe`
 - **SHA256**: `e0b4910c906684c6ff45055ca9fc109227163b4b70b881e873924bcf35d64278`
 - **Encoding**: ASCII
@@ -64211,8 +64184,8 @@ import{labelProperties as e,helperTextProperties as r,errorMessageProperties as 
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-details-bf336660-JeKtdfAP.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `07f8e1e0858634ae53b3a0fb90b2b820`
 - **SHA256**: `ef78dcae3497bbda54e76962be14734fcddf8e0b1d2ffad543b3fad551208cba`
 - **Encoding**: ASCII
@@ -64234,8 +64207,8 @@ import{S as e}from"./indexhtml-BEIWperO.js";const t={tagName:"vaadin-details",di
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-details-summary-351a1448-ByMdDFoS.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `a76f2ecad53f439cd3e181176c2b0384`
 - **SHA256**: `944e608c66a7a0a092b6feaef555b63f605df68d1ca6caad814f264720e0c094`
 - **Encoding**: ASCII
@@ -64257,8 +64230,8 @@ import{O as a,I as t,_ as e}from"./indexhtml-BEIWperO.js";const s={tagName:"vaad
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-dialog-53253a08-q3xZEh5w.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `d86ba416fdac37d2898058ccfa433424`
 - **SHA256**: `78916dd8891378fd5d461b318a72304487ecd84845c5a9b34ead20f0f76d8825`
 - **Encoding**: ASCII
@@ -64280,8 +64253,8 @@ import{S as a,T as e}from"./indexhtml-BEIWperO.js";const o={tagName:"vaadin-dial
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-email-field-d7a35f04-vuQqUdMQ.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `e10979bf69159ed26a8ab43d989cf591`
 - **SHA256**: `f73226c0d608bb3915cb80158680c47d63ce562db556e901ac7c55ee3702b90d`
 - **Encoding**: ASCII
@@ -64303,8 +64276,8 @@ import{inputFieldProperties as e,labelProperties as a,helperTextProperties as r,
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-form-layout-47744b1d-DFNe-XoA.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `6a61d530d19766b12cd2e098ddc36dd9`
 - **SHA256**: `8622467ad9208ad34ceaff63e75e40f6e2a9789a541c30892989b65a6ace5627`
 - **Encoding**: ASCII
@@ -64326,8 +64299,8 @@ import{I as o}from"./indexhtml-BEIWperO.js";const r={tagName:"vaadin-form-layout
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-grid-0a4791c2-BRKEEZ7P.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `68f2b1acf5e076374a7e2a355fa1a9b2`
 - **SHA256**: `8e6dac6f815108fdb89a185d3b0d03f04d754e893556e14dac963f50b9948983`
 - **Encoding**: ASCII
@@ -64349,8 +64322,8 @@ import{O as e,I as o,_ as a}from"./indexhtml-BEIWperO.js";import{checkboxElement
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-grid-pro-ff415555-C5ISQtpI.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `8e99dbc508351095ae79f6e11c7dc9bb`
 - **SHA256**: `6eec3da9d473703913f5c08a2919bce6c404a3f6173c0a07c290079251829347`
 - **Encoding**: ASCII
@@ -64372,8 +64345,8 @@ import{I as r,O as o,_ as a,b as t,N as d}from"./indexhtml-BEIWperO.js";import{c
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-horizontal-layout-3193943f-C0D2RRpI.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `4ccb09a6a6486c606067fa848cab9aa5`
 - **SHA256**: `a86912b006a3b82eb09029f7f961327a467ebdf5da7af20f0c066cd2fed002d9`
 - **Encoding**: ASCII
@@ -64395,8 +64368,8 @@ import{I as o}from"./indexhtml-BEIWperO.js";const r={tagName:"vaadin-horizontal-
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-icon-601f36ed-BnGM9uz5.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `4ce0502ac779757bdbf58ca931b0fd0e`
 - **SHA256**: `3f0816deb58ba8e0c6491a219f265825bdadca02784b99e9145a34ab3950981a`
 - **Encoding**: ASCII
@@ -64418,8 +64391,8 @@ import{_ as e,I as o}from"./indexhtml-BEIWperO.js";const a={tagName:"vaadin-icon
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-integer-field-85078932-DUdWkVjw.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `2d35b212fe0a8c2dcde80811b18d8b30`
 - **SHA256**: `c42f5905f8fca7e45935226698d18ace33fc525e5dad04decbb832417abaaacf`
 - **Encoding**: ASCII
@@ -64441,8 +64414,8 @@ import{inputFieldProperties as t,labelProperties as a,helperTextProperties as i,
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-list-box-d7a8433b-CPu9R6gQ.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `6074d02962487aa1eb0be3b2b372b6f8`
 - **SHA256**: `9ed1e5befd07436ae9798823c50085046f76e1a0c8d05f99ae3ab8a52c99f490`
 - **Encoding**: ASCII
@@ -64464,8 +64437,8 @@ import{I as e,f as o}from"./indexhtml-BEIWperO.js";const a={tagName:"vaadin-list
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-login-form-638996c6-CqwQv92H.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `0d54dd5bf588ca6bf9a0f7a57b7c9bcd`
 - **SHA256**: `d95e062f892be1fcfc24c212a7d0110ff2b6e9ed84a30eb96c218145243e4fac`
 - **Encoding**: ASCII
@@ -64487,8 +64460,8 @@ import{S as e,T as r,A as o}from"./indexhtml-BEIWperO.js";import{inputFieldPrope
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-login-overlay-f8a5db8a-PpWjSAx5.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `2baa1aa11f79aff22a3c155a2e2eb3b4`
 - **SHA256**: `6f7bacd9438bc04f0f104f28320a54a5e17506253581688cca9d36fffc80b6ba`
 - **Encoding**: ASCII
@@ -64510,8 +64483,8 @@ import{I as o,S as a,T as r,A as i}from"./indexhtml-BEIWperO.js";import{inputFie
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-map-d40a0116-CIbRo7qV.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `8ffb1cd6a478d892df2c55025b0f5cd0`
 - **SHA256**: `99ae4911747f819c5cd9817a4113da08680e2d15c85c0c76c44161a966485069`
 - **Encoding**: ASCII
@@ -64533,8 +64506,8 @@ import{I as a}from"./indexhtml-BEIWperO.js";const o={tagName:"vaadin-map",displa
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-menu-bar-3f5ab096-Cer0mIGt.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `4dd8f8d3a36ed16d2167d1a9ce6450df`
 - **SHA256**: `d0b81f3bcdd256a8ab26c6c3529bc79e6f94911598dd0ea48ed857d5bfe1561b`
 - **Encoding**: ASCII
@@ -64556,8 +64529,8 @@ import{I as r,b as a,N as i,f as s,O as n,g as d}from"./indexhtml-BEIWperO.js";c
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-message-input-996ac37c-CaPR_RHB.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `09b2d846eb75f266e38e30593bbf0a17`
 - **SHA256**: `2b2199a9469aa18ad30643bb8be344a23d883f239275d09968aadbdd064da3d2`
 - **Encoding**: ASCII
@@ -64579,8 +64552,8 @@ import{I as e,b as a,N as t,f as i}from"./indexhtml-BEIWperO.js";import{inputFie
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-message-list-70a435ba-D-7iJU0W.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `b09bb6e5769d313b89e10b696a1f5334`
 - **SHA256**: `e57ae83fc10f87406072ead4f46ce9840f5448ac4b5948317c79600016cda239`
 - **Encoding**: ASCII
@@ -64602,8 +64575,8 @@ import{I as e,O as a}from"./indexhtml-BEIWperO.js";const s={tagName:"vaadin-mess
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-multi-select-combo-box-a3373557-Ch39NQJR.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `8075be32c8308e030ae13545ad6fd2c3`
 - **SHA256**: `d7d145e8331725ce363fab8b1e578289f8823062b7f9dd9b0ba2b74bc97f165d`
 - **Encoding**: ASCII
@@ -64625,8 +64598,8 @@ import{inputFieldProperties as i,labelProperties as l,helperTextProperties as s,
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-notification-bd6eb776-CLlUyAxL.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `3e850440868a215a17abda35f5106ae0`
 - **SHA256**: `14b750ad10d9fb607967eeedc020f975590ca0ffae514908c6bd359a88f8ca89`
 - **Encoding**: ASCII
@@ -64648,8 +64621,8 @@ import{S as a,T as t}from"./indexhtml-BEIWperO.js";const o={tagName:"vaadin-noti
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-number-field-cb3ee8b2-Cy6HD1cB.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `8f8a035267f2620546ba8c088b38ca8a`
 - **SHA256**: `005d7c853ca0731eb83336b0e8aafedbfcd6ef3ac504111b4b2838b8a1c74bec`
 - **Encoding**: ASCII
@@ -64671,8 +64644,8 @@ import{inputFieldProperties as a,labelProperties as t,helperTextProperties as i,
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-password-field-d289cb18-BfdxMl49.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `317b8e0758b2cf847b57164fcdd896ce`
 - **SHA256**: `7a7b6a0ed4295ca247c15ae846b357d0a48fce7e6efe4bf1317a89fadd3fb3cf`
 - **Encoding**: ASCII
@@ -64694,8 +64667,8 @@ import{inputFieldProperties as r,labelProperties as a,helperTextProperties as s,
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-progress-bar-309ecf1f-CE0TxBu-.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `b82269ce3b740081dce643d2f9a68fc9`
 - **SHA256**: `a0fd8df82f75ee722de275cdffe9a62b2ad27543d07eb76fb0dbaec7c2fcd055`
 - **Encoding**: ASCII
@@ -64717,8 +64690,8 @@ import{I as r}from"./indexhtml-BEIWperO.js";const e={tagName:"vaadin-progress-ba
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-radio-group-88b5afd8-BGRCCliR.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `7befb2dce12376af1a639dac32285ff0`
 - **SHA256**: `749ed37b9f726742e663e956dc43f6ae5a90f6978990e9252749e18aea9727f4`
 - **Encoding**: ASCII
@@ -64740,8 +64713,8 @@ import{I as e,b as i,N as d,_ as p,O as a}from"./indexhtml-BEIWperO.js";import{l
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-rich-text-editor-8cd892f2-CCJmfRoi.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `f0acb33b74c172abd4543160baf981a5`
 - **SHA256**: `9476c0f273e7d440e561b6588258b1d4dd2eb92d0acc725b708b4eb84d373da3`
 - **Encoding**: ASCII
@@ -64763,8 +64736,8 @@ import{I as r,O as o}from"./indexhtml-BEIWperO.js";const t={tagName:"vaadin-rich
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-scroller-35e68818-r_qZEq9H.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `13767d09fc61378a40b0d74d01be11b0`
 - **SHA256**: `7beb5c85474df275a327ea6dbbb94223fe20b268c1f32771f5583da043aec602`
 - **Encoding**: ASCII
@@ -64786,8 +64759,8 @@ import{I as r}from"./indexhtml-BEIWperO.js";const o={tagName:"vaadin-scroller",d
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-select-df6e9947-gxMAILm-.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `e144ef2a0e4aca94f0bbee2cab11a7f6`
 - **SHA256**: `38ffff71317fde824a2f986a0cbda245352cac6757b9672b2b0393d4c7e13cbf`
 - **Encoding**: ASCII
@@ -64809,8 +64782,8 @@ import{I as e,f as l,O as t,_ as o,R as s,e as i}from"./indexhtml-BEIWperO.js";i
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-ba80d91d-CPk_-BFL.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `e85d7e5779b50c48e421566b41a8df47`
 - **SHA256**: `a3b24c2e1161e232ef8e4998f3a53eb43b16a6486f110bde56c51275d42b39b8`
 - **Encoding**: ASCII
@@ -64832,8 +64805,8 @@ import{I as e,O as i,_ as a}from"./indexhtml-BEIWperO.js";const t={tagName:"vaad
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-item-34918f92-Rp1ZW-v3.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `d2d274df11a16f0995151fb8dd2d7d5b`
 - **SHA256**: `f7a1ef1b719e0710e41430cd138aa76e135022e8dca3a2a1c59ef1369f6835d5`
 - **Encoding**: ASCII
@@ -64857,8 +64830,8 @@ import{h as t,_ as i,I as e,O as o}from"./indexhtml-BEIWperO.js";const n={tagNam
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-split-layout-80c92131-DZVGL-bd.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `5db4e952cb317ae0e228328378d3c6a6`
 - **SHA256**: `8f9b15658175ff3ece93f9c125da413af1a78029cfe5324029d3fa0ab85d7500`
 - **Encoding**: ASCII
@@ -64880,8 +64853,8 @@ import{I as a}from"./indexhtml-BEIWperO.js";const r={tagName:"vaadin-split-layou
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-spreadsheet-59d8c5ef-Dw6LSX1v.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `f64275004def72941fef40eac283bbe7`
 - **SHA256**: `297b92d41fee36b0c77c7e7afe1aa75d691cf08441777be0a705a8cd141abe2f`
 - **Encoding**: ASCII
@@ -64903,8 +64876,8 @@ import{I as e}from"./indexhtml-BEIWperO.js";const r={tagName:"vaadin-spreadsheet
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-tab-aaf32809-BW3_7nC3.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `2520474329332a89a53c44b17ba734bd`
 - **SHA256**: `7a7e38269d0a4ac24bab612409b7f25bd05e33c96f9e79f0937a50c9336f94ee`
 - **Encoding**: ASCII
@@ -64927,8 +64900,8 @@ import{h as t,O as e,I as a}from"./indexhtml-BEIWperO.js";const i={tagName:"vaad
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-tabs-d9a5e24e-Dq3eTJQb.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `5ecc7787fefdcd0086ae42419f6b1750`
 - **SHA256**: `1d5ef19dbd39205868593ca7eec1b84692619ee35b1c9227a36e2ce1d94c70d2`
 - **Encoding**: ASCII
@@ -64950,8 +64923,8 @@ import{I as a,O as e,_ as t}from"./indexhtml-BEIWperO.js";const i={tagName:"vaad
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-tabsheet-dd99ed9a-CQiPvB1g.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `d762f256953e4ad8ac168d49a111962d`
 - **SHA256**: `6de39a483065a77efc3e935ce96343e23d853cb30457a4372881bfc03cda6438`
 - **Encoding**: ASCII
@@ -64973,8 +64946,8 @@ import{I as e}from"./indexhtml-BEIWperO.js";const r={tagName:"vaadin-tabsheet",d
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-text-area-83627ebc-B6kPee-5.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `480a6002ca6534b898ce432694ab099f`
 - **SHA256**: `2f4fa48b03ef40aabe0aacaed9179bacc5568339d1ca9b9defbe5a6238148465`
 - **Encoding**: ASCII
@@ -64996,8 +64969,8 @@ import{inputFieldProperties as e,labelProperties as a,helperTextProperties as r,
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-text-field-0b3db014-CHoEQJoW.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `7c9acd49827054cc9a89bcd679e431f7`
 - **SHA256**: `4a6522769c7a80c0d06cc2d53ed85e5132c0b4cd820662e406b3359342bd1a20`
 - **Encoding**: ASCII
@@ -65019,8 +64992,8 @@ import{I as t,f as r,O as e,A as a}from"./indexhtml-BEIWperO.js";const i=[t.back
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-time-picker-715ec415-CbdV_ye6.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `b2e0b9fb9c0c0ac3bce4f13c062ad675`
 - **SHA256**: `af4e6f7c99c04a09d52fcfd432e9b6db8ece7f0bc6f073aecc06497f89e19ea0`
 - **Encoding**: ASCII
@@ -65042,8 +65015,8 @@ import{inputFieldProperties as o,labelProperties as p,helperTextProperties as s,
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-upload-d3c162ed-r6RqfRit.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `aeaf70cfc77b40aa7c51e1ace81722da`
 - **SHA256**: `ddabc51506a823edd992abe504c0d5030106e215f66c44bec24492ec0a4ae6e8`
 - **Encoding**: ASCII
@@ -65065,8 +65038,8 @@ import{standardButtonProperties as e}from"./vaadin-button-2511ad84-DBdSw3Ov.js";
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-vertical-layout-ad4174c4-Bv-daTUP.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `55a6bebfd9e8d7dba22325814be905fa`
 - **SHA256**: `cb2e32010d5202d36ac7f6a60e407b6eb822c85867be2e1fa02bb649c6546c34`
 - **Encoding**: ASCII
@@ -65088,8 +65061,8 @@ import{I as a}from"./indexhtml-BEIWperO.js";const o={tagName:"vaadin-vertical-la
 - **Language**: `javascript`
 - **Location**: `target/dev-bundle/webapp/VAADIN/build/vaadin-virtual-list-96896203-aSNWwv6L.js`
 - **Relative Path**: `target/dev-bundle/webapp/VAADIN/build`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `2e25a9cd4610bb9eda628e87646a7c08`
 - **SHA256**: `68b2d129550f322db1407849a5917ede978d0a017e28c2305c3dc8dcc6867bf3`
 - **Encoding**: ASCII
@@ -65117,8 +65090,8 @@ The following files were not included in the text content:
 - **Language**: `html`
 - **Location**: `target/dev-bundle/webapp/index.html`
 - **Relative Path**: `target/dev-bundle/webapp`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `5f6a04a140365c31c43ad5583376649c`
 - **SHA256**: `becfa523e2ef645719eb557f988d69b71579ba30bb0b0c36c73f3f876a880efd`
 - **Encoding**: ASCII
@@ -65163,8 +65136,8 @@ This file is auto-generated by Vaadin.
 - **Language**: `json`
 - **Location**: `target/dev-bundle/package-lock.json`
 - **Relative Path**: `target/dev-bundle`
-- **Created**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:21 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:38 (America/Bahia / GMT-03:00)
 - **MD5**: `f7c24379b089f137ed852cf77fd01fea`
 - **SHA256**: `15a3ebff8bdfbc8d7538576e2e925ab695884851dbb6ff7c00ac7cef886abc19`
 - **Encoding**: ASCII
@@ -80418,8 +80391,8 @@ This file is auto-generated by Vaadin.
 - **Language**: `text`
 - **Location**: `target/maven-archiver/pom.properties`
 - **Relative Path**: `target/maven-archiver`
-- **Created**: 2026-08-30 20:22:02 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:02 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:04 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:04 (America/Bahia / GMT-03:00)
 - **MD5**: `22b8fbb74b3e3deb09ee7c995ba91125`
 - **SHA256**: `d092e0c8ae651aec2b0523dc27295565c16ca4dd784755bb7cf6ca88d148281c`
 - **Encoding**: ASCII
@@ -80450,8 +80423,8 @@ The following files were not included in the text content:
 - **Language**: `json`
 - **Location**: `target/vaadin-dev-server-settings.json`
 - **Relative Path**: `target`
-- **Created**: 2026-08-30 20:21:59 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-08-30 20:22:23 (America/Bahia / GMT-03:00)
+- **Created**: 2026-08-31 13:59:01 (America/Bahia / GMT-03:00)
+- **Modified**: 2026-08-31 13:59:40 (America/Bahia / GMT-03:00)
 - **MD5**: `1be91ac6749b71482131d7c24718c1b3`
 - **SHA256**: `a13ace3ba8884c549182b8d2e5369fc970377a2c3df7471125b5b7e8a6173446`
 - **Encoding**: UTF-8
