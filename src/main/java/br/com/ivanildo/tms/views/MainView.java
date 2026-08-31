@@ -683,16 +683,34 @@ private void abrirModalFila() {
         });
 
         btnCarregando.addClickListener(e -> {
+            // Regra: Não pode ir para Carregando sem antes estar Apresentado
+            if (!"Apresentado".equalsIgnoreCase(carregamento.getStatus())) {
+                Notification.show("⚠️ O veículo precisa estar como 'Apresentado' antes de iniciar o carregamento!", 
+                    3000, Notification.Position.MIDDLE);
+                return;
+            }
+
             carregamento.setStatus("Carregando");
-            carregamento.setHoraInicioCarregamento(LocalDateTime.now());
+            if (carregamento.getHoraInicioCarregamento() == null) {
+                carregamento.setHoraInicioCarregamento(LocalDateTime.now());
+            }
             repository.save(carregamento);
             atualizarGridEIndicators();
             UiBroadcaster.broadcast("STATUS_ATUALIZADO");
         });
 
         btnExpedido.addClickListener(e -> {
+            // Regra: Não pode ir para Expedido sem antes estar Carregando
+            if (!"Carregando".equalsIgnoreCase(carregamento.getStatus())) {
+                Notification.show("⚠️ O veículo precisa estar 'Carregando' antes de ser expedido!", 
+                    3000, Notification.Position.MIDDLE);
+                return;
+            }
+
             carregamento.setStatus("Expedido");
-            carregamento.setHoraFimCarregamento(LocalDateTime.now());
+            if (carregamento.getHoraFimCarregamento() == null) {
+                carregamento.setHoraFimCarregamento(LocalDateTime.now());
+            }
             repository.save(carregamento);
             atualizarGridEIndicators();
             UiBroadcaster.broadcast("STATUS_ATUALIZADO");
