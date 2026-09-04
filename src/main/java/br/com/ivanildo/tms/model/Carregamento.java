@@ -100,6 +100,27 @@ private LocalDateTime horaFimCarregamento;
 
     public LocalDateTime getHoraChegada() {
     return horaChegada;
+    }
+
+    private String conferente;
+private String doca;
+
+// Getters e Setters
+public String getConferente() {
+    return conferente;
+}
+
+public void setConferente(String conferente) {
+    this.conferente = conferente;
+}
+
+public String getDoca() {
+    return doca;
+}
+
+public void setDoca(String doca) {
+    this.doca = doca;
+
 }
 
 public void setHoraChegada(LocalDateTime horaChegada) {

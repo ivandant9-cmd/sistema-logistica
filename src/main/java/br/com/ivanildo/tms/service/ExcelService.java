@@ -6,8 +6,12 @@ import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.repository.EntregaRepository;
 import com.github.pjfanning.xlsx.StreamingReader;
 import org.apache.poi.ss.usermodel.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.stream.Collectors;
+import br.com.ivanildo.tms.model.Conferente;
+import br.com.ivanildo.tms.repository.ConferenteRepository;
 
 import java.io.InputStream;
 import java.text.Normalizer;
@@ -22,10 +26,13 @@ public class ExcelService {
 
     private final CarregamentoRepository carregamentoRepository;
     private final EntregaRepository entregaRepository;
+    @Autowired
+    private ConferenteRepository conferenteRepository;
 
     public ExcelService(CarregamentoRepository carregamentoRepository, EntregaRepository entregaRepository) {
         this.carregamentoRepository = carregamentoRepository;
         this.entregaRepository = entregaRepository;
+        
     }
 
     @Transactional 
@@ -37,6 +44,8 @@ public class ExcelService {
                     .rowCacheSize(100)
                     .bufferSize(4096)
                     .open(inputStream);
+
+                    processarConferentesExcel(workbook);
 
             DataFormatter formatter = new DataFormatter(new Locale.Builder().setLanguage("pt").setRegion("BR").build());
             
@@ -461,5 +470,47 @@ if (!valPaletes.isEmpty()) {
             }
         }
         return true;
+    }
+
+    public List<String> obterListaConferentes() {
+        return conferenteRepository.findAll().stream()
+                .map(Conferente::getNome)
+                .collect(Collectors.toList());
+    }
+
+    public void processarConferentesExcel(Workbook workbook) {
+        Sheet sheet = workbook.getSheet("BD CONFERENTES");
+        if (sheet == null) {
+            // Fallback caso o nome venha com pequenas variações de maiúsculas/espaços
+            for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
+                if (workbook.getSheetName(i).toUpperCase().contains("CONFERENTE")) {
+                    sheet = workbook.getSheetAt(i);
+                    break;
+                }
+            }
+        }
+
+        if (sheet != null) {
+            DataFormatter formatter = new DataFormatter();
+            int rowIdx = 0;
+            for (Row row : sheet) {
+                // A partir da linha 3 (índice 2)
+                if (rowIdx >= 2 && row != null) {
+                    Cell cell = row.getCell(0); // Coluna A
+                    if (cell != null) {
+                        String nome = formatter.formatCellValue(cell).trim();
+                        // Ignora vazios ou o cabeçalho "COLABORADORES"
+                        if (!nome.isEmpty() && !nome.equalsIgnoreCase("COLABORADORES")) {
+                            boolean existe = conferenteRepository.findAll().stream()
+                                    .anyMatch(c -> c.getNome().equalsIgnoreCase(nome));
+                            if (!existe) {
+                                conferenteRepository.save(new Conferente(nome));
+                            }
+                        }
+                    }
+                }
+                rowIdx++;
+            }
+        }
     }
 }

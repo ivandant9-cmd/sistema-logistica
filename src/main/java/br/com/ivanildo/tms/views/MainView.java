@@ -47,6 +47,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import br.com.ivanildo.tms.model.Conferente;
+import br.com.ivanildo.tms.repository.ConferenteRepository;
+
 @Route("")
 @PageTitle("Gestão Operacional de Carregamento | TMS")
 @PermitAll
@@ -55,6 +58,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final CarregamentoRepository repository;
     private final EntregaRepository entregaRepository;
     private final ExcelService excelService;
+    private final ConferenteRepository conferenteRepository;
 
     private final Grid<Carregamento> grid = new Grid<>(Carregamento.class, false);
     private final Map<Carregamento, Checkbox> mapaCheckboxesMain = new HashMap<>();
@@ -65,13 +69,15 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final Span txtExpedidos = new Span("0");
     private final Span txtPeso = new Span("0 kg");
     private final Span txtPendentes = new Span("0");
+    
 
     private UiBroadcaster.Registration broadcasterRegistration;
 
-    public MainView(CarregamentoRepository repository, EntregaRepository entregaRepository, ExcelService excelService) {
+    public MainView(CarregamentoRepository repository, EntregaRepository entregaRepository, ExcelService excelService, ConferenteRepository conferenteRepository) {
         this.repository = repository;
         this.entregaRepository = entregaRepository;
         this.excelService = excelService;
+        this.conferenteRepository = conferenteRepository;
 
         setSizeFull();
         setPadding(true);
@@ -609,13 +615,21 @@ private void abrirModalFila() {
         grid.addColumn(Carregamento::getOrdemCarga).setHeader("ORDEM DE CARGA").setAutoWidth(true);
         grid.addColumn(Carregamento::getPeso).setHeader("PESO").setAutoWidth(true);
         grid.addColumn(Carregamento::getEncaixe).setHeader("ENCAIXE").setAutoWidth(true);
+        
+
+        // NOVAS COLUNAS ADICIONADAS AQUI:
+        grid.addComponentColumn(this::criarSeletorConferente).setHeader("CONFERENTE").setAutoWidth(true);
+        grid.addComponentColumn(this::criarSeletorDoca).setHeader("DOCA").setAutoWidth(true);
 
         grid.addComponentColumn(carregamento -> criarBotoesStatus(carregamento))
             .setHeader("STATUS")
             .setAutoWidth(true);
+        
+      
 
         grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
-
+        
+      
         grid.addColumn(new ComponentRenderer<>(carregamento -> {
             HorizontalLayout acoes = new HorizontalLayout();
             acoes.setSpacing(true);
@@ -816,6 +830,25 @@ private void abrirModalFila() {
                     .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
             atualizarGridEIndicators();
             dialog.close();
+
+            ComboBox<String> cbConferente = new ComboBox<>("Conferente");
+        cbConferente.setItems("João Silva", "Maria Santos", "Carlos Souza", "Ana Oliveira");
+        cbConferente.setValue(carregamento.getConferente() != null ? carregamento.getConferente() : "");
+
+        ComboBox<String> cbDoca = new ComboBox<>("Doca");
+        cbDoca.setItems(" 01", "02", "03", "04", "05", "06", "07", "08");
+        cbDoca.setValue(carregamento.getDoca() != null ? carregamento.getDoca() : "");
+
+        estilitarCampoEscuro(cbConferente);
+        estilitarCampoEscuro(cbDoca);
+
+        // Adicione cbConferente e cbDoca no form.add(...)
+        form.add(txtData, txtTransp, txtPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbConferente, cbDoca, cbStatus, txtObs);
+
+        // E salve os valores no botão salvar:
+        carregamento.setConferente(cbConferente.getValue());
+        carregamento.setDoca(cbDoca.getValue());
+
         });
         btnSalvar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
@@ -901,4 +934,64 @@ private void abrirModalFila() {
             .set("--lumo-contrast-70pct", "#90caf9");
     }
 
+   private Component criarSeletorConferente(Carregamento carregamento) {
+        ComboBox<String> comboConferente = new ComboBox<>();
+        
+        List<String> nomesConferentes = conferenteRepository.findAll().stream()
+                .map(Conferente::getNome)
+                .collect(Collectors.toList());
+
+        comboConferente.setItems(nomesConferentes);
+        comboConferente.setValue(carregamento.getConferente());
+        comboConferente.setWidth("140px"); // Mantém o campo compacto na grid
+        comboConferente.setClearButtonVisible(false);
+
+        // Expande a largura da caixinha que abre (overlay) para o nome ficar em uma linha só
+        comboConferente.getStyle().set("--vaadin-combo-box-overlay-width", "260px");
+
+        comboConferente.addValueChangeListener(event -> {
+            carregamento.setConferente(event.getValue());
+            repository.save(carregamento);
+        });
+
+        return comboConferente;
+    }
+
+    private Component criarSeletorDoca(Carregamento carregamento) {
+        ComboBox<String> comboDoca = new ComboBox<>();
+        comboDoca.setItems("01", "02", "03", "04", "05", "06", "07", "08");
+        comboDoca.setValue(carregamento.getDoca());
+        comboDoca.setWidth("90px");
+        comboDoca.setClearButtonVisible(false); // Remove o "X" de limpeza
+
+        comboDoca.addValueChangeListener(event -> {
+            String novaDoca = event.getValue();
+            if (novaDoca == null || novaDoca.isEmpty()) {
+                carregamento.setDoca(null);
+                repository.save(carregamento);
+                atualizarGridEIndicators();
+                UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+                return;
+            }
+
+            boolean docaOcupada = repository.findAll().stream()
+                .anyMatch(c -> novaDoca.equalsIgnoreCase(c.getDoca())
+                            && !c.getId().equals(carregamento.getId())
+                            && c.getStatus() != null 
+                            && !c.getStatus().trim().equalsIgnoreCase("Expedido"));
+
+            if (docaOcupada) {
+                Notification.show("⚠️ A Doca " + novaDoca + " já está em uso por outro veículo ativo!", 4000, Notification.Position.MIDDLE);
+                comboDoca.setValue(carregamento.getDoca()); 
+                return;
+            }
+
+            carregamento.setDoca(novaDoca);
+            repository.save(carregamento);
+            atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+        });
+
+        return comboDoca;
+    }
 }
