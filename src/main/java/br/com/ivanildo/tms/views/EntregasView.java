@@ -107,7 +107,7 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
             "  } " +
             "  label[slot=\"label\"], " +
             "  vaadin-text-field::part(label) { " +
-            "    color: #0f172a !important; " +
+            "    color: #ffffff !important; " +
             "    font-weight: 700 !important; " +
             "  } " +
             "  vaadin-grid { width: 100% !important; background-color: #1e293b !important; border: 1px solid #334155 !important; border-radius: 8px !important; } " +
@@ -128,7 +128,7 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
             "';" +
             "document.head.appendChild(style);"
         );
-
+        
         Button btnVoltar = new Button("← Voltar para Carregamentos", e -> UI.getCurrent().navigate(""));
         btnVoltar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         btnVoltar.addClassName("no-print");
