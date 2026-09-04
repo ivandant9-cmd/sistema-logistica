@@ -92,6 +92,30 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             .set("--lumo-contrast-60pct", "#cbd5e1")
             .set("--lumo-contrast-70pct", "#cbd5e1");
 
+        // Injeção do CSS da animação piscante amarela com texto preto
+        getElement().executeJs(
+            "const styleId = 'placa-animada-style';" +
+            "if (!document.getElementById(styleId)) {" +
+            "  const style = document.createElement('style');" +
+            "  style.id = styleId;" +
+            "  style.innerHTML = `" +
+            "    @keyframes piscarPlacaFundo { " +
+            "      0% { background-color: #f59e0b; color: #000000; } " +
+            "      50% { background-color: #fcd34d; color: #000000; } " +
+            "      100% { background-color: #f59e0b; color: #000000; } " +
+            "    } " +
+            "    .placa-alterada { " +
+            "      animation: piscarPlacaFundo 1.5s infinite ease-in-out; " +
+            "      font-weight: bold; " +
+            "      padding: 4px 8px; " +
+            "      border-radius: 4px; " +
+            "      display: inline-block; " +
+            "    } " +
+            "  `;" +
+            "  document.head.appendChild(style);" +
+            "}"
+        );
+
         H2 titulo = new H2("🚚 Gestão Operacional de Carregamento");
         titulo.getStyle()
                 .set("color", "#ffffff")
@@ -107,7 +131,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         atualizarGridEIndicators();
     }
     
-        @Override
+    @Override
     public void beforeEnter(BeforeEnterEvent event) {
         atualizarGridEIndicators();
     }
@@ -238,7 +262,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 .set("color", "#ffffff")
                 .set("font-weight", "600");
 
-     
         btnArquivarExpedidas.addClickListener(e -> {
             List<Carregamento> expedidosAtivos = repository.findAll().stream()
                 .filter(c -> (c.getArquivado() == null || !c.getArquivado()) && 
@@ -256,6 +279,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 repository.save(c);
             }
             atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
             Notification.show(expedidosAtivos.size() + " cargas expedidas foram arquivadas.", 3000, Notification.Position.BOTTOM_END);
         });
 
@@ -280,6 +304,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 repository.deleteAll(selecionados);
                 mapaCheckboxesMain.clear();
                 atualizarGridEIndicators();
+                UiBroadcaster.broadcast("STATUS_ATUALIZADO");
                 
                 Notification.show(selecionados.size() + " carga(s) excluída(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
             } catch (Exception ex) {
@@ -309,6 +334,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             repository.saveAll(selecionados);
             mapaCheckboxesMain.clear();
             atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
             
             Notification.show("Checkin e motorista limpos para " + selecionados.size() + " carga(s)!", 3000, Notification.Position.BOTTOM_END);
         });
@@ -347,6 +373,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
                 getUI().ifPresent(ui -> ui.access(() -> {
                     atualizarGridEIndicators();
+                    UiBroadcaster.broadcast("STATUS_ATUALIZADO");
                     Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
                     n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
                 }));
@@ -414,18 +441,18 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
-    gridArquivados.addColumn(c -> c.getHoraChegada() != null ? c.getHoraChegada().format(formatter) : "-")
-        .setHeader("CHEGADA").setAutoWidth(true);
+        gridArquivados.addColumn(c -> c.getHoraChegada() != null ? c.getHoraChegada().format(formatter) : "-")
+            .setHeader("CHEGADA").setAutoWidth(true);
 
-    gridArquivados.addColumn(c -> c.getHoraInicioCarregamento() != null ? c.getHoraInicioCarregamento().format(formatter) : "-")
-        .setHeader("INÍCIO CARGA").setAutoWidth(true);
+        gridArquivados.addColumn(c -> c.getHoraInicioCarregamento() != null ? c.getHoraInicioCarregamento().format(formatter) : "-")
+            .setHeader("INÍCIO CARGA").setAutoWidth(true);
 
-    gridArquivados.addColumn(c -> c.getHoraFimCarregamento() != null ? c.getHoraFimCarregamento().format(formatter) : "-")
-        .setHeader("FIM CARGA").setAutoWidth(true);
+        gridArquivados.addColumn(c -> c.getHoraFimCarregamento() != null ? c.getHoraFimCarregamento().format(formatter) : "-")
+            .setHeader("FIM CARGA").setAutoWidth(true);
 
         gridArquivados.addColumn(Carregamento::getTempoEsperaFilaFormatado).setHeader("ESPERA FILA").setAutoWidth(true);
-    gridArquivados.addColumn(Carregamento::getTempoCarregamentoFormatado).setHeader("TEMPO CARGA").setAutoWidth(true);
-    gridArquivados.addColumn(Carregamento::getLeadTimeTotalFormatado).setHeader("LEAD TIME TOTAL").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getTempoCarregamentoFormatado).setHeader("TEMPO CARGA").setAutoWidth(true);
+        gridArquivados.addColumn(Carregamento::getLeadTimeTotalFormatado).setHeader("LEAD TIME TOTAL").setAutoWidth(true);
 
         gridArquivados.addColumn(new ComponentRenderer<>(carregamento -> {
             Button btnDesarquivar = new Button("Desarquivar", VaadinIcon.UPLOAD_ALT.create());
@@ -433,18 +460,15 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             btnDesarquivar.addClickListener(e -> {
                 carregamento.setArquivado(false);
                 repository.save(carregamento);
+                atualizarGridEIndicators();
+                UiBroadcaster.broadcast("STATUS_ATUALIZADO");
                 
-
-                // Adicione estas colunas no gridArquivados dentro do seu método abrirModalArquivados()
-    
-                   
                 mapaCheckboxesArquivados.clear();
                 List<Carregamento> listaArquivados = repository.findAll().stream()
                     .filter(c -> c.getArquivado() != null && c.getArquivado())
                     .toList();
                 gridArquivados.setItems(listaArquivados);
                 
-                atualizarGridEIndicators();
                 Notification.show("Viagem desarquivada com sucesso!", 3000, Notification.Position.BOTTOM_END);
             });
             return btnDesarquivar;
@@ -480,6 +504,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             gridArquivados.setItems(novaListaArquivados);
 
             atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
             Notification.show(selecionadas.size() + " carga(s) desarquivada(s) com sucesso!", 3000, Notification.Position.BOTTOM_END);
         });
 
@@ -496,68 +521,68 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     @SuppressWarnings("null")
-private void abrirModalFila() {
-    Dialog modalFila = new Dialog();
-    modalFila.setWidth("85vw");
-    modalFila.setHeight("80vh");
-    modalFila.setHeaderTitle("🕒 Fila de Espera para Carregamento (Ordem de Chegada)");
+    private void abrirModalFila() {
+        Dialog modalFila = new Dialog();
+        modalFila.setWidth("85vw");
+        modalFila.setHeight("80vh");
+        modalFila.setHeaderTitle("🕒 Fila de Espera para Carregamento (Ordem de Chegada)");
 
-    modalFila.getElement().getStyle()
-        .set("background-color", "#0f172a")
-        .set("color", "#ffffff")
-        .set("--lumo-base-color", "#0f172a")
-        .set("--lumo-body-text-color", "#ffffff");
+        modalFila.getElement().getStyle()
+            .set("background-color", "#0f172a")
+            .set("color", "#ffffff")
+            .set("--lumo-base-color", "#0f172a")
+            .set("--lumo-body-text-color", "#ffffff");
 
-    Grid<Carregamento> gridFila = new Grid<>(Carregamento.class, false);
-    gridFila.setSizeFull();
-    gridFila.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COMPACT);
+        Grid<Carregamento> gridFila = new Grid<>(Carregamento.class, false);
+        gridFila.setSizeFull();
+        gridFila.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COMPACT);
 
-    gridFila.getStyle()
-        .set("background-color", "#0f172a")
-        .set("border", "1px solid #1e293b")
-        .set("border-radius", "8px");
+        gridFila.getStyle()
+            .set("background-color", "#0f172a")
+            .set("border", "1px solid #1e293b")
+            .set("border-radius", "8px");
 
-    gridFila.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true);
-    gridFila.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
-    gridFila.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
-    gridFila.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
-    gridFila.addColumn(Carregamento::getTipoVeiculo).setHeader("TIPO VEÍCULO").setAutoWidth(true);
-    gridFila.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
-    
-    gridFila.addColumn(c -> {
-        if (c.getHoraChegada() != null) {
-            return c.getHoraChegada().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-        }
-        return "-";
-    }).setHeader("HORA CHEGADA").setAutoWidth(true);
+        gridFila.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true);
+        gridFila.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
+        gridFila.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
+        gridFila.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
+        gridFila.addColumn(Carregamento::getTipoVeiculo).setHeader("TIPO VEÍCULO").setAutoWidth(true);
+        gridFila.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
+        
+        gridFila.addColumn(c -> {
+            if (c.getHoraChegada() != null) {
+                return c.getHoraChegada().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+            }
+            return "-";
+        }).setHeader("HORA CHEGADA").setAutoWidth(true);
 
-    gridFila.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
+        gridFila.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
 
-    List<Carregamento> listaFila = repository.findAll().stream()
-        .filter(c -> (c.getArquivado() == null || !c.getArquivado()) &&
-                     c.getStatus() != null && 
-                     c.getStatus().trim().equalsIgnoreCase("Apresentado"))
-        .sorted((c1, c2) -> {
-            if (c1.getHoraChegada() == null) return 1;
-            if (c2.getHoraChegada() == null) return -1;
-            return c1.getHoraChegada().compareTo(c2.getHoraChegada());
-        })
-        .toList();
+        List<Carregamento> listaFila = repository.findAll().stream()
+            .filter(c -> (c.getArquivado() == null || !c.getArquivado()) &&
+                         c.getStatus() != null && 
+                         c.getStatus().trim().equalsIgnoreCase("Apresentado"))
+            .sorted((c1, c2) -> {
+                if (c1.getHoraChegada() == null) return 1;
+                if (c2.getHoraChegada() == null) return -1;
+                return c1.getHoraChegada().compareTo(c2.getHoraChegada());
+            })
+            .toList();
 
-    gridFila.setItems(listaFila);
+        gridFila.setItems(listaFila);
 
-    Button btnFechar = new Button("Fechar", e -> modalFila.close());
-    btnFechar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        Button btnFechar = new Button("Fechar", e -> modalFila.close());
+        btnFechar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
-    HorizontalLayout footerLayout = new HorizontalLayout(new Span("Total na fila: " + listaFila.size() + " veículo(s)"), btnFechar);
-    footerLayout.setJustifyContentMode(JustifyContentMode.BETWEEN);
-    footerLayout.setWidthFull();
-    footerLayout.setAlignItems(FlexComponent.Alignment.CENTER);
+        HorizontalLayout footerLayout = new HorizontalLayout(new Span("Total na fila: " + listaFila.size() + " veículo(s)"), btnFechar);
+        footerLayout.setJustifyContentMode(JustifyContentMode.BETWEEN);
+        footerLayout.setWidthFull();
+        footerLayout.setAlignItems(FlexComponent.Alignment.CENTER);
 
-    modalFila.getFooter().add(footerLayout);
-    modalFila.add(gridFila);
-    modalFila.open();
-}
+        modalFila.getFooter().add(footerLayout);
+        modalFila.add(gridFila);
+        modalFila.open();
+    }
 
     @SuppressWarnings("null")
     private void configurarGrid() {
@@ -601,7 +626,16 @@ private void abrirModalFila() {
         grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
         grid.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
-        grid.addColumn(Carregamento::getPlaca).setHeader("PLACA").setAutoWidth(true);
+        
+        grid.addComponentColumn(carregamento -> {
+            Span spanPlaca = new Span(carregamento.getPlaca() != null ? carregamento.getPlaca() : "-");
+            
+            if (carregamento.getPlacaAntiga() != null && !carregamento.getPlacaAntiga().trim().isEmpty()) {
+                spanPlaca.getElement().setAttribute("title", "Placa Anterior: " + carregamento.getPlacaAntiga());
+                spanPlaca.addClassName("placa-alterada");
+            }
+            return spanPlaca;
+        }).setHeader("PLACA").setAutoWidth(true);
 
         grid.addColumn(c -> {
             if (c.getMotoristaEntidade() != null && c.getMotoristaEntidade().getNome() != null) {
@@ -616,8 +650,6 @@ private void abrirModalFila() {
         grid.addColumn(Carregamento::getPeso).setHeader("PESO").setAutoWidth(true);
         grid.addColumn(Carregamento::getEncaixe).setHeader("ENCAIXE").setAutoWidth(true);
         
-
-        // NOVAS COLUNAS ADICIONADAS AQUI:
         grid.addComponentColumn(this::criarSeletorConferente).setHeader("CONFERENTE").setAutoWidth(true);
         grid.addComponentColumn(this::criarSeletorDoca).setHeader("DOCA").setAutoWidth(true);
 
@@ -625,11 +657,8 @@ private void abrirModalFila() {
             .setHeader("STATUS")
             .setAutoWidth(true);
         
-      
-
         grid.addColumn(Carregamento::getObservacao).setHeader("OBSERVAÇÃO").setAutoWidth(true);
         
-      
         grid.addColumn(new ComponentRenderer<>(carregamento -> {
             HorizontalLayout acoes = new HorizontalLayout();
             acoes.setSpacing(true);
@@ -697,7 +726,6 @@ private void abrirModalFila() {
         });
 
         btnCarregando.addClickListener(e -> {
-            // Regra: Não pode ir para Carregando sem antes estar Apresentado
             if (!"Apresentado".equalsIgnoreCase(carregamento.getStatus())) {
                 Notification.show("⚠️ O veículo precisa estar como 'Apresentado' antes de iniciar o carregamento!", 
                     3000, Notification.Position.MIDDLE);
@@ -714,7 +742,6 @@ private void abrirModalFila() {
         });
 
         btnExpedido.addClickListener(e -> {
-            // Regra: Não pode ir para Expedido sem antes estar Carregando
             if (!"Carregando".equalsIgnoreCase(carregamento.getStatus())) {
                 Notification.show("⚠️ O veículo precisa estar 'Carregando' antes de ser expedido!", 
                     3000, Notification.Position.MIDDLE);
@@ -772,8 +799,12 @@ private void abrirModalFila() {
         TextField txtTransp = new TextField("Transportadora");
         txtTransp.setValue(carregamento.getTransportadora() != null ? carregamento.getTransportadora() : "");
 
-        TextField txtPlaca = new TextField("Placa");
+        TextField txtPlaca = new TextField("Placa Atual");
         txtPlaca.setValue(carregamento.getPlaca() != null ? carregamento.getPlaca() : "");
+        txtPlaca.setReadOnly(true);
+
+        TextField txtNovaPlaca = new TextField("Nova Placa (Substituição)");
+        txtNovaPlaca.setPlaceholder("Digite a nova placa se houver troca");
 
         TextField txtTipoVeiculo = new TextField("Tipo de Veículo");
         txtTipoVeiculo.setValue(carregamento.getTipoVeiculo() != null ? carregamento.getTipoVeiculo() : "");
@@ -790,6 +821,14 @@ private void abrirModalFila() {
         TextField txtEncaixe = new TextField("Encaixe");
         txtEncaixe.setValue(carregamento.getEncaixe() != null ? carregamento.getEncaixe() : "");
 
+        ComboBox<String> cbConferente = new ComboBox<>("Conferente");
+        cbConferente.setItems("João Silva", "Maria Santos", "Carlos Souza", "Ana Oliveira");
+        cbConferente.setValue(carregamento.getConferente() != null ? carregamento.getConferente() : "");
+
+        ComboBox<String> cbDoca = new ComboBox<>("Doca");
+        cbDoca.setItems("01", "02", "03", "04", "05", "06", "07", "08");
+        cbDoca.setValue(carregamento.getDoca() != null ? carregamento.getDoca() : "");
+
         ComboBox<String> cbStatus = new ComboBox<>("Status");
         cbStatus.setItems("Pendente", "Apresentado", "Carregando", "Expedido");
         cbStatus.setValue(carregamento.getStatus() != null ? carregamento.getStatus() : "Pendente");
@@ -800,58 +839,51 @@ private void abrirModalFila() {
         estilitarCampoEscuro(txtData);
         estilitarCampoEscuro(txtTransp);
         estilitarCampoEscuro(txtPlaca);
+        estilitarCampoEscuro(txtNovaPlaca);
         estilitarCampoEscuro(txtTipoVeiculo);
         estilitarCampoEscuro(txtViagem);
         estilitarCampoEscuro(txtOrdemCarga);
         estilitarCampoEscuro(txtPeso);
         estilitarCampoEscuro(txtEncaixe);
+        estilitarCampoEscuro(cbConferente);
+        estilitarCampoEscuro(cbDoca);
         estilitarCampoEscuro(cbStatus);
         estilitarCampoEscuro(txtObs);
 
-        form.add(txtData, txtTransp, txtPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbStatus, txtObs);
+        form.add(txtData, txtTransp, txtPlaca, txtNovaPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbConferente, cbDoca, cbStatus, txtObs);
         dialog.add(form);
 
         Button btnSalvar = new Button("Salvar", e -> {
             carregamento.setDataProgramacao(txtData.getValue());
             carregamento.setTransportadora(txtTransp.getValue());
-            carregamento.setPlaca(txtPlaca.getValue());
+            
+            String novaPlaca = txtNovaPlaca.getValue();
+            if (novaPlaca != null && !novaPlaca.trim().isEmpty()) {
+                if (carregamento.getPlacaAntiga() == null || carregamento.getPlacaAntiga().isEmpty()) {
+                    carregamento.setPlacaAntiga(carregamento.getPlaca());
+                }
+                carregamento.setPlaca(novaPlaca.trim().toUpperCase());
+            }
+
             carregamento.setTipoVeiculo(txtTipoVeiculo.getValue());
             carregamento.setViagem(txtViagem.getValue());
             carregamento.setOrdemCarga(txtOrdemCarga.getValue());
             carregamento.setPeso(txtPeso.getValue());
             carregamento.setEncaixe(txtEncaixe.getValue());
+            carregamento.setConferente(cbConferente.getValue());
+            carregamento.setDoca(cbDoca.getValue());
             carregamento.setStatus(cbStatus.getValue());
             carregamento.setObservacao(txtObs.getValue());
 
             repository.save(carregamento);
-            UiBroadcaster.broadcast("CARREGAMENTO_ATUALIZADO");
+            atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
 
             Notification.show("Carregamento salvo com sucesso!", 3000, Notification.Position.TOP_END)
                     .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            atualizarGridEIndicators();
             dialog.close();
-
-            ComboBox<String> cbConferente = new ComboBox<>("Conferente");
-        cbConferente.setItems("João Silva", "Maria Santos", "Carlos Souza", "Ana Oliveira");
-        cbConferente.setValue(carregamento.getConferente() != null ? carregamento.getConferente() : "");
-
-        ComboBox<String> cbDoca = new ComboBox<>("Doca");
-        cbDoca.setItems(" 01", "02", "03", "04", "05", "06", "07", "08");
-        cbDoca.setValue(carregamento.getDoca() != null ? carregamento.getDoca() : "");
-
-        estilitarCampoEscuro(cbConferente);
-        estilitarCampoEscuro(cbDoca);
-
-        // Adicione cbConferente e cbDoca no form.add(...)
-        form.add(txtData, txtTransp, txtPlaca, txtTipoVeiculo, txtViagem, txtOrdemCarga, txtPeso, txtEncaixe, cbConferente, cbDoca, cbStatus, txtObs);
-
-        // E salve os valores no botão salvar:
-        carregamento.setConferente(cbConferente.getValue());
-        carregamento.setDoca(cbDoca.getValue());
-
         });
         btnSalvar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-
         Button btnCancelar = new Button("Cancelar", e -> dialog.close());
 
         dialog.getFooter().add(btnCancelar, btnSalvar);
@@ -934,7 +966,7 @@ private void abrirModalFila() {
             .set("--lumo-contrast-70pct", "#90caf9");
     }
 
-   private Component criarSeletorConferente(Carregamento carregamento) {
+    private Component criarSeletorConferente(Carregamento carregamento) {
         ComboBox<String> comboConferente = new ComboBox<>();
         
         List<String> nomesConferentes = conferenteRepository.findAll().stream()
@@ -943,15 +975,15 @@ private void abrirModalFila() {
 
         comboConferente.setItems(nomesConferentes);
         comboConferente.setValue(carregamento.getConferente());
-        comboConferente.setWidth("140px"); // Mantém o campo compacto na grid
+        comboConferente.setWidth("140px");
         comboConferente.setClearButtonVisible(false);
-
-        // Expande a largura da caixinha que abre (overlay) para o nome ficar em uma linha só
         comboConferente.getStyle().set("--vaadin-combo-box-overlay-width", "260px");
 
         comboConferente.addValueChangeListener(event -> {
             carregamento.setConferente(event.getValue());
             repository.save(carregamento);
+            atualizarGridEIndicators();
+            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
         });
 
         return comboConferente;
@@ -962,7 +994,7 @@ private void abrirModalFila() {
         comboDoca.setItems("01", "02", "03", "04", "05", "06", "07", "08");
         comboDoca.setValue(carregamento.getDoca());
         comboDoca.setWidth("90px");
-        comboDoca.setClearButtonVisible(false); // Remove o "X" de limpeza
+        comboDoca.setClearButtonVisible(false);
 
         comboDoca.addValueChangeListener(event -> {
             String novaDoca = event.getValue();

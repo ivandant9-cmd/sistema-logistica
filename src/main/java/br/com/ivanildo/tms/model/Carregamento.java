@@ -98,6 +98,10 @@ private LocalDateTime horaFimCarregamento;
     public Boolean getArquivado() { return arquivado != null ? arquivado : false; }
     public void setArquivado(Boolean arquivado) { this.arquivado = arquivado; }
 
+    private String placaAntiga;
+    public String getPlacaAntiga() { return placaAntiga; }
+    public void setPlacaAntiga(String placaAntiga) { this.placaAntiga = placaAntiga; }
+
     public LocalDateTime getHoraChegada() {
     return horaChegada;
     }

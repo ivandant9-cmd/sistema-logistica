@@ -76,58 +76,77 @@ public class EntregasView extends VerticalLayout implements HasUrlParameter<Long
             .set("color", "#f8fafc")
             .set("min-height", "100vh");
 
-        UI.getCurrent().getPage().executeJs(
-            "var style = document.createElement('style');" +
-            "style.innerHTML = '" +
-            "  :root, body, vaadin-dialog-overlay, vaadin-form-layout, vaadin-text-field, vaadin-date-picker, vaadin-select, vaadin-combo-box, vaadin-text-area { " +
-            "    --lumo-body-text-color: #ffffff !important; " +
-            "    --lumo-secondary-text-color: #94a3b8 !important; " +
-            "    --lumo-primary-text-color: #38bdf8 !important; " +
-            "    --vaadin-input-field-value-color: #ffffff !important; " +
-            "  } " +
-            "  vaadin-text-field::part(input-field), " +
-            "  vaadin-date-picker::part(input-field), " +
-            "  vaadin-select::part(input-field), " +
-            "  vaadin-combo-box::part(input-field), " +
-            "  vaadin-text-area::part(input-field), " +
-            "  vaadin-input-container { " +
-            "    background-color: #1e293b !important; " +
-            "    color: #ffffff !important; " +
-            "    border: 1px solid #334155 !important; " +
-            "    border-radius: 6px !important; " +
-            "  } " +
-            "  vaadin-text-field input, " +
-            "  vaadin-date-picker input, " +
-            "  vaadin-select input, " +
-            "  vaadin-combo-box input, " +
-            "  vaadin-text-area textarea, " +
-            "  [slot=\"input\"] { " +
-            "    color: #ffffff !important; " +
-            "    -webkit-text-fill-color: #ffffff !important; " +
-            "  } " +
-            "  label[slot=\"label\"], " +
-            "  vaadin-text-field::part(label) { " +
-            "    color: #ffffff !important; " +
-            "    font-weight: 700 !important; " +
-            "  } " +
-            "  vaadin-grid { width: 100% !important; background-color: #1e293b !important; border: 1px solid #334155 !important; border-radius: 8px !important; } " +
-            "  vaadin-grid::part(cell) { background-color: #1e293b !important; color: #f8fafc !important; border-bottom: 1px solid #334155 !important; } " +
-            "  vaadin-grid::part(header-cell) { background-color: #0f172a !important; color: #94a3b8 !important; font-weight: 700 !important; } " +
-            "  vaadin-grid-cell-content { color: #f8fafc !important; font-size: 12px !important; } " +
-            "  .subtotal-row::part(cell) { background-color: #334155 !important; } " +
-            "  .subtotal-row vaadin-grid-cell-content { color: #38bdf8 !important; font-weight: bold !important; } " +
-            "  @media print { " +
-            "    @page { size: landscape; margin: 5mm; } " +
-            "    .no-print { display: none !important; } " +
-            "    body { background-color: #ffffff !important; color: #000000 !important; } " +
-            "    vaadin-grid, vaadin-grid *, vaadin-grid::part(row), vaadin-grid::part(cell) { transform: none !important; position: static !important; background-color: #ffffff !important; color: #000000 !important; } " +
-            "    vaadin-grid-cell-content { padding: 3px 4px !important; font-size: 9px !important; color: #000000 !important; } " +
-            "    .subtotal-row::part(cell) { background-color: #e5e7eb !important; } " +
-            "    .subtotal-row vaadin-grid-cell-content { color: #000000 !important; font-weight: bold !important; } " +
-            "  } " +
-            "';" +
-            "document.head.appendChild(style);"
-        );
+       UI.getCurrent().getPage().executeJs(
+    "var style = document.createElement('style');" +
+    "style.innerHTML = '" +
+    "  :root, body, vaadin-dialog-overlay, vaadin-form-layout, vaadin-text-field, vaadin-date-picker, vaadin-select, vaadin-combo-box, vaadin-text-area { " +
+    "    --lumo-body-text-color: #ffffff !important; " +
+    "    --lumo-secondary-text-color: #94a3b8 !important; " +
+    "    --lumo-primary-text-color: #38bdf8 !important; " +
+    "    --vaadin-input-field-value-color: #ffffff !important; " +
+    "  } " +
+    "  vaadin-text-field::part(input-field), " +
+    "  vaadin-date-picker::part(input-field), " +
+    "  vaadin-select::part(input-field), " +
+    "  vaadin-combo-box::part(input-field), " +
+    "  vaadin-text-area::part(input-field), " +
+    "  vaadin-input-container { " +
+    "    background-color: #1e293b !important; " +
+    "    color: #ffffff !important; " +
+    "    border: 1px solid #334155 !important; " +
+    "    border-radius: 6px !important; " +
+    "  } " +
+    "  vaadin-text-field input, " +
+    "  vaadin-date-picker input, " +
+    "  vaadin-select input, " +
+    "  vaadin-combo-box input, " +
+    "  vaadin-text-area textarea, " +
+    "  [slot=\"input\"] { " +
+    "    color: #ffffff !important; " +
+    "    -webkit-text-fill-color: #ffffff !important; " +
+    "  } " +
+    "  label[slot=\"label\"], " +
+    "  vaadin-text-field::part(label) { " +
+    "    color: #ffffff !important; " +
+    "    font-weight: 700 !important; " +
+    "  } " +
+    "  vaadin-select-overlay vaadin-item, " +
+    "  vaadin-select-overlay [role=\"option\"], " +
+    "  vaadin-combo-box-overlay vaadin-item { " +
+    "    color: #0f172a !important; " +
+    "  } " +
+    // --- ADICIONADO AQUI: Animação e classe da placa alterada ---
+    "    @keyframes piscarPlacaFundo { " +
+    "    0% { background-color: #f59e0b; color: #000000; } " +
+    "    50% { background-color: #fcd34d; color: #000000; } " +
+    "    100% { background-color: #f59e0b; color: #000000; } " +
+    "  } " +
+    "  .placa-alterada { " +
+    "    animation: piscarPlacaFundo 1.5s infinite ease-in-out; " +
+    "    font-weight: bold; " +
+    "    padding: 4px 8px; " +
+    "    border-radius: 4px; " +
+    "    cursor: help; " +
+    "  } " +
+    // -----------------------------------------------------------
+    "  vaadin-grid { width: 100% !important; background-color: #1e293b !important; border: 1px solid #334155 !important; border-radius: 8px !important; } " +
+    "  vaadin-grid::part(cell) { background-color: #1e293b !important; color: #f8fafc !important; border-bottom: 1px solid #334155 !important; } " +
+    "  vaadin-grid::part(header-cell) { background-color: #0f172a !important; color: #94a3b8 !important; font-weight: 700 !important; } " +
+    "  vaadin-grid-cell-content { color: #f8fafc !important; font-size: 12px !important; } " +
+    "  .subtotal-row::part(cell) { background-color: #334155 !important; } " +
+    "  .subtotal-row vaadin-grid-cell-content { color: #38bdf8 !important; font-weight: bold !important; } " +
+    "  @media print { " +
+    "    @page { size: landscape; margin: 5mm; } " +
+    "    .no-print { display: none !important; } " +
+    "    body { background-color: #ffffff !important; color: #000000 !important; } " +
+    "    vaadin-grid, vaadin-grid *, vaadin-grid::part(row), vaadin-grid::part(cell) { transform: none !important; position: static !important; background-color: #ffffff !important; color: #000000 !important; } " +
+    "    vaadin-grid-cell-content { padding: 3px 4px !important; font-size: 9px !important; color: #000000 !important; } " +
+    "    .subtotal-row::part(cell) { background-color: #e5e7eb !important; } " +
+    "    .subtotal-row vaadin-grid-cell-content { color: #000000 !important; font-weight: bold !important; } " +
+    "  } " +
+    "';" +
+    "document.head.appendChild(style);"
+);
         
         Button btnVoltar = new Button("← Voltar para Carregamentos", e -> UI.getCurrent().navigate(""));
         btnVoltar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
