@@ -5,7 +5,7 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: sistema-logistica
-Generated On: 2026-09-06 11:49:29 (America/Bahia / GMT-03:00)
+Generated On: 2026-09-06 11:54:17 (America/Bahia / GMT-03:00)
 Total Files Processed: 834
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
@@ -233,7 +233,7 @@ PROJECT STRUCTURE
 │       │                   │   ├── 📄 CheckInView.java (14.53 KB)
 │       │                   │   ├── 📄 EntregasView.java (22.28 KB)
 │       │                   │   ├── 📄 LoginView.java (3.35 KB)
-│       │                   │   ├── 📄 MainView.java (50.13 KB)
+│       │                   │   ├── 📄 MainView.java (50.07 KB)
 │       │                   │   ├── 📄 PortariaCheckInView.java (2.44 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (14.6 KB)
 │       │                   ├── 📄 Application.java (633 B)
@@ -15242,15 +15242,15 @@ FILE: src/main/java/br/com/ivanildo/tms/views/MainView.java
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 50.13 KB
+Size: 50.07 KB
 Extension: .java
 Language: java
 Location: src/main/java/br/com/ivanildo/tms/views/MainView.java
 Relative Path: src/main/java/br/com/ivanildo/tms/views
 Created: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-Modified: 2026-09-06 11:49:28 (America/Bahia / GMT-03:00)
-MD5: 5d72cf77565201ac2dd51cf9f9e7917a
-SHA256: e598ee22b7d6c25e7190ddadb52c901db72274dbf31afb516cca9c1d4ca045e1
+Modified: 2026-09-06 11:54:16 (America/Bahia / GMT-03:00)
+MD5: 7ae8dd3c2395ebc0461c44e2ecfe7617
+SHA256: af334df3889fce6a4bdd4776506afe45acb817bd12115d5771138e964c951df8
 Encoding: ASCII
 
 FILE CONTENT:
@@ -15338,7 +15338,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private String statusFiltroAtual = "TODOS";
     
 
-    private UiBroadcaster.Registration broadcasterRegistration;
 
     public MainView(CarregamentoRepository repository, EntregaRepository entregaRepository, ExcelService excelService, ConferenteRepository conferenteRepository) {
         this.repository = repository;

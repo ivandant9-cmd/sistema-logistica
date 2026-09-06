@@ -81,7 +81,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private String statusFiltroAtual = "TODOS";
     
 
-    private UiBroadcaster.Registration broadcasterRegistration;
 
     public MainView(CarregamentoRepository repository, EntregaRepository entregaRepository, ExcelService excelService, ConferenteRepository conferenteRepository) {
         this.repository = repository;
