@@ -47,6 +47,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+
 import br.com.ivanildo.tms.model.Conferente;
 import br.com.ivanildo.tms.repository.ConferenteRepository;
 
@@ -60,6 +61,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final EntregaRepository entregaRepository;
     private final ExcelService excelService;
     private final ConferenteRepository conferenteRepository;
+    private Registration broadcasterRegistration;
 
     private final Grid<Carregamento> grid = new Grid<>(Carregamento.class, false);
     private final Map<Carregamento, Checkbox> mapaCheckboxesMain = new HashMap<>();
