@@ -98,9 +98,33 @@ private LocalDateTime horaFimCarregamento;
     public Boolean getArquivado() { return arquivado != null ? arquivado : false; }
     public void setArquivado(Boolean arquivado) { this.arquivado = arquivado; }
 
+    // Método unificado para garantir que a chegada seja preenchida em qualquer campo correspondente
+    public void registrarChegada(LocalDateTime momento) {
+        if (this.horaChegada == null) {
+            this.horaChegada = momento;
+        }
+        if (this.dataChegada == null) {
+            this.dataChegada = momento;
+        }
+        if (this.dataHoraApresentacao == null) {
+            this.dataHoraApresentacao = momento;
+        }
+    }
+
     private String placaAntiga;
+    
     public String getPlacaAntiga() { return placaAntiga; }
     public void setPlacaAntiga(String placaAntiga) { this.placaAntiga = placaAntiga; }
+
+    private LocalDateTime dataChegada;
+
+public LocalDateTime getDataChegada() {
+    return dataChegada;
+}
+
+public void setDataChegada(LocalDateTime dataChegada) {
+    this.dataChegada = dataChegada;
+}
 
     public LocalDateTime getHoraChegada() {
     return horaChegada;

@@ -50,6 +50,7 @@ import java.util.stream.Collectors;
 import br.com.ivanildo.tms.model.Conferente;
 import br.com.ivanildo.tms.repository.ConferenteRepository;
 
+
 @Route("")
 @PageTitle("Gestão Operacional de Carregamento | TMS")
 @PermitAll
@@ -69,6 +70,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final Span txtExpedidos = new Span("0");
     private final Span txtPeso = new Span("0 kg");
     private final Span txtPendentes = new Span("0");
+
+    // Variável para reter o filtro selecionado pelo usuário nos cards e não resetar ao atualizar
+    private String statusFiltroAtual = "TODOS";
     
 
     private UiBroadcaster.Registration broadcasterRegistration;
@@ -143,7 +147,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         broadcasterRegistration = UiBroadcaster.register(message -> {
             ui.access(() -> {
-                atualizarGridEIndicators();
+                // Atualiza apenas os itens e indicadores de forma leve, 
+                // preservando os componentes visuais abertos se possível
+                atualizarApenasDadosGridEIndicators();
             });
         });
     }
@@ -198,10 +204,48 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         if (statusFiltro != null) {
             card.getStyle().set("cursor", "pointer");
-            card.addClickListener(e -> aplicarFiltroStatus(statusFiltro));
+            card.addClickListener(e -> {
+                statusFiltroAtual = statusFiltro;
+                aplicarFiltroStatus(statusFiltroAtual);
+            });
         }
 
         return card;
+    }
+
+    private void atualizarApenasDadosGridEIndicators() {
+        List<Carregamento> listaAtivos = repository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.DESC, "id"))
+            .stream()
+            .filter(c -> c.getArquivado() == null || !c.getArquivado())
+            .toList();
+
+        // Reaplica o filtro atual mantendo a seleção do usuário
+        aplicarFiltroStatus(statusFiltroAtual);
+
+        long total = listaAtivos.size();
+        long apresentados = listaAtivos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Apresentado"))
+            .count();
+        long carregando = listaAtivos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Carregando"))
+            .count();
+        long expedidos = listaAtivos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Expedido"))
+            .count();
+        long pendentes = total - (apresentados + carregando + expedidos);
+
+        double pesoTotal = listaAtivos.stream()
+            .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
+            .sum();
+
+        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
+
+        txtTotal.setText(String.valueOf(total));
+        txtPendentes.setText(String.valueOf(pendentes));
+        txtApresentados.setText(String.valueOf(apresentados));
+        txtCarregando.setText(String.valueOf(carregando));
+        txtExpedidos.setText(String.valueOf(expedidos));
+        txtPeso.setText(df.format(pesoTotal) + " kg");
     }
 
     private void aplicarFiltroStatus(String status) {
@@ -550,26 +594,26 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         gridFila.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
         
        gridFila.addColumn(c -> {
-    if (c.getDataHoraApresentacao() != null) {
-        return c.getDataHoraApresentacao().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-    }
-    return "-";
-}).setHeader("HORA CHEGADA").setAutoWidth(true);
+           if (c.getDataHoraApresentacao() != null) {
+               return c.getDataHoraApresentacao().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+           }
+           return "-";
+       }).setHeader("HORA CHEGADA").setAutoWidth(true);
 
         gridFila.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
 
         List<Carregamento> listaFila = repository.findAll().stream()
-    .filter(c -> (c.getArquivado() == null || !c.getArquivado()) &&
-           c.getStatus() != null &&
-           c.getStatus().trim().equalsIgnoreCase("Apresentado"))
-    .sorted((c1, c2) -> {
-        if (c1.getDataHoraApresentacao() == null) return 1;
-        if (c2.getDataHoraApresentacao() == null) return -1;
-        return c1.getDataHoraApresentacao().compareTo(c2.getDataHoraApresentacao());
-    })
-    .toList();
+            .filter(c -> (c.getArquivado() == null || !c.getArquivado()) &&
+                   c.getStatus() != null &&
+                   c.getStatus().trim().equalsIgnoreCase("Apresentado"))
+            .sorted((c1, c2) -> {
+                if (c1.getDataHoraApresentacao() == null) return 1;
+                if (c2.getDataHoraApresentacao() == null) return -1;
+                return c1.getDataHoraApresentacao().compareTo(c2.getDataHoraApresentacao());
+            })
+            .toList();
 
-gridFila.setItems(listaFila);
+        gridFila.setItems(listaFila);
 
         Button btnFechar = new Button("Fechar", e -> modalFila.close());
         btnFechar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
@@ -822,7 +866,10 @@ gridFila.setItems(listaFila);
         txtEncaixe.setValue(carregamento.getEncaixe() != null ? carregamento.getEncaixe() : "");
 
         ComboBox<String> cbConferente = new ComboBox<>("Conferente");
-        cbConferente.setItems("João Silva", "Maria Santos", "Carlos Souza", "Ana Oliveira");
+        List<String> nomesConferentes = conferenteRepository.findAll().stream()
+                .map(Conferente::getNome)
+                .collect(Collectors.toList());
+        cbConferente.setItems(nomesConferentes);
         cbConferente.setValue(carregamento.getConferente() != null ? carregamento.getConferente() : "");
 
         ComboBox<String> cbDoca = new ComboBox<>("Doca");
@@ -898,7 +945,8 @@ gridFila.setItems(listaFila);
             .filter(c -> c.getArquivado() == null || !c.getArquivado())
             .toList();
 
-        grid.setItems(listaAtivos);
+        // Mantém o filtro atual aplicado em vez de resetar para "TODOS" a cada push
+        aplicarFiltroStatus(statusFiltroAtual);
 
         long total = listaAtivos.size();
 
@@ -968,7 +1016,6 @@ gridFila.setItems(listaFila);
 
     private Component criarSeletorConferente(Carregamento carregamento) {
         ComboBox<String> comboConferente = new ComboBox<>();
-        
         List<String> nomesConferentes = conferenteRepository.findAll().stream()
                 .map(Conferente::getNome)
                 .collect(Collectors.toList());
@@ -979,11 +1026,13 @@ gridFila.setItems(listaFila);
         comboConferente.setClearButtonVisible(false);
         comboConferente.getStyle().set("--vaadin-combo-box-overlay-width", "260px");
 
+        // Salva diretamente na base sem dar refresh imediato no grid para não fechar o menu
         comboConferente.addValueChangeListener(event -> {
-            carregamento.setConferente(event.getValue());
-            repository.save(carregamento);
-            atualizarGridEIndicators();
-            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+            if(event.isFromClient()) {
+                carregamento.setConferente(event.getValue());
+                repository.save(carregamento);
+                UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+            }
         });
 
         return comboConferente;
@@ -997,11 +1046,12 @@ gridFila.setItems(listaFila);
         comboDoca.setClearButtonVisible(false);
 
         comboDoca.addValueChangeListener(event -> {
+            if(!event.isFromClient()) return;
+            
             String novaDoca = event.getValue();
             if (novaDoca == null || novaDoca.isEmpty()) {
                 carregamento.setDoca(null);
                 repository.save(carregamento);
-                atualizarGridEIndicators();
                 UiBroadcaster.broadcast("STATUS_ATUALIZADO");
                 return;
             }
@@ -1019,8 +1069,13 @@ gridFila.setItems(listaFila);
             }
 
             carregamento.setDoca(novaDoca);
+            
+            // Garante o registro da data/hora caso seja o momento do vínculo com a doca/fila
+            if (carregamento.getHoraChegada() == null) {
+                carregamento.registrarChegada(LocalDateTime.now());
+            }
+
             repository.save(carregamento);
-            atualizarGridEIndicators();
             UiBroadcaster.broadcast("STATUS_ATUALIZADO");
         });
 

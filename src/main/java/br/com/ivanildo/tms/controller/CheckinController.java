@@ -43,11 +43,13 @@ public class CheckinController {
                 });
 
         LocalDateTime agora = LocalDateTime.now();
-        for (Carregamento c : carregamentos) {
+        for (Carregamento c : carregamentos) { // ou 'viagens' dependendo do arquivo
             c.setStatus("Apresentado");
             c.setMotorista(motorista.getNome());
             c.setMotoristaEntidade(motorista);
             c.setDataHoraApresentacao(agora);
+            c.setDataChegada(agora); // <-- Passando LocalDateTime
+            c.setHoraChegada(agora); // <-- Passando LocalDateTime
             carregamentoRepository.save(c);
         }
 

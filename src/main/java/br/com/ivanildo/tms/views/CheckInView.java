@@ -241,21 +241,34 @@ public class CheckInView extends VerticalLayout {
             return;
         }
 
-        idsViagensAtivas.clear();
-        LocalDateTime agora = LocalDateTime.now();
-        for (Carregamento c : viagens) {
-            c.setMotorista(motorista.getNome());
-            c.setMotoristaEntidade(motorista);
-            c.setStatus("Apresentado");
-            c.setDataHoraApresentacao(agora);
-            carregamentoRepository.save(c);
-            idsViagensAtivas.add(c.getId());
-        }
+    idsViagensAtivas.clear();
+LocalDateTime agora = LocalDateTime.now();
+for (Carregamento c : viagens) {
+    c.setMotorista(motorista.getNome());
+    c.setMotoristaEntidade(motorista);
+    c.setStatus("Apresentado");
+    c.setDataHoraApresentacao(agora);
+    c.setDataChegada(agora); // Passando LocalDateTime diretamente
+    c.setHoraChegada(agora);  // Passando LocalDateTime diretamente
+    
+    carregamentoRepository.save(c);
+    idsViagensAtivas.add(c.getId());
+}
 
         UiBroadcaster.broadcast("STATUS_ATUALIZADO");
         atualizarPainelAcompanhamentoFila();
+        iniciarAtualizacaoAutomatica(); // <-- Chame aqui para disparar o timer de 2 em 2 segundos
     }
 
+// Adicione este método na sua classe CheckInView para iniciar a atualização periódica sem alterar a estrutura
+    private void iniciarAtualizacaoAutomatica() {
+        java.util.concurrent.Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+            if (idsViagensAtivas != null && !idsViagensAtivas.isEmpty()) {
+                UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+            }
+        }, 2, 2, java.util.concurrent.TimeUnit.SECONDS);
+    }
+    
     private void atualizarPainelAcompanhamentoFila() {
         removeAll();
 
