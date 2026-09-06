@@ -47,6 +47,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 import com.vaadin.flow.shared.Registration;
+import java.lang.AutoCloseable;
 
 
 import br.com.ivanildo.tms.model.Conferente;
@@ -63,6 +64,8 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final ExcelService excelService;
     private final ConferenteRepository conferenteRepository;
     private Registration broadcasterRegistration;
+    private AutoCloseable broadcasterRegistration;
+    
 
     private final Grid<Carregamento> grid = new Grid<>(Carregamento.class, false);
     private final Map<Carregamento, Checkbox> mapaCheckboxesMain = new HashMap<>();
