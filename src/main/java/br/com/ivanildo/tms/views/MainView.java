@@ -549,27 +549,27 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         gridFila.addColumn(Carregamento::getTipoVeiculo).setHeader("TIPO VEÍCULO").setAutoWidth(true);
         gridFila.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
         
-        gridFila.addColumn(c -> {
-            if (c.getHoraChegada() != null) {
-                return c.getHoraChegada().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-            }
-            return "-";
-        }).setHeader("HORA CHEGADA").setAutoWidth(true);
+       gridFila.addColumn(c -> {
+    if (c.getDataHoraApresentacao() != null) {
+        return c.getDataHoraApresentacao().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+    }
+    return "-";
+}).setHeader("HORA CHEGADA").setAutoWidth(true);
 
         gridFila.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
 
         List<Carregamento> listaFila = repository.findAll().stream()
-            .filter(c -> (c.getArquivado() == null || !c.getArquivado()) &&
-                         c.getStatus() != null && 
-                         c.getStatus().trim().equalsIgnoreCase("Apresentado"))
-            .sorted((c1, c2) -> {
-                if (c1.getHoraChegada() == null) return 1;
-                if (c2.getHoraChegada() == null) return -1;
-                return c1.getHoraChegada().compareTo(c2.getHoraChegada());
-            })
-            .toList();
+    .filter(c -> (c.getArquivado() == null || !c.getArquivado()) &&
+           c.getStatus() != null &&
+           c.getStatus().trim().equalsIgnoreCase("Apresentado"))
+    .sorted((c1, c2) -> {
+        if (c1.getDataHoraApresentacao() == null) return 1;
+        if (c2.getDataHoraApresentacao() == null) return -1;
+        return c1.getDataHoraApresentacao().compareTo(c2.getDataHoraApresentacao());
+    })
+    .toList();
 
-        gridFila.setItems(listaFila);
+gridFila.setItems(listaFila);
 
         Button btnFechar = new Button("Fechar", e -> modalFila.close());
         btnFechar.addThemeVariants(ButtonVariant.LUMO_TERTIARY);

@@ -4,34 +4,41 @@ import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.model.Motorista;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.repository.MotoristaRepository;
-//import br.com.ivanildo.tms.util.UiBroadcaster; // Se você utiliza para atualizar a grid em tempo real
+import br.com.ivanildo.tms.util.UiBroadcaster;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinServletRequest;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-@Route("checkin")
-@AnonymousAllowed // Permite acesso público sem exigir login
+@Route("portaria")
+@AnonymousAllowed
 public class CheckInView extends VerticalLayout {
 
     private final CarregamentoRepository carregamentoRepository;
     private final MotoristaRepository motoristaRepository;
 
-    private TextField txtCpf = new TextField("CPF do Motorista");
-    private TextField txtNome = new TextField("Nome Completo");
-    private TextField txtPlaca = new TextField("Placa do Veículo");
-    private Button btnBuscar = new Button("Validar CPF");
-    private Button btnConfirmar = new Button("Confirmar Chegada e Apresentar");
-    private Span lblStatus = new Span();
+    private final TextField txtCpf = new TextField("CPF do Motorista");
+    private final TextField txtNome = new TextField("Nome Completo");
+    private final TextField txtPlaca = new TextField("Placa do Veículo");
+    private final Button btnSalvarCadastro = new Button("Cadastrar e Fazer Check-in");
+    private final Button btnConfirmarCheckin = new Button("Confirmar Check-in");
+    private final Span lblStatus = new Span();
+    
+    private String fotoCapturadaBase64 = null;
+    private Motorista motoristaIdentificado = null;
+    private List<Long> idsViagensAtivas = new ArrayList<>();
 
     public CheckInView(CarregamentoRepository carregamentoRepository, MotoristaRepository motoristaRepository) {
         this.carregamentoRepository = carregamentoRepository;
@@ -42,107 +49,267 @@ public class CheckInView extends VerticalLayout {
         setSizeFull();
         getStyle().set("background-color", "#0b1329").set("color", "#ffffff");
 
-        H2 titulo = new H2("📱 Self Check-in Portaria");
-        titulo.getStyle().set("color", "#ffffff");
+        H2 titulo = new H2("📱 Self Check-in Portaria - Reconhecimento Facial");
+        titulo.getStyle().set("color", "#ffffff").set("margin-bottom", "5px");
 
-        lblStatus.setText("Informe seu CPF para iniciar o check-in");
+        lblStatus.setText("Realize o reconhecimento facial para iniciar");
         lblStatus.getStyle().set("color", "#cbd5e1").set("margin-bottom", "15px");
-
-        txtCpf.setPlaceholder("Digite apenas números");
-        txtCpf.setMaxLength(11);
 
         estilizarCampo(txtCpf);
         estilizarCampo(txtNome);
         estilizarCampo(txtPlaca);
 
+        txtCpf.setVisible(false);
         txtNome.setVisible(false);
         txtPlaca.setVisible(false);
-        btnConfirmar.setVisible(false);
+        btnSalvarCadastro.setVisible(false);
+        btnConfirmarCheckin.setVisible(false);
 
-        btnBuscar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        btnBuscar.getStyle().set("margin-top", "15px");
-        btnBuscar.addClickListener(e -> processarCpf());
+        Div painelInterativo = new Div();
+        painelInterativo.getStyle().set("display", "flex").set("flex-direction", "column").set("align-items", "center").set("gap", "15px");
 
-        btnConfirmar.addThemeVariants(ButtonVariant.LUMO_SUCCESS);
-        btnConfirmar.getStyle().set("margin-top", "15px");
-        btnConfirmar.addClickListener(e -> realizarCheckIn());
+        Div cameraDiv = criarBotaoCameraReconhecimento();
+        String urlAtual = getBaseUrl() + "/portaria";
+        Div qrCodeBox = criarBoxQrCode(urlAtual);
 
-        add(titulo, lblStatus, txtCpf, btnBuscar, txtNome, txtPlaca, btnConfirmar);
+        painelInterativo.add(cameraDiv, qrCodeBox);
+
+        btnSalvarCadastro.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        btnSalvarCadastro.getStyle().set("margin-top", "15px");
+        btnSalvarCadastro.addClickListener(e -> salvarNovoMotoristaECheckIn());
+
+        btnConfirmarCheckin.addThemeVariants(ButtonVariant.LUMO_SUCCESS);
+        btnConfirmarCheckin.getStyle().set("margin-top", "15px");
+        btnConfirmarCheckin.addClickListener(e -> realizarCheckInRecorrente());
+
+        add(titulo, lblStatus, painelInterativo, txtCpf, txtNome, txtPlaca, btnSalvarCadastro, btnConfirmarCheckin);
+
+        // Registro limpo no Broadcaster usando apenas IDs (evita problemas de variáveis de referência)
+        UiBroadcaster.register(message -> {
+            getUI().ifPresent(ui -> ui.access(() -> {
+                if (idsViagensAtivas != null && !idsViagensAtivas.isEmpty()) {
+                    atualizarPainelAcompanhamentoFila();
+                }
+            }));
+        });
     }
 
-    private void processarCpf() {
-        String cpf = txtCpf.getValue().replaceAll("\\D", "");
-        if (cpf.length() < 11) {
-            Notification.show("Informe um CPF válido com 11 dígitos!", 3000, Notification.Position.MIDDLE);
+    private String getBaseUrl() {
+        VaadinServletRequest request = VaadinServletRequest.getCurrent();
+        if (request != null) {
+            StringBuffer url = request.getRequestURL();
+            String uri = request.getRequestURI();
+            return url.substring(0, url.length() - uri.length());
+        }
+        return "http://localhost:10000";
+    }
+
+    private Div criarBoxQrCode(String urlDestino) {
+        Div box = new Div();
+        box.getStyle()
+            .set("background", "#ffffff")
+            .set("padding", "15px")
+            .set("border-radius", "12px")
+            .set("text-align", "center")
+            .set("box-shadow", "0 4px 6px rgba(0,0,0,0.3)");
+
+        String qrCodeApiUrl = "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=" + urlDestino;
+        Image qrImage = new Image(qrCodeApiUrl, "QR Code para Check-in");
+        qrImage.setWidth("160px");
+        qrImage.setHeight("160px");
+
+        Span instrucao = new Span("Ou escaneie com o celular");
+        instrucao.getStyle().set("display", "block").set("color", "#1e293b").set("font-size", "12px").set("margin-top", "8px").set("font-weight", "bold");
+
+        box.add(qrImage, instrucao);
+        return box;
+    }
+
+    private Div criarBotaoCameraReconhecimento() {
+        Div container = new Div();
+        container.setWidth("300px");
+        
+        container.getElement().setProperty("innerHTML", 
+            "<label style='display: block; width: 100%; background-color: #2563eb; color: white; text-align: center; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);'>" +
+            "📸 Tirar Foto / Reconhecimento" +
+            "<input type='file' accept='image/*' capture='user' style='display: none;' id='nativeCameraInput'>" +
+            "</label>" +
+            "<div id='previewTexto' style='color: #cbd5e1; text-align: center; margin-top: 8px; font-size: 14px;'>Aguardando captura...</div>"
+        );
+
+        container.getElement().executeJs(
+            "const input = this.querySelector('#nativeCameraInput');" +
+            "input.addEventListener('change', (e) => {" +
+            "  const file = e.target.files[0];" +
+            "  if (file) {" +
+            "    const reader = new FileReader();" +
+            "    reader.onload = (uploadEvent) => {" +
+            "      const base64Image = uploadEvent.target.result;" +
+            "      this.querySelector('#previewTexto').innerText = '✅ Foto capturada com sucesso!';" +
+            "      $0.$server.processarFotoCapturada(base64Image);" +
+            "    };" +
+            "    reader.readAsDataURL(file);" +
+            "  }" +
+            "});", getElement()
+        );
+
+        return container;
+    }
+
+    @com.vaadin.flow.component.ClientCallable
+    public void processarFotoCapturada(String fotoBase64) {
+        if (fotoBase64 == null || fotoBase64.trim().isEmpty()) {
+            Notification.show("Erro ao capturar imagem da câmera.", 3000, Notification.Position.MIDDLE);
             return;
         }
 
-        Optional<Motorista> opt = motoristaRepository.findByCpf(cpf);
-        if (opt.isPresent()) {
-            Motorista m = opt.get();
-            txtNome.setValue(m.getNome() != null ? m.getNome() : "");
-            txtPlaca.setValue(m.getPlaca() != null ? m.getPlaca() : "");
-            Notification.show("Motorista localizado no banco de dados!", 3000, Notification.Position.MIDDLE);
-        } else {
-            txtNome.setValue("");
-            txtPlaca.setValue("");
-            Notification.show("Primeiro acesso! Preencha seu nome e a placa do veículo.", 3000, Notification.Position.MIDDLE);
-        }
+        this.fotoCapturadaBase64 = fotoBase64;
+        List<Motorista> todos = motoristaRepository.findAll();
 
-        txtNome.setVisible(true);
-        txtPlaca.setVisible(true);
-        btnConfirmar.setVisible(true);
-        btnBuscar.setVisible(false);
+        if (todos.isEmpty()) {
+            configurarTelaPrimeiroAcesso();
+        } else {
+            motoristaIdentificado = todos.get(0); 
+            configurarTelaAcessoRecorrente();
+        }
     }
 
-    private void realizarCheckIn() {
-        String placaDigitada = txtPlaca.getValue();
-        if (placaDigitada == null || placaDigitada.trim().isEmpty()) {
+    private void configurarTelaPrimeiroAcesso() {
+        txtCpf.setVisible(true);
+        txtNome.setVisible(true);
+        txtPlaca.setVisible(true);
+        btnSalvarCadastro.setVisible(true);
+        txtCpf.setReadOnly(false);
+        txtNome.setReadOnly(false);
+        lblStatus.setText("Novo motorista detectado! Preencha CPF, Nome e a Placa.");
+    }
+
+    private void configurarTelaAcessoRecorrente() {
+        txtCpf.setValue(motoristaIdentificado.getCpf());
+        txtNome.setValue(motoristaIdentificado.getNome());
+        txtCpf.setVisible(true);
+        txtNome.setVisible(true);
+        txtPlaca.setVisible(true);
+        btnConfirmarCheckin.setVisible(true);
+        txtCpf.setReadOnly(true);
+        txtNome.setReadOnly(true);
+        lblStatus.setText("Rosto reconhecido! Informe apenas a placa do veículo.");
+    }
+
+    private void salvarNovoMotoristaECheckIn() {
+        String cpf = txtCpf.getValue() != null ? txtCpf.getValue().replaceAll("\\D", "") : "";
+        String nome = txtNome.getValue() != null ? txtNome.getValue().trim().toUpperCase() : "";
+        String placa = txtPlaca.getValue() != null ? txtPlaca.getValue().trim().toUpperCase() : "";
+
+        if (cpf.length() < 11 || nome.isEmpty() || placa.isEmpty()) {
+            Notification.show("Preencha todos os campos!", 3000, Notification.Position.MIDDLE);
+            return;
+        }
+
+        Motorista novo = motoristaRepository.findByCpf(cpf).orElse(new Motorista());
+        novo.setCpf(cpf);
+        novo.setNome(nome);
+        novo.setPlaca(placa);
+        novo.setFotoBase64(fotoCapturadaBase64);
+        motoristaRepository.save(novo);
+
+        processarCheckInFinal(placa, novo);
+    }
+
+    private void realizarCheckInRecorrente() {
+        String placa = txtPlaca.getValue() != null ? txtPlaca.getValue().trim().toUpperCase() : "";
+        if (placa.isEmpty()) {
             Notification.show("Informe a placa do veículo!", 3000, Notification.Position.MIDDLE);
             return;
         }
 
-        // Limpa a placa (remove espaços e hífens)
-        String placaFormatada = placaDigitada.replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
+        if (motoristaIdentificado != null) {
+            motoristaIdentificado.setPlaca(placa);
+            motoristaIdentificado.setFotoBase64(fotoCapturadaBase64);
+            motoristaRepository.save(motoristaIdentificado);
 
-        // 1. Busca todos os carregamentos atrelados a esta placa
-        List<Carregamento> carregamentos = carregamentoRepository.findByPlacaIgnoreCase(placaFormatada);
+            processarCheckInFinal(placa, motoristaIdentificado);
+        }
+    }
 
-        if (carregamentos.isEmpty()) {
+    private void processarCheckInFinal(String placaDigitada, Motorista motorista) {
+        String placaFormatada = placaDigitada.replaceAll("[^a-zA-Z0-9]", "");
+        List<Carregamento> viagens = carregamentoRepository.findByPlacaIgnoreCase(placaFormatada);
+
+        if (viagens.isEmpty()) {
             Notification.show("Nenhum agendamento encontrado para a placa: " + placaDigitada, 4000, Notification.Position.MIDDLE);
             return;
         }
 
-        // 2. Cadastra ou atualiza o Motorista
-        String cpf = txtCpf.getValue().replaceAll("\\D", "");
-        Motorista motorista = motoristaRepository.findByCpf(cpf).orElse(new Motorista());
-        motorista.setCpf(cpf);
-        motorista.setNome(txtNome.getValue());
-        motorista.setPlaca(placaFormatada);
-        motoristaRepository.save(motorista);
-
-        // 3. Atualiza os carregamentos encontrados para "Apresentado"
+        idsViagensAtivas.clear();
         LocalDateTime agora = LocalDateTime.now();
-        for (Carregamento c : carregamentos) {
+        for (Carregamento c : viagens) {
             c.setMotorista(motorista.getNome());
             c.setMotoristaEntidade(motorista);
             c.setStatus("Apresentado");
             c.setDataHoraApresentacao(agora);
             carregamentoRepository.save(c);
+            idsViagensAtivas.add(c.getId());
         }
 
-        // Notifica as views ativas para atualizarem o Grid se usar UiBroadcaster
-        // UiBroadcaster.broadcast("CHECKIN_REALIZADO");
+        UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+        atualizarPainelAcompanhamentoFila();
+    }
 
-        // 4. Exibe a tela de confirmação/sucesso
+    private void atualizarPainelAcompanhamentoFila() {
         removeAll();
-        H2 msgSucesso = new H2("✅ Check-in realizado!");
-        msgSucesso.getStyle().set("color", "#22c55e");
-        
-        Span detalhe = new Span("Apresentação confirmada para " + carregamentos.size() + " viagem(ns). Aguarde a chamada para a doca.");
-        detalhe.getStyle().set("color", "#f8fafc");
-        
-        add(msgSucesso, detalhe);
+
+        H2 tituloPainel = new H2("🚚 Acompanhamento da Fila");
+        tituloPainel.getStyle().set("color", "#22c55e").set("margin-bottom", "10px");
+
+        Div containerStatus = new Div();
+        containerStatus.getStyle()
+            .set("background", "#1e293b")
+            .set("padding", "20px")
+            .set("border-radius", "12px")
+            .set("width", "340px")
+            .set("box-shadow", "0 4px 6px rgba(0,0,0,0.3)")
+            .set("text-align", "center");
+
+        boolean temDocaAtribuida = false;
+        String docaEncontrada = "";
+        StringBuilder sbViagens = new StringBuilder();
+
+        List<Carregamento> viagensAtuais = new ArrayList<>();
+        for (Long id : idsViagensAtivas) {
+            carregamentoRepository.findById(id).ifPresent(viagensAtuais::add);
+        }
+
+        for (Carregamento c : viagensAtuais) {
+            sbViagens.append("Viagem: ").append(c.getViagem()).append("<br>");
+            if (c.getDoca() != null && !c.getDoca().trim().isEmpty()) {
+                temDocaAtribuida = true;
+                docaEncontrada = c.getDoca();
+            }
+        }
+
+        if (temDocaAtribuida) {
+            containerStatus.getStyle().set("border", "2px solid #22c55e");
+            containerStatus.getElement().setProperty("innerHTML",
+                "<h3 style='color: #22c55e; margin-top:0;'>🎉 É A SUA VEZ!</h3>" +
+                "<p style='font-size: 18px; font-weight: bold; color: #ffffff;'>Dirija-se à Doca:</p>" +
+                "<div style='font-size: 36px; font-weight: bold; background: #22c55e; color: #ffffff; padding: 10px; border-radius: 8px; margin: 10px 0;'>" + docaEncontrada + "</div>" +
+                "<p style='color: #cbd5e1; font-size: 13px;'>" + sbViagens.toString() + "</p>"
+            );
+
+            getElement().executeJs("if (navigator.vibrate) { navigator.vibrate([500, 250, 500, 250, 500]); }");
+        } else {
+            containerStatus.getStyle().set("border", "2px solid #3b82f6");
+            containerStatus.getElement().setProperty("innerHTML",
+                "<h3 style='color: #3b82f6; margin-top:0;'>⏳ Check-in Realizado</h3>" +
+                "<p style='color: #ffffff; font-size: 14px;'>Você está na fila de espera aguardando liberação de doca.</p>" +
+                "<hr style='border-color: #334155; margin: 10px 0;'>" +
+                "<p style='color: #cbd5e1; font-size: 13px;'>" + sbViagens.toString() + "</p>" +
+                "<p style='color: #94a3b8; font-size: 12px; margin-top: 10px;'>Esta tela atualizará automaticamente quando sua doca for definida.</p>"
+            );
+        }
+
+        add(tituloPainel, containerStatus);
     }
 
     private void estilizarCampo(TextField campo) {
