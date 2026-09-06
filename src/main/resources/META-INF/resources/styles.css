@@ -23,4 +23,33 @@
 .status-verde {
     font-weight: bold;
     color: #22c55e;
+
+    vaadin-combo-box-overlay {
+    background-color: var(--lumo-base-color);
+    color: var(--lumo-body-text-color);
+}
+
+/* Força o tema escuro e o fundo correto no overlay do ComboBox e seus itens */
+vaadin-combo-box-overlay {
+    --lumo-base-color: #1a1d24 !important;
+    --lumo-body-text-color: #ffffff !important;
+    background-color: #1a1d24 !important;
+    color: #ffffff !important;
+}
+
+vaadin-combo-box-overlay::part(overlay) {
+    background-color: #1a1d24 !important;
+    color: #ffffff !important;
+}
+
+/* Garante que os itens internos da lista também fiquem com o texto legível no escuro */
+vaadin-combo-box-item {
+    color: #ffffff !important;
+}
+
+vaadin-combo-box-item[highlighted] {
+    background-color: var(--lumo-primary-color-10pct, #2a2f3a) !important;
+    color: #ffffff !important;
+}
+
 }

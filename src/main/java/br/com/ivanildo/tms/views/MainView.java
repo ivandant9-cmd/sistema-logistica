@@ -29,14 +29,13 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.upload.Upload;
-import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
+import com.vaadin.flow.component.upload.receivers.FileBuffer;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.upload.receivers.FileBuffer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.io.InputStream;
@@ -48,10 +47,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
 import br.com.ivanildo.tms.model.Conferente;
 import br.com.ivanildo.tms.repository.ConferenteRepository;
-
 
 @Route("")
 @PageTitle("Gestão Operacional de Carregamento | TMS")
@@ -63,7 +60,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final ExcelService excelService;
     private final ConferenteRepository conferenteRepository;
     
-    // Utiliza o Registration específico da classe UiBroadcaster
     private UiBroadcaster.Registration broadcasterRegistration;
 
     private final Grid<Carregamento> grid = new Grid<>(Carregamento.class, false);
@@ -77,6 +73,16 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final Span txtPendentes = new Span("0");
 
     private String statusFiltroAtual = "TODOS";
+
+    // Componentes de ação que precisam ser acessados para controle de permissão
+    private Button btnNovo;
+    private Button btnArquivarExpedidas;
+    private Button btnExcluirSelecionadas;
+    private Button btnLimparCheckin;
+    private Button btnVerArquivados;
+    private Button btnVerFila;
+    private Button btnRelatorioPaletes;
+    private Upload uploadExcelComponent;
 
     public MainView(CarregamentoRepository repository, EntregaRepository entregaRepository, ExcelService excelService, ConferenteRepository conferenteRepository) {
         this.repository = repository;
@@ -131,6 +137,8 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         HorizontalLayout barraAcoes = criarBarraAcoes();
         configurarGrid();
 
+        aplicarPermissoesPerfil();
+
         add(titulo, containerKPI, barraAcoes, grid);
         atualizarGridEIndicators();
     }
@@ -159,6 +167,21 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             broadcasterRegistration = null;
         }
         super.onDetach(detachEvent);
+    }
+
+    private void aplicarPermissoesPerfil() {
+        boolean isPcl = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication()
+            .getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_PCL"));
+
+        if (btnArquivarExpedidas != null) btnArquivarExpedidas.setVisible(!isPcl);
+        if (btnExcluirSelecionadas != null) btnExcluirSelecionadas.setVisible(!isPcl);
+        if (btnLimparCheckin != null) btnLimparCheckin.setVisible(!isPcl);
+        if (btnNovo != null) btnNovo.setVisible(!isPcl);
+
+        if (btnVerArquivados != null) btnVerArquivados.setVisible(true);
+        if (btnVerFila != null) btnVerFila.setVisible(true);
+        if (btnRelatorioPaletes != null) btnRelatorioPaletes.setVisible(true);
+        if (uploadExcelComponent != null) uploadExcelComponent.setVisible(true);
     }
 
     private Div criarCardsKPIs() {
@@ -286,7 +309,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         HorizontalLayout grupoEsquerda = new HorizontalLayout();
         grupoEsquerda.setAlignItems(Alignment.CENTER);
 
-        Button btnNovo = new Button("Novo Carregamento", VaadinIcon.PLUS.create());
+        btnNovo = new Button("Novo Carregamento", VaadinIcon.PLUS.create());
         btnNovo.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         btnNovo.getStyle()
                 .set("background", "linear-gradient(135deg, #2563eb, #1d4ed8)")
@@ -294,9 +317,8 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 .set("border-radius", "6px")
                 .set("box-shadow", "0 4px 12px rgba(37, 99, 235, 0.3)");
         btnNovo.addClickListener(e -> abrirFormularioModal(new Carregamento()));
-        btnNovo.setVisible(false);
 
-        Button btnArquivarExpedidas = new Button("Arquivar Expedidas", VaadinIcon.ARCHIVE.create());
+        btnArquivarExpedidas = new Button("Arquivar Expedidas", VaadinIcon.ARCHIVE.create());
         btnArquivarExpedidas.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnArquivarExpedidas.getStyle()
                 .set("background", "linear-gradient(135deg, #059669, #047857)")
@@ -324,7 +346,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             Notification.show(expedidosAtivos.size() + " cargas expedidas foram arquivadas.", 3000, Notification.Position.BOTTOM_END);
         });
 
-        Button btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
+        btnExcluirSelecionadas = new Button("Excluir Selecionadas", VaadinIcon.TRASH.create());
         btnExcluirSelecionadas.addThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_SMALL);
         btnExcluirSelecionadas.addClickListener(e -> {
             List<Carregamento> selecionados = mapaCheckboxesMain.entrySet().stream()
@@ -353,7 +375,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             }
         }); 
         
-        Button btnLimparCheckin = new Button("Limpar Checkin", VaadinIcon.REFRESH.create());
+        btnLimparCheckin = new Button("Limpar Checkin", VaadinIcon.REFRESH.create());
         btnLimparCheckin.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnLimparCheckin.getStyle().set("font-weight", "600");
         btnLimparCheckin.addClickListener(e -> {
@@ -380,11 +402,11 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             Notification.show("Checkin e motorista limpos para " + selecionados.size() + " carga(s)!", 3000, Notification.Position.BOTTOM_END);
         });
 
-        Button btnVerArquivados = new Button("Ver Arquivados", VaadinIcon.FOLDER_OPEN.create());
+        btnVerArquivados = new Button("Ver Arquivados", VaadinIcon.FOLDER_OPEN.create());
         btnVerArquivados.addThemeVariants(ButtonVariant.LUMO_SMALL);
         btnVerArquivados.addClickListener(e -> abrirModalArquivados());
 
-        Button btnVerFila = new Button("Ver Fila", VaadinIcon.LIST.create());
+        btnVerFila = new Button("Ver Fila", VaadinIcon.LIST.create());
         btnVerFila.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnVerFila.getStyle()
                 .set("background", "linear-gradient(135deg, #3b82f6, #1d4ed8)")
@@ -392,7 +414,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 .set("font-weight", "600");
         btnVerFila.addClickListener(e -> abrirModalFila());
 
-        Button btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
+        btnRelatorioPaletes = new Button("Relatório Paletes", VaadinIcon.PRINT.create());
         btnRelatorioPaletes.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL);
         btnRelatorioPaletes.getStyle()
                 .set("background", "linear-gradient(135deg, #059669, #047857)")
@@ -401,35 +423,35 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         btnRelatorioPaletes.addClickListener(e -> UI.getCurrent().navigate(RelatorioPaletesView.class));
 
         grupoEsquerda.add(btnNovo, btnArquivarExpedidas, btnExcluirSelecionadas, btnLimparCheckin, btnVerArquivados, btnVerFila, btnRelatorioPaletes);
-        // Substitua o MemoryBuffer por FileBuffer para salvar em disco e poupar RAM
-FileBuffer fileBuffer = new FileBuffer();
-Upload uploadExcel = new Upload(fileBuffer);
-uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
-uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
-uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
+        
+        FileBuffer fileBuffer = new FileBuffer();
+        Upload uploadExcel = new Upload(fileBuffer);
+        uploadExcel.setAcceptedFileTypes(".xlsx", ".xls");
+        uploadExcel.setDropLabel(new Span("Arraste o arquivo Excel (.xlsx) aqui"));
+        uploadExcel.setUploadButton(new Button("Upload Excel", VaadinIcon.UPLOAD.create()));
+        uploadExcelComponent = uploadExcel;
 
-uploadExcel.addSucceededListener(event -> {
-    try {
-        // O InputStream agora lê diretamente do arquivo temporário em disco
-        InputStream is = fileBuffer.getInputStream();
-        excelService.processarExcel(is);
+        uploadExcel.addSucceededListener(event -> {
+            try {
+                InputStream is = fileBuffer.getInputStream();
+                excelService.processarExcel(is);
 
-        getUI().ifPresent(ui -> ui.access(() -> {
-            atualizarGridEIndicators();
-            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
-            Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
-            n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-        }));
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    atualizarGridEIndicators();
+                    UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+                    Notification n = Notification.show("Planilha importada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+                    n.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+                }));
 
-    } catch (Exception ex) {
-        ex.printStackTrace();
-        getUI().ifPresent(ui -> ui.access(() -> {
-            String msg = ex.getMessage() != null ? ex.getMessage() : ex.getClass().getSimpleName();
-            Notification n = Notification.show("Erro ao processar: " + msg, 5000, Notification.Position.MIDDLE);
-            n.addThemeVariants(NotificationVariant.LUMO_ERROR);
-        }));
-    }
-});
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    String msg = ex.getMessage() != null ? ex.getMessage() : ex.getClass().getSimpleName();
+                    Notification n = Notification.show("Erro ao processar: " + msg, 5000, Notification.Position.MIDDLE);
+                    n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+                }));
+            }
+        });
 
         layout.add(grupoEsquerda, uploadExcel);
         return layout;
@@ -482,21 +504,38 @@ uploadExcel.addSucceededListener(event -> {
         gridArquivados.addColumn(Carregamento::getViagem).setHeader("VIAGEM").setAutoWidth(true);
         gridArquivados.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
-        gridArquivados.addColumn(c -> c.getHoraChegada() != null ? c.getHoraChegada().format(formatter) : "-")
+       // Função auxiliar para calcular e formatar a duração em horas e minutos
+        java.util.function.BiFunction<LocalDateTime, LocalDateTime, String> formatarDuracao = (inicio, fim) -> {
+    if (inicio == null || fim == null) return "-";
+    java.time.Duration duracao = java.time.Duration.between(inicio, fim);
+    if (duracao.isNegative()) return "0h 0m";
+    long horas = duracao.toHours();
+    long minutos = duracao.toMinutesPart();
+    return horas + "h " + minutos + "m";
+};
+
+        // Espera Fila (Início da Carga - Apresentação/Chegada)
+        gridArquivados.addColumn(c -> formatarDuracao.apply(c.getDataHoraApresentacao(), c.getHoraInicioCarregamento()))
+            .setHeader("ESPERA FILA").setAutoWidth(true);
+
+        // Tempo de Carga (Fim da Carga - Início da Carga)
+        gridArquivados.addColumn(c -> formatarDuracao.apply(c.getHoraInicioCarregamento(), c.getHoraFimCarregamento()))
+            .setHeader("TEMPO CARGA").setAutoWidth(true);
+
+        // Lead Time Total (Fim da Carga - Apresentação/Chegada)
+        gridArquivados.addColumn(c -> formatarDuracao.apply(c.getDataHoraApresentacao(), c.getHoraFimCarregamento()))
+            .setHeader("LEAD TIME TOTAL").setAutoWidth(true);
+
+        gridArquivados.addColumn(c -> c.getDataHoraApresentacao() != null ? c.getDataHoraApresentacao().format(formatter) : "-")
             .setHeader("CHEGADA").setAutoWidth(true);
-
         gridArquivados.addColumn(c -> c.getHoraInicioCarregamento() != null ? c.getHoraInicioCarregamento().format(formatter) : "-")
             .setHeader("INÍCIO CARGA").setAutoWidth(true);
 
         gridArquivados.addColumn(c -> c.getHoraFimCarregamento() != null ? c.getHoraFimCarregamento().format(formatter) : "-")
             .setHeader("FIM CARGA").setAutoWidth(true);
-
-        gridArquivados.addColumn(Carregamento::getTempoEsperaFilaFormatado).setHeader("ESPERA FILA").setAutoWidth(true);
-        gridArquivados.addColumn(Carregamento::getTempoCarregamentoFormatado).setHeader("TEMPO CARGA").setAutoWidth(true);
-        gridArquivados.addColumn(Carregamento::getLeadTimeTotalFormatado).setHeader("LEAD TIME TOTAL").setAutoWidth(true);
-
+        
         gridArquivados.addColumn(new ComponentRenderer<>(carregamento -> {
             Button btnDesarquivar = new Button("Desarquivar", VaadinIcon.UPLOAD_ALT.create());
             btnDesarquivar.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_SUCCESS);
@@ -693,8 +732,8 @@ uploadExcel.addSucceededListener(event -> {
         grid.addColumn(Carregamento::getPeso).setHeader("PESO").setAutoWidth(true);
         grid.addColumn(Carregamento::getEncaixe).setHeader("ENCAIXE").setAutoWidth(true);
         
-        grid.addComponentColumn(this::criarSeletorConferente).setHeader("CONFERENTE").setAutoWidth(true);
-        grid.addComponentColumn(this::criarSeletorDoca).setHeader("DOCA").setAutoWidth(true);
+        grid.addColumn(Carregamento::getConferente).setHeader("CONFERENTE");
+        grid.addColumn(Carregamento::getDoca).setHeader("DOCA");
 
         grid.addComponentColumn(carregamento -> criarBotoesStatus(carregamento))
             .setHeader("STATUS")
@@ -758,15 +797,18 @@ uploadExcel.addSucceededListener(event -> {
         aplicarEstiloBotao(btnCarregando, isCarregando, "#f59e0b");
         aplicarEstiloBotao(btnExpedido, isExpedido, "#10b981");
 
-        btnApresentado.addClickListener(e -> {
-            carregamento.setStatus("Apresentado");
-            if (carregamento.getHoraChegada() == null) {
-                carregamento.setHoraChegada(LocalDateTime.now());
-            }
-            repository.save(carregamento);
-            atualizarGridEIndicators();
-            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
-        });
+      btnApresentado.addClickListener(e -> {
+    carregamento.setStatus("Apresentado");
+    
+    // Usa o método correto que a Grid está consultando: getDataHoraApresentacao / setDataHoraApresentacao
+    if (carregamento.getDataHoraApresentacao() == null) {
+        carregamento.setDataHoraApresentacao(java.time.LocalDateTime.now());
+    }
+
+    repository.save(carregamento);
+    atualizarGridEIndicators();
+    UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+});
 
         btnCarregando.addClickListener(e -> {
             if (!"Apresentado".equalsIgnoreCase(carregamento.getStatus())) {
@@ -864,14 +906,24 @@ uploadExcel.addSucceededListener(event -> {
         TextField txtEncaixe = new TextField("Encaixe");
         txtEncaixe.setValue(carregamento.getEncaixe() != null ? carregamento.getEncaixe() : "");
 
-        ComboBox<String> cbConferente = new ComboBox<>("Conferente");
+        ComboBox<String> cbConferente = new ComboBox<>("Conferente *");
+        cbConferente.getElement().setAttribute("theme", "dark");
         List<String> nomesConferentes = conferenteRepository.findAll().stream()
                 .map(Conferente::getNome)
                 .collect(Collectors.toList());
         cbConferente.setItems(nomesConferentes);
         cbConferente.setValue(carregamento.getConferente() != null ? carregamento.getConferente() : "");
 
-        ComboBox<String> cbDoca = new ComboBox<>("Doca");
+        boolean isNovoRegistro = (carregamento.getId() == null);
+        boolean isAdmin = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication()
+                .getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+        
+        if (!isNovoRegistro && !isAdmin) {
+            cbConferente.setReadOnly(true);
+        }
+
+        ComboBox<String> cbDoca = new ComboBox<>("Doca *");
+        cbDoca.getElement().setAttribute("theme", "dark");
         cbDoca.setItems("01", "02", "03", "04", "05", "06", "07", "08");
         cbDoca.setValue(carregamento.getDoca() != null ? carregamento.getDoca() : "");
 
@@ -881,6 +933,24 @@ uploadExcel.addSucceededListener(event -> {
 
         TextField txtObs = new TextField("Observação");
         txtObs.setValue(carregamento.getObservacao() != null ? carregamento.getObservacao() : "");
+
+        boolean isPcl = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication()
+            .getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_PCL"));
+
+        if (isPcl) {
+            txtData.setReadOnly(true);
+            txtTransp.setReadOnly(true);
+            txtTipoVeiculo.setReadOnly(true);
+            txtViagem.setReadOnly(true);
+            txtOrdemCarga.setReadOnly(true);
+            txtPeso.setReadOnly(true);
+            txtEncaixe.setReadOnly(true);
+            cbStatus.setReadOnly(true);
+            
+            // Garante que o PCL pode alterar o conferente e a doca
+            cbConferente.setReadOnly(false);
+            cbDoca.setReadOnly(false);
+        }
 
         estilitarCampoEscuro(txtData);
         estilitarCampoEscuro(txtTransp);
@@ -900,6 +970,17 @@ uploadExcel.addSucceededListener(event -> {
         dialog.add(form);
 
         Button btnSalvar = new Button("Salvar", e -> {
+            String conferenteSelecionado = cbConferente.getValue();
+            String docaSelecionada = cbDoca.getValue();
+
+            if (conferenteSelecionado == null || conferenteSelecionado.trim().isEmpty() ||
+                docaSelecionada == null || docaSelecionada.trim().isEmpty()) {
+                
+                Notification.show("⚠️ Os campos Conferente e Doca são de preenchimento obrigatório!", 4000, Notification.Position.MIDDLE)
+                        .addThemeVariants(NotificationVariant.LUMO_ERROR);
+                return;
+            }
+
             carregamento.setDataProgramacao(txtData.getValue());
             carregamento.setTransportadora(txtTransp.getValue());
             
@@ -916,8 +997,12 @@ uploadExcel.addSucceededListener(event -> {
             carregamento.setOrdemCarga(txtOrdemCarga.getValue());
             carregamento.setPeso(txtPeso.getValue());
             carregamento.setEncaixe(txtEncaixe.getValue());
-            carregamento.setConferente(cbConferente.getValue());
-            carregamento.setDoca(cbDoca.getValue());
+            
+            if (isNovoRegistro || isAdmin || isPcl) {
+                carregamento.setConferente(conferenteSelecionado);
+            }
+            
+            carregamento.setDoca(docaSelecionada);
             carregamento.setStatus(cbStatus.getValue());
             carregamento.setObservacao(txtObs.getValue());
 
@@ -1010,71 +1095,5 @@ uploadExcel.addSucceededListener(event -> {
             .set("--lumo-primary-text-color", "#90caf9")
             .set("--lumo-contrast-60pct", "#90caf9")
             .set("--lumo-contrast-70pct", "#90caf9");
-    }
-
-    private Component criarSeletorConferente(Carregamento carregamento) {
-        ComboBox<String> comboConferente = new ComboBox<>();
-        List<String> nomesConferentes = conferenteRepository.findAll().stream()
-                .map(Conferente::getNome)
-                .collect(Collectors.toList());
-
-        comboConferente.setItems(nomesConferentes);
-        comboConferente.setValue(carregamento.getConferente());
-        comboConferente.setWidth("140px");
-        comboConferente.setClearButtonVisible(false);
-        comboConferente.getStyle().set("--vaadin-combo-box-overlay-width", "260px");
-
-        comboConferente.addValueChangeListener(event -> {
-            if(event.isFromClient()) {
-                carregamento.setConferente(event.getValue());
-                repository.save(carregamento);
-                UiBroadcaster.broadcast("STATUS_ATUALIZADO");
-            }
-        });
-
-        return comboConferente;
-    }
-
-    private Component criarSeletorDoca(Carregamento carregamento) {
-        ComboBox<String> comboDoca = new ComboBox<>();
-        comboDoca.setItems("01", "02", "03", "04", "05", "06", "07", "08");
-        comboDoca.setValue(carregamento.getDoca());
-        comboDoca.setWidth("90px");
-        comboDoca.setClearButtonVisible(false);
-
-        comboDoca.addValueChangeListener(event -> {
-            if(!event.isFromClient()) return;
-            
-            String novaDoca = event.getValue();
-            if (novaDoca == null || novaDoca.isEmpty()) {
-                carregamento.setDoca(null);
-                repository.save(carregamento);
-                UiBroadcaster.broadcast("STATUS_ATUALIZADO");
-                return;
-            }
-
-            boolean docaOcupada = repository.findAll().stream()
-                .anyMatch(c -> novaDoca.equalsIgnoreCase(c.getDoca())
-                            && !c.getId().equals(carregamento.getId())
-                            && c.getStatus() != null 
-                            && !c.getStatus().trim().equalsIgnoreCase("Expedido"));
-
-            if (docaOcupada) {
-                Notification.show("⚠️ A Doca " + novaDoca + " já está em uso por outro veículo ativo!", 4000, Notification.Position.MIDDLE);
-                comboDoca.setValue(carregamento.getDoca()); 
-                return;
-            }
-
-            carregamento.setDoca(novaDoca);
-            
-            if (carregamento.getHoraChegada() == null) {
-                carregamento.registrarChegada(LocalDateTime.now());
-            }
-
-            repository.save(carregamento);
-            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
-        });
-
-        return comboDoca;
     }
 }
