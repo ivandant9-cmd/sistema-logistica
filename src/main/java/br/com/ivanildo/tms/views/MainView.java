@@ -46,9 +46,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
-import com.vaadin.flow.shared.Registration;
-import java.lang.AutoCloseable;
-
 
 import br.com.ivanildo.tms.model.Conferente;
 import br.com.ivanildo.tms.repository.ConferenteRepository;
@@ -63,9 +60,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final EntregaRepository entregaRepository;
     private final ExcelService excelService;
     private final ConferenteRepository conferenteRepository;
-    private Registration broadcasterRegistration;
-    private AutoCloseable broadcasterRegistration;
     
+    // Utiliza o Registration específico da classe UiBroadcaster
+    private UiBroadcaster.Registration broadcasterRegistration;
 
     private final Grid<Carregamento> grid = new Grid<>(Carregamento.class, false);
     private final Map<Carregamento, Checkbox> mapaCheckboxesMain = new HashMap<>();
@@ -77,10 +74,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     private final Span txtPeso = new Span("0 kg");
     private final Span txtPendentes = new Span("0");
 
-    // Variável para reter o filtro selecionado pelo usuário nos cards e não resetar ao atualizar
     private String statusFiltroAtual = "TODOS";
-    
-
 
     public MainView(CarregamentoRepository repository, EntregaRepository entregaRepository, ExcelService excelService, ConferenteRepository conferenteRepository) {
         this.repository = repository;
@@ -101,7 +95,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             .set("--lumo-contrast-60pct", "#cbd5e1")
             .set("--lumo-contrast-70pct", "#cbd5e1");
 
-        // Injeção do CSS da animação piscante amarela com texto preto
         getElement().executeJs(
             "const styleId = 'placa-animada-style';" +
             "if (!document.getElementById(styleId)) {" +
@@ -152,8 +145,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         broadcasterRegistration = UiBroadcaster.register(message -> {
             ui.access(() -> {
-                // Atualiza apenas os itens e indicadores de forma leve, 
-                // preservando os componentes visuais abertos se possível
                 atualizarApenasDadosGridEIndicators();
             });
         });
@@ -224,7 +215,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             .filter(c -> c.getArquivado() == null || !c.getArquivado())
             .toList();
 
-        // Reaplica o filtro atual mantendo a seleção do usuário
         aplicarFiltroStatus(statusFiltroAtual);
 
         long total = listaAtivos.size();
@@ -950,7 +940,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             .filter(c -> c.getArquivado() == null || !c.getArquivado())
             .toList();
 
-        // Mantém o filtro atual aplicado em vez de resetar para "TODOS" a cada push
         aplicarFiltroStatus(statusFiltroAtual);
 
         long total = listaAtivos.size();
@@ -1031,7 +1020,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         comboConferente.setClearButtonVisible(false);
         comboConferente.getStyle().set("--vaadin-combo-box-overlay-width", "260px");
 
-        // Salva diretamente na base sem dar refresh imediato no grid para não fechar o menu
         comboConferente.addValueChangeListener(event -> {
             if(event.isFromClient()) {
                 carregamento.setConferente(event.getValue());
@@ -1075,7 +1063,6 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
             carregamento.setDoca(novaDoca);
             
-            // Garante o registro da data/hora caso seja o momento do vínculo com a doca/fila
             if (carregamento.getHoraChegada() == null) {
                 carregamento.registrarChegada(LocalDateTime.now());
             }
