@@ -3,7 +3,7 @@
 ## 📊 Project Information
 
 - **Project Name**: `sistema-logistica`
-- **Generated On**: 2026-09-06 11:35:57 (America/Bahia / GMT-03:00)
+- **Generated On**: 2026-09-06 11:41:19 (America/Bahia / GMT-03:00)
 - **Total Files Processed**: 834
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
@@ -231,7 +231,7 @@
 │       │                   │   ├── 📄 CheckInView.java (14.53 KB)
 │       │                   │   ├── 📄 EntregasView.java (22.28 KB)
 │       │                   │   ├── 📄 LoginView.java (3.35 KB)
-│       │                   │   ├── 📄 MainView.java (50 KB)
+│       │                   │   ├── 📄 MainView.java (50.04 KB)
 │       │                   │   ├── 📄 PortariaCheckInView.java (2.44 KB)
 │       │                   │   └── 📄 RelatorioPaletesView.java (14.6 KB)
 │       │                   ├── 📄 Application.java (633 B)
@@ -15871,15 +15871,15 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 ### <a id="📄-src-main-java-br-com-ivanildo-tms-views-mainview-java"></a>📄 `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 
 **File Info:**
-- **Size**: 50 KB
+- **Size**: 50.04 KB
 - **Extension**: `.java`
 - **Language**: `java`
 - **Location**: `src/main/java/br/com/ivanildo/tms/views/MainView.java`
 - **Relative Path**: `src/main/java/br/com/ivanildo/tms/views`
 - **Created**: 2026-08-16 19:06:41 (America/Bahia / GMT-03:00)
-- **Modified**: 2026-09-06 11:35:56 (America/Bahia / GMT-03:00)
-- **MD5**: `dcd4ad13c4d3ed490ba344643d54ef25`
-- **SHA256**: `109965f1b8f04ff1121c27b5d07f04898dba9c97cf71def03a6b192582b8325a`
+- **Modified**: 2026-09-06 11:41:18 (America/Bahia / GMT-03:00)
+- **MD5**: `f77875fee4ab291a98ce646a3a8765ee`
+- **SHA256**: `d8ea8cfbaab7ea50b4f2e454465f1c5010338e2e7f94d217c9b10e0526b22d97`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -15933,6 +15933,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
+import com.vaadin.flow.shared.Registration;
 
 
 import br.com.ivanildo.tms.model.Conferente;
