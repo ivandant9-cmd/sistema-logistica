@@ -35,17 +35,15 @@ public class ExcelService {
         
     }
 
-    @Transactional 
+   // Removido o @Transactional daqui para evitar acúmulo de cache no Hibernate
     public void processarExcel(InputStream inputStream) {
-        try {
-            // ATENÇÃO: Removemos o deleteAllInBatch() para preservar os dados existentes e não apagar nada construído!
+        // Bloco try-with-resources fecha o workbook automaticamente e libera os arquivos temporários
+        try (Workbook workbook = StreamingReader.builder()
+                .rowCacheSize(50)
+                .bufferSize(2048)
+                .open(inputStream)) {
 
-            Workbook workbook = StreamingReader.builder()
-                    .rowCacheSize(100)
-                    .bufferSize(4096)
-                    .open(inputStream);
-
-                    processarConferentesExcel(workbook);
+            processarConferentesExcel(workbook);
 
             DataFormatter formatter = new DataFormatter(new Locale.Builder().setLanguage("pt").setRegion("BR").build());
             
@@ -67,6 +65,7 @@ public class ExcelService {
                 }
                 countRow++;
             }
+            // ... continuação do código            }
 
             if (headerRow == null) {
                 throw new IllegalArgumentException("A planilha está vazia ou não contém dados válidos.");
