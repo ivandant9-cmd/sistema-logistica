@@ -47,6 +47,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.Comparator;
+
+
+
 
 import br.com.ivanildo.tms.model.Conferente;
 import br.com.ivanildo.tms.repository.ConferenteRepository;
@@ -699,10 +703,41 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             return checkbox;
         }).setHeader(masterCheckbox).setWidth("70px").setFlexGrow(0);
 
+
+       
+    grid.addComponentColumn(carregamento -> {
+    if (carregamento.getDataHoraApresentacao() == null) {
+        return new com.vaadin.flow.component.html.Span("");
+    }
+    
+    List<Carregamento> apresentados = grid.getDataProvider()
+        .fetch(new com.vaadin.flow.data.provider.Query<>())
+        .filter(c -> c.getDataHoraApresentacao() != null)
+        .sorted(Comparator.comparing(Carregamento::getDataHoraApresentacao))
+        .collect(Collectors.toList());
+
+    int posicao = apresentados.indexOf(carregamento) + 1;
+    if (posicao <= 0) {
+        return new com.vaadin.flow.component.html.Span("");
+    }
+
+    com.vaadin.flow.component.html.Span badge = new com.vaadin.flow.component.html.Span(posicao + "º");
+    badge.getStyle().set("background-color", "var(--lumo-primary-color, #0066ff)");
+    badge.getStyle().set("color", "white");
+    badge.getStyle().set("padding", "4px 10px");
+    badge.getStyle().set("border-radius", "12px");
+    badge.getStyle().set("font-weight", "bold");
+    badge.getStyle().set("font-size", "0.9rem");
+    badge.getStyle().set("box-shadow", "0 2px 4px rgba(0,0,0,0.3)");
+    
+    return badge;
+}).setHeader("Fila").setFlexGrow(0).setWidth("100px");
+
         grid.addColumn(Carregamento::getId).setHeader("ID").setAutoWidth(true).setFlexGrow(0);
         grid.addColumn(Carregamento::getDataProgramacao).setHeader("DATA PROG.").setAutoWidth(true);
         grid.addColumn(Carregamento::getTransportadora).setHeader("TRANSPORTADORA").setAutoWidth(true);
-        
+
+              
         grid.addComponentColumn(carregamento -> {
             Span spanPlaca = new Span(carregamento.getPlaca() != null ? carregamento.getPlaca() : "-");
             
