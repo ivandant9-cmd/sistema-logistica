@@ -1,24 +1,24 @@
 package br.com.ivanildo.tms.service;
 
 import br.com.ivanildo.tms.model.Carregamento;
-import br.com.ivanildo.tms.model.Entrega;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
+import br.com.ivanildo.tms.repository.ConferenteRepository;
 import br.com.ivanildo.tms.repository.EntregaRepository;
-import com.github.pjfanning.xlsx.StreamingReader;
-import org.apache.poi.ss.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.stream.Collectors;
+import br.com.ivanildo.tms.model.Entrega;
 import br.com.ivanildo.tms.model.Conferente;
-import br.com.ivanildo.tms.repository.ConferenteRepository;
+import com.monitorjbl.xlsx.StreamingReader;
 
 import java.io.InputStream;
 import java.text.Normalizer;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
-
+// Se o seu código usa Apache POI (Workbook, Sheet, Row, Cell, etc), garanta que estes imports estejam presentes:
+import org.apache.poi.ss.usermodel.*;
 
 
 @Service
@@ -26,13 +26,18 @@ public class ExcelService {
 
     private final CarregamentoRepository carregamentoRepository;
     private final EntregaRepository entregaRepository;
+    
     @Autowired
     private ConferenteRepository conferenteRepository;
 
     public ExcelService(CarregamentoRepository carregamentoRepository, EntregaRepository entregaRepository) {
         this.carregamentoRepository = carregamentoRepository;
         this.entregaRepository = entregaRepository;
-        
+    }
+
+    @Transactional(readOnly = true)
+    public List<Carregamento> listarCarregamentosParaMainView() {
+        return carregamentoRepository.findByArquivadoFalseOrArquivadoIsNull();
     }
 
    @Transactional

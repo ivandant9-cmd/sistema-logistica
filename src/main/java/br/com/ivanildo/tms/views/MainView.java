@@ -236,7 +236,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
   
     private void atualizarApenasDadosGridEIndicators() {
-    List<Carregamento> listaAtivos = repository.findByArquivadoFalseOrArquivadoIsNull();
+    List<Carregamento> listaAtivos = excelService.listarCarregamentosParaMainView();
     listaAtivos.sort((c1, c2) -> Long.compare(c2.getId() != null ? c2.getId() : 0L, c1.getId() != null ? c1.getId() : 0L));
 
     aplicarFiltroStatus(statusFiltroAtual);
@@ -268,7 +268,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 }
 
     private void aplicarFiltroStatus(String status) {
-    List<Carregamento> todosAtivos = repository.findByArquivadoFalseOrArquivadoIsNull();
+    List<Carregamento> todosAtivos = excelService.listarCarregamentosParaMainView();
 
     if (status == null) return;
 
@@ -323,7 +323,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 .set("font-weight", "600");
 
         btnArquivarExpedidas.addClickListener(e -> {
-            List<Carregamento> expedidosAtivos = repository.findByArquivadoFalseOrArquivadoIsNull().stream()
+            List<Carregamento> expedidosAtivos = excelService.listarCarregamentosParaMainView().stream()
                 .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
                 .toList();
             
@@ -629,7 +629,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         gridFila.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
 
-        List<Carregamento> listaFila = repository.findByArquivadoFalseOrArquivadoIsNull().stream()
+        List<Carregamento> listaFila = excelService.listarCarregamentosParaMainView().stream()
             .filter(c -> c.getStatus() != null &&
                        c.getStatus().trim().equalsIgnoreCase("Apresentado"))
             .sorted((c1, c2) -> {

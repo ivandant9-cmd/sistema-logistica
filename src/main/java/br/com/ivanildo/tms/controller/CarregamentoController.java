@@ -1,8 +1,7 @@
 package br.com.ivanildo.tms.controller;
 
 import br.com.ivanildo.tms.model.Carregamento;
-import br.com.ivanildo.tms.repository.CarregamentoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.ivanildo.tms.service.ExcelService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,11 +10,14 @@ import java.util.List;
 @RequestMapping("/api/carregamentos")
 public class CarregamentoController {
 
-    @Autowired
-    private CarregamentoRepository carregamentoRepository;
+    private final ExcelService excelService;
+
+    public CarregamentoController(ExcelService excelService) {
+        this.excelService = excelService;
+    }
 
     @GetMapping
     public List<Carregamento> listarAtivos() {
-        return carregamentoRepository.findByArquivadoFalseOrArquivadoIsNull();
+        return excelService.listarCarregamentosParaMainView();
     }
 }
