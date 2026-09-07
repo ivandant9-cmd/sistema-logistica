@@ -35,7 +35,7 @@ public class ExcelService {
         
     }
 
-   // Removido o @Transactional daqui para evitar acúmulo de cache no Hibernate
+   @Transactional
     public void processarExcel(InputStream inputStream) {
         // Bloco try-with-resources fecha o workbook automaticamente e libera os arquivos temporários
         try (Workbook workbook = StreamingReader.builder()

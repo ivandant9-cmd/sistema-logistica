@@ -234,7 +234,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         return card;
     }
-    @Transactional
+  
     private void atualizarApenasDadosGridEIndicators() {
     List<Carregamento> listaAtivos = repository.findByArquivadoFalseOrArquivadoIsNull();
     listaAtivos.sort((c1, c2) -> Long.compare(c2.getId() != null ? c2.getId() : 0L, c1.getId() != null ? c1.getId() : 0L));
