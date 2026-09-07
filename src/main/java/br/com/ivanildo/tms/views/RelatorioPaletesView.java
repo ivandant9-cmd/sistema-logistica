@@ -4,7 +4,7 @@ import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.model.Entrega;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.repository.EntregaRepository;
-import jakarta.annotation.security.PermitAll;
+import br.com.ivanildo.tms.service.ExcelService;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -16,6 +16,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import jakarta.annotation.security.PermitAll;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -29,14 +30,17 @@ public class RelatorioPaletesView extends VerticalLayout {
 
     private final CarregamentoRepository repository;
     private final EntregaRepository entregaRepository;
+    private final ExcelService excelService;
+
     private Grid<Carregamento> grid;
     private List<Carregamento> itensAtuais = new ArrayList<>();
     private final Map<Carregamento, Checkbox> mapaCheckboxes = new HashMap<>();
 
     @SuppressWarnings("null")
-    public RelatorioPaletesView(CarregamentoRepository repository, EntregaRepository entregaRepository) {
+    public RelatorioPaletesView(CarregamentoRepository repository, EntregaRepository entregaRepository, ExcelService excelService) {
         this.repository = repository;
         this.entregaRepository = entregaRepository;
+        this.excelService = excelService;
         setSizeFull();
         setPadding(true);
 
@@ -94,7 +98,7 @@ public class RelatorioPaletesView extends VerticalLayout {
 
     private void atualizarGrid() {
     mapaCheckboxes.clear();
-    itensAtuais = repository.findByArquivadoFalseOrArquivadoIsNull().stream()
+    itensAtuais = excelService.listarCarregamentosParaMainView().stream()
             .filter(c -> c.getPaletes() != null && c.getPaletes() > 0)
             .filter(c -> c.getTipoVeiculo() == null || !c.getTipoVeiculo().trim().equalsIgnoreCase("HR"))
             .collect(Collectors.toList());
