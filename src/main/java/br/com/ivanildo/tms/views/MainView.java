@@ -791,58 +791,48 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
         aplicarEstiloBotao(btnCarregando, isCarregando, "#f59e0b");
         aplicarEstiloBotao(btnExpedido, isExpedido, "#10b981");
 
-      btnApresentado.addClickListener(e -> {
+     btnApresentado.addClickListener(e -> {
     carregamento.setStatus("Apresentado");
-    
     if (carregamento.getDataHoraApresentacao() == null) {
         carregamento.setDataHoraApresentacao(java.time.LocalDateTime.now());
     }
-
     repository.save(carregamento);
-   
-    atualizarGridEIndicators(); 
+    grid.getDataProvider().refreshItem(carregamento);
     UiBroadcaster.broadcast("STATUS_ATUALIZADO");
 });
 
-        btnCarregando.addClickListener(e -> {
+btnCarregando.addClickListener(e -> {
     if (!"Apresentado".equalsIgnoreCase(carregamento.getStatus())) {
         Notification.show("⚠️ O veículo precisa estar como 'Apresentado' antes de iniciar o carregamento!", 
             3000, Notification.Position.MIDDLE);
         return;
     }
-
     carregamento.setStatus("Carregando");
     if (carregamento.getHoraInicioCarregamento() == null) {
-        carregamento.setHoraInicioCarregamento(LocalDateTime.now());
+        carregamento.setHoraInicioCarregamento(java.time.LocalDateTime.now());
     }
-    
     repository.save(carregamento);
-    
-   atualizarGridEIndicators();
-    
-    // Atualize os indicadores de forma leve, se necessário, ou mantenha o broadcast
+    grid.getDataProvider().refreshItem(carregamento);
     UiBroadcaster.broadcast("STATUS_ATUALIZADO");
 });
 
-        btnExpedido.addClickListener(e -> {
-            if (!"Carregando".equalsIgnoreCase(carregamento.getStatus())) {
-                Notification.show("⚠️ O veículo precisa estar 'Carregando' antes de ser expedido!", 
-                    3000, Notification.Position.MIDDLE);
-                return;
-            }
+btnExpedido.addClickListener(e -> {
+    if (!"Carregando".equalsIgnoreCase(carregamento.getStatus())) {
+        Notification.show("⚠️ O veículo precisa estar 'Carregando' antes de ser expedido!", 
+            3000, Notification.Position.MIDDLE);
+        return;
+    }
+    carregamento.setStatus("Expedido");
+    if (carregamento.getHoraFimCarregamento() == null) {
+        carregamento.setHoraFimCarregamento(java.time.LocalDateTime.now());
+    }
+    repository.save(carregamento);
+    grid.getDataProvider().refreshItem(carregamento);
+    UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+});
 
-            carregamento.setStatus("Expedido");
-            if (carregamento.getHoraFimCarregamento() == null) {
-                carregamento.setHoraFimCarregamento(LocalDateTime.now());
-            }
-            repository.save(carregamento);
-           
-            atualizarGridEIndicators();
-            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
-        });
-
-        layout.add(btnApresentado, btnCarregando, btnExpedido);
-        return layout;
+layout.add(btnApresentado, btnCarregando, btnExpedido);
+return layout;
     }
 
     private void aplicarEstiloBotao(Button botao, boolean ativo, String corAtivaHex) {
