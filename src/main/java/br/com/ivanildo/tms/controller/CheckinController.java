@@ -4,18 +4,17 @@ import br.com.ivanildo.tms.model.Carregamento;
 import br.com.ivanildo.tms.model.Motorista;
 import br.com.ivanildo.tms.repository.CarregamentoRepository;
 import br.com.ivanildo.tms.repository.MotoristaRepository;
-import br.com.ivanildo.tms.util.UiBroadcaster; // ajuste se necessário
+import br.com.ivanildo.tms.util.UiBroadcaster;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.transaction.annotation.Transactional; // <-- 1. Importe o Transactional
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api")
-
 public class CheckinController {
 
     @Autowired
@@ -25,6 +24,7 @@ public class CheckinController {
     private MotoristaRepository motoristaRepository;
 
     @PostMapping("/checkin")
+    @Transactional // <-- 2. Adicione aqui para abrir a transação e resolver o erro de Large Objects
     public ResponseEntity<?> realizarCheckin(@RequestBody CheckinDTO request) {
         String placaInformada = request.getPlaca().replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
 
@@ -43,13 +43,13 @@ public class CheckinController {
                 });
 
         LocalDateTime agora = LocalDateTime.now();
-        for (Carregamento c : carregamentos) { // ou 'viagens' dependendo do arquivo
+        for (Carregamento c : carregamentos) {
             c.setStatus("Apresentado");
             c.setMotorista(motorista.getNome());
             c.setMotoristaEntidade(motorista);
             c.setDataHoraApresentacao(agora);
-            c.setDataChegada(agora); // <-- Passando LocalDateTime
-            c.setHoraChegada(agora); // <-- Passando LocalDateTime
+            c.setDataChegada(agora);
+            c.setHoraChegada(agora);
             carregamentoRepository.save(c);
         }
 
