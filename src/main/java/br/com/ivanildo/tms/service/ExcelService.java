@@ -478,38 +478,47 @@ if (!valPaletes.isEmpty()) {
     }
 
     public void processarConferentesExcel(Workbook workbook) {
-        Sheet sheet = workbook.getSheet("BD CONFERENTES");
-        if (sheet == null) {
-            // Fallback caso o nome venha com pequenas variações de maiúsculas/espaços
-            for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
-                if (workbook.getSheetName(i).toUpperCase().contains("CONFERENTE")) {
-                    sheet = workbook.getSheetAt(i);
-                    break;
-                }
-            }
-        }
-
-        if (sheet != null) {
-            DataFormatter formatter = new DataFormatter();
-            int rowIdx = 0;
-            for (Row row : sheet) {
-                // A partir da linha 3 (índice 2)
-                if (rowIdx >= 2 && row != null) {
-                    Cell cell = row.getCell(0); // Coluna A
-                    if (cell != null) {
-                        String nome = formatter.formatCellValue(cell).trim();
-                        // Ignora vazios ou o cabeçalho "COLABORADORES"
-                        if (!nome.isEmpty() && !nome.equalsIgnoreCase("COLABORADORES")) {
-                            boolean existe = conferenteRepository.findAll().stream()
-                                    .anyMatch(c -> c.getNome().equalsIgnoreCase(nome));
-                            if (!existe) {
-                                conferenteRepository.save(new Conferente(nome));
-                            }
-                        }
-                    }
-                }
-                rowIdx++;
+    Sheet sheet = workbook.getSheet("BD CONFERENTES");
+    if (sheet == null) {
+        // Fallback caso o nome venha com pequenas variações de maiúsculas/espaços
+        for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
+            if (workbook.getSheetName(i).toUpperCase().contains("CONFERENTE")) {
+                sheet = workbook.getSheetAt(i);
+                break;
             }
         }
     }
+
+    if (sheet != null) {
+        DataFormatter formatter = new DataFormatter();
+        
+        // Otimização: Carrega todos os nomes existentes uma única vez para um Set normalizado (em minúsculas)
+        Set<String> nomesExistentes = conferenteRepository.findAll().stream()
+                .map(c -> c.getNome().trim().toLowerCase())
+                .collect(Collectors.toSet());
+
+        int rowIdx = 0;
+        for (Row row : sheet) {
+            // A partir da linha 3 (índice 2)
+            if (rowIdx >= 2 && row != null) {
+                Cell cell = row.getCell(0); // Coluna A
+                if (cell != null) {
+                    String nome = formatter.formatCellValue(cell).trim();
+                    // Ignora vazios ou o cabeçalho "COLABORADORES"
+                    if (!nome.isEmpty() && !nome.equalsIgnoreCase("COLABORADORES")) {
+                        String nomeLower = nome.toLowerCase();
+                        // Verifica no Set em memória em vez de consultar o banco linha por linha
+                        if (!nomesExistentes.contains(nomeLower)) {
+                            conferenteRepository.save(new Conferente(nome));
+                            // Adiciona ao Set local para evitar duplicatas caso o Excel traga o mesmo nome repetido
+                            nomesExistentes.add(nomeLower);
+                        }
+                    }
+                }
+            }
+            rowIdx++;
+        }
+    }
+}
+
 }

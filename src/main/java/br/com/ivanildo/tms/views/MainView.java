@@ -235,69 +235,65 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void atualizarApenasDadosGridEIndicators() {
-        List<Carregamento> listaAtivos = repository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.DESC, "id"))
-            .stream()
-            .filter(c -> c.getArquivado() == null || !c.getArquivado())
-            .toList();
+    List<Carregamento> listaAtivos = repository.findByArquivadoFalseOrArquivadoIsNull();
+    listaAtivos.sort((c1, c2) -> Long.compare(c2.getId() != null ? c2.getId() : 0L, c1.getId() != null ? c1.getId() : 0L));
 
-        aplicarFiltroStatus(statusFiltroAtual);
+    aplicarFiltroStatus(statusFiltroAtual);
 
-        long total = listaAtivos.size();
-        long apresentados = listaAtivos.stream()
-            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Apresentado"))
-            .count();
-        long carregando = listaAtivos.stream()
-            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Carregando"))
-            .count();
-        long expedidos = listaAtivos.stream()
-            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Expedido"))
-            .count();
-        long pendentes = total - (apresentados + carregando + expedidos);
+    long total = listaAtivos.size();
+    long apresentados = listaAtivos.stream()
+        .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Apresentado"))
+        .count();
+    long carregando = listaAtivos.stream()
+        .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Carregando"))
+        .count();
+    long expedidos = listaAtivos.stream()
+        .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase("Expedido"))
+        .count();
+    long pendentes = total - (apresentados + carregando + expedidos);
 
-        double pesoTotal = listaAtivos.stream()
-            .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
-            .sum();
+    double pesoTotal = listaAtivos.stream()
+        .mapToDouble(c -> converterPesoParaDouble(c.getPeso()))
+        .sum();
 
-        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
+    DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(Locale.forLanguageTag("pt-BR")));
 
-        txtTotal.setText(String.valueOf(total));
-        txtPendentes.setText(String.valueOf(pendentes));
-        txtApresentados.setText(String.valueOf(apresentados));
-        txtCarregando.setText(String.valueOf(carregando));
-        txtExpedidos.setText(String.valueOf(expedidos));
-        txtPeso.setText(df.format(pesoTotal) + " kg");
-    }
+    txtTotal.setText(String.valueOf(total));
+    txtPendentes.setText(String.valueOf(pendentes));
+    txtApresentados.setText(String.valueOf(apresentados));
+    txtCarregando.setText(String.valueOf(carregando));
+    txtExpedidos.setText(String.valueOf(expedidos));
+    txtPeso.setText(df.format(pesoTotal) + " kg");
+}
 
     private void aplicarFiltroStatus(String status) {
-        List<Carregamento> todosAtivos = repository.findAll().stream()
-            .filter(c -> c.getArquivado() == null || !c.getArquivado())
+    List<Carregamento> todosAtivos = repository.findByArquivadoFalseOrArquivadoIsNull();
+
+    if (status == null) return;
+
+    if ("TODOS".equalsIgnoreCase(status)) {
+        grid.setItems(todosAtivos);
+    } else if ("PENDENTE".equalsIgnoreCase(status) || "PENDENTES".equalsIgnoreCase(status)) {
+        List<Carregamento> pendentes = todosAtivos.stream()
+            .filter(c -> {
+                if (c.getStatus() == null || c.getStatus().trim().isEmpty()) {
+                    return true;
+                }
+                String st = c.getStatus().trim();
+                return "Pendente".equalsIgnoreCase(st)
+                    || (!"Apresentado".equalsIgnoreCase(st) 
+                     && !"Carregando".equalsIgnoreCase(st) 
+                     && !"Expedido".equalsIgnoreCase(st));
+            })
             .toList();
-
-        if (status == null) return;
-
-        if ("TODOS".equalsIgnoreCase(status)) {
-            grid.setItems(todosAtivos);
-        } else if ("PENDENTE".equalsIgnoreCase(status) || "PENDENTES".equalsIgnoreCase(status)) {
-            List<Carregamento> pendentes = todosAtivos.stream()
-                .filter(c -> {
-                    if (c.getStatus() == null || c.getStatus().trim().isEmpty()) {
-                        return true;
-                    }
-                    String st = c.getStatus().trim();
-                    return "Pendente".equalsIgnoreCase(st)
-                        || (!"Apresentado".equalsIgnoreCase(st) 
-                         && !"Carregando".equalsIgnoreCase(st) 
-                         && !"Expedido".equalsIgnoreCase(st));
-                })
-                .toList();
-            grid.setItems(pendentes);
-        } else {
-            List<Carregamento> filtrados = todosAtivos.stream()
-                .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase(status))
-                .toList();
-            grid.setItems(filtrados);
-        }
+        grid.setItems(pendentes);
+    } else {
+        List<Carregamento> filtrados = todosAtivos.stream()
+            .filter(c -> c.getStatus() != null && c.getStatus().trim().equalsIgnoreCase(status))
+            .toList();
+        grid.setItems(filtrados);
     }
+}
 
     @SuppressWarnings("null")
     private HorizontalLayout criarBarraAcoes() {
@@ -326,10 +322,8 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 .set("font-weight", "600");
 
         btnArquivarExpedidas.addClickListener(e -> {
-            List<Carregamento> expedidosAtivos = repository.findAll().stream()
-                .filter(c -> (c.getArquivado() == null || !c.getArquivado()) && 
-                             c.getStatus() != null && 
-                             c.getStatus().equalsIgnoreCase("Expedido"))
+            List<Carregamento> expedidosAtivos = repository.findByArquivadoFalseOrArquivadoIsNull().stream()
+                .filter(c -> c.getStatus() != null && c.getStatus().equalsIgnoreCase("Expedido"))
                 .toList();
             
             if (expedidosAtivos.isEmpty()) {
@@ -545,21 +539,17 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 atualizarGridEIndicators();
                 UiBroadcaster.broadcast("STATUS_ATUALIZADO");
                 
-                mapaCheckboxesArquivados.clear();
-                List<Carregamento> listaArquivados = repository.findAll().stream()
-                    .filter(c -> c.getArquivado() != null && c.getArquivado())
-                    .toList();
-                gridArquivados.setItems(listaArquivados);
-                
-                Notification.show("Viagem desarquivada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+               mapaCheckboxesArquivados.clear();
+            List<Carregamento> novaListaArquivados = repository.findByArquivadoTrue();
+            gridArquivados.setItems(novaListaArquivados);
+
+            Notification.show("Viagem desarquivada com sucesso!", 3000, Notification.Position.BOTTOM_END);
             });
             return btnDesarquivar;
-        })).setHeader("AÇÃO").setAutoWidth(true);
+            })).setHeader("AÇÃO").setAutoWidth(true);
 
-        List<Carregamento> listaArquivados = repository.findAll().stream()
-            .filter(c -> c.getArquivado() != null && c.getArquivado())
-            .toList();
-        gridArquivados.setItems(listaArquivados);
+       List<Carregamento> listaArquivados = repository.findByArquivadoTrue();
+         gridArquivados.setItems(listaArquivados);;
 
         Button btnDesarquivarSelecionados = new Button("Desarquivar Selecionadas", VaadinIcon.UPLOAD_ALT.create());
         btnDesarquivarSelecionados.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SUCCESS);
@@ -580,9 +570,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             }
 
             mapaCheckboxesArquivados.clear();
-            List<Carregamento> novaListaArquivados = repository.findAll().stream()
-                .filter(c -> c.getArquivado() != null && c.getArquivado())
-                .toList();
+            List<Carregamento> novaListaArquivados = repository.findByArquivadoTrue();
             gridArquivados.setItems(novaListaArquivados);
 
             atualizarGridEIndicators();
@@ -640,10 +628,9 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
         gridFila.addColumn(Carregamento::getStatus).setHeader("STATUS").setAutoWidth(true);
 
-        List<Carregamento> listaFila = repository.findAll().stream()
-            .filter(c -> (c.getArquivado() == null || !c.getArquivado()) &&
-                   c.getStatus() != null &&
-                   c.getStatus().trim().equalsIgnoreCase("Apresentado"))
+        List<Carregamento> listaFila = repository.findByArquivadoFalseOrArquivadoIsNull().stream()
+            .filter(c -> c.getStatus() != null &&
+                       c.getStatus().trim().equalsIgnoreCase("Apresentado"))
             .sorted((c1, c2) -> {
                 if (c1.getDataHoraApresentacao() == null) return 1;
                 if (c2.getDataHoraApresentacao() == null) return -1;

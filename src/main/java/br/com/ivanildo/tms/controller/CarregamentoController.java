@@ -15,7 +15,7 @@ public class CarregamentoController {
     private CarregamentoRepository carregamentoRepository;
 
     @GetMapping
-    public List<Carregamento> listarTodos() {
-        return carregamentoRepository.findAll();
+    public List<Carregamento> listarAtivos() {
+        return carregamentoRepository.findByArquivadoFalseOrArquivadoIsNull();
     }
 }

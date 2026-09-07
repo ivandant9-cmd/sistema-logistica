@@ -17,6 +17,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinServletRequest;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
+import java.util.Optional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -164,12 +165,13 @@ public class CheckInView extends VerticalLayout {
         }
 
         this.fotoCapturadaBase64 = fotoBase64;
-        List<Motorista> todos = motoristaRepository.findAll();
+        String cpfInformado = txtCpf.getValue();
+        Optional<Motorista> optMotorista = motoristaRepository.findByCpf(cpfInformado);
 
-        if (todos.isEmpty()) {
+        if (optMotorista.isEmpty()) {
             configurarTelaPrimeiroAcesso();
         } else {
-            motoristaIdentificado = todos.get(0); 
+            motoristaIdentificado = optMotorista.get();
             configurarTelaAcessoRecorrente();
         }
     }

@@ -93,16 +93,14 @@ public class RelatorioPaletesView extends VerticalLayout {
     }
 
     private void atualizarGrid() {
-        mapaCheckboxes.clear();
-        itensAtuais = repository.findAll().stream()
-                .filter(c -> c.getPaletes() != null && c.getPaletes() > 0)
-                .filter(c -> c.getTipoVeiculo() == null || !c.getTipoVeiculo().trim().equalsIgnoreCase("HR"))
-                // Filtra para trazer APENAS cargas da programação (ignorando arquivadas)
-                .filter(c -> c.getArquivado() == null || !c.getArquivado()) // Ajuste para 'getArquivado' ou o nome do campo booleano de arquivamento na sua entidade Carregamento
-                .collect(Collectors.toList());
+    mapaCheckboxes.clear();
+    itensAtuais = repository.findByArquivadoFalseOrArquivadoIsNull().stream()
+            .filter(c -> c.getPaletes() != null && c.getPaletes() > 0)
+            .filter(c -> c.getTipoVeiculo() == null || !c.getTipoVeiculo().trim().equalsIgnoreCase("HR"))
+            .collect(Collectors.toList());
 
-        grid.setItems(itensAtuais);
-    }
+    grid.setItems(itensAtuais);
+}
 
     private void gerarRelatorioSelecionados() {
         List<Carregamento> selecionados = itensAtuais.stream()
