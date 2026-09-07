@@ -41,59 +41,61 @@ public class CheckInView extends VerticalLayout {
     private Motorista motoristaIdentificado = null;
     private List<Long> idsViagensAtivas = new ArrayList<>();
 
-    public CheckInView(CarregamentoRepository carregamentoRepository, MotoristaRepository motoristaRepository) {
-        this.carregamentoRepository = carregamentoRepository;
-        this.motoristaRepository = motoristaRepository;
+    private UiBroadcaster.Registration broadcastRegistration;
 
-        setAlignItems(Alignment.CENTER);
-        setJustifyContentMode(JustifyContentMode.CENTER);
-        setSizeFull();
-        getStyle().set("background-color", "#0b1329").set("color", "#ffffff");
+public CheckInView(CarregamentoRepository carregamentoRepository, MotoristaRepository motoristaRepository) {
+    this.carregamentoRepository = carregamentoRepository;
+    this.motoristaRepository = motoristaRepository;
 
-        H2 titulo = new H2("📱 Self Check-in Portaria - Reconhecimento Facial");
-        titulo.getStyle().set("color", "#ffffff").set("margin-bottom", "5px");
+    setAlignItems(Alignment.CENTER);
+    setJustifyContentMode(JustifyContentMode.CENTER);
+    setSizeFull();
+    getStyle().set("background-color", "#0b1329").set("color", "#ffffff");
 
-        lblStatus.setText("Realize o reconhecimento facial para iniciar");
-        lblStatus.getStyle().set("color", "#cbd5e1").set("margin-bottom", "15px");
+    H2 titulo = new H2("📱 Self Check-in Portaria - Reconhecimento Facial");
+    titulo.getStyle().set("color", "#ffffff").set("margin-bottom", "5px");
 
-        estilizarCampo(txtCpf);
-        estilizarCampo(txtNome);
-        estilizarCampo(txtPlaca);
+    lblStatus.setText("Realize o reconhecimento facial para iniciar");
+    lblStatus.getStyle().set("color", "#cbd5e1").set("margin-bottom", "15px");
 
-        txtCpf.setVisible(false);
-        txtNome.setVisible(false);
-        txtPlaca.setVisible(false);
-        btnSalvarCadastro.setVisible(false);
-        btnConfirmarCheckin.setVisible(false);
+    estilizarCampo(txtCpf);
+    estilizarCampo(txtNome);
+    estilizarCampo(txtPlaca);
 
-        Div painelInterativo = new Div();
-        painelInterativo.getStyle().set("display", "flex").set("flex-direction", "column").set("align-items", "center").set("gap", "15px");
+    txtCpf.setVisible(false);
+    txtNome.setVisible(false);
+    txtPlaca.setVisible(false);
+    btnSalvarCadastro.setVisible(false);
+    btnConfirmarCheckin.setVisible(false);
 
-        Div cameraDiv = criarBotaoCameraReconhecimento();
-        String urlAtual = getBaseUrl() + "/portaria";
-        Div qrCodeBox = criarBoxQrCode(urlAtual);
+    Div painelInterativo = new Div();
+    painelInterativo.getStyle().set("display", "flex").set("flex-direction", "column").set("align-items", "center").set("gap", "15px");
 
-        painelInterativo.add(cameraDiv, qrCodeBox);
+    Div cameraDiv = criarBotaoCameraReconhecimento();
+    String urlAtual = getBaseUrl() + "/portaria";
+    Div qrCodeBox = criarBoxQrCode(urlAtual);
 
-        btnSalvarCadastro.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        btnSalvarCadastro.getStyle().set("margin-top", "15px");
-        btnSalvarCadastro.addClickListener(e -> salvarNovoMotoristaECheckIn());
+    painelInterativo.add(cameraDiv, qrCodeBox);
 
-        btnConfirmarCheckin.addThemeVariants(ButtonVariant.LUMO_SUCCESS);
-        btnConfirmarCheckin.getStyle().set("margin-top", "15px");
-        btnConfirmarCheckin.addClickListener(e -> realizarCheckInRecorrente());
+    btnSalvarCadastro.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+    btnSalvarCadastro.getStyle().set("margin-top", "15px");
+    btnSalvarCadastro.addClickListener(e -> salvarNovoMotoristaECheckIn());
 
-        add(titulo, lblStatus, painelInterativo, txtCpf, txtNome, txtPlaca, btnSalvarCadastro, btnConfirmarCheckin);
+    btnConfirmarCheckin.addThemeVariants(ButtonVariant.LUMO_SUCCESS);
+    btnConfirmarCheckin.getStyle().set("margin-top", "15px");
+    btnConfirmarCheckin.addClickListener(e -> realizarCheckInRecorrente());
 
-        // Registro limpo no Broadcaster usando apenas IDs (evita problemas de variáveis de referência)
-        UiBroadcaster.register(message -> {
-            getUI().ifPresent(ui -> ui.access(() -> {
-                if (idsViagensAtivas != null && !idsViagensAtivas.isEmpty()) {
-                    atualizarPainelAcompanhamentoFila();
-                }
-            }));
-        });
-    }
+    add(titulo, lblStatus, painelInterativo, txtCpf, txtNome, txtPlaca, btnSalvarCadastro, btnConfirmarCheckin);
+
+    // Salva a referência do registro para poder limpar depois
+    broadcastRegistration = UiBroadcaster.register(message -> {
+        getUI().ifPresent(ui -> ui.access(() -> {
+            if (idsViagensAtivas != null && !idsViagensAtivas.isEmpty()) {
+                atualizarPainelAcompanhamentoFila();
+            }
+        }));
+    });
+}
 
     private String getBaseUrl() {
         VaadinServletRequest request = VaadinServletRequest.getCurrent();

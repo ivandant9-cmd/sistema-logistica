@@ -532,22 +532,26 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
             .setHeader("FIM CARGA").setAutoWidth(true);
         
         gridArquivados.addColumn(new ComponentRenderer<>(carregamento -> {
-            Button btnDesarquivar = new Button("Desarquivar", VaadinIcon.UPLOAD_ALT.create());
-            btnDesarquivar.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_SUCCESS);
-            btnDesarquivar.addClickListener(e -> {
-                carregamento.setArquivado(false);
-                repository.save(carregamento);
-                atualizarGridEIndicators();
-                UiBroadcaster.broadcast("STATUS_ATUALIZADO");
-                
-               mapaCheckboxesArquivados.clear();
-            List<Carregamento> novaListaArquivados = repository.findByArquivadoTrue();
-            gridArquivados.setItems(novaListaArquivados);
+    Button btnDesarquivar = new Button("Desarquivar", VaadinIcon.UPLOAD_ALT.create());
+    btnDesarquivar.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_SUCCESS);
+    btnDesarquivar.addClickListener(e -> {
+        carregamento.setArquivado(false);
+        repository.save(carregamento);
+        
+        // Atualiza os indicadores gerais de forma leve
+        atualizarGridEIndicators();
+        UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+        
+        mapaCheckboxesArquivados.clear();
+        
+        // Recarrega os arquivados para sumir com o item da lista de arquivados
+        List<Carregamento> novaListaArquivados = repository.findByArquivadoTrue();
+        gridArquivados.setItems(novaListaArquivados);
 
-            Notification.show("Viagem desarquivada com sucesso!", 3000, Notification.Position.BOTTOM_END);
-            });
-            return btnDesarquivar;
-            })).setHeader("AÇÃO").setAutoWidth(true);
+        Notification.show("Viagem desarquivada com sucesso!", 3000, Notification.Position.BOTTOM_END);
+    });
+    return btnDesarquivar;
+})).setHeader("AÇÃO").setAutoWidth(true);
 
        List<Carregamento> listaArquivados = repository.findByArquivadoTrue();
          gridArquivados.setItems(listaArquivados);;
@@ -567,8 +571,10 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
             for (Carregamento c : selecionadas) {
                 c.setArquivado(false);
-                repository.save(c);
             }
+            
+            // Otimização: Salva todos de uma vez em uma única transação de lote no banco
+            repository.saveAll(selecionadas);
 
             mapaCheckboxesArquivados.clear();
             List<Carregamento> novaListaArquivados = repository.findByArquivadoTrue();
@@ -788,31 +794,35 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
       btnApresentado.addClickListener(e -> {
     carregamento.setStatus("Apresentado");
     
-    // Usa o método correto que a Grid está consultando: getDataHoraApresentacao / setDataHoraApresentacao
     if (carregamento.getDataHoraApresentacao() == null) {
         carregamento.setDataHoraApresentacao(java.time.LocalDateTime.now());
     }
 
     repository.save(carregamento);
-    atualizarGridEIndicators();
+   
+    atualizarGridEIndicators(); 
     UiBroadcaster.broadcast("STATUS_ATUALIZADO");
 });
 
         btnCarregando.addClickListener(e -> {
-            if (!"Apresentado".equalsIgnoreCase(carregamento.getStatus())) {
-                Notification.show("⚠️ O veículo precisa estar como 'Apresentado' antes de iniciar o carregamento!", 
-                    3000, Notification.Position.MIDDLE);
-                return;
-            }
+    if (!"Apresentado".equalsIgnoreCase(carregamento.getStatus())) {
+        Notification.show("⚠️ O veículo precisa estar como 'Apresentado' antes de iniciar o carregamento!", 
+            3000, Notification.Position.MIDDLE);
+        return;
+    }
 
-            carregamento.setStatus("Carregando");
-            if (carregamento.getHoraInicioCarregamento() == null) {
-                carregamento.setHoraInicioCarregamento(LocalDateTime.now());
-            }
-            repository.save(carregamento);
-            atualizarGridEIndicators();
-            UiBroadcaster.broadcast("STATUS_ATUALIZADO");
-        });
+    carregamento.setStatus("Carregando");
+    if (carregamento.getHoraInicioCarregamento() == null) {
+        carregamento.setHoraInicioCarregamento(LocalDateTime.now());
+    }
+    
+    repository.save(carregamento);
+    
+   atualizarGridEIndicators();
+    
+    // Atualize os indicadores de forma leve, se necessário, ou mantenha o broadcast
+    UiBroadcaster.broadcast("STATUS_ATUALIZADO");
+});
 
         btnExpedido.addClickListener(e -> {
             if (!"Carregando".equalsIgnoreCase(carregamento.getStatus())) {
@@ -826,6 +836,7 @@ public class MainView extends VerticalLayout implements BeforeEnterObserver {
                 carregamento.setHoraFimCarregamento(LocalDateTime.now());
             }
             repository.save(carregamento);
+           
             atualizarGridEIndicators();
             UiBroadcaster.broadcast("STATUS_ATUALIZADO");
         });

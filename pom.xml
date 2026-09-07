@@ -38,12 +38,7 @@
             <artifactId>vaadin-spring-boot-starter</artifactId>
         </dependency>
 
-        <dependency>
-    <groupId>com.monitorjbl</groupId>
-    <artifactId>xlsx-streamer</artifactId>
-    <version>2.2.0</version>
-</dependency>
-
+        
         <!-- Dependência para gerar QR Code -->
 <dependency>
     <groupId>com.google.zxing</groupId>
@@ -55,6 +50,8 @@
     <artifactId>javase</artifactId>
     <version>3.5.3</version>
 </dependency>
+
+
 
         <dependency>
             <groupId>org.postgresql</groupId>

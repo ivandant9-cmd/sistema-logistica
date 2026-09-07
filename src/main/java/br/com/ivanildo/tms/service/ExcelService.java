@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import br.com.ivanildo.tms.model.Entrega;
 import br.com.ivanildo.tms.model.Conferente;
-import com.monitorjbl.xlsx.StreamingReader;
+import com.github.pjfanning.xlsx.StreamingReader;
 
 import java.io.InputStream;
 import java.text.Normalizer;
